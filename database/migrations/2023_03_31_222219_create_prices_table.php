@@ -26,7 +26,6 @@ return new class extends Migration
             $table->dateTime('discount_end_at')->nullable();
             $table->integer('tax_id')->nullable();
             $table->timestamps();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
