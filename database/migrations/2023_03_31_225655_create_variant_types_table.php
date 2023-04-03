@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('variant_categories', function (Blueprint $table) {
+        Schema::create('variant_types', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('variant_categories');
+        Schema::dropIfExists('variant_types');
     }
 };

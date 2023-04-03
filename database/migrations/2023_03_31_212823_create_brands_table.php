@@ -12,12 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('brands', function (Blueprint $table) {
-            $table->id();
-            $table->integer('original_id')->nullable();
-            $table->integer('brand_category_id')->nullable();
+            $table->primary("id")->comment("logicalref");
             $table->string('name', 255);
             $table->string('slug', 255);
-            $table->string('type', 255);
             $table->integer('parent_id')->nullable();
             $table->json('data')->nullable();
             $table->timestamps();

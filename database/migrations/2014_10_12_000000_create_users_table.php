@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('type', 255)->default('customer');
             $table->string('gender', 255)->default('male');
             $table->date('date_of_birth');
-            $table->boolean('status')->default(false);
+            $table->boolean('is_active')->default(false);
             $table->boolean('banned')->default(false);
             $table->rememberToken();
             $table->timestamps();

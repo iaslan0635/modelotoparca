@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->integer('original_id')->nullable();
+            $table->primary("id")->comment("logicalref");
             $table->integer('brand_id')->nullable();
             $table->string('title', 255);
             $table->string('sub_title', 255);

@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->integer('original_id')->nullable();
+            $table->primary("id")->comment("logicalref");
             $table->integer('parent_id')->nullable();
             $table->string('name', 255);
             $table->string('slug', 255);
-            $table->integer('order_by')->default(0);
+            $table->integer('order')->default(0);
             $table->json('data')->nullable();
             $table->timestamps();
         });

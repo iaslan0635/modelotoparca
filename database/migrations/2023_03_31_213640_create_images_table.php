@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('model');
-            $table->integer('model_id');
+            $table->morphs("model");
             $table->text('path');
             $table->timestamps();
             $table->softDeletes();
