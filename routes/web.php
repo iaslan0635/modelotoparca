@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('quickview', 'quickview')->name('quickview');
+
 Route::post('upload', function (\Illuminate\Http\Request $request) {
     $save = \App\Models\Brand::create([
         'name' => "efe",
