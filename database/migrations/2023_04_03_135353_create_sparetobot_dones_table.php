@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('variant_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 255);
-            $table->timestamps();
+        Schema::create('sparetobot_dones', function (Blueprint $table) {
+            $table->string('keyword')->primary();
         });
     }
 
@@ -23,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('variant_types');
+        Schema::dropIfExists('sparetobot_dones');
     }
 };

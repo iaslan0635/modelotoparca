@@ -12,14 +12,15 @@ return new class extends Migration {
     {
         Schema::create('variants', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->string('variant_type', 255);
-            $table->string('name', 255);
-            $table->string('sku', 255)->unique();
+            $table->unsignedInteger('product_id')->index();
+
+            $table->string('variant_type');
+            $table->string('name');
+            $table->string('sku')->unique();
             $table->integer('quantity')->default(0);
             $table->integer('low_quantity')->default(10);
             $table->boolean('has_variant')->default(false);
-            $table->string('status', 255)->default('active');
+            $table->string('status')->default('active');
             $table->json('data')->nullable();
             $table->timestamps();
         });

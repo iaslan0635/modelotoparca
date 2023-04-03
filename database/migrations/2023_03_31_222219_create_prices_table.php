@@ -13,18 +13,19 @@ return new class extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->integer('variant_id')->nullable();
-            $table->decimal('price', 12, 4)->nullable();
-            $table->string('currency', 255)->default('try');
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('variant_id')->nullable();
+            $table->unsignedInteger('tax_id')->nullable();
+
+            $table->decimal('price', 12, 4, true)->nullable();
+            $table->string('currency')->default('try');
             $table->boolean('discount')->default(false);
-            $table->string('discount_title', 255)->nullable();
+            $table->string('discount_title')->nullable();
             $table->longText('discount_description')->nullable();
-            $table->string('discount_type', 255)->default('percentile');
+            $table->string('discount_type')->default('percentile');
             $table->decimal('discount_amount', 12, 4)->default(0.0000);
             $table->dateTime('discount_start_at')->nullable();
             $table->dateTime('discount_end_at')->nullable();
-            $table->integer('tax_id')->nullable();
             $table->timestamps();
         });
     }

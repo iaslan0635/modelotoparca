@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brands', function (Blueprint $table) {
-            $table->unsignedInteger("id")->primary()->comment("logicalref");
-            $table->string('name')->index();
-            $table->string('slug')->index();
-            $table->json('data')->nullable();
-            $table->timestamps();
+        Schema::create('product_cars', function (Blueprint $table) {
+            $table->unsignedBigInteger('logicalref')->index();
+            $table->unsignedBigInteger('model_id')->index();
+            $table->unique(['logicalref', 'model_id']);
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('product_cars');
     }
 };

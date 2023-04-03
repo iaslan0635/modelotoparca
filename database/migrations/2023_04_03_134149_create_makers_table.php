@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brands', function (Blueprint $table) {
-            $table->unsignedInteger("id")->primary()->comment("logicalref");
+        Schema::create('makers', function (Blueprint $table) {
+            $table->id();
             $table->string('name')->index();
-            $table->string('slug')->index();
-            $table->json('data')->nullable();
-            $table->timestamps();
+            $table->string('permalink')->index();
+            $table->unsignedInteger('from_year')->nullable();
+            $table->unsignedInteger('to_year')->nullable();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('makers');
     }
 };

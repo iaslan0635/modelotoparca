@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('taxes', function (Blueprint $table) {
             $table->id();
             $table->boolean('vat')->default(true);
-            $table->string('vat_title', 255)->nullable();
+            $table->string('vat_title')->nullable();
             $table->string('vat_type')->default('percentile');
             $table->decimal('vat_amount', 12, 4)->default(0.0000);
             $table->timestamps();
