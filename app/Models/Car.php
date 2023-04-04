@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Elastic\ScoutDriverPlus\Searchable;
 
-class Car extends Model
+class Car extends BaseModel
 {
-    use HasFactory;
+    use Searchable;
 }

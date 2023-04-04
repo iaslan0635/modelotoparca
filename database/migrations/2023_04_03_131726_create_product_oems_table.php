@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('product_oems', function (Blueprint $table) {
-            $table->unsignedInteger('logicalref')->primary();
+            $table->unsignedInteger('logicalref')->index();
             $table->string('brand')->index();
             $table->string('oem')->index();
             $table->string('oem_regexed')->index()->storedAs("regexp_replace(`oem`, '[^a-zA-Z0-9]', '')");

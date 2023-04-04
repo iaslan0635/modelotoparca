@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use App\Enum\BrandTypesEnum;
-use App\Traits\UploadTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasImages;
+use Elastic\ScoutDriverPlus\Searchable;
 
-class Brand extends Model
+class Brand extends BaseModel
 {
-    use HasFactory, UploadTrait;
+    use Searchable, HasImages;
 
     protected $guarded = [];
 

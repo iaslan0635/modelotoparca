@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Elastic\ScoutDriverPlus\Searchable;
 
-class ProductOem extends Model
+class ProductOem extends BaseModel
 {
     public $timestamps = false;
+    use Searchable;
 }

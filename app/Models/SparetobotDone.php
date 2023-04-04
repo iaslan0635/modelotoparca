@@ -2,10 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class SparetobotDone extends Model
+class SparetobotDone extends BaseModel
 {
-    use HasFactory;
+
 }
