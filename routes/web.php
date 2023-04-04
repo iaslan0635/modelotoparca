@@ -13,7 +13,7 @@ Route::post('upload', function (\Illuminate\Http\Request $request) {
     $save = \App\Models\Brand::create([
         'name' => "efe",
         "slug" => "efe",
-        "type" => \App\Enums\BrandTypesEnum::PRODUCT,
+        "type" => \App\Enums\BrandType::PRODUCT,
     ]);
 
     $save->saveImages($save->getKey(), $request->allFiles());

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\BrandTypesEnum;
+use App\Enums\BrandType;
 use App\Traits\HasImages;
 use Elastic\ScoutDriverPlus\Searchable;
 
@@ -13,7 +13,7 @@ class Brand extends BaseModel
     protected $guarded = [];
 
     protected $casts = [
-        'type' => BrandTypesEnum::class,
+        'type' => BrandType::class,
         'data' => 'array'
     ];
 }
