@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enum\BrandTypesEnum;
+use App\Enums\BrandTypesEnum;
 use App\Traits\HasImages;
 use Elastic\ScoutDriverPlus\Searchable;
 
