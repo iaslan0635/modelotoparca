@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::view('product-list', 'product-list')->name('product-list');
+
 Route::view('quickview', 'quickview')->name('quickview');
 
 Route::post('upload', function (\Illuminate\Http\Request $request) {

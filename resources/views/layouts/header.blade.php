@@ -4,21 +4,13 @@
         <div class="header__topbar-classic-bg"></div>
         <div class="header__topbar-classic">
             <div class="topbar topbar--classic">
-                <div class="topbar__item-text"><a class="topbar__link" href="about-us.html">About Us</a></div>
-                <div class="topbar__item-text"><a class="topbar__link" href="contact-us-v1.html">Contacts</a></div>
-                <div class="topbar__item-text"><a class="topbar__link" href="">Store Location</a></div>
-                <div class="topbar__item-text"><a class="topbar__link" href="track-order.html">Track Order</a></div>
-                <div class="topbar__item-text"><a class="topbar__link" href="blog-classic-right-sidebar.html">Blog</a></div>
+                <div class="topbar__item-text"><a class="topbar__link" href="about-us.html">Hakkımızda</a></div>
+                <div class="topbar__item-text"><a class="topbar__link" href="contact-us-v1.html">İletişim</a></div>
+                <div class="topbar__item-text"><a class="topbar__link" href="track-order.html">Sipariş Takibi</a></div>
                 <div class="topbar__item-spring"></div>
-                <div class="topbar__item-button">
-                    <a href="" class="topbar__button">
-                        <span class="topbar__button-label">Compare:</span>
-                        <span class="topbar__button-title">5</span>
-                    </a>
-                </div>
                 <div class="topbar__item-button topbar__menu">
                     <button class="topbar__button topbar__button--has-arrow topbar__menu-button" type="button">
-                        <span class="topbar__button-label">Currency:</span>
+                        <span class="topbar__button-label">Para Birimi:</span>
                         <span class="topbar__button-title">USD</span>
                         <span class="topbar__button-arrow"><svg width="7px" height="5px">
                                         <path d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z" />
@@ -32,33 +24,6 @@
                         <a class="topbar__menu-item" href="#">₽ Russian Ruble</a>
                     </div>
                 </div>
-                <div class="topbar__menu">
-                    <button class="topbar__button topbar__button--has-arrow topbar__menu-button" type="button">
-                        <span class="topbar__button-label">Language:</span>
-                        <span class="topbar__button-title">EN</span>
-                        <span class="topbar__button-arrow"><svg width="7px" height="5px">
-                                        <path d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z" />
-                                    </svg>
-                                </span>
-                    </button>
-                    <div class="topbar__menu-body">
-                        <a class="topbar__menu-item" href="#">
-                            <img src="images/languages/language-1.png" alt=""><span>English</span>
-                        </a>
-                        <a class="topbar__menu-item" href="#">
-                            <img src="images/languages/language-2.png" alt=""><span>French</span>
-                        </a>
-                        <a class="topbar__menu-item" href="#">
-                            <img src="images/languages/language-3.png" alt=""><span>German</span>
-                        </a>
-                        <a class="topbar__menu-item" href="#">
-                            <img src="images/languages/language-4.png" alt=""><span>Russian</span>
-                        </a>
-                        <a class="topbar__menu-item" href="#">
-                            <img src="images/languages/language-5.png" alt=""><span>Italian</span>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="header__navbar">
@@ -69,7 +34,7 @@
                                         <path d="M0,7L0,5L16,5L16,7L0,7ZM0,0L16,0L16,2L0,2L0,0ZM12,12L0,12L0,10L12,10L12,12Z" />
                                     </svg>
                                 </span>
-                        <span class="departments__button-title">Shop By Category</span>
+                        <span class="departments__button-title">Ürün Kategorileri</span>
                         <span class="departments__button-arrow"><svg width="9px" height="6px">
                                         <path d="M0.2,0.4c0.4-0.4,1-0.5,1.4-0.1l2.9,3l2.9-3c0.4-0.4,1.1-0.4,1.4,0.1c0.3,0.4,0.3,0.9-0.1,1.3L4.5,6L0.3,1.6C-0.1,1.3-0.1,0.7,0.2,0.4z" />
                                     </svg>
@@ -1118,23 +1083,19 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="main-menu__item">
-                            <a href="https://themeforest.net/item/redparts-auto-parts-html-template/24735474" class="main-menu__link" target="_blank">
-                                Buy Theme
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
             <div class="header__navbar-phone phone">
                 <a href="" class="phone__body">
-                    <div class="phone__title">Call Us:</div>
+                    <div class="phone__title">Destek Hattı:</div>
                     <div class="phone__number">800 060-0730</div>
                 </a>
             </div>
         </div>
         <div class="header__logo">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <div class="logo__slogan">
                  Modelotoparca
                 </div>
@@ -1149,7 +1110,7 @@
             <div class="search">
                 <form action="" class="search__body">
                     <div class="search__shadow"></div>
-                    <input class="search__input" type="text" placeholder="Enter Keyword or Part Number">
+                    <input class="search__input" type="text" placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
                     <button class="search__button search__button--start" type="button">
                                 <span class="search__button-icon"><svg width="20" height="20">
                                         <path d="M6.6,2c2,0,4.8,0,6.8,0c1,0,2.9,0.8,3.6,2.2C17.7,5.7,17.9,7,18.4,7C20,7,20,8,20,8v1h-1v7.5c0,0.8-0.7,1.5-1.5,1.5h-1
@@ -1160,7 +1121,7 @@
 	C15.5,10.2,14,11.3,14,12z" />
                                     </svg>
                                 </span>
-                        <span class="search__button-title">Select Vehicle</span>
+                        <span class="search__button-title">Araç Seç</span>
                     </button>
                     <button class="search__button search__button--end" type="submit">
                                 <span class="search__button-icon"><svg width="20" height="20">
@@ -1177,7 +1138,7 @@
                     </div>
                     <div class="search__dropdown search__dropdown--suggestions suggestions">
                         <div class="suggestions__group">
-                            <div class="suggestions__group-title">Products</div>
+                            <div class="suggestions__group-title">Ürünler</div>
                             <div class="suggestions__group-content">
                                 <a class="suggestions__item suggestions__product" href="">
                                     <div class="suggestions__product-image image image--type--product">
@@ -1257,7 +1218,7 @@
                             </div>
                         </div>
                         <div class="suggestions__group">
-                            <div class="suggestions__group-title">Categories</div>
+                            <div class="suggestions__group-title">Kategoriler</div>
                             <div class="suggestions__group-content">
                                 <a class="suggestions__item suggestions__category" href="">Headlights & Lighting</a>
                                 <a class="suggestions__item suggestions__category" href="">Fuel System & Filters</a>
@@ -1271,7 +1232,7 @@
                         <div class="vehicle-picker__panel vehicle-picker__panel--list vehicle-picker__panel--active" data-panel="list">
                             <div class="vehicle-picker__panel-body">
                                 <div class="vehicle-picker__text">
-                                    Select a vehicle to find exact fit parts
+                                    Aracınız ile tam uyumlu parçaları bulmak için seçiniz
                                 </div>
                                 <div class="vehicles-list">
                                     <div class="vehicles-list__body">
@@ -1312,7 +1273,7 @@
                                     </div>
                                 </div>
                                 <div class="vehicle-picker__actions">
-                                    <button type="button" class="btn btn-primary btn-sm" data-to-panel="form">Add A Vehicle</button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-to-panel="form">Yeni Araç Ekle</button>
                                 </div>
                             </div>
                         </div>
@@ -1321,7 +1282,7 @@
                                 <div class="vehicle-form vehicle-form--layout--search">
                                     <div class="vehicle-form__item vehicle-form__item--select">
                                         <select class="form-control form-control-select2" aria-label="Year">
-                                            <option value="none">Select Year</option>
+                                            <option value="none">Yıl Seç</option>
                                             <option>2010</option>
                                             <option>2011</option>
                                             <option>2012</option>
@@ -1337,7 +1298,7 @@
                                     </div>
                                     <div class="vehicle-form__item vehicle-form__item--select">
                                         <select class="form-control form-control-select2" aria-label="Brand" disabled>
-                                            <option value="none">Select Brand</option>
+                                            <option value="none">Marka Seç</option>
                                             <option>Audi</option>
                                             <option>BMW</option>
                                             <option>Ferrari</option>
@@ -1350,7 +1311,7 @@
                                     </div>
                                     <div class="vehicle-form__item vehicle-form__item--select">
                                         <select class="form-control form-control-select2" aria-label="Model" disabled>
-                                            <option value="none">Select Model</option>
+                                            <option value="none">Model</option>
                                             <option>Explorer</option>
                                             <option>Focus S</option>
                                             <option>Fusion SE</option>
@@ -1359,22 +1320,22 @@
                                     </div>
                                     <div class="vehicle-form__item vehicle-form__item--select">
                                         <select class="form-control form-control-select2" aria-label="Engine" disabled>
-                                            <option value="none">Select Engine</option>
+                                            <option value="none">Motor Gücü</option>
                                             <option>Gas 1.6L 125 hp AT/L4</option>
                                             <option>Diesel 2.5L 200 hp AT/L5</option>
                                             <option>Diesel 3.0L 250 hp MT/L5</option>
                                         </select>
                                     </div>
-                                    <div class="vehicle-form__divider">Or</div>
+                                    <div class="vehicle-form__divider">Ya Da</div>
                                     <div class="vehicle-form__item">
-                                        <input type="text" class="form-control" placeholder="Enter VIN number" aria-label="VIN number">
+                                        <input type="text" class="form-control" placeholder="Aracınızın Şase Numarası" aria-label="VIN number">
                                     </div>
                                 </div>
                                 <div class="vehicle-picker__actions">
                                     <div class="search__car-selector-link">
-                                        <a href="" data-to-panel="list">Back to vehicles list</a>
+                                        <a href="" data-to-panel="list">Araç Listesine Dön</a>
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-sm" disabled>Add A Vehicle</button>
+                                    <button type="button" class="btn btn-primary btn-sm" disabled>Aracı Ekle</button>
                                 </div>
                             </div>
                         </div>
@@ -1403,13 +1364,13 @@
                                 </svg>
                             </span>
                     <span class="indicator__title">Hello, Log In</span>
-                    <span class="indicator__value">My Account</span>
+                    <span class="indicator__value">Hesabım</span>
                 </a>
                 <div class="indicator__content">
                     <div class="account-menu">
                         <form class="account-menu__form">
                             <div class="account-menu__form-title">
-                                Log In to Your Account
+                                Hesabınız ile Giriş Yap
                             </div>
                             <div class="form-group">
                                 <label for="header-signin-email" class="sr-only">Email address</label>
@@ -1466,7 +1427,7 @@
                                 </svg>
                                 <span class="indicator__counter">3</span>
                             </span>
-                    <span class="indicator__title">Shopping Cart</span>
+                    <span class="indicator__title">Alışveriş Sepetim</span>
                     <span class="indicator__value">$250.00</span>
                 </a>
                 <div class="indicator__content">
