@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('product_categories', function (Blueprint $table) {
+        Schema::create('product_categories', function (Blueprint $table) {
             $table->unsignedInteger("product_id")->index();
             $table->unsignedInteger("category_id")->index();
             $table->unique(["product_id", "category_id"]);
@@ -22,8 +22,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('product_categories', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('product_categories');
     }
 };
