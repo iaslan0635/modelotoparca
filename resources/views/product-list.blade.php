@@ -1246,7 +1246,7 @@
                                                     </div>
                                                     <div class="product-card__info">
                                                         <div class="product-card__meta"><span
-                                                                class="product-card__meta-title">SKU:</span> {{ $product->sku }}
+                                                                class="product-card__meta-title">{{ $product->producercode }}</span>
                                                         </div>
                                                         <div class="product-card__name">
                                                             <div>
@@ -1255,7 +1255,7 @@
                                                                     <div class="tag-badge tag-badge--new">new</div>
                                                                     <div class="tag-badge tag-badge--hot">hot</div>
                                                                 </div>
-                                                                <a href="{{ route('product.show', $product) }}">{{ $product->title }}</a>
+                                                                <a href="{{ route('product.show', $product) }}">{{ $product->title }} {{ $product->part_number ? "@".$product->part_number:null }}</a>
                                                             </div>
                                                         </div>
                                                         <div class="product-card__rating">
