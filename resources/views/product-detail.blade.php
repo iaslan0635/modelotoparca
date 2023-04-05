@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="product__header">
-                                <h1 class="product__title">{{ $product->title }}</h1>
+                                <h1 class="product__title">{{ $product->title }} {{ $product->part_number ? "@".$product->part_number:null }}</h1>
                                 <div class="product__subtitle">
                                     <div class="product__rating">
                                         <div class="product__rating-stars">
@@ -120,8 +120,8 @@
                                         <div class="product__meta">
                                             <table>
                                                 <tr>
-                                                    <th>SKU</th>
-                                                    <td>{{ $product->sku }}</td>
+                                                    <th>Üretici Kodu</th>
+                                                    <td>{{ $product->producercode }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Brand</th>
