@@ -1063,7 +1063,7 @@
                                                                 <div class="tag-badge tag-badge--new">new</div>
                                                                 <div class="tag-badge tag-badge--hot">hot</div>
                                                             </div>
-                                                            <a href="#">{{ $product->title }}</a>
+                                                            <a href="{{ route('product.show', $product) }}">{{ $product->title }}</a>
                                                         </div>
                                                     </div>
                                                     <div class="product-card__rating">

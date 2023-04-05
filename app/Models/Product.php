@@ -6,6 +6,7 @@ use App\Traits\HasImages;
 use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends BaseModel
@@ -29,5 +30,10 @@ class Product extends BaseModel
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function oems(): HasMany
+    {
+        return $this->hasMany(ProductOem::class, 'logicalref');
     }
 }

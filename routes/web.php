@@ -9,7 +9,6 @@ Route::get('/', function () {
 
 Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');
-Route::view('detail', 'product-detail')->name('product-detail');
 
 
 
