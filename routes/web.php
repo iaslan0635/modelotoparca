@@ -8,6 +8,8 @@ Route::get('/', function () {
     return view('home', compact("categories"));
 });
 
+Route::view('product-list', 'product-list')->name('product-list');
+
 Route::view('quickview', 'quickview')->name('quickview');
 
 Route::post('upload', function (\Illuminate\Http\Request $request) {
