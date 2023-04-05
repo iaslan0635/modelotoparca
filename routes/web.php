@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    $categories = \App\Models\Category::root()->with("children.children.children")->with("image")->get();
-    return view('home', compact("categories"));
+    return view('home');
 });
 
 Route::view('product-list', 'product-list')->name('product-list');

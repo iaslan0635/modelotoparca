@@ -45,7 +45,7 @@
                         <div class="departments__body">
                             <ul class="departments__list">
                                 <li class="departments__list-padding" role="presentation"></li>
-                                @foreach($categories as $root)
+                                @foreach($__Categories as $root)
                                     <li class="departments__item departments__item--submenu--megamenu departments__item--has-submenu">
                                         <a href="" class="departments__item-link">
                                             {{ $root->name }}
