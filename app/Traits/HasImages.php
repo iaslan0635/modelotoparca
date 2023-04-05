@@ -34,6 +34,11 @@ trait HasImages
 
     public function imageUrl(): string
     {
-        return asset($this->image?->path ?? "/images/products/product-1-245x245.jpg");
+        if (app()->isProduction()){
+            $path = $this->image?->path;
+        }else{
+            $path = "https://web.modelotoparca.com{$this->image?->path}";
+        }
+        return asset($path ?? "/images/products/product-1-245x245.jpg");
     }
 }

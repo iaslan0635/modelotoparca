@@ -7,5 +7,4 @@ use Illuminate\Support\Facades\Storage;
 
 class Image extends BaseModel
 {
-
 }
