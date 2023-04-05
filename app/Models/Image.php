@@ -7,8 +7,5 @@ use Illuminate\Support\Facades\Storage;
 
 class Image extends BaseModel
 {
-    protected function url(): Attribute
-    {
-        return Attribute::get(fn () => Storage::url($this->path));
-    }
+
 }

@@ -22,3 +22,7 @@ Route::post('upload', function (\Illuminate\Http\Request $request) {
 
     return "success";
 })->name('upload');
+
+
+Route::get('c/{category:slug}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('category.show');
+Route::get('p/{product:slug}')->name('product.show');

@@ -31,4 +31,9 @@ trait HasImages
     {
         return $this->morphOne(Image::class, 'imageable')->latestOfMany();
     }
+
+    public function imageUrl(): string
+    {
+        return asset($this->image?->path ?? "/images/products/product-1-245x245.jpg");
+    }
 }

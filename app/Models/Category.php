@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use App\Facades\CategoryFacade;
+use App\Facades\TTL;
 use App\Traits\HasImages;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Cache;
 
 class Category extends BaseModel
 {
@@ -26,8 +30,23 @@ class Category extends BaseModel
         return $this->belongsToMany(Product::class, "product_categories");
     }
 
+    protected function deepProducts()
+    {
+        return $this->newQuery()->from("products")->join("product_categories", "products.id", "=", "product_categories.product_id")->whereIn("product_categories.category_id", $this->tree['childs']);
+    }
+
+    protected function deepProductsCount(): Attribute
+    {
+        return Attribute::get(fn() => Cache::remember("deep_product_count_{$this->id}", TTL::WEEK, fn() => $this->deepProducts()->count()));
+    }
+
     public function scopeRoot(Builder $query): void
     {
         $query->whereNull('parent_id');
+    }
+
+    protected function tree(): Attribute
+    {
+        return Attribute::get(fn() => CategoryFacade::getTree($this->id));
     }
 }

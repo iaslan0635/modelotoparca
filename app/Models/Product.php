@@ -2,9 +2,26 @@
 
 namespace App\Models;
 
+use App\Traits\HasImages;
 use Elastic\ScoutDriverPlus\Searchable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends BaseModel
 {
-    use Searchable;
+    use Searchable, HasImages;
+    protected $casts = [
+        "specifications" => "array",
+        "dimensions" => "array"
+    ];
+
+    public function category(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, "product_categories");
+    }
+
+    public function price(): HasOne
+    {
+        return $this->hasOne(Price::class)->where('variant_id', '=', NULL);
+    }
 }
