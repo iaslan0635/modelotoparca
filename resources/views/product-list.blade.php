@@ -200,8 +200,8 @@
                                                                 <div class="filter-price"
                                                                      data-min="{{ $products->min('price.price') }}"
                                                                      data-max="{{ $products->max('price.price') }}"
-                                                                     data-from="{{ floor($products->min('price.price') * 2) }}"
-                                                                     data-to="{{ floor($products->max('price.price') / 2) }}">
+                                                                     data-from="{{ $products->min('price.price') }}"
+                                                                     data-to="{{ $products->max('price.price') }}">
                                                                     <div class="filter-price__slider"></div>
                                                                     <div class="filter-price__title-button">
                                                                         <input type="hidden" name="min_price" value=""
