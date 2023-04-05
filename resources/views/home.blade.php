@@ -9,7 +9,7 @@
                 <div class="decor__center"></div>
             </div>
         </div>
-        <div class="block-finder__image" style="background-image: url('images/finder-1903x140.jpg');"></div>
+        <div class="block-finder__image" style="background-image: url('images/arac-parca-bul.png');"></div>
         <div class="block-finder__body container container--max--xl">
             <form class="block-finder__form">
                 <div class="block-finder__form-control block-finder__form-control--select">
@@ -68,7 +68,7 @@
                 <div class="owl-carousel">
                     <a class="block-slideshow__item" href="">
                         <span class="block-slideshow__item-image block-slideshow__item-image--desktop"
-                              style="background-image: url('images/slides/slide-3.jpg')"></span>
+                              style="background-image: url('images/slides/continental-1.png')"></span>
                         <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
                               style="background-image: url('images/slides/slide-3-mobile.jpg')"></span>
                         <span class="block-slideshow__item-offer">
@@ -88,7 +88,7 @@
                     </a>
                     <a class="block-slideshow__item" href="">
                         <span class="block-slideshow__item-image block-slideshow__item-image--desktop"
-                              style="background-image: url('images/slides/slide-2.jpg')"></span>
+                              style="background-image: url('images/slides/petronas-1.png')"></span>
                         <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
                               style="background-image: url('images/slides/slide-2-mobile.jpg')"></span>
                         <span class="block-slideshow__item-title">
