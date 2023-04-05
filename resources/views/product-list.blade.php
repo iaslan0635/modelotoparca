@@ -83,11 +83,13 @@
                                                                                 class="filter-categories__counter">{{ $category->deepProductsCount }}</div>
                                                                         </li>
                                                                         @foreach($category->children->sortByDesc("products_count") as $child)
-                                                                            <li class="filter-categories__item filter-categories__item--child">
-                                                                                <a href="{{ route('category.show', $child) }}">{{ $child->name }}</a>
-                                                                                <div
-                                                                                    class="filter-categories__counter">{{ $child->deepProductsCount }}</div>
-                                                                            </li>
+                                                                            @if($child->deepProductsCount > 0)
+                                                                                <li class="filter-categories__item filter-categories__item--child">
+                                                                                    <a href="{{ route('category.show', $child) }}">{{ $child->name }}</a>
+                                                                                    <div
+                                                                                        class="filter-categories__counter">{{ $child->deepProductsCount }}</div>
+                                                                                </li>
+                                                                            @endif
                                                                         @endforeach
                                                                     </ul>
                                                                 </div>
@@ -1251,7 +1253,8 @@
                                                         <div class="product-card__name">
                                                             <div>
                                                                 <div class="product-card__badges">
-                                                                    <div class="tag-badge tag-badge--sale">{{ $product->brand->name }}</div>
+                                                                    <div
+                                                                        class="tag-badge tag-badge--sale">{{ $product->brand->name }}</div>
                                                                     <div class="tag-badge tag-badge--new">new</div>
                                                                     <div class="tag-badge tag-badge--hot">hot</div>
                                                                 </div>
