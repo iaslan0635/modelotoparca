@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('home');
+    $categories = \App\Models\Category::root()->with("children.children.children")->with("image")->get();
+    return view('home', compact("categories"));
 });
 
 Route::view('quickview', 'quickview')->name('quickview');

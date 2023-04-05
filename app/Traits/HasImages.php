@@ -5,6 +5,7 @@ namespace App\Traits;
 
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,6 +24,11 @@ trait HasImages
 
     public function images(): MorphMany
     {
-        return $this->morphMany(Image::class, 'model_id');
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable')->latestOfMany();
     }
 }
