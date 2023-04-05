@@ -1251,7 +1251,7 @@
                                                         <div class="product-card__name">
                                                             <div>
                                                                 <div class="product-card__badges">
-                                                                    <div class="tag-badge tag-badge--sale">sale</div>
+                                                                    <div class="tag-badge tag-badge--sale">{{ $product->brand->name }}</div>
                                                                     <div class="tag-badge tag-badge--new">new</div>
                                                                     <div class="tag-badge tag-badge--hot">hot</div>
                                                                 </div>
