@@ -14,6 +14,6 @@ class Price extends BaseModel
 
     protected function formattedPrice(): Attribute
     {
-        return Attribute::get(fn() => $this->price . '₺');
+        return Attribute::get(fn() => $this->price . ' ₺');
     }
 }

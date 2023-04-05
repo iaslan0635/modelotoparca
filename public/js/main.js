@@ -721,13 +721,15 @@
                 return;
             }
 
+            let datasets = this.dataset
+
             button.addClass('product-card__action--loading');
 
             let xhr = null;
             // timeout ONLY_FOR_DEMO!
             const timeout = setTimeout(function() {
                 xhr = $.ajax({
-                    url: '/quickview',
+                    url: `/p/${datasets.slug}/quickview`,
                     success: function(data) {
                         quickview.cancelPreviousModal = function() {};
                         button.removeClass('product-card__action--loading');

@@ -18,88 +18,30 @@
                         </svg>
                     </button>
                     <div class="owl-carousel">
-                        <!--
-                The data-width and data-height attributes must contain the size of a larger version
-                of the product image.
-
-                If you do not know the image size, you can remove the data-width and data-height
-                attribute, in which case the width and height will be obtained from the naturalWidth
-                and naturalHeight property of img.image__tag.
-                -->
-                        <a class="image image--type--product" href="images/products/product-2-700x700.jpg" target="_blank" data-width="700" data-height="700">
+                        @foreach($product->images as $image)
+                        <a class="image image--type--product" href="{{ $image->path }}" target="_blank" data-width="700" data-height="700">
                             <div class="image__body">
-                                <img class="image__tag" src="images/products/product-2-500x500.jpg" alt="">
+                                <img class="image__tag" src="{{ $image->path }}" alt="">
                             </div>
                         </a>
-                        <!--
-                The data-width and data-height attributes must contain the size of a larger version
-                of the product image.
-
-                If you do not know the image size, you can remove the data-width and data-height
-                attribute, in which case the width and height will be obtained from the naturalWidth
-                and naturalHeight property of img.image__tag.
-                -->
-                        <a class="image image--type--product" href="images/products/product-1-700x700.jpg" target="_blank" data-width="700" data-height="700">
-                            <div class="image__body">
-                                <img class="image__tag" src="images/products/product-1-500x500.jpg" alt="">
-                            </div>
-                        </a>
-                        <!--
-                The data-width and data-height attributes must contain the size of a larger version
-                of the product image.
-
-                If you do not know the image size, you can remove the data-width and data-height
-                attribute, in which case the width and height will be obtained from the naturalWidth
-                and naturalHeight property of img.image__tag.
-                -->
-                        <a class="image image--type--product" href="images/products/product-3-700x700.jpg" target="_blank" data-width="700" data-height="700">
-                            <div class="image__body">
-                                <img class="image__tag" src="images/products/product-3-500x500.jpg" alt="">
-                            </div>
-                        </a>
-                        <!--
-                The data-width and data-height attributes must contain the size of a larger version
-                of the product image.
-
-                If you do not know the image size, you can remove the data-width and data-height
-                attribute, in which case the width and height will be obtained from the naturalWidth
-                and naturalHeight property of img.image__tag.
-                -->
-                        <a class="image image--type--product" href="images/products/product-4-700x700.jpg" target="_blank" data-width="700" data-height="700">
-                            <div class="image__body">
-                                <img class="image__tag" src="images/products/product-4-500x500.jpg" alt="">
-                            </div>
-                        </a>
+                        @endforeach
                     </div>
                 </div>
                 <div class="product-gallery__thumbnails">
                     <div class="owl-carousel">
+                        @foreach($product->images as $image)
                         <div class="product-gallery__thumbnails-item image image--type--product">
                             <div class="image__body">
-                                <img class="image__tag" src="images/products/product-2-70x70.jpg" alt="">
+                                <img class="image__tag" src="{{ $image->path }}" alt="">
                             </div>
                         </div>
-                        <div class="product-gallery__thumbnails-item image image--type--product">
-                            <div class="image__body">
-                                <img class="image__tag" src="images/products/product-1-70x70.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="product-gallery__thumbnails-item image image--type--product">
-                            <div class="image__body">
-                                <img class="image__tag" src="images/products/product-3-70x70.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="product-gallery__thumbnails-item image image--type--product">
-                            <div class="image__body">
-                                <img class="image__tag" src="images/products/product-4-70x70.jpg" alt="">
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
             <div class="quickview__product">
                 <div class="quickview__product-name">
-                    Left Headlight Of Brandix Z54
+                    {{ $product->title }}
                 </div>
                 <div class="quickview__product-rating">
                     <div class="quickview__product-rating-stars">
@@ -119,11 +61,11 @@
                     <table>
                         <tr>
                             <th>SKU</th>
-                            <td>201902-0057</td>
+                            <td>{{ $product->sku }}</td>
                         </tr>
                         <tr>
                             <th>Brand</th>
-                            <td><a href="">Brandix</a></td>
+                            <td><a href="">{{ $product->brand->name }}</a></td>
                         </tr>
                         <tr>
                             <th>Country</th>
@@ -131,71 +73,20 @@
                         </tr>
                         <tr>
                             <th>Vendor code</th>
-                            <td>BDX-750Z370-S</td>
+                            <td>{{ $product->cross_code }}</td>
                         </tr>
                     </table>
                 </div>
                 <div class="quickview__product-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum, diam non iaculis finibus, ipsum arcu
-                    sollicitudin dolor, ut cursus sapien sem sed.
+                    {{ $product->description }}
                 </div>
                 <div class="quickview__product-prices-stock">
                     <div class="quickview__product-prices">
-                        <div class="quickview__product-price">$1,499.00</div>
+                        <div class="quickview__product-price">{{ $product->price->formattedPrice }}</div>
                     </div>
                     <div class="status-badge status-badge--style--success quickview__product-stock status-badge--has-text">
                         <div class="status-badge__body">
-                            <div class="status-badge__text">In Stock</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-form quickview__product-form">
-                    <div class="product-form__body">
-                        <div class="product-form__row">
-                            <div class="product-form__title">Material</div>
-                            <div class="product-form__control">
-                                <div class="input-radio-label">
-                                    <div class="input-radio-label__list">
-                                        <label class="input-radio-label__item">
-                                            <input type="radio" name="material" class="input-radio-label__input">
-                                            <span class="input-radio-label__title">Steel</span>
-                                        </label>
-                                        <label class="input-radio-label__item">
-                                            <input type="radio" name="material" class="input-radio-label__input">
-                                            <span class="input-radio-label__title">Aluminium</span>
-                                        </label>
-                                        <label class="input-radio-label__item">
-                                            <input type="radio" name="material" class="input-radio-label__input" disabled>
-                                            <span class="input-radio-label__title">Thorium</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-form__row">
-                            <div class="product-form__title">Color</div>
-                            <div class="product-form__control">
-                                <div class="input-radio-color">
-                                    <div class="input-radio-color__list">
-                                        <label class="input-radio-color__item input-radio-color__item--white" style="color: #fff;" data-toggle="tooltip" title="White">
-                                            <input type="radio" name="color">
-                                            <span></span>
-                                        </label>
-                                        <label class="input-radio-color__item" style="color: #ffd333;" data-toggle="tooltip" title="Yellow">
-                                            <input type="radio" name="color">
-                                            <span></span>
-                                        </label>
-                                        <label class="input-radio-color__item" style="color: #ff4040;" data-toggle="tooltip" title="Red">
-                                            <input type="radio" name="color">
-                                            <span></span>
-                                        </label>
-                                        <label class="input-radio-color__item input-radio-color__item--disabled" style="color: #4080ff;" data-toggle="tooltip" title="Blue">
-                                            <input type="radio" name="color" disabled>
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="status-badge__text">{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}</div>
                         </div>
                     </div>
                 </div>
@@ -207,8 +98,8 @@
                             <div class="input-number__sub"></div>
                         </div>
                     </div>
-                    <div class="quickview__product-actions-item quickview__product-actions-item--addtocart">
-                        <button class="btn btn-primary btn-block">Add to cart</button>
+                    <div class="quickview__product-actions-item quickview__product-actions-item--addtocart" data-slug="{{ $product->slug }}">
+                        <button class="btn btn-primary btn-block">Sepete Ekle</button>
                     </div>
                     <div class="quickview__product-actions-item quickview__product-actions-item--wishlist">
                         <button class="btn btn-muted btn-icon" type="button">
@@ -230,6 +121,6 @@
                 </div>
             </div>
         </div>
-        <a href="" class="quickview__see-details">See full details</a>
+        <a href="{{ route('product.show', $product) }}" class="quickview__see-details">Ürünü Görüntüle</a>
     </div>
 </div>

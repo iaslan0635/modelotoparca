@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\HasImages;
 use Elastic\ScoutDriverPlus\Searchable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -23,5 +24,10 @@ class Product extends BaseModel
     public function price(): HasOne
     {
         return $this->hasOne(Price::class)->where('variant_id', '=', NULL);
+    }
+
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
     }
 }
