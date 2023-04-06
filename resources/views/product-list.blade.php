@@ -1371,7 +1371,7 @@
             $(`.layout-switcher__button[data-layout-id="${selectedLayoutId}"]`).click()
         }
 
-        $(document).load(() => updateSelection())
+        $(window).load(() => updateSelection())
 
         updateSelection()
         $(".layout-switcher__button").click(e => localStorage.setItem("selected-layout", e.currentTarget.dataset.layoutId))
