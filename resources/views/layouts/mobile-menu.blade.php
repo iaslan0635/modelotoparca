@@ -16,7 +16,7 @@
                     <div class="mobile-menu__setting" data-mobile-menu-item>
                         <button class="mobile-menu__setting-button" title="Language" data-mobile-menu-trigger>
                                 <span class="mobile-menu__setting-icon">
-                                    <img src="images/languages/language-5.png" alt="">
+                                    <img src="{{ asset('images/languages/language-5.png') }}" alt="">
                                 </span>
                             <span class="mobile-menu__setting-title">Italian</span>
                             <span class="mobile-menu__setting-arrow"><svg width="6px" height="9px">
@@ -39,7 +39,7 @@
                                         <li data-mobile-menu-item>
                                             <button type="button" class="" data-mobile-menu-trigger>
                                                 <div class="mobile-menu__links-image">
-                                                    <img src="images/languages/language-1.png" alt="">
+                                                    <img src="{{ asset('images/languages/language-1.png') }}" alt="">
                                                 </div>
                                                 English
                                             </button>
@@ -47,7 +47,7 @@
                                         <li data-mobile-menu-item>
                                             <button type="button" class="" data-mobile-menu-trigger>
                                                 <div class="mobile-menu__links-image">
-                                                    <img src="images/languages/language-2.png" alt="">
+                                                    <img src="{{ asset('images/languages/language-2.png') }}" alt="">
                                                 </div>
                                                 French
                                             </button>
@@ -55,7 +55,7 @@
                                         <li data-mobile-menu-item>
                                             <button type="button" class="" data-mobile-menu-trigger>
                                                 <div class="mobile-menu__links-image">
-                                                    <img src="images/languages/language-3.png" alt="">
+                                                    <img src="{{ asset('images/languages/language-3.png') }}" alt="">
                                                 </div>
                                                 German
                                             </button>
@@ -63,7 +63,7 @@
                                         <li data-mobile-menu-item>
                                             <button type="button" class="" data-mobile-menu-trigger>
                                                 <div class="mobile-menu__links-image">
-                                                    <img src="images/languages/language-4.png" alt="">
+                                                    <img src="{{ asset('images/languages/language-4.png') }}" alt="">
                                                 </div>
                                                 Russian
                                             </button>
@@ -71,7 +71,7 @@
                                         <li data-mobile-menu-item>
                                             <button type="button" class="" data-mobile-menu-trigger>
                                                 <div class="mobile-menu__links-image">
-                                                    <img src="images/languages/language-5.png" alt="">
+                                                    <img src="{{ asset('images/languages/language-5.png') }}" alt="">
                                                 </div>
                                                 Italian
                                             </button>

@@ -92,7 +92,7 @@
                         <!-- copyright / end -->
                     </div>
                     <div class="site-footer__payments">
-                        <img src="images/payments.png" alt="">
+                        <img src="{{ asset('images/payments.png') }}" alt="">
                     </div>
                 </div>
             </div>

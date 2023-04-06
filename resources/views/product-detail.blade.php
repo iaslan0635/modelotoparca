@@ -364,7 +364,7 @@
                                                         <li class="reviews-list__item">
                                                             <div class="review">
                                                                 <div class="review__body">
-                                                                    <div class="review__avatar"><img src="images/avatars/avatar-1-42x42.jpg" alt=""></div>
+                                                                    <div class="review__avatar"><img src="{{ asset('images/avatars/avatar-1-42x42.jpg') }}" alt=""></div>
                                                                     <div class="review__meta">
                                                                         <div class="review__author">Samantha Smith</div>
                                                                         <div class="review__date">27 May, 2018</div>
@@ -390,7 +390,7 @@
                                                         <li class="reviews-list__item">
                                                             <div class="review">
                                                                 <div class="review__body">
-                                                                    <div class="review__avatar"><img src="images/avatars/avatar-2-42x42.jpg" alt=""></div>
+                                                                    <div class="review__avatar"><img src="{{ asset('images/avatars/avatar-2-42x42.jpg') }}" alt=""></div>
                                                                     <div class="review__meta">
                                                                         <div class="review__author">Adam Taylor</div>
                                                                         <div class="review__date">12 April, 2018</div>
@@ -417,7 +417,7 @@
                                                         <li class="reviews-list__item">
                                                             <div class="review">
                                                                 <div class="review__body">
-                                                                    <div class="review__avatar"><img src="images/avatars/avatar-3-42x42.jpg" alt=""></div>
+                                                                    <div class="review__avatar"><img src="{{ asset('images/avatars/avatar-3-42x42.jpg') }}" alt=""></div>
                                                                     <div class="review__meta">
                                                                         <div class="review__author">Helena Garcia</div>
                                                                         <div class="review__date">2 January, 2018</div>
