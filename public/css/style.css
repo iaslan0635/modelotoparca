@@ -17266,9 +17266,13 @@ select.form-control::-ms-expand {
   .products-list[data-layout="table"] .product-card .product-card__meta {
     font-size: 13px;
   }
+
+  /*
   .products-list[data-layout="table"] .product-card .product-card__meta-title {
     display: none;
   }
+  */
+
   .products-list[data-layout="table"] .product-card .product-card__name {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
