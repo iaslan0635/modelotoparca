@@ -1368,10 +1368,14 @@
         // Persist layout selection
         const updateSelection = () => {
             const selectedLayoutId = Number(localStorage.getItem("selected-layout") ?? "3")
-            $(`.layout-switcher__button[data-layout-id="${selectedLayoutId}"]`).click()
-        }
+            const el = document.querySelector(`.layout-switcher__button[data-layout-id="${selectedLayoutId}"]`)
+            const viewEl = document.querySelector('.products-list')
 
-        $(window).load(() => updateSelection())
+            $(".layout-switcher__button--active").removeClass("layout-switcher__button--active")
+            el.classList.add("layout-switcher__button--active")
+            viewEl.dataset.layout = el.dataset.layout
+            viewEl.dataset.withFeatures = el.dataset.withFeatures
+        }
 
         updateSelection()
         $(".layout-switcher__button").click(e => localStorage.setItem("selected-layout", e.currentTarget.dataset.layoutId))
