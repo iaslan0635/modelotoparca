@@ -86,8 +86,14 @@
                 $(element).find('.filter-price__max-value')[0]
             ];
 
+            const inputValues = [
+                $(element).find('#min-value')[0],
+                $(element).find('#max-value')[0]
+            ];
+
             slider.noUiSlider.on('update', function (values, handle) {
                 titleValues[handle].innerHTML = values[handle];
+                inputValues[handle].value = values[handle];
             });
         });
     });
