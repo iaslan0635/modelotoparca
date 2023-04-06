@@ -1366,11 +1366,13 @@
 
     <script>
         // Persist layout selection
-        const selectedLayoutId = Number(localStorage.getItem("selected-layout") ?? "3")
-        document.querySelector(`.layout-switcher__button[data-layout-id="${selectedLayoutId}"]`).click()
+        document.addEventListener("DOMContentLoaded", () => {
+            const selectedLayoutId = Number(localStorage.getItem("selected-layout") ?? "3")
+            document.querySelector(`.layout-switcher__button[data-layout-id="${selectedLayoutId}"]`).click()
 
-        for (const el of document.querySelectorAll(".layout-switcher__button")){
-            el.addEventListener("click", () => localStorage.setItem("selected-layout", el.dataset.layoutId))
-        }
+            for (const el of document.querySelectorAll(".layout-switcher__button")) {
+                el.addEventListener("click", () => localStorage.setItem("selected-layout", el.dataset.layoutId))
+            }
+        })
     </script>
 @endpush
