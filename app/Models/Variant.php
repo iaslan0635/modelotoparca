@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
-class Variant extends BaseModel
-{
+use Coderflex\Laravisit\Concerns\CanVisit;
+use Coderflex\Laravisit\Concerns\HasVisits;
 
+class Variant extends BaseModel implements CanVisit
+{
+    use HasVisits;
 }

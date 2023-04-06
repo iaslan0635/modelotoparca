@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Facades\CategoryFacade;
 use App\Facades\TTL;
 use App\Traits\HasImages;
+use Coderflex\Laravisit\Concerns\HasVisits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Cache;
 
 class Category extends BaseModel
 {
-    use HasImages;
+    use HasImages, HasVisits;
 
     public function children(): HasMany
     {

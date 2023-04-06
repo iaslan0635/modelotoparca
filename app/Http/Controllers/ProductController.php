@@ -9,7 +9,8 @@ class ProductController extends Controller
 {
     public function show(Product $product)
     {
-        $product->load(['brand', 'oems']);
+        $product->load(['brand', 'oems', 'crosses', 'alternatives']);
+        $product->visit()->withIP()->withUser();
 
         $oems = $product->oems()->groupBy('brand')->selectRaw("brand, GROUP_CONCAT(oem) as oems")->get();
 //            ->map(fn(ProductOem $oem) => ["brand" => $oem->brand, "oems" => explode(",", $oem->oem)]);
@@ -20,6 +21,7 @@ class ProductController extends Controller
     public function quickview(Product $product)
     {
         $product->load('brand');
+        $product->visit()->withIP()->withUser();
         return view('quickview', compact('product'));
     }
 }

@@ -1138,7 +1138,7 @@
                                         <div class="view-options__select">
                                             <label for="view-option-limit">Show:</label>
                                             <select id="view-option-limit" class="form-control form-control-sm" name="">
-                                                <option value="">16</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </div>
@@ -1222,7 +1222,7 @@
                                                     </div>
                                                     <div class="product-card__image">
                                                         <div class="image image--type--product">
-                                                            <a href="#" class="image__body">
+                                                            <a href="{{ route('product.show', $product) }}" class="image__body">
                                                                 <img loading="lazy" class="image__tag"
                                                                      src="{{ $product->imageUrl() }}" alt="">
                                                             </a>
@@ -1257,7 +1257,7 @@
                                                                     <div class="tag-badge tag-badge--new">new</div>
                                                                     <div class="tag-badge tag-badge--hot">hot</div>
                                                                 </div>
-                                                                <a href="{{ route('product.show', $product) }}">{{ $product->title }} {{ $product->part_number ? "@".$product->part_number:null }}</a>
+                                                                <a href="{{ route('product.show', $product) }}">{{ $product->fullTitle }}</a>
                                                             </div>
                                                         </div>
                                                         <div class="product-card__rating">
@@ -1349,6 +1349,15 @@
 @push('scripts')
     <script>
         let searchParams = new URLSearchParams(window.location.search);
+
+        console.log(searchParams.toString())
+
+        const categories = document.getElementsByClassName("filter-categories__item");
+
+        for (let category of categories){
+            let href = category.childNodes[1].getAttribute('href');
+            category.childNodes[1].setAttribute('href', `${href}?${searchParams.toString()}`)
+        }
 
         document.getElementById('view-option-sort').addEventListener('change', function (select) {
             let redirectParams = new URLSearchParams();
