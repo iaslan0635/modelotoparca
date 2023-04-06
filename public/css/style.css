@@ -17267,11 +17267,9 @@ select.form-control::-ms-expand {
     font-size: 13px;
   }
 
-  /*
   .products-list[data-layout="table"] .product-card .product-card__meta-title {
-    display: none;
+    text-align: center;
   }
-  */
 
   .products-list[data-layout="table"] .product-card .product-card__name {
     -webkit-box-flex: 1;
