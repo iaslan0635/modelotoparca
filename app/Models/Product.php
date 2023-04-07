@@ -64,16 +64,20 @@ class Product extends BaseModel implements CanVisit
 
     public function crosses(): HasMany
     {
-        return $this->hasMany(Product::class, "cross_code", "cross_code");
+        return $this
+            ->hasMany(Product::class, "cross_code", "cross_code")
+            ->where("id", "!=", $this->id);
     }
 
     public function alternatives(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, "alternatives", "product_id", "alternative_id");
+        return $this
+            ->belongsToMany(Product::class, "alternatives", "product_id", "alternative_id")
+            ->where("id", "!=", $this->id);
     }
 
     public function fullTitle(): Attribute
     {
-        return Attribute::get(fn () => $this->title . ($this->part_number ? " @".$this->part_number:""));
+        return Attribute::get(fn() => $this->title . ($this->part_number ? " @" . $this->part_number : ""));
     }
 }
