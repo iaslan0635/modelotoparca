@@ -98,27 +98,27 @@
                 <div class="main-menu">
                     <ul class="main-menu__list">
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="index.html" class="main-menu__link">
+                            <a href="{{route('home')}}" class="main-menu__link">
                                 Anasayfa
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--megamenu main-menu__item--has-submenu">
-                            <a href="index.html" class="main-menu__link">
+                            <a href="#" class="main-menu__link">
                                 Madeni Yağlar
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="account-login.html" class="main-menu__link">
+                            <a href="#" class="main-menu__link">
                                 Akü
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="blog-classic-right-sidebar.html" class="main-menu__link">
+                            <a href="#" class="main-menu__link">
                                Lastikler
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="shop-grid-4-columns-sidebar.html" class="main-menu__link">
+                            <a href="#" class="main-menu__link">
                                 Ürün Markaları
                             </a>
                         </li>
