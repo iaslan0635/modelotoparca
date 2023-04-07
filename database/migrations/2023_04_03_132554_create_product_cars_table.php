@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_cars', function (Blueprint $table) {
             $table->unsignedBigInteger('logicalref')->index();
-            $table->unsignedBigInteger('model_id')->index();
-            $table->unique(['logicalref', 'model_id']);
+            $table->unsignedBigInteger('car_id')->index();
+            $table->unique(['logicalref', 'car_id']);
         });
     }
 

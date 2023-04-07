@@ -263,7 +263,7 @@
                                                                                 {{ $brand[0]->brand->name }}
                                                                             </span>
                                                                                 <span
-                                                                                    class="filter-list__counter">{{ $brand[0]->brand->products_count }}</span>
+                                                                                    class="filter-list__counter">{{ count($brand) }}</span>
                                                                             </label>
                                                                         @endforeach
                                                                     </div>
