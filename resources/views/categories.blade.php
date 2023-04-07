@@ -28,10 +28,9 @@
                                             </div>
                                             <div class="categories-list__item-name">{{ $root->name }}</div>
                                         </a>
-{{--                                        <div class="categories-list__item-products">131 Products</div>--}}
+                                        <div class="categories-list__item-products">{{ $root->deepProductsCount }} Ürün</div>
                                     </li>
                                     <li class="categories-list__divider"></li>
-
                                     @endforeach
                                 </ul>
                             </div>
