@@ -677,7 +677,7 @@
                                                             <div class="product-card__image">
                                                                 <div class="image image--type--product">
                                                                     <a href="{{ route('product.show', $cross) }}" class="image__body">
-                                                                        <img class="image__tag" src="{{ $product->imageUrl() }}" alt="">
+                                                                        <img class="image__tag" src="{{ $cross->imageUrl() }}" alt="">
                                                                     </a>
                                                                 </div>
                                                                 <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">

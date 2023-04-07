@@ -29,7 +29,7 @@ trait HasImages
 
     public function image(): MorphOne
     {
-        return $this->morphOne(Image::class, 'imageable')->latestOfMany();
+        return $this->morphOne(Image::class, 'imageable')->oldestOfMany();
     }
 
     public function imageUrl(): string

@@ -8,6 +8,7 @@ use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\HasVisits;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
@@ -21,9 +22,9 @@ class Category extends BaseModel
         return $this->hasMany(Category::class, "parent_id");
     }
 
-    public function parent(): HasMany
+    public function parent(): BelongsTo
     {
-        return $this->hasMany(Category::class, "parent_id");
+        return $this->belongsTo(Category::class, "parent_id");
     }
 
     public function products(): BelongsToMany
