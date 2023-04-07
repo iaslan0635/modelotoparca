@@ -71,38 +71,12 @@
                               style="background-image: url('images/slides/continental-1.png')"></span>
                         <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
                               style="background-image: url('images/slides/slide-3-mobile.jpg')"></span>
-                        <span class="block-slideshow__item-offer">
-                                    30% OFF
-                                </span>
-                        <span class="block-slideshow__item-title">
-                                    When Buying Parts <br>
-                                    With Installation
-                                </span>
-                        <span class="block-slideshow__item-details">
-                                    Installation of parts in the services of<br>
-                                    our partners.
-                                </span>
-                        <span class="block-slideshow__item-button">
-                                    Shop Now
-                                </span>
                     </a>
                     <a class="block-slideshow__item" href="">
                         <span class="block-slideshow__item-image block-slideshow__item-image--desktop"
                               style="background-image: url('images/slides/petronas-1.png')"></span>
                         <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
                               style="background-image: url('images/slides/slide-2-mobile.jpg')"></span>
-                        <span class="block-slideshow__item-title">
-                                    Not enough<br>
-                                    spare parts?
-                                </span>
-                        <span class="block-slideshow__item-details">
-                                    We have everything you need – replacement parts,<br>
-                                    performance parts, accessories, oil & fluids,<br>
-                                    tools and much more...
-                                </span>
-                        <span class="block-slideshow__item-button">
-                                    Shop Now
-                                </span>
                     </a>
                     <a class="block-slideshow__item" href="">
                         <span class="block-slideshow__item-image block-slideshow__item-image--desktop"
