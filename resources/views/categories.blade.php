@@ -23,7 +23,7 @@
                                         <a href="{{ route('category.show', $root) }}">
                                             <div class="image image--type--category">
                                                 <div class="image__body">
-                                                    <img class="image__tag" src="images/categories/{{ $root->slug }}" alt="">
+                                                    <img class="image__tag" src="images/categories/{{ $root->slug }}.png" alt="">
                                                 </div>
                                             </div>
                                             <div class="categories-list__item-name">{{ $root->name }}</div>
