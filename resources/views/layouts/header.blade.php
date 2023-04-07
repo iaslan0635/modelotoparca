@@ -98,83 +98,35 @@
                 <div class="main-menu">
                     <ul class="main-menu__list">
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="index.html" class="main-menu__link">
+                            <a href="/" class="main-menu__link">
                                 Anasayfa
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--megamenu main-menu__item--has-submenu">
-                            <a href="index.html" class="main-menu__link">
+                            <a href="#" class="main-menu__link">
                                 Madeni Yağlar
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="account-login.html" class="main-menu__link">
+                            <a href="#" class="main-menu__link">
                                 Akü
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="shop-grid-4-columns-sidebar.html" class="main-menu__link">
+                            <a href="#" class="main-menu__link">
+                               Lastikler
+                            </a>
+                        </li>
+                        <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
+                            <a href="#" class="main-menu__link">
                                 Ürün Markaları
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="blog-classic-right-sidebar.html" class="main-menu__link">
+                            <a href="{{route('category.index')}}" class="main-menu__link">
                                 Kategoriler
                             </a>
                         </li>
-                        <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="about-us.html" class="main-menu__link">
-                                Pages
-                                <svg width="7px" height="5px">
-                                    <path d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z" />
-                                </svg>
-                            </a>
-                            <div class="main-menu__submenu">
-                                <ul class="menu">
-                                    <li class="menu__item">
-                                        <a href="about-us.html" class="menu__link">
-                                            About Us
-                                        </a>
-                                    </li>
-                                    <li class="menu__item">
-                                        <a href="contact-us-v1.html" class="menu__link">
-                                            Contact Us v1
-                                        </a>
-                                    </li>
-                                    <li class="menu__item">
-                                        <a href="contact-us-v2.html" class="menu__link">
-                                            Contact Us v2
-                                        </a>
-                                    </li>
-                                    <li class="menu__item">
-                                        <a href="404.html" class="menu__link">
-                                            404
-                                        </a>
-                                    </li>
-                                    <li class="menu__item">
-                                        <a href="terms.html" class="menu__link">
-                                            Terms And Conditions
-                                        </a>
-                                    </li>
-                                    <li class="menu__item">
-                                        <a href="faq.html" class="menu__link">
-                                            FAQ
-                                        </a>
-                                    </li>
-                                    <li class="menu__item">
-                                        <a href="components.html" class="menu__link">
-                                            Components
-                                        </a>
-                                    </li>
-                                    <li class="menu__item">
-                                        <a href="typography.html" class="menu__link">
-                                            Typography
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
                     </ul>
                 </div>
             </div>
