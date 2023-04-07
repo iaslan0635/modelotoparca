@@ -118,7 +118,7 @@
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
-                            <a href="#" class="main-menu__link">
+                            <a href="{{route('brands-list')}}" class="main-menu__link">
                                 Ürün Markaları
                             </a>
                         </li>
