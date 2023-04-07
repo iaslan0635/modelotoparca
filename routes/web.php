@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 
 
@@ -8,8 +10,26 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('search', function () { // http://127.0.0.1:8000/search?q=MAHLEOX422D
+Route::get('test', function (){
+    $query = \Elastic\ScoutDriverPlus\Support\Query::multiMatch()
+        ->fields([
+            "title",
+            "cross_code",
+            "producercode",
+            "producercode2",
+            "similar_product_codes",
+        ])
+        ->query("porya")
+        ->fuzziness('AUTO');
+
+    $results = Product::searchQuery($query)->load(['category'])->execute();
+
+    //$product = Product::whereIn('id', $ids)->;
+
+    return $results->models();
 });
+
+Route::view('search', 'search')->name('search');
 
 Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');

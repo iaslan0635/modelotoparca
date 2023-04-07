@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Query\Builder;
 
 class Product extends BaseModel implements CanVisit
 {
@@ -79,5 +80,10 @@ class Product extends BaseModel implements CanVisit
     public function fullTitle(): Attribute
     {
         return Attribute::get(fn() => $this->title . ($this->part_number ? " @" . $this->part_number : ""));
+    }
+
+    public function cars(): BelongsToMany
+    {
+        return $this->belongsToMany(Car::class, "product_cars", "logicalref", "car_id");
     }
 }

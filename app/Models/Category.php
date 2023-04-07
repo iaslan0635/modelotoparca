@@ -6,6 +6,7 @@ use App\Facades\CategoryFacade;
 use App\Facades\TTL;
 use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\HasVisits;
+use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Cache;
 
 class Category extends BaseModel
 {
-    use HasImages, HasVisits;
+    use HasImages, HasVisits, Searchable;
 
     public function children(): HasMany
     {
