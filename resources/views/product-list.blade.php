@@ -12,7 +12,7 @@
                                 <a href="index.html" class="breadcrumb__item-link">Anasayfa</a>
                             </li>
                             <li class="breadcrumb__item breadcrumb__item--parent">
-                                <a href="" class="breadcrumb__item-link">Kategoriler</a>
+                                <a href="{{route('category.index')}}" class="breadcrumb__item-link">Kategoriler</a>
                             </li>
                             <li class="breadcrumb__item breadcrumb__item--current breadcrumb__item--last"
                                 aria-current="page">
