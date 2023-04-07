@@ -20,15 +20,15 @@
                                     @foreach($__Categories as $root)
 
                                     <li class="categories-list__item">
-                                        <a href="">
+                                        <a href="{{ route('category.show', $root) }}">
                                             <div class="image image--type--category">
                                                 <div class="image__body">
-                                                    <img class="image__tag" src="images/categories/category-1-200x200.jpg" alt="">
+                                                    <img class="image__tag" src="images/categories/{{ $root->slug }}" alt="">
                                                 </div>
                                             </div>
-                                            <div class="categories-list__item-name">Headlights & Lighting</div>
+                                            <div class="categories-list__item-name">{{ $root->name }}</div>
                                         </a>
-                                        <div class="categories-list__item-products">131 Products</div>
+{{--                                        <div class="categories-list__item-products">131 Products</div>--}}
                                     </li>
                                     <li class="categories-list__divider"></li>
 
