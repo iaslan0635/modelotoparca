@@ -28,7 +28,7 @@ class Search extends Component
                 ->query($this->query)
                 ->fuzziness('AUTO');
 
-            $results = Product::searchQuery($query)->execute()->models();
+            $results = Product::searchQuery($query)->paginate(10, 1)->execute()->models();
 
             foreach ($results as $result) {
                 foreach ($result->category as $item) {

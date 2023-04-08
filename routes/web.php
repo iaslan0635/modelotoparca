@@ -11,6 +11,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('cart', function (){
+   /* \App\Packages\Cart::addItem('Test', 5);
+
+    \App\Packages\Cart::addTax(18);*/
+
+    return \App\Packages\Cart::getItems();
+});
+
 Route::get('test', function (){
     $query = Query::multiMatch()
         ->fields([
