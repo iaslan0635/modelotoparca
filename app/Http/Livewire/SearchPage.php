@@ -35,6 +35,7 @@ class SearchPage extends Component
         $query = \Elastic\ScoutDriverPlus\Support\Query::multiMatch()
             ->fields([
                 "title",
+                "sub_title",
                 "cross_code",
                 "producercode",
                 "producercode2",
