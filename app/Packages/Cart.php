@@ -6,13 +6,10 @@ use Illuminate\Support\Facades\Session;
 
 class Cart
 {
-    protected static float|int $taxRate;
-    protected static float|int $shippingCost;
-
-    public static function addItem($name, $price, $quantity = 1, $attributes = []): void
+    public static function addItem($name, $price, $quantity = 1, $attributes = [], $model): void
     {
         $items = Session::get('cart.items', []);
-        $itemIndex = (new Cart)->findItemIndex($name, $attributes, $items); // Aynı ürünü sepetin içinde arar
+        $itemIndex = (new Cart)->findItemIndex($name, $attributes); // Aynı ürünü sepetin içinde arar
 
         if ($itemIndex === null) {
             // Eğer ürün sepette yoksa, yeni bir öğe olarak ekle
@@ -23,6 +20,7 @@ class Cart
                 'price' => $price,
                 'quantity' => $quantity,
                 'attributes' => $attributes,
+                'model' => $model
             ];
             $items[] = $itemWithId;
         } else {
@@ -72,7 +70,7 @@ class Cart
     public static function updateItem($itemId, $newQuantity): void
     {
         $items = Session::get('cart.items', []);
-        $itemIndex = (new Cart)->findItemIndexById($itemId, $items);
+        $itemIndex = (new Cart)->findItemIndexById($itemId);
 
         if ($itemIndex !== null) {
             if ($newQuantity == 0) {
@@ -109,12 +107,30 @@ class Cart
 
         $total += (new Cart)->getTotalWithShipping();
 
+        if (count(self::getItems()) === 0) return 0;
+
         return $total;
     }
 
     public static function getItems(): array
     {
-        return Session::get('cart.items', []);
+        $items = Session::get('cart.items', []);
+        $cartItems = [];
+
+        foreach ($items as $item) {
+            $cartItem = new CartItem(
+                $item['id'],
+                $item['name'],
+                $item['quantity'],
+                $item['price'],
+                $item['attributes'],
+                $item['model'] ?? []
+            );
+
+            $cartItems[] = $cartItem;
+        }
+
+        return $cartItems;
     }
 
     public static function addShippingCost($shippingCost): void
@@ -139,17 +155,35 @@ class Cart
 
     public static function getTotalWithShipping(): float|int
     {
-        $total = self::subTotal();
-
         $shippingCost = session('cart.shippingCost');
+        if (count(self::getItems()) === 0) return 0;
         if (!is_null($shippingCost)) return $shippingCost;
 
         return 0;
     }
 
-
     public static function clear(): void
     {
         session()->forget('cart');
+    }
+
+    public static function formattedTotal(): string
+    {
+        return number_format(self::getTotal(), 2) . " ₺";
+    }
+
+    public static function formattedSubTotal(): string
+    {
+        return number_format(self::subTotal(), 2) . " ₺";
+    }
+
+    public static function formattedShipping(): string
+    {
+        return number_format(self::getTotalWithShipping(), 2) . " ₺";
+    }
+
+    public static function formattedTax(): string
+    {
+        return number_format(self::getTotalWithTax(), 2) . " ₺";
     }
 }

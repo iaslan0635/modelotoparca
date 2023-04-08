@@ -11,15 +11,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('cart', function (){
-   /* \App\Packages\Cart::addItem('Test', 5);
+Route::get('cart', function () {
+    /*$product = Product::find(2508);
+    \App\Packages\Cart::addItem('Test', 5, quantity: 1,attributes: [
+        ['name' => 'color', 'value' => 'white'],
+        ['name' => 'weight', 'value' => 2.37],
+    ], model: $product);*/
 
-    \App\Packages\Cart::addTax(18);*/
+    /*\App\Packages\Cart::addTax(18);*/
+    \App\Packages\Cart::removeItem("6431751b515c1");
+    \App\Packages\Cart::addShippingCost(20);
 
     return \App\Packages\Cart::getItems();
 });
 
-Route::get('test', function (){
+Route::get('test', function () {
     $query = Query::multiMatch()
         ->fields([
             "title",
