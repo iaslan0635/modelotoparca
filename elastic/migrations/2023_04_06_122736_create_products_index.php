@@ -16,6 +16,7 @@ final class CreateProductsIndex implements MigrationInterface
         Index::create('products_index', function (Mapping $mapping, Settings $settings) {
             $mapping->integer('id');
             $mapping->text('title');
+            $mapping->text('sub_title');
             $mapping->text('slug');
             $mapping->keyword('part_number');
             $mapping->keyword('producercode');
@@ -30,6 +31,6 @@ final class CreateProductsIndex implements MigrationInterface
      */
     public function down(): void
     {
-        Index::dropIfExists("products-index");
+        Index::dropIfExists("products_index");
     }
 }

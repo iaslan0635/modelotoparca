@@ -19,6 +19,7 @@ class Search extends Component
             $query = Query::multiMatch()
                 ->fields([
                     "title",
+                    "sub_title",
                     "cross_code",
                     "producercode",
                     "producercode2",
