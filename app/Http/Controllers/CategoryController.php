@@ -53,7 +53,7 @@ class CategoryController extends Controller
 
         $brands = $query->get()->groupBy('brand_id');
 
-        $products = $query->paginate(10);
+        $products = $query->paginate(12);
 
         return view('product-list', compact('category', 'parents', 'products', 'brands'));
     }

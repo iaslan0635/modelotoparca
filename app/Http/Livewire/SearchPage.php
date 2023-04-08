@@ -44,7 +44,7 @@ class SearchPage extends Component
             ->query($this->query)
             ->fuzziness('AUTO');
 
-        $results = Product::searchQuery($query)->load(['category', 'price', 'brand'])->paginate(10);
+        $results = Product::searchQuery($query)->load(['category', 'price', 'brand'])->paginate(12);
         $products = $results->onlyModels();
         $brands = $products->groupBy('brand_id');
         $categories = [];

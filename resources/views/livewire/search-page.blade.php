@@ -424,7 +424,7 @@
                                 <div class="view-options__select">
                                     <label for="view-option-limit">Show:</label>
                                     <select id="view-option-limit" class="form-control form-control-sm" name="">
-                                        <option value="10">10</option>
+                                        <option value="12">12</option>
                                     </select>
                                 </div>
                             </div>
