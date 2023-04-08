@@ -714,7 +714,7 @@
     /*
     // Quickview
     */
-    const quickview = {
+   /* const quickview = {
         cancelPreviousModal: function() {},
         clickHandler: function() {
             const modal = $('#quickview-modal');
@@ -776,7 +776,7 @@
         $('.product-card__action--quickview').on('click', function() {
             quickview.clickHandler.apply(this, arguments);
         });
-    });
+    });*/
 
 
     /*
