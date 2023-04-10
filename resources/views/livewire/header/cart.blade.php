@@ -72,7 +72,7 @@
                 </table>
             </div>
             <div class="dropcart__actions">
-                <a href="cart.html" class="btn btn-secondary">Sepeti Görüntüle</a>
+                <a href="{{route('cart')}}" class="btn btn-secondary">Sepeti Görüntüle</a>
                 <a href="checkout.html" class="btn btn-primary">Ödeme Yap</a>
             </div>
         </div>

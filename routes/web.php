@@ -50,6 +50,7 @@ Route::view('search', 'search')->name('search');
 Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');
 Route::view('brands', 'brands')->name('brands-list');
+Route::view('cart', 'cart')->name('cart');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
 Route::get('c/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
