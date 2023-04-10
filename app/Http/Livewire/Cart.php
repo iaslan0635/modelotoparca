@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Header;
+namespace App\Http\Livewire;
 
 use Livewire\Component;
 
@@ -26,7 +26,21 @@ class Cart extends Component
     public function render()
     {
         $this->updateContent();
-        return view('livewire.header.cart');
+        return view('livewire.cart');
+    }
+
+    public function add($id, $quantity)
+    {
+        \App\Packages\Cart::updateItem($id, $quantity);
+
+        $this->updateContent();
+    }
+
+    public function sub($id, $quantity)
+    {
+        \App\Packages\Cart::updateItem($id, $quantity);
+
+        $this->updateContent();
     }
 
     public function removeItem($id)

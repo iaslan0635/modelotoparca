@@ -538,7 +538,7 @@
                                                     <td class="analogs-table__column analogs-table__column--name">
                                                         <a href="" class="analogs-table__product-name">{{ $oem->brand }}</a><br>
                                                     </td>
-                                                    <td class="analogs-table__column analogs-table__column--rating">
+                                                    <td class="analogs-table__column">
                                                         <details>
                                                             {{ $oem->oems }}
                                                         </details>

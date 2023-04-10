@@ -35,7 +35,7 @@
                             </ul>
                             <div class="dropcart__item-meta">
                                 <div class="dropcart__item-quantity">{{ $item->quantity }}</div>
-                                <div class="dropcart__item-price">{{ $item->formattedPrice }}</div>
+                                <div class="dropcart__item-price">{{ $item->formattedPrice() }}</div>
                             </div>
                         </div>
                         <button type="button" class="dropcart__item-remove" wire:click="removeItem('{{ $item->id }}')">

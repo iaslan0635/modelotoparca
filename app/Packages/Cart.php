@@ -33,7 +33,7 @@ class Cart
         Session::put('cart.items', $items);
     }
 
-    public function findItemIndexById($itemId): ?int
+    public static function findItemIndexById($itemId): ?int
     {
         foreach (session('cart.items', []) as $index => $item) {
             if ($item['id'] === $itemId) {
@@ -70,7 +70,7 @@ class Cart
     public static function updateItem($itemId, $newQuantity): void
     {
         $items = Session::get('cart.items', []);
-        $itemIndex = (new Cart)->findItemIndexById($itemId);
+        $itemIndex = Cart::findItemIndexById($itemId);
 
         if ($itemIndex !== null) {
             if ($newQuantity == 0) {
@@ -78,6 +78,18 @@ class Cart
             } else {
                 $items[$itemIndex]['quantity'] = $newQuantity;
             }
+        }
+
+        Session::put('cart.items', $items);
+    }
+
+    public static function updateItemPrice($itemId, $price): void
+    {
+        $items = Session::get('cart.items', []);
+        $itemIndex = Cart::findItemIndexById($itemId);
+
+        if ($itemIndex !== null) {
+            $items[$itemIndex]['price'] = $price;
         }
 
         Session::put('cart.items', $items);

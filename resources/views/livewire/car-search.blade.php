@@ -8,7 +8,7 @@
     </div>
     <div class="block-finder__image" style="background-image: url('images/arac-parca-bul.png');"></div>
     <div class="block-finder__body container container--max--xl">
-        <form class="block-finder__form">
+        <form class="block-finder__form" wire:submit.prevent="add">
             <div class="block-finder__form-control block-finder__form-control--select">
                 <select wire:change="resetTo('maker')" wire:model="maker" name="maker" aria-label="Vehicle Make" @if(blank($makers)) disabled @endif class="car-search-select disable-select2">
                     <option value="none">Select Make</option>

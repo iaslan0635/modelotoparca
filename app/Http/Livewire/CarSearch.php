@@ -18,10 +18,10 @@ class CarSearch extends Component
         $index = array_search($prop, self::HIERARCHY);
         if ($index === false) return;
 
-        $len  = count(self::HIERARCHY);
-        for ($i = $index + 1; $i < $len; $i++){
+        $len = count(self::HIERARCHY);
+        for ($i = $index + 1; $i < $len; $i++) {
             $this->{self::HIERARCHY[$i]} = null;
-            $this->{self::HIERARCHY[$i]. 's'} = null;
+            $this->{self::HIERARCHY[$i] . 's'} = null;
         }
     }
 
@@ -89,5 +89,11 @@ class CarSearch extends Component
                 }
         */
         return $builder->orderBy("name")->get($get);
+    }
+
+    public function add()
+    {
+        $car = Car::query()->find($this->engine);
+        Garage::add($car);
     }
 }
