@@ -41,6 +41,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="address-company-name">Telefon Numarası</label>
+                                            <input type="text" class="form-control" id="address-company-name" placeholder="05xx xxx xx xx">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="address-company-name">Şirket Adı<span class="text-muted">(Varsa)</span></label>
                                             <input type="text" class="form-control" id="address-company-name" placeholder="Şirket Adı">
                                         </div>
