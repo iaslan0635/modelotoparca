@@ -20,7 +20,7 @@ class CarSearch extends Component
 
         $len  = count(self::HIERARCHY);
         for ($i = $index + 1; $i < $len; $i++){
-            /*if ($i + 1 < $len)*/ $this->{self::HIERARCHY[$i]} = null;
+            $this->{self::HIERARCHY[$i]} = null;
             $this->{self::HIERARCHY[$i]. 's'} = null;
         }
     }
