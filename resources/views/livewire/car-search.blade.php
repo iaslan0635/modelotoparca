@@ -51,20 +51,8 @@
             </div>
             <button class="block-finder__form-control block-finder__form-control--button" type="submit">Search</button>
         </form>
-        <div wire:loading> Loading...</div>
+        <div wire:loading style="background: rgba(0, 0, 0, 0.29);backdrop-filter: blur(10px);position: absolute;inset: 0;display: flex;justify-content: center;align-items: center;">
+            <div class="spinner-border"></div>
+        </div>
     </div>
 </div>
-
-{{--@push('scripts')--}}
-
-{{--    <script>--}}
-{{--        $(document).ready(function () {--}}
-{{--            $('.car-search-select').on('select2:select', function (e) {--}}
-{{--                var data = $(e.currentTarget).select2("val");--}}
-{{--                console.log({data})--}}
-{{--                @this.set(e.currentTarget.getAttribute("name"), data);--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
-
-{{--@endpush--}}
