@@ -103,7 +103,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Kdv</th>
+                                        <th>Vergi</th>
                                         <td>$0.00</td>
                                     </tr>
                                     </tbody>
@@ -114,7 +114,7 @@
                                     </tr>
                                     </tfoot>
                                 </table>
-                                <a class="btn btn-primary btn-xl btn-block" href="">
+                                <a class="btn btn-primary btn-xl btn-block" href="{{route('checkout')}}">
                                     İşleme Devam Et
                                 </a>
                             </div>

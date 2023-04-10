@@ -51,6 +51,9 @@ Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');
 Route::view('brands', 'brands')->name('brands-list');
 Route::view('cart', 'cart')->name('cart');
+Route::view('checkout', 'checkout')->name('checkout');
+Route::view('add-adress', 'account.add-adress')->name('add-adress');
+Route::view('order-success', 'account.order-success')->name('order-success');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
 Route::get('c/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
