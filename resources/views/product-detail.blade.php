@@ -138,16 +138,7 @@
                                         </div>
                                     </div>
                                     <div class="product__actions">
-                                        <div class="product__actions-item product__actions-item--quantity">
-                                            <div class="input-number">
-                                                <input class="input-number__input form-control form-control-lg" type="number" min="1" value="1">
-                                                <div class="input-number__add"></div>
-                                                <div class="input-number__sub"></div>
-                                            </div>
-                                        </div>
-                                        <div class="product__actions-item product__actions-item--addtocart" data-slug="{{ $product->slug }}">
-                                            <button class="btn btn-primary btn-lg btn-block">Sepete Ekle</button>
-                                        </div>
+                                        <livewire:add-to-cart :product="$product" />
                                         <div class="product__actions-divider"></div>
                                         <button class="product__actions-item product__actions-item--wishlist" type="button">
                                             <svg width="16" height="16">

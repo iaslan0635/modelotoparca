@@ -11,7 +11,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('test', function (){
+Route::get('cart', function () {
+    /*$product = Product::find(2508);
+    \App\Packages\Cart::addItem('Test', 5, quantity: 1,attributes: [
+        ['name' => 'color', 'value' => 'white'],
+        ['name' => 'weight', 'value' => 2.37],
+    ], model: $product);*/
+
+    /*\App\Packages\Cart::addTax(18);*/
+    \App\Packages\Cart::removeItem("6431751b515c1");
+    \App\Packages\Cart::addShippingCost(20);
+
+    return \App\Packages\Cart::getItems();
+});
+
+Route::get('test', function () {
     $query = Query::multiMatch()
         ->fields([
             "title",
@@ -36,6 +50,7 @@ Route::view('search', 'search')->name('search');
 Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');
 Route::view('brands', 'brands')->name('brands-list');
+Route::view('cart', 'cart')->name('cart');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
 Route::get('c/{category:slug}', [CategoryController::class, 'show'])->name('category.show');

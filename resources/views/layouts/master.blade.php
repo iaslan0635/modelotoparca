@@ -291,7 +291,7 @@
 <script src="{{ asset('vendor/photoswipe/photoswipe-ui-default.min.js') }}"></script>
 <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('js/number.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/main.js') }}" defer></script>
 <livewire:scripts />
 @stack('scripts')
 </body>
