@@ -1235,6 +1235,7 @@
     /*
     // .block-finder
     */
+/*
     $(function () {
         $('.block-finder__form-control--select select').on('change', function() {
             const item = $(this).closest('.block-finder__form-control--select');
@@ -1249,7 +1250,7 @@
             item.find('~ .block-finder__form-control--select select').trigger('change.select2');
         });
     });
-
+*/
     /*
     // .block-header
     */
@@ -1282,7 +1283,7 @@
     // select2
     */
     $(function () {
-        $('.form-control-select2, .block-finder__form-control--select select').select2({width: ''});
+        $('.form-control-select2, .block-finder__form-control--select select').not(".disable-select2").select2({width: ''});
     });
 
     /*
