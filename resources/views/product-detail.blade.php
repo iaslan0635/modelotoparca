@@ -138,7 +138,7 @@
                                         </div>
                                     </div>
                                     <div class="product__actions">
-                                        <livewire:add-to-cart :product="$product" />
+                                        <livewire:add-to-cart :product="$product"/>
                                         <div class="product__actions-divider"></div>
                                         <button class="product__actions-item product__actions-item--wishlist" type="button">
                                             <svg width="16" height="16">
@@ -511,99 +511,16 @@
                                             <thead>
                                             <tr>
                                                 <th class="analogs-table__column analogs-table__column--name">Name</th>
-                                                <th class="analogs-table__column analogs-table__column--rating">Rating</th>
-                                                <th class="analogs-table__column analogs-table__column--vendor">Vendor</th>
-                                                <th class="analogs-table__column analogs-table__column--price">Price</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td class="analogs-table__column analogs-table__column--name">
-                                                    <a href="" class="analogs-table__product-name">Sunset Brake Kit</a><br>
-                                                    <div class="analogs-table__sku" data-title="SKU">SSX-780B390-S</div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--rating">
-                                                    <div class="analogs-table__rating">
-                                                        <div class="analogs-table__rating-stars">
-                                                            <div class="rating">
-                                                                <div class="rating__body">
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="analogs-table__rating-label">
-                                                            10 Reviews
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--vendor" data-title="Vendor">
-                                                    Sunset
-                                                    <div class="analogs-table__country">(Germany)</div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--price">$1259.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="analogs-table__column analogs-table__column--name">
-                                                    <a href="" class="analogs-table__product-name">Specter Brake Kit</a><br>
-                                                    <div class="analogs-table__sku" data-title="SKU">SCT-123A380-S</div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--rating">
-                                                    <div class="analogs-table__rating">
-                                                        <div class="analogs-table__rating-stars">
-                                                            <div class="rating">
-                                                                <div class="rating__body">
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="analogs-table__rating-label">
-                                                            34 Reviews
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--vendor" data-title="Vendor">
-                                                    Specter
-                                                    <div class="analogs-table__country">(China)</div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--price">$799.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="analogs-table__column analogs-table__column--name">
-                                                    <a href="" class="analogs-table__product-name">Brake Kit</a><br>
-                                                    <div class="analogs-table__sku" data-title="SKU">NNO-120K643-S</div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--rating">
-                                                    <div class="analogs-table__rating">
-                                                        <div class="analogs-table__rating-stars">
-                                                            <div class="rating">
-                                                                <div class="rating__body">
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star rating__star--active"></div>
-                                                                    <div class="rating__star"></div>
-                                                                    <div class="rating__star"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="analogs-table__rating-label">
-                                                            7 Reviews
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--vendor" data-title="Vendor">
-                                                    No Name
-                                                    <div class="analogs-table__country">(China)</div>
-                                                </td>
-                                                <td class="analogs-table__column analogs-table__column--price">$569.00</td>
-                                            </tr>
+                                            @foreach($product->cars as $car)
+                                                <tr>
+                                                    <td class="analogs-table__column">
+                                                        {{ $car->name }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -645,7 +562,8 @@
                                                     <div class="products-list__item">
                                                         <div class="product-card">
                                                             <div class="product-card__actions-list">
-                                                                <button class="product-card__action product-card__action--quickview" type="button" data-slug="{{ $cross->slug }}" aria-label="Quick view">
+                                                                <button class="product-card__action product-card__action--quickview" type="button" data-slug="{{ $cross->slug }}"
+                                                                        aria-label="Quick view">
                                                                     <svg width="16" height="16">
                                                                         <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
 	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"></path>
@@ -671,9 +589,11 @@
                                                                         <img class="image__tag" src="{{ $cross->imageUrl() }}" alt="">
                                                                     </a>
                                                                 </div>
-                                                                <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+                                                                <div
+                                                                    class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
                                                                     <div class="status-badge__body">
-                                                                        <div class="status-badge__icon"><svg width="13" height="13">
+                                                                        <div class="status-badge__icon">
+                                                                            <svg width="13" height="13">
                                                                                 <path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"></path>
                                                                             </svg>
                                                                         </div>
@@ -762,7 +682,8 @@
                                                     <div class="products-list__item">
                                                         <div class="product-card">
                                                             <div class="product-card__actions-list">
-                                                                <button class="product-card__action product-card__action--quickview" type="button" data-slug="{{ $cross->slug }}" aria-label="Quick view">
+                                                                <button class="product-card__action product-card__action--quickview" type="button" data-slug="{{ $cross->slug }}"
+                                                                        aria-label="Quick view">
                                                                     <svg width="16" height="16">
                                                                         <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
 	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"></path>
@@ -788,9 +709,11 @@
                                                                         <img class="image__tag" src="{{ $product->imageUrl() }}" alt="">
                                                                     </a>
                                                                 </div>
-                                                                <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+                                                                <div
+                                                                    class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
                                                                     <div class="status-badge__body">
-                                                                        <div class="status-badge__icon"><svg width="13" height="13">
+                                                                        <div class="status-badge__icon">
+                                                                            <svg width="13" height="13">
                                                                                 <path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"></path>
                                                                             </svg>
                                                                         </div>
