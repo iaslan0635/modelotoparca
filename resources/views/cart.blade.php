@@ -2,7 +2,7 @@
 @section('content')
     <!-- site__body -->
     <div class="site__body">
-        <div class="block-space block-space--layout--divider-nl"></div>
+        <div class="block-space block-space--layout--divider-xs"></div>
         <div class="block-header block-header--has-breadcrumb block-header--has-title">
             <div class="container">
                 <div class="block-header__body">
