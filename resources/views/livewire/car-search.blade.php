@@ -51,7 +51,8 @@
             </div>
             <button class="block-finder__form-control block-finder__form-control--button" type="submit">Search</button>
         </form>
-        <div wire:loading style="background: rgba(0, 0, 0, 0.29);backdrop-filter: blur(10px);position: absolute;inset: 0;display: flex;justify-content: center;align-items: center;">
+        <div wire:loading.flex
+             style="display: none; background: rgba(0, 0, 0, 0.29);backdrop-filter: blur(10px);position: absolute;inset: 0;justify-content: center;align-items: center;">
             <div class="spinner-border"></div>
         </div>
     </div>
