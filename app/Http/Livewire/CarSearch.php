@@ -11,24 +11,38 @@ class CarSearch extends Component
     public $year, $maker, $engine, $car, $cat_id, $spesificCar;
     public $makers, $cars, $engines, $years, $spesificCars;
 
+    private const HIERARCHY = ["maker", "car", "year", "spesificCar", "engine"];
+
+    public function resetTo(string $prop)
+    {
+        $index = array_search($prop, self::HIERARCHY);
+        if ($index === false) return;
+
+        $len  = count(self::HIERARCHY);
+        for ($i = $index + 1; $i < $len; $i++){
+            /*if ($i + 1 < $len)*/ $this->{self::HIERARCHY[$i]} = null;
+            $this->{self::HIERARCHY[$i]. 's'} = null;
+        }
+    }
+
     public function render()
     {
-        $this->makers ??= $this->maker();
+        $this->makers ??= $this->maker(["id", "name"])->toArray();
 
         if ($this->maker !== null)
-            $this->cars ??= $this->model("short_name")->pluck("short_name");
+            $this->cars ??= $this->model("short_name")->pluck("short_name")->toArray();
 
         if ($this->car !== null)
-            $this->years ??= $this->model(["from_year", "to_year"])->map(fn($m) => range($m->from_year, $m->to_year))->flatten()->unique()->sort();
+            $this->years ??= $this->model(["from_year", "to_year"])->map(fn($m) => range($m->from_year, $m->to_year))->flatten()->unique()->sort()->toArray();
 
         if ($this->year !== null)
-            $this->spesificCars ??= $this->model("name")->pluck("name");
+            $this->spesificCars ??= $this->model("name")->pluck("name")->toArray();
 
         if ($this->spesificCar !== null)
             $this->engines ??= $this->model(["power", "capacity", "id"])->map(fn($x) => [
                 "id" => $x->id,
                 "name" => "$x->power Kw / {$this->kwToHp($x->power)} Hp / $x->capacity cc"
-            ]);
+            ])->toArray();
 
         return view('livewire.car-search');
     }
