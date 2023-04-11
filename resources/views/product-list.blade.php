@@ -72,12 +72,14 @@
 	C6.1,7.8,6.1,8.4,5.7,8.7z"/>
                                                                                 </svg>
                                                                             </span>
+                                                                                <img src="{{ $parent->imageUrl() }}" style="max-width: 2rem;">
                                                                                 <a href="{{ route('category.show', $parent) }}">{{ $parent->name }}</a>
                                                                                 <div
                                                                                     class="filter-categories__counter">{{ $parent->deepProductsCount }}</div>
                                                                             </li>
                                                                         @endforeach
                                                                         <li class="filter-categories__item filter-categories__item--current">
+                                                                            <img src="{{ $category->imageUrl() }}" style="max-width: 2rem;">
                                                                             <a href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
                                                                             <div
                                                                                 class="filter-categories__counter">{{ $category->deepProductsCount }}</div>
@@ -85,6 +87,7 @@
                                                                         @foreach($category->children->sortByDesc("products_count") as $child)
                                                                             @if($child->deepProductsCount > 0)
                                                                                 <li class="filter-categories__item filter-categories__item--child">
+                                                                                    <img src="{{ $child->imageUrl() }}" style="max-width: 2rem;">
                                                                                     <a href="{{ route('category.show', $child) }}">{{ $child->name }}</a>
                                                                                     <div
                                                                                         class="filter-categories__counter">{{ $child->deepProductsCount }}</div>
