@@ -21376,3 +21376,7 @@ select.form-control::-ms-expand {
         padding:0 10px
     }
 }
+
+.category-icon-image {
+    max-width: 2rem;
+}
