@@ -20,23 +20,23 @@ class CarSearch extends Component
 
         $len = count(self::HIERARCHY);
         for ($i = $index + 1; $i < $len; $i++) {
-            $this->{self::HIERARCHY[$i]} = null;
-            $this->{self::HIERARCHY[$i] . 's'} = null;
+            /** @noinspection PhpFieldImmediatelyRewrittenInspection */
+            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i] . 's'} = null;
         }
     }
 
     public function render()
     {
-        $this->makers ??= $this->maker(["id", "name"])->toArray();
+        $this->makers ??= $this->maker(["id", "name"])->filter(fn ($m) => $m->name)->toArray();
 
         if ($this->maker !== null)
-            $this->cars ??= $this->model("short_name")->pluck("short_name")->toArray();
+            $this->cars ??= $this->model("short_name")->pluck("short_name")->filter()->toArray();
 
         if ($this->car !== null)
-            $this->years ??= $this->model(["from_year", "to_year"])->map(fn($m) => range($m->from_year, $m->to_year))->flatten()->unique()->sort()->toArray();
+            $this->years ??= $this->model(["from_year", "to_year"])->map(fn($m) => range($m->from_year, $m->to_year))->flatten()->unique()->sort()->filter()->toArray();
 
         if ($this->year !== null)
-            $this->spesificCars ??= $this->model("name")->pluck("name")->toArray();
+            $this->spesificCars ??= $this->model("name")->pluck("name")->filter()->toArray();
 
         if ($this->spesificCar !== null)
             $this->engines ??= $this->model(["power", "capacity", "id"])->map(fn($x) => [

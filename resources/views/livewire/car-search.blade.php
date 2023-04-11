@@ -10,7 +10,7 @@
     <div class="block-finder__body container container--max--xl">
         <form class="block-finder__form" wire:submit.prevent="add">
             <div class="block-finder__form-control block-finder__form-control--select">
-                <select wire:change="resetTo('maker')" wire:model="maker" name="maker" aria-label="Vehicle Make" @if(blank($makers)) disabled @endif class="car-search-select disable-select2">
+                <select wire:change="resetTo('maker')" wire:model="maker" name="maker" aria-label="Aracın Markası" @if(blank($makers)) disabled @endif class="car-search-select disable-select2">
                     <option value="none">Select Make</option>
                     @foreach($makers ?? [] as $maker)
                         <option value="{{ $maker["id"] }}">{{ $maker["name"] }}</option>
@@ -18,7 +18,7 @@
                 </select>
             </div>
             <div class="block-finder__form-control block-finder__form-control--select">
-                <select wire:change="resetTo('car')" wire:model="car" name="model" aria-label="Vehicle Model" @if(blank($cars)) disabled @endif class="car-search-select disable-select2">
+                <select wire:change="resetTo('car')" wire:model="car" name="car" aria-label="Aracın Modeli" @if(blank($cars)) disabled @endif class="car-search-select disable-select2">
                     <option value="none">Select Model</option>
                     @foreach($cars ?? [] as $car)
                         <option value="{{ $car }}">{{ $car }}</option>
@@ -26,15 +26,15 @@
                 </select>
             </div>
             <div class="block-finder__form-control block-finder__form-control--select">
-                <select wire:change="resetTo('year')" wire:model="year" name="year" aria-label="Vehicle Year" @if(blank($years)) disabled @endif class="car-search-select disable-select2">
+                <select wire:change="resetTo('year')" wire:model="year" name="year" aria-label="Aracın Yılı" @if(blank($years)) disabled @endif class="car-search-select disable-select2">
                     <option value="none">Select Year</option>
-                    @foreach(range(1998, 2023) as $year)
+                    @foreach($years ?? [] as $year)
                         <option>{{ $year }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="block-finder__form-control block-finder__form-control--select">
-                <select wire:change="resetTo('spesificCar')" wire:model="spesificCar" name="model" aria-label="Vehicle Model" @if(blank($spesificCars)) disabled @endif class="car-search-select disable-select2">
+                <select wire:change="resetTo('spesificCar')" wire:model="spesificCar" name="spesificCar" aria-label="Araç Seçiniz" @if(blank($spesificCars)) disabled @endif class="car-search-select disable-select2">
                     <option value="none">Select Model</option>
                     @foreach($spesificCars ?? [] as $spesificCar)
                         <option value="{{ $spesificCar }}">{{ $spesificCar }}</option>
