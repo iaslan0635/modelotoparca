@@ -13,7 +13,8 @@
                         <span class="topbar__button-label">Para Birimi:</span>
                         <span class="topbar__button-title">USD</span>
                         <span class="topbar__button-arrow"><svg width="7px" height="5px">
-                                        <path d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z" />
+                                        <path
+                                            d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z"/>
                                     </svg>
                                 </span>
                     </button>
@@ -31,12 +32,13 @@
                 <div class="departments">
                     <button class="departments__button" type="button">
                                 <span class="departments__button-icon"><svg width="16px" height="12px">
-                                        <path d="M0,7L0,5L16,5L16,7L0,7ZM0,0L16,0L16,2L0,2L0,0ZM12,12L0,12L0,10L12,10L12,12Z" />
+                                        <path d="M0,7L0,5L16,5L16,7L0,7ZM0,0L16,0L16,2L0,2L0,0ZM12,12L0,12L0,10L12,10L12,12Z"/>
                                     </svg>
                                 </span>
                         <span class="departments__button-title">Ürün Kategorileri</span>
                         <span class="departments__button-arrow"><svg width="9px" height="6px">
-                                        <path d="M0.2,0.4c0.4-0.4,1-0.5,1.4-0.1l2.9,3l2.9-3c0.4-0.4,1.1-0.4,1.4,0.1c0.3,0.4,0.3,0.9-0.1,1.3L4.5,6L0.3,1.6C-0.1,1.3-0.1,0.7,0.2,0.4z" />
+                                        <path
+                                            d="M0.2,0.4c0.4-0.4,1-0.5,1.4-0.1l2.9,3l2.9-3c0.4-0.4,1.1-0.4,1.4,0.1c0.3,0.4,0.3,0.9-0.1,1.3L4.5,6L0.3,1.6C-0.1,1.3-0.1,0.7,0.2,0.4z"/>
                                     </svg>
                                 </span>
                     </button>
@@ -63,29 +65,21 @@
                                                         <div class="col-1of5">
                                                             <ul class="megamenu__links megamenu-links megamenu-links--root">
                                                                 @foreach($chunk as $child)
-                                                                    @if(blank($child->children))
-                                                                        <li class="megamenu-links__item">
-                                                                            <a class="megamenu-links__item-link" href="">
-                                                                                <img src="{{ $child->imageUrl() }}" class="category-icon-image">
-                                                                                {{ $child->name }}</a>
-                                                                        </li>
-                                                                    @else
-                                                                        <li class="megamenu-links__item megamenu-links__item--has-submenu">
-                                                                            <a class="megamenu-links__item-link" href="">
-                                                                                <img src="{{ $child->imageUrl() }}" class="category-icon-image">
-                                                                                {{ $child->name }}</a>
-                                                                            <ul class="megamenu-links">
-                                                                                @foreach($child->children as $grandChild)
-                                                                                    <li class="megamenu-links__item">
-                                                                                        <a class="megamenu-links__item-link" href="">
-                                                                                            <img src="{{ $grandChild->imageUrl() }}" class="category-icon-image">
-                                                                                            {{ $grandChild->name }}</a>
-                                                                                    </li>
-                                                                                @endforeach
-                                                                            </ul>
-                                                                        </li>
-                                                                    @endempty
+                                                                    <li class="megamenu-links__item">
+                                                                        <a class="megamenu-links__item-link" href="">
+                                                                            <img src="{{ $child->imageUrl() }}" class="category-icon-image">
+                                                                            {{ $child->name }}
+                                                                        </a>
+                                                                    </li>
                                                                 @endforeach
+                                                                @if($loop->last)
+                                                                <li class="megamenu-links__item">
+                                                                    <a class="megamenu-links__item-link" href="">
+                                                                        <img src="{{ $root->imageUrl() }}" class="category-icon-image">
+                                                                        Tüm {{ $root->name }} Kategorileri
+                                                                    </a>
+                                                                </li>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     @endforeach
@@ -121,7 +115,7 @@
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
                             <a href="#" class="main-menu__link">
-                               Lastikler
+                                Lastikler
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
@@ -156,7 +150,7 @@
                 </div>
             </a>
         </div>
-        <livewire:header.search />
+        <livewire:header.search/>
         <div class="header__indicators">
             <div class="indicator">
                 <a href="wishlist.html" class="indicator__button">
@@ -164,7 +158,7 @@
                                 <svg width="32" height="32">
                                     <path d="M23,4c3.9,0,7,3.1,7,7c0,6.3-11.4,15.9-14,16.9C13.4,26.9,2,17.3,2,11c0-3.9,3.1-7,7-7c2.1,0,4.1,1,5.4,2.6l1.6,2l1.6-2
 	C18.9,5,20.9,4,23,4 M23,2c-2.8,0-5.4,1.3-7,3.4C14.4,3.3,11.8,2,9,2c-5,0-9,4-9,9c0,8,14,19,16,19s16-11,16-19C32,6,28,2,23,2L23,2
-	z" />
+	z"/>
                                 </svg>
                             </span>
                 </a>
@@ -174,7 +168,7 @@
                             <span class="indicator__icon">
                                 <svg width="32" height="32">
                                     <path d="M16,18C9.4,18,4,23.4,4,30H2c0-6.2,4-11.5,9.6-13.3C9.4,15.3,8,12.8,8,10c0-4.4,3.6-8,8-8s8,3.6,8,8c0,2.8-1.5,5.3-3.6,6.7
-	C26,18.5,30,23.8,30,30h-2C28,23.4,22.6,18,16,18z M22,10c0-3.3-2.7-6-6-6s-6,2.7-6,6s2.7,6,6,6S22,13.3,22,10z" />
+	C26,18.5,30,23.8,30,30h-2C28,23.4,22.6,18,16,18z M22,10c0-3.3-2.7-6-6-6s-6,2.7-6,6s2.7,6,6,6S22,13.3,22,10z"/>
                                 </svg>
                             </span>
                     <span class="indicator__title">Hello, Log In</span>
@@ -229,7 +223,7 @@
                     </div>
                 </div>
             </div>
-            <livewire:header.cart />
+            <livewire:header.cart/>
         </div>
     </div>
 </header>
