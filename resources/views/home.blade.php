@@ -167,7 +167,7 @@
         <div class="container">
             <div class="block-categories__header">
                 <div class="block-categories__title">
-                    Popüler Ürünler
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                     <div class="decor block-categories__title-decor decor--type--center">
                         <div class="decor__body">
                             <div class="decor__start"></div>
