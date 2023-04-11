@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\Category;
 use App\Models\Product;
 use Elastic\ScoutDriverPlus\Support\Query;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Route;
 
 

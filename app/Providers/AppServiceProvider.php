@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -24,7 +28,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(255);
         Paginator::useBootstrapFour();
-        $categories = \App\Models\Category::root()->with("children.children.children")->limit(10)->orderBy("order")->with("image")->get();
+
+        $children10 = ['children' => fn($q) => $q->limit(10)];
+        $categories = Category::root()
+            ->orderBy("order")
+            ->with("image")
+            ->with($children10)
+            ->limit(10)
+            ->get()
+            // limit each parent separately not overall
+            ->map(fn ($m) => $m->load($children10));
         View::share('__Categories', $categories);
     }
 }
