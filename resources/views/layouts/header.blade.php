@@ -86,6 +86,15 @@
                                         </div>
                                     </li>
                                 @endforeach
+                                <li class="departments__item departments__item--submenu--megamenu">
+                                    <a href="{{ route('category.index') }}" class="departments__item-link">
+                                        <path
+                                            d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
+                                        Tüm Kategoriler
+                                        <span class="departments__item-arrow"><svg width="7" height="11"><path
+                                                    d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"/></svg></span>
+                                    </a>
+                                </li>
                                 <li class="departments__list-padding" role="presentation"></li>
                             </ul>
                             <div class="departments__menu-container"></div>

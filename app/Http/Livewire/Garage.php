@@ -34,6 +34,6 @@ class Garage extends Component
             "name" => $car->short_name,
             "details" => $car->name
         ];
-        session()->put("garage_chosen", $cars);
+        session()->put("garage_cars", $cars);
     }
 }
