@@ -55,6 +55,20 @@
                     </li>
                     <li class="block-brands__divider" role="presentation"></li>
                 @endforeach
+                <li class="block-brands__item">
+                    <a href="{{ route("category.index") }}" class="block-brands__item-link">
+                        <svg style="scale: 4;margin-bottom: 20px;margin-right: 10px" width="7" height="11">
+                            <path
+                                d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
+                        </svg>
+                        <svg style="scale: 4;margin-bottom: 20px;" width="7" height="11">
+                            <path
+                                d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
+                        </svg>
+                        <span class="block-brands__item-name">Tüm kategoriler</span>
+                    </a>
+                </li>
+                <li class="block-brands__divider" role="presentation"></li>
             </ul>
         </div>
     </div>
@@ -128,7 +142,7 @@
                         </div>
                         <div class="block-products-carousel__carousel">
                             <div class="block-products-carousel__carousel-loader"></div>
-                            <x-product-carousel :products="$featured_products" />
+                            <x-product-carousel :products="$featured_products"/>
                         </div>
                     </div>
                 </div>
@@ -217,7 +231,7 @@
                 <div class="block-sale__image" style="background-image: url('images/sale-1903x640.png');"></div>
                 <div class="container">
                     <div class="block-sale__carousel">
-                        <x-product-carousel :products="$featured_products" />
+                        <x-product-carousel :products="$featured_products"/>
                     </div>
                 </div>
             </div>
