@@ -15,7 +15,9 @@ class ProductController extends Controller
         $oems = $product->oems()->groupBy('brand')->selectRaw("brand, GROUP_CONCAT(oem) as oems")->get();
 //            ->map(fn(ProductOem $oem) => ["brand" => $oem->brand, "oems" => explode(",", $oem->oem)]);
 
-        return view('product-detail', compact('product', 'oems'));
+        $car_brands = $product->cars()->with("maker:id,name")->get()->groupBy("maker.name")->map(fn ($a) => $a->groupBy("short_name"));
+
+        return view('product-detail', compact('product', 'oems', 'car_brands'));
     }
 
     public function quickview(Product $product)

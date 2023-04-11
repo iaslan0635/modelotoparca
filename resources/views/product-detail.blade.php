@@ -76,17 +76,6 @@
                                         </div>
                                         <div class="product__rating-label"><a href="">3.5 on 7 reviews</a></div>
                                     </div>
-                                    <div class="status-badge status-badge--style--success product__fit status-badge--has-icon status-badge--has-text">
-                                        <div class="status-badge__body">
-                                            <div class="status-badge__icon">
-                                                <svg width="13" height="13">
-                                                    <path d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
-                                                </svg>
-                                            </div>
-                                            <div class="status-badge__tooltip" tabindex="0" data-toggle="tooltip"
-                                                 title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="product__main">
@@ -507,22 +496,74 @@
                                         </div>
                                     </div>
                                     <div class="product-tabs__pane" id="product-tab-cars">
-                                        <table class="analogs-table">
-                                            <thead>
-                                            <tr>
-                                                <th class="analogs-table__column analogs-table__column--name">Name</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($product->cars as $car)
-                                                <tr>
-                                                    <td class="analogs-table__column">
-                                                        {{ $car->name }}
-                                                    </td>
-                                                </tr>
+                                        <div class="accordion" id="comaptible-cars">
+                                            @foreach($car_brands as $brand => $cars_by_names)
+                                                <div class="card">
+                                                    <div class="card-header" id="compat-cars-{{ $loop->index }}-header">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                                                    data-target="#compat-cars-{{ $loop->index }}-table-acc"
+                                                                    aria-expanded="true" aria-controls="compat-cars-{{ $loop->index }}-table-acc">
+                                                                {{ $brand }}
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="compat-cars-{{ $loop->index }}-table-acc" class="collapse" aria-labelledby="compat-cars-{{ $loop->index }}-header"
+                                                         data-parent="#comaptible-cars">
+                                                        <div class="card-body">
+
+                                                            <div class="accordion" id="comaptible-cars-{{$loop->index}}">
+                                                                @foreach($cars_by_names as $name => $cars)
+                                                                    <div class="card">
+                                                                        <div class="card-header" id="compat-cars-{{ $loop->index }}-header-inner">
+                                                                            <h2 class="mb-0">
+                                                                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                                                                        data-target="#compat-cars-{{ $loop->index }}-table"
+                                                                                        aria-expanded="true" aria-controls="compat-cars-{{ $loop->index }}-table">
+                                                                                    {{ $name }}
+                                                                                </button>
+                                                                            </h2>
+                                                                        </div>
+
+                                                                        <div id="compat-cars-{{ $loop->index }}-table" class="collapse"
+                                                                             aria-labelledby="compat-cars-{{ $loop->index }}-header-inner"
+                                                                             data-parent="#comaptible-cars-{{$loop->parent->index}}">
+                                                                            <div class="card-body">
+                                                                                <table class="analogs-table">
+                                                                                    <thead>
+                                                                                    <tr>
+                                                                                        <th class="analogs-table__column analogs-table__column--name">Model</th>
+                                                                                        <th class="analogs-table__column analogs-table__column--name">Yıl</th>
+                                                                                        <th class="analogs-table__column analogs-table__column--name">Kapasite</th>
+                                                                                        <th class="analogs-table__column analogs-table__column--name">Güç</th>
+                                                                                    </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    @foreach($cars as $car)
+                                                                                        <tr>
+                                                                                            <td class="analogs-table__column">{{ $car->name }}</td>
+                                                                                            <td class="analogs-table__column">
+                                                                                                {{ $car->produced_from ?? "0000-00-00" }} - {{
+                                                                                                    $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d"))
+                                                                                                }}
+                                                                                            </td>
+                                                                                            <td class="analogs-table__column">{{ $car->capacity }}</td>
+                                                                                            <td class="analogs-table__column">{{ $car->power }}</td>
+                                                                                        </tr>
+                                                                                    @endforeach
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @endforeach
-                                            </tbody>
-                                        </table>
+                                        </div>
                                     </div>
                                     <div class="product-tabs__pane" id="product-tab-oem-codes">
                                         <table class="analogs-table">

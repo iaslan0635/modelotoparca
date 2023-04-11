@@ -13,4 +13,9 @@ class Car extends BaseModel
     {
         return $this->belongsToMany(Product::class, "product_cars", "car_id", "logicalref");
     }
+
+    public function maker()
+    {
+        return $this->belongsTo(Maker::class);
+    }
 }
