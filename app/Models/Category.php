@@ -52,4 +52,9 @@ class Category extends BaseModel
     {
         return Attribute::get(fn() => CategoryFacade::getTree($this->id));
     }
+
+    public function imageUrl()
+    {
+        return "https://web.modelotoparca.com/images/categories/$this->slug.png";
+    }
 }

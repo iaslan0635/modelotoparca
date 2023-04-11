@@ -48,6 +48,7 @@
                                 @foreach($__Categories as $root)
                                     <li class="departments__item departments__item--submenu--megamenu departments__item--has-submenu">
                                         <a href="{{ route('category.show', $root) }}" class="departments__item-link">
+                                            <img src="{{ $root->imageUrl() }}" class="category-icon-image">
                                             {{ $root->name }}
                                             <span class="departments__item-arrow"><svg width="7" height="11"><path
                                                         d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"/></svg></span>
@@ -64,15 +65,21 @@
                                                                 @foreach($chunk as $child)
                                                                     @if(blank($child->children))
                                                                         <li class="megamenu-links__item">
-                                                                            <a class="megamenu-links__item-link" href="">{{ $child->name }}</a>
+                                                                            <a class="megamenu-links__item-link" href="">
+                                                                                <img src="{{ $child->imageUrl() }}" class="category-icon-image">
+                                                                                {{ $child->name }}</a>
                                                                         </li>
                                                                     @else
                                                                         <li class="megamenu-links__item megamenu-links__item--has-submenu">
-                                                                            <a class="megamenu-links__item-link" href="">{{ $child->name }}</a>
+                                                                            <a class="megamenu-links__item-link" href="">
+                                                                                <img src="{{ $child->imageUrl() }}" class="category-icon-image">
+                                                                                {{ $child->name }}</a>
                                                                             <ul class="megamenu-links">
                                                                                 @foreach($child->children as $grandChild)
                                                                                     <li class="megamenu-links__item">
-                                                                                        <a class="megamenu-links__item-link" href="">{{ $grandChild->name }}</a>
+                                                                                        <a class="megamenu-links__item-link" href="">
+                                                                                            <img src="{{ $grandChild->imageUrl() }}" class="category-icon-image">
+                                                                                            {{ $grandChild->name }}</a>
                                                                                     </li>
                                                                                 @endforeach
                                                                             </ul>
