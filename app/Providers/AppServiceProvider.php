@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(255);
         Paginator::useBootstrapFour();
-        $categories = \App\Models\Category::root()->with("children.children.children")->with("image")->get();
+        $categories = \App\Models\Category::root()->with("children.children.children")->limit(10)->orderBy("order")->with("image")->get();
         View::share('__Categories', $categories);
     }
 }
