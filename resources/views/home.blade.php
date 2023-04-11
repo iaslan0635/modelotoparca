@@ -151,7 +151,7 @@
                                                 </div>
                                                 <div class="product-card__image">
                                                     <div class="image image--type--product">
-                                                        <a href="{{ route("product.show", $product->id) }}" class="image__body">
+                                                        <a href="{{ route("product.show", $product) }}" class="image__body">
                                                             <img class="image__tag" src="{{ $product->imageUrl() }}" alt="">
                                                         </a>
                                                     </div>
@@ -168,7 +168,7 @@
                                                                 <div class="tag-badge tag-badge--new">new</div>
                                                                 <div class="tag-badge tag-badge--hot">hot</div>
                                                             </div>
-                                                            <a href="{{ route("product.show", $product->id) }}">{{ $product->title }}</a>
+                                                            <a href="{{ route("product.show", $product) }}">{{ $product->title }}</a>
                                                         </div>
                                                     </div>
                                                     <div class="product-card__rating">
