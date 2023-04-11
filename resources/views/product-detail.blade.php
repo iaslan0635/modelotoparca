@@ -324,19 +324,16 @@
                             </div>
                             <div class="product__tabs product-tabs product-tabs--layout--full">
                                 <ul class="product-tabs__list">
-                                    <li class="product-tabs__item product-tabs__item--active">
-                                        <a href="#product-tab-reviews">
-                                            Değerlendirmeler
-                                            <span class="product-tabs__item-counter">3</span>
-                                        </a>
-                                    </li>
-                                    <li class="product-tabs__item"><a href="#product-tab-cars">Uyumlu Araçlar</a></li>
+                                    <li class="product-tabs__item product-tabs__item--active"><a href="#product-tab-cars">Uyumlu Araçlar</a></li>
                                     <li class="product-tabs__item"><a href="#product-tab-oem-codes">Oem Kodlar</a></li>
                                     <li class="product-tabs__item"><a href="#product-same-products">Eşdeğer Ürünler</a></li>
                                     <li class="product-tabs__item"><a href="#product-alternative-products">Alternatif Ürünler</a></li>
+                                    <li class="product-tabs__item"><a href="#product-tab-reviews">Değerlendirmeler
+                                            <span class="product-tabs__item-counter">0</span></a>
+                                    </li>
                                 </ul>
                                 <div class="product-tabs__content">
-                                    <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-reviews">
+                                    <div class="product-tabs__pane" id="product-tab-reviews">
                                         <div class="reviews-view">
                                             <div class="reviews-view__list">
                                                 <div class="reviews-list">
@@ -344,7 +341,9 @@
                                                         <li class="reviews-list__item">
                                                             <div class="review">
                                                                 <div class="review__body">
-                                                                    <div class="review__avatar"><img src="{{ asset('images/avatars/avatar-1-42x42.jpg') }}" alt=""></div>
+                                                                    <div class="review__avatar">
+                                                                        <img src="{{ asset('images/avatars/avatar-1-42x42.jpg') }}" alt="">
+                                                                    </div>
                                                                     <div class="review__meta">
                                                                         <div class="review__author">Samantha Smith</div>
                                                                         <div class="review__date">27 May, 2018</div>
@@ -363,58 +362,6 @@
                                                                     <div class="review__content typography">
                                                                         Phasellus id mattis nulla. Mauris velit nisi, imperdiet vitae sodales in, maximus ut lectus. Vivamus commodo
                                                                         scelerisque lacus, at porttitor dui iaculis id. Curabitur imperdiet ultrices fermentum.
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="reviews-list__item">
-                                                            <div class="review">
-                                                                <div class="review__body">
-                                                                    <div class="review__avatar"><img src="{{ asset('images/avatars/avatar-2-42x42.jpg') }}" alt=""></div>
-                                                                    <div class="review__meta">
-                                                                        <div class="review__author">Adam Taylor</div>
-                                                                        <div class="review__date">12 April, 2018</div>
-                                                                    </div>
-                                                                    <div class="review__rating">
-                                                                        <div class="rating">
-                                                                            <div class="rating__body">
-                                                                                <div class="rating__star rating__star--active"></div>
-                                                                                <div class="rating__star rating__star--active"></div>
-                                                                                <div class="rating__star rating__star--active"></div>
-                                                                                <div class="rating__star"></div>
-                                                                                <div class="rating__star"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="review__content typography">
-                                                                        Aenean non lorem nisl. Duis tempor sollicitudin orci, eget tincidunt ex semper sit amet. Nullam neque justo,
-                                                                        sodales congue feugiat ac, facilisis a augue. Donec tempor sapien et fringilla facilisis. Nam maximus
-                                                                        consectetur diam. Nulla ut ex mollis, volutpat tellus vitae, accumsan ligula.
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="reviews-list__item">
-                                                            <div class="review">
-                                                                <div class="review__body">
-                                                                    <div class="review__avatar"><img src="{{ asset('images/avatars/avatar-3-42x42.jpg') }}" alt=""></div>
-                                                                    <div class="review__meta">
-                                                                        <div class="review__author">Helena Garcia</div>
-                                                                        <div class="review__date">2 January, 2018</div>
-                                                                    </div>
-                                                                    <div class="review__rating">
-                                                                        <div class="rating">
-                                                                            <div class="rating__body">
-                                                                                <div class="rating__star rating__star--active"></div>
-                                                                                <div class="rating__star rating__star--active"></div>
-                                                                                <div class="rating__star rating__star--active"></div>
-                                                                                <div class="rating__star rating__star--active"></div>
-                                                                                <div class="rating__star rating__star--active"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="review__content typography">
-                                                                        Duis ac lectus scelerisque quam blandit egestas. Pellentesque hendrerit eros laoreet suscipit ultrices.
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -495,11 +442,14 @@
                                             @endauth
                                         </div>
                                     </div>
-                                    <div class="product-tabs__pane" id="product-tab-cars">
+                                    <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-cars">
                                         <div class="accordion" id="comaptible-cars">
                                             @foreach($car_brands as $brand => $cars_by_names)
                                                 <div class="card">
                                                     <div class="card-header" id="compat-cars-{{ $loop->index }}-header">
+                                                        <div class="review__avatar">
+                                                            <img src="{{ asset('images/avatars/avatar-1-42x42.jpg') }}" alt="">
+                                                        </div>
                                                         <h2 class="mb-0">
                                                             <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
                                                                     data-target="#compat-cars-{{ $loop->index }}-table-acc"
