@@ -21393,3 +21393,32 @@ select.form-control::-ms-expand {
         padding:0 10px
     }
 }
+
+
+.uyumluSelectButtons{
+
+}
+
+
+
+
+.uyumluSelectButtons {
+    text-align: center;
+    padding: 10px 25px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+.uyumluSelectButtons.active{
+    background-color: #dedede
+}
+.uyumluSelectButtons:hover{
+    background-color: #b6b6b6
+}
+.uyumluSelectButtons>img{
+    width:45px
+}
+.uyumluSelectButtons>h4{
+    font-size:14px
+}
