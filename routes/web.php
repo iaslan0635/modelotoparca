@@ -2,13 +2,15 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Models\Category;
 use App\Models\Product;
 use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('home');
+    $categories = Category::root()->limit(16)->orderBy("order")->get();
+    return view('home', compact('categories'));
 });
 
 Route::get('cart', function () {
