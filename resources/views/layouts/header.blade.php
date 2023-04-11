@@ -60,29 +60,27 @@
                                                 <div class="megamenu__image">
                                                     <img src="{{ $root->image?->url }}" alt="">
                                                 </div>
-                                                <div class="row">
-                                                    @foreach($root->children->chunk(4) as $chunk)
-                                                        <div class="col-1of5">
-                                                            <ul class="megamenu__links megamenu-links megamenu-links--root">
-                                                                @foreach($chunk as $child)
-                                                                    <li class="megamenu-links__item">
-                                                                        <a class="megamenu-links__item-link" href="">
-                                                                            <img src="{{ $child->imageUrl() }}" class="category-icon-image">
-                                                                            {{ $child->name }}
-                                                                        </a>
-                                                                    </li>
-                                                                @endforeach
-                                                                @if($loop->last)
-                                                                <li class="megamenu-links__item">
-                                                                    <a class="megamenu-links__item-link" href="">
-                                                                        <img src="{{ $root->imageUrl() }}" class="category-icon-image">
-                                                                        Tüm {{ $root->name }} Kategorileri
+                                                <div class="block block-brands block-brands--layout--columns-8-full">
+                                                    <div class="container">
+                                                        <ul class="block-brands__list">
+                                                            @foreach($root->children as $child)
+                                                                <li class="block-brands__item">
+                                                                    <a href="{{ route("category.show", $child) }}" class="block-brands__item-link">
+                                                                        <img src="{{ $child->imageUrl() }}" alt="">
+                                                                        <span class="block-brands__item-name">{{ $child->name }}</span>
                                                                     </a>
                                                                 </li>
-                                                                @endif
-                                                            </ul>
-                                                        </div>
-                                                    @endforeach
+                                                                <li class="block-brands__divider" role="presentation"></li>
+                                                            @endforeach
+                                                            <li class="block-brands__item">
+                                                                <a href="{{ route("category.show", $root) }}" class="block-brands__item-link">
+                                                                    <img src="{{ $root->imageUrl() }}" alt="">
+                                                                    <span class="block-brands__item-name">Tüm {{ $root->name }} Kategorileri</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="block-brands__divider" role="presentation"></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
