@@ -48,7 +48,7 @@
             <ul class="block-brands__list">
                 @foreach($categories as $category)
                     <li class="block-brands__item">
-                        <a href="" class="block-brands__item-link">
+                        <a href="{{ route("category.show", $category) }}" class="block-brands__item-link">
                             <img src="{{ $category->imageUrl() }}" alt="">
                             <span class="block-brands__item-name">{{ $category->name }}</span>
                         </a>
