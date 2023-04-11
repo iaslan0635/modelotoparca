@@ -33,7 +33,7 @@ class CarSearch extends Component
             $this->cars ??= $this->model("short_name")->pluck("short_name")->filter()->toArray();
 
         if ($this->car !== null)
-            $this->years ??= $this->model(["from_year", "to_year"])->map(fn($m) => range($m->from_year, $m->to_year))->flatten()->unique()->sort()->filter()->toArray();
+            $this->years ??= $this->model(["from_year", "to_year"])->map(fn($m) => range($m->from_year, $m->to_year ?? 2023))->flatten()->unique()->filter()->sort()->toArray();
 
         if ($this->year !== null)
             $this->spesificCars ??= $this->model("name")->pluck("name")->filter()->toArray();
