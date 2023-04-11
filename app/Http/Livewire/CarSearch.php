@@ -27,13 +27,15 @@ class CarSearch extends Component
 
     public function render()
     {
-        $this->makers ??= $this->maker(["id", "name"])->filter(fn ($m) => $m->name)->toArray();
+        $this->makers ??= $this->maker(["id", "name"])->filter(fn($m) => $m->name)->toArray();
 
         if ($this->maker !== null)
             $this->cars ??= $this->model("short_name")->pluck("short_name")->filter()->toArray();
 
         if ($this->car !== null)
-            $this->years ??= $this->model(["from_year", "to_year"])->map(fn($m) => range($m->from_year, $m->to_year ?? 2023))->flatten()->unique()->filter()->sort()->toArray();
+            $this->years ??= $this->model(["from_year", "to_year"])
+                ->map(fn($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
+                ->flatten()->unique()->filter()->sort()->toArray();
 
         if ($this->year !== null)
             $this->spesificCars ??= $this->model("name")->pluck("name")->filter()->toArray();

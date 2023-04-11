@@ -566,28 +566,25 @@
                                         </div>
                                     </div>
                                     <div class="product-tabs__pane" id="product-tab-oem-codes">
-                                        <table class="analogs-table">
-                                            <thead>
-                                            <tr>
-                                                <th class="analogs-table__column analogs-table__column--name">Marka</th>
-                                                <th class="analogs-table__column analogs-table__column--rating">Oemler</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($oems as $oem)
-                                                <tr>
-                                                    <td class="analogs-table__column analogs-table__column--name">
-                                                        <a href="" class="analogs-table__product-name">{{ $oem->brand }}</a><br>
-                                                    </td>
-                                                    <td class="analogs-table__column">
-                                                        <details>
+                                        @foreach($oems as $oem)
+                                            <div class="accordion" id="oem-{{ $loop->index }}">
+                                                <div class="card">
+                                                    <div class="card-header" id="oem-heading-{{ $loop->index }}">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#oem-collapse-{{ $loop->index }}" aria-expanded="true" aria-controls="oem-collapse-{{ $loop->index }}">
+                                                                {{ $oem->brand }}
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+
+                                                    <div id="oem-collapse-{{ $loop->index }}" class="collapse" aria-labelledby="oem-heading-{{ $loop->index }}" data-parent="#oem-{{ $loop->index }}">
+                                                        <div class="card-body">
                                                             {{ $oem->oems }}
-                                                        </details>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="product-tabs__pane" id="product-same-products">
                                         <div class="products-view__list products-list products-list--grid--4" data-layout="table" data-with-features="false">
