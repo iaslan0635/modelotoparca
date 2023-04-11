@@ -52,7 +52,7 @@ class CartItem
             if ($product->quantity < 1){
                 $this->stockAlert = true;
                 $this->stockAlertType = "danger";
-                $this->stockAlertMessage = "Bu ürünün stoğı bitmiştir sipariş veremezsiniz lütfen sepetinizde kaldırıp öyle sipariş veriniz.";
+                $this->stockAlertMessage = "Bu ürünün stokta kalmamıştır. Bilgi almak için müşteri temsilcimize ulaşın.";
             }
 
             if ($product->quantity < $this->quantity && $product->quantity !== 0){
