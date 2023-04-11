@@ -191,6 +191,7 @@
                     <div class="container block-products-carousel" data-layout="grid-5">
                         <div class="section-header">
                             <div class="section-header__body">
+                                <h2 class="section-header__title">Popüler Ürünler</h2>
                                 <div class="section-header__spring"></div>
                                 <ul class="section-header__groups">
                                     <li class="section-header__groups-item">
