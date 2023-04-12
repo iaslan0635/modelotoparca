@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Facades\Garage;
 use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
@@ -89,9 +90,9 @@ class Product extends BaseModel implements CanVisit
 
     protected static function booted()
     {
-        if (session()->has('garage_chosen')) {
-            $chosen = intval(session()->get("garage_chosen"));
-            static::addGlobalScope("chosen_car", fn(Builder $builder) => $builder->whereRelation('cars', "id", "=", $chosen));
+        if (Garage::hasChosen()) {
+            $chosen = Garage::chosen();
+            //static::addGlobalScope("chosen_car", fn(Builder $builder) => $builder->whereRelation('cars', "id", "=", $chosen));
         }
     }
 }

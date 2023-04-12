@@ -30,23 +30,16 @@ Route::get('cart', function () {
 });
 
 Route::get('test', function () {
-    $query = Query::multiMatch()
-        ->fields([
-            "title",
-            "sub_title",
-            "cross_code",
-            "producercode",
-            "producercode2",
-            "similar_product_codes",
-        ])
-        ->query("porya")
+    $query = Query::match()
+        ->field('name')
+        ->query("honda")
         ->fuzziness('AUTO');
 
-    $results = Product::searchQuery($query)->load(['category'])->execute();
+    $results = \App\Models\Car::searchQuery($query)->paginate(500);
 
     //$product = Product::whereIn('id', $ids)->;
 
-    return $results->models();
+    $carids = $results->documents()->map(fn($d) => $d->id());
 });
 
 Route::view('search', 'search')->name('search');

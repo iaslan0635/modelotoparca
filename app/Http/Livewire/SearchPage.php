@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Packages\Search as Searchable;
 
 class SearchPage extends Component
 {
@@ -32,21 +33,9 @@ class SearchPage extends Component
 
     public function search()
     {
-        $query = \Elastic\ScoutDriverPlus\Support\Query::multiMatch()
-            ->fields([
-                "title",
-                "sub_title",
-                "cross_code",
-                "producercode",
-                "producercode2",
-                "similar_product_codes",
-            ])
-            ->query($this->query)
-            ->fuzziness('AUTO');
-
-        $results = Product::searchQuery($query)->load(['category', 'price', 'brand'])->paginate(12);
-        $products = $results->onlyModels();
-        $brands = $products->groupBy('brand_id');
+        $query = Searchable::query($this->query);
+        $products = $query->paginate(12);
+        $brands = $query->get()->groupBy('brand_id');
         $categories = [];
 
         foreach ($products as $product) {

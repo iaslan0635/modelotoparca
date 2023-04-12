@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class Garage extends Component
 {
-    public array $cars;
-    public int $chosen;
+    public array|null $cars;
+    public int|null $chosen;
     protected $listeners = ['chooseCar', 'reloadData'];
     public function render()
     {

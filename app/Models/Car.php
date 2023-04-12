@@ -9,6 +9,21 @@ class Car extends BaseModel
 {
     use Searchable;
 
+    protected $searchableAs = "cars_index";
+
+    public function searchableAs()
+    {
+        return $this->searchableAs;
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+        ];
+    }
+
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, "product_cars", "car_id", "logicalref");

@@ -40,4 +40,9 @@ class Garage
     {
         session()->put("garage_chosen", $id);
     }
+
+    public static function hasChosen()
+    {
+        return session()->has('garage_chosen');
+    }
 }

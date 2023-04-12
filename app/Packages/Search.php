@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Packages;
+
+use App\Models\Product;
+use Elastic\ScoutDriverPlus\Decorators\Hit;
+use Elastic\ScoutDriverPlus\Support\Query;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+
+class Search
+{
+    public static function query(string $query): Builder
+    {
+        $queryCar = Query::match()
+            ->field('name')
+            ->query($query)
+            ->fuzziness('AUTO');
+
+        $resultCars = \App\Models\Car::searchQuery($queryCar)->paginate(500);
+        $carids = $resultCars->documents()->map(fn($d) => $d->id());
+
+        $query = Query::multiMatch()
+            ->fields([
+                "title",
+                "sub_title",
+                "cross_code",
+                "producercode",
+                "producercode2",
+                "similar_product_codes",
+            ])
+            ->query($query)
+            ->fuzziness('AUTO');
+
+        $results = Product::searchQuery($query)->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true)->take(1)
+            ->map(fn(Hit $hit) => $hit->document()->id());
+
+        return Product::query()
+            ->with(['category', 'price', 'brand'])
+            ->orWhereIn('id', $results)
+            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids));
+    }
+}

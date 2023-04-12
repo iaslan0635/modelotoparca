@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\Header;
 
-use App\Http\Livewire\Garage;
 use App\Models\Product;
-use Livewire\Component;
+use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
+use Livewire\Component;
+use App\Packages\Search as Searchable;
 
 class Search extends Component
 {
@@ -18,27 +19,13 @@ class Search extends Component
         $results = [];
 
         if (strlen($this->query) >= 3) {
-            $query = Query::multiMatch()
-                ->fields([
-                    "title",
-                    "sub_title",
-                    "cross_code",
-                    "producercode",
-                    "producercode2",
-                    "similar_product_codes",
-                ])
-                ->query($this->query)
-                ->fuzziness('AUTO');
-
-            $results = Product::searchQuery($query)->execute()->models();
-
+            $results = Searchable::query($this->query)->limit(10)->get()->all();
             foreach ($results as $result) {
                 foreach ($result->category as $item) {
                     $categories[$item->id] = $item;
                 }
             }
         }
-
 
         return view('livewire.header.search', [
             'results' => $results,
