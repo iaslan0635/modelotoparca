@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Header;
 
+use App\Http\Livewire\Garage;
 use App\Models\Product;
 use Livewire\Component;
 use Elastic\ScoutDriverPlus\Support\Query;
@@ -9,6 +10,11 @@ use Elastic\ScoutDriverPlus\Support\Query;
 class Search extends Component
 {
     public $query = "";
+
+    public function choose(int $id)
+    {
+        Garage::chooseCar($id); // Neden bilmiyorum ama araç seçimi bu metodu çalıştırıyor
+    }
 
     public function render()
     {

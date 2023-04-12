@@ -15,9 +15,14 @@ class Garage extends Component
         return view('livewire.garage', compact("cars", "chosen"));
     }
 
-    public function choose(int $id)
+    public static function chooseCar(int $id)
     {
         session()->put("garage_chosen", $id);
+    }
+
+    public function choose(int $id)
+    {
+        self::chooseCar($id);
     }
 
     public function remove(int $id)

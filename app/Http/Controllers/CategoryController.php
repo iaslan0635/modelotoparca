@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Facades\CategoryFacade;
 use App\Models\Category;
 use App\Models\Product;
-use BlueM\Tree;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
