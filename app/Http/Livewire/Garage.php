@@ -2,43 +2,36 @@
 
 namespace App\Http\Livewire;
 
+use App\Facades\Garage as GarageFacade;
 use App\Models\Car;
 use Livewire\Component;
 
 class Garage extends Component
 {
+    public array $cars;
+    public int $chosen;
+    protected $listeners = ['chooseCar', 'reloadData'];
     public function render()
     {
-        $cars = session("garage_cars", []);
-        $chosen = session("garage_chosen");
-
-        return view('livewire.garage', compact("cars", "chosen"));
+        $this->reloadData();
+        return view('livewire.garage');
     }
 
-    public static function chooseCar(int $id)
+    public function reloadData()
     {
-        session()->put("garage_chosen", $id);
+        $this->cars = GarageFacade::items();
+        $this->chosen = GarageFacade::chosen();
     }
 
-    public function choose(int $id)
+    public function chooseCar(int $id)
     {
-        self::chooseCar($id);
+        GarageFacade::choose($id);
+
+        $this->emit("reload");
     }
 
     public function remove(int $id)
     {
-        $cars = session("garage_cars", []);
-        session()->put("garage_chosen", array_filter($cars, fn($car) => $car["id"] !== $id));
-    }
-
-    public static function add(Car $car)
-    {
-        $cars = session("garage_cars", []);
-        $cars[] = [
-            "id" => $car->id,
-            "name" => $car->short_name,
-            "details" => $car->name
-        ];
-        session()->put("garage_cars", $cars);
+        GarageFacade::remove($id);
     }
 }

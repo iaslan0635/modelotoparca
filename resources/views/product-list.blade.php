@@ -73,14 +73,14 @@
                                                                                 </svg>
                                                                             </span>
                                                                                 <img src="{{ $parent->imageUrl() }}" class="category-icon-image">
-                                                                                <a href="{{ route('category.show', $parent) }}">{{ $parent->name }}</a>
+                                                                                <a href="{{ route('category.show', [...request()->query(), 'category' => $parent]) }}">{{ $parent->name }}</a>
                                                                                 <div
                                                                                     class="filter-categories__counter">{{ $parent->deepProductsCount }}</div>
                                                                             </li>
                                                                         @endforeach
                                                                         <li class="filter-categories__item filter-categories__item--current">
                                                                             <img src="{{ $category->imageUrl() }}" class="category-icon-image">
-                                                                            <a href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
+                                                                            <a href="{{ route('category.show', [...request()->query(), 'category' => $category]) }}">{{ $category->name }}</a>
                                                                             <div
                                                                                 class="filter-categories__counter">{{ $category->deepProductsCount }}</div>
                                                                         </li>
@@ -88,103 +88,13 @@
                                                                             @if($child->deepProductsCount > 0)
                                                                                 <li class="filter-categories__item filter-categories__item--child">
                                                                                     <img src="{{ $child->imageUrl() }}" class="category-icon-image">
-                                                                                    <a href="{{ route('category.show', $child) }}">{{ $child->name }}</a>
+                                                                                    <a href="{{ route('category.show', [...request()->query(), 'category' => $child]) }}">{{ $child->name }}</a>
                                                                                     <div
                                                                                         class="filter-categories__counter">{{ $child->deepProductsCount }}</div>
                                                                                 </li>
                                                                             @endif
                                                                         @endforeach
                                                                     </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="widget-filters__item">
-                                                    <div class="filter filter--opened" data-collapse-item>
-                                                        <button type="button" class="filter__title"
-                                                                data-collapse-trigger>
-                                                            Araçlar
-                                                            <span class="filter__arrow"><svg width="12px" height="7px">
-                                                                    <path
-                                                                        d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                                </svg></span>
-                                                        </button>
-                                                        <div class="filter__body" data-collapse-content>
-                                                            <div class="filter__container">
-                                                                <div class="filter-vehicle">
-                                                                    <ul class="filter-vehicle__list">
-                                                                        <li class="filter-vehicle__item ">
-                                                                            <label class="filter-vehicle__item-label">
-                                                                                <span
-                                                                                    class="filter-list__input input-radio">
-                                                                                    <span class="input-radio__body">
-                                                                                        <input
-                                                                                            class="input-radio__input"
-                                                                                            name="filter_vehicle"
-                                                                                            type="radio">
-                                                                                        <span
-                                                                                            class="input-radio__circle"></span>
-                                                                                    </span>
-                                                                                </span>
-                                                                                <span
-                                                                                    class="filter-vehicle__item-title">
-                                                                                    Tüm Araçlar
-                                                                                </span>
-                                                                                <span
-                                                                                    class="filter-vehicle__item-counter">57</span>
-                                                                            </label>
-                                                                        </li>
-                                                                        <li class="filter-vehicle__item ">
-                                                                            <label class="filter-vehicle__item-label">
-                                                                                <span
-                                                                                    class="filter-list__input input-radio">
-                                                                                    <span class="input-radio__body">
-                                                                                        <input
-                                                                                            class="input-radio__input"
-                                                                                            name="filter_vehicle"
-                                                                                            type="radio" checked>
-                                                                                        <span
-                                                                                            class="input-radio__circle"></span>
-                                                                                    </span>
-                                                                                </span>
-                                                                                <span
-                                                                                    class="filter-vehicle__item-title">
-                                                                                    2011 Ford Focus S
-                                                                                </span>
-                                                                                <span
-                                                                                    class="filter-vehicle__item-counter">12</span>
-                                                                            </label>
-                                                                        </li>
-                                                                        <li class="filter-vehicle__item ">
-                                                                            <label class="filter-vehicle__item-label">
-                                                                                <span
-                                                                                    class="filter-list__input input-radio">
-                                                                                    <span class="input-radio__body">
-                                                                                        <input
-                                                                                            class="input-radio__input"
-                                                                                            name="filter_vehicle"
-                                                                                            type="radio">
-                                                                                        <span
-                                                                                            class="input-radio__circle"></span>
-                                                                                    </span>
-                                                                                </span>
-                                                                                <span
-                                                                                    class="filter-vehicle__item-title">
-                                                                                    2015 Audi A3
-                                                                                </span>
-                                                                                <span
-                                                                                    class="filter-vehicle__item-counter">51</span>
-                                                                            </label>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <div class="filter-vehicle__button">
-                                                                        <button type="button"
-                                                                                class="btn btn-xs btn-secondary">Yeni
-                                                                            Araç
-                                                                            Ekle
-                                                                        </button>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1349,16 +1259,16 @@
 
 @push('scripts')
     <script>
-        let searchParams = new URLSearchParams(window.location.search);
+        /*let searchParams = new URLSearchParams(window.location.search);
 
         console.log(searchParams.toString())
 
         const categories = document.getElementsByClassName("filter-categories__item");
 
         for (let category of categories){
-            let href = category.childNodes[1].getAttribute('href');
-            category.childNodes[1].setAttribute('href', `${href}?${searchParams.toString()}`)
-        }
+            let href = category.childNodes[3].getAttribute('href');
+            category.childNodes[3].setAttribute('href', `${href}?${searchParams.toString()}`)
+        }*/
 
         document.getElementById('view-option-sort').addEventListener('change', function (select) {
             let redirectParams = new URLSearchParams();

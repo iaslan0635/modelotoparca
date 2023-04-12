@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Facades\Garage as GarageFacade;
 use App\Models\Car;
 use App\Models\Maker;
 use Livewire\Component;
@@ -95,7 +96,8 @@ class CarSearch extends Component
 
     public function add()
     {
-        $car = Car::query()->find($this->engine);
-        Garage::add($car);
+        $car = Car::query()->findOrFail($this->engine);
+        GarageFacade::add($car);
+        $this->emit('reloadData');
     }
 }

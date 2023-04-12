@@ -11,10 +11,6 @@ class Search extends Component
 {
     public $query = "";
 
-    public function choose(int $id)
-    {
-        Garage::chooseCar($id); // Neden bilmiyorum ama araç seçimi bu metodu çalıştırıyor
-    }
 
     public function render()
     {

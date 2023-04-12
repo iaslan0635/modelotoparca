@@ -6,12 +6,12 @@ use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
 use Elastic\ScoutDriverPlus\Searchable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Query\Builder;
 
 class Product extends BaseModel implements CanVisit
 {
@@ -85,5 +85,13 @@ class Product extends BaseModel implements CanVisit
     public function cars(): BelongsToMany
     {
         return $this->belongsToMany(Car::class, "product_cars", "logicalref", "car_id");
+    }
+
+    protected static function booted()
+    {
+        if (session()->has('garage_chosen')) {
+            $chosen = intval(session()->get("garage_chosen"));
+            static::addGlobalScope("chosen_car", fn(Builder $builder) => $builder->whereRelation('cars', "id", "=", $chosen));
+        }
     }
 }

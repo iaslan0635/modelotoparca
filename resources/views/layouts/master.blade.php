@@ -293,6 +293,9 @@
 <script src="{{ asset('js/number.js') }}"></script>
 <script src="{{ asset('js/main.js') }}" defer></script>
 <livewire:scripts />
+<script>
+    Livewire.on('reload', () => window.location.reload())
+</script>
 @stack('scripts')
 </body>
 </html>

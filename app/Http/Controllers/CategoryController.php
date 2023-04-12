@@ -43,14 +43,14 @@ class CategoryController extends Controller
             $query = $query->orderBy('products.title', 'desc');
         }
 
-        if (request()->has('brands')){
-            $query = $query->whereIn('brand_id', request()->input('brands'));
-        }
-
         $query = $query
             ->whereRelation('category', fn(Builder $q) => $q->whereIn("id", $tree["childs"]));
 
         $brands = $query->get()->groupBy('brand_id');
+
+        if (request()->has('brands')){
+            $query = $query->whereIn('brand_id', request()->input('brands'));
+        }
 
         $products = $query->paginate(12);
 
