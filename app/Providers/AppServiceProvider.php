@@ -29,14 +29,16 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(255);
         Paginator::useBootstrapFour();
 
-        $children10 = ['children' => fn($q) => $q->limit(23)];
-        $categories = Category::root()
-            ->orderBy("order")
-            ->with("image")
-            ->limit(10)
-            ->get()
-            // limit each parent separately not overall
-            ->map(fn ($m) => $m->load($children10));
-        View::share('__Categories', $categories);
+        if (app()->bound('db') && app()->db->connection()->getPdo()) {
+            $children10 = ['children' => fn($q) => $q->limit(23)];
+            $categories = Category::root()
+                ->orderBy("order")
+                ->with("image")
+                ->limit(10)
+                ->get()
+                // limit each parent separately not overall
+                ->map(fn ($m) => $m->load($children10));
+            View::share('__Categories', $categories);
+        }
     }
 }
