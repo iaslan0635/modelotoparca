@@ -48,7 +48,7 @@
 
                                                     <div class="product-card__badges" style="text-align: -webkit-right">
                                                         <div  style=" right:5px;">
-                                                            <img  style="max-width: 90px; max-height: 20px;"
+                                                            <img  style="max-width: 150px; max-height: 25px;"
                                                                   src="https://web.modelotoparca.com/images/brands/{{ $product->brand->name }}.png" alt="">
                                                         </div>
                                                     </div>
