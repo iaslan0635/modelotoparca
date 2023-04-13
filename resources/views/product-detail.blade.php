@@ -399,31 +399,49 @@
 
                                     </div>
                                     <div class="product-tabs__pane" id="product-tab-oem-codes">
-                                        @foreach($oems as $oem)
-                                            <div class="accordion" id="oem-{{ $loop->index }}">
-                                                <div class="card">
-                                                    <div class="card-header" id="oem-heading-{{ $loop->index }}">
-                                                        <h2 class="mb-0">
-                                                            <button class="btn btn-link btn-block text-left"
-                                                                    type="button" data-toggle="collapse"
-                                                                    data-target="#oem-collapse-{{ $loop->index }}"
-                                                                    aria-expanded="true"
-                                                                    aria-controls="oem-collapse-{{ $loop->index }}">
-                                                                {{ $oem->brand }}
-                                                            </button>
-                                                        </h2>
-                                                    </div>
 
-                                                    <div id="oem-collapse-{{ $loop->index }}" class="collapse"
-                                                         aria-labelledby="oem-heading-{{ $loop->index }}"
-                                                         data-parent="#oem-{{ $loop->index }}">
-                                                        <div class="card-body">
-                                                            {{ $oem->oems }}
-                                                        </div>
+
+                                        <div class="content">
+                                            <div class="card-body">
+                                                <div class="container">
+                                                    <div class="row">
+
+                                                        @if (count($oems)>0)
+                                                        <table
+                                                            class="analogs-table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="analogs-table__column analogs-table__column--name">
+                                                                    Marka
+                                                                </th>
+                                                                <th  style="text-align: center" class="analogs-table__column analogs-table__column--name">
+                                                                    Oem Kodlar
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            @foreach($oems as $oem)
+                                                                <tr>
+                                                                    <td class="analogs-table__column">{{ $oem->brand }}</td>
+                                                                    <td style="width:100%; display: inline-block; word-break: break-all; font-weight: 700">
+                                                                        {{ $oem->oems }}
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+
+                                        </div>
+
+
+
+
+
                                     </div>
                                     <div class="product-tabs__pane" id="product-same-products">
                                         <div class="products-view__list products-list products-list--grid--4"
