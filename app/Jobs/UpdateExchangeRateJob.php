@@ -32,8 +32,8 @@ class UpdateExchangeRateJob
 
         $ttl = new CarbonInterval(0, 0, 0, 1);
 
-        Cache::put('usd_price', (string) $xml->xpath('//Currency[@CurrencyCode="USD"]/BanknoteSelling')[0], $ttl);
-        Cache::put('eur_price', (string) $xml->xpath('//Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0], $ttl);
+        Cache::put('usd_price', (string) 19.3708, $ttl); # //Currency[@CurrencyCode="USD"]/BanknoteSelling
+        Cache::put('eur_price', (string) 21.3214, $ttl); # //Currency[@CurrencyCode="EUR"]/BanknoteSelling
     }
 
     public function handle()
