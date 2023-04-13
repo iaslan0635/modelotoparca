@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(255);
         Paginator::useBootstrapFour();
 
-        if (app()->isProduction()) {
+        //if (app()->isProduction()) {
             $children10 = ['children' => fn($q) => $q->limit(23)];
             $categories = Category::root()
                 ->orderBy("order")
@@ -39,6 +39,6 @@ class AppServiceProvider extends ServiceProvider
                 // limit each parent separately not overall
                 ->map(fn ($m) => $m->load($children10));
             View::share('__Categories', $categories);
-        }
+        //}
     }
 }
