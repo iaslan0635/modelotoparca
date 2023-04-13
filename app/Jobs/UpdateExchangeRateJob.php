@@ -19,7 +19,15 @@ class UpdateExchangeRateJob
 
     public static function updateRates()
     {
-        $xmlStr = Http::withoutVerifying()->get('https://www.tcmb.gov.tr/kurlar/today.xml')->body();
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://www.tcmb.gov.tr/kurlar/today.xml");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+        curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'TLSv1.2');
+        $xmlStr = curl_exec($ch);
+        curl_close($ch);
+
         $xml = new SimpleXMLElement($xmlStr);
 
         $ttl = new CarbonInterval(0, 0, 0, 1);
