@@ -19,7 +19,7 @@ class UpdateExchangeRateJob
 
     public static function updateRates()
     {
-        $xmlStr = Http::get('https://www.tcmb.gov.tr/kurlar/today.xml')->body();
+        $xmlStr = Http::withoutVerifying()->get('https://www.tcmb.gov.tr/kurlar/today.xml')->body();
         $xml = new SimpleXMLElement($xmlStr);
 
         $ttl = new CarbonInterval(0, 0, 0, 1);
