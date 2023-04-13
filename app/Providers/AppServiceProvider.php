@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(255);
         Paginator::useBootstrapFour();
 
-        if (app()->bound('db') && app()->db->connection()->getPdo()) {
+        if (app()->isProduction()) {
             $children10 = ['children' => fn($q) => $q->limit(23)];
             $categories = Category::root()
                 ->orderBy("order")
