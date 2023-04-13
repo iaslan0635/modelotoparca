@@ -324,10 +324,15 @@
                                     </div>
                                     <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-cars">
 
-                                        <div class="row mt-2">
+                                        <div class="compatible-cars row mt-2">
                                             @foreach($car_brands as $brand => $cars_by_names)
-                                                <div class="col-md-3 mt-2 brand" data-id="{{ $loop->index }}">
-                                                    <div class="card bg-danger text-white text-center">
+                                                <div class="compatible-cars-list mt-2 brand" data-id="{{ $loop->index }}">
+                                                    <div class="uyumluSelectButtons">
+                                                   <img class="lazy loaded" src="https://websitem.modelotoparca.com/public/maker/{{ $brand }}.png"
+
+                                                        alt=""
+                                                        data-ll-status="loaded">
+                                                        <br>
                                                         {{ $brand }}
                                                     </div>
                                                 </div>
@@ -338,151 +343,57 @@
                                             @foreach($car_brands as $brand => $cars_by_names)
                                                 @php $index = $loop->index; @endphp
                                                 @foreach($cars_by_names as $name => $cars)
-                                                    <div class="model col-md-12 models-{{ $index }}"
+                                                    <div class="uyumlu-car-select-line model col-md-12 models-{{ $index }}"
                                                          style="display: {{ $index === 0 ? "block":"none" }}">
-                                                        <div class="title"><h5>{{ $name }}</h5></div>
+                                                        <div class="title">{{ $name }}</div>
                                                         <div class="content" style="display: none">
-                                                            <table>
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Model</th>
-                                                                    <th>Yıl</th>
-                                                                    <th>Kapasite</th>
-                                                                    <th>Güç</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                @foreach($cars as $car)
-                                                                    <tr>
-                                                                        <td>{{ $car->name }}</td>
-                                                                        <td>{{ $car->produced_from ?? "0000-00-00" }}
-                                                                            - {{ $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d")) }}</td>
-                                                                        <td>{{ $car->capacity }}</td>
-                                                                        <td>{{ $car->power }}</td>
-                                                                    </tr>
-                                                                @endforeach
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @endforeach
-                                        </div>
-                                        <div class="row">
-                                            @foreach($car_brands as $brand => $cars_by_names)
-                                                <div class="accordion" id="comaptible-cars">
-                                                    <div class="col">
-                                                        <div class="card">
-                                                            <div class="card-header"
-                                                                 id="compat-cars-{{ $loop->index }}-header">
-                                                                <button class="uyumluSelectButtons active" type="button"
-                                                                        data-toggle="collapse"
-                                                                        data-target="#compat-cars-{{ $loop->index }}-table-acc"
-                                                                        aria-expanded="true"
-                                                                        aria-controls="compat-cars-{{ $loop->index }}-table-acc">
-                                                                    {{--                                                                     <img class="lazy loaded"--}}
-                                                                    {{--                                                                          src="https://websitem.modelotoparca.com/public/maker/{{ $brand }}.png" style="max-height: 30px;"  alt="" data-ll-status="loaded">--}}
-                                                                    <h4>{{ $brand }}</h4>
-                                                                </button>
-                                                                {{--                                                        <h2 class="mb-0">--}}
-                                                                {{--                                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"--}}
-                                                                {{--                                                                    data-target="#compat-cars-{{ $loop->index }}-table-acc"--}}
-                                                                {{--                                                                    aria-expanded="true" aria-controls="compat-cars-{{ $loop->index }}-table-acc">--}}
-                                                                {{--                                                                {{ $brand }}--}}
-                                                                {{--                                                            </button>--}}
-                                                                {{--                                                        </h2>--}}
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div id="compat-cars-{{ $loop->index }}-table-acc"
-                                                                 class="collapse"
-                                                                 aria-labelledby="compat-cars-{{ $loop->index }}-header"
-                                                                 data-parent="#comaptible-cars">
-                                                                <div class="card-body">
-                                                                    <div class="accordion"
-                                                                         id="comaptible-cars-{{$loop->index}}">
-                                                                        @foreach($cars_by_names as $name => $cars)
-                                                                            <div class="card">
-                                                                                <div class="card-header"
-                                                                                     id="compat-cars-{{ $loop->index }}-header-inner">
-                                                                                    <h2 class="mb-0">
-                                                                                        <button
-                                                                                            class="btn btn-link btn-block text-left"
-                                                                                            type="button"
-                                                                                            data-toggle="collapse"
-                                                                                            data-target="#compat-cars-{{ $loop->index }}-table"
-                                                                                            aria-expanded="true"
-                                                                                            aria-controls="compat-cars-{{ $loop->index }}-table">
-                                                                                            {{ $name }}
-                                                                                        </button>
-                                                                                    </h2>
-                                                                                </div>
+                                                            <div class="card-body">
+                                                                <div class="container">
+                                                                    <div class="row">
+                                                                        <table
+                                                                            class="analogs-table">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th class="analogs-table__column analogs-table__column--name">
+                                                                                    Model
+                                                                                </th>
+                                                                                <th class="analogs-table__column analogs-table__column--name">
+                                                                                    Yıl
+                                                                                </th>
+                                                                                <th class="analogs-table__column analogs-table__column--name">
+                                                                                    Kapasite
+                                                                                </th>
+                                                                                <th class="analogs-table__column analogs-table__column--name">
+                                                                                    Güç
+                                                                                </th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
 
-                                                                                <div
-                                                                                    id="compat-cars-{{ $loop->index }}-table"
-                                                                                    class="collapse"
-                                                                                    aria-labelledby="compat-cars-{{ $loop->index }}-header-inner"
-                                                                                    data-parent="#comaptible-cars-{{$loop->parent->index}}">
-                                                                                    <div class="card-body">
-                                                                                        <div class="container">
-                                                                                            <div class="row">
-                                                                                                <table
-                                                                                                    class="analogs-table">
-                                                                                                    <thead>
-                                                                                                    <tr>
-                                                                                                        <th class="analogs-table__column analogs-table__column--name">
-                                                                                                            Model
-                                                                                                        </th>
-                                                                                                        <th class="analogs-table__column analogs-table__column--name">
-                                                                                                            Yıl
-                                                                                                        </th>
-                                                                                                        <th class="analogs-table__column analogs-table__column--name">
-                                                                                                            Kapasite
-                                                                                                        </th>
-                                                                                                        <th class="analogs-table__column analogs-table__column--name">
-                                                                                                            Güç
-                                                                                                        </th>
-                                                                                                    </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody>
-
-                                                                                                    @foreach($cars as $car)
-                                                                                                        <tr>
-                                                                                                            <td class="analogs-table__column">{{ $car->name }}</td>
-                                                                                                            <td class="analogs-table__column">
-                                                                                                                {{ $car->produced_from ?? "0000-00-00" }}
-                                                                                                                - {{
+                                                                            @foreach($cars as $car)
+                                                                                <tr>
+                                                                                    <td class="analogs-table__column">{{ $car->name }}</td>
+                                                                                    <td class="analogs-table__column">
+                                                                                        {{ $car->produced_from ?? "0000-00-00" }}
+                                                                                        - {{
                                                                                                     $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d"))
                                                                                                 }}
-                                                                                                            </td>
-                                                                                                            <td class="analogs-table__column">{{ $car->capacity }}</td>
-                                                                                                            <td class="analogs-table__column">{{ $car->power }}</td>
-                                                                                                        </tr>
-                                                                                                    @endforeach
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        @endforeach
-
+                                                                                    </td>
+                                                                                    <td class="analogs-table__column">{{ $car->capacity }}</td>
+                                                                                    <td class="analogs-table__column">{{ $car->power }}</td>
+                                                                                </tr>
+                                                                            @endforeach
+                                                                            </tbody>
+                                                                        </table>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                     </div>
-
-
-                                                </div>
+                                                @endforeach
                                             @endforeach
-
                                         </div>
-
-
                                         <div class="block-space block-space--layout--divider-nl"></div>
 
 
