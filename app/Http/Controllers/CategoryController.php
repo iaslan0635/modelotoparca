@@ -18,9 +18,6 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $category->load(["children" => fn(HasMany $b) => $b->withCount("products")]);
-        $category->loadCount('products');
-
         $tree = CategoryFacade::getTree($category->id);
 
         $minPrice = request()->input('min_price', 0);
@@ -52,6 +49,21 @@ class CategoryController extends Controller
         if (request()->has('brands')){
             $query = $query->whereIn('brand_id', request()->input('brands'));
         }
+
+        $pids = $query->get()->map(function ($item) {
+            return $item->id;
+        });
+
+        $category->load([
+            "children" => function (HasMany $b) use ($pids) {
+                $b->whereHas('products', function($q) use ($pids) {
+                    $q->whereIn('id', $pids);
+                })->withCount(["products" => function ($query) use ($pids) {
+                    $query->whereIn('id', $pids);
+                }]);
+            }
+        ]);
+        $category->loadCount('products');
 
         $products = $query->paginate(12);
 

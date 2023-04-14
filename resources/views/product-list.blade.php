@@ -90,7 +90,7 @@
                                                                                     <img src="{{ $child->imageUrl() }}" class="category-icon-image">
                                                                                     <a href="{{ route('category.show', [...request()->query(), 'category' => $child]) }}">{{ $child->name }}</a>
                                                                                     <div
-                                                                                        class="filter-categories__counter">{{ $child->deepProductsCount }}</div>
+                                                                                        class="filter-categories__counter">{{ $child->products_count }}</div>
                                                                                 </li>
                                                                             @endif
                                                                         @endforeach
