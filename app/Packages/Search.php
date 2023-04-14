@@ -2,11 +2,11 @@
 
 namespace App\Packages;
 
+use App\Models\Car;
 use App\Models\Product;
 use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 
 class Search
 {
@@ -17,7 +17,7 @@ class Search
             ->query($query)
             ->fuzziness('AUTO');
 
-        $resultCars = \App\Models\Car::searchQuery($queryCar)->paginate(500);
+        $resultCars = Car::searchQuery($queryCar)->paginate(500);
         $carids = $resultCars->documents()->map(fn($d) => $d->id());
 
         $query = Query::multiMatch()
@@ -37,7 +37,7 @@ class Search
 
         return Product::query()
             ->with(['category', 'price', 'brand'])
-            ->orWhereIn('id', $results)
-            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids));
+            ->orWhereIn('id', $results);
+//            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids));
     }
 }
