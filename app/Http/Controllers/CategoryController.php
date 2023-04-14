@@ -12,7 +12,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-       return view('categories');
+        $categories = Category::root()->with("image")->orderBy("order")->get();
+        return view('categories', compact('categories'));
     }
 
     public function show(Category $category)
