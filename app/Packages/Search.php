@@ -32,7 +32,7 @@ class Search
             ->query($query)
             ->fuzziness('AUTO');
 
-        $results = Product::searchQuery($query)->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true)->take(1)
+        $results = Product::searchQuery($query)->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true)
             ->map(fn(Hit $hit) => $hit->document()->id());
 
         return Product::query()
