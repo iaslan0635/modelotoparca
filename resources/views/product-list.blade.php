@@ -1094,7 +1094,7 @@
                                                             </a>
                                                         </li>
                                                     @endif
-                                                    @foreach(request()->input('brands') as $brand)
+                                                    @foreach(request()->input('brands', []) as $brand)
                                                         <li class="applied-filters__item">
                                                             <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand][0]->brand->id }}"
                                                                    value="{{ $brands[$brand][0]->brand->id }}">
