@@ -49,6 +49,10 @@ Route::view('checkout', 'checkout')->name('checkout');
 Route::view('add-adress', 'account.add-adress')->name('add-adress');
 Route::view('order-success', 'account.order-success')->name('order-success');
 
+Route::get('efe/{slug}', function ($slug){
+    return $slug;
+})->where('slug', '.*');
+
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
 Route::get('c/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 Route::prefix('p/{product:slug}')->group(function () {

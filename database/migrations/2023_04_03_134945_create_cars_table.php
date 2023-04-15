@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('name')->index();
             $table->string('short_name')->nullable()->index();
             $table->string('body_type')->nullable();
-            $table->string('permalink')->unique();
-            $table->string('slug')->nullable();
+            $table->string('permalink')->index()->unique();
             $table->string('power')->nullable();
             $table->string('capacity')->nullable();
 
