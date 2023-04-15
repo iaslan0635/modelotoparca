@@ -127,15 +127,11 @@
                                                     <td>{{ $product->producercode }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Brand</th>
+                                                    <th>Marka</th>
                                                     <td><a href="">{{ $product->brand->name }}</a></td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Country</th>
-                                                    <td>Japan</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Vendor code</th>
+                                                    <th>Cross code</th>
                                                     <td>{{ $product->cross_code }}</td>
                                                 </tr>
                                             </table>
