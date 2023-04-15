@@ -21,17 +21,13 @@ class Search
         $resultCars = Car::searchQuery($queryCar)->paginate(500);
         $carids = $resultCars->documents()->map(fn($d) => $d->id())->toArray();
 
-        /*$queryOem = Query::match()
+        $queryOem = Query::match()
             ->field('oem')
             ->query($query)
-            ->fuzziness('AUTO');
+            ->fuzziness('1');
 
         $resultOems = ProductOem::searchQuery($queryOem)->paginate(500);
-        $oemids = $resultOems->hits()->map(function($hit) {
-            if ($hit->document()->content('logicalref') !== null) {
-                return $hit->document()->content('logicalref');
-            }
-        })->toArray();*/
+        $oemids = $resultOems->hits()->map(fn($hit) => $hit->document()->content('logicalref'))->filter()->toArray();
 
         $query = Query::multiMatch()
             ->fields([
@@ -51,7 +47,7 @@ class Search
         return Product::query()
             ->with(['category', 'price', 'brand'])
             ->orWhereIn('id', $results)
-            //->orWhereRelation('oems', fn($q) => $q->whereIn('id', $oemids))
+            ->orWhereRelation('oems', fn($q) => $q->whereIn('id', $oemids))
             ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids));
     }
 }
