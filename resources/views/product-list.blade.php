@@ -116,10 +116,10 @@
                                                         <div class="filter__body" data-collapse-content>
                                                             <div class="filter__container">
                                                                 <div class="filter-price"
-                                                                     data-min="{{ $products->min('price.price') }}"
-                                                                     data-max="{{ $products->max('price.price') }}"
-                                                                     data-from="{{ $products->min('price.price') }}"
-                                                                     data-to="{{ $products->max('price.price') }}">
+                                                                     data-min="0"
+                                                                     data-max="999999"
+                                                                     data-from="0"
+                                                                     data-to="999999">
                                                                     <div class="filter-price__slider"></div>
                                                                     <div class="filter-price__title-button">
                                                                         <input type="hidden" name="min_price" value=""
