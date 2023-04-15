@@ -72,14 +72,16 @@
 	C6.1,7.8,6.1,8.4,5.7,8.7z"/>
                                                                                 </svg>
                                                                             </span>
-                                                                                <img src="{{ $parent->imageUrl() }}" class="category-icon-image">
+                                                                                <img src="{{ $parent->imageUrl() }}"
+                                                                                     class="category-icon-image">
                                                                                 <a href="{{ route('category.show', [...request()->query(), 'category' => $parent]) }}">{{ $parent->name }}</a>
                                                                                 <div
                                                                                     class="filter-categories__counter">{{ $parent->deepProductsCount }}</div>
                                                                             </li>
                                                                         @endforeach
                                                                         <li class="filter-categories__item filter-categories__item--current">
-                                                                            <img src="{{ $category->imageUrl() }}" class="category-icon-image">
+                                                                            <img src="{{ $category->imageUrl() }}"
+                                                                                 class="category-icon-image">
                                                                             <a href="{{ route('category.show', [...request()->query(), 'category' => $category]) }}">{{ $category->name }}</a>
                                                                             <div
                                                                                 class="filter-categories__counter">{{ $category->deepProductsCount }}</div>
@@ -87,7 +89,8 @@
                                                                         @foreach($category->children->sortByDesc("products_count") as $child)
                                                                             @if($child->deepProductsCount > 0)
                                                                                 <li class="filter-categories__item filter-categories__item--child">
-                                                                                    <img src="{{ $child->imageUrl() }}" class="category-icon-image">
+                                                                                    <img src="{{ $child->imageUrl() }}"
+                                                                                         class="category-icon-image">
                                                                                     <a href="{{ route('category.show', [...request()->query(), 'category' => $child]) }}">{{ $child->name }}</a>
                                                                                     <div
                                                                                         class="filter-categories__counter">{{ $child->products_count }}</div>
@@ -1000,7 +1003,8 @@
                                         </button>
                                         <div class="view-options__layout layout-switcher">
                                             <div class="layout-switcher__list">
-                                                <button type="button" data-layout-id="1" class="layout-switcher__button" data-layout="grid"
+                                                <button type="button" data-layout-id="1" class="layout-switcher__button"
+                                                        data-layout="grid"
                                                         data-with-features="false">
                                                     <svg width="16" height="16">
                                                         <path d="M15.2,16H9.8C9.4,16,9,15.6,9,15.2V9.8C9,9.4,9.4,9,9.8,9h5.4C15.6,9,16,9.4,16,9.8v5.4C16,15.6,15.6,16,15.2,16z M15.2,7
@@ -1009,14 +1013,16 @@
 	C0,0.4,0.4,0,0.8,0h5.4C6.6,0,7,0.4,7,0.8v5.4C7,6.6,6.6,7,6.2,7z"/>
                                                     </svg>
                                                 </button>
-                                                <button type="button" data-layout-id="2" class="layout-switcher__button" data-layout="grid"
+                                                <button type="button" data-layout-id="2" class="layout-switcher__button"
+                                                        data-layout="grid"
                                                         data-with-features="true">
                                                     <svg width="16" height="16">
                                                         <path d="M16,0.8v14.4c0,0.4-0.4,0.8-0.8,0.8H9.8C9.4,16,9,15.6,9,15.2V0.8C9,0.4,9.4,0,9.8,0l5.4,0C15.6,0,16,0.4,16,0.8z M7,0.8
 	v14.4C7,15.6,6.6,16,6.2,16H0.8C0.4,16,0,15.6,0,15.2L0,0.8C0,0.4,0.4,0,0.8,0l5.4,0C6.6,0,7,0.4,7,0.8z"/>
                                                     </svg>
                                                 </button>
-                                                <button type="button" data-layout-id="3" class="layout-switcher__button layout-switcher__button--active"
+                                                <button type="button" data-layout-id="3"
+                                                        class="layout-switcher__button layout-switcher__button--active"
                                                         data-layout="list" data-with-features="false">
                                                     <svg width="16" height="16">
                                                         <path d="M15.2,16H0.8C0.4,16,0,15.6,0,15.2V9.8C0,9.4,0.4,9,0.8,9h14.4C15.6,9,16,9.4,16,9.8v5.4C16,15.6,15.6,16,15.2,16z M15.2,7
@@ -1058,34 +1064,54 @@
                                     <div class="view-options__body view-options__body--filters">
                                         <div class="view-options__label">Active Filters</div>
                                         <div class="applied-filters">
-                                            <ul class="applied-filters__list">
-                                                <li class="applied-filters__item">
-                                                    <a href=""
-                                                       class="applied-filters__button applied-filters__button--filter">
-                                                        Sales: Top Sellers
-                                                        <svg width="9" height="9">
-                                                            <path
-                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                        </svg>
-                                                    </a>
-                                                </li>
-                                                <li class="applied-filters__item">
-                                                    <a href=""
-                                                       class="applied-filters__button applied-filters__button--filter">
-                                                        Color: True Red
-                                                        <svg width="9" height="9">
-                                                            <path
-                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                        </svg>
-                                                    </a>
-                                                </li>
-                                                <li class="applied-filters__item">
-                                                    <button type="button"
-                                                            class="applied-filters__button applied-filters__button--clear">
-                                                        Clear All
-                                                    </button>
-                                                </li>
-                                            </ul>
+                                            <form method="GET" id="querySearch">
+                                                <ul class="applied-filters__list">
+                                                    @if(request()->has('min_price'))
+                                                        <input type="hidden" name="min_price" id="min-price"
+                                                               value="{{ request()->input('min_price') }}">
+                                                        <li class="applied-filters__item">
+                                                            <a href="#"
+                                                               class="applied-filters__button applied-filters__button--filter">
+                                                                En düşük fiyat: {{ request()->input('min_price') }}
+                                                                <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
+                                                                    <path
+                                                                        d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                    @if(request()->has('max_price'))
+                                                        <input type="hidden" name="max_price" id="max-price"
+                                                               value="{{ request()->input('max_price') }}">
+                                                        <li class="applied-filters__item">
+                                                            <a href="#"
+                                                               class="applied-filters__button applied-filters__button--filter">
+                                                                En yüksek fiyat: {{ request()->input('max_price') }}
+                                                                <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
+                                                                    <path
+                                                                        d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                    @foreach(request()->input('brands') as $brand)
+                                                        <li class="applied-filters__item">
+                                                            <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand][0]->brand->id }}"
+                                                                   value="{{ $brands[$brand][0]->brand->id }}">
+                                                            <a href="#"
+                                                               class="applied-filters__button applied-filters__button--filter">
+                                                                Marka: {{ $brands[$brand][0]->brand->name }}
+                                                                <svg
+                                                                    onclick="$(`#brand-{{ $brands[$brand][0]->brand->id }}`).remove() && $('#querySearch').submit()"
+                                                                    width="9" height="9">
+                                                                    <path
+                                                                        d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -1135,7 +1161,8 @@
                                                     </div>
                                                     <div class="product-card__image">
                                                         <div class="image image--type--product">
-                                                            <a href="{{ route('product.show', $product) }}" class="image__body">
+                                                            <a href="{{ route('product.show', $product) }}"
+                                                               class="image__body">
                                                                 <img loading="lazy" class="image__tag"
                                                                      src="{{ $product->imageUrl() }}" alt="">
                                                             </a>
@@ -1212,7 +1239,8 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
                                                             </svg>
                                                         </button>
-                                                        <livewire:add-to-cart :product="$product" :quantity_mode="false" />
+                                                        <livewire:add-to-cart :product="$product"
+                                                                              :quantity_mode="false"/>
                                                         <button class="product-card__wishlist" type="button">
                                                             <svg width="16" height="16">
                                                                 <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
@@ -1259,11 +1287,9 @@
 
 @push('scripts')
     <script>
-        /*let searchParams = new URLSearchParams(window.location.search);
+        //console.log(searchParams)
 
-        console.log(searchParams.toString())
-
-        const categories = document.getElementsByClassName("filter-categories__item");
+        /*const categories = document.getElementsByClassName("filter-categories__item");
 
         for (let category of categories){
             let href = category.childNodes[3].getAttribute('href');
