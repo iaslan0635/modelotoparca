@@ -9,15 +9,27 @@
             </div>
         </div>
         <div class="product__actions-item product__actions-item--addtocart" data-slug="{{ $product->slug }}">
-            <button class="btn btn-primary btn-lg btn-block" wire:click="addToCart()" wire:loading.attr="disabled">
+            @if($product->quantity > 1)
+                <button class="btn btn-primary btn-lg btn-block" wire:click="addToCart()" wire:loading.attr="disabled">
+                    <span wire:loading.remove>Sepete Ekle</span>
+                    <span wire:loading><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+            @else
+                <button class="btn btn-primary btn-lg btn-block">
+                    <span>Stokta Yok</span>
+                </button>
+            @endif
+        </div>
+    @else
+        @if($product->quantity > 1)
+            <button class="product-card__addtocart-full" wire:click="addToCart()" wire:loading.attr="disabled">
                 <span wire:loading.remove>Sepete Ekle</span>
                 <span wire:loading><i class="fas fa-spinner fa-spin"></i></span>
             </button>
-        </div>
-    @else
-        <button class="product-card__addtocart-full" wire:click="addToCart()" wire:loading.attr="disabled">
-            <span wire:loading.remove>Sepete Ekle</span>
-            <span wire:loading><i class="fas fa-spinner fa-spin"></i></span>
-        </button>
+        @else
+            <button class="product-card__addtocart-full">
+                <span>Stokta Yok</span>
+            </button>
+        @endif
     @endif
 </div>
