@@ -15,7 +15,7 @@ class Search
         $queryCar = Query::match()
             ->field('name')
             ->query($query)
-            ->fuzziness('AUTO');
+            ->fuzziness('1');
 
         $resultCars = Car::searchQuery($queryCar)->paginate(500);
         $carids = $resultCars->documents()->map(fn($d) => $d->id());
@@ -37,7 +37,7 @@ class Search
 
         return Product::query()
             ->with(['category', 'price', 'brand'])
-            ->orWhereIn('id', $results);
-//            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids));
+            ->orWhereIn('id', $results)
+            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids));
     }
 }

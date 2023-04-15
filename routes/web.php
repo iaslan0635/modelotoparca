@@ -30,16 +30,13 @@ Route::get('cart', function () {
 });
 
 Route::get('test', function () {
-    $query = Query::match()
+    $queryCar = Query::match()
         ->field('name')
-        ->query("honda")
-        ->fuzziness('AUTO');
+        ->query("panel")
+        ->fuzziness('1');
 
-    $results = \App\Models\Car::searchQuery($query)->paginate(500);
-
-    //$product = Product::whereIn('id', $ids)->;
-
-    $carids = $results->documents()->map(fn($d) => $d->id());
+    $results = \App\Models\Car::searchQuery($queryCar)->execute();
+    return $results->documents();
 });
 
 Route::view('search', 'search')->name('search');
