@@ -117,9 +117,9 @@
                                                             <div class="filter__container">
                                                                 <div class="filter-price"
                                                                      data-min="0"
-                                                                     data-max="999999"
+                                                                     data-max="99999"
                                                                      data-from="0"
-                                                                     data-to="999999">
+                                                                     data-to="99999">
                                                                     <div class="filter-price__slider"></div>
                                                                     <div class="filter-price__title-button">
                                                                         <input type="hidden" name="min_price" value=""
