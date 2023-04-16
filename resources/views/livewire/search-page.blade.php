@@ -408,7 +408,7 @@
                                 </div>
                                 <div class="view-options__legend">
                                     {{ $products->total() }} adet üründen {{ $products->perPage() }} tanesi
-                                    gösteriliyor
+                                    gösteriliyor. Sorgu Türü : {{ $term === "product" ? "ÜRÜN":"OEM KOD" }}
                                 </div>
                                 <div class="view-options__spring"></div>
                                 <div class="view-options__select">
@@ -527,9 +527,7 @@
                                                                     d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
                                                             </svg>
                                                         </div>
-                                                        <div class="status-badge__text">Part Fit for 2011 Ford
-                                                            Focus S
-                                                        </div>
+                                                        <div class="status-badge__text">{{ implode(',', array_keys($highlights[$product->id] ?? [])) }}</div>
                                                         <div class="status-badge__tooltip" tabindex="0"
                                                              data-toggle="tooltip"
                                                              title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>

@@ -11,8 +11,9 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Search
 {
-    public static function query(string $query): Builder
+    public static function query(string $query): array
     {
+        $term = "product";
         $queryCar = Query::match()
             ->field('name')
             ->query($query)
@@ -29,6 +30,11 @@ class Search
         $resultOems = ProductOem::searchQuery($queryOem)->paginate(500);
         $oemids = $resultOems->hits()->map(fn($hit) => $hit->document()->content('logicalref'))->filter()->toArray();
         $oemids = array_unique($oemids);
+
+        if (count($oemids) > 0){
+            $term = "oem";
+        }
+
         $query = Query::multiMatch()
             ->fields([
                 "title",
@@ -41,13 +47,37 @@ class Search
             ->query($query)
             ->fuzziness('AUTO');
 
-        $results = Product::searchQuery($query)->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true)
-            ->map(fn(Hit $hit) => $hit->document()->id());
+        $results = Product::searchQuery($query)
+            ->highlightRaw([
+                'fields' => [
+                    "title" => new \stdClass(),
+                    "sub_title" => new \stdClass(),
+                    "cross_code" => new \stdClass(),
+                    "producercode" => new \stdClass(),
+                    "producercode2" => new \stdClass(),
+                    "similar_product_codes" => new \stdClass(),
+                ]
+            ])
+            ->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true);
+            //->map(fn(Hit $hit) => $hit->document()->id());
 
-        return Product::query()
+        $highlights = [];
+
+        foreach ($results as $result){
+//            dd($result->highlight()->raw());
+            $highlights[$result->document()->id()] = $result->highlight()->raw();
+        }
+
+        $results = $results->map(fn(Hit $hit) => $hit->document()->id());
+
+        return [
+            'query' => Product::query()
             ->with(['category', 'price', 'brand'])
             ->orWhereIn('id', $results)
             ->orWhereRelation('oems', fn($q) => $q->whereIn('logicalref', $oemids))
-            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids));
+            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids)),
+            'term' => $term,
+            'highlights' => $highlights
+        ];
     }
 }

@@ -11,6 +11,8 @@ use App\Packages\Search as Searchable;
 class Search extends Component
 {
     public $query = "";
+    public $term = "product";
+    public $highlights = [];
 
 
     public function render()
@@ -19,7 +21,10 @@ class Search extends Component
         $results = [];
         //dd($this->query);
         if (strlen($this->query) >= 3) {
-            $results = Searchable::query($this->query)->limit(10)->get()->all();
+            $resulta = Searchable::query($this->query);
+            $results = $resulta['query']->limit(10)->get()->all();
+            $this->term = $resulta["term"];
+            $this->highlights = $resulta["highlights"];
             foreach ($results as $result) {
                 foreach ($result->category as $item) {
                     $categories[$item->id] = $item;

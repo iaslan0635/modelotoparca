@@ -30,7 +30,7 @@
                                     </div>
                                 </div>
                                 <div class="suggestions__product-info">
-                                    <div class="suggestions__product-name">{{ $product->fullTitle }}</div>
+                                    <div class="suggestions__product-name">{{ $product->fullTitle }} / {{ implode(',', array_keys($highlights[$product->id] ?? [])) }} {{ $term !== "product" ? null:"OEM KOD" }}</div>
                                     <div class="suggestions__product-rating">
                                         <div class="suggestions__product-rating-stars">
                                             <div class="rating">
