@@ -127,15 +127,11 @@
                                                     <td>{{ $product->producercode }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Brand</th>
+                                                    <th>Marka</th>
                                                     <td><a href="">{{ $product->brand->name }}</a></td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Country</th>
-                                                    <td>Japan</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Vendor code</th>
+                                                    <th>Cross code</th>
                                                     <td>{{ $product->cross_code }}</td>
                                                 </tr>
                                             </table>
@@ -433,7 +429,11 @@
                                                                 <tr>
                                                                     <td class="analogs-table__column">{{ $oem->brand }}</td>
                                                                     <td style="width:100%; display: inline-block; word-break: break-all; font-weight: 700">
-                                                                        {{ $oem->oems }}
+                                                                        @foreach(explode(',', $oem->oems) as $item)
+                                                                            <a href="{{ route('search', ['query' => $item]) }}">
+                                                                                {{ $item }} {{ !$loop->last ? ",":null }}
+                                                                            </a>
+                                                                        @endforeach
                                                                     </td>
                                                                 </tr>
                                                             @endforeach

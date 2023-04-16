@@ -2,11 +2,12 @@
 
 namespace App\Packages;
 
+use App\Models\Car;
 use App\Models\Product;
+use App\Models\ProductOem;
 use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 
 class Search
 {
@@ -15,11 +16,19 @@ class Search
         $queryCar = Query::match()
             ->field('name')
             ->query($query)
-            ->fuzziness('AUTO');
+            ->fuzziness('1');
 
-        $resultCars = \App\Models\Car::searchQuery($queryCar)->paginate(500);
-        $carids = $resultCars->documents()->map(fn($d) => $d->id());
+        $resultCars = Car::searchQuery($queryCar)->paginate(500);
+        $carids = $resultCars->documents()->map(fn($d) => $d->id())->toArray();
 
+        $queryOem = Query::match()
+            ->field('oem')
+            ->query($query)
+            ->fuzziness('1');
+
+        $resultOems = ProductOem::searchQuery($queryOem)->paginate(500);
+        $oemids = $resultOems->hits()->map(fn($hit) => $hit->document()->content('logicalref'))->filter()->toArray();
+        $oemids = array_unique($oemids);
         $query = Query::multiMatch()
             ->fields([
                 "title",
@@ -32,12 +41,13 @@ class Search
             ->query($query)
             ->fuzziness('AUTO');
 
-        $results = Product::searchQuery($query)->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true)->take(1)
+        $results = Product::searchQuery($query)->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true)
             ->map(fn(Hit $hit) => $hit->document()->id());
 
         return Product::query()
             ->with(['category', 'price', 'brand'])
             ->orWhereIn('id', $results)
+            ->orWhereRelation('oems', fn($q) => $q->whereIn('logicalref', $oemids))
             ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids));
     }
 }

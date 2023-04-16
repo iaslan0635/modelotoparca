@@ -5,7 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\Category;
 use App\Models\Product;
 use Elastic\ScoutDriverPlus\Support\Query;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,16 +30,13 @@ Route::get('cart', function () {
 });
 
 Route::get('test', function () {
-    $query = Query::match()
+    $queryCar = Query::match()
         ->field('name')
-        ->query("honda")
-        ->fuzziness('AUTO');
+        ->query("panel")
+        ->fuzziness('1');
 
-    $results = \App\Models\Car::searchQuery($query)->paginate(500);
-
-    //$product = Product::whereIn('id', $ids)->;
-
-    $carids = $results->documents()->map(fn($d) => $d->id());
+    $results = \App\Models\Car::searchQuery($queryCar)->execute();
+    return $results->documents();
 });
 
 Route::view('search', 'search')->name('search');
@@ -51,6 +48,8 @@ Route::view('cart', 'cart')->name('cart');
 Route::view('checkout', 'checkout')->name('checkout');
 Route::view('add-adress', 'account.add-adress')->name('add-adress');
 Route::view('order-success', 'account.order-success')->name('order-success');
+
+Route::get('araba/{permalink}', [CarController::class, 'index'])->name('car.search')->where('permalink', '.*');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
 Route::get('c/{category:slug}', [CategoryController::class, 'show'])->name('category.show');

@@ -17,7 +17,7 @@ class Search extends Component
     {
         $categories = [];
         $results = [];
-
+        //dd($this->query);
         if (strlen($this->query) >= 3) {
             $results = Searchable::query($this->query)->limit(10)->get()->all();
             foreach ($results as $result) {

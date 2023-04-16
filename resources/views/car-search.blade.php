@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
     <div class="site__body">
         <div class="block-header block-header--has-breadcrumb block-header--has-title">
             <div class="container">
@@ -42,7 +41,7 @@
                                     </button>
                                 </div>
                                 <div class="sidebar__content">
-                                    <form action="{{ route('category.show', $category) }}" method="GET">
+                                    <form action="{{ route('car.search', $car->permalink) }}" method="GET">
                                         <div class="widget widget-filters widget-filters--offcanvas--mobile"
                                              data-collapse
                                              data-collapse-opened-class="filter--opened">
@@ -64,29 +63,7 @@
                                                             <div class="filter__container">
                                                                 <div class="filter-categories">
                                                                     <ul class="filter-categories__list">
-                                                                        @foreach($parents as $parent)
-                                                                            <li class="filter-categories__item filter-categories__item--parent">
-                                                                            <span class="filter-categories__arrow"><svg
-                                                                                    width="6" height="9">
-                                                                                    <path d="M5.7,8.7L5.7,8.7c-0.4,0.4-0.9,0.4-1.3,0L0,4.5l4.4-4.2c0.4-0.4,0.9-0.3,1.3,0l0,0c0.4,0.4,0.4,1,0,1.3l-3,2.9l3,2.9
-	C6.1,7.8,6.1,8.4,5.7,8.7z"/>
-                                                                                </svg>
-                                                                            </span>
-                                                                                <img src="{{ $parent->imageUrl() }}"
-                                                                                     class="category-icon-image">
-                                                                                <a href="{{ route('category.show', [...request()->query(), 'category' => $parent]) }}">{{ $parent->name }}</a>
-                                                                                <div
-                                                                                    class="filter-categories__counter">{{ $parent->deepProductsCount }}</div>
-                                                                            </li>
-                                                                        @endforeach
-                                                                        <li class="filter-categories__item filter-categories__item--current">
-                                                                            <img src="{{ $category->imageUrl() }}"
-                                                                                 class="category-icon-image">
-                                                                            <a href="{{ route('category.show', [...request()->query(), 'category' => $category]) }}">{{ $category->name }}</a>
-                                                                            <div
-                                                                                class="filter-categories__counter">{{ $category->deepProductsCount }}</div>
-                                                                        </li>
-                                                                        @foreach($category->children->sortByDesc("products_count") as $child)
+                                                                        @foreach($categories as $child)
                                                                             @if($child->deepProductsCount > 0)
                                                                                 <li class="filter-categories__item filter-categories__item--child">
                                                                                     <img src="{{ $child->imageUrl() }}"

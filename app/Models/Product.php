@@ -80,7 +80,7 @@ class Product extends BaseModel implements CanVisit
 
     public function fullTitle(): Attribute
     {
-        return Attribute::get(fn() => $this->title . ($this->part_number ? " @" . $this->part_number : ""));
+        return Attribute::get(fn() => $this->title . ($this->producercode ? " @" . $this->producercode : ""));
     }
 
     public function cars(): BelongsToMany

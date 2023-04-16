@@ -2,34 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\CategoryFacade;
-use App\Models\Category;
+use App\Models\Car;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CarController extends Controller
 {
-    public function index()
+    public function index($permalink)
     {
-        $categories = Category::root()->with("image")->orderBy("order")->get();
-        return view('categories', compact('categories'));
-    }
-
-    public function show(Category $category)
-    {
-        $tree = CategoryFacade::getTree($category->id);
-
+        $car = Car::query()->where('permalink', '=', $permalink)->firstOrFail();
         $minPrice = request()->input('min_price', 0);
         $maxPrice = request()->input('max_price', 999999);
-
-
-        $parents = Category::query()->with('products')->whereIn('id', $tree["parents"])->get();
         $query = Product::query()
             ->with(['category', 'price', 'brand'])
             ->join('prices', 'products.id', '=', 'prices.product_id')
             ->whereBetween('prices.price', [$minPrice, $maxPrice])->select('products.*')
+            ->whereRelation('cars', function ($q) use ($car) {
+                return $q->where('id', $car->id);
+            })
             ->distinct();
+        $filters = $query->get();
 
         if (request()->has('sortBy') && request()->input('sortBy') === "price-asc") {
             $query = $query->orderBy('prices.price', 'asc');
@@ -41,32 +35,22 @@ class CategoryController extends Controller
             $query = $query->orderBy('products.title', 'desc');
         }
 
-        $query = $query
-            ->whereRelation('category', fn(Builder $q) => $q->whereIn("id", $tree["childs"]));
-
         $brands = $query->get()->groupBy('brand_id');
 
-        if (request()->has('brands')){
+        if (request()->has('brands')) {
             $query = $query->whereIn('brand_id', request()->input('brands'));
         }
 
-        $pids = $query->get()->map(function ($item) {
-            return $item->id;
-        });
-
-        $category->load([
-            "children" => function (HasMany $b) use ($pids) {
-                $b->whereHas('products', function($q) use ($pids) {
-                    $q->whereIn('id', $pids);
-                })->withCount(["products" => function ($query) use ($pids) {
-                    $query->whereIn('id', $pids);
-                }]);
-            }
-        ]);
-        $category->loadCount('products');
 
         $products = $query->paginate(12);
+        $categories = [];
 
-        return view('product-list', compact('category', 'parents', 'products', 'brands'));
+        foreach ($filters as $product) {
+            foreach ($product->category as $item) {
+                $categories[$item->id] = $item;
+            }
+        }
+
+        return view('car-search', compact('products', 'car', 'categories', 'brands'));
     }
 }
