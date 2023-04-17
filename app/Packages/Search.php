@@ -49,17 +49,17 @@ class Search
             ->query($query)
             ->fuzziness('AUTO');
 
+        $highlightsOptions = [
+            "pre_tags" => ["PHP"],
+            "post_tags" => ["PHP"]
+        ];
         $results = Product::searchQuery($query)
-            ->highlightRaw([
-                'fields' => [
-                    "title" => new \stdClass(),
-                    "sub_title" => new \stdClass(),
-                    "cross_code" => new \stdClass(),
-                    "producercode" => new \stdClass(),
-                    "producercode2" => new \stdClass(),
-                    "similar_product_codes" => new \stdClass(),
-                ]
-            ])
+            ->highlight("title", $highlightsOptions)
+            ->highlight("sub_title", $highlightsOptions)
+            ->highlight("cross_code", $highlightsOptions)
+            ->highlight("producercode", $highlightsOptions)
+            ->highlight("producercode2", $highlightsOptions)
+            ->highlight("similar_product_codes", $highlightsOptions)
             ->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true);
             //->map(fn(Hit $hit) => $hit->document()->id());
 
