@@ -13,6 +13,8 @@ class Search
 {
     public static function query(string $query): array
     {
+        $query = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($query));
+
         $term = "product";
         $queryCar = Query::match()
             ->field('name')
@@ -20,7 +22,7 @@ class Search
             ->fuzziness('1');
 
         $resultCars = Car::searchQuery($queryCar)->paginate(500);
-        $carids = $resultCars->documents()->map(fn($d) => $d->id())->toArray();
+        $carIds = $resultCars->documents()->map(fn($d) => $d->id())->toArray();
 
         $queryOem = Query::match()
             ->field('oem')
@@ -28,11 +30,11 @@ class Search
             ->fuzziness('1');
 
         $resultOems = ProductOem::searchQuery($queryOem)->paginate(500);
-        $oemids = $resultOems->hits()->map(fn($hit) => $hit->document()->content('logicalref'))->filter()->toArray();
-        $oemids = array_unique($oemids);
+        $oemIds = $resultOems->hits()->map(fn($hit) => $hit->document()->content('logicalref'))->filter()->toArray();
+        $oemIds = array_unique($oemIds);
 
-        if (count($oemids) > 0){
-            $term = "oem";
+        if (count($oemIds) > 0){
+            $term = "oem"; // FIXME: Oemlerden bulunanlar olsa bile sonuçlar diğer bulunanlarla birlikte geliyor.
         }
 
         $query = Query::multiMatch()
@@ -74,8 +76,8 @@ class Search
             'query' => Product::query()
             ->with(['category', 'price', 'brand'])
             ->orWhereIn('id', $results)
-            ->orWhereRelation('oems', fn($q) => $q->whereIn('logicalref', $oemids))
-            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carids)),
+            ->orWhereRelation('oems', fn($q) => $q->whereIn('logicalref', $oemIds))
+            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carIds)),
             'term' => $term,
             'highlights' => $highlights
         ];
