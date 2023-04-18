@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\ProductOem;
 use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
-use Illuminate\Database\Eloquent\Builder;
 
 class Search
 {
@@ -33,7 +32,7 @@ class Search
         $oemIds = $resultOems->hits()->map(fn($hit) => $hit->document()->content('logicalref'))->filter()->toArray();
         $oemIds = array_unique($oemIds);
 
-        if (count($oemIds) > 0){
+        if (count($oemIds) > 0) {
             $term = "oem"; // FIXME: Oemlerden bulunanlar olsa bile sonuçlar diğer bulunanlarla birlikte geliyor.
         }
 
@@ -50,9 +49,10 @@ class Search
             ->fuzziness('AUTO');
 
         $highlightsOptions = [
-            "pre_tags" => ["PHP"],
-            "post_tags" => ["PHP"]
+            "pre_tags" => [],
+            "post_tags" => []
         ];
+
         $results = Product::searchQuery($query)
             ->highlight("title", $highlightsOptions)
             ->highlight("sub_title", $highlightsOptions)
@@ -61,11 +61,11 @@ class Search
             ->highlight("producercode2", $highlightsOptions)
             ->highlight("similar_product_codes", $highlightsOptions)
             ->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true);
-            //->map(fn(Hit $hit) => $hit->document()->id());
+        //->map(fn(Hit $hit) => $hit->document()->id());
 
         $highlights = [];
 
-        foreach ($results as $result){
+        foreach ($results as $result) {
 //            dd($result->highlight()->raw());
             $highlights[$result->document()->id()] = $result->highlight()->raw();
         }
@@ -74,10 +74,10 @@ class Search
 
         return [
             'query' => Product::query()
-            ->with(['category', 'price', 'brand'])
-            ->orWhereIn('id', $results)
-            ->orWhereRelation('oems', fn($q) => $q->whereIn('logicalref', $oemIds))
-            ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carIds)),
+                ->with(['category', 'price', 'brand'])
+                ->orWhereIn('id', $results)
+                ->orWhereRelation('oems', fn($q) => $q->whereIn('logicalref', $oemIds))
+                ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carIds)),
             'term' => $term,
             'highlights' => $highlights
         ];
