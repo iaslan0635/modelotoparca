@@ -14,8 +14,6 @@ class Brand extends BaseModel
 
     protected $guarded = [];
 
-    protected $withCount = ['products'];
-
     protected $casts = [
         'type' => BrandType::class,
         'data' => 'array'

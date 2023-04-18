@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $categories = Category::root()->limit(15)->orderBy("order")->get(["slug", "name"]);
-    $featured_products = Product::query()->limit(20)->with("price:id,price,currency,product_id")->get(["id", "slug" ,"sku", "title"]);
+    $featured_products = Product::query()->limit(20)->with(["price:id,price,currency,product_id", "brand.image", "image"])->get(["id", "slug" ,"sku", "title", "brand_id"]);
     return view('home', compact('categories' ,'featured_products'));
 });
 

@@ -22,6 +22,7 @@
                     <div class="product-card__image">
                         <div class="image image--type--product">
                             <a href="{{ route("product.show", $product) }}" class="image__body">
+                                <img src="{{ $product->brand?->imageUrl() }}" alt="" style="position: absolute;z-index: 1;max-width: 6rem;max-height: 6rem;left: 0;top: 0;">
                                 <img class="image__tag" src="{{ $product->imageUrl() }}" alt="">
                             </a>
                         </div>
@@ -33,11 +34,6 @@
                         </div>
                         <div class="product-card__name">
                             <div>
-                                <div class="product-card__badges">
-                                    <div class="tag-badge tag-badge--sale">sale</div>
-                                    <div class="tag-badge tag-badge--new">new</div>
-                                    <div class="tag-badge tag-badge--hot">hot</div>
-                                </div>
                                 <a href="{{ route("product.show", $product) }}">{{ $product->title }}</a>
                             </div>
                         </div>
