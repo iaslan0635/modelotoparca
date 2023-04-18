@@ -17,12 +17,7 @@
                         <div class="block">
                             <div class="categories-list categories-list--layout--columns-4-full">
                                 <ul class="categories-list__body">
-<<<<<<< HEAD
                                     @foreach(\App\Models\Category::where('parent_id',null)->get() as $root)
-=======
-                                    @foreach($categories as $root)
-
->>>>>>> 1906a987710e0769e3fddac48f504b8f9ee5b79e
                                     <li class="categories-list__item">
                                         <a href="{{ route('category.show', $root) }}">
                                             <div class="image image--type--category">
