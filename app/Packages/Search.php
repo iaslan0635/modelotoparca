@@ -46,7 +46,7 @@ class Search
                 "similar_product_codes",
             ])
             ->query($query)
-            ->fuzziness('2');
+            ->fuzziness('AUTO');
 
         $highlightsOptions = [
             "pre_tags" => [""],
