@@ -49,8 +49,8 @@ class Search
             ->fuzziness('AUTO');
 
         $highlightsOptions = [
-            "pre_tags" => [],
-            "post_tags" => []
+            "pre_tags" => [""],
+            "post_tags" => [""]
         ];
 
         $results = Product::searchQuery($query)
