@@ -7,7 +7,6 @@ use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
 use Elastic\ScoutDriverPlus\Searchable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -45,6 +44,13 @@ class Product extends BaseModel implements CanVisit
             'oems' => $this->oems->map->toSearchableArray(),
             'cars' => $this->cars->map->toSearchableArray(),
             'categories' => $this->categories->map->toSearchableArray(),
+            'brand' => $this->brand?->toSearchableArray(),
+            'price' => $this->price?->only([
+                'id',
+                'product_id',
+                'variant_id',
+                'price',
+            ]),
         ];
     }
 

@@ -18,6 +18,22 @@ class Brand extends BaseModel
         'data' => 'array',
     ];
 
+    protected $searchableAs = 'brands_index';
+
+    public function searchableAs()
+    {
+        return $this->searchableAs;
+    }
+
+    public function toSearchableArray()
+    {
+        return $this->only([
+            'id',
+            'name',
+            'slug',
+        ]);
+    }
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
