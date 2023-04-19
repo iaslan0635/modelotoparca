@@ -9,11 +9,11 @@ class Price extends BaseModel
 {
     protected function price(): Attribute
     {
-        return Attribute::get(fn(int $value) => ExchangeRate::convertToTRY($this->currency, $value));
+        return Attribute::get(fn (int $value) => ExchangeRate::convertToTRY($this->currency, $value));
     }
 
     protected function formattedPrice(): Attribute
     {
-        return Attribute::get(fn() => $this->price . ' ₺');
+        return Attribute::get(fn () => $this->price.' ₺');
     }
 }

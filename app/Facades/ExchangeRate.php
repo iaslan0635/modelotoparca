@@ -20,15 +20,15 @@ class ExchangeRate
         if ($currency === 'try') {
             return 1;
         }
-        if (!($currency === 'usd' || $currency === 'eur')) {
+        if (! ($currency === 'usd' || $currency === 'eur')) {
             throw new \Exception('currency must be usd, eur or try');
         }
-        $key = $currency . '_price';
+        $key = $currency.'_price';
         if (Cache::has($key)) {
             return Cache::get($key);
         } else {
             UpdateExchangeRateJob::updateRates();
-            if (!Cache::has($key)) {
+            if (! Cache::has($key)) {
                 throw new \Exception('UpdateExchangeRateJob::updateRates() is not working properly');
             }
 
@@ -38,7 +38,9 @@ class ExchangeRate
 
     public static function convertFromTRY(string $currency, string $moneyAsTRY): string
     {
-        if ($currency === 'try') return $moneyAsTRY;
+        if ($currency === 'try') {
+        return $moneyAsTRY;
+        }
         $value = bcdiv($moneyAsTRY, self::get($currency), 2);
         if (is_null($value)) {
             throw new \Exception('bcdiv failed (divisor is 0)');
@@ -49,7 +51,10 @@ class ExchangeRate
 
     public static function convertToTRY(string $currency, string $moneyAsCurrency): string
     {
-        if ($currency === 'try') return $moneyAsCurrency;
+        if ($currency === 'try') {
+        return $moneyAsCurrency;
+        }
+
         return bcmul($moneyAsCurrency, self::get($currency), 2);
     }
 }

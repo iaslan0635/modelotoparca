@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('alternatives', function (Blueprint $table) {
-            $table->integer("product_id")->index();
-            $table->integer("alternative_id")->index();
+            $table->integer('product_id')->index();
+            $table->integer('alternative_id')->index();
 
             $table->unique(['product_id', 'alternative_id']);
         });

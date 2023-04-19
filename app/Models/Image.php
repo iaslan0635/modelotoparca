@@ -9,7 +9,7 @@ class Image extends BaseModel
     protected function url(): Attribute
     {
         return Attribute::get(function () {
-            return "https://web.modelotoparca.com" . $this->path;
+            return 'https://web.modelotoparca.com'.$this->path;
         });
     }
 }

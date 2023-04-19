@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('brands', function (Blueprint $table) {
-            $table->unsignedInteger("id")->primary()->comment("logicalref");
+            $table->unsignedInteger('id')->primary()->comment('logicalref');
             $table->string('name')->index();
             $table->string('slug')->index();
             $table->json('data')->nullable();

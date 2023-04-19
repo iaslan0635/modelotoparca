@@ -13,19 +13,18 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger("user_id")->index();
-            $table->unsignedInteger("invoice_id")->nullable()->index();
-            $table->unsignedInteger("coupon_id")->nullable()->index();
+            $table->unsignedInteger('user_id')->index();
+            $table->unsignedInteger('invoice_id')->nullable()->index();
+            $table->unsignedInteger('coupon_id')->nullable()->index();
 
-            $table->string("payment_method");
-            $table->string("payment_status")->nullable();
-            $table->datetime("payment_date")->nullable();
+            $table->string('payment_method');
+            $table->string('payment_status')->nullable();
+            $table->datetime('payment_date')->nullable();
 
-
-            $table->unsignedInteger("shipment_address_id")->index();
-            $table->unsignedInteger("invoice_address_id")->index();
-            $table->string("shipment_status")->nullable();
-            $table->json("payment_data")->nullable();
+            $table->unsignedInteger('shipment_address_id')->index();
+            $table->unsignedInteger('invoice_address_id')->index();
+            $table->string('shipment_status')->nullable();
+            $table->json('payment_data')->nullable();
 
             $table->timestamps();
         });

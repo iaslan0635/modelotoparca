@@ -8,8 +8,11 @@ use Livewire\Component;
 class AddToCart extends Component
 {
     public $product;
+
     public bool $quantity_mode = true;
+
     public bool $quickview = false;
+
     public int $quantity = 1;
 
     public function render()

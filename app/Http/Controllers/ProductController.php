@@ -13,11 +13,12 @@ class ProductController extends Controller
         $product->load(['brand', 'oems', 'crosses', 'alternatives']);
         $product->visit()->withIP()->withUser();
 
-        $oems = $product->oems()->groupBy('brand')->selectRaw("brand, GROUP_CONCAT(oem) as oems")->get();
+        $oems = $product->oems()->groupBy('brand')->selectRaw('brand, GROUP_CONCAT(oem) as oems')->get();
 //            ->map(fn(ProductOem $oem) => ["brand" => $oem->brand, "oems" => explode(",", $oem->oem)]);
 
-        $car_brands = $product->cars()->with("maker:id,name")->get()->groupBy("maker.name")->map(fn($a) => $a->groupBy("short_name"));
+        $car_brands = $product->cars()->with('maker:id,name')->get()->groupBy('maker.name')->map(fn ($a) => $a->groupBy('short_name'));
         LatestProducts::add($product);
+
         return view('product-detail', compact('product', 'oems', 'car_brands'));
     }
 
@@ -26,6 +27,7 @@ class ProductController extends Controller
         $product->load('brand');
         $product->visit()->withIP()->withUser();
         LatestProducts::add($product);
+
         return view('quickview', compact('product'));
     }
 }

@@ -12,7 +12,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::root()->with("image")->orderBy("order")->get();
+        $categories = Category::root()->with('image')->orderBy('order')->get();
+
         return view('categories', compact('categories'));
     }
 
@@ -23,30 +24,29 @@ class CategoryController extends Controller
         $minPrice = request()->input('min_price', 0);
         $maxPrice = request()->input('max_price', 999999);
 
-
-        $parents = Category::query()->with('products')->whereIn('id', $tree["parents"])->get();
+        $parents = Category::query()->with('products')->whereIn('id', $tree['parents'])->get();
         $query = Product::query()
             ->with(['category', 'price', 'brand'])
             ->join('prices', 'products.id', '=', 'prices.product_id')
             ->whereBetween('prices.price', [$minPrice, $maxPrice])->select('products.*')
             ->distinct();
 
-        if (request()->has('sortBy') && request()->input('sortBy') === "price-asc") {
+        if (request()->has('sortBy') && request()->input('sortBy') === 'price-asc') {
             $query = $query->orderBy('prices.price', 'asc');
-        } elseif (request()->has('sortBy') && request()->input('sortBy') === "price-desc") {
+        } elseif (request()->has('sortBy') && request()->input('sortBy') === 'price-desc') {
             $query = $query->orderBy('prices.price', 'desc');
-        } elseif (request()->has('sortBy') && request()->input('sortBy') === "title-asc") {
+        } elseif (request()->has('sortBy') && request()->input('sortBy') === 'title-asc') {
             $query = $query->orderBy('products.title', 'asc');
-        } elseif (request()->has('sortBy') && request()->input('sortBy') === "title-desc") {
+        } elseif (request()->has('sortBy') && request()->input('sortBy') === 'title-desc') {
             $query = $query->orderBy('products.title', 'desc');
         }
 
         $query = $query
-            ->whereRelation('category', fn(Builder $q) => $q->whereIn("id", $tree["childs"]));
+            ->whereRelation('category', fn (Builder $q) => $q->whereIn('id', $tree['childs']));
 
         $brands = $query->get()->groupBy('brand_id');
 
-        if (request()->has('brands')){
+        if (request()->has('brands')) {
             $query = $query->whereIn('brand_id', request()->input('brands'));
         }
 
@@ -55,13 +55,13 @@ class CategoryController extends Controller
         });
 
         $category->load([
-            "children" => function (HasMany $b) use ($pids) {
-                $b->whereHas('products', function($q) use ($pids) {
+            'children' => function (HasMany $b) use ($pids) {
+                $b->whereHas('products', function ($q) use ($pids) {
                     $q->whereIn('id', $pids);
-                })->withCount(["products" => function ($query) use ($pids) {
+                })->withCount(['products' => function ($query) use ($pids) {
                     $query->whereIn('id', $pids);
                 }]);
-            }
+            },
         ]);
         $category->loadCount('products');
 

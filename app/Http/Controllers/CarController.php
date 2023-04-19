@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
@@ -25,13 +22,13 @@ class CarController extends Controller
             ->distinct();
         $filters = $query->get();
 
-        if (request()->has('sortBy') && request()->input('sortBy') === "price-asc") {
+        if (request()->has('sortBy') && request()->input('sortBy') === 'price-asc') {
             $query = $query->orderBy('prices.price', 'asc');
-        } elseif (request()->has('sortBy') && request()->input('sortBy') === "price-desc") {
+        } elseif (request()->has('sortBy') && request()->input('sortBy') === 'price-desc') {
             $query = $query->orderBy('prices.price', 'desc');
-        } elseif (request()->has('sortBy') && request()->input('sortBy') === "title-asc") {
+        } elseif (request()->has('sortBy') && request()->input('sortBy') === 'title-asc') {
             $query = $query->orderBy('products.title', 'asc');
-        } elseif (request()->has('sortBy') && request()->input('sortBy') === "title-desc") {
+        } elseif (request()->has('sortBy') && request()->input('sortBy') === 'title-desc') {
             $query = $query->orderBy('products.title', 'desc');
         }
 
@@ -40,7 +37,6 @@ class CarController extends Controller
         if (request()->has('brands')) {
             $query = $query->whereIn('brand_id', request()->input('brands'));
         }
-
 
         $products = $query->paginate(12);
         $categories = [];

@@ -7,9 +7,10 @@ use Elastic\ScoutDriverPlus\Searchable;
 class ProductOem extends BaseModel
 {
     public $timestamps = false;
+
     use Searchable;
 
-    protected $searchableAs = "product_oems_index";
+    protected $searchableAs = 'product_oems_index';
 
     public function searchableAs()
     {
@@ -21,7 +22,7 @@ class ProductOem extends BaseModel
         return $this->only([
             'id',
             'logicalref',
-            'oem'
+            'oem',
         ]);
     }
 }

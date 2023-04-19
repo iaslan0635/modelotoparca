@@ -1,18 +1,18 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
 use App\Models\Product;
 use Elastic\ScoutDriverPlus\Support\Query;
-use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', function () {
-    $categories = Category::root()->limit(15)->orderBy("order")->get(["slug", "name"]);
-    $featured_products = Product::query()->limit(20)->with(["price:id,price,currency,product_id", "brand.image", "image"])->get(["id", "slug" ,"sku", "title", "brand_id"]);
-    return view('home', compact('categories' ,'featured_products'));
+    $categories = Category::root()->limit(15)->orderBy('order')->get(['slug', 'name']);
+    $featured_products = Product::query()->limit(20)->with(['price:id,price,currency,product_id', 'brand.image', 'image'])->get(['id', 'slug', 'sku', 'title', 'brand_id']);
+
+    return view('home', compact('categories', 'featured_products'));
 });
 
 Route::get('cart', function () {
@@ -23,7 +23,7 @@ Route::get('cart', function () {
     ], model: $product);*/
 
     /*\App\Packages\Cart::addTax(18);*/
-    \App\Packages\Cart::removeItem("6431751b515c1");
+    \App\Packages\Cart::removeItem('6431751b515c1');
     \App\Packages\Cart::addShippingCost(20);
 
     return \App\Packages\Cart::getItems();
@@ -32,10 +32,11 @@ Route::get('cart', function () {
 Route::get('test', function () {
     $queryCar = Query::match()
         ->field('name')
-        ->query("panel")
+        ->query('panel')
         ->fuzziness('1');
 
     $results = \App\Models\Car::searchQuery($queryCar)->execute();
+
     return $results->documents();
 });
 

@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Facades\Garage as GarageFacade;
-use App\Models\Car;
 use Illuminate\Support\Traits\ForwardsCalls;
 use Livewire\Component;
 
@@ -12,11 +11,15 @@ class Garage extends Component
     use ForwardsCalls;
 
     public array|null $cars;
+
     public int|null $chosen;
-    protected $listeners = ['chooseCar', 'reloadData', "forwardCallToGarage"];
+
+    protected $listeners = ['chooseCar', 'reloadData', 'forwardCallToGarage'];
+
     public function render()
     {
         $this->reloadData();
+
         return view('livewire.garage');
     }
 
@@ -35,7 +38,7 @@ class Garage extends Component
     {
         GarageFacade::choose($id);
 
-        $this->emit("reload");
+        $this->emit('reload');
     }
 
     public function remove(int $id)

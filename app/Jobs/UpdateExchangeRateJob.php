@@ -10,7 +10,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 use SimpleXMLElement;
 
 class UpdateExchangeRateJob
@@ -32,8 +31,8 @@ class UpdateExchangeRateJob
 
         $ttl = new CarbonInterval(0, 0, 0, 1);
 
-        Cache::put('usd_price', (string) 19.3708, $ttl); # //Currency[@CurrencyCode="USD"]/BanknoteSelling
-        Cache::put('eur_price', (string) 21.3214, $ttl); # //Currency[@CurrencyCode="EUR"]/BanknoteSelling
+        Cache::put('usd_price', (string) 19.3708, $ttl); //Currency[@CurrencyCode="USD"]/BanknoteSelling
+        Cache::put('eur_price', (string) 21.3214, $ttl); //Currency[@CurrencyCode="EUR"]/BanknoteSelling
     }
 
     public function handle()

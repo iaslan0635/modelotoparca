@@ -14,7 +14,7 @@ class Search
     {
         $query = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($query));
 
-        $term = "product";
+        $term = 'product';
         $carQuery = Query::match()
             ->field('name')
             ->query($query)
@@ -22,12 +22,12 @@ class Search
 
         $productQuery = Query::multiMatch()
             ->fields([
-                "title",
-                "sub_title",
-                "cross_code",
-                "producercode",
-                "producercode2",
-                "similar_product_codes",
+                'title',
+                'sub_title',
+                'cross_code',
+                'producercode',
+                'producercode2',
+                'similar_product_codes',
             ])
             ->query($query)
             ->fuzziness('AUTO');
@@ -37,34 +37,29 @@ class Search
             ->query($query)
             ->fuzziness('1');
 
-
-
         $resultCars = Car::searchQuery($carQuery)->paginate(500);
-        $carIds = $resultCars->documents()->map(fn($d) => $d->id())->toArray();
+        $carIds = $resultCars->documents()->map(fn ($d) => $d->id())->toArray();
 
-
-
-        $resultOems = ProductOem::searchQuery($oemQuery)->collapse("logicalref")->paginate(10);
+        $resultOems = ProductOem::searchQuery($oemQuery)->collapse('logicalref')->paginate(10);
         dd($resultOems);
 
         if (count($resultOems->models()) > 0) {
-            $term = "oem"; // FIXME: Oemlerden bulunanlar olsa bile sonuçlar diğer bulunanlarla birlikte geliyor.
+            $term = 'oem'; // FIXME: Oemlerden bulunanlar olsa bile sonuçlar diğer bulunanlarla birlikte geliyor.
         }
 
-
         $highlightsOptions = [
-            "pre_tags" => [""],
-            "post_tags" => [""]
+            'pre_tags' => [''],
+            'post_tags' => [''],
         ];
 
         $results = Product::searchQuery($productQuery)
-            ->highlight("title", $highlightsOptions)
-            ->highlight("sub_title", $highlightsOptions)
-            ->highlight("cross_code", $highlightsOptions)
-            ->highlight("producercode", $highlightsOptions)
-            ->highlight("producercode2", $highlightsOptions)
-            ->highlight("similar_product_codes", $highlightsOptions)
-            ->execute()->hits()->sortBy(fn(Hit $hit) => $hit->score(), descending: true);
+            ->highlight('title', $highlightsOptions)
+            ->highlight('sub_title', $highlightsOptions)
+            ->highlight('cross_code', $highlightsOptions)
+            ->highlight('producercode', $highlightsOptions)
+            ->highlight('producercode2', $highlightsOptions)
+            ->highlight('similar_product_codes', $highlightsOptions)
+            ->execute()->hits()->sortBy(fn (Hit $hit) => $hit->score(), descending: true);
         //->map(fn(Hit $hit) => $hit->document()->id());
 
         $highlights = [];
@@ -74,16 +69,16 @@ class Search
             $highlights[$result->document()->id()] = $result->highlight()->raw();
         }
 
-        $results = $results->map(fn(Hit $hit) => $hit->document()->id());
+        $results = $results->map(fn (Hit $hit) => $hit->document()->id());
 
         return [
             'query' => Product::query()
                 ->with(['category', 'price', 'brand'])
                 ->orWhereIn('id', $results)
-                ->orWhereRelation('oems', fn($q) => $q->whereIn('logicalref', $oemIds))
-                ->orWhereRelation('cars', fn($q) => $q->whereIn('id', $carIds)),
+                ->orWhereRelation('oems', fn ($q) => $q->whereIn('logicalref', $oemIds))
+                ->orWhereRelation('cars', fn ($q) => $q->whereIn('id', $carIds)),
             'term' => $term,
-            'highlights' => $highlights
+            'highlights' => $highlights,
         ];
     }
 }

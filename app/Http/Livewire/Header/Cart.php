@@ -6,10 +6,14 @@ use Livewire\Component;
 
 class Cart extends Component
 {
-    public string $total = "0 ₺";
-    public string $subTotal = "0 ₺";
-    public string $shipping = "0 ₺";
-    public string $tax = "0 ₺";
+    public string $total = '0 ₺';
+
+    public string $subTotal = '0 ₺';
+
+    public string $shipping = '0 ₺';
+
+    public string $tax = '0 ₺';
+
     public array $items = [];
 
     protected $listeners = ['updateContent'];
@@ -26,6 +30,7 @@ class Cart extends Component
     public function render()
     {
         $this->updateContent();
+
         return view('livewire.header.cart');
     }
 

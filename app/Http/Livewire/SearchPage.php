@@ -2,12 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Category;
-use App\Models\Product;
-use Illuminate\Database\Eloquent\Builder;
+use App\Packages\Search as Searchable;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Packages\Search as Searchable;
 
 class SearchPage extends Component
 {
@@ -16,8 +13,11 @@ class SearchPage extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $query;
+
     public $category;
-    public $term = "product";
+
+    public $term = 'product';
+
     public $highlights = [];
 
     protected $queryString = ['query', 'category'];
@@ -25,13 +25,13 @@ class SearchPage extends Component
     public function render()
     {
         $search = $this->search();
+
         return view('livewire.search-page', [
             'products' => $search['products'],
             'brands' => $search['brands'],
-            'categories' => $search['categories']
+            'categories' => $search['categories'],
         ]);
     }
-
 
     public function search()
     {
@@ -39,8 +39,8 @@ class SearchPage extends Component
         $products = $query['query']->paginate(12);
         $brands = $query['query']->get()->groupBy('brand_id');
         $categories = [];
-        $this->term = $query["term"];
-        $this->highlights = $query["highlights"];
+        $this->term = $query['term'];
+        $this->highlights = $query['highlights'];
 
         foreach ($products as $product) {
             foreach ($product->categories as $item) {

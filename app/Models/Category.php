@@ -18,7 +18,7 @@ class Category extends BaseModel
 {
     use HasImages, HasVisits, Searchable;
 
-    protected $searchableAs = "categories_index";
+    protected $searchableAs = 'categories_index';
 
     public function searchableAs()
     {
@@ -28,39 +28,39 @@ class Category extends BaseModel
     public function toSearchableArray()
     {
         return $this->only([
-                "id",
-                "parent_id",
-                "name",
-                "slug",
-                "order",
-            ]) + [
-                "children" => $this->children->map->toSearchableArray()
-            ];
+            'id',
+            'parent_id',
+            'name',
+            'slug',
+            'order',
+        ]) + [
+            'children' => $this->children->map->toSearchableArray(),
+        ];
     }
 
     public function children(): HasMany
     {
-        return $this->hasMany(Category::class, "parent_id");
+        return $this->hasMany(Category::class, 'parent_id');
     }
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Category::class, "parent_id");
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, "product_categories");
+        return $this->belongsToMany(Product::class, 'product_categories');
     }
 
     protected function deepProducts()
     {
-        return $this->newQuery()->from("products")->join("product_categories", "products.id", "=", "product_categories.product_id")->whereIn("product_categories.category_id", $this->tree['childs']);
+        return $this->newQuery()->from('products')->join('product_categories', 'products.id', '=', 'product_categories.product_id')->whereIn('product_categories.category_id', $this->tree['childs']);
     }
 
     protected function deepProductsCount(): Attribute
     {
-        return Attribute::get(fn() => Cache::remember("deep_product_count_{$this->id}", TTL::WEEK, fn() => $this->deepProducts()->count()));
+        return Attribute::get(fn () => Cache::remember("deep_product_count_{$this->id}", TTL::WEEK, fn () => $this->deepProducts()->count()));
     }
 
     public function scopeRoot(Builder $query): void
@@ -70,7 +70,7 @@ class Category extends BaseModel
 
     protected function tree(): Attribute
     {
-        return Attribute::get(fn() => CategoryFacade::getTree($this->id));
+        return Attribute::get(fn () => CategoryFacade::getTree($this->id));
     }
 
     public function imageUrl()

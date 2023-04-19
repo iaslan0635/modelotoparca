@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger("order_id")->index();
-            $table->unsignedInteger("product_id")->index();
-            $table->unsignedInteger("variant_id")->nullable()->index();
-            $table->unsignedInteger("tax_id")->nullable()->index();
+            $table->unsignedInteger('order_id')->index();
+            $table->unsignedInteger('product_id')->index();
+            $table->unsignedInteger('variant_id')->nullable()->index();
+            $table->unsignedInteger('tax_id')->nullable()->index();
 
-            $table->decimal("price",12 ,4, true);
-            $table->unsignedInteger("quantity");
+            $table->decimal('price', 12, 4, true);
+            $table->unsignedInteger('quantity');
 
-            $table->json("product_data")->nullable();
-            $table->json("variant_data")->nullable();
-            $table->json("tax_data")->nullable();
-            $table->json("price_data")->nullable();
+            $table->json('product_data')->nullable();
+            $table->json('variant_data')->nullable();
+            $table->json('tax_data')->nullable();
+            $table->json('price_data')->nullable();
 
             $table->timestamps();
         });

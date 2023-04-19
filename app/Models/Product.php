@@ -19,11 +19,11 @@ class Product extends BaseModel implements CanVisit
     use Searchable, HasImages, HasVisits;
 
     protected $casts = [
-        "specifications" => "array",
-        "dimensions" => "array"
+        'specifications' => 'array',
+        'dimensions' => 'array',
     ];
 
-    protected $searchableAs = "products_index";
+    protected $searchableAs = 'products_index';
 
     public function searchableAs()
     {
@@ -44,18 +44,18 @@ class Product extends BaseModel implements CanVisit
         ]) + [
             'oems' => $this->oems->map->toSearchableArray(),
             'cars' => $this->cars->map->toSearchableArray(),
-            'categories' => $this->categories->map->toSearchableArray()
+            'categories' => $this->categories->map->toSearchableArray(),
         ];
     }
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, "product_categories");
+        return $this->belongsToMany(Category::class, 'product_categories');
     }
 
     public function price(): HasOne
     {
-        return $this->hasOne(Price::class)->where('variant_id', '=', NULL);
+        return $this->hasOne(Price::class)->where('variant_id', '=', null);
     }
 
     public function brand(): BelongsTo
@@ -71,25 +71,25 @@ class Product extends BaseModel implements CanVisit
     public function crosses(): HasMany
     {
         return $this
-            ->hasMany(Product::class, "cross_code", "cross_code")
-            ->where("id", "!=", $this->id);
+            ->hasMany(Product::class, 'cross_code', 'cross_code')
+            ->where('id', '!=', $this->id);
     }
 
     public function alternatives(): BelongsToMany
     {
         return $this
-            ->belongsToMany(Product::class, "alternatives", "product_id", "alternative_id")
-            ->where("id", "!=", $this->id);
+            ->belongsToMany(Product::class, 'alternatives', 'product_id', 'alternative_id')
+            ->where('id', '!=', $this->id);
     }
 
     public function fullTitle(): Attribute
     {
-        return Attribute::get(fn() => $this->title . ($this->producercode ? " @" . $this->producercode : ""));
+        return Attribute::get(fn () => $this->title.($this->producercode ? ' @'.$this->producercode : ''));
     }
 
     public function cars(): BelongsToMany
     {
-        return $this->belongsToMany(Car::class, "product_cars", "logicalref", "car_id");
+        return $this->belongsToMany(Car::class, 'product_cars', 'logicalref', 'car_id');
     }
 
     protected static function booted()
