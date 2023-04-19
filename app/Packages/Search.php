@@ -15,28 +15,12 @@ class Search
         $query = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($query));
 
         $term = "product";
-        $queryCar = Query::match()
+        $carQuery = Query::match()
             ->field('name')
             ->query($query)
             ->fuzziness('1');
 
-        $resultCars = Car::searchQuery($queryCar)->paginate(500);
-        $carIds = $resultCars->documents()->map(fn($d) => $d->id())->toArray();
-
-        $queryOem = Query::match()
-            ->field('oem')
-            ->query($query)
-            ->fuzziness('1');
-
-        $resultOems = ProductOem::searchQuery($queryOem)->paginate(500);
-        $oemIds = $resultOems->hits()->map(fn($hit) => $hit->document()->content('logicalref'))->filter()->toArray();
-        $oemIds = array_unique($oemIds);
-
-        if (count($oemIds) > 0) {
-            $term = "oem"; // FIXME: Oemlerden bulunanlar olsa bile sonuçlar diğer bulunanlarla birlikte geliyor.
-        }
-
-        $query = Query::multiMatch()
+        $productQuery = Query::multiMatch()
             ->fields([
                 "title",
                 "sub_title",
@@ -48,12 +32,32 @@ class Search
             ->query($query)
             ->fuzziness('AUTO');
 
+        $oemQuery = Query::match()
+            ->field('oem')
+            ->query($query)
+            ->fuzziness('1');
+
+
+
+        $resultCars = Car::searchQuery($carQuery)->paginate(500);
+        $carIds = $resultCars->documents()->map(fn($d) => $d->id())->toArray();
+
+
+
+        $resultOems = ProductOem::searchQuery($oemQuery)->collapse("logicalref")->paginate(10);
+        dd($resultOems);
+
+        if (count($resultOems->models()) > 0) {
+            $term = "oem"; // FIXME: Oemlerden bulunanlar olsa bile sonuçlar diğer bulunanlarla birlikte geliyor.
+        }
+
+
         $highlightsOptions = [
             "pre_tags" => [""],
             "post_tags" => [""]
         ];
 
-        $results = Product::searchQuery($query)
+        $results = Product::searchQuery($productQuery)
             ->highlight("title", $highlightsOptions)
             ->highlight("sub_title", $highlightsOptions)
             ->highlight("cross_code", $highlightsOptions)

@@ -6,7 +6,7 @@ use App\Models\Car;
 
 class Garage
 {
-    public static function add(Car $car)
+    public static function add(Car $car): void
     {
         self::addRaw([
             "id" => $car->id,
@@ -15,33 +15,35 @@ class Garage
         ]);
     }
 
-    public static function addRaw(array $rawCar)
+    public static function addRaw(array $rawCar): void
     {
-        session()->put("garage_cars", self::items() + [$rawCar]);
+        $items = self::items();
+        $items[] = $rawCar;
+        session()->put("garage_cars", $items);
     }
 
-    public static function items()
+    public static function items(): array
     {
         return session("garage_cars", []);
     }
 
-    public static function remove(int $id)
+    public static function remove(int $id): void
     {
         $cars = self::items();
-        session()->put("garage_chosen", array_filter($cars, fn($car) => $car["id"] !== $id));
+        session()->put("garage_cars", collect($cars)->first(fn($car) => $car["id"] !== $id));
     }
 
-    public static function chosen()
+    public static function chosen(): int|null
     {
         return session("garage_chosen");
     }
 
-    public static function choose(int $id)
+    public static function choose(int $id): void
     {
         session()->put("garage_chosen", $id);
     }
 
-    public static function hasChosen()
+    public static function hasChosen(): bool
     {
         return session()->has('garage_chosen');
     }

@@ -46,7 +46,7 @@ class CarController extends Controller
         $categories = [];
 
         foreach ($filters as $product) {
-            foreach ($product->category as $item) {
+            foreach ($product->categories as $item) {
                 $categories[$item->id] = $item;
             }
         }

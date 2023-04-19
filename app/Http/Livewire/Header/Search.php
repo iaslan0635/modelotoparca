@@ -26,7 +26,7 @@ class Search extends Component
             $this->term = $resulta["term"];
             $this->highlights = $resulta["highlights"];
             foreach ($results as $result) {
-                foreach ($result->category as $item) {
+                foreach ($result->categories as $item) {
                     $categories[$item->id] = $item;
                 }
             }
@@ -37,4 +37,11 @@ class Search extends Component
             'categories' => $categories
         ]);
     }
+
+    // @formatter:off
+    public function reloadData(){return $this->emit("forwardCallToGarage", "reloadData", func_get_args());}
+    public function chooseCar() {return $this->emit("forwardCallToGarage", "chooseCar",  func_get_args());}
+    public function remove()    {return $this->emit("forwardCallToGarage", "remove",     func_get_args());}
+    // @formatter:on
+
 }

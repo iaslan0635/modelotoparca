@@ -32,19 +32,23 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'part_number' => $this->part_number,
-            'producercode' => $this->producercode,
-            'cross_code' => $this->cross_code,
-            'producercode2' => $this->producercode2,
-            'similar_product_codes' => $this->similar_product_codes,
+        return $this->only([
+            'id',
+            'title',
+            'slug',
+            'part_number',
+            'producercode',
+            'cross_code',
+            'producercode2',
+            'similar_product_codes',
+        ]) + [
+            'oems' => $this->oems->map->toSearchableArray(),
+            'cars' => $this->cars->map->toSearchableArray(),
+            'categories' => $this->categories->map->toSearchableArray()
         ];
     }
 
-    public function category(): BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, "product_categories");
     }

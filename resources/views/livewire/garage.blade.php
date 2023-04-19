@@ -1,4 +1,4 @@
-<button class="search__button search__button--start" type="button">
+<button wire:ignore.self class="search__button search__button--start" type="button">
     <span class="search__button-icon">
         <svg width="20" height="20">
             <path
@@ -7,7 +7,7 @@
     </span>
     <span class="search__button-title">Araç Seç</span>
 </button>
-<div class="search__dropdown search__dropdown--vehicle-picker vehicle-picker">
+<div wire:ignore.self class="search__dropdown search__dropdown--vehicle-picker vehicle-picker">
     <div class="search__dropdown-arrow"></div>
     <div class="vehicle-picker__panel vehicle-picker__panel--list vehicle-picker__panel--active" data-panel="list">
         <div class="vehicle-picker__panel-body">

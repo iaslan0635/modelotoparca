@@ -43,7 +43,7 @@ class SearchPage extends Component
         $this->highlights = $query["highlights"];
 
         foreach ($products as $product) {
-            foreach ($product->category as $item) {
+            foreach ($product->categories as $item) {
                 $categories[$item->id] = $item;
             }
         }

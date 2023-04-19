@@ -18,6 +18,26 @@ class Category extends BaseModel
 {
     use HasImages, HasVisits, Searchable;
 
+    protected $searchableAs = "categories_index";
+
+    public function searchableAs()
+    {
+        return $this->searchableAs;
+    }
+
+    public function toSearchableArray()
+    {
+        return $this->only([
+                "id",
+                "parent_id",
+                "name",
+                "slug",
+                "order",
+            ]) + [
+                "children" => $this->children->map->toSearchableArray()
+            ];
+    }
+
     public function children(): HasMany
     {
         return $this->hasMany(Category::class, "parent_id");

@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->unsignedInteger('logicalref')->index();
             $table->string('brand')->index();
             $table->string('oem')->index();
-            $table->string('oem_regexed')->index()->storedAs("regexp_replace(`oem`, '[^a-zA-Z0-9]', '')");
             $table->unique(['logicalref', 'brand', 'oem']);
         });
     }
