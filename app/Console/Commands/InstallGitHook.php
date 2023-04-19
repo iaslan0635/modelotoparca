@@ -20,19 +20,19 @@ class InstallGitHook extends Command
      */
     protected $description = 'Installs pint to git hook';
 
-    private const HOOK_CONTENT = <<<SH
+    private const HOOK_CONTENT = <<<'SH'
 #!/bin/sh
 
 ./vendor/bin/pint --dirty
 
 SH;
 
-
     /**
      * Execute the console command.
      */
     public function handle(): void
     {
-        file_put_contents(base_path(".git/hooks/pre-commit"), self::HOOK_CONTENT);
+        file_put_contents(base_path('.git/hooks/pre-commit'), self::HOOK_CONTENT);
+        $this->info("Installed pint to pre-commit hook.");
     }
 }
