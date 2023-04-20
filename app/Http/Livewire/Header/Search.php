@@ -18,22 +18,21 @@ class Search extends Component
     {
         $categories = [];
         $results = [];
-        //dd($this->query);
+        $suggestions = [];
+//        dd($this->query);
         if (strlen($this->query) >= 3) {
-            $resulta = Searchable::query($this->query);
-            $results = $resulta['query']->limit(10)->get()->all();
-            $this->term = $resulta['term'];
-            $this->highlights = $resulta['highlights'];
-            foreach ($results as $result) {
-                foreach ($result->categories as $item) {
-                    $categories[$item->id] = $item;
-                }
-            }
+            $result = Searchable::query($this->query);
+            $categories = $result["categories"];
+            $results = $result["products"];
+            $suggestions = $result["suggestions"];
+
+//            dd($result);
         }
 
         return view('livewire.header.search', [
             'results' => $results,
             'categories' => $categories,
+            'suggestions' => $suggestions
         ]);
     }
 

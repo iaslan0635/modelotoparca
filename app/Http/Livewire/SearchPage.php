@@ -36,17 +36,11 @@ class SearchPage extends Component
     public function search()
     {
         $query = Searchable::query($this->query);
-        $products = $query['query']->paginate(12);
-        $brands = $query['query']->get()->groupBy('brand_id');
-        $categories = [];
-        $this->term = $query['term'];
+        $products = $query['products'];
+        $brands = [];
+        $categories = $query['categories'];
+//        $this->term = $query['term'];
         $this->highlights = $query['highlights'];
-
-        foreach ($products as $product) {
-            foreach ($product->categories as $item) {
-                $categories[$item->id] = $item;
-            }
-        }
 
         return ['products' => $products, 'brands' => $brands, 'categories' => $categories];
     }

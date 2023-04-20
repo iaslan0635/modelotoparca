@@ -5,6 +5,7 @@ namespace App\Packages;
 use App\Models\Car;
 use App\Models\Product;
 use App\Models\ProductOem;
+use Elastic\ScoutDriverPlus\Builders\BoolQueryBuilder;
 use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
 
@@ -13,12 +14,15 @@ class Search
     public static function query(string $query): array
     {
         $query = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($query));
+        $regex = '/[^a-zA-Z0-9]+/';
 
-        $term = 'product';
-        $carQuery = Query::match()
-            ->field('name')
-            ->query($query)
-            ->fuzziness('1');
+        $oemQuery = Query::nested()
+            ->path('oems')
+            ->query(Query::match()->field('oems.oem')->query($query));
+
+        $carQuery = Query::nested()
+            ->path('cars')
+            ->query(Query::match()->field('cars.name')->query($query));
 
         $productQuery = Query::multiMatch()
             ->fields([
@@ -32,53 +36,65 @@ class Search
             ->query($query)
             ->fuzziness('AUTO');
 
-        $oemQuery = Query::match()
-            ->field('oem')
-            ->query($query)
-            ->fuzziness('1');
+        $oemSuggestQuery = Query::bool()
+            ->should(Query::prefix()->field('oem')->value(strtolower(preg_replace($regex, '', $query)))->caseInsensitive(true));
 
-        $resultCars = Car::searchQuery($carQuery)->paginate(500);
-        $carIds = $resultCars->documents()->map(fn ($d) => $d->id())->toArray();
+        $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->highlight('oem', [
+            'pre_tags' => ['<strong>'],
+            'post_tags' => ['</strong>'],
+        ])->execute();
 
-        $resultOems = ProductOem::searchQuery($oemQuery)->collapse('logicalref')->paginate(10);
-        dd($resultOems);
+        $suggestions = [];
 
-        if (count($resultOems->models()) > 0) {
-            $term = 'oem'; // FIXME: Oemlerden bulunanlar olsa bile sonuçlar diğer bulunanlarla birlikte geliyor.
+        foreach ($suggestionOems->highlights() as $highlight){
+            foreach ($highlight->raw()["oem"] as $item){
+                $suggestions[] = $item;
+            }
         }
 
-        $highlightsOptions = [
-            'pre_tags' => [''],
-            'post_tags' => [''],
-        ];
+//        dd($suggestions);
 
-        $results = Product::searchQuery($productQuery)
-            ->highlight('title', $highlightsOptions)
-            ->highlight('sub_title', $highlightsOptions)
-            ->highlight('cross_code', $highlightsOptions)
-            ->highlight('producercode', $highlightsOptions)
-            ->highlight('producercode2', $highlightsOptions)
-            ->highlight('similar_product_codes', $highlightsOptions)
-            ->execute()->hits()->sortBy(fn (Hit $hit) => $hit->score(), descending: true);
-        //->map(fn(Hit $hit) => $hit->document()->id());
+        $boolQuery = Query::bool();
+        $boolQuery->should($productQuery);
+        $boolQuery->should($oemQuery);
+        $boolQuery->should($carQuery);
+        $products = Product::searchQuery($boolQuery)
+            ->highlight('title')
+            ->highlight('sub_title')
+            ->highlight('cross_code')
+            ->highlight('producercode')
+            ->highlight('producercode2')
+            ->highlight('similar_product_codes')
+            ->highlight('oems.oem')
+            ->highlight('cars.name')
+            ->paginate(12);
 
+        $productCategories = Product::searchQuery($boolQuery)
+            ->load(['categories'])
+            ->paginate($products->total());
+
+        $categories = [];
         $highlights = [];
 
-        foreach ($results as $result) {
-//            dd($result->highlight()->raw());
-            $highlights[$result->document()->id()] = $result->highlight()->raw();
+        foreach ($products as $product){
+            foreach ($product->highlight()->raw() as $key => $item){
+                $highlights[$product->document()->id()][$key] = $item;
+            }
         }
 
-        $results = $results->map(fn (Hit $hit) => $hit->document()->id());
+//        dd($highlights);
+
+        foreach ($productCategories->models() as $model){
+            foreach ($model->categories as $category){
+                $categories[$category->id] = $category;
+            }
+        }
 
         return [
-            'query' => Product::query()
-                ->with(['category', 'price', 'brand'])
-                ->orWhereIn('id', $results)
-                ->orWhereRelation('oems', fn ($q) => $q->whereIn('logicalref', $oemIds))
-                ->orWhereRelation('cars', fn ($q) => $q->whereIn('id', $carIds)),
-            'term' => $term,
-            'highlights' => $highlights,
+            'products' => $products,
+            'suggestions' => $suggestions,
+            'categories' => $categories,
+            'highlights' => $highlights
         ];
     }
 }

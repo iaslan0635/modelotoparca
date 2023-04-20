@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductOem;
 use Elastic\ScoutDriverPlus\Support\Query;
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $categories = Category::root()->limit(15)->orderBy('order')->get(['slug', 'name']);
-    $featured_products = Product::query()->limit(20)->with(['price:id,price,currency,product_id', 'brand.image', 'image'])->get(['id', 'slug', 'sku', 'title', 'brand_id']);
 
-    return view('home', compact('categories', 'featured_products'));
+Route::get('/', function () {
+    $categories = Category::root()->limit(15)->orderBy("order")->get(["slug", "name"]);
+    $featured_products = Product::query()->limit(20)->with("price:id,price,currency,product_id")->get(["id", "slug" ,"sku", "title"]);
+    return view('home', compact('categories' ,'featured_products'));
 });
 
 Route::get('cart', function () {
@@ -23,21 +24,20 @@ Route::get('cart', function () {
     ], model: $product);*/
 
     /*\App\Packages\Cart::addTax(18);*/
-    \App\Packages\Cart::removeItem('6431751b515c1');
+    \App\Packages\Cart::removeItem("6431751b515c1");
     \App\Packages\Cart::addShippingCost(20);
 
     return \App\Packages\Cart::getItems();
 });
 
 Route::get('test', function () {
-    $queryCar = Query::match()
-        ->field('name')
-        ->query('panel')
+    $queryOem = Query::match()
+        ->field('oem')
+        ->query("1J0 121 407 F")
         ->fuzziness('1');
 
-    $results = \App\Models\Car::searchQuery($queryCar)->execute();
-
-    return $results->documents();
+    $results = ProductOem::searchQuery($queryOem)->collapse('logicalref')->sort('_score', 'desc')->paginate(50);
+    return $results->hits();
 });
 
 Route::view('search', 'search')->name('search');
