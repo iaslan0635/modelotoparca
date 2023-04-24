@@ -59,7 +59,7 @@
                 <div class="suggestions__group">
                     <div class="suggestions__group-title">Kategoriler</div>
                     <div class="suggestions__group-content">
-                        @foreach($categories as $category)
+                        @foreach($categories as ["category" => $category])
                             <a class="suggestions__item suggestions__category"
                                href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
                         @endforeach

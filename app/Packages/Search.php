@@ -2,12 +2,10 @@
 
 namespace App\Packages;
 
-use App\Models\Car;
 use App\Models\Product;
 use App\Models\ProductOem;
-use Elastic\ScoutDriverPlus\Builders\BoolQueryBuilder;
-use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
+use Illuminate\Support\Collection;
 
 class Search
 {
@@ -15,6 +13,7 @@ class Search
     {
         $query = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($query));
         $regex = '/[^a-zA-Z0-9]+/';
+        $query = strtolower(preg_replace($regex, '', $query));
 
         $oemQuery = Query::nested()
             ->path('oems')
@@ -37,7 +36,7 @@ class Search
             ->fuzziness('AUTO');
 
         $oemSuggestQuery = Query::bool()
-            ->should(Query::prefix()->field('oem')->value(strtolower(preg_replace($regex, '', $query)))->caseInsensitive(true));
+            ->should(Query::prefix()->field('oem')->value($query)->caseInsensitive(true));
 
         $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->highlight('oem', [
             'pre_tags' => ['<strong>'],
@@ -46,8 +45,8 @@ class Search
 
         $suggestions = [];
 
-        foreach ($suggestionOems->highlights() as $highlight){
-            foreach ($highlight->raw()["oem"] as $item){
+        foreach ($suggestionOems->highlights() as $highlight) {
+            foreach ($highlight->raw()["oem"] as $item) {
                 $suggestions[] = $item;
             }
         }
@@ -71,22 +70,21 @@ class Search
 
         $productCategories = Product::searchQuery($boolQuery)
             ->load(['categories'])
-            ->paginate($products->total());
+            ->paginate(max($products->total(), 1));
 
-        $categories = [];
+        $categories = $productCategories->models()
+            ->map(fn(Product $product) => $product->categories)->flatten()
+            ->groupBy("id")->filter(fn(Collection $cats) => count($cats))
+            ->map(fn(Collection $cats) => [
+                "category" => $cats[0],
+                "count" => $cats->count()
+            ]);
+
         $highlights = [];
 
-        foreach ($products as $product){
-            foreach ($product->highlight()->raw() as $key => $item){
+        foreach ($products as $product) {
+            foreach ($product->highlight()->raw() as $key => $item) {
                 $highlights[$product->document()->id()][$key] = $item;
-            }
-        }
-
-//        dd($highlights);
-
-        foreach ($productCategories->models() as $model){
-            foreach ($model->categories as $category){
-                $categories[$category->id] = $category;
             }
         }
 

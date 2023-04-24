@@ -37,21 +37,12 @@
                                                     <div class="filter__container">
                                                         <div class="filter-categories">
                                                             <ul class="filter-categories__list">
-                                                                @foreach($categories as $category)
+                                                                @foreach($categories as ["category" => $category, "count" => $count])
                                                                     <li class="filter-categories__item filter-categories__item--current">
                                                                         <a href="#" wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
                                                                         <div
-                                                                            class="filter-categories__counter">{{ $category->deepProductsCount }}</div>
+                                                                            class="filter-categories__counter">{{ $count }}</div>
                                                                     </li>
-                                                                    @foreach($category->children->sortByDesc("products_count") as $child)
-                                                                        @if($child->deepProductsCount > 0)
-                                                                            <li class="filter-categories__item filter-categories__item--child">
-                                                                                <a href="#" wire:click="changeCategory({{ $category->id }})">{{ $child->name }}</a>
-                                                                                <div
-                                                                                    class="filter-categories__counter">{{ $child->deepProductsCount }}</div>
-                                                                            </li>
-                                                                        @endif
-                                                                    @endforeach
                                                                 @endforeach
                                                             </ul>
                                                         </div>
@@ -235,122 +226,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="widget-filters__actions d-flex">
-                                        <button type="submit" class="btn btn-primary btn-sm">Filter</button>
-                                        <button class="btn btn-secondary btn-sm">Reset</button>
-                                    </div>
-                                </div>
-                            <div class="card widget widget-products d-none d-lg-block">
-                                <div class="widget__header">
-                                    <h4>Latest Products</h4>
-                                </div>
-                                <div class="widget-products__list">
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image image image--type--product">
-                                            <a href="product-full.html" class="image__body">
-                                                <img loading="lazy" class="image__tag"
-                                                     src="https://web.modelotoparca.com/images/products/product-1-64x64.jpg"
-                                                     alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name">
-                                                <a href="product-full.html">Brandix Spark Plug Kit ASR-400</a>
-                                            </div>
-                                            <div class="widget-products__prices">
-                                                <div
-                                                    class="widget-products__price widget-products__price--current">
-                                                    $19.00
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image image image--type--product">
-                                            <a href="product-full.html" class="image__body">
-                                                <img loading="lazy" class="image__tag"
-                                                     src="https://web.modelotoparca.com/images/products/product-2-64x64.jpg"
-                                                     alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name">
-                                                <a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a>
-                                            </div>
-                                            <div class="widget-products__prices">
-                                                <div
-                                                    class="widget-products__price widget-products__price--current">
-                                                    $224.00
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image image image--type--product">
-                                            <a href="product-full.html" class="image__body">
-                                                <img loading="lazy" class="image__tag"
-                                                     src="https://web.modelotoparca.com/images/products/product-3-64x64.jpg"
-                                                     alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name">
-                                                <a href="product-full.html">Left Headlight Of Brandix Z54</a>
-                                            </div>
-                                            <div class="widget-products__prices">
-                                                <div class="widget-products__price widget-products__price--new">
-                                                    $349.00
-                                                </div>
-                                                <div class="widget-products__price widget-products__price--old">
-                                                    $415.00
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image image image--type--product">
-                                            <a href="product-full.html" class="image__body">
-                                                <img loading="lazy" class="image__tag"
-                                                     src="https://web.modelotoparca.com/images/products/product-4-64x64.jpg"
-                                                     alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name">
-                                                <a href="product-full.html">Glossy Gray 19" Aluminium Wheel
-                                                    AR-19</a>
-                                            </div>
-                                            <div class="widget-products__prices">
-                                                <div
-                                                    class="widget-products__price widget-products__price--current">
-                                                    $589.00
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-products__item">
-                                        <div class="widget-products__image image image--type--product">
-                                            <a href="product-full.html" class="image__body">
-                                                <img loading="lazy" class="image__tag"
-                                                     src="https://web.modelotoparca.com/images/products/product-5-64x64.jpg"
-                                                     alt="">
-                                            </a>
-                                        </div>
-                                        <div class="widget-products__info">
-                                            <div class="widget-products__name">
-                                                <a href="product-full.html">Twin Exhaust Pipe From Brandix
-                                                    Z54</a>
-                                            </div>
-                                            <div class="widget-products__prices">
-                                                <div
-                                                    class="widget-products__price widget-products__price--current">
-                                                    $749.00
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="widget-filters__actions d-flex">
+                                    <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+                                    <button class="btn btn-secondary btn-sm">Reset</button>
                                 </div>
                             </div>
+                            <x-last-visited />
                         </div>
                     </div>
                 </div>
@@ -527,7 +408,14 @@
                                                                     d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
                                                             </svg>
                                                         </div>
-                                                        <div class="status-badge__text">{{ implode(',', array_keys($highlights[$product->model()->id] ?? [])) }}</div>
+                                                        <div class="status-badge__text">{{
+                                                            implode(',',
+                                                                array_map(
+                                                                    fn(string $s) => __("highlights." . $s),
+                                                                    array_keys($highlights[$product->model()->id] ?? [])
+                                                                )
+                                                            )
+                                                        }}</div>
                                                         <div class="status-badge__tooltip" tabindex="0"
                                                              data-toggle="tooltip"
                                                              title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
@@ -588,7 +476,7 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
                                                     </svg>
                                                 </button>
-                                                <livewire:add-to-cart :product="$product->model()" :quantity_mode="false" />
+                                                <livewire:add-to-cart :product="$product->model()" :quantity_mode="false"/>
                                                 <button class="product-card__wishlist" type="button">
                                                     <svg width="16" height="16">
                                                         <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
