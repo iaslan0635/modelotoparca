@@ -9,19 +9,27 @@ use Illuminate\Support\Collection;
 
 class Search
 {
-    public static function query(string $query, $sortBy = null): array
+    public static function query(string $term, $sortBy = null): array
     {
-        $query = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($query));
+        $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
         $regex = '/[^a-zA-Z0-9]+/';
-        $query = strtolower(preg_replace($regex, '', $query));
+        $cleanTerm = strtolower(preg_replace($regex, '', $term));
+
+        if (empty($term))
+            return [
+                'products' => [],
+                'suggestions' => [],
+                'categories' => [],
+                'highlights' => []
+            ];
 
         $oemQuery = Query::nested()
             ->path('oems')
-            ->query(Query::match()->field('oems.oem')->query($query));
+            ->query(Query::match()->field('oems.oem')->query($cleanTerm));
 
         $carQuery = Query::nested()
             ->path('cars')
-            ->query(Query::match()->field('cars.name')->query($query));
+            ->query(Query::match()->field('cars.regex_name')->query(preg_replace('/[^\w\s]/', '', $term)));
 
         $productQuery = Query::multiMatch()
             ->fields([
@@ -32,11 +40,12 @@ class Search
                 'producercode2',
                 'similar_product_codes',
             ])
-            ->query($query)
+            ->query($cleanTerm)
+            ->analyzer("turkish_analyzer")
             ->fuzziness('AUTO');
 
         $oemSuggestQuery = Query::bool()
-            ->should(Query::prefix()->field('oem')->value($query)->caseInsensitive(true));
+            ->should(Query::prefix()->field('oem')->value($term)->caseInsensitive(true));
 
         $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->highlight('oem', [
             'pre_tags' => ['<strong>'],
@@ -51,19 +60,27 @@ class Search
             }
         }
 
-        $esQuery = Query::bool();
+        $esQuery = Query::bool()->minimumShouldMatch(1);
         $esQuery->should($productQuery);
         $esQuery->should($oemQuery);
         $esQuery->should($carQuery);
 
+        if (request()->has('brands')) {
+            $brandQuery = Query::nested()
+                ->path('brand')
+                ->query(Query::terms()->field('brand.id')->values([1606]));
+            $esQuery->filter($brandQuery);
+        }
+
         $boolQuery = Query::bool();
         $boolQuery->must($esQuery);
 
-        $priceQuery = Query::range()
+        /*$priceQuery = Query::range()
             ->field('price')
-            ->lte(0)
-            ->lte(1200);
-        $boolQuery->must($priceQuery);
+            ->gte(50)
+            ->lte(75);
+
+        $boolQuery->must($priceQuery);*/
         $products = Product::searchQuery($boolQuery)
             ->highlight('title')
             ->highlight('sub_title')
@@ -72,7 +89,9 @@ class Search
             ->highlight('producercode2')
             ->highlight('similar_product_codes')
             ->highlight('oems.oem')
-            ->highlight('cars.name');
+            ->highlight('cars.name')
+            ->highlight('cars.regex_name');
+
 
         if ($sortBy === 'price-asc') {
             $products->sort('price', 'asc');
@@ -81,6 +100,7 @@ class Search
         }
 
         $products = $products->paginate(12);
+        dd($products);
 
         $productCategories = Product::searchQuery($boolQuery)
             ->load(['categories'])
