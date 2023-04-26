@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class Search
 {
-    public static function query(string $query): array
+    public static function query(string $query, $sortBy = null): array
     {
         $query = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($query));
         $regex = '/[^a-zA-Z0-9]+/';
@@ -51,12 +51,19 @@ class Search
             }
         }
 
-//        dd($suggestions);
+        $esQuery = Query::bool();
+        $esQuery->should($productQuery);
+        $esQuery->should($oemQuery);
+        $esQuery->should($carQuery);
 
         $boolQuery = Query::bool();
-        $boolQuery->should($productQuery);
-        $boolQuery->should($oemQuery);
-        $boolQuery->should($carQuery);
+        $boolQuery->must($esQuery);
+
+        $priceQuery = Query::range()
+            ->field('price')
+            ->lte(0)
+            ->lte(1200);
+        $boolQuery->must($priceQuery);
         $products = Product::searchQuery($boolQuery)
             ->highlight('title')
             ->highlight('sub_title')
@@ -65,8 +72,15 @@ class Search
             ->highlight('producercode2')
             ->highlight('similar_product_codes')
             ->highlight('oems.oem')
-            ->highlight('cars.name')
-            ->paginate(12);
+            ->highlight('cars.name');
+
+        if ($sortBy === 'price-asc') {
+            $products->sort('price', 'asc');
+        } elseif ($sortBy === 'price-desc') {
+            $products->sort('price', 'desc');
+        }
+
+        $products = $products->paginate(12);
 
         $productCategories = Product::searchQuery($boolQuery)
             ->load(['categories'])

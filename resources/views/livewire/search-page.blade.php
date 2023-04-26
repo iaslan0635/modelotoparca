@@ -153,10 +153,10 @@
                                                 <div class="filter__body" data-collapse-content>
                                                     <div class="filter__container">
                                                         <div class="filter-price"
-                                                             data-min="{{ $products->min('price.price') }}"
-                                                             data-max="{{ $products->max('price.price') }}"
-                                                             data-from="{{ $products->min('price.price') }}"
-                                                             data-to="{{ $products->max('price.price') }}">
+                                                             data-min="0"
+                                                             data-max="99999"
+                                                             data-from="0"
+                                                             data-to="99999">
                                                             <div class="filter-price__slider"></div>
                                                             <div class="filter-price__title-button">
                                                                 <input type="hidden" name="min_price" value=""
@@ -294,12 +294,10 @@
                                 <div class="view-options__spring"></div>
                                 <div class="view-options__select">
                                     <label for="view-option-sort">Sort:</label>
-                                    <select id="view-option-sort" class="form-control form-control-sm"
-                                            name="sortBy">
-                                        <option value="price-asc">Fiyat</option>
-                                        <option value="price-desc">Fiyat</option>
-                                        <option value="title-asc">Başlık</option>
-                                        <option value="title-desc">Başlık</option>
+                                    <select id="view-option-sort" class="form-control form-control-sm" wire:model="sortBy">
+                                        <option>Seçiniz...</option>
+                                        <option value="price-asc">Fiyat Yükselen</option>
+                                        <option value="price-desc">Fiyat Azalan</option>
                                     </select>
                                 </div>
                                 <div class="view-options__select">
@@ -476,7 +474,7 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
                                                     </svg>
                                                 </button>
-                                                <livewire:add-to-cart :product="$product->model()" :quantity_mode="false"/>
+                                                <livewire:add-to-cart :wire:key="$product->model()->id" :product="$product->model()" :quantity_mode="false"/>
                                                 <button class="product-card__wishlist" type="button">
                                                     <svg width="16" height="16">
                                                         <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7

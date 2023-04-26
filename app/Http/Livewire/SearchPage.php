@@ -22,6 +22,8 @@ class SearchPage extends Component
 
     protected $queryString = ['query', 'category'];
 
+    public $sortBy;
+
     public function render()
     {
         $search = $this->search();
@@ -35,7 +37,7 @@ class SearchPage extends Component
 
     public function search()
     {
-        $query = Searchable::query($this->query);
+        $query = Searchable::query($this->query, $this->sortBy);
         $products = $query['products'];
         $brands = [];
         $categories = $query['categories'];

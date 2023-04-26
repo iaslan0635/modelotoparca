@@ -26,28 +26,27 @@ class CategoryController extends Controller
 
         $parents = Category::query()->with('products')->whereIn('id', $tree['parents'])->get();
         $query = Product::query()
-            ->with(['category', 'price', 'brand'])
+            ->with(['categories', 'price', 'brand'])
             ->join('prices', 'products.id', '=', 'prices.product_id')
             ->whereBetween('prices.price', [$minPrice, $maxPrice])->select('products.*')
             ->distinct();
 
         if (request()->has('sortBy') && request()->input('sortBy') === 'price-asc') {
-            $query = $query->orderBy('prices.price', 'asc');
+            $query->orderBy('prices.price', 'asc');
         } elseif (request()->has('sortBy') && request()->input('sortBy') === 'price-desc') {
-            $query = $query->orderBy('prices.price', 'desc');
+            $query->orderBy('prices.price', 'desc');
         } elseif (request()->has('sortBy') && request()->input('sortBy') === 'title-asc') {
-            $query = $query->orderBy('products.title', 'asc');
+            $query->orderBy('products.title', 'asc');
         } elseif (request()->has('sortBy') && request()->input('sortBy') === 'title-desc') {
-            $query = $query->orderBy('products.title', 'desc');
+            $query->orderBy('products.title', 'desc');
         }
 
-        $query = $query
-            ->whereRelation('category', fn (Builder $q) => $q->whereIn('id', $tree['childs']));
+        $query->whereRelation('categories', fn(Builder $q) => $q->whereIn('id', $tree['childs']));
 
         $brands = $query->get()->groupBy('brand_id');
 
         if (request()->has('brands')) {
-            $query = $query->whereIn('brand_id', request()->input('brands'));
+            $query->whereIn('brand_id', request()->input('brands'));
         }
 
         $pids = $query->get()->map(function ($item) {

@@ -9,7 +9,7 @@ class Price extends BaseModel
 {
     protected function price(): Attribute
     {
-        return Attribute::get(fn (int $value) => ExchangeRate::convertToTRY($this->currency, $value));
+        return Attribute::get(fn (string $value) => ExchangeRate::convertToTRY($this->currency, $value));
     }
 
     protected function formattedPrice(): Attribute

@@ -44,7 +44,8 @@ class Product extends BaseModel implements CanVisit
             'oems' => $this->oems->map->toSearchableArray(),
             'cars' => $this->cars->map->toSearchableArray(),
             'categories' => $this->categories->map->toSearchableArray(),
-            'brand' => $this->brand?->toSearchableArray()
+            'brand' => $this->brand?->toSearchableArray(),
+            'price' => $this->price?->price
         ];
     }
 

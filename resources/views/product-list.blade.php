@@ -84,7 +84,7 @@
                                                                                  class="category-icon-image">
                                                                             <a href="{{ route('category.show', [...request()->query(), 'category' => $category]) }}">{{ $category->name }}</a>
                                                                             <div
-                                                                                class="filter-categories__counter">{{ $category->deepProductsCount }}</div>
+                                                                                class="filter-categories__counter">{{ $category->products_count }}</div>
                                                                         </li>
                                                                         @foreach($category->children->sortByDesc("products_count") as $child)
                                                                             @if($child->deepProductsCount > 0)
@@ -930,7 +930,7 @@
                                             </div>
                                         </div>
                                         <div class="view-options__legend">
-                                            {{ $products->total() }} adet üründen {{ $products->perPage() }} tanesi
+                                            {{ $products->total() }} adet üründen {{ min($products->total(), $products->perPage()) }} tanesi
                                             gösteriliyor
                                         </div>
                                         <div class="view-options__spring"></div>
@@ -1160,7 +1160,7 @@
                                         {{ $products->withQueryString()->links() }}
                                     </nav>
                                     <div class="products-view__pagination-legend">
-                                        {{ $products->total() }} adet üründen {{ $products->perPage() }} tanesi
+                                        {{ $products->total() }} adet üründen {{ min($products->total(), $products->perPage()) }} tanesi
                                         gösteriliyor
                                     </div>
                                 </div>
@@ -1177,6 +1177,8 @@
 
 @push('scripts')
     <script>
+        let searchParams = new URLSearchParams(window.location.search);
+
         //console.log(searchParams)
 
         /*const categories = document.getElementsByClassName("filter-categories__item");

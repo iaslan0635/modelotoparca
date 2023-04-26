@@ -23,6 +23,7 @@ final class CreateProductsIndex implements MigrationInterface
             $mapping->text('cross_code');
             $mapping->text('producercode2');
             $mapping->text('similar_product_codes');
+            $mapping->double('price');
             $mapping->nested('oems', [
                 'properties' => [
                     'oem' => [

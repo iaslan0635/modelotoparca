@@ -31,13 +31,7 @@ Route::get('cart', function () {
 });
 
 Route::get('test', function () {
-    $queryOem = Query::match()
-        ->field('oem')
-        ->query("1J0 121 407 F")
-        ->fuzziness('1');
-
-    $results = ProductOem::searchQuery($queryOem)->collapse('logicalref')->sort('_score', 'desc')->paginate(50);
-    return $results->hits();
+    dump(\App\Packages\Search::query(request()->get("query")));
 });
 
 Route::view('search', 'search')->name('search');
