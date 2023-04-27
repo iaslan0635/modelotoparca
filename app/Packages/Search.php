@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ProductOem;
 use Elastic\ScoutDriverPlus\Builders\BoolQueryBuilder;
 use Elastic\ScoutDriverPlus\Builders\QueryBuilderInterface;
+use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -130,12 +131,7 @@ class Search
                 "count" => $brandCollection->count()
             ]);
 
-        $highlights = [];
-        foreach ($products as $product) {
-            foreach ($product->highlight()->raw() as $key => $item) {
-                $highlights[$product->document()->id()][$key] = $item;
-            }
-        }
+        $highlights = $products->getCollection()->mapWithKeys(fn (Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
 
         return [
             'products' => $products,
