@@ -39,7 +39,7 @@ class SearchPage extends Component
     {
         $query = Searchable::query($this->query, $this->sortBy);
         $products = $query['products'];
-        $brands = [];
+        $brands = $query["brands"];
         $categories = $query['categories'];
 //        $this->term = $query['term'];
         $this->highlights = $query['highlights'];
