@@ -18,11 +18,10 @@ final class CreateProductsIndex implements MigrationInterface
             $mapping->text('title');
             $mapping->text('sub_title');
             $mapping->text('slug');
-            $mapping->text('part_number');
-            $mapping->text('producercode');
-            $mapping->text('cross_code');
-            $mapping->text('producercode2');
-            $mapping->text('similar_product_codes');
+            $mapping->keyword('part_number');
+            $mapping->keyword('producercode');
+            $mapping->keyword('cross_code');
+            $mapping->keyword('producercode2');
             $mapping->double('price');
             $mapping->nested('oems', [
                 'properties' => [

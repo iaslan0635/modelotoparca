@@ -39,13 +39,14 @@ class Product extends BaseModel implements CanVisit
             'producercode',
             'cross_code',
             'producercode2',
-            'similar_product_codes',
+//            'similar_product_codes',
         ]) + [
             'oems' => $this->oems->map->toSearchableArray(),
             'cars' => $this->cars->map->toSearchableArray(),
             'categories' => $this->categories->map->toSearchableArray(),
             'brand' => $this->brand?->toSearchableArray(),
-            'price' => $this->price?->price
+            'price' => $this->price?->price,
+            'similar_product_codes' => explode(",", $this->similar_product_codes)
         ];
     }
 

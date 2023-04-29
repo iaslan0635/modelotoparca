@@ -24,4 +24,19 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    public static function temp()
+    {
+        foreach(\App\Models\Product::all(["id", "similar_product_codes"]) as $product) {
+            if ($product->similar_product_codes === null) continue;
+            $codes = explode(",", $product->similar_product_codes);
+            $codes2 = collect($codes)->map(fn ($s) => trim($s))->filter();
+            foreach ($codes2 as $code) {
+                \DB::table("product_similars")->insertOrIgnore([
+                    "product_id" => $product->id,
+                    "code" => $code
+                ]);
+            }
+        }
+    }
 }
