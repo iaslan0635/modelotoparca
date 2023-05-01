@@ -27,23 +27,20 @@ class AlternativeImporter extends Importer
                 $refMap[$ref][] = $subRefs[$i];
             }
 
-            $table = DB::table("alternatives");
             $i = 1;
             foreach ($refMap as $mainRef => $subs) {
                 $i += count($subs);
                 $statusHook($i);
 
                 foreach ($subs as $sub)
-                    $table->insertOrIgnore([
+                    DB::table("alternatives")->insertOrIgnore([
                         "product_id" => $mainRef,
                         "alternative_id" => $sub
                     ]);
-
-//                $products = Product::query()->where('id', $mainRef)->get("id");
-//                foreach ($products as $product) {
-//                    $product->alternatives()->syncWithoutDetaching($subs);
-//                }
             }
+
+            $allMainRefs = array_keys($refMap);
+            DB::table("alternatives")->whereNotIn("product_id", $allMainRefs)->delete();
         });
     }
 }

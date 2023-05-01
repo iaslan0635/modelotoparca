@@ -20,15 +20,15 @@ class TigerImporter extends Importer
 
         $id = $c('B');
         $title = $c('X') ?? $c('F');
-        $allWbNames = $c('F') . $c('G') . $c('H') . $c('I');
+        $allWebNames = implode(" ", [$c('F'), $c('G'), $c('H'), $c('I')]);
 
         return [
             "product" => [
                 'id' => $id,
                 'brand_id' => $c('S'),
                 'title' => $title,
-                'sub_title' => $allWbNames,
-                'description' => $allWbNames,
+                'sub_title' => $allWebNames,
+                'description' => $allWebNames,
                 'slug' => Str::slug($title) . "-" . $id,
                 'sku' => $c('E'),
                 'quantity' => $c('AL'),
