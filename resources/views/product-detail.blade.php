@@ -547,7 +547,7 @@
                                                             <div class="product-card__footer">
                                                                 <div class="product-card__prices">
                                                                     <div
-                                                                        class="product-card__price product-card__price--current">{{ $cross->price->formattedPrice }}</div>
+                                                                        class="product-card__price product-card__price--current">{{ $cross->price?->formattedPrice }}</div>
                                                                 </div>
                                                                 <a href="{{ route('product.show', $cross) }}">
                                                                     <button class="product-card__addtocart-icon"
@@ -685,7 +685,7 @@
                                                             <div class="product-card__footer">
                                                                 <div class="product-card__prices">
                                                                     <div
-                                                                        class="product-card__price product-card__price--current">{{ $cross->price->formattedPrice }}</div>
+                                                                        class="product-card__price product-card__price--current">{{ $cross->price?->formattedPrice }}</div>
                                                                 </div>
                                                                 <button class="product-card__addtocart-icon"
                                                                         type="button" aria-label="Add to cart">

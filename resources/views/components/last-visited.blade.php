@@ -19,7 +19,7 @@
                     <div class="widget-products__prices">
                         <div
                             class="widget-products__price widget-products__price--current">
-                            {{ $item->price->formattedPrice }}
+                            {{ $item->price?->formattedPrice }}
                         </div>
                     </div>
                 </div>
