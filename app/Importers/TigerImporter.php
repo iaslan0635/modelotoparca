@@ -3,11 +3,7 @@
 namespace App\Importers;
 
 use App\Models\Product;
-use Carbon\CarbonImmutable;
 use Illuminate\Support\Str;
-use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
-use PhpOffice\PhpSpreadsheet\RichText\RichText;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class TigerImporter extends Importer
 {
@@ -73,6 +69,7 @@ class TigerImporter extends Importer
                 $ids[] = $product->id;
             }
         });
-        Product::query()->whereIn("id", $ids)->searchable();
+        if ($this->shouldAddToIndex())
+            Product::query()->whereIn("id", $ids)->searchable();
     }
 }

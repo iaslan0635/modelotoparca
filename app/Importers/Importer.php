@@ -2,6 +2,7 @@
 
 namespace App\Importers;
 
+use Illuminate\Support\Facades\App;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
@@ -34,6 +35,11 @@ abstract class Importer
             $value = $this->sheet->getCell("$column$row")->getValue();
             return $value instanceof RichText ? $value->getPlainText() : $value;
         };
+    }
+
+    protected function shouldAddToIndex()
+    {
+        return App::isProduction();
     }
 
     public abstract function import(callable|null $statusHook = null);
