@@ -32,22 +32,20 @@ class Product extends BaseModel implements CanVisit
     public function toSearchableArray()
     {
         return $this->only([
-            'id',
-            'title',
-            'slug',
-            'part_number',
-            'producercode',
-            'cross_code',
-            'producercode2',
-//            'similar_product_codes',
-        ]) + [
-            'oems' => $this->oems->map->toSearchableArray(),
-            'cars' => $this->cars->map->toSearchableArray(),
-            'categories' => $this->categories->map->toSearchableArray(),
-            'brand' => $this->brand?->toSearchableArray(),
-            'price' => $this->price?->price,
-            'similar_product_codes' => explode(",", $this->similar_product_codes)
-        ];
+                'id',
+                'title',
+                'slug',
+                'part_number',
+                'producercode',
+                'cross_code',
+                'producercode2',
+            ]) + [
+                'oems' => $this->oems->map->toSearchableArray(),
+                'cars' => $this->cars->map->toSearchableArray(),
+                'categories' => $this->categories->map->toSearchableArray(),
+                'brand' => $this->brand?->toSearchableArray(),
+                'price' => $this->price?->price,
+            ];
     }
 
     public function categories(): BelongsToMany
@@ -86,7 +84,7 @@ class Product extends BaseModel implements CanVisit
 
     public function fullTitle(): Attribute
     {
-        return Attribute::get(fn () => $this->title.($this->producercode ? ' @'.$this->producercode : ''));
+        return Attribute::get(fn() => $this->title . ($this->producercode ? ' @' . $this->producercode : ''));
     }
 
     public function cars(): BelongsToMany
@@ -100,5 +98,10 @@ class Product extends BaseModel implements CanVisit
             $chosen = Garage::chosen();
             //static::addGlobalScope("chosen_car", fn(Builder $builder) => $builder->whereRelation('cars', "id", "=", $chosen));
         }
+    }
+
+    public function similars(): HasMany
+    {
+        return $this->hasMany(ProductSimilar::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Elastic\ScoutDriverPlus\Searchable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductSimilar extends BaseModel
 {
@@ -24,5 +25,10 @@ class ProductSimilar extends BaseModel
             'product_id',
             'code',
         ]);
+    }
+
+    public function product(): BelongsTo
+    {
+        $this->belongsTo(Product::class);
     }
 }
