@@ -226,6 +226,12 @@
                                     <form method="GET" id="querySearch">
                                         <input type="hidden" name="query" value="{{ request()->input('query') }}">
                                         <ul class="applied-filters__list">
+                                            <li class="applied-filters__item">
+                                                <a href="#"
+                                                   class="applied-filters__button applied-filters__button--filter">
+                                                    Aranan Kelime: {{ request()->input('query') }}
+                                                </a>
+                                            </li>
                                             @if(request()->has('min_price'))
                                                 <input type="hidden" name="min_price" id="min-price"
                                                        value="{{ request()->input('min_price') }}">
