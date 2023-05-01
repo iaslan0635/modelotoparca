@@ -143,7 +143,8 @@ class Search
     private static function suggestionsProducerCode(string $term)
     {
         $suggestQuery = Query::bool()
-            ->should(Query::prefix()->field('producercode')->value($term)->caseInsensitive(true));
+            ->should(Query::prefix()->field('producercode')->value($term)->caseInsensitive(true))
+            ->should(Query::prefix()->field('producercode_regex')->value($term)->caseInsensitive(true));
 
         $suggestion = Product::searchQuery($suggestQuery)->highlight('producercode', [
             'pre_tags' => ['<strong>'],
@@ -161,7 +162,8 @@ class Search
     private static function suggestionsProducerCode2(string $term)
     {
         $suggestQuery = Query::bool()
-            ->should(Query::prefix()->field('producercode2')->value($term)->caseInsensitive(true));
+            ->should(Query::prefix()->field('producercode2')->value($term)->caseInsensitive(true))
+            ->should(Query::prefix()->field('producercode2_regex')->value($term)->caseInsensitive(true));
 
         $suggestion = Product::searchQuery($suggestQuery)->highlight('producercode2', [
             'pre_tags' => ['<strong>'],
