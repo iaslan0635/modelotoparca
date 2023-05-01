@@ -149,6 +149,9 @@ class Search
         $suggestion = Product::searchQuery($suggestQuery)->highlight('producercode', [
             'pre_tags' => ['<strong>'],
             'post_tags' => ['</strong>'],
+        ])->highlight('producercode_regex', [
+            'pre_tags' => ['<strong>'],
+            'post_tags' => ['</strong>'],
         ])->execute();
 
         $suggestions = [];
@@ -166,6 +169,9 @@ class Search
             ->should(Query::prefix()->field('producercode2_regex')->value($term)->caseInsensitive(true));
 
         $suggestion = Product::searchQuery($suggestQuery)->highlight('producercode2', [
+            'pre_tags' => ['<strong>'],
+            'post_tags' => ['</strong>'],
+        ])->highlight('producercode2_regex', [
             'pre_tags' => ['<strong>'],
             'post_tags' => ['</strong>'],
         ])->execute();
