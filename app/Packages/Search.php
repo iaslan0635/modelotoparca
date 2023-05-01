@@ -25,7 +25,7 @@ class Search
     {
         return Query::nested()
             ->path('oems')
-            ->query(Query::match()->field('oems.oem')->query($cleanTerm));
+            ->query(Query::fuzzy()->field('oems.oem')->value($cleanTerm));
     }
 
     private static function productQuery(string $cleanTerm)
@@ -40,7 +40,7 @@ class Search
                 'similar_product_codes',
             ])
             ->query($cleanTerm)
-            ->analyzer("turkish_analyzer")
+            //->analyzer("turkish_analyzer")
             ->fuzziness('AUTO');
     }
 
@@ -179,7 +179,7 @@ class Search
 
         $oemQuery = self::oemQuery($cleanTerm);
         $carQuery = self::carQuery($term);
-        $productQuery = self::productQuery($cleanTerm);
+        $productQuery = self::productQuery($term);
 
         $compoundQuery = self::combineQueries($productQuery, $oemQuery, $carQuery);
         $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $carQuery);

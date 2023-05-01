@@ -9,4 +9,5 @@ return [
     "similar_product_codes" => "Benzer ürün kodlarından bulundu",
     "oems.oem" => "Oem kodundan bulundu",
     "cars.name" => "Araç modelinden bulundu",
+    "cars.regex_name" => "Araç modelinden bulundu"
 ];

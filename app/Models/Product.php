@@ -31,21 +31,26 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        return $this->only([
-                'id',
-                'title',
-                'slug',
-                'part_number',
-                'producercode',
-                'cross_code',
-                'producercode2',
-            ]) + [
-                'oems' => $this->oems->map->toSearchableArray(),
-                'cars' => $this->cars->map->toSearchableArray(),
-                'categories' => $this->categories->map->toSearchableArray(),
-                'brand' => $this->brand?->toSearchableArray(),
-                'price' => $this->price?->price,
-            ];
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'part_number' => $this->part_number,
+            'part_number_regex' => $this->part_number ? preg_replace('/[^a-zA-Z0-9]+/', '',$this->part_number) : null,
+            'producercode' => $this->producercode,
+            'producercode_regex' => $this->producercode ? preg_replace('/[^a-zA-Z0-9]+/', '',$this->producercode) : null,
+            'cross_code' => $this->cross_code,
+            'cross_code_regex' => $this->cross_code ? preg_replace('/[^a-zA-Z0-9]+/', '',$this->cross_code) : null,
+            'producercode2' => $this->producercode2,
+            'producercode2_regex' => $this->producercode2 ? preg_replace('/[^a-zA-Z0-9]+/', '',$this->producercode2) : null,
+        ] + [
+            'oems' => $this->oems->map->toSearchableArray(),
+            'cars' => $this->cars->map->toSearchableArray(),
+            'categories' => $this->categories->map->toSearchableArray(),
+            'brand' => $this->brand?->toSearchableArray(),
+            'price' => $this->price?->price,
+            'similar_product_codes' => $this->similars->map->toSearchableArray()
+        ];
     }
 
     public function categories(): BelongsToMany
@@ -75,6 +80,11 @@ class Product extends BaseModel implements CanVisit
             ->where('id', '!=', $this->id);
     }
 
+    public function similars(): HasMany
+    {
+        return $this->hasMany(ProductSimilar::class);
+    }
+
     public function alternatives(): BelongsToMany
     {
         return $this
@@ -98,10 +108,5 @@ class Product extends BaseModel implements CanVisit
             $chosen = Garage::chosen();
             //static::addGlobalScope("chosen_car", fn(Builder $builder) => $builder->whereRelation('cars', "id", "=", $chosen));
         }
-    }
-
-    public function similars(): HasMany
-    {
-        return $this->hasMany(ProductSimilar::class);
     }
 }

@@ -17,6 +17,7 @@ final class CreateProductSimilarsIndex implements MigrationInterface
             $mapping->integer('id');
             $mapping->integer('product_id');
             $mapping->keyword('code');
+            $mapping->keyword('code_regex');
         });
     }
 

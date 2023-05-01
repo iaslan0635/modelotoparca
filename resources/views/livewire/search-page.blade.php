@@ -41,7 +41,8 @@
                                                             <ul class="filter-categories__list">
                                                                 @foreach($categories as ["category" => $category, "count" => $count])
                                                                     <li class="filter-categories__item filter-categories__item--current">
-                                                                        <a href="#" wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
+                                                                        <a href="#"
+                                                                           wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
                                                                         <div
                                                                             class="filter-categories__counter">{{ $count }}</div>
                                                                     </li>
@@ -66,14 +67,18 @@
                                                     <div class="filter__container">
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <input type="number" class="form-control" name="min_price" value="{{ number_format(request()->query('min_price', 0), thousands_separator: "") }}"
+                                                                <input type="number" class="form-control"
+                                                                       name="min_price"
+                                                                       value="{{ number_format(request()->query('min_price', 0), thousands_separator: "") }}"
                                                                        id="min-value" placeholder="Min. Fiyat">
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <span>-</span>
                                                             </div>
                                                             <div class="col-md-5">
-                                                                <input type="number" class="form-control" name="max_price" value="{{ number_format(request()->query('max_price', 99999), thousands_separator: "") }}"
+                                                                <input type="number" class="form-control"
+                                                                       name="max_price"
+                                                                       value="{{ number_format(request()->query('max_price', 99999), thousands_separator: "") }}"
                                                                        id="max-value" placeholder="Max. Fiyat">
                                                             </div>
                                                         </div>
@@ -135,7 +140,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <x-last-visited />
+                            <x-last-visited/>
                         </div>
                     </div>
                 </div>
@@ -158,7 +163,8 @@
                                 </button>
                                 <div class="view-options__layout layout-switcher">
                                     <div class="layout-switcher__list">
-                                        <button type="button" data-layout-id="1" class="layout-switcher__button" data-layout="grid"
+                                        <button type="button" data-layout-id="1" class="layout-switcher__button"
+                                                data-layout="grid"
                                                 data-with-features="false">
                                             <svg width="16" height="16">
                                                 <path d="M15.2,16H9.8C9.4,16,9,15.6,9,15.2V9.8C9,9.4,9.4,9,9.8,9h5.4C15.6,9,16,9.4,16,9.8v5.4C16,15.6,15.6,16,15.2,16z M15.2,7
@@ -167,14 +173,16 @@
 	C0,0.4,0.4,0,0.8,0h5.4C6.6,0,7,0.4,7,0.8v5.4C7,6.6,6.6,7,6.2,7z"/>
                                             </svg>
                                         </button>
-                                        <button type="button" data-layout-id="2" class="layout-switcher__button" data-layout="grid"
+                                        <button type="button" data-layout-id="2" class="layout-switcher__button"
+                                                data-layout="grid"
                                                 data-with-features="true">
                                             <svg width="16" height="16">
                                                 <path d="M16,0.8v14.4c0,0.4-0.4,0.8-0.8,0.8H9.8C9.4,16,9,15.6,9,15.2V0.8C9,0.4,9.4,0,9.8,0l5.4,0C15.6,0,16,0.4,16,0.8z M7,0.8
 	v14.4C7,15.6,6.6,16,6.2,16H0.8C0.4,16,0,15.6,0,15.2L0,0.8C0,0.4,0.4,0,0.8,0l5.4,0C6.6,0,7,0.4,7,0.8z"/>
                                             </svg>
                                         </button>
-                                        <button type="button" data-layout-id="3" class="layout-switcher__button layout-switcher__button--active"
+                                        <button type="button" data-layout-id="3"
+                                                class="layout-switcher__button layout-switcher__button--active"
                                                 data-layout="list" data-with-features="false">
                                             <svg width="16" height="16">
                                                 <path d="M15.2,16H0.8C0.4,16,0,15.6,0,15.2V9.8C0,9.4,0.4,9,0.8,9h14.4C15.6,9,16,9.4,16,9.8v5.4C16,15.6,15.6,16,15.2,16z M15.2,7
@@ -198,7 +206,8 @@
                                 <div class="view-options__spring"></div>
                                 <div class="view-options__select">
                                     <label for="view-option-sort">Sort:</label>
-                                    <select id="view-option-sort" class="form-control form-control-sm" wire:model="sortBy">
+                                    <select id="view-option-sort" class="form-control form-control-sm"
+                                            wire:model="sortBy">
                                         <option>Seçiniz...</option>
                                         <option value="price-asc">Fiyat Yükselen</option>
                                         <option value="price-desc">Fiyat Azalan</option>
@@ -296,7 +305,8 @@
                                             </div>
                                             <div class="product-card__image">
                                                 <div class="image image--type--product">
-                                                    <a href="{{ route('product.show', $product->model()) }}" class="image__body">
+                                                    <a href="{{ route('product.show', $product->model()) }}"
+                                                       class="image__body">
                                                         <img loading="lazy" class="image__tag"
                                                              src="{{ $product->model()->imageUrl() }}" alt="">
                                                     </a>
@@ -310,14 +320,19 @@
                                                                     d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
                                                             </svg>
                                                         </div>
-                                                        <div class="status-badge__text">{{
+                                                        <div class="status-badge__text">
+                                                            {{
                                                             implode(',',
                                                                 array_map(
                                                                     fn(string $s) => __("highlights." . $s),
                                                                     array_keys($highlights[$product->model()->id] ?? [])
                                                                 )
                                                             )
-                                                        }}</div>
+                                                        }}
+                                                            @if(isset($highlights[$product->model()->id]["oems.oem"]))
+                                                                {!! implode(',', $highlights[$product->model()->id]["oems.oem"]) !!}
+                                                            @endif
+                                                        </div>
                                                         <div class="status-badge__tooltip" tabindex="0"
                                                              data-toggle="tooltip"
                                                              title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
@@ -378,7 +393,9 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
                                                     </svg>
                                                 </button>
-                                                <livewire:add-to-cart :wire:key="$product->model()->id" :product="$product->model()" :quantity_mode="false"/>
+                                                <livewire:add-to-cart :wire:key="$product->model()->id"
+                                                                      :product="$product->model()"
+                                                                      :quantity_mode="false"/>
                                                 <button class="product-card__wishlist" type="button">
                                                     <svg width="16" height="16">
                                                         <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7

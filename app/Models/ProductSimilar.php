@@ -20,15 +20,16 @@ class ProductSimilar extends BaseModel
 
     public function toSearchableArray()
     {
-        return $this->only([
-            'id',
-            'product_id',
-            'code',
-        ]);
+        return [
+            'id' => $this->id,
+            'product_id' => $this->product_id,
+            'code' => $this->code,
+            'code_regex' => preg_replace('/[^a-zA-Z0-9]+/', '', $this->code)
+        ];
     }
 
     public function product(): BelongsTo
     {
-        $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }
