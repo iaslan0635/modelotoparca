@@ -228,7 +228,7 @@ class Search
 
         $productsWithCategories = Product::searchQuery($finalQuery)
             ->refineModels(fn(Builder $q) => $q->select(["id"]))
-            ->load(['categories'])->size(1000)->execute()->models();
+            ->load(['categories'])->size(10)->execute()->models();
 
         $productsWithBrand = Product::searchQuery($finalQueryWithoutBrandFilter)
             ->refineModels(fn(Builder $q) => $q->select(["id", "brand_id"]))
