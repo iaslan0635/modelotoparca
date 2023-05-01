@@ -82,7 +82,7 @@
                 </div>
                 <div class="quickview__product-prices-stock">
                     <div class="quickview__product-prices">
-                        <div class="quickview__product-price">{{ $product->price->formattedPrice }}</div>
+                        <div class="quickview__product-price">{{ $product->price?->formattedPrice }}</div>
                     </div>
                     <div class="status-badge status-badge--style--success quickview__product-stock status-badge--has-text">
                         <div class="status-badge__body">
