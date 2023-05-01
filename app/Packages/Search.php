@@ -21,30 +21,88 @@ class Search
             ->query(Query::match()->field('cars.regex_name')->query(preg_replace('/[^\w\s]/', '', $term)));
     }
 
-    private static function oemQuery(string $cleanTerm)
+    private static function oemQuery(string $term)
     {
         return Query::nested()
             ->path('oems')
-            ->query(Query::fuzzy()->field('oems.oem')->value($cleanTerm));
+            ->query(Query::term()->field('oems.oem')->value($term));
     }
 
-    private static function productQuery(string $cleanTerm)
+    private static function oemRegexQuery(string $cleanTerm)
+    {
+        return Query::nested()
+            ->path('oems')
+            ->query(Query::term()->field('oems.oem')->value($cleanTerm));
+    }
+
+    private static function similarQuery(string $term)
+    {
+        return Query::nested()
+            ->path('similar_product_codes')
+            ->query(Query::term()->field('similar_product_codes.code')->value($term));
+    }
+
+    private static function similarRegexQuery(string $cleanTerm)
+    {
+        return Query::nested()
+            ->path('similar_product_codes')
+            ->query(Query::term()->field('similar_product_codes.code_regex')->value($cleanTerm));
+    }
+
+    private static function productQuery(string $term)
     {
         return Query::multiMatch()
             ->fields([
                 'title',
                 'sub_title',
-                'cross_code',
-                'producercode',
-                'producercode2',
-                'similar_product_codes',
             ])
-            ->query($cleanTerm)
-            //->analyzer("turkish_analyzer")
+            ->query($term)
             ->fuzziness('AUTO');
     }
 
-    private static function suggestions(string $term)
+    private static function crossQuery(string $term)
+    {
+        return Query::term()
+            ->field('cross_code')
+            ->value($term);
+    }
+
+    private static function crossRegexQuery(string $cleanTerm)
+    {
+        return Query::term()
+            ->field('cross_code_regex')
+            ->value($cleanTerm)->caseInsensitive(true);
+    }
+
+    private static function producerQuery(string $term)
+    {
+        return Query::term()
+            ->field('producercode')
+            ->value($term);
+    }
+
+    private static function producerRegexQuery(string $cleanTerm)
+    {
+        return Query::term()
+            ->field('producercode_regex')
+            ->value($cleanTerm)->caseInsensitive(true);
+    }
+
+    private static function producer2Query(string $term)
+    {
+        return Query::term()
+            ->field('producercode2')
+            ->value($term);
+    }
+
+    private static function producer2RegexQuery(string $cleanTerm)
+    {
+        return Query::term()
+            ->field('producercode2_regex')
+            ->value($cleanTerm)->caseInsensitive(true);
+    }
+
+    private static function suggestionsOem(string $term)
     {
         $oemSuggestQuery = Query::bool()
             ->should(Query::prefix()->field('oem')->value($term)->caseInsensitive(true));
@@ -57,7 +115,64 @@ class Search
         $suggestions = [];
         foreach ($suggestionOems->highlights() as $highlight)
             foreach ($highlight->raw()["oem"] as $item)
-                $suggestions[] = $item;
+                if (!in_array($item, $suggestions))
+                    $suggestions[] = $item;
+
+        return $suggestions;
+    }
+
+    private static function suggestionsCrossCode(string $term)
+    {
+        $suggestQuery = Query::bool()
+            ->should(Query::prefix()->field('cross_code')->value($term)->caseInsensitive(true));
+
+        $suggestion = Product::searchQuery($suggestQuery)->highlight('cross_code', [
+            'pre_tags' => ['<strong>'],
+            'post_tags' => ['</strong>'],
+        ])->execute();
+
+        $suggestions = [];
+        foreach ($suggestion->highlights() as $highlight)
+            foreach ($highlight->raw()["cross_code"] as $item)
+                if (!in_array($item, $suggestions))
+                    $suggestions[] = $item;
+
+        return $suggestions;
+    }
+
+    private static function suggestionsProducerCode(string $term)
+    {
+        $suggestQuery = Query::bool()
+            ->should(Query::prefix()->field('producercode')->value($term)->caseInsensitive(true));
+
+        $suggestion = Product::searchQuery($suggestQuery)->highlight('producercode', [
+            'pre_tags' => ['<strong>'],
+            'post_tags' => ['</strong>'],
+        ])->execute();
+
+        $suggestions = [];
+        foreach ($suggestion->highlights() as $highlight)
+            foreach ($highlight->raw()["producercode"] as $item)
+                if (!in_array($item, $suggestions))
+                    $suggestions[] = $item;
+
+        return $suggestions;
+    }
+    private static function suggestionsProducerCode2(string $term)
+    {
+        $suggestQuery = Query::bool()
+            ->should(Query::prefix()->field('producercode2')->value($term)->caseInsensitive(true));
+
+        $suggestion = Product::searchQuery($suggestQuery)->highlight('producercode2', [
+            'pre_tags' => ['<strong>'],
+            'post_tags' => ['</strong>'],
+        ])->execute();
+
+        $suggestions = [];
+        foreach ($suggestion->highlights() as $highlight)
+            foreach ($highlight->raw()["producercode2"] as $item)
+                if (!in_array($item, $suggestions))
+                    $suggestions[] = $item;
 
         return $suggestions;
     }
@@ -88,10 +203,15 @@ class Search
             ->highlight('cross_code')
             ->highlight('producercode')
             ->highlight('producercode2')
+            ->highlight('cross_code_regex')
+            ->highlight('producercode_regex')
+            ->highlight('producercode2_regex')
             ->highlight('similar_product_codes')
             ->highlight('oems.oem')
             ->highlight('cars.name')
-            ->highlight('cars.regex_name');
+            ->highlight('cars.regex_name')
+            ->highlight('similar_product_codes.code')
+            ->highlight('similar_product_codes.code_regex');
 
         if ($sortBy === 'price-asc') {
             $products->sort('price');
@@ -131,11 +251,16 @@ class Search
                 "count" => $brandCollection->count()
             ]);
 
-        $highlights = $products->getCollection()->mapWithKeys(fn (Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
+        $highlights = $products->getCollection()->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
 
         return [
             'products' => $products,
-            'suggestions' => self::suggestions($term),
+            'suggestions' => [
+                'oems' => self::suggestionsOem($term),
+                'cross_codes' => self::suggestionsCrossCode($term),
+                'producercodes' => self::suggestionsProducerCode($term),
+                'producercodes2' => self::suggestionsProducerCode2($term)
+            ],
             'categories' => $categories,
             'highlights' => $highlights,
             'brands' => $brands
@@ -177,12 +302,21 @@ class Search
                 'highlights' => []
             ];
 
-        $oemQuery = self::oemQuery($cleanTerm);
+        $oemQuery = self::oemQuery($term);
+        $oemRegexQuery = self::oemRegexQuery($cleanTerm);
+        //$similarQuery = self::similarQuery($term);
+        //$similarRegexQuery = self::similarRegexQuery($cleanTerm);
         $carQuery = self::carQuery($term);
         $productQuery = self::productQuery($term);
+        $crossQuery = self::crossQuery($term);
+        $crossRegexQuery = self::crossRegexQuery($cleanTerm);
+        $producerQuery = self::producerQuery($term);
+        $producerRegexQuery = self::producerRegexQuery($cleanTerm);
+        $producer2Query = self::producer2Query($term);
+        $producer2RegexQuery = self::producer2RegexQuery($cleanTerm);
 
-        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $carQuery);
-        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $carQuery);
+        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, /*$similarQuery, $similarRegexQuery,*/ $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, /*$similarQuery, $similarRegexQuery,*/ $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
 
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
 

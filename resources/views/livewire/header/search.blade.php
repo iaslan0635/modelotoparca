@@ -68,9 +68,11 @@
                 <div class="suggestions__group">
                     <div class="suggestions__group-title">Öneriler</div>
                     <div class="suggestions__group-content">
-                        @foreach($suggestions as $suggestion)
-                            <a class="suggestions__item suggestions__category"
-                               href="{{ route('search', ['query' => strip_tags($suggestion)]) }}">{!! $suggestion !!}</a>
+                        @foreach($suggestions as $key => $suggestion)
+                            @foreach($suggestion as $item)
+                                <a class="suggestions__item suggestions__category"
+                                   href="{{ route('search', ['query' => strip_tags($item)]) }}">{{ ucfirst($key) }} - {!! $item !!}</a>
+                            @endforeach
                         @endforeach
                     </div>
                 </div>
