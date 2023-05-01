@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Import;
 
-use App\Importers\TigerImporter;
+use App\Importers\Importer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
-class ImportTigerJob implements ShouldQueue
+abstract class ImportJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $queue = "import_tiger";
 
     public string $filePath;
 
@@ -23,7 +23,9 @@ class ImportTigerJob implements ShouldQueue
 
     public function handle(): void
     {
-        (new TigerImporter($this->filePath))->import();
-        unlink($this->filePath);
+        $this->getImporter(Storage::path($this->filePath))->import();
+        Storage::delete($this->filePath);
     }
+
+    protected abstract function getImporter(string $path): Importer;
 }

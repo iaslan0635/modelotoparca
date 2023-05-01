@@ -55,4 +55,5 @@ Route::prefix('p/{product:slug}')->group(function () {
 Route::prefix("import/")->controller(ImportController::class)->group(function () {
     Route::get("/", "index");
     Route::post("tiger", "tiger");
+    Route::post("alternative", "alternative");
 });

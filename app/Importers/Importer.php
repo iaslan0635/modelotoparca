@@ -42,5 +42,11 @@ abstract class Importer
         return App::isProduction();
     }
 
+    protected function noop()
+    {
+        return function () {
+        };
+    }
+
     public abstract function import(callable|null $statusHook = null);
 }

@@ -2,6 +2,7 @@
 
 namespace App\Importers;
 
+use App\Models\Price;
 use App\Models\Product;
 use Illuminate\Support\Str;
 
@@ -52,7 +53,7 @@ class TigerImporter extends Importer
 
     public function import(callable|null $statusHook = null)
     {
-        $statusHook ??= fn(int $_) => null;
+        $statusHook ??= $this->noop();
         $ids = [];
         Product::withoutSyncingToSearch(function () use ($statusHook, &$ids) {
             for ($i = 2; $i <= $this->getRowCount(); $i++) {
@@ -69,7 +70,9 @@ class TigerImporter extends Importer
                 $ids[] = $product->id;
             }
         });
+        Product::whereNotIn("id", $ids)->delete();
+        Price::whereNotIn("product_id", $ids)->delete();
         if ($this->shouldAddToIndex())
-            Product::query()->whereIn("id", $ids)->searchable();
+            Product::query()->searchable();
     }
 }

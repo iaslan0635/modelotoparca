@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ImportTigerJob;
+use App\Jobs\Import\ImportAlternativeJob;
+use App\Jobs\Import\ImportTigerJob;
 use Closure;
 use Illuminate\Http\Request;
 
 class ImportController extends Controller
 {
+    protected const QUEUE = "import";
 
     public function __construct()
     {
@@ -24,6 +26,11 @@ class ImportController extends Controller
         return $filePath;
     }
 
+    protected function response()
+    {
+        return "İsteğiniz kuyruğa eklendi";
+    }
+
     public function index()
     {
         return view("temporary.import");
@@ -31,11 +38,13 @@ class ImportController extends Controller
 
     public function tiger()
     {
-        ImportTigerJob::dispatch($this->getExcel());
+        ImportTigerJob::dispatch($this->getExcel())->onQueue(self::QUEUE);
+        return $this->response();
     }
 
     public function alternative()
     {
-        ImportTigerJob::dispatch($this->getExcel());
+        ImportAlternativeJob::dispatch($this->getExcel())->onQueue(self::QUEUE);
+        return $this->response();
     }
 }
