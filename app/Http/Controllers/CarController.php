@@ -13,7 +13,7 @@ class CarController extends Controller
         $minPrice = request()->input('min_price', 0);
         $maxPrice = request()->input('max_price', 999999);
         $query = Product::query()
-            ->with(['category', 'price', 'brand'])
+            ->with(['categories', 'price', 'brand'])
             ->join('prices', 'products.id', '=', 'prices.product_id')
             ->whereBetween('prices.price', [$minPrice, $maxPrice])->select('products.*')
             ->whereRelation('cars', function ($q) use ($car) {
