@@ -256,13 +256,13 @@
                                             @endif
                                             @foreach(request()->input('brands', []) as $brand)
                                                 <li class="applied-filters__item">
-                                                    <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand][0]->brand->id }}"
-                                                           value="{{ $brands[$brand][0]->brand->id }}">
+                                                    <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand]["brand"]->id }}"
+                                                           value="{{ $brands[$brand]["brand"]->id }}">
                                                     <a href="#"
                                                        class="applied-filters__button applied-filters__button--filter">
-                                                        Marka: {{ $brands[$brand][0]->brand->name }}
+                                                        Marka: {{ $brands[$brand]["brand"]->name }}
                                                         <svg
-                                                            onclick="$(`#brand-{{ $brands[$brand][0]->brand->id }}`).remove() && $('#querySearch').submit()"
+                                                            onclick="$(`#brand-{{ $brands[$brand]["brand"]->id }}`).remove() && $('#querySearch').submit()"
                                                             width="9" height="9">
                                                             <path
                                                                 d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
