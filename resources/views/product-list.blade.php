@@ -870,7 +870,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <x-last-visited />
+                                    <x-last-visited/>
                                 </div>
                             </div>
                         </div>
@@ -985,6 +985,7 @@
                                                         </li>
                                                     @endif
                                                     @foreach(request()->input('brands', []) as $brand)
+                                                        @php if(!$brands->has($brand)) continue; @endphp
                                                         <li class="applied-filters__item">
                                                             <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand][0]->brand->id }}"
                                                                    value="{{ $brands[$brand][0]->brand->id }}">
