@@ -96,7 +96,7 @@
                                                                         d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
                                                                 </svg></span>
                                                 </button>
-                                                <div class="filter__body" data-collapse-content>
+                                                <div class="filter__body" data-collapse-content style="max-height: 175px;overflow: auto;">
                                                     <div class="filter__container">
                                                         <div class="filter-list">
                                                             <div class="filter-list__list">
@@ -223,34 +223,61 @@
                             <div class="view-options__body view-options__body--filters">
                                 <div class="view-options__label">Active Filters</div>
                                 <div class="applied-filters">
-                                    <ul class="applied-filters__list">
-                                        <li class="applied-filters__item">
-                                            <a href=""
-                                               class="applied-filters__button applied-filters__button--filter">
-                                                Sales: Top Sellers
-                                                <svg width="9" height="9">
-                                                    <path
-                                                        d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li class="applied-filters__item">
-                                            <a href=""
-                                               class="applied-filters__button applied-filters__button--filter">
-                                                Color: True Red
-                                                <svg width="9" height="9">
-                                                    <path
-                                                        d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                </svg>
-                                            </a>
-                                        </li>
-                                        <li class="applied-filters__item">
-                                            <button type="button"
-                                                    class="applied-filters__button applied-filters__button--clear">
-                                                Clear All
-                                            </button>
-                                        </li>
-                                    </ul>
+                                    <form method="GET" id="querySearch">
+                                        <input type="hidden" name="query" value="{{ request()->input('query') }}">
+                                        <ul class="applied-filters__list">
+                                            <li class="applied-filters__item">
+                                                <a href="#"
+                                                   class="applied-filters__button applied-filters__button--filter">
+                                                    Aranan Kelime: {{ request()->input('query') }}
+                                                </a>
+                                            </li>
+                                            @if(request()->has('min_price'))
+                                                <input type="hidden" name="min_price" id="min-price"
+                                                       value="{{ request()->input('min_price') }}">
+                                                <li class="applied-filters__item">
+                                                    <a href="#"
+                                                       class="applied-filters__button applied-filters__button--filter">
+                                                        En düşük fiyat: {{ request()->input('min_price') }}
+                                                        <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
+                                                            <path
+                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            @if(request()->has('max_price'))
+                                                <input type="hidden" name="max_price" id="max-price"
+                                                       value="{{ request()->input('max_price') }}">
+                                                <li class="applied-filters__item">
+                                                    <a href="#"
+                                                       class="applied-filters__button applied-filters__button--filter">
+                                                        En yüksek fiyat: {{ request()->input('max_price') }}
+                                                        <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
+                                                            <path
+                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            @foreach(request()->input('brands', []) as $brand)
+                                                <li class="applied-filters__item">
+                                                    <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand]["brand"]->id }}"
+                                                           value="{{ $brands[$brand]["brand"]->id }}">
+                                                    <a href="#"
+                                                       class="applied-filters__button applied-filters__button--filter">
+                                                        Marka: {{ $brands[$brand]["brand"]->name }}
+                                                        <svg
+                                                            onclick="$(`#brand-{{ $brands[$brand]["brand"]->id }}`).remove() && $('#querySearch').submit()"
+                                                            width="9" height="9">
+                                                            <path
+                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                        </svg>
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </form>
                                 </div>
                             </div>
                         </div>
