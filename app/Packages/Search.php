@@ -136,15 +136,18 @@ class Search
         ])->execute();
 
         $suggestions = [];
-        foreach ($suggestion->highlights() as $highlight)
-            if (isset($highlight->raw()["cross_code"]))
+        foreach ($suggestion->highlights() as $highlight) {
+            if (isset($highlight->raw()["cross_code"])) {
                 foreach ($highlight->raw()["cross_code"] as $item)
                     if (!in_array($item, $suggestions))
                         $suggestions[] = $item;
-            if (isset($highlight->raw()["cross_code_regex"]))
+            }
+            if (isset($highlight->raw()["cross_code_regex"])) {
                 foreach ($highlight->raw()["cross_code_regex"] as $item)
                     if (!in_array($item, $suggestions))
                         $suggestions[] = $item;
+            }
+        }
 
         return $suggestions;
     }
@@ -164,15 +167,16 @@ class Search
         ])->execute();
 
         $suggestions = [];
-        foreach ($suggestion->highlights() as $highlight)
+        foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()["producercode"]))
                 foreach ($highlight->raw()["producercode"] as $item)
                     if (!in_array($item, $suggestions))
                         $suggestions[] = $item;
-        if (isset($highlight->raw()["producercode_regex"]))
-            foreach ($highlight->raw()["producercode_regex"] as $item)
-                if (!in_array($item, $suggestions))
-                    $suggestions[] = $item;
+            if (isset($highlight->raw()["producercode_regex"]))
+                foreach ($highlight->raw()["producercode_regex"] as $item)
+                    if (!in_array($item, $suggestions))
+                        $suggestions[] = $item;
+        }
 
         return $suggestions;
     }
@@ -192,15 +196,16 @@ class Search
         ])->execute();
 
         $suggestions = [];
-        foreach ($suggestion->highlights() as $highlight)
+        foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()["producercode2"]))
                 foreach ($highlight->raw()["producercode2"] as $item)
                     if (!in_array($item, $suggestions))
                         $suggestions[] = $item;
-        if (isset($highlight->raw()["producercode2_regex"]))
-            foreach ($highlight->raw()["producercode2_regex"] as $item)
-                if (!in_array($item, $suggestions))
-                    $suggestions[] = $item;
+            if (isset($highlight->raw()["producercode2_regex"]))
+                foreach ($highlight->raw()["producercode2_regex"] as $item)
+                    if (!in_array($item, $suggestions))
+                        $suggestions[] = $item;
+        }
 
         return $suggestions;
     }
