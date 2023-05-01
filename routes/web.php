@@ -1,19 +1,18 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductOem;
-use Elastic\ScoutDriverPlus\Support\Query;
-use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
     $categories = Category::root()->limit(15)->orderBy("order")->get(["slug", "name"]);
-    $featured_products = Product::query()->limit(20)->with("price:id,price,currency,product_id")->get(["id", "slug" ,"sku", "title"]);
-    return view('home', compact('categories' ,'featured_products'));
+    $featured_products = Product::query()->limit(20)->with("price:id,price,currency,product_id")->get(["id", "slug", "sku", "title"]);
+    return view('home', compact('categories', 'featured_products'));
 });
 
 Route::get('cart', function () {
@@ -51,4 +50,9 @@ Route::get('c/{category:slug}', [CategoryController::class, 'show'])->name('cate
 Route::prefix('p/{product:slug}')->group(function () {
     Route::get('quickview', [ProductController::class, 'quickview'])->name('quickview');
     Route::get('/', [ProductController::class, 'show'])->name('product.show');
+});
+
+Route::prefix("import/")->controller(ImportController::class)->group(function () {
+    Route::get("/", "index");
+    Route::post("tiger", "tiger");
 });

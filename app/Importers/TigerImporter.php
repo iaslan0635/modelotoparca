@@ -9,7 +9,7 @@ use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class TigerImporter
+class TigerImporter extends Importer
 {
     const CURRENCY_MAP = [
         160 => "try",
@@ -17,21 +17,9 @@ class TigerImporter
         20 => "eur",
     ];
 
-    private Worksheet $sheet;
-
-    public function __construct(string $file)
+    public function mapData(int $row)
     {
-        $year = CarbonImmutable::create(1900);
-        $spreadsheet = (new Xlsx())->load($file);
-        $this->sheet = $spreadsheet->getActiveSheet();
-    }
-
-    public function mapData($row)
-    {
-        $c = function ($column) use ($row) {
-            $value = $this->sheet->getCell("$column$row")->getValue();
-            return $value instanceof RichText ? $value->getPlainText() : $value;
-        };
+        $c = $this->makeCellGetter($row);
 
         $id = $c('B');
         $title = $c('X') ?? $c('F');
@@ -66,37 +54,25 @@ class TigerImporter
         ];
     }
 
-    private static function pop(&$array, $key)
-    {
-        $value = $array[$key];
-        unset($array[$key]);
-        return $value;
-    }
-
-    public function getRowCount()
-    {
-        return $this->sheet->getHighestRow();
-    }
-
-    public function import($statusHook = null)
+    public function import(callable|null $statusHook = null)
     {
         $statusHook ??= fn(int $_) => null;
-        $productIds = [];
-        Product::withoutSyncingToSearch(function () use ($statusHook, &$productIds) {
+        $ids = [];
+        Product::withoutSyncingToSearch(function () use ($statusHook, &$ids) {
             for ($i = 2; $i <= $this->getRowCount(); $i++) {
                 $statusHook($i);
                 ["product" => $productData, "price" => $priceData] = $this->mapData($i);
 
-                $productId = self::pop($productData, "id");
-                $categoryId = self::pop($productData, "_category");
-                $priceProductId = self::pop($priceData, "product_id");
+                $productId = $this->pop($productData, "id");
+                $categoryId = $this->pop($productData, "_category");
+                $priceProductId = $this->pop($priceData, "product_id");
 
                 $product = Product::updateOrCreate(["id" => $productId], $productData);
                 $product->price()->updateOrCreate(["product_id" => $priceProductId], $priceData);
                 $product->categories()->syncWithoutDetaching([$categoryId]);
-                $productIds[] = $product->id;
+                $ids[] = $product->id;
             }
         });
-        Product::query()->whereIn("id", $productIds)->searchable();
+        Product::query()->whereIn("id", $ids)->searchable();
     }
 }

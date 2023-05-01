@@ -2,19 +2,15 @@
 
 namespace App\Console\Commands;
 
+use App\Importers\Importer;
 use App\Importers\TigerImporter;
-use Illuminate\Console\Command;
 
-class ImportTigerCommand extends Command
+class ImportTigerCommand extends ImportCommand
 {
-    protected $signature = 'import:tiger {file}';
+    protected string $importVerb = "tiger";
 
-    public function handle(): void
+    protected function getImporter(string $file): Importer
     {
-        $file = $this->argument("file");
-        $importer = new TigerImporter($file);
-        $progress = $this->output->createProgressBar($importer->getRowCount());
-        $progress->start();
-        $importer->import($progress->setProgress(...));
+        return new TigerImporter($file);
     }
 }
