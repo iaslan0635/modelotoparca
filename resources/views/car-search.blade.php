@@ -868,11 +868,8 @@
                                                     <div class="vehicles-list__body">
                                                         <div class="vehicles-list__item">
                                                             <div class="vehicles-list__item-info">
-                                                                <div class="vehicles-list__item-name">2011 Ford Focus S</div>
-                                                                <div class="vehicles-list__item-details">Engine 2.0L 1742DA L4 FI Turbo</div>
-                                                                <div class="vehicles-list__item-links">
-                                                                    <a href="">Show Parts</a>
-                                                                </div>
+                                                                <div class="vehicles-list__item-name">{{ $car->name }}</div>
+                                                                <div class="vehicles-list__item-details">{{ $car->short_name }} - Power : {{ $car->power }} - Capacity: {{ $car->capacity }} - From/To : {{ $car->from_year }}/{{ $car->to_year }}</div>
                                                             </div>
                                                             <button type="button" class="vehicles-list__item-remove">
                                                                 <svg width="16" height="16">
