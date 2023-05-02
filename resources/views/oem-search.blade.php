@@ -41,7 +41,7 @@
                                     </button>
                                 </div>
                                 <div class="sidebar__content">
-                                    <form action="{{ route('car.search', $car->permalink) }}" method="GET">
+                                    <form action="{{ route('oem.search', $oem) }}" method="GET">
                                         <div class="widget widget-filters widget-filters--offcanvas--mobile"
                                              data-collapse
                                              data-collapse-opened-class="filter--opened">
