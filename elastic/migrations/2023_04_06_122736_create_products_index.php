@@ -18,6 +18,7 @@ final class CreateProductsIndex implements MigrationInterface
             $mapping->text('title');
             $mapping->text('sub_title');
             $mapping->text('slug');
+            $mapping->text('fitting_position');
             $mapping->keyword('part_number');
             $mapping->keyword('producercode');
             $mapping->keyword('cross_code');

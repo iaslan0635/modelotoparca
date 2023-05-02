@@ -41,6 +41,8 @@ class TigerImporter extends Importer
                 'cross_code' => $c('U'),
                 'oem_codes' => $c('V'),
                 'similar_product_codes' => $c('Y'),
+                'fitting_position' => $c('AK'),
+
                 '_category' => $c("O"),
             ],
             "price" => [
