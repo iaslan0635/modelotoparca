@@ -22,6 +22,6 @@ class OemController extends Controller
             }
         }
 
-        return view('car-search', compact('products', 'oem', 'categories', 'brands'));
+        return view('oem-search', compact('products', 'oem', 'categories', 'brands'));
     }
 }
