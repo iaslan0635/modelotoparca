@@ -338,9 +338,8 @@
                                                              src="{{ $product->model()->imageUrl() }}" alt="">
                                                     </a>
                                                 </div>
-                                                @foreach($highlights[$product->model()->id] ?? [] as $key => $mark)
-                                                    <div
-                                                        class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+                                                <div class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+                                                    @foreach($highlights[$product->model()->id] ?? [] as $key => $mark)
                                                         <div class="status-badge__body">
                                                             <div class="status-badge__icon">
                                                                 <svg width="13" height="13">
@@ -350,8 +349,8 @@
                                                             </div>
                                                             <div class="status-badge__text">{{ __("highlights." . $key) }}: {!! implode(", ", $mark) !!}</div>
                                                         </div>
-                                                    </div>
-                                                @endforeach
+                                                    @endforeach
+                                                </div>
                                             </div>
                                             <div class="product-card__info">
                                                 <div class="product-card__meta"><span
