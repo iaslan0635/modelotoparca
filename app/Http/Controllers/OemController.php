@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Car;
 use App\Packages\SubSearch;
 use Illuminate\Database\Eloquent\Builder;
 
-class CarController extends Controller
+class OemController extends Controller
 {
-    public function show($permalink)
+    public function show(string $oem)
     {
-        $car = Car::query()->where('permalink', '=', $permalink)->firstOrFail();
         extract(SubSearch::query(request(),
-            fn(Builder $query) => $query->whereRelation('cars', fn($q) => $q->where('id', $car->id))
+            fn(Builder $query) => $query->whereRelation('oems', fn($q) => $q->where('oem', $oem))
         ));
 
         $products = $query->paginate(12);
@@ -24,6 +22,6 @@ class CarController extends Controller
             }
         }
 
-        return view('car-search', compact('products', 'car', 'categories', 'brands'));
+        return view('car-search', compact('products', 'oem', 'categories', 'brands'));
     }
 }

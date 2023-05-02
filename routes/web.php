@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\OemController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
 use App\Models\Product;
@@ -43,7 +44,8 @@ Route::view('checkout', 'checkout')->name('checkout');
 Route::view('add-adress', 'account.add-adress')->name('add-adress');
 Route::view('order-success', 'account.order-success')->name('order-success');
 
-Route::get('araba/{permalink}', [CarController::class, 'index'])->name('car.search')->where('permalink', '.*');
+Route::get('araba/{permalink}', [CarController::class, 'show'])->name('car.search')->where('permalink', '.*');
+Route::get('oem/{oem}', [OemController::class, 'show'])->name('oem.search')->where('oem', '.*');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
 Route::get('c/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
