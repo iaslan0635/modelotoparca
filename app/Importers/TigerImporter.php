@@ -2,8 +2,8 @@
 
 namespace App\Importers;
 
-use App\Models\Price;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class TigerImporter extends Importer
@@ -14,6 +14,17 @@ class TigerImporter extends Importer
         20 => "eur",
     ];
 
+    private function explode(string|null $str)
+    {
+        return $str === null ? null : array_map(fn($s) => trim($s), explode(",", $str));
+    }
+
+    private function removeFirstWord($string)
+    {
+        return $string === null ? null : substr($string, strpos($string, ' ') + 1);
+    }
+
+
     public function mapData(int $row)
     {
         $c = $this->makeCellGetter($row);
@@ -21,6 +32,7 @@ class TigerImporter extends Importer
         $id = $c('B');
         $title = $c('X') ?? $c('F');
         $allWebNames = implode(" ", [$c('F'), $c('G'), $c('H'), $c('I')]);
+        $oems = $c('V');
 
         return [
             "product" => [
@@ -36,10 +48,10 @@ class TigerImporter extends Importer
                 'type' => "simple",
                 'ecommerce' => intval($c("AA")) === 1,
                 'part_number' => $c('U'),
-                'producercode' => $c('K'),
-                'producercode2' => $c('W'),
+                'producercode' => $this->removeFirstWord($c('K')),
+                'producercode2' => $this->removeFirstWord($c('W')),
                 'cross_code' => $c('U'),
-                'oem_codes' => $c('V'),
+                'oem_codes' => $oems,
                 'similar_product_codes' => $c('Y'),
                 'fitting_position' => $c('AK'),
 
@@ -60,20 +72,39 @@ class TigerImporter extends Importer
         Product::withoutSyncingToSearch(function () use ($statusHook, &$ids) {
             for ($i = 2; $i <= $this->getRowCount(); $i++) {
                 $statusHook($i);
-                ["product" => $productData, "price" => $priceData] = $this->mapData($i);
+                [
+                    "product" => $productData,
+                    "price" => $priceData,
+                ] = $this->mapData($i);
 
                 $productId = $this->pop($productData, "id");
                 $categoryId = $this->pop($productData, "_category");
-                $priceProductId = $this->pop($priceData, "product_id");
 
                 $product = Product::updateOrCreate(["id" => $productId], $productData);
-                $product->price()->updateOrCreate(["product_id" => $priceProductId], $priceData);
-                $product->categories()->syncWithoutDetaching([$categoryId]);
+
+                $oems = $this->explode($productData["oem_codes"]) ?? [];
+                foreach ($oems as $oem)
+                    DB::table("product_oems")->insertOrIgnore(["logicalref" => $productId, "oem" => $oem, "brand" => ""]);
+
+                DB::table("prices")->insertOrIgnore($priceData);
+
+                DB::table("product_categories")->insertOrIgnore([
+                    "product_id" => $productId,
+                    "category_id" => $categoryId
+                ]);
+
+                $similars = $this->explode($productData["similar_product_codes"]) ?? [];
+                foreach ($similars as $similar)
+                    DB::table("alternatives")->insertOrIgnore([
+                        "product_id" => $productId,
+                        "alternative_id" => $similar
+                    ]);
+
                 $ids[] = $product->id;
             }
         });
-        Product::whereNotIn("id", $ids)->delete();
-        Price::whereNotIn("product_id", $ids)->delete();
+//        Product::whereNotIn("id", $ids)->delete();
+//        Price::whereNotIn("product_id", $ids)->delete();
         if ($this->shouldAddToIndex())
             Product::query()->searchable();
     }
