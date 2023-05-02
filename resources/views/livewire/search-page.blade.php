@@ -338,33 +338,20 @@
                                                              src="{{ $product->model()->imageUrl() }}" alt="">
                                                     </a>
                                                 </div>
-                                                <div
-                                                    class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
-                                                    <div class="status-badge__body">
-                                                        <div class="status-badge__icon">
-                                                            <svg width="13" height="13">
-                                                                <path
-                                                                    d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
-                                                            </svg>
+                                                @foreach($highlights[$product->model()->id] ?? [] as $key => $mark)
+                                                    <div
+                                                        class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+                                                        <div class="status-badge__body">
+                                                            <div class="status-badge__icon">
+                                                                <svg width="13" height="13">
+                                                                    <path
+                                                                        d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
+                                                                </svg>
+                                                            </div>
+                                                            <div class="status-badge__text">{{ __("highlights." . $key) }}: {!! implode(", ", $mark) !!}</div>
                                                         </div>
-                                                        <div class="status-badge__text">
-                                                            {{
-                                                            implode(',',
-                                                                array_map(
-                                                                    fn(string $s) => __("highlights." . $s),
-                                                                    array_keys($highlights[$product->model()->id] ?? [])
-                                                                )
-                                                            )
-                                                        }}
-                                                            @if(isset($highlights[$product->model()->id]["oems.oem"]))
-                                                                {!! implode(',', $highlights[$product->model()->id]["oems.oem"]) !!}
-                                                            @endif
-                                                        </div>
-                                                        <div class="status-badge__tooltip" tabindex="0"
-                                                             data-toggle="tooltip"
-                                                             title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>
                                                     </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                             <div class="product-card__info">
                                                 <div class="product-card__meta"><span
@@ -467,4 +454,12 @@
     <script>
         $(".pagination").click(() => window.scrollTo(0, 0))
     </script>
+@endpush
+@push('styles')
+    <style>
+        .status-badge__text > em {
+            font-weight: bold;
+            font-style: normal;
+        }
+    </style>
 @endpush
