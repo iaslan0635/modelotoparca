@@ -96,4 +96,8 @@
             </div>
         </div>
     </div>
+    <div wire:loading.flex
+         style="display: none; background: rgba(255, 255, 255, 0.29);backdrop-filter: blur(10px);position: absolute;inset: 0;justify-content: center;align-items: center;">
+        <div class="spinner-border"></div>
+    </div>
 </div>

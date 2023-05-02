@@ -24,13 +24,14 @@ class Garage
 
     public static function items(): array
     {
-        return session('garage_cars', []);
+        $items = session('garage_cars', []);
+        return is_array($items) ? $items : [];
     }
 
     public static function remove(int $id): void
     {
         $cars = self::items();
-        session()->put('garage_cars', collect($cars)->filter(fn ($car) => $car['id'] !== $id)->all());
+        session()->put('garage_cars', collect($cars)->filter(fn($car) => $car['id'] !== $id)->all());
     }
 
     public static function chosen(): int|null
