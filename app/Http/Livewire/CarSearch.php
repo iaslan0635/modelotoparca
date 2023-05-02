@@ -37,40 +37,38 @@ class CarSearch extends Component
     {
         $index = array_search($prop, self::HIERARCHY);
         if ($index === false) {
-        return;
+            return;
         }
 
         $len = count(self::HIERARCHY);
         for ($i = $index + 1; $i < $len; $i++) {
-            /** @noinspection PhpFieldImmediatelyRewrittenInspection */
-            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i].'s'} = null;
+            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i] . 's'} = null;
         }
     }
 
     public function render()
     {
-        $this->makers ??= $this->maker(['id', 'name'])->filter(fn ($m) => $m->name)->toArray();
+        $this->makers ??= $this->maker(['id', 'name'])
+            ->filter(fn($m) => $m->name)->sort(fn($m) => $m->name)->values()->toArray();
 
-        if ($this->maker !== null) {
-            $this->cars ??= $this->model('short_name')->pluck('short_name')->filter()->toArray();
-        }
+        if ($this->maker !== null)
+            $this->cars ??= $this->model('short_name')->pluck('short_name')->filter()->sort()->values()->toArray();
 
-        if ($this->car !== null) {
+        if ($this->car !== null)
             $this->years ??= $this->model(['from_year', 'to_year'])
-                ->map(fn ($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
-                ->flatten()->unique()->filter()->sort()->toArray();
-        }
+                ->map(fn($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
+                ->flatten()->unique()->filter()->sort()->values()->toArray();
 
-        if ($this->year !== null) {
-            $this->spesificCars ??= $this->model('name')->pluck('name')->filter()->toArray();
-        }
+        if ($this->year !== null)
+            $this->spesificCars ??= $this->model('name')->pluck('name')->filter()->sort()->values()->toArray();
 
-        if ($this->spesificCar !== null) {
-            $this->engines ??= $this->model(['power', 'capacity', 'id'])->map(fn ($x) => [
-                'id' => $x->id,
-                'name' => "$x->power Kw / {$this->kwToHp($x->power)} Hp / $x->capacity cc",
-            ])->toArray();
-        }
+        if ($this->spesificCar !== null)
+            $this->engines ??= $this->model(['power', 'capacity', 'id'])
+                ->sort(fn($x) => $x->power)->values()
+                ->map(fn($x) => [
+                    'id' => $x->id,
+                    'name' => "$x->power Kw / {$this->kwToHp($x->power)} Hp / $x->capacity cc",
+                ])->toArray();
 
         return view('livewire.car-search');
     }
@@ -85,7 +83,7 @@ class CarSearch extends Component
         $builder = Car::query()->distinct();
 
         if ($this->year !== null) {
-            $builder->whereNested(fn ($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
+            $builder->whereNested(fn($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
         }
 
         if ($this->car !== null) {
@@ -111,7 +109,7 @@ class CarSearch extends Component
     {
         $builder = Maker::query();
         if ($this->year !== null) {
-        $builder->whereRaw('? BETWEEN from_year AND to_year', [$this->year]);
+            $builder->whereRaw('? BETWEEN from_year AND to_year', [$this->year]);
         }
         /*
                 if ($this->cat_id !== null) {
