@@ -20,7 +20,7 @@ class Search
         "similar_product_codes" => 5,
         "oem" => 4,
         "title" => 3,
-        "car" => 2
+        "car" => 1
     ];
 
     private static function carQuery(string $term)
