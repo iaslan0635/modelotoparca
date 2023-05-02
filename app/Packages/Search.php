@@ -14,39 +14,53 @@ use Illuminate\Support\Collection;
 
 class Search
 {
+    const BOOST = [
+        "cross_code" => 7,
+        "producercode" => 6,
+        "similar_product_codes" => 5,
+        "oem" => 4,
+        "title" => 3,
+        "car" => 2
+    ];
+
     private static function carQuery(string $term)
     {
         return Query::nested()
             ->path('cars')
-            ->query(Query::match()->field('cars.regex_name')->query(preg_replace('/[^\w\s]/', '', $term)));
+            ->query(Query::match()->field('cars.regex_name')->query(preg_replace('/[^\w\s]/', '', $term))
+                ->boost(self::BOOST["car"]));
     }
 
     private static function oemQuery(string $term)
     {
         return Query::nested()
             ->path('oems')
-            ->query(Query::term()->field('oems.oem')->value($term));
+            ->query(Query::term()->field('oems.oem')->value($term)
+                ->boost(self::BOOST["oem"]));
     }
 
     private static function oemRegexQuery(string $cleanTerm)
     {
         return Query::nested()
             ->path('oems')
-            ->query(Query::term()->field('oems.oem')->value($cleanTerm));
+            ->query(Query::term()->field('oems.oem')->value($cleanTerm)
+                ->boost(self::BOOST["oem"]));
     }
 
     private static function similarQuery(string $term)
     {
         return Query::nested()
             ->path('similar_product_codes')
-            ->query(Query::term()->field('similar_product_codes.code')->value($term));
+            ->query(Query::term()->field('similar_product_codes.code')->value($term)
+                ->boost(self::BOOST["similar_product_codes"]));
     }
 
     private static function similarRegexQuery(string $cleanTerm)
     {
         return Query::nested()
             ->path('similar_product_codes')
-            ->query(Query::term()->field('similar_product_codes.code_regex')->value($cleanTerm));
+            ->query(Query::term()->field('similar_product_codes.code_regex')->value($cleanTerm)
+                ->boost(self::BOOST["similar_product_codes"]));
     }
 
     private static function productQuery(string $term)
@@ -57,49 +71,56 @@ class Search
                 'sub_title',
             ])
             ->query($term)
-            ->fuzziness('AUTO');
+            ->fuzziness('AUTO')
+            ->boost(self::BOOST["title"]);
     }
 
     private static function crossQuery(string $term)
     {
         return Query::term()
             ->field('cross_code')
-            ->value($term);
+            ->value($term)
+            ->boost(self::BOOST["cross_code"]);
     }
 
     private static function crossRegexQuery(string $cleanTerm)
     {
         return Query::term()
             ->field('cross_code_regex')
-            ->value($cleanTerm)->caseInsensitive(true);
+            ->value($cleanTerm)->caseInsensitive(true)
+            ->boost(self::BOOST["cross_code"]);
     }
 
     private static function producerQuery(string $term)
     {
         return Query::term()
             ->field('producercode')
-            ->value($term);
+            ->value($term)
+            ->boost(self::BOOST["producercode"]);
     }
 
     private static function producerRegexQuery(string $cleanTerm)
     {
         return Query::term()
             ->field('producercode_regex')
-            ->value($cleanTerm)->caseInsensitive(true);
+            ->value($cleanTerm)->caseInsensitive(true)
+            ->boost(self::BOOST["producercode"]);
     }
 
     private static function producer2Query(string $term)
     {
         return Query::term()
             ->field('producercode2')
-            ->value($term);
+            ->value($term)
+            ->boost(self::BOOST["producercode"]);
     }
 
     private static function producer2RegexQuery(string $cleanTerm)
     {
         return Query::term()
             ->field('producercode2_regex')
-            ->value($cleanTerm)->caseInsensitive(true);
+            ->value($cleanTerm)->caseInsensitive(true)
+            ->boost(self::BOOST["producercode"]);
     }
 
     private static function suggestionsOem(string $term)
