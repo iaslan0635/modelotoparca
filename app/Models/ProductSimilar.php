@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Facades\TrimFacade;
 use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -24,7 +25,7 @@ class ProductSimilar extends BaseModel
             'id' => $this->id,
             'product_id' => $this->product_id,
             'code' => $this->code,
-            'code_regex' => preg_replace('/[^a-zA-Z0-9]+/', '', $this->code)
+            'code_regex' => TrimFacade::cleanText($this->code)
         ];
     }
 
