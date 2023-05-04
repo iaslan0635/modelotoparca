@@ -262,6 +262,7 @@ class Search
             ->highlight('producercode2_regex')
             ->highlight('similar_product_codes')
             ->highlight('oems.oem')
+            ->highlight('oems.oem_regex')
             ->highlight('cars.name')
             ->highlight('cars.regex_name')
             ->highlight('similar_product_codes.code')
