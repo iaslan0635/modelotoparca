@@ -43,7 +43,7 @@ class Search
     {
         return Query::nested()
             ->path('oems')
-            ->query(Query::term()->field('oems.oem')->value($cleanTerm)
+            ->query(Query::term()->field('oems.oem_regex')->value($cleanTerm)
                 ->boost(self::BOOST["oem"]));
     }
 

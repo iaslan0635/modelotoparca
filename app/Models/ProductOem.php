@@ -23,7 +23,7 @@ class ProductOem extends BaseModel
             'id' => $this->id,
             'logicalref' => $this->logicalref,
             'oem' => $this->oem,
-            'oem_regex' => $this->oem_regexed,
+            'oem_regex' => preg_replace('/[^a-zA-Z0-9]+/', '', $this->oem),
         ];
     }
 }
