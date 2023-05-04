@@ -49,7 +49,7 @@ class Product extends BaseModel implements CanVisit
             'categories' => $this->categories->map->toSearchableArray(),
             'brand' => $this->brand?->toSearchableArray(),
             'price' => $this->price?->price,
-            'similar_product_codes' => $this->similars->map->toSearchableArray()
+            'similars' => $this->similars->map->toSearchableArray()
         ];
     }
 

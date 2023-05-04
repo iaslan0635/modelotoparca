@@ -19,10 +19,11 @@ class ProductOem extends BaseModel
 
     public function toSearchableArray()
     {
-        return $this->only([
-            'id',
-            'logicalref',
-            'oem',
-        ]);
+        return [
+            'id' => $this->id,
+            'logicalref' => $this->logicalref,
+            'oem' => $this->oem,
+            'oem_regex' => preg_replace('/[^a-zA-Z0-9]+/', '', $this->oem),
+        ];
     }
 }
