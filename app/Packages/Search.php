@@ -265,8 +265,8 @@ class Search
             ->highlight('oems.oem_regex')
             ->highlight('cars.name')
             ->highlight('cars.regex_name')
-            ->highlight('similar_product_codes.code')
-            ->highlight('similar_product_codes.code_regex');
+            ->highlight('similars.code')
+            ->highlight('similars.code_regex');
 
         if ($sortBy === 'price-asc') {
             $products->sort('price');
