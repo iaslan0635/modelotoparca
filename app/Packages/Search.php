@@ -347,7 +347,7 @@ class Search
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
         $regex = '/[^a-zA-Z0-9]+/';
         $cleanTerm = strtolower(preg_replace($regex, '', $term));
-        dd($term);
+        //dd($term);
         if (empty($term))
             return [
                 'products' => [],
@@ -358,8 +358,8 @@ class Search
 
         $oemQuery = self::oemQuery($term);
         $oemRegexQuery = self::oemRegexQuery($cleanTerm);
-        //$similarQuery = self::similarQuery($term);
-        //$similarRegexQuery = self::similarRegexQuery($cleanTerm);
+        $similarQuery = self::similarQuery($term);
+        $similarRegexQuery = self::similarRegexQuery($cleanTerm);
         $carQuery = self::carQuery($term);
         $productQuery = self::productQuery($term);
         $crossQuery = self::crossQuery($term);
@@ -369,8 +369,8 @@ class Search
         $producer2Query = self::producer2Query($term);
         $producer2RegexQuery = self::producer2RegexQuery($cleanTerm);
 
-        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, /*$similarQuery, $similarRegexQuery,*/ $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
-        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, /*$similarQuery, $similarRegexQuery,*/ $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
 
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
 
