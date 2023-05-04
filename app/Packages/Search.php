@@ -50,16 +50,16 @@ class Search
     private static function similarQuery(string $term)
     {
         return Query::nested()
-            ->path('similar_product_codes')
-            ->query(Query::term()->field('similar_product_codes.code')->value($term)
+            ->path('similars')
+            ->query(Query::term()->field('similars.code')->value($term)
                 ->boost(self::BOOST["similar_product_codes"]));
     }
 
     private static function similarRegexQuery(string $cleanTerm)
     {
         return Query::nested()
-            ->path('similar_product_codes')
-            ->query(Query::term()->field('similar_product_codes.code_regex')->value($cleanTerm)
+            ->path('similars')
+            ->query(Query::term()->field('similars.code_regex')->value($cleanTerm)
                 ->boost(self::BOOST["similar_product_codes"]));
     }
 
