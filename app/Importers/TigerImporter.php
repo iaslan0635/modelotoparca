@@ -19,7 +19,7 @@ class TigerImporter extends Importer
         return $str === null ? null : array_map(fn($s) => trim($s), explode(",", $str));
     }
 
-    private function removeFirstWord($string)
+    private function removeFirstWord(string|null $string)
     {
         return $string === null ? null : substr($string, strpos($string, ' ') + 1);
     }
