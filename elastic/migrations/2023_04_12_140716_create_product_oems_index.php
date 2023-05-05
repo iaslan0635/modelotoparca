@@ -16,6 +16,7 @@ final class CreateProductOemsIndex implements MigrationInterface
         Index::create('product_oems_index', function (Mapping $mapping, Settings $settings) {
             $mapping->integer('logicalref');
             $mapping->keyword('oem');
+            $mapping->keyword('oem_regex');
         });
     }
 

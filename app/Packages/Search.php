@@ -43,23 +43,23 @@ class Search
     {
         return Query::nested()
             ->path('oems')
-            ->query(Query::term()->field('oems.oem')->value($cleanTerm)
+            ->query(Query::term()->field('oems.oem_regex')->value($cleanTerm)
                 ->boost(self::BOOST["oem"]));
     }
 
     private static function similarQuery(string $term)
     {
         return Query::nested()
-            ->path('similar_product_codes')
-            ->query(Query::term()->field('similar_product_codes.code')->value($term)
+            ->path('similars')
+            ->query(Query::term()->field('similars.code')->value($term)
                 ->boost(self::BOOST["similar_product_codes"]));
     }
 
     private static function similarRegexQuery(string $cleanTerm)
     {
         return Query::nested()
-            ->path('similar_product_codes')
-            ->query(Query::term()->field('similar_product_codes.code_regex')->value($cleanTerm)
+            ->path('similars')
+            ->query(Query::term()->field('similars.code_regex')->value($cleanTerm)
                 ->boost(self::BOOST["similar_product_codes"]));
     }
 
@@ -262,10 +262,11 @@ class Search
             ->highlight('producercode2_regex')
             ->highlight('similar_product_codes')
             ->highlight('oems.oem')
+            ->highlight('oems.oem_regex')
             ->highlight('cars.name')
             ->highlight('cars.regex_name')
-            ->highlight('similar_product_codes.code')
-            ->highlight('similar_product_codes.code_regex');
+            ->highlight('similars.code')
+            ->highlight('similars.code_regex');
 
         if ($sortBy === 'price-asc') {
             $products->sort('price');
@@ -347,7 +348,7 @@ class Search
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'G'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
         $regex = '/[^a-zA-Z0-9]+/';
         $cleanTerm = strtolower(preg_replace($regex, '', $term));
-
+        //dd($term);
         if (empty($term))
             return [
                 'products' => [],
@@ -358,8 +359,8 @@ class Search
 
         $oemQuery = self::oemQuery($term);
         $oemRegexQuery = self::oemRegexQuery($cleanTerm);
-        //$similarQuery = self::similarQuery($term);
-        //$similarRegexQuery = self::similarRegexQuery($cleanTerm);
+        $similarQuery = self::similarQuery($term);
+        $similarRegexQuery = self::similarRegexQuery($cleanTerm);
         $carQuery = self::carQuery($term);
         $productQuery = self::productQuery($term);
         $crossQuery = self::crossQuery($term);
@@ -369,8 +370,8 @@ class Search
         $producer2Query = self::producer2Query($term);
         $producer2RegexQuery = self::producer2RegexQuery($cleanTerm);
 
-        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, /*$similarQuery, $similarRegexQuery,*/ $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
-        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, /*$similarQuery, $similarRegexQuery,*/ $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
 
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
 
