@@ -30,9 +30,8 @@ final class CreateProductsIndex implements MigrationInterface
             $mapping->double('price');
             $mapping->nested('oems', [
                 'properties' => [
-                    'oem' => [
-                        'type' => 'text'
-                    ]
+                    'oem' => ['type' => 'keyword'],
+                    'oem_regex' => ['type' => 'keyword']
                 ]
             ]);
             $mapping->nested('cars', [
