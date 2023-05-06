@@ -123,6 +123,22 @@ class Search
             ->boost(self::BOOST["producercode"]);
     }
 
+    private static function producerUnbrandedQuery(string $term)
+    {
+        return Query::term()
+            ->field('producercode_unbranded')
+            ->value($term)
+            ->boost(self::BOOST["producercode_unbranded"]);
+    }
+
+    private static function producerUnbrandedRegexQuery(string $cleanTerm)
+    {
+        return Query::term()
+            ->field('producercode_unbranded_regex')
+            ->value($cleanTerm)->caseInsensitive(true)
+            ->boost(self::BOOST["producercode_unbranded_regex"]);
+    }
+
     private static function suggestionsOem(string $term)
     {
         $oemSuggestQuery = Query::bool()
@@ -259,6 +275,8 @@ class Search
             ->highlight('producercode2')
             ->highlight('cross_code_regex')
             ->highlight('producercode_regex')
+            ->highlight('producercode_unbranded')
+            ->highlight('producercode_unbranded_regex')
             ->highlight('producercode2_regex')
             ->highlight('similar_product_codes')
             ->highlight('oems.oem')
@@ -369,9 +387,11 @@ class Search
         $producerRegexQuery = self::producerRegexQuery($cleanTerm);
         $producer2Query = self::producer2Query($term);
         $producer2RegexQuery = self::producer2RegexQuery($cleanTerm);
+        $producerUnbrandedQuery = self::producerUnbrandedQuery($term);
+        $producerUnbrandedRegexQuery = self::producerUnbrandedRegexQuery($cleanTerm);
 
-        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
-        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
 
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
 
