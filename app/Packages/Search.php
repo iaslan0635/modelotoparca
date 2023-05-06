@@ -15,6 +15,7 @@ use Illuminate\Support\Collection;
 class Search
 {
     const BOOST = [
+        "producercode_unbranded" => 8,
         "cross_code" => 7,
         "producercode" => 6,
         "similar_product_codes" => 5,
@@ -136,7 +137,7 @@ class Search
         return Query::term()
             ->field('producercode_unbranded_regex')
             ->value($cleanTerm)->caseInsensitive(true)
-            ->boost(self::BOOST["producercode_unbranded_regex"]);
+            ->boost(self::BOOST["producercode_unbranded"]);
     }
 
     private static function suggestionsOem(string $term)
