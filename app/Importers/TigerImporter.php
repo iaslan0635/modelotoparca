@@ -26,7 +26,13 @@ class TigerImporter extends Importer
 
     private function removeFirstWord(string|null $string)
     {
-        return $string === null ? null : substr($string, strpos($string, ' ') + 1);
+        if ($string === null) return null;
+        else {
+            $string = trim($string);
+            $pos = strpos($string, ' ');
+            if (!$pos) return $string;
+            else return substr($string, $pos + 1);
+        }
     }
 
 
