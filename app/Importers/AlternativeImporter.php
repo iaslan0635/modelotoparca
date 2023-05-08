@@ -39,8 +39,8 @@ class AlternativeImporter extends Importer
                     ]);
             }
 
-            $allMainRefs = array_keys($refMap);
-            DB::table("alternatives")->whereNotIn("product_id", $allMainRefs)->delete();
+//            $allMainRefs = array_keys($refMap);
+//            DB::table("alternatives")->whereNotIn("product_id", $allMainRefs)->delete();
         });
     }
 }
