@@ -100,7 +100,7 @@ class TigerImporter extends Importer
                 $priceProductId = $this->pop($priceData, "product_id");
                 Price::query()->updateOrInsert(["product_id" => $priceProductId], $priceData);
 
-                DB::table("product_categories")->updateOrInsert([
+                DB::table("product_categories")->insertOrIgnore([
                     "product_id" => $productId,
                     "category_id" => $categoryId
                 ]);
