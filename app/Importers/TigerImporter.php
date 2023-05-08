@@ -2,7 +2,6 @@
 
 namespace App\Importers;
 
-use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductSimilar;
 use Illuminate\Support\Facades\DB;
@@ -87,9 +86,10 @@ class TigerImporter extends Importer
 
                 $oems = $this->explode($productData["oem_codes"]) ?? [];
                 foreach ($oems as $oem)
-                    DB::table("product_oems")->insertOrIgnore(["logicalref" => $productId, "oem" => $oem, "brand" => ""]);
+                    DB::table("product_oems")->updateOrInsert(["logicalref" => $productId], ["oem" => $oem, "brand" => ""]);
 
-                DB::table("prices")->insertOrIgnore($priceData);
+                $priceProductId = $this->pop($priceData, "product_id");
+                DB::table("prices")->updateOrInsert(["product_id" => $priceProductId], $priceData);
 
                 DB::table("product_categories")->insertOrIgnore([
                     "product_id" => $productId,
@@ -110,7 +110,7 @@ class TigerImporter extends Importer
 //        Product::whereNotIn("id", $ids)->delete();
 //        Price::whereNotIn("product_id", $ids)->delete();
 
-        if ($this->shouldAddToIndex()){
+        if ($this->shouldAddToIndex()) {
             ProductSimilar::query()->searchable();
             Product::query()->searchable();
             Log::info("Added to index");
