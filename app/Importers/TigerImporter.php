@@ -2,8 +2,11 @@
 
 namespace App\Importers;
 
+use App\Models\Price;
 use App\Models\Product;
+use App\Models\ProductSimilar;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class TigerImporter extends Importer
@@ -95,17 +98,23 @@ class TigerImporter extends Importer
 
                 $similars = $this->explode($productData["similar_product_codes"]) ?? [];
                 foreach ($similars as $similar)
-                    DB::table("alternatives")->insertOrIgnore([
+                    DB::table("product_similars")->insertOrIgnore([
                         "product_id" => $productId,
-                        "alternative_id" => $similar
+                        "code" => $similar
                     ]);
 
                 $ids[] = $product->id;
             }
         });
+
 //        Product::whereNotIn("id", $ids)->delete();
 //        Price::whereNotIn("product_id", $ids)->delete();
-        if ($this->shouldAddToIndex())
+
+        if ($this->shouldAddToIndex()){
+            Price::query()->searchable();
+            ProductSimilar::query()->searchable();
             Product::query()->searchable();
+            Log::info("Added to index");
+        }
     }
 }
