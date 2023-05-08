@@ -25,7 +25,7 @@ class ProductSimilar extends BaseModel
             'id' => $this->id,
             'product_id' => $this->product_id,
             'code' => $this->code,
-            'code_regex' => TrimFacade::cleanText($this->code)
+            'code_regex' => strtolower(TrimFacade::cleanText($this->code))
         ];
     }
 

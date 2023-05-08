@@ -67,6 +67,7 @@ final class CreateProductsIndex implements MigrationInterface
                     ]
                 ]
             ]);
+
         });
     }
 

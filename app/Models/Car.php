@@ -18,7 +18,7 @@ class Car extends BaseModel
 
     public function toSearchableArray()
     {
-        return $this->only(['id', 'name']) + ['regex_name' => preg_replace('/[^\w\s]/', '', $this->name)];
+        return $this->only(['id', 'name']) + ['regex_name' => strtolower(preg_replace('/[^\w\s]/', '', $this->name))];
     }
 
     public function products(): BelongsToMany
