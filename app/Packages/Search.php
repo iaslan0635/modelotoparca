@@ -15,12 +15,12 @@ use Illuminate\Support\Collection;
 class Search
 {
     const BOOST = [
-        "producercode_unbranded" => 8,
-        "cross_code" => 7,
-        "producercode" => 6,
-        "similar_product_codes" => 5,
-        "oem" => 4,
-        "title" => 3,
+        "producercode_unbranded" => 16,
+        "cross_code" => 14,
+        "producercode" => 12,
+        "similar_product_codes" => 10,
+        "oem" => 8,
+        "title" => 6,
         "car" => 1
     ];
 
