@@ -111,8 +111,8 @@ class TigerImporter extends Importer
 //        Price::whereNotIn("product_id", $ids)->delete();
 
         if ($this->shouldAddToIndex()){
-            ProductSimilar::searchable();
-            Product::searchable();
+            ProductSimilar::query()->searchable();
+            Product::query()->searchable();
             Log::info("Added to index");
         }
     }
