@@ -2,7 +2,10 @@
 
 namespace App\Importers;
 
+use App\Models\Category;
+use App\Models\Price;
 use App\Models\Product;
+use App\Models\ProductOem;
 use App\Models\ProductSimilar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -86,12 +89,12 @@ class TigerImporter extends Importer
 
                 $oems = $this->explode($productData["oem_codes"]) ?? [];
                 foreach ($oems as $oem)
-                    DB::table("product_oems")->updateOrInsert(["logicalref" => $productId], ["oem" => $oem, "brand" => ""]);
+                    ProductOem::query()->updateOrInsert(["logicalref" => $productId], ["oem" => $oem, "brand" => ""]);
 
                 $priceProductId = $this->pop($priceData, "product_id");
-                DB::table("prices")->updateOrInsert(["product_id" => $priceProductId], $priceData);
+                Price::query()->updateOrInsert(["product_id" => $priceProductId], $priceData);
 
-                DB::table("product_categories")->insertOrIgnore([
+                Category::query()->insertOrIgnore([
                     "product_id" => $productId,
                     "category_id" => $categoryId
                 ]);
