@@ -12,7 +12,7 @@ class SearchPage extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $query;
+    public string $query;
 
     public $category;
 
@@ -20,9 +20,19 @@ class SearchPage extends Component
 
     public $highlights = [];
 
-    protected $queryString = ['query', 'category'];
+    /** BUG: livewire sondaki sıfırları siliyor */
+    protected $queryString = [/*'query',*/
+        'category'];
 
     public $sortBy;
+
+    public function __construct($id = null)
+    {
+        request()->validate(["query" => "required|string|min:3"]);
+
+        $this->query = request()->get("query");;
+        parent::__construct($id);
+    }
 
     public function render()
     {
