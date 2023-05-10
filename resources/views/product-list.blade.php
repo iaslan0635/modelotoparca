@@ -176,7 +176,7 @@
                                                                                 </span>
                                                                             </span>
                                                                                 <span class="filter-list__title">
-                                                                                {{ $brand[0]->brand->name }}
+                                                                                {{ $brand[0]?->brand?->name }}
                                                                             </span>
                                                                                 <span
                                                                                     class="filter-list__counter">{{ count($brand) }}</span>

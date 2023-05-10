@@ -1,6 +1,6 @@
 <div>
-    <div wire:loading
-         style="aspect-ratio: 1; border-radius: 100%; background: black; display: flex; justify-content: center; align-items: center;position: fixed; bottom: 2rem; right: 2rem; z-index: 100; height: 42px">
+    <div wire:loading.flex
+         style="aspect-ratio: 1; border-radius: 100%; background: black; display: none; justify-content: center; align-items: center;position: fixed; bottom: 2rem; right: 2rem; z-index: 100; height: 42px">
         <div class="spinner-border text-light" role="status"></div>
     </div>
     @if(!$selectMaker)
