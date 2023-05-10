@@ -1,11 +1,15 @@
 <div>
+    <div wire:loading
+         style="aspect-ratio: 1; border-radius: 100%; background: black; display: flex; justify-content: center; align-items: center;position: fixed; bottom: 2rem; right: 2rem; z-index: 100; height: 42px">
+        <div class="spinner-border text-light" role="status"></div>
+    </div>
     @if(!$selectMaker)
         <div class="top-auto">
             <div class="row">
                 @foreach($makers as $maker)
                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                        <div class="top-auto-item top-auto-item--model" data-tooltip-click="">
-                            <a href="../../spare-parts/bmw/oil-filter.html" class="top-auto-item__image">
+                        <div class="top-auto-item top-auto-item--model" data-tooltip-click="" wire:click="selectMakerForDropdown('{{$maker->name}}')">
+                            <a class="top-auto-item__image">
                                 <img class=" lazyloaded" src="https://scdn.autoteiledirekt.de/makers/16.svg?rev=94077838"
                                      data-srcset="https://scdn.autoteiledirekt.de/makers/16.svg?rev=94077838 1x, https://scdn.autoteiledirekt.de/makers/16.svg?rev=94077838 2x"
                                      srcset="https://scdn.autoteiledirekt.de/makers/16.svg?rev=94077838 1x, https://scdn.autoteiledirekt.de/makers/16.svg?rev=94077838 2x"
@@ -16,34 +20,21 @@
                                 <span>{{ $maker->name }}</span>
                             </div>
 
-                            <div class="top-auto-item__tooltip js-tooltip">
-                                <span class="close"></span>
-                                <ul>
-                                    <li>
-                                        <a href="../spare-parts/bmw/oil-filter/3er-reihe.html"
-                                           class="top-auto-item__tooltip-link">
-                                            3 Series
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../spare-parts/bmw/oil-filter/5er-reihe.html"
-                                           class="top-auto-item__tooltip-link">
-                                            5 Series
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../spare-parts/bmw/oil-filter/1er-reihe.html"
-                                           class="top-auto-item__tooltip-link">
-                                            1 Series
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../spare-parts/bmw/oil-filter/x5.html" class="top-auto-item__tooltip-link">
-                                            X5
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            @if($selectedMakerForDropdown === $maker->name)
+                                <div class="top-auto-item__tooltip js-tooltip" style="visibility: visible;opacity: 1;">
+                                    <span class="close"></span>
+                                    <ul>
+                                        @foreach($dropdownContent as $item)
+                                            <li>
+                                                <a href="{{$item["link"]}}"
+                                                   class="top-auto-item__tooltip-link">
+                                                    {{$item["name"]}}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 @endforeach
