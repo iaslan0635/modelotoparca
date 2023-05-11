@@ -72,7 +72,7 @@ class Search
                 'sub_title',
             ])
             ->query($term)
-            ->fuzziness('1')
+            ->fuzziness('AUTO')
             ->boost(self::BOOST["title"]);
     }
 
