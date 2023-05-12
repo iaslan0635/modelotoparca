@@ -48,4 +48,12 @@ class Garage
     {
         return session()->has('garage_chosen');
     }
+
+    public static function addAndChoose(Car $car)
+    {
+        $id = $car->id;
+        $alreadyExists = collect(self::items())->contains(fn (array $i) => $id == $i["id"]);
+        if (!$alreadyExists) self::add($car);
+        self::choose($id);
+    }
 }

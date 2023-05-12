@@ -26,7 +26,7 @@
     <div class="block block-split">
         <div class="container">
             <div class="block-split__row row no-gutters">
-                <div class="block-split__item block-split__item-content col-auto">
+                <div class="block-split__item block-split__item-content col-12">
                     <livewire:select-car/>
                 </div>
             </div>
