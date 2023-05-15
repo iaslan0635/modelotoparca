@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class AlternativeImporter extends Importer
 {
+    public static function getUsedTables(): array
+    {
+        return ["alternatives"];
+    }
 
     public function getRowCount(): int
     {

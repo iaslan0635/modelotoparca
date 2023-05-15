@@ -2,7 +2,6 @@
 
 namespace App\Importers;
 
-use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
@@ -18,6 +17,11 @@ class TigerImporter extends Importer
         1 => "usd",
         20 => "eur",
     ];
+
+    public static function getUsedTables(): array
+    {
+        return ["products", "prices", "product_similars"];
+    }
 
     private function explode(string|null $str)
     {

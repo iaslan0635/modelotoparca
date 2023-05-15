@@ -11,6 +11,9 @@ abstract class Importer
 {
     protected Worksheet $sheet;
 
+    /** @return string[] */
+    abstract public static function getUsedTables(): array;
+
     public function __construct(string $file)
     {
         $spreadsheet = (new Xlsx())->load($file);
