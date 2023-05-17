@@ -41,7 +41,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
             if (blank($keyword) || self::isDone($keyword)) return;
 
             $job = new SparetoBot($keyword, $field);
-            dispatch($job->onQueue('spareto'));
+            $job->onQueue('spareto')->dispatch();
         };
 
         $dispatchJob($product->cross_code, "cross_code");

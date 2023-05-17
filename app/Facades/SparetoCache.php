@@ -3,8 +3,6 @@
 namespace App\Facades;
 
 use Illuminate\Filesystem\FilesystemAdapter;
-use Illuminate\Http\Client\RequestException;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 
