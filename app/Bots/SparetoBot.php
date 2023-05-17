@@ -46,7 +46,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         $dispatchJob($product->cross_code, "cross_code");
         $dispatchJob($product->producercode, "producercode");
 
-        $oems = collect(explode(',', $product->oem_codes))
+        $oems = collect(explode(',', $product->oem_codes ?? ''))
             ->map(fn(string $s) => trim($s))
             ->filter();
 
