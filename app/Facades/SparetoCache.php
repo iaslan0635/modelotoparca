@@ -48,7 +48,10 @@ class SparetoCache
 
     protected static function request(string $url)
     {
-        return HTTP::withOptions(['proxy' => 'socks5://127.0.0.1:8888'])->get($url)->throw()->body();
+        return HTTP::withOptions([
+            'proxy' => 'socks5://127.0.0.1:8888',
+            'connect_timeout' => 30
+        ])->get($url)->throw()->body();
     }
 
     protected static function getCacheFilePath(string $url)
