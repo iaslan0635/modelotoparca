@@ -48,7 +48,7 @@ class SparetoCache
 
     protected static function request(string $url)
     {
-        return HTTP::get($url)->throw()->body();
+        return HTTP::withOptions(['proxy' => 'http://127.0.0.1:8888'])->get($url)->throw()->body();
     }
 
     protected static function getCacheFilePath(string $url)
