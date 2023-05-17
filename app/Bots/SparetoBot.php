@@ -35,23 +35,24 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         return $this->keyword;
     }
 
+    public static function dispatchJob(string|null $keyword, string $field)
+    {
+        if (blank($keyword) || self::isDone($keyword)) return;
+
+        SparetoBot::dispatch($keyword, $field)->onQueue('spareto');
+    }
+
     public static function dispatchAllFields(Product $product)
     {
-        $dispatchJob = function (string|null $keyword, string $field) {
-            if (blank($keyword) || self::isDone($keyword)) return;
-
-            SparetoBot::dispatch($keyword, $field)->onQueue('spareto');
-        };
-
-        $dispatchJob($product->cross_code, "cross_code");
-        $dispatchJob($product->producercode, "producercode");
+        self::dispatchJob($product->cross_code, "cross_code");
+        self::dispatchJob($product->producercode, "producercode");
 
         $oems = collect(explode(',', $product->oem_codes ?? ''))
             ->map(fn(string $s) => trim($s))
             ->filter();
 
         foreach ($oems as $oem)
-            $dispatchJob($oem, "oem");
+            self::dispatchJob($oem, "oem");
     }
 
     private static function isDone(string $keyword)
