@@ -99,7 +99,7 @@ class TigerImporter extends Importer
 
                 $oems = $this->explode($productData["oem_codes"]) ?? [];
                 foreach ($oems as $oem)
-                    ProductOem::query()->updateOrInsert(["logicalref" => $productId, "oem" => $oem, "brand" => ""]);
+                    ProductOem::updateOrCreate(["logicalref" => $productId, "oem" => $oem, "brand" => ""]);
 
                 $priceProductId = $this->pop($priceData, "product_id");
                 Price::query()->updateOrInsert(["product_id" => $priceProductId], $priceData);

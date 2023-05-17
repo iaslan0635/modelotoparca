@@ -6,6 +6,7 @@ use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Symfony\Component\DomCrawler\Crawler;
 
 class SparetoCache
 {
@@ -27,10 +28,14 @@ class SparetoCache
         return self::has($url) ? self::readCache($url) : self::createCache($url);
     }
 
+    public static function crawler(string $url): Crawler
+    {
+        return new Crawler(self::get($url), $url);
+    }
+
     /** Add url content to cache if not exists
      *  without retrieving cached content
      *
-     * @throws RequestException
      */
     public static function insert(string $url): void
     {

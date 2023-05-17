@@ -23,7 +23,9 @@
         "laravel/scout": "^10.0",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
-        "phpoffice/phpspreadsheet": "^1.28"
+        "phpoffice/phpspreadsheet": "^1.28",
+        "symfony/css-selector": "^6.2",
+        "symfony/dom-crawler": "^6.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

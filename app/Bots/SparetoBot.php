@@ -3,12 +3,9 @@
 namespace App\Bots;
 
 use App\Facades\SparetoCache;
-use App\Lib\Dom;
 use App\Models\Car;
-use App\Models\Maker;
 use App\Models\Product;
-use App\Models\ProductCar;
-use App\Models\ProductOem;
+use App\Models\SparetoConnection;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,23 +14,22 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\DomCrawler\Crawler;
 
 class SparetoBot implements ShouldQueue, ShouldBeUnique
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public const bitmask = 1;
 
-    public const originId = 2;
-
-    public $keyword;
-
-    public function __construct($keyword)
+    public function __construct(public string $keyword, public string $keywordField)
     {
-        $this->keyword = $keyword;
     }
 
-    /** @noinspection PhpUnused */
+
+    /**
+     * @return string
+     * @noinspection PhpUnused
+     */
     public function uniqueId()
     {
         return $this->keyword;
@@ -41,186 +37,19 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
     public static function dispatchAllFields(Product $product)
     {
-        $oems = explode(',', $product->oem_codes);
-        $keywords = collect($oems)
-            ->push($product->cross_code)
-            ->push($product->producercode)
-            ->map('trim')->filter('filled');
+        $dispatchJob = function (string|null $keyword, string $field) {
+            if (blank($keyword) || self::isDone($keyword)) return;
 
-        foreach ($keywords as $keyword) {
-            if (self::isDone($keyword)) continue;
-
-            $job = new SparetoBot($keyword);
+            $job = new SparetoBot($keyword, $field);
             dispatch($job->onQueue('spareto'));
-        }
-    }
+        };
 
-    public function handle()
-    {
-        if (self::isDone($this->keyword))
-            return; // double check
+        $dispatchJob($product->cross_code, "cross_code");
+        $dispatchJob($product->producercode, "producercode");
 
-        $this->search($this->keyword);
-    }
-
-    private function search($keyword)
-    {
-        $url = 'https://spareto.com/products?keywords=' . urlencode($keyword);
-        $html = $this->dom($url);
-        if ($html->exists('div #products-js')) {
-            $pageCount = intval($html->safeInnertext('.page-link', -2, 1));
-            for ($i = 1; $i <= $pageCount; $i++) {
-                $htmlUrun = $this->dom($url . '&page=' . $i);
-                foreach ($htmlUrun->find('#products-js  .card-col') as $productDom)
-                    $this->scrapeProduct($productDom);
-            }
-            $this->markDone($keyword);
-        }
-    }
-
-    private function scrapeProduct($productDom)
-    {
-        $htmlUrunDetay = $this->dom('https://spareto.com' . $productDom->find('.card-product-main a', 0)->href); // ürün iç sayfa
-        $partNumber = $productDom->find('.card-product-main .part_number', 0)->innertext; // ürün kodu
-
-        $dimensions = [];
-        /** @noinspection PhpUndefinedMethodInspection */
-        if (isset($htmlUrunDetay->find('.order-3', 0)->parent()->parent()->exists('table', 1)->innertext)) {
-            /** @noinspection PhpUndefinedMethodInspection */
-            $dimensionsTable = $htmlUrunDetay->find('.order-3', 0)->parent()->parent()->find('table', 1);
-            foreach ($dimensionsTable->find('tr') as $dimensionNode) {
-                $key = $dimensionNode->safeInnertext('td', 0);
-                if (blank($key)) continue;
-                $dimensions[$key] = $dimensionNode->safeInnertext('td', 1) . ' ' . $dimensionNode->safeInnertext('td', 2);
-            }
-        }
-
-        $specifications = [];
-        /** @noinspection PhpUndefinedMethodInspection */
-        if (isset($htmlUrunDetay->find('.order-3', 0)->parent()->parent()->find('table', 0)->innertext)) {
-            /** @noinspection PhpUndefinedMethodInspection */
-            $specificationsTable = $htmlUrunDetay->find('.order-3', 0)->parent()->parent()->find('table', 0);
-            foreach ($specificationsTable->find('tr') as $specificationsNode) {
-                $key = $specificationsNode->safeInnertext('td', 0);
-                if (blank($key)) {
-                    continue;
-                }
-                $specifications[$key] = $specificationsNode->find('td', 1)->innertext;
-            }
-        }
-
-        $cars = collect();
-        if ($htmlUrunDetay->exists('#cars table')) {
-            $carsTable = $htmlUrunDetay->find('#cars table', 0);
-            foreach ($carsTable->find('tbody tr') as $carRow) {
-                $carModel = $carRow->hasChild('td', 1) ? $carRow->find('td', 1)->find('a', 0)->innertext : null;
-                $carModelLink = $carRow->hasChild('td', 1) ? $carRow->find('td', 1)->find('a', 0)->href : null;
-                $carProducedFrom = $carRow->hasChild('td', 2) ? $carRow->find('td', 2)->find('span', 0)->innertext : null;
-                $carProducedTo = $carRow->hasChild('td', 2) ? $carRow->find('td', 2)->find('span', 1)->innertext : null;
-                $carPower = $carRow->safeInnertext('td', 3, null);
-                $carCcm = $carRow->safeInnertext('td', 5, null);
-                $shortName = $carRow->attr['data-model-short-name'] ?? null;
-                $carPermalink = str_replace('/t/vehicles/', '', $carModelLink);
-
-                if ($carProducedFrom == '...')
-                    $carProducedFrom = null;
-
-                if ($carProducedTo == '...')
-                    $carProducedTo = null;
-
-
-                $cars->map(fn($c) => Car::find($c, 'permalink'));
-
-                $modelId = Car::query()->where('permalink', $carPermalink)->value('id');
-                if (is_null($modelId)) {
-                    $values = [
-                        'name' => $carModel,
-                        'short_name' => $shortName,
-                        'produced_from' => $carProducedFrom,
-                        'produced_to' => $carProducedTo,
-                        'permalink' => $carPermalink,
-                        'capacity' => $carCcm,
-                        'power' => $carPower,
-                    ];
-
-                    $carMakerName = strstr($carPermalink, '/', true);
-                    if ($carMakerName !== false) {
-                        $carMaker = Maker::query()->where('permalink', "vehicles/$carMakerName")->first(['id', 'name']);
-                        if ($carMaker) {
-                            $values['maker_id'] = $carMaker->id;
-                            $values['maker_name'] = $carMaker->name;
-                        }
-                    }
-
-                    Car::create($values);
-                }
-
-                $cars->push($modelId);
-            }
-        }
-
-        $oems = collect();
-        if ($htmlUrunDetay->exists('#oe .row')) {
-            foreach ($htmlUrunDetay->find('#oe .row') as $brandRow) {
-                $oeBrand = $brandRow->find('strong', 0)->innertext;
-                $oeList = [];
-                foreach ($brandRow->find('p', 1)->find('a') as $oe)
-                    if ($brandRow->hasChild('p', 1))
-                        $oeList[] = $oe->innertext;
-
-                $oems->push([
-                    'brand' => $oeBrand,
-                    'list' => $oeList,
-                ]);
-            }
-        }
-
-        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $partNumber);
-        $sameCrossRefs = blank($partNumberRegexed) ? collect() : // prevent search for empty string
-            Product::query()->where('cross_code_regexed', $partNumberRegexed)->pluck('id');
-
-        if ($sameCrossRefs->isNotEmpty())
-            Product::query()->whereIn('id', $sameCrossRefs)->update(compact('dimensions', 'specifications'));
-
-        $isQueryFiltered = false;
-        $targetRefsQuery = Product::query();
-        foreach ($oems->pluck('list')->flatten() as $oem) {
-            $unspacedOem = str_replace(' ', '', $oem);
-            if (blank($unspacedOem)) continue; // prevent search for empty string
-            $targetRefsQuery->orWhereRaw('FIND_IN_SET(?, oem_codes_unspaced)', [$unspacedOem]);
-            $isQueryFiltered = true;
-        }
-
-        $targetRefs = $isQueryFiltered ? $targetRefsQuery->pluck('id') : collect();
-        foreach ($targetRefs->merge($sameCrossRefs)->unique() as $targetRef) {
-            $this->saveProduct(
-                $targetRef,
-                $cars,
-                $oems
-            );
-        }
-    }
-
-    private function saveProduct(
-        int        $targetRef,
-        Collection $modelsIds,
-        Collection $oems
-    )
-    {
-        // add cars
-        ProductCar::insertOrIgnore(
-            $modelsIds->map(fn(int $id) => [
-                'logicalref' => $targetRef,
-                'car_id' => $id,
-            ])->all()
-        );
-
-        // add oems for table
-        foreach ($oems as ['brand' => $brand, 'list' => $oeList]) {
-            $oemRecord = ProductOem::query()->firstOrCreate(['brand' => $brand, 'logicalref' => $targetRef]);
-            $oemRecord->oeList = collect($oemRecord->oeList)->merge($oeList)->unique();
-            $oemRecord->save();
-        }
+        $oems = explode(',', $product->oem_codes);
+        foreach ($oems as $oem)
+            $dispatchJob(trim($oem), "oem");
     }
 
     private static function isDone(string $keyword)
@@ -228,18 +57,150 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         return DB::table('sparetobot_dones')->where('keyword', '=', $keyword)->exists();
     }
 
-    private static function markDone(string $keyword)
+
+    public function handle(bool $doubleCheck = true)
     {
-        DB::table('sparetobot_dones')->insertOrIgnore(['keyword' => $keyword]);
+        if ($doubleCheck && self::isDone($this->keyword))
+            return;
+
+        $url = 'https://spareto.com/products?keywords=' . urlencode($this->keyword);
+        $crawler = SparetoCache::crawler($url);
+        if (!$crawler->filter('div #products-js')->count())
+            return;
+
+        $pageCount = intval($crawler->filter('li.page-item:nth-last-child(2) > a.page-link')->text(1));
+        for ($i = 1; $i <= $pageCount; $i++) {
+            $pageCrawler = SparetoCache::crawler($url . '&page=' . $i);
+            $pageCrawler->filter('#products-js  .card-col')->each($this->scrapeProduct(...));
+        }
+
+        DB::table('sparetobot_dones')->insertOrIgnore(['keyword' => $this->keyword]);
     }
 
-    private static function get($url)
+    private function scrapeProduct(Crawler $productCrawler)
     {
-        return SparetoCache::get($url);
+        $url = $productCrawler->filter('.card-product-main a')->link()->getUri();
+        $crawler = SparetoCache::crawler($url);
+
+        //region Specifications and dimensions
+        $dimensionsTable = $crawler->filterXPath("//div[contains(., 'Dimensions and size') and @class='card-header']/../table");
+        $dimensionsTable = self::coalesceTbody($dimensionsTable);
+        $dimensions = !$dimensionsTable->count() ? collect() :
+            collect(
+                $dimensionsTable->children()->each(function (Crawler $tr) {
+                    $name = $tr->filter('[itemprop="name"]');
+                    $rest = $name->nextAll()->each(fn(Crawler $td) => $td->text());
+
+                    return [$name->text() => join(" ", $rest)];
+                })
+            )->mapWithKeys(fn($x) => $x);
+
+        $specificationsTable = $crawler->filterXPath("//div[contains(., 'Specifications') and @class='card-header']/../table");
+        $specificationsTable = self::coalesceTbody($specificationsTable);
+        $specifications = !$specificationsTable->count() ? collect() :
+            collect(
+                $specificationsTable->children()->each(function (Crawler $tr) {
+                    $children = $tr->children();
+                    return [$children->eq(0)->text() => $children->eq(1)->text()];
+                })
+            )->mapWithKeys(fn($x) => $x);
+        //endregion
+
+        $partNumber = $productCrawler->filter('.card-product-main .part_number')->text();
+        $sameCrosses = $this->findSameCrosses($partNumber);
+        if ($sameCrosses->isNotEmpty())
+            Product::query()->whereIn('id', $sameCrosses)->update(compact('dimensions', 'specifications'));
+
+        $connect = function ($targetRef, $connectedBy) use ($url) {
+            SparetoConnection::create([
+                "product_id" => $targetRef,
+                "url" => $url,
+                "keyword" => $this->keyword,
+                "keyword_field" => $this->keywordField,
+                "connected_by" => $connectedBy,
+            ]);
+        };
+
+        foreach ($sameCrosses as $targetRef)
+            $connect($targetRef, "cross_code");
+
+        $oems = self::extractOems($crawler);
+        $sameOems = $this->findSameOems($oems);
+        foreach ($sameOems as $targetRef)
+            $connect($targetRef, "oem");
+
+        $sameProducerCodes = self::findSameProducerCodes($partNumber);
+        foreach ($sameProducerCodes as $targetRef)
+            $connect($targetRef, "producercode");
+
+        $sameProducerCodes2 = self::findSameProducerCodes2($partNumber);
+        foreach ($sameProducerCodes2 as $targetRef)
+            $connect($targetRef, "producercode2");
     }
 
-    private static function dom($url)
+    private static function coalesceTbody(Crawler $crawler): Crawler
     {
-        return new Dom(self::get($url));
+        $tbody = $crawler->filter("tbody");
+        return $tbody->count() ? $tbody : $crawler;
+    }
+
+    private function findSameCrosses(string $crossCode)
+    {
+        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $crossCode);
+        return blank($partNumberRegexed) ? collect() : // prevent search for empty string
+            Product::query()->where('cross_code_regexed', $partNumberRegexed)->pluck('id');
+    }
+
+    private function findSameProducerCodes(string $crossCode)
+    {
+        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $crossCode);
+        return blank($partNumberRegexed) ? collect() : // prevent search for empty string
+            Product::query()->where('producercode_regexed', $partNumberRegexed)->pluck('id');
+    }
+
+    private function findSameProducerCodes2(string $crossCode)
+    {
+        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $crossCode);
+        return blank($partNumberRegexed) ? collect() : // prevent search for empty string
+            Product::query()->where('producercode2_regexed', $partNumberRegexed)->pluck('id');
+    }
+
+    private function findSameOems(Collection $oems)
+    {
+        $isQueryFiltered = false;
+        $sameOemsQuery = Product::query();
+        foreach ($oems->pluck('oems')->flatten() as $oem) {
+            $unspacedOem = str_replace(' ', '', $oem);
+            if (blank($unspacedOem)) continue; // prevent search for empty string
+            $sameOemsQuery->orWhereRaw('FIND_IN_SET(?, oem_codes_unspaced)', [$unspacedOem]);
+            $isQueryFiltered = true;
+        }
+
+        return $isQueryFiltered ? $sameOemsQuery->pluck('id') : collect();
+    }
+
+    public static function extractOems(Crawler $crawler): Collection
+    {
+        $oemContainer = $crawler->filterXPath('//*[contains(text(),"OE Numbers")]/..');
+        return !$oemContainer->count() ? collect() :
+            collect($oemContainer->filter(".row")->each(function (Crawler $row) {
+                $children = $row->children();
+                $brand = $children->eq(0)->text();
+                $oems = $children->eq(1)->children()->each(fn(Crawler $col) => $col->text());
+                return compact("brand", "oems");
+            }));
+    }
+
+    public static function extractCars(Crawler $crawler): Collection
+    {
+        $carsTable = $crawler->filter(".nav-vehicles > table > tbody");
+        return !$carsTable->count() ? collect() :
+            collect($carsTable->children()->each(function (Crawler $tr) {
+                $permalink = str_replace("/t/vehicles/", "", $tr->filter("a")->attr("href"));
+                $carId = Car::where("permalink", $permalink)->value("id");
+                if (!$carId) return false; //TODO: Adding nonexistent models not implemented
+
+                return $carId;
+            }))->filter();
     }
 }
