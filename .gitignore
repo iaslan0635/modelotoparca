@@ -36,3 +36,5 @@ storage/*.key
 /.vagrant
 /storage/spareto_cache/
 /app/Console/Commands/LocalTestCommand.php
+
+/public/demo?
