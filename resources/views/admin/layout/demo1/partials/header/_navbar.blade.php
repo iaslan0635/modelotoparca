@@ -92,7 +92,7 @@
 	<div class="app-navbar-item ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 		<!--begin::Menu wrapper-->
 		<div class="cursor-pointer symbol symbol-35px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-			<img src="{{ auth()->user()->avatarUrl }}" alt="user" />
+			<img src="{{ auth()->user()?->avatarUrl }}" alt="user" />
 		</div>
 		{{ theme()->getview('admin.partials/menus/_user-account-menu') }}
 		<!--end::Menu wrapper-->
