@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Documentation;
+namespace App\Http\Controllers\Admin\Documentation;
 
 use App\Core\Adapters\Theme;
 use App\Http\Controllers\Controller;
