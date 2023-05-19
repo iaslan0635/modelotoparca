@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Documentation;
+namespace App\Http\Controllers\Admin\Documentation;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use function App\Http\Controllers\Documentation\setting;
 
 class LayoutBuilderController extends Controller
 {

@@ -82,6 +82,11 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
     private function scrapeProduct(Crawler $productCrawler)
     {
+        $partNumberEl = $productCrawler->filter('.card-product-main .part_number');
+        if(!$partNumberEl->count()) return;
+
+        $partNumber = $partNumberEl->text();
+
         $url = $productCrawler->filter('.card-product-main a')->link()->getUri();
         $crawler = SparetoCache::crawler($url);
 
@@ -109,7 +114,6 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
             )->mapWithKeys(fn($x) => $x);
         //endregion
 
-        $partNumber = $productCrawler->filter('.card-product-main .part_number')->text();
         $sameCrosses = $this->findSameCrosses($partNumber);
         if ($sameCrosses->isNotEmpty())
             Product::query()->whereIn('id', $sameCrosses)->update(compact('dimensions', 'specifications'));

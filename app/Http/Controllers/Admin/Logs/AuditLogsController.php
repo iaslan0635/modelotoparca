@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Logs;
+namespace App\Http\Controllers\Admin\Logs;
 
 use App\DataTables\Logs\AuditLogsDataTable;
 use App\Http\Controllers\Controller;

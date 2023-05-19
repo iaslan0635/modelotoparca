@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Account;
+namespace App\Http\Controllers\Admin\Account;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\SettingsEmailRequest;

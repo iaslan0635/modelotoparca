@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
 class PagesController extends Controller
@@ -15,13 +16,7 @@ class PagesController extends Controller
     {
         // Get view file location from menu config
         $view = theme()->getOption('page', 'view');
-
-        // Check if the page view file exist
-        if (view()->exists('pages.'.$view)) {
-            return view('admin.pages.'.$view);
-        }
-
-        abort(404, 'We can\'t find that page.');
+        return view('admin.pages.'.$view);
     }
 
     /**

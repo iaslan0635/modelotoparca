@@ -161,7 +161,7 @@ class Theme extends \App\Core\Theme
         }
 
         // Append demo folder for layout view
-        if (Str::startsWith($path, 'layout')) {
+        if (Str::startsWith($path, 'admin.layout')) {
             $path = str_replace('layout/', 'layout/'.self::$demo.'/', $path);
         }
 
@@ -223,6 +223,7 @@ class Theme extends \App\Core\Theme
         if (in_array($scope, ['page', 'pages'])) {
             $scope    = 'pages';
             $segments = request()->segments();
+            if ($segments[0] === "admin") array_shift($segments);
             foreach ($segments as $key => $value) {
                 if (is_numeric($value)) {
                     $segments[$key] = '*';

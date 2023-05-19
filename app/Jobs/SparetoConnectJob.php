@@ -33,7 +33,6 @@ class SparetoConnectJob implements ShouldQueue
 
     public function handle(): void
     {
-        \DB::
         $hasConnectionsOtherThanOem = $this->query()->where("connected_by", "!=", "oem")->exists();
 
         $filteredConnections = !$hasConnectionsOtherThanOem ? $this->unapplied()->get() :
