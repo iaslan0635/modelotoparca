@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Account\SettingsController;
-use App\Http\Controllers\Auth\SocialiteLoginController;
-use App\Http\Controllers\Documentation\LayoutBuilderController;
-use App\Http\Controllers\Documentation\ReferencesController;
-use App\Http\Controllers\Logs\AuditLogsController;
-use App\Http\Controllers\Logs\SystemLogsController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Admin\Account\SettingsController;
+use App\Http\Controllers\Admin\Auth\SocialiteLoginController;
+use App\Http\Controllers\Admin\Documentation\LayoutBuilderController;
+use App\Http\Controllers\Admin\Documentation\ReferencesController;
+use App\Http\Controllers\Admin\Logs\AuditLogsController;
+use App\Http\Controllers\Admin\Logs\SystemLogsController;
+use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
