@@ -8,7 +8,7 @@
             <a href="/garage">Garajım</a>
         </li>
         <li class="account-nav__item ">
-            <a href="account-profile.html">Profil Düzenle</a>
+            <a href="/edit-profile">Profil Düzenle</a>
         </li>
         <li class="account-nav__item ">
             <a href="/order-history">Sipariş Geçmişi</a>
