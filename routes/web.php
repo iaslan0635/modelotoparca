@@ -39,10 +39,6 @@ Route::view('search', 'search')->name('search');
 Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');
 Route::view('brands', 'brands')->name('brands-list');
-Route::view('cart', 'cart')->name('cart');
-Route::view('checkout', 'checkout')->name('checkout');
-Route::view('add-adress', 'account.add-adress')->name('add-adress');
-Route::view('order-success', 'account.order-success')->name('order-success');
 
 Route::get('araba/{permalink}', [CarController::class, 'show'])->name('car.search')->where('permalink', '.*');
 Route::get('oem/{oem}', [OemController::class, 'show'])->name('oem.search')->where('oem', '.*');
@@ -59,3 +55,18 @@ Route::prefix("import/")->controller(ImportController::class)->group(function ()
     Route::post("tiger", "tiger");
     Route::post("alternative", "alternative");
 });
+
+
+
+
+Route::view('cart', 'cart')->name('cart');
+Route::view('checkout', 'checkout')->name('checkout');
+Route::view('order-success', 'account.order-success')->name('order-success');
+
+//account
+Route::view('add-adress', 'account.add-adress')->name('add-adress');
+
+Route::get("/login", function(){ return view('auth.login'); });
+Route::get("/dashboard", function(){ return view('account.dashboard'); });
+Route::get("/garage", function(){ return view('account.garage'); });
+Route::get("/adress", function(){ return view('account.adress'); });
