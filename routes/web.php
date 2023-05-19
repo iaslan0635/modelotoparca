@@ -68,5 +68,8 @@ Route::view('add-adress', 'account.add-adress')->name('add-adress');
 
 Route::get("/login", function(){ return view('auth.login'); });
 Route::get("/dashboard", function(){ return view('account.dashboard'); });
+Route::get("/edit-profile", function(){ return view('account.edit-profile'); });
 Route::get("/garage", function(){ return view('account.garage'); });
 Route::get("/adress", function(){ return view('account.adress'); });
+Route::get("/order-history", function(){ return view('account.order-history'); });
+Route::get("/order-details", function(){ return view('account.order-details'); });

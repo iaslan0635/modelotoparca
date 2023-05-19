@@ -8,13 +8,13 @@
             <a href="/garage">Garajım</a>
         </li>
         <li class="account-nav__item ">
-            <a href="account-profile.html">Edit Profile</a>
+            <a href="account-profile.html">Profil Düzenle</a>
         </li>
         <li class="account-nav__item ">
-            <a href="account-orders.html">Order History</a>
+            <a href="/order-history">Sipariş Geçmişi</a>
         </li>
         <li class="account-nav__item ">
-            <a href="account-order-details.html">Order Details</a>
+            <a href="/order-details">Sipariş Detayı</a>
         </li>
         <li class="account-nav__item ">
             <a href="/adress">Adreslerim</a>
@@ -22,12 +22,9 @@
         <li class="account-nav__item ">
             <a href="/adres">Edit Address</a>
         </li>
-        <li class="account-nav__item ">
-            <a href="account-password.html">Password</a>
-        </li>
         <li class="account-nav__divider" role="presentation"></li>
         <li class="account-nav__item ">
-            <a href="account-login.html">Çıkış Yap</a>
+            <a href="#">Çıkış Yap</a>
         </li>
     </ul>
 </div>
