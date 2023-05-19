@@ -11,6 +11,6 @@ class SparetoConnectionResetJob extends Command
 
     public function handle()
     {
-        SparetoConnection::where("is_connection_applied", false)->update(["is_connection_applied" => true]);
+        SparetoConnection::where("is_connection_applied", true)->update(["is_connection_applied" => false]);
     }
 }
