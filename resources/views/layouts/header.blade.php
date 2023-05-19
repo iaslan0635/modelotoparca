@@ -159,6 +159,7 @@
         </div>
         <livewire:header.search/>
         <div class="header__indicators">
+            @auth()
             <div class="indicator">
                 <a href="wishlist.html" class="indicator__button">
                             <span class="indicator__icon">
@@ -170,6 +171,7 @@
                             </span>
                 </a>
             </div>
+            @endauth
             <div class="indicator indicator--trigger--click">
                 <a href="account-login.html" class="indicator__button">
                             <span class="indicator__icon">
@@ -178,8 +180,7 @@
 	C26,18.5,30,23.8,30,30h-2C28,23.4,22.6,18,16,18z M22,10c0-3.3-2.7-6-6-6s-6,2.7-6,6s2.7,6,6,6S22,13.3,22,10z"/>
                                 </svg>
                             </span>
-                    <span class="indicator__title">Hello, Log In</span>
-                    <span class="indicator__value">Hesabım</span>
+                    <span class="indicator__title">Giriş Yap</span>
                 </a>
                 <div class="indicator__content">
                     <div class="account-menu">
@@ -199,34 +200,13 @@
                                 </div>
                             </div>
                             <div class="form-group account-menu__form-button">
-                                <button type="submit" class="btn btn-primary btn-sm">Login</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Giriş Yap</button>
                             </div>
                             <div class="account-menu__form-link">
-                                <a href="account-login.html">Create An Account</a>
+                                <a href="account-login.html">Yeni Hesap Oluştur</a>
                             </div>
                         </form>
                         <div class="account-menu__divider"></div>
-                        <a href="" class="account-menu__user">
-                            <div class="account-menu__user-avatar">
-                                <img src="{{ asset('images/avatars/avatar-4.jpg') }}" alt="">
-                            </div>
-                            <div class="account-menu__user-info">
-                                <div class="account-menu__user-name">Ryan Ford</div>
-                                <div class="account-menu__user-email">red-parts@example.com</div>
-                            </div>
-                        </a>
-                        <div class="account-menu__divider"></div>
-                        <ul class="account-menu__links">
-                            <li><a href="account-dashboard.html">Dashboard</a></li>
-                            <li><a href="account-dashboard.html">Garage</a></li>
-                            <li><a href="account-profile.html">Edit Profile</a></li>
-                            <li><a href="account-orders.html">Order History</a></li>
-                            <li><a href="account-addresses.html">Addresses</a></li>
-                        </ul>
-                        <div class="account-menu__divider"></div>
-                        <ul class="account-menu__links">
-                            <li><a href="account-login.html">Logout</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
