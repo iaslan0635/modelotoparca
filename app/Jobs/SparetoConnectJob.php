@@ -48,13 +48,13 @@ class SparetoConnectJob implements ShouldQueue
         $crawler = SparetoCache::crawler($connection->url);
 
         $cars = SparetoBot::extractCars($crawler);
-        ProductCar::insertOrIgnore(
-            $cars->map(fn(int $id) => [
+        foreach ($cars as $carId)
+            ProductCar::firstOrCreate([
                 'logicalref' => $targetRef,
-                'car_id' => $id,
+                'car_id' => $carId
+            ], [
                 'connection_id' => $connection->id
-            ])->all()
-        );
+            ]);
 
         $oems = SparetoBot::extractOems($crawler);
         foreach ($oems as ['brand' => $brand, 'oems' => $oeList]) {
@@ -62,7 +62,8 @@ class SparetoConnectJob implements ShouldQueue
                 ProductOem::firstOrCreate([
                     'brand' => $brand,
                     'logicalref' => $targetRef,
-                    "oem" => $oem,
+                    "oem" => $oem
+                ], [
                     'connection_id' => $connection->id
                 ]);
         }
