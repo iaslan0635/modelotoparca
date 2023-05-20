@@ -57,8 +57,6 @@ Route::prefix("import/")->controller(ImportController::class)->group(function ()
 });
 
 
-
-
 Route::view('cart', 'cart')->name('cart');
 Route::view('checkout', 'checkout')->name('checkout');
 Route::view('order-success', 'account.order-success')->name('order-success');
@@ -66,10 +64,30 @@ Route::view('order-success', 'account.order-success')->name('order-success');
 //account
 Route::view('add-adress', 'account.add-adress')->name('add-adress');
 
-Route::get("/login", function(){ return view('auth.login'); });
-Route::get("/dashboard", function(){ return view('account.dashboard'); });
-Route::get("/edit-profile", function(){ return view('account.edit-profile'); });
-Route::get("/garage", function(){ return view('account.garage'); });
-Route::get("/adress", function(){ return view('account.adress'); });
-Route::get("/order-history", function(){ return view('account.order-history'); });
-Route::get("/order-details", function(){ return view('account.order-details'); });
+Route::get("/login", function () {
+    return view('auth.login');
+});
+Route::get("/dashboard", function () {
+    return view('account.dashboard');
+});
+Route::get("/edit-profile", function () {
+    return view('account.edit-profile');
+});
+Route::get("/garage", function () {
+    return view('account.garage');
+});
+Route::get("/adress", function () {
+    return view('account.adress');
+});
+Route::get("/order-history", function () {
+    return view('account.order-history');
+});
+Route::get("/order-details", function () {
+    return view('account.order-details');
+});
+
+Route::get("/connections", function () {
+    $models = \App\Models\SparetoConnection::paginate();
+    $cols = array_keys(\App\Models\SparetoConnection::first()->attributesToArray());
+    return view("admin.temp.table", compact("models", "cols"));
+});
