@@ -188,7 +188,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
     public static function extractOems(Crawler $crawler): Collection
     {
-        $oemContainer = $crawler->filterXPath('//*[contains(text(),"OE Numbers")]/..');
+        $oemContainer = $crawler->filterXPath("//p[text()='OE Numbers']/following-sibling::node()[following-sibling::p[text()='Cross-Reference Numbers']]");
         return !$oemContainer->count() ? collect() :
             collect($oemContainer->filter(".row")->each(function (Crawler $row) {
                 $children = $row->children();

@@ -49,7 +49,7 @@ class SparetoCache
     protected static function request(string $url)
     {
         return HTTP::withOptions([
-            'proxy' => 'socks5://127.0.0.1:8989',
+            'proxy' => 'socks5://127.0.0.1:9050',
             'connect_timeout' => 30
         ])->get($url)->throw()->body();
     }
