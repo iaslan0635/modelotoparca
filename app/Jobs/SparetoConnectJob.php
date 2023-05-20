@@ -52,6 +52,7 @@ class SparetoConnectJob implements ShouldQueue
             $cars->map(fn(int $id) => [
                 'logicalref' => $targetRef,
                 'car_id' => $id,
+                'connection_id' => $connection->id
             ])->all()
         );
 
@@ -61,7 +62,8 @@ class SparetoConnectJob implements ShouldQueue
                 ProductOem::firstOrCreate([
                     'brand' => $brand,
                     'logicalref' => $targetRef,
-                    "oem" => $oem
+                    "oem" => $oem,
+                    'connection_id' => $connection->id
                 ]);
         }
 
