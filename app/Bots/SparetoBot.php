@@ -202,7 +202,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
     public static function extractCars(Crawler $crawler): Collection
     {
-        $carsTable = $crawler->filter(".nav-vehicles > table > tbody");
+        $carsTable = $crawler->filter("#nav-vehicles > table > tbody");
         return !$carsTable->count() ? collect() :
             collect($carsTable->children()->each(function (Crawler $tr) {
                 $permalink = str_replace("/t/vehicles/", "", $tr->filter("a")->attr("href"));
