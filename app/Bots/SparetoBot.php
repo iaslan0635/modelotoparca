@@ -83,7 +83,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
     private function scrapeProduct(Crawler $productCrawler)
     {
         $partNumberEl = $productCrawler->filter('.card-product-main .part_number');
-        if(!$partNumberEl->count()) return;
+        if (!$partNumberEl->count()) return;
 
         $partNumber = $partNumberEl->text();
 
@@ -188,14 +188,13 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
     public static function extractOems(Crawler $crawler): Collection
     {
-        $oemContainer = $crawler->filterXPath("//p[text()='OE Numbers']/following-sibling::node()[following-sibling::p[text()='Cross-Reference Numbers']]");
-        return !$oemContainer->count() ? collect() :
-            collect($oemContainer->filter(".row")->each(function (Crawler $row) {
-                $children = $row->children();
-                $brand = $children->eq(0)->text();
-                $oems = $children->eq(1)->children()->each(fn(Crawler $col) => $col->text());
-                return compact("brand", "oems");
-            }));
+        $oemRows = $crawler->filterXPath("//h3[text()='OE Numbers']/following-sibling::node()[following-sibling::h3[text()='Cross-Reference Numbers']]");
+        return collect($oemRows->each(function (Crawler $row) {
+            $children = $row->children();
+            $brand = $children->eq(0)->text();
+            $oems = $children->eq(1)->children()->each(fn(Crawler $col) => $col->text());
+            return compact("brand", "oems");
+        }));
     }
 
     public static function extractCars(Crawler $crawler): Collection

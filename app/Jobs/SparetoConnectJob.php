@@ -57,7 +57,7 @@ class SparetoConnectJob implements ShouldQueue
             ]);
 
         $oems = SparetoBot::extractOems($crawler);
-        foreach ($oems as ['brand' => $brand, 'oems' => $oeList]) {
+        foreach ($oems as ['brand' => $brand, 'oems' => $oeList])
             foreach ($oeList as $oem)
                 ProductOem::firstOrCreate([
                     'brand' => $brand,
@@ -66,7 +66,7 @@ class SparetoConnectJob implements ShouldQueue
                 ], [
                     'connection_id' => $connection->id
                 ]);
-        }
+
 
         $connection->is_connection_applied = true;
         $connection->save();
