@@ -44,6 +44,13 @@ array_walk($menu, function ($val) {
     }
 });
 
+
+// Admin dashboard pages
+Route::get("/dashboard", function () {
+    return view('admin.dashboard');
+});
+
+
 // Documentations pages
 Route::prefix('documentation')->group(function () {
     Route::get('getting-started/references', [ReferencesController::class, 'index']);
