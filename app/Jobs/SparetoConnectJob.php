@@ -39,7 +39,7 @@ class SparetoConnectJob implements ShouldQueue
         $filteredConnections = !$hasConnectionsOtherThanOem ? $this->unapplied()->get() :
             $this->unapplied()->where("connected_by", "!=", "oem")->get();
 */
-        $filteredConnections = $this->unapplied()->where("connected_by", "!=", "oem");
+        $filteredConnections = $this->unapplied()->where("connected_by", "!=", "oem")->get();
         foreach ($filteredConnections as $connection)
             $this->connect($connection);
     }
