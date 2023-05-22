@@ -16,7 +16,7 @@
         <!--end::Col-->
         <!--begin::Col-->
         <div class="col-xxl-6">
-            {{ theme()->getview('admin.partials/widgets/engage/_widget-10') }}
+{{--            {{ theme()->getview('admin.partials/widgets/tables/_widget-4') }}--}}
         </div>
         <!--end::Col-->
     </div>
@@ -72,7 +72,8 @@
         <!--end::Col-->
         <!--begin::Col-->
         <div class="col-xl-8">
-            {{ theme()->getview('admin.partials/widgets/charts/_widget-24') }}
+            {{ theme()->getview('admin.partials/widgets/tables/_widget-4') }}
+{{--            {{ theme()->getview('admin.partials/widgets/charts/_widget-24') }}--}}
         </div>
         <!--end::Col-->
     </div>
