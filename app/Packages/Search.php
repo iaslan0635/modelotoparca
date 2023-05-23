@@ -391,13 +391,22 @@ class Search
         $producerUnbrandedQuery = self::producerUnbrandedQuery($term);
         $producerUnbrandedRegexQuery = self::producerUnbrandedRegexQuery($cleanTerm);
 
-        $compoundQuery = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
-        $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $carQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $foundCodes = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $finalFoundCodes = self::finalizeQuery($foundCodes);
 
+        $ifCodes = self::paginateProducts($finalFoundCodes, $sortBy)->total();
+
+        if ($ifCodes > 0) {
+            $compoundQuery = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+            $compoundQueryWithoutBrandFilter = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        } else {
+            $compoundQuery = self::combineQueries($productQuery, $carQuery);
+            $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $carQuery);
+        }
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
-
         $finalQuery = self::finalizeQuery($compoundQuery);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter);
+
 
         return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term);
     }
