@@ -72,7 +72,7 @@ class Search
                 'sub_title',
             ])
             ->query($term)
-            ->fuzziness('AUTO')
+//            ->fuzziness('AUTO')
             ->boost(self::BOOST["title"]);
     }
 
@@ -400,8 +400,8 @@ class Search
             $compoundQuery = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
             $compoundQueryWithoutBrandFilter = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
         } else {
-            $compoundQuery = self::combineQueries($productQuery);
-            $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery);
+            $compoundQuery = self::combineQueries($productQuery, $carQuery);
+            $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $carQuery);
         }
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
         $finalQuery = self::finalizeQuery($compoundQuery);
