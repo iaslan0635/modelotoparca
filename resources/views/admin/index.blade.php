@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -406,7 +406,7 @@
 								<span class="me-2">Try our all new Enviroment with
 								<br />
 								<span class="position-relative d-inline-block text-danger">
-									<a href="admin/dist/pages/user-profile/overview" class="text-danger opacity-75-hover">Pro Plan</a>
+									<a href="admin/pages/user-profile/overview" class="text-danger opacity-75-hover">Pro Plan</a>
 									<!--begin::Separator-->
 									<span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
 									<!--end::Separator-->
@@ -907,7 +907,7 @@
 																<img src="assets/media/avatars/300-3.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Haiti</span>
 															</div>
 														</div>
@@ -938,7 +938,7 @@
 																<img src="assets/media/avatars/300-2.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Monaco</span>
 															</div>
 														</div>
@@ -969,7 +969,7 @@
 																<img src="assets/media/avatars/300-9.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Poland</span>
 															</div>
 														</div>
@@ -1000,7 +1000,7 @@
 																<img src="assets/media/avatars/300-7.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Cody Fishers</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Cody Fishers</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Mexico</span>
 															</div>
 														</div>
@@ -1057,7 +1057,7 @@
 																<img src="assets/media/avatars/300-25.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Brooklyn Simmons</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Brooklyn Simmons</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Poland</span>
 															</div>
 														</div>
@@ -1088,7 +1088,7 @@
 																<img src="assets/media/avatars/300-24.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Mexico</span>
 															</div>
 														</div>
@@ -1119,7 +1119,7 @@
 																<img src="assets/media/avatars/300-20.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Annette Black</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Annette Black</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Haiti</span>
 															</div>
 														</div>
@@ -1150,7 +1150,7 @@
 																<img src="assets/media/avatars/300-17.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinney</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinney</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Monaco</span>
 															</div>
 														</div>
@@ -1207,7 +1207,7 @@
 																<img src="assets/media/avatars/300-11.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">New York</span>
 															</div>
 														</div>
@@ -1238,7 +1238,7 @@
 																<img src="assets/media/avatars/300-23.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ronald Richards</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ronald Richards</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Madrid</span>
 															</div>
 														</div>
@@ -1269,7 +1269,7 @@
 																<img src="assets/media/avatars/300-4.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Leslie Alexander</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Leslie Alexander</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Pune</span>
 															</div>
 														</div>
@@ -1300,7 +1300,7 @@
 																<img src="assets/media/avatars/300-1.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Courtney Henry</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Courtney Henry</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Mexico</span>
 															</div>
 														</div>
@@ -1357,7 +1357,7 @@
 																<img src="assets/media/avatars/300-12.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Arlene McCoy</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Arlene McCoy</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">London</span>
 															</div>
 														</div>
@@ -1388,7 +1388,7 @@
 																<img src="assets/media/avatars/300-21.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinneyr</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinneyr</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Monaco</span>
 															</div>
 														</div>
@@ -1419,7 +1419,7 @@
 																<img src="assets/media/avatars/300-30.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">PManila</span>
 															</div>
 														</div>
@@ -1450,7 +1450,7 @@
 																<img src="assets/media/avatars/300-14.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Iceland</span>
 															</div>
 														</div>
@@ -1507,7 +1507,7 @@
 																<img src="assets/media/avatars/300-6.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Haiti</span>
 															</div>
 														</div>
@@ -1538,7 +1538,7 @@
 																<img src="assets/media/avatars/300-10.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Kiribati</span>
 															</div>
 														</div>
@@ -1569,7 +1569,7 @@
 																<img src="assets/media/avatars/300-9.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Poland</span>
 															</div>
 														</div>
@@ -1600,7 +1600,7 @@
 																<img src="assets/media/avatars/300-3.jpg" class="" alt="" />
 															</div>
 															<div class="d-flex justify-content-start flex-column">
-																<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ralph Edwards</a>
+																<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ralph Edwards</a>
 																<span class="text-gray-400 fw-semibold d-block fs-7">Mexico</span>
 															</div>
 														</div>
@@ -1689,7 +1689,7 @@
 													<!--begin::Info-->
 													<div class="m-0">
 														<span class="fw-semibold text-gray-400 d-block fs-8">Manager</span>
-														<a href="admin/dist/pages/user-profile/overview" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
+														<a href="admin/pages/user-profile/overview" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
 													</div>
 													<!--end::Info-->
 												</div>
@@ -1770,7 +1770,7 @@
 											</div>
 											<!--end::Users group-->
 											<!--begin::Actions-->
-											<a href="admin/dist/apps/projects/project" class="text-primary opacity-75-hover fs-6 fw-semibold">View Project
+											<a href="admin/apps/projects/project" class="text-primary opacity-75-hover fs-6 fw-semibold">View Project
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr095.svg-->
 											<span class="svg-icon svg-icon-4 svg-icon-gray-800 ms-1">
 												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2334,7 +2334,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">History</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">History</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -2623,7 +2623,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -2756,6 +2756,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -2770,4 +2774,13 @@
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/new-target.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

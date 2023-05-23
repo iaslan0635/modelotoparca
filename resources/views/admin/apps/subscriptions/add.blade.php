@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -181,7 +181,7 @@
 								<div class="mb-7 d-none">
 									<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_customer_search">Select Customer</a>
 									<span class="fw-bold text-gray-500 mx-2">or</span>
-									<a href="admin/dist/apps/customers/list" class="btn btn-light-primary">Add New Customer</a>
+									<a href="admin/apps/customers/list" class="btn btn-light-primary">Add New Customer</a>
 								</div>
 								<!--end::Customer add buttons-->
 								<!--begin::Customer change button-->
@@ -860,7 +860,7 @@
 								<!--begin::Details-->
 								<div class="d-flex align-items-center mb-1">
 									<!--begin::Name-->
-									<a href="admin/dist/apps/customers/view" class="fw-bold text-gray-800 text-hover-primary me-2">Sean Bean</a>
+									<a href="admin/apps/customers/view" class="fw-bold text-gray-800 text-hover-primary me-2">Sean Bean</a>
 									<!--end::Name-->
 									<!--begin::Status-->
 									<span class="badge badge-light-success">Active</span>
@@ -1602,6 +1602,21 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/subscriptions/add/advanced.js"></script>
+<script src="assets/js/custom/apps/subscriptions/add/customer-select.js"></script>
+<script src="assets/js/custom/apps/subscriptions/add/products.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/new-card.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

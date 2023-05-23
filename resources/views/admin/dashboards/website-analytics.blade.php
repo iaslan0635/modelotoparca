@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -1843,7 +1843,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -1873,7 +1873,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -1942,6 +1942,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
@@ -1956,4 +1960,12 @@
 <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/new-target.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

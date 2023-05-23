@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -403,42 +403,42 @@
 					<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/overview">Overview</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/overview">Overview</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/settings">Settings</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/settings">Settings</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/security">Security</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/security">Security</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/billing">Billing</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/billing">Billing</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/statements">Statements</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/statements">Statements</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="admin/dist/account/referrals">Referrals</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="admin/account/referrals">Referrals</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/api-keys">API Keys</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/api-keys">API Keys</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/logs">Logs</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/logs">Logs</a>
 						</li>
 						<!--end::Nav item-->
 					</ul>
@@ -852,6 +852,24 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/pages/user-profile/general.js"></script>
+<script src="assets/js/custom/account/referrals/referral-program.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/type.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/details.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/finance.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

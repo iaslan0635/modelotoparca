@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -632,7 +632,7 @@
 								<a class="btn btn-sm btn-success btn-color-white me-2" data-bs-target="#kt_modal_invite_friends" data-bs-toggle="modal">Psychologist</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="admin/dist/pages/careers/list">Nurse</a>
+								<a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="admin/pages/careers/list">Nurse</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -1846,7 +1846,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">UI/UX Design</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">UI/UX Design</a>
 										<span class="text-muted fw-semibold d-block fs-7">40+ Courses</span>
 									</div>
 									<!--end:Author-->
@@ -1880,7 +1880,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">QA Analysis</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">QA Analysis</a>
 										<span class="text-muted fw-semibold d-block fs-7">18 Courses</span>
 									</div>
 									<!--end:Author-->
@@ -1914,7 +1914,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Web Development</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Web Development</a>
 										<span class="text-muted fw-semibold d-block fs-7">120+ Courses</span>
 									</div>
 									<!--end:Author-->
@@ -1948,7 +1948,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Marketing</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Marketing</a>
 										<span class="text-muted fw-semibold d-block fs-7">50+ Courses.</span>
 									</div>
 									<!--end:Author-->
@@ -1982,7 +1982,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Philosophy</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Philosophy</a>
 										<span class="text-muted fw-semibold d-block fs-7">24+ Courses</span>
 									</div>
 									<!--end:Author-->
@@ -2016,6 +2016,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
@@ -2024,4 +2028,21 @@
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/create-account.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/type.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/budget.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/settings.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/team.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/targets.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/files.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

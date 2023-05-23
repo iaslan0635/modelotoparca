@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -403,42 +403,42 @@
 					<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="admin/dist/account/overview">Overview</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="admin/account/overview">Overview</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/settings">Settings</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/settings">Settings</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/security">Security</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/security">Security</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/billing">Billing</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/billing">Billing</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/statements">Statements</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/statements">Statements</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/referrals">Referrals</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/referrals">Referrals</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/api-keys">API Keys</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/api-keys">API Keys</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/account/logs">Logs</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/account/logs">Logs</a>
 						</li>
 						<!--end::Nav item-->
 					</ul>
@@ -456,7 +456,7 @@
 					</div>
 					<!--end::Card title-->
 					<!--begin::Action-->
-					<a href="admin/dist/account/settings" class="btn btn-primary align-self-center">Edit Profile</a>
+					<a href="admin/account/settings" class="btn btn-primary align-self-center">Edit Profile</a>
 					<!--end::Action-->
 				</div>
 				<!--begin::Card header-->
@@ -568,7 +568,7 @@
 							<div class="fw-semibold">
 								<h4 class="text-gray-900 fw-bold">We need your attention!</h4>
 								<div class="fs-6 text-gray-700">Your payment was declined. To start using tools, please
-								<a class="fw-bold" href="admin/dist/account/billing">Add Payment Method</a>.</div>
+								<a class="fw-bold" href="admin/account/billing">Add Payment Method</a>.</div>
 							</div>
 							<!--end::Content-->
 						</div>
@@ -715,7 +715,7 @@
 								<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_create_app" data-bs-toggle="modal">Try now</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm btn-light" href="admin/dist/apps/invoices/view/invoice-1">Learn more</a>
+								<a class="btn btn-sm btn-light" href="admin/apps/invoices/view/invoice-1">Learn more</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -743,7 +743,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/sales/details" class="btn btn-sm btn-light">Order Details</a>
+								<a href="admin/apps/ecommerce/sales/details" class="btn btn-sm btn-light">Order Details</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -762,7 +762,7 @@
 											<img src="assets/media/stock/ecommerce/210.gif" class="w-50px ms-n1 me-1" alt="" />
 											<!--end::Icon-->
 											<!--begin::Title-->
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
 											<!--end::Title-->
 										</div>
 										<!--end::Wrapper-->
@@ -856,7 +856,7 @@
 									<div class="d-flex flex-stack">
 										<!--begin::Name-->
 										<span class="text-gray-400 fw-bold">To:
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Jason Bourne</a></span>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Jason Bourne</a></span>
 										<!--end::Name-->
 										<!--begin::Label-->
 										<span class="badge badge-light-success">Delivered</span>
@@ -875,7 +875,7 @@
 											<img src="assets/media/stock/ecommerce/209.gif" class="w-50px ms-n1 me-1" alt="" />
 											<!--end::Icon-->
 											<!--begin::Title-->
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
 											<!--end::Title-->
 										</div>
 										<!--end::Wrapper-->
@@ -969,7 +969,7 @@
 									<div class="d-flex flex-stack">
 										<!--begin::Name-->
 										<span class="text-gray-400 fw-bold">To:
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Marie Durant</a></span>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Marie Durant</a></span>
 										<!--end::Name-->
 										<!--begin::Label-->
 										<span class="badge badge-light-primary">Shipping</span>
@@ -988,7 +988,7 @@
 											<img src="assets/media/stock/ecommerce/214.gif" class="w-50px ms-n1 me-1" alt="" />
 											<!--end::Icon-->
 											<!--begin::Title-->
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
 											<!--end::Title-->
 										</div>
 										<!--end::Wrapper-->
@@ -1082,7 +1082,7 @@
 									<div class="d-flex flex-stack">
 										<!--begin::Name-->
 										<span class="text-gray-400 fw-bold">To:
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Dan Wilson</a></span>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Dan Wilson</a></span>
 										<!--end::Name-->
 										<!--begin::Label-->
 										<span class="badge badge-light-danger">Confirmed</span>
@@ -1101,7 +1101,7 @@
 											<img src="assets/media/stock/ecommerce/211.gif" class="w-50px ms-n1 me-1" alt="" />
 											<!--end::Icon-->
 											<!--begin::Title-->
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
 											<!--end::Title-->
 										</div>
 										<!--end::Wrapper-->
@@ -1195,7 +1195,7 @@
 									<div class="d-flex flex-stack">
 										<!--begin::Name-->
 										<span class="text-gray-400 fw-bold">To:
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Lebron Wayde</a></span>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Lebron Wayde</a></span>
 										<!--end::Name-->
 										<!--begin::Label-->
 										<span class="badge badge-light-success">Delivered</span>
@@ -1214,7 +1214,7 @@
 											<img src="assets/media/stock/ecommerce/215.gif" class="w-50px ms-n1 me-1" alt="" />
 											<!--end::Icon-->
 											<!--begin::Title-->
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
 											<!--end::Title-->
 										</div>
 										<!--end::Wrapper-->
@@ -1308,7 +1308,7 @@
 									<div class="d-flex flex-stack">
 										<!--begin::Name-->
 										<span class="text-gray-400 fw-bold">To:
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Ana Simmons</a></span>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Ana Simmons</a></span>
 										<!--end::Name-->
 										<!--begin::Label-->
 										<span class="badge badge-light-primary">Shipping</span>
@@ -1327,7 +1327,7 @@
 											<img src="assets/media/stock/ecommerce/192.gif" class="w-50px ms-n1 me-1" alt="" />
 											<!--end::Icon-->
 											<!--begin::Title-->
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
 											<!--end::Title-->
 										</div>
 										<!--end::Wrapper-->
@@ -1421,7 +1421,7 @@
 									<div class="d-flex flex-stack">
 										<!--begin::Name-->
 										<span class="text-gray-400 fw-bold">To:
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Kevin Leonard</a></span>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Kevin Leonard</a></span>
 										<!--end::Name-->
 										<!--begin::Label-->
 										<span class="badge badge-light-danger">Confirmed</span>
@@ -1486,7 +1486,7 @@
 									</div>
 									<!--end::Status-->
 									<!--begin::Search-->
-									<a href="admin/dist/apps/ecommerce/catalog/products" class="btn btn-light btn-sm">View Stock</a>
+									<a href="admin/apps/ecommerce/catalog/products" class="btn btn-light btn-sm">View Stock</a>
 									<!--end::Search-->
 								</div>
 								<!--begin::Filters-->
@@ -1517,7 +1517,7 @@
 									<tr>
 										<!--begin::Item-->
 										<td>
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Macbook Air M1</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Macbook Air M1</a>
 										</td>
 										<!--end::Item-->
 										<!--begin::Product ID-->
@@ -1543,7 +1543,7 @@
 									<tr>
 										<!--begin::Item-->
 										<td>
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Surface Laptop 4</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Surface Laptop 4</a>
 										</td>
 										<!--end::Item-->
 										<!--begin::Product ID-->
@@ -1569,7 +1569,7 @@
 									<tr>
 										<!--begin::Item-->
 										<td>
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Logitech MX 250</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Logitech MX 250</a>
 										</td>
 										<!--end::Item-->
 										<!--begin::Product ID-->
@@ -1595,7 +1595,7 @@
 									<tr>
 										<!--begin::Item-->
 										<td>
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">AudioEngine HD3</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">AudioEngine HD3</a>
 										</td>
 										<!--end::Item-->
 										<!--begin::Product ID-->
@@ -1621,7 +1621,7 @@
 									<tr>
 										<!--begin::Item-->
 										<td>
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">HP Hyper LTR</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">HP Hyper LTR</a>
 										</td>
 										<!--end::Item-->
 										<!--begin::Product ID-->
@@ -1647,7 +1647,7 @@
 									<tr>
 										<!--begin::Item-->
 										<td>
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Dell 32 UltraSharp</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Dell 32 UltraSharp</a>
 										</td>
 										<!--end::Item-->
 										<!--begin::Product ID-->
@@ -1673,7 +1673,7 @@
 									<tr>
 										<!--begin::Item-->
 										<td>
-											<a href="admin/dist/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Google Pixel 6 Pro</a>
+											<a href="admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Google Pixel 6 Pro</a>
 										</td>
 										<!--end::Item-->
 										<!--begin::Product ID-->
@@ -1714,6 +1714,23 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/pages/user-profile/general.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/type.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/details.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/finance.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

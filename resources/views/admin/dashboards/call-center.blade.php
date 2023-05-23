@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -313,7 +313,7 @@
 													<!--end::Symbol-->
 													<!--begin::Info-->
 													<div class="m-0">
-														<a href="admin/dist/pages/user-profile/projects" class="text-white text-opacity-75 fs-8">Projects</a>
+														<a href="admin/pages/user-profile/projects" class="text-white text-opacity-75 fs-8">Projects</a>
 														<span class="fw-bold text-white fs-7 d-block">Up to 500</span>
 													</div>
 													<!--end::Info-->
@@ -337,7 +337,7 @@
 													<!--end::Symbol-->
 													<!--begin::Info-->
 													<div class="m-0">
-														<a href="admin/dist/apps/user-management/users/list" class="text-white text-opacity-75 fs-8">Tasks</a>
+														<a href="admin/apps/user-management/users/list" class="text-white text-opacity-75 fs-8">Tasks</a>
 														<span class="fw-bold text-white fs-7 d-block">Unlimited</span>
 													</div>
 													<!--end::Info-->
@@ -912,7 +912,7 @@
 														<img src="assets/media/avatars/300-3.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
+														<a href="admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Haiti</span>
 													</div>
 												</div>
@@ -959,7 +959,7 @@
 														<img src="assets/media/avatars/300-10.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
+														<a href="admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Monaco</span>
 													</div>
 												</div>
@@ -1006,7 +1006,7 @@
 														<img src="assets/media/avatars/300-9.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
+														<a href="admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Poland</span>
 													</div>
 												</div>
@@ -1053,7 +1053,7 @@
 														<img src="assets/media/avatars/300-2.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
+														<a href="admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Kiribatir</span>
 													</div>
 												</div>
@@ -1100,7 +1100,7 @@
 														<img src="assets/media/avatars/300-1.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ralph Edwards</a>
+														<a href="admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ralph Edwards</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Iceland</span>
 													</div>
 												</div>
@@ -1169,7 +1169,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -1199,7 +1199,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -1223,6 +1223,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
@@ -1237,4 +1241,17 @@
 <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/share-earn.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/type.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/details.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/finance.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -4128,6 +4128,26 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/user-management/users/view/view.js"></script>
+<script src="assets/js/custom/apps/user-management/users/view/update-details.js"></script>
+<script src="assets/js/custom/apps/user-management/users/view/add-schedule.js"></script>
+<script src="assets/js/custom/apps/user-management/users/view/add-task.js"></script>
+<script src="assets/js/custom/apps/user-management/users/view/update-email.js"></script>
+<script src="assets/js/custom/apps/user-management/users/view/update-password.js"></script>
+<script src="assets/js/custom/apps/user-management/users/view/update-role.js"></script>
+<script src="assets/js/custom/apps/user-management/users/view/add-auth-app.js"></script>
+<script src="assets/js/custom/apps/user-management/users/view/add-one-time-password.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

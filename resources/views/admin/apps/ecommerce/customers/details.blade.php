@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -201,7 +201,7 @@
 								<!--begin::Details item-->
 								<div class="fw-bold mt-5">Latest Transaction</div>
 								<div class="text-gray-600">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary">#14534</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary">#14534</a>
 								</div>
 								<!--begin::Details item-->
 							</div>
@@ -326,7 +326,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15998</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15998</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -349,7 +349,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14829</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14829</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -372,7 +372,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14492</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14492</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -395,7 +395,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15461</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15461</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -418,7 +418,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14630</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14630</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -441,7 +441,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15897</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15897</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -464,7 +464,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15692</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15692</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -487,7 +487,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14373</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14373</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -510,7 +510,7 @@
 											<tr>
 												<!--begin::order=-->
 												<td>
-													<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15068</a>
+													<a href="admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15068</a>
 												</td>
 												<!--end::order=-->
 												<!--begin::Status=-->
@@ -2806,6 +2806,26 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/ecommerce/customers/details/transaction-history.js"></script>
+<script src="assets/js/custom/apps/ecommerce/customers/details/add-auth-app.js"></script>
+<script src="assets/js/custom/apps/ecommerce/customers/details/add-address.js"></script>
+<script src="assets/js/custom/apps/ecommerce/customers/details/add-one-time-password.js"></script>
+<script src="assets/js/custom/apps/ecommerce/customers/details/update-password.js"></script>
+<script src="assets/js/custom/apps/ecommerce/customers/details/update-phone.js"></script>
+<script src="assets/js/custom/apps/ecommerce/customers/details/update-address.js"></script>
+<script src="assets/js/custom/apps/ecommerce/customers/details/update-profile.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/new-card.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

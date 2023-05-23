@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -32,10 +32,10 @@
 			<!--begin::Actions-->
 			<div class="d-flex align-items-center gap-2 gap-lg-3">
 				<!--begin::Secondary button-->
-				<a href="admin/dist/apps/ecommerce/sales/listing" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Recent Orders</a>
+				<a href="admin/apps/ecommerce/sales/listing" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Recent Orders</a>
 				<!--end::Secondary button-->
 				<!--begin::Primary button-->
-				<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm fw-bold btn-primary">New Product</a>
+				<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm fw-bold btn-primary">New Product</a>
 				<!--end::Primary button-->
 			</div>
 			<!--end::Actions-->
@@ -1547,6 +1547,17 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/pages/general/pos.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

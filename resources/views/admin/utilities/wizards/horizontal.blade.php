@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -693,7 +693,7 @@
 										<!--end::Title-->
 										<!--begin::Notice-->
 										<div class="text-muted fw-semibold fs-6">If you need more info, please
-										<a href="admin/dist/authentication/layouts/corporate/sign-in" class="link-primary fw-bold">Sign In</a>.</div>
+										<a href="admin/authentication/layouts/corporate/sign-in" class="link-primary fw-bold">Sign In</a>.</div>
 										<!--end::Notice-->
 									</div>
 									<!--end::Heading-->
@@ -722,7 +722,7 @@
 												<div class="fw-semibold">
 													<h4 class="text-gray-900 fw-bold">We need your attention!</h4>
 													<div class="fs-6 text-gray-700">To start using great tools, please,
-													<a href="admin/dist/utilities/wizards/vertical" class="fw-bold">Create Team Platform</a></div>
+													<a href="admin/utilities/wizards/vertical" class="fw-bold">Create Team Platform</a></div>
 												</div>
 												<!--end::Content-->
 											</div>
@@ -793,6 +793,18 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/utilities/modals/create-account.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

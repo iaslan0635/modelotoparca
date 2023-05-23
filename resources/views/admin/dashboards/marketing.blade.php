@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -32,7 +32,7 @@
 			<!--begin::Actions-->
 			<div class="d-flex align-items-center gap-2 gap-lg-3">
 				<!--begin::Secondary button-->
-				<a href="admin/dist/apps/customers/view" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Add Customer</a>
+				<a href="admin/apps/customers/view" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Add Customer</a>
 				<!--end::Secondary button-->
 				<!--begin::Primary button-->
 				<a href="#" class="btn btn-sm fw-bold btn-primary">New Campaign</a>
@@ -2210,7 +2210,7 @@
 								<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_new_card" data-bs-toggle="modal">Try now</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm btn-light" href="admin/dist/pages/user-profile/followers">Learn more</a>
+								<a class="btn btn-sm btn-light" href="admin/pages/user-profile/followers">Learn more</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -2298,7 +2298,20 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-campaign.js"></script>
+<script src="assets/js/custom/utilities/modals/new-card.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

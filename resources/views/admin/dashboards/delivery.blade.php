@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -35,7 +35,7 @@
 				<a href="#" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Rollover</a>
 				<!--end::Secondary button-->
 				<!--begin::Primary button-->
-				<a href="admin/dist/apps/ecommerce/sales/add-order" class="btn btn-sm fw-bold btn-primary">New Shipment</a>
+				<a href="admin/apps/ecommerce/sales/add-order" class="btn btn-sm fw-bold btn-primary">New Shipment</a>
 				<!--end::Primary button-->
 			</div>
 			<!--end::Actions-->
@@ -73,7 +73,7 @@
 								<a class="btn btn-sm bg-white btn-color-gray-800 me-2" data-bs-target="#kt_modal_bidding" data-bs-toggle="modal">New Delivery</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="admin/dist/pages/user-profile/projects">Quick Guide</a>
+								<a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="admin/pages/user-profile/projects">Quick Guide</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -1533,7 +1533,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">Add Product</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">Add Product</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -1555,7 +1555,7 @@
 									<!--end::Icon-->
 									<!--begin::Section-->
 									<div class="flex-grow-1">
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Fjallraven</a>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Fjallraven</a>
 										<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-6437</span>
 									</div>
 									<!--end::Section-->
@@ -1578,7 +1578,7 @@
 									<!--end::Icon-->
 									<!--begin::Section-->
 									<div class="flex-grow-1">
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Nike AirMax</a>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Nike AirMax</a>
 										<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-1836</span>
 									</div>
 									<!--end::Section-->
@@ -1601,7 +1601,7 @@
 									<!--end::Icon-->
 									<!--begin::Section-->
 									<div class="flex-grow-1">
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Bose QC 35</a>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Bose QC 35</a>
 										<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-6254</span>
 									</div>
 									<!--end::Section-->
@@ -1624,7 +1624,7 @@
 									<!--end::Icon-->
 									<!--begin::Section-->
 									<div class="flex-grow-1">
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Greeny</a>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Greeny</a>
 										<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-1746</span>
 									</div>
 									<!--end::Section-->
@@ -1647,7 +1647,7 @@
 									<!--end::Icon-->
 									<!--begin::Section-->
 									<div class="flex-grow-1">
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Apple Watches</a>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Apple Watches</a>
 										<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-6245</span>
 									</div>
 									<!--end::Section-->
@@ -1670,7 +1670,7 @@
 									<!--end::Icon-->
 									<!--begin::Section-->
 									<div class="flex-grow-1">
-										<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Friendly Robot</a>
+										<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Friendly Robot</a>
 										<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-2347</span>
 									</div>
 									<!--end::Section-->
@@ -1701,7 +1701,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">Add Product</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">Add Product</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -3375,6 +3375,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
@@ -3383,4 +3387,13 @@
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/bidding.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

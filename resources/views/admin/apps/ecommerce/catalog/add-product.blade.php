@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -145,7 +145,7 @@
 		<!--begin::Content container-->
 		<div id="kt_app_content_container" class="app-container container-xxl">
 			<!--begin::Form-->
-			<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/dist/apps/ecommerce/catalog/products">
+			<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/apps/ecommerce/catalog/products">
 				<!--begin::Aside column-->
 				<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
 					<!--begin::Thumbnail settings-->
@@ -274,7 +274,7 @@
 							<!--end::Description-->
 							<!--end::Input group-->
 							<!--begin::Button-->
-							<a href="admin/dist/apps/ecommerce/catalog/add-category" class="btn btn-light-primary btn-sm mb-10">
+							<a href="admin/apps/ecommerce/catalog/add-category" class="btn btn-light-primary btn-sm mb-10">
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
 							<span class="svg-icon svg-icon-2">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -886,7 +886,7 @@
 					<!--end::Tab content-->
 					<div class="d-flex justify-content-end">
 						<!--begin::Button-->
-						<a href="admin/dist/apps/ecommerce/catalog/products" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+						<a href="admin/apps/ecommerce/catalog/products" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
 						<!--end::Button-->
 						<!--begin::Button-->
 						<button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
@@ -906,7 +906,19 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/ecommerce/catalog/save-product.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

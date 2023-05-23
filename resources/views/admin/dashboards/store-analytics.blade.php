@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -50,7 +50,7 @@
 				<!--begin::Secondary button-->
 				<!--end::Secondary button-->
 				<!--begin::Primary button-->
-				<a href="admin/dist/apps/ecommerce/sales/details" class="btn btn-sm fw-bold btn-primary">Show</a>
+				<a href="admin/apps/ecommerce/sales/details" class="btn btn-sm fw-bold btn-primary">Show</a>
 				<!--end::Primary button-->
 			</div>
 			<!--end::Actions-->
@@ -400,10 +400,10 @@
 							<!--begin::Links-->
 							<div class="text-center mb-1">
 								<!--begin::Link-->
-								<a class="btn btn-sm btn-primary me-2" href="admin/dist/apps/ecommerce/customers/listing">Try now</a>
+								<a class="btn btn-sm btn-primary me-2" href="admin/apps/ecommerce/customers/listing">Try now</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm btn-light" href="admin/dist/apps/invoices/view/invoice-1">Learn more</a>
+								<a class="btn btn-sm btn-light" href="admin/apps/invoices/view/invoice-1">Learn more</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -534,7 +534,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/categories" class="btn btn-sm btn-light">View All</a>
+								<a href="admin/apps/ecommerce/catalog/categories" class="btn btn-sm btn-light">View All</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -561,7 +561,7 @@
 												<img src="assets/media/stock/ecommerce/210.gif" class="w-50px" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
+												<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 											</td>
 											<td>
@@ -573,7 +573,7 @@
 												<img src="assets/media/stock/ecommerce/215.gif" class="w-50px" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+												<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 											</td>
 											<td>
@@ -585,7 +585,7 @@
 												<img src="assets/media/stock/ecommerce/209.gif" class="w-50px" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+												<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 											</td>
 											<td>
@@ -597,7 +597,7 @@
 												<img src="assets/media/stock/ecommerce/214.gif" class="w-50px" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Yellow Stone</a>
+												<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Yellow Stone</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 											</td>
 											<td>
@@ -1111,7 +1111,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
+								<a href="admin/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -2197,7 +2197,7 @@
 								<!--end::Item-->
 								<!--begin::Link-->
 								<div class="text-center pt-8 d-1">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-primary opacity-75-hover fs-6 fw-bold">View Store Analytics
+									<a href="admin/apps/ecommerce/sales/details" class="text-primary opacity-75-hover fs-6 fw-bold">View Store Analytics
 									<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 									<span class="svg-icon svg-icon-3 svg-icon-primary">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2286,6 +2286,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
@@ -2300,4 +2304,11 @@
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

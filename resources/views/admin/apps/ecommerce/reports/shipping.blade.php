@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -257,7 +257,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0063693</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0063693</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -285,7 +285,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0049747</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0049747</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -313,7 +313,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0028978</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0028978</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -341,7 +341,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0038189</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0038189</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -369,7 +369,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0058329</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0058329</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -397,7 +397,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0059392</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0059392</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -425,7 +425,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0035271</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0035271</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -453,7 +453,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0026411</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0026411</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -481,7 +481,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0052969</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0052969</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -509,7 +509,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0032238</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0032238</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -537,7 +537,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0059900</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0059900</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -565,7 +565,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0028526</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0028526</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -593,7 +593,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0026541</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0026541</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -621,7 +621,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0038813</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0038813</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -649,7 +649,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0050289</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0050289</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -677,7 +677,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0046795</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0046795</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -705,7 +705,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0029341</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0029341</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -733,7 +733,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0068713</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0068713</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -761,7 +761,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0043535</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0043535</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -789,7 +789,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0032899</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0032899</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -817,7 +817,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0029541</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0029541</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -845,7 +845,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0050669</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0050669</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -873,7 +873,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0038326</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0038326</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -901,7 +901,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0047344</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0047344</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -929,7 +929,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0059802</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0059802</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -957,7 +957,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0058337</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0058337</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -985,7 +985,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0061769</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0061769</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1013,7 +1013,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0063637</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0063637</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1041,7 +1041,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0029330</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0029330</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1069,7 +1069,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0052802</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0052802</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1097,7 +1097,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0041820</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0041820</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1125,7 +1125,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0046921</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0046921</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1153,7 +1153,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0066071</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0066071</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1181,7 +1181,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0060725</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0060725</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1209,7 +1209,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0040216</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0040216</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1237,7 +1237,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0028300</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0028300</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1265,7 +1265,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0056531</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0056531</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1293,7 +1293,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0034336</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0034336</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1321,7 +1321,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0040948</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0040948</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1349,7 +1349,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0049831</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0049831</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1377,7 +1377,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0058868</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0058868</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1405,7 +1405,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0067381</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0067381</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1433,7 +1433,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0052945</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0052945</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1461,7 +1461,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0032354</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0032354</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1489,7 +1489,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0045205</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0045205</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1517,7 +1517,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0026514</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0026514</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1545,7 +1545,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0065167</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0065167</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1573,7 +1573,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0038535</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0038535</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1601,7 +1601,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0029903</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0029903</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1629,7 +1629,7 @@
 								<!--end::Shipping Type=-->
 								<!--begin::Shipping ID=-->
 								<td>
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0069703</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-dark text-hover-primary">#SHP-0069703</a>
 								</td>
 								<!--end::Shipping ID=-->
 								<!--begin::Status=-->
@@ -1661,6 +1661,18 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/ecommerce/reports/shipping/shipping.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -154,7 +154,7 @@
 								<!--begin::Info-->
 								<div class="text-center">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary fs-4">Jerry Kane</a>
+									<a href="admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary fs-4">Jerry Kane</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<span class="text-muted d-block fw-semibold">Grade 8, AE3 Student</span>
@@ -195,7 +195,7 @@
 								<ul class="nav nav-pills nav-pills-custom flex-column border-transparent fs-5 fw-bold">
 									<!--begin::Nav item-->
 									<li class="nav-item mt-5">
-										<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="admin/dist/pages/social/feeds">
+										<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="admin/pages/social/feeds">
 										<!--begin::Svg Icon | path: icons/duotune/general/gen010.svg-->
 										<span class="svg-icon svg-icon-3 svg-icon-muted me-3">
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -211,7 +211,7 @@
 									<!--end::Nav item-->
 									<!--begin::Nav item-->
 									<li class="nav-item mt-5">
-										<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="admin/dist/pages/social/activity">
+										<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="admin/pages/social/activity">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr070.svg-->
 										<span class="svg-icon svg-icon-3 svg-icon-muted me-3">
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -229,7 +229,7 @@
 									<!--end::Nav item-->
 									<!--begin::Nav item-->
 									<li class="nav-item mt-5">
-										<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="admin/dist/pages/social/followers">
+										<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="admin/pages/social/followers">
 										<!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->
 										<span class="svg-icon svg-icon-3 svg-icon-muted me-3">
 											<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -246,7 +246,7 @@
 									<!--end::Nav item-->
 									<!--begin::Nav item-->
 									<li class="nav-item mt-5">
-										<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0 active" href="admin/dist/pages/social/settings">
+										<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0 active" href="admin/pages/social/settings">
 										<!--begin::Svg Icon | path: icons/duotune/coding/cod001.svg-->
 										<span class="svg-icon svg-icon-3 svg-icon-muted me-3">
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -865,12 +865,12 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Jacob Jones</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Jacob Jones</a>
 										<span class="text-muted fw-semibold d-block fs-7">Barone LLC.</span>
 									</div>
 									<!--end:Author-->
 									<!--begin:Action-->
-									<a href="admin/dist/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+									<a href="admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 									<!--end:Action-->
 								</div>
 								<!--end::Section-->
@@ -890,12 +890,12 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Annette Black</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Annette Black</a>
 										<span class="text-muted fw-semibold d-block fs-7">Binford Ltd.</span>
 									</div>
 									<!--end:Author-->
 									<!--begin:Action-->
-									<a href="admin/dist/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+									<a href="admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 									<!--end:Action-->
 								</div>
 								<!--end::Section-->
@@ -915,12 +915,12 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Devon Lane</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Devon Lane</a>
 										<span class="text-muted fw-semibold d-block fs-7">Acme Co.</span>
 									</div>
 									<!--end:Author-->
 									<!--begin:Action-->
-									<a href="admin/dist/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+									<a href="admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 									<!--end:Action-->
 								</div>
 								<!--end::Section-->
@@ -940,12 +940,12 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Kristin Watson</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Kristin Watson</a>
 										<span class="text-muted fw-semibold d-block fs-7">Biffco Enterprises Ltd.</span>
 									</div>
 									<!--end:Author-->
 									<!--begin:Action-->
-									<a href="admin/dist/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+									<a href="admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 									<!--end:Action-->
 								</div>
 								<!--end::Section-->
@@ -965,12 +965,12 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Eleanor Pena</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Eleanor Pena</a>
 										<span class="text-muted fw-semibold d-block fs-7">Abstergo Ltd.</span>
 									</div>
 									<!--end:Author-->
 									<!--begin:Action-->
-									<a href="admin/dist/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+									<a href="admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 									<!--end:Action-->
 								</div>
 								<!--end::Section-->
@@ -990,7 +990,7 @@
 							</h3>
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/pages/social/activity" class="btn btn-sm btn-light">View All</a>
+								<a href="admin/pages/social/activity" class="btn btn-sm btn-light">View All</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -1051,6 +1051,17 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

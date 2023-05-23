@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -32,7 +32,7 @@
 			<!--begin::Actions-->
 			<div class="d-flex align-items-center gap-2 gap-lg-3">
 				<!--begin::Secondary button-->
-				<a href="admin/dist/apps/projects/list" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">My Projects</a>
+				<a href="admin/apps/projects/list" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">My Projects</a>
 				<!--end::Secondary button-->
 				<!--begin::Primary button-->
 				<a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_project">New Project</a>
@@ -2550,7 +2550,7 @@
 													<!--begin::Info-->
 													<div class="m-0">
 														<span class="fw-semibold text-gray-400 d-block fs-8">Manager</span>
-														<a href="admin/dist/pages/user-profile/overview" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
+														<a href="admin/pages/user-profile/overview" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
 													</div>
 													<!--end::Info-->
 												</div>
@@ -2631,7 +2631,7 @@
 											</div>
 											<!--end::Users group-->
 											<!--begin::Actions-->
-											<a href="admin/dist/apps/projects/project" class="text-primary opacity-75-hover fs-6 fw-semibold">View Project
+											<a href="admin/apps/projects/project" class="text-primary opacity-75-hover fs-6 fw-semibold">View Project
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr095.svg-->
 											<span class="svg-icon svg-icon-4 svg-icon-gray-800 ms-1">
 												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3244,7 +3244,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">History</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">History</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -3546,7 +3546,7 @@
 								<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_new_address" data-bs-toggle="modal">Try Now</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm btn-light" href="admin/dist/apps/user-management/users/view">Learn More</a>
+								<a class="btn btn-sm btn-light" href="admin/apps/user-management/users/view">Learn More</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -3675,6 +3675,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
@@ -3683,4 +3687,21 @@
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/type.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/budget.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/settings.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/team.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/targets.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/files.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/main.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/new-address.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

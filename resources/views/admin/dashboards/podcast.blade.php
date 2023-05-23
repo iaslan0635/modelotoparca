@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -96,7 +96,7 @@
 							<!--begin::Action-->
 							<div class="mb-xl-10 mb-3">
 								<a href='#' class="btn btn-primary fw-semibold me-2" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">Listen Now</a>
-								<a href="admin/dist/apps/support-center/overview" class="btn btn-color-white bg-transparent btn-outline fw-semibold" style="border: 1px solid rgba(255, 255, 255, 0.3)">Save for Later</a>
+								<a href="admin/apps/support-center/overview" class="btn btn-color-white bg-transparent btn-outline fw-semibold" style="border: 1px solid rgba(255, 255, 255, 0.3)">Save for Later</a>
 							</div>
 							<!--begin::Action-->
 						</div>
@@ -281,7 +281,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/account/statements" class="btn btn-sm btn-light">History</a>
+								<a href="admin/account/statements" class="btn btn-sm btn-light">History</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -564,7 +564,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Leslie Alexander</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Leslie Alexander</a>
 										<span class="text-gray-400 fw-semibold d-block fs-6">Community</span>
 									</div>
 									<!--end:Author-->
@@ -589,7 +589,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Jacob Jones</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Jacob Jones</a>
 										<span class="text-gray-400 fw-semibold d-block fs-6">Community</span>
 									</div>
 									<!--end:Author-->
@@ -614,7 +614,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Ronald Richards</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Ronald Richards</a>
 										<span class="text-gray-400 fw-semibold d-block fs-6">Community</span>
 									</div>
 									<!--end:Author-->
@@ -639,7 +639,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Courtney Henry</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Courtney Henry</a>
 										<span class="text-gray-400 fw-semibold d-block fs-6">Community</span>
 									</div>
 									<!--end:Author-->
@@ -664,7 +664,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Arlene McCoy</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Arlene McCoy</a>
 										<span class="text-gray-400 fw-semibold d-block fs-6">Community</span>
 									</div>
 									<!--end:Author-->
@@ -689,7 +689,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Marvin McKinney</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-5 fw-bolder">Marvin McKinney</a>
 										<span class="text-gray-400 fw-semibold d-block fs-6">Community</span>
 									</div>
 									<!--end:Author-->
@@ -724,7 +724,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/account/statements" class="btn btn-sm btn-light">History</a>
+								<a href="admin/account/statements" class="btn btn-sm btn-light">History</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -846,7 +846,7 @@
 								<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_offer_a_deal" data-bs-toggle="modal">Try Now</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm btn-light" href="admin/dist/account/billing">Learn More</a>
+								<a class="btn btn-sm btn-light" href="admin/account/billing">Learn More</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -920,7 +920,7 @@
 														<img src="assets/media/avatars/300-1.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Brooklyn Simmons</a>
+														<a href="admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Brooklyn Simmons</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 													</div>
 												</div>
@@ -973,7 +973,7 @@
 														<img src="assets/media/avatars/300-2.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Annette Black</a>
+														<a href="admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Annette Black</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 													</div>
 												</div>
@@ -1026,7 +1026,7 @@
 														<img src="assets/media/avatars/300-12.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
+														<a href="admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 													</div>
 												</div>
@@ -1079,7 +1079,7 @@
 														<img src="assets/media/avatars/300-11.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
+														<a href="admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 													</div>
 												</div>
@@ -1132,7 +1132,7 @@
 														<img src="assets/media/avatars/300-3.jpg" class="" alt="" />
 													</div>
 													<div class="d-flex justify-content-start flex-column">
-														<a href="admin/dist/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinney</a>
+														<a href="admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinney</a>
 														<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 													</div>
 												</div>
@@ -1618,6 +1618,9 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/fslightbox/fslightbox.bundle.js"></script>
 <script src="assets/plugins/custom/typedjs/typedjs.bundle.js"></script>
@@ -1627,4 +1630,25 @@
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/type.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/budget.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/settings.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/team.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/targets.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/files.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/main.js"></script>
+<script src="assets/js/custom/utilities/modals/new-target.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/type.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/details.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/finance.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -145,7 +145,7 @@
 		<!--begin::Content container-->
 		<div id="kt_app_content_container" class="app-container container-xxl">
 			<!--begin::Form-->
-			<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/dist/apps/ecommerce/catalog/products">
+			<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/apps/ecommerce/catalog/products">
 				<!--begin::Aside column-->
 				<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
 					<!--begin::Thumbnail settings-->
@@ -271,7 +271,7 @@
 							<!--end::Description-->
 							<!--end::Input group-->
 							<!--begin::Button-->
-							<a href="admin/dist/apps/ecommerce/catalog/add-category" class="btn btn-light-primary btn-sm mb-10">
+							<a href="admin/apps/ecommerce/catalog/add-category" class="btn btn-light-primary btn-sm mb-10">
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
 							<span class="svg-icon svg-icon-2">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1060,7 +1060,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<div class="symbol-label bg-light-danger">
@@ -1138,7 +1138,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<span class="symbol-label" style="background-image:url(assets/media/avatars/300-1.jpg)"></span>
@@ -1214,7 +1214,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<span class="symbol-label" style="background-image:url(assets/media/avatars/300-5.jpg)"></span>
@@ -1290,7 +1290,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<span class="symbol-label" style="background-image:url(assets/media/avatars/300-25.jpg)"></span>
@@ -1366,7 +1366,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<div class="symbol-label bg-light-warning">
@@ -1444,7 +1444,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<span class="symbol-label" style="background-image:url(assets/media/avatars/300-9.jpg)"></span>
@@ -1520,7 +1520,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<div class="symbol-label bg-light-danger">
@@ -1598,7 +1598,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<div class="symbol-label bg-light-primary">
@@ -1676,7 +1676,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<span class="symbol-label" style="background-image:url(assets/media/avatars/300-23.jpg)"></span>
@@ -1752,7 +1752,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<div class="symbol-label bg-light-danger">
@@ -1830,7 +1830,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<span class="symbol-label" style="background-image:url(assets/media/avatars/300-12.jpg)"></span>
@@ -1906,7 +1906,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<div class="symbol-label bg-light-info">
@@ -1984,7 +1984,7 @@
 														<!--end::Rating-->
 													</td>
 													<td>
-														<a href="admin/dist/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
+														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 															<!--begin::Avatar-->
 															<div class="symbol symbol-circle symbol-25px me-3">
 																<span class="symbol-label" style="background-image:url(assets/media/avatars/300-13.jpg)"></span>
@@ -2015,7 +2015,7 @@
 					<!--end::Tab content-->
 					<div class="d-flex justify-content-end">
 						<!--begin::Button-->
-						<a href="admin/dist/apps/ecommerce/catalog/products" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+						<a href="admin/apps/ecommerce/catalog/products" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
 						<!--end::Button-->
 						<!--begin::Button-->
 						<button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
@@ -2035,7 +2035,19 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/ecommerce/catalog/save-product.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

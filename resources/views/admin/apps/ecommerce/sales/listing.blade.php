@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -201,7 +201,7 @@
 							<!--end::Select2-->
 						</div>
 						<!--begin::Add product-->
-						<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Order</a>
+						<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Order</a>
 						<!--end::Add product-->
 					</div>
 					<!--end::Card toolbar-->
@@ -244,7 +244,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14258</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14258</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -252,14 +252,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">O</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -301,12 +301,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -331,7 +331,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14259</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14259</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -339,7 +339,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-6.jpg" alt="Emma Smith" class="w-100" />
 												</div>
@@ -348,7 +348,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Smith</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Smith</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -390,12 +390,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -420,7 +420,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14260</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14260</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -428,7 +428,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-23.jpg" alt="Dan Wilson" class="w-100" />
 												</div>
@@ -437,7 +437,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Dan Wilson</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Dan Wilson</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -479,12 +479,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -509,7 +509,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14261</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14261</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -517,7 +517,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-21.jpg" alt="Ethan Wilder" class="w-100" />
 												</div>
@@ -526,7 +526,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Ethan Wilder</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Ethan Wilder</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -568,12 +568,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -598,7 +598,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14262</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14262</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -606,14 +606,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-info text-info">A</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -655,12 +655,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -685,7 +685,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14263</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14263</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -693,7 +693,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-13.jpg" alt="John Miller" class="w-100" />
 												</div>
@@ -702,7 +702,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">John Miller</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">John Miller</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -744,12 +744,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -774,7 +774,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14264</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14264</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -782,7 +782,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-1.jpg" alt="Max Smith" class="w-100" />
 												</div>
@@ -791,7 +791,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Max Smith</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Max Smith</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -833,12 +833,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -863,7 +863,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14265</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14265</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -871,7 +871,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-25.jpg" alt="Brian Cox" class="w-100" />
 												</div>
@@ -880,7 +880,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Brian Cox</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Brian Cox</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -922,12 +922,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -952,7 +952,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14266</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14266</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -960,14 +960,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">O</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1009,12 +1009,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1039,7 +1039,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14267</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14267</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1047,14 +1047,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-info text-info">A</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1096,12 +1096,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1126,7 +1126,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14268</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14268</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1134,7 +1134,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-6.jpg" alt="Emma Smith" class="w-100" />
 												</div>
@@ -1143,7 +1143,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Smith</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Smith</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1185,12 +1185,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1215,7 +1215,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14269</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14269</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1223,14 +1223,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-info text-info">A</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1272,12 +1272,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1302,7 +1302,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14270</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14270</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1310,7 +1310,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-13.jpg" alt="John Miller" class="w-100" />
 												</div>
@@ -1319,7 +1319,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">John Miller</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">John Miller</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1361,12 +1361,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1391,7 +1391,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14271</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14271</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1399,7 +1399,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-23.jpg" alt="Dan Wilson" class="w-100" />
 												</div>
@@ -1408,7 +1408,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Dan Wilson</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Dan Wilson</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1450,12 +1450,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1480,7 +1480,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14272</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14272</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1488,7 +1488,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-9.jpg" alt="Francis Mitcham" class="w-100" />
 												</div>
@@ -1497,7 +1497,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Francis Mitcham</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Francis Mitcham</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1539,12 +1539,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1569,7 +1569,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14273</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14273</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1577,14 +1577,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">E</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Bold</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Bold</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1626,12 +1626,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1656,7 +1656,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14274</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14274</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1664,14 +1664,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-warning text-warning">C</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Mikaela Collins</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Mikaela Collins</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1713,12 +1713,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1743,7 +1743,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14275</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14275</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1751,14 +1751,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">O</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1800,12 +1800,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1830,7 +1830,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14276</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14276</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1838,7 +1838,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-9.jpg" alt="Francis Mitcham" class="w-100" />
 												</div>
@@ -1847,7 +1847,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Francis Mitcham</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Francis Mitcham</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1889,12 +1889,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1919,7 +1919,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14277</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14277</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -1927,14 +1927,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-primary text-primary">N</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Neil Owen</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Neil Owen</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -1976,12 +1976,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2006,7 +2006,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14278</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14278</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2014,7 +2014,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-13.jpg" alt="John Miller" class="w-100" />
 												</div>
@@ -2023,7 +2023,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">John Miller</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">John Miller</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2065,12 +2065,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2095,7 +2095,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14279</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14279</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2103,7 +2103,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-5.jpg" alt="Sean Bean" class="w-100" />
 												</div>
@@ -2112,7 +2112,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Sean Bean</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Sean Bean</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2154,12 +2154,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2184,7 +2184,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14280</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14280</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2192,14 +2192,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-primary text-primary">N</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Neil Owen</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Neil Owen</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2241,12 +2241,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2271,7 +2271,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14281</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14281</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2279,14 +2279,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">M</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Melody Macy</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Melody Macy</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2328,12 +2328,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2358,7 +2358,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14282</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14282</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2366,14 +2366,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-primary text-primary">N</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Neil Owen</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Neil Owen</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2415,12 +2415,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2445,7 +2445,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14283</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14283</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2453,7 +2453,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-6.jpg" alt="Emma Smith" class="w-100" />
 												</div>
@@ -2462,7 +2462,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Smith</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Smith</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2504,12 +2504,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2534,7 +2534,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14284</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14284</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2542,14 +2542,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-warning text-warning">C</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Mikaela Collins</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Mikaela Collins</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2591,12 +2591,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2621,7 +2621,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14285</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14285</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2629,14 +2629,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-warning text-warning">C</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Mikaela Collins</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Mikaela Collins</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2678,12 +2678,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2708,7 +2708,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14286</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14286</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2716,14 +2716,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">M</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Melody Macy</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Melody Macy</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2765,12 +2765,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2795,7 +2795,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14287</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14287</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2803,7 +2803,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-9.jpg" alt="Francis Mitcham" class="w-100" />
 												</div>
@@ -2812,7 +2812,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Francis Mitcham</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Francis Mitcham</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2854,12 +2854,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2884,7 +2884,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14288</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14288</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2892,14 +2892,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">E</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Bold</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Bold</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -2941,12 +2941,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2971,7 +2971,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14289</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14289</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -2979,7 +2979,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-23.jpg" alt="Dan Wilson" class="w-100" />
 												</div>
@@ -2988,7 +2988,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Dan Wilson</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Dan Wilson</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3030,12 +3030,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3060,7 +3060,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14290</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14290</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3068,14 +3068,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-info text-info">A</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3117,12 +3117,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3147,7 +3147,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14291</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14291</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3155,14 +3155,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-warning text-warning">C</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Mikaela Collins</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Mikaela Collins</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3204,12 +3204,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3234,7 +3234,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14292</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14292</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3242,7 +3242,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-5.jpg" alt="Sean Bean" class="w-100" />
 												</div>
@@ -3251,7 +3251,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Sean Bean</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Sean Bean</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3293,12 +3293,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3323,7 +3323,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14293</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14293</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3331,7 +3331,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-5.jpg" alt="Sean Bean" class="w-100" />
 												</div>
@@ -3340,7 +3340,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Sean Bean</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Sean Bean</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3382,12 +3382,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3412,7 +3412,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14294</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14294</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3420,7 +3420,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-1.jpg" alt="Max Smith" class="w-100" />
 												</div>
@@ -3429,7 +3429,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Max Smith</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Max Smith</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3471,12 +3471,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3501,7 +3501,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14295</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14295</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3509,14 +3509,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">O</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3558,12 +3558,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3588,7 +3588,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14296</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14296</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3596,14 +3596,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-info text-info">A</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3645,12 +3645,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3675,7 +3675,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14297</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14297</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3683,7 +3683,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-21.jpg" alt="Ethan Wilder" class="w-100" />
 												</div>
@@ -3692,7 +3692,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Ethan Wilder</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Ethan Wilder</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3734,12 +3734,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3764,7 +3764,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14298</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14298</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3772,7 +3772,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-5.jpg" alt="Sean Bean" class="w-100" />
 												</div>
@@ -3781,7 +3781,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Sean Bean</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Sean Bean</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3823,12 +3823,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3853,7 +3853,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14299</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14299</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3861,14 +3861,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">E</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Bold</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Emma Bold</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3910,12 +3910,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3940,7 +3940,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14300</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14300</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -3948,7 +3948,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-9.jpg" alt="Francis Mitcham" class="w-100" />
 												</div>
@@ -3957,7 +3957,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Francis Mitcham</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Francis Mitcham</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -3999,12 +3999,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4029,7 +4029,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14301</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14301</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -4037,14 +4037,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">M</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Melody Macy</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Melody Macy</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -4086,12 +4086,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4116,7 +4116,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14302</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14302</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -4124,7 +4124,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-21.jpg" alt="Ethan Wilder" class="w-100" />
 												</div>
@@ -4133,7 +4133,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Ethan Wilder</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Ethan Wilder</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -4175,12 +4175,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4205,7 +4205,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14303</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14303</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -4213,14 +4213,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-info text-info">A</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Robert Doe</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -4262,12 +4262,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4292,7 +4292,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14304</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14304</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -4300,7 +4300,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-23.jpg" alt="Dan Wilson" class="w-100" />
 												</div>
@@ -4309,7 +4309,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Dan Wilson</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Dan Wilson</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -4351,12 +4351,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4381,7 +4381,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14305</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14305</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -4389,14 +4389,14 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label fs-3 bg-light-danger text-danger">O</div>
 											</a>
 										</div>
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Olivia Wild</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -4438,12 +4438,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4468,7 +4468,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14306</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14306</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -4476,7 +4476,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-12.jpg" alt="Ana Crown" class="w-100" />
 												</div>
@@ -4485,7 +4485,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Ana Crown</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Ana Crown</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -4527,12 +4527,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4557,7 +4557,7 @@
 								<!--end::Checkbox-->
 								<!--begin::Order ID=-->
 								<td data-kt-ecommerce-order-filter="order_id">
-									<a href="admin/dist/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14307</a>
+									<a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">14307</a>
 								</td>
 								<!--end::Order ID=-->
 								<!--begin::Customer=-->
@@ -4565,7 +4565,7 @@
 									<div class="d-flex align-items-center">
 										<!--begin:: Avatar -->
 										<div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-											<a href="admin/dist/apps/user-management/users/view">
+											<a href="admin/apps/user-management/users/view">
 												<div class="symbol-label">
 													<img src="assets/media/avatars/300-25.jpg" alt="Brian Cox" class="w-100" />
 												</div>
@@ -4574,7 +4574,7 @@
 										<!--end::Avatar-->
 										<div class="ms-5">
 											<!--begin::Title-->
-											<a href="admin/dist/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Brian Cox</a>
+											<a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">Brian Cox</a>
 											<!--end::Title-->
 										</div>
 									</div>
@@ -4616,12 +4616,12 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+											<a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="admin/dist/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
+											<a href="admin/apps/ecommerce/sales/edit-order" class="menu-link px-3">Edit</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4649,6 +4649,18 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/ecommerce/sales/listing.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -157,31 +157,31 @@
 							<div class="d-flex flex-column gap-5">
 								<!--begin::Contact group-->
 								<div class="d-flex flex-stack">
-									<a href="admin/dist/apps/contacts/getting-started" class="fs-6 fw-bold text-gray-800 text-hover-primary text-active-primary active">All Contacts</a>
+									<a href="admin/apps/contacts/getting-started" class="fs-6 fw-bold text-gray-800 text-hover-primary text-active-primary active">All Contacts</a>
 									<div class="badge badge-light-primary">9</div>
 								</div>
 								<!--begin::Contact group-->
 								<!--begin::Contact group-->
 								<div class="d-flex flex-stack">
-									<a href="admin/dist/apps/contacts/getting-started" class="fs-6 fw-bold text-gray-800 text-hover-primary">Subscribed</a>
+									<a href="admin/apps/contacts/getting-started" class="fs-6 fw-bold text-gray-800 text-hover-primary">Subscribed</a>
 									<div class="badge badge-light-primary">3</div>
 								</div>
 								<!--begin::Contact group-->
 								<!--begin::Contact group-->
 								<div class="d-flex flex-stack">
-									<a href="admin/dist/apps/contacts/getting-started" class="fs-6 fw-bold text-gray-800 text-hover-primary">Tier 1 Member</a>
+									<a href="admin/apps/contacts/getting-started" class="fs-6 fw-bold text-gray-800 text-hover-primary">Tier 1 Member</a>
 									<div class="badge badge-light-primary">1</div>
 								</div>
 								<!--begin::Contact group-->
 								<!--begin::Contact group-->
 								<div class="d-flex flex-stack">
-									<a href="admin/dist/apps/contacts/getting-started" class="fs-6 fw-bold text-gray-800 text-hover-primary">Pending Approval</a>
+									<a href="admin/apps/contacts/getting-started" class="fs-6 fw-bold text-gray-800 text-hover-primary">Pending Approval</a>
 									<div class="badge badge-light-primary">3</div>
 								</div>
 								<!--begin::Contact group-->
 								<!--begin::Contact group-->
 								<div class="d-flex flex-stack">
-									<a href="admin/dist/apps/contacts/getting-started" class="fs-6 fw-bold text-danger text-hover-primary">Blocked</a>
+									<a href="admin/apps/contacts/getting-started" class="fs-6 fw-bold text-danger text-hover-primary">Blocked</a>
 									<div class="badge badge-light-danger">2</div>
 								</div>
 								<!--begin::Contact group-->
@@ -211,7 +211,7 @@
 							<div class="separator my-7"></div>
 							<!--begin::Separator-->
 							<!--begin::Add new contact-->
-							<a href="admin/dist/apps/contacts/add-contact" class="btn btn-primary w-100">
+							<a href="admin/apps/contacts/add-contact" class="btn btn-primary w-100">
 							<!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
 							<span class="svg-icon svg-icon-2">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -267,7 +267,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Emma Smith</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Emma Smith</a>
 											<div class="fw-semibold fs-7 text-muted">smith@kpmg.com</div>
 										</div>
 										<!--end::Details-->
@@ -289,7 +289,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Melody Macy</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Melody Macy</a>
 											<div class="fw-semibold fs-7 text-muted">melody@altbox.com</div>
 										</div>
 										<!--end::Details-->
@@ -311,7 +311,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Max Smith</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Max Smith</a>
 											<div class="fw-semibold fs-7 text-muted">max@kt.com</div>
 										</div>
 										<!--end::Details-->
@@ -334,7 +334,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Sean Bean</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Sean Bean</a>
 											<div class="fw-semibold fs-7 text-muted">sean@dellito.com</div>
 										</div>
 										<!--end::Details-->
@@ -357,7 +357,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Brian Cox</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Brian Cox</a>
 											<div class="fw-semibold fs-7 text-muted">brian@exchange.com</div>
 										</div>
 										<!--end::Details-->
@@ -380,7 +380,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Mikaela Collins</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Mikaela Collins</a>
 											<div class="fw-semibold fs-7 text-muted">mik@pex.com</div>
 										</div>
 										<!--end::Details-->
@@ -403,7 +403,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Francis Mitcham</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Francis Mitcham</a>
 											<div class="fw-semibold fs-7 text-muted">f.mit@kpmg.com</div>
 										</div>
 										<!--end::Details-->
@@ -426,7 +426,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Olivia Wild</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Olivia Wild</a>
 											<div class="fw-semibold fs-7 text-muted">olivia@corpmail.com</div>
 										</div>
 										<!--end::Details-->
@@ -448,7 +448,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Neil Owen</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Neil Owen</a>
 											<div class="fw-semibold fs-7 text-muted">owen.neil@gmail.com</div>
 										</div>
 										<!--end::Details-->
@@ -470,7 +470,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Dan Wilson</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Dan Wilson</a>
 											<div class="fw-semibold fs-7 text-muted">dam@consilting.com</div>
 										</div>
 										<!--end::Details-->
@@ -492,7 +492,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Emma Bold</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Emma Bold</a>
 											<div class="fw-semibold fs-7 text-muted">emma@intenso.com</div>
 										</div>
 										<!--end::Details-->
@@ -514,7 +514,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Ana Crown</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Ana Crown</a>
 											<div class="fw-semibold fs-7 text-muted">ana.cf@limtel.com</div>
 										</div>
 										<!--end::Details-->
@@ -537,7 +537,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Robert Doe</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Robert Doe</a>
 											<div class="fw-semibold fs-7 text-muted">robert@benko.com</div>
 										</div>
 										<!--end::Details-->
@@ -559,7 +559,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">John Miller</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">John Miller</a>
 											<div class="fw-semibold fs-7 text-muted">miller@mapple.com</div>
 										</div>
 										<!--end::Details-->
@@ -582,7 +582,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Lucy Kunic</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Lucy Kunic</a>
 											<div class="fw-semibold fs-7 text-muted">lucy.m@fentech.com</div>
 										</div>
 										<!--end::Details-->
@@ -604,7 +604,7 @@
 										<!--end::Avatar-->
 										<!--begin::Details-->
 										<div class="ms-4">
-											<a href="admin/dist/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Ethan Wilder</a>
+											<a href="admin/apps/contacts/view-contact" class="fs-6 fw-bold text-gray-900 text-hover-primary mb-2">Ethan Wilder</a>
 											<div class="fw-semibold fs-7 text-muted">ethan@loop.com.au</div>
 										</div>
 										<!--end::Details-->
@@ -654,7 +654,7 @@
 								<!--end::Svg Icon-->Chat</button>
 								<!--end::Chat-->
 								<!--begin::Chat-->
-								<a href="admin/dist/apps/inbox/reply" class="btn btn-sm btn-light btn-active-light-primary">
+								<a href="admin/apps/inbox/reply" class="btn btn-sm btn-light btn-active-light-primary">
 								<!--begin::Svg Icon | path: icons/duotune/communication/com007.svg-->
 								<span class="svg-icon svg-icon-2">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -680,12 +680,12 @@
 								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 									<!--begin::Menu item-->
 									<div class="menu-item px-3">
-										<a href="admin/dist/apps/contacts/edit-contact" class="menu-link px-3">Edit</a>
+										<a href="admin/apps/contacts/edit-contact" class="menu-link px-3">Edit</a>
 									</div>
 									<!--end::Menu item-->
 									<!--begin::Menu item-->
 									<div class="menu-item px-3">
-										<a href="#" class="menu-link px-3" id="kt_contact_delete" data-kt-redirect="admin/dist/apps/contacts/getting-started">Delete</a>
+										<a href="#" class="menu-link px-3" id="kt_contact_delete" data-kt-redirect="admin/apps/contacts/getting-started">Delete</a>
 									</div>
 									<!--end::Menu item-->
 								</div>
@@ -1848,6 +1848,18 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/contacts/view-contact.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

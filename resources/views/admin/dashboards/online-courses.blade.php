@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -61,7 +61,7 @@
 								<div class="fs-4 text-white">
 									<span class="opacity-75">You have</span>
 									<span class="position-relative d-inline-block">
-										<a href="admin/dist/pages/user-profile/projects" class="link-white opacity-75-hover fw-bold d-block mb-1">4 tasks</a>
+										<a href="admin/pages/user-profile/projects" class="link-white opacity-75-hover fw-bold d-block mb-1">4 tasks</a>
 										<!--begin::Separator-->
 										<span class="position-absolute opacity-50 bottom-0 start-0 border-2 border-body border-bottom w-100"></span>
 										<!--end::Separator-->
@@ -908,7 +908,7 @@
 								<div class="position-relative fs-2x z-index-2 fw-bold text-white mb-7">
 								<span class="me-2">You have got
 								<span class="position-relative d-inline-block text-danger">
-									<a href="admin/dist/pages/user-profile/overview" class="text-danger opacity-75-hover">2300 bonus</a>
+									<a href="admin/pages/user-profile/overview" class="text-danger opacity-75-hover">2300 bonus</a>
 									<!--begin::Separator-->
 									<span class="position-absolute opacity-50 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
 									<!--end::Separator-->
@@ -918,7 +918,7 @@
 								<!--begin::Action-->
 								<div class="mb-3">
 									<a href='#' class="btn btn-danger fw-semibold me-2" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">Get Reward</a>
-									<a href="admin/dist/apps/support-center/overview" class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold">How to</a>
+									<a href="admin/apps/support-center/overview" class="btn btn-color-white bg-white bg-opacity-15 bg-hover-opacity-25 fw-semibold">How to</a>
 								</div>
 								<!--begin::Action-->
 							</div>
@@ -966,7 +966,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">UI/UX Design</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">UI/UX Design</a>
 										<span class="text-muted fw-semibold d-block fs-7">40+ Courses</span>
 									</div>
 									<!--end:Author-->
@@ -1000,7 +1000,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">QA Analysis</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">QA Analysis</a>
 										<span class="text-muted fw-semibold d-block fs-7">18 Courses</span>
 									</div>
 									<!--end:Author-->
@@ -1034,7 +1034,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Web Development</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Web Development</a>
 										<span class="text-muted fw-semibold d-block fs-7">120+ Courses</span>
 									</div>
 									<!--end:Author-->
@@ -1068,7 +1068,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Marketing</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Marketing</a>
 										<span class="text-muted fw-semibold d-block fs-7">50+ Courses.</span>
 									</div>
 									<!--end:Author-->
@@ -1102,7 +1102,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Philosophy</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Philosophy</a>
 										<span class="text-muted fw-semibold d-block fs-7">24+ Courses</span>
 									</div>
 									<!--end:Author-->
@@ -1136,7 +1136,7 @@
 								<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 									<!--begin:Author-->
 									<div class="flex-grow-1 me-2">
-										<a href="admin/dist/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Mathematics</a>
+										<a href="admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Mathematics</a>
 										<span class="text-muted fw-semibold d-block fs-7">24+ Courses</span>
 									</div>
 									<!--end:Author-->
@@ -1527,6 +1527,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
@@ -1535,4 +1539,21 @@
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/create-campaign.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/type.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/budget.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/settings.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/team.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/targets.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/files.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

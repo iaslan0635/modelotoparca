@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -145,7 +145,7 @@
 						<!--begin::Aside content-->
 						<div class="card-body">
 							<!--begin::Button-->
-							<a href="admin/dist/apps/inbox/compose" class="btn btn-primary fw-bold w-100 mb-8">New Message</a>
+							<a href="admin/apps/inbox/compose" class="btn btn-primary fw-bold w-100 mb-8">New Message</a>
 							<!--end::Button-->
 							<!--begin::Menu-->
 							<div class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary mb-10">
@@ -341,7 +341,7 @@
 							<!--begin::Actions-->
 							<div class="d-flex">
 								<!--begin::Back-->
-								<a href="admin/dist/apps/inbox/listing" class="btn btn-sm btn-icon btn-clear btn-active-light-primary me-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Back">
+								<a href="admin/apps/inbox/listing" class="btn btn-sm btn-icon btn-clear btn-active-light-primary me-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Back">
 									<!--begin::Svg Icon | path: icons/duotune/arrows/arr063.svg-->
 									<span class="svg-icon svg-icon-1 m-0">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1269,6 +1269,18 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/inbox/reply.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

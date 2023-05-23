@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -176,12 +176,12 @@
 						<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-semibold flex-nowrap">
 							<!--begin::Nav item-->
 							<li class="nav-item">
-								<a class="nav-link text-active-primary me-6 active" href="admin/dist/apps/file-manager/folders">Files</a>
+								<a class="nav-link text-active-primary me-6 active" href="admin/apps/file-manager/folders">Files</a>
 							</li>
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item">
-								<a class="nav-link text-active-primary me-6" href="admin/dist/apps/file-manager/settings">Settings</a>
+								<a class="nav-link text-active-primary me-6" href="admin/apps/file-manager/settings">Settings</a>
 							</li>
 							<!--end::Nav item-->
 						</ul>
@@ -215,7 +215,7 @@
 						<!--begin::Toolbar-->
 						<div class="d-flex justify-content-end" data-kt-filemanager-table-toolbar="base">
 							<!--begin::Back to folders-->
-							<a href="admin/dist/apps/file-manager/folders" class="btn btn-icon btn-light-primary me-3">
+							<a href="admin/apps/file-manager/folders" class="btn btn-icon btn-light-primary me-3">
 								<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
 								<span class="svg-icon svg-icon-2">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -279,7 +279,7 @@
 								</svg>
 							</span>
 							<!--end::Svg Icon-->
-							<a href="admin/dist/apps/file-manager/folders">Keenthemes</a>
+							<a href="admin/apps/file-manager/folders">Keenthemes</a>
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
 							<span class="svg-icon svg-icon-2x svg-icon-primary mx-1">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -287,7 +287,7 @@
 								</svg>
 							</span>
 							<!--end::Svg Icon-->
-							<a href="admin/dist/apps/file-manager/folders">themes</a>
+							<a href="admin/apps/file-manager/folders">themes</a>
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
 							<span class="svg-icon svg-icon-2x svg-icon-primary mx-1">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -295,7 +295,7 @@
 								</svg>
 							</span>
 							<!--end::Svg Icon-->
-							<a href="admin/dist/apps/file-manager/folders">html</a>
+							<a href="admin/apps/file-manager/folders">html</a>
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
 							<span class="svg-icon svg-icon-2x svg-icon-primary mx-1">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -303,7 +303,7 @@
 								</svg>
 							</span>
 							<!--end::Svg Icon-->
-							<a href="admin/dist/apps/file-manager/folders">demo1</a>
+							<a href="admin/apps/file-manager/folders">demo1</a>
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
 							<span class="svg-icon svg-icon-2x svg-icon-primary mx-1">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -418,7 +418,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -548,7 +548,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -678,7 +678,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -808,7 +808,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -938,7 +938,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -1068,7 +1068,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -1198,7 +1198,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -1328,7 +1328,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -1458,7 +1458,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -1588,7 +1588,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -1718,7 +1718,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -1848,7 +1848,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -1978,7 +1978,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -2108,7 +2108,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -2238,7 +2238,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -2368,7 +2368,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -2498,7 +2498,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -2628,7 +2628,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -2758,7 +2758,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -2888,7 +2888,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -3018,7 +3018,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -3148,7 +3148,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -3278,7 +3278,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -3408,7 +3408,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -3538,7 +3538,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -3668,7 +3668,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -3798,7 +3798,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -3928,7 +3928,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -4058,7 +4058,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -4188,7 +4188,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -4318,7 +4318,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -4448,7 +4448,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -4578,7 +4578,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -4708,7 +4708,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -4838,7 +4838,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -4968,7 +4968,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -5098,7 +5098,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -5228,7 +5228,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -5358,7 +5358,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -5488,7 +5488,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -5618,7 +5618,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -5748,7 +5748,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -5878,7 +5878,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -6008,7 +6008,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -6138,7 +6138,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -6268,7 +6268,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -6398,7 +6398,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -6528,7 +6528,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -6658,7 +6658,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -6788,7 +6788,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -6918,7 +6918,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -7048,7 +7048,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -7178,7 +7178,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -7308,7 +7308,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -7438,7 +7438,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -7568,7 +7568,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -7698,7 +7698,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -7828,7 +7828,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -7958,7 +7958,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -8088,7 +8088,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -8218,7 +8218,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -8348,7 +8348,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -8478,7 +8478,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -8608,7 +8608,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -8738,7 +8738,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -8868,7 +8868,7 @@
 															</div>
 															<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 															<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-															<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+															<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 														</div>
 														<!--end::Link-->
 													</div>
@@ -9071,7 +9071,7 @@
 										</div>
 										<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 										<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-										<a href="admin/dist/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
+										<a href="admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 									</div>
 									<!--end::Link-->
 								</div>
@@ -9530,6 +9530,18 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/file-manager/list.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

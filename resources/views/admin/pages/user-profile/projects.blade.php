@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -402,32 +402,32 @@
 					<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/overview">Overview</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/overview">Overview</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="admin/dist/pages/user-profile/projects">Projects</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="admin/pages/user-profile/projects">Projects</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/campaigns">Campaigns</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/campaigns">Campaigns</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/documents">Documents</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/documents">Documents</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/followers">Followers</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/followers">Followers</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/activity">Activity</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/activity">Activity</a>
 						</li>
 						<!--end::Nav item-->
 					</ul>
@@ -463,7 +463,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -539,7 +539,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -610,7 +610,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -686,7 +686,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -757,7 +757,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -833,7 +833,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -904,7 +904,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -980,7 +980,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -1051,7 +1051,7 @@
 				<!--begin::Col-->
 				<div class="col-md-6 col-xl-4">
 					<!--begin::Card-->
-					<a href="admin/dist/apps/projects/project" class="card border-hover-primary">
+					<a href="admin/apps/projects/project" class="card border-hover-primary">
 						<!--begin::Card header-->
 						<div class="card-header border-0 pt-9">
 							<!--begin::Card Title-->
@@ -3023,6 +3023,31 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/pages/user-profile/general.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/type.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/details.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/finance.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/main.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/type.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/budget.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/settings.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/team.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/targets.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/files.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/create-project/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -162,8 +162,8 @@
 								<!--end::Image-->
 								<!--begin::Links-->
 								<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
-									<a href="admin/dist/pages/pricing/pricing-1" class="btn btn-primary">Pricing</a>
-									<a href="admin/dist/pages/careers/apply" class="btn btn-light-primary ms-3">Join Us</a>
+									<a href="admin/pages/pricing/pricing-1" class="btn btn-primary">Pricing</a>
+									<a href="admin/pages/careers/apply" class="btn btn-light-primary ms-3">Join Us</a>
 								</div>
 								<!--end::Links-->
 							</div>
@@ -174,7 +174,7 @@
 						<div class="fs-5 fw-semibold text-gray-600">
 							<!--begin::Text-->
 							<p class="m-0">First, a disclaimer – the entire process of writing a blog post often takes more than a couple of hours, even if you can type eighty words per minute and your writing skills are sharp. From the seed of the idea to finally hitting “Publish,” you might spend several days or maybe even a week “writing” a blog post, but it’s important to spend those vital hours planning your post and even thinking about
-							<a href="admin/dist/pages/blog/post" class="link-primary pe-1">Your Post</a>(yes, thinking counts as working if you’re a blogger) before you actually write it.</p>
+							<a href="admin/pages/blog/post" class="link-primary pe-1">Your Post</a>(yes, thinking counts as working if you’re a blogger) before you actually write it.</p>
 							<!--end::Text-->
 						</div>
 						<!--end::Description-->
@@ -203,7 +203,7 @@
 								<!--begin::Person-->
 								<div class="mb-0">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Paul Miles</a>
+									<a href="admin/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Paul Miles</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<div class="text-muted fs-6 fw-semibold">Development Lead</div>
@@ -220,7 +220,7 @@
 								<!--begin::Person-->
 								<div class="mb-0">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Jania Garnbet</a>
+									<a href="admin/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Jania Garnbet</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<div class="text-muted fs-6 fw-semibold">Creative Director</div>
@@ -237,7 +237,7 @@
 								<!--begin::Person-->
 								<div class="mb-0">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">James Nilson</a>
+									<a href="admin/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">James Nilson</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<div class="text-muted fs-6 fw-semibold">Python Expert</div>
@@ -254,7 +254,7 @@
 								<!--begin::Person-->
 								<div class="mb-0">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Mia Miles</a>
+									<a href="admin/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Mia Miles</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<div class="text-muted fs-6 fw-semibold">Project Manager</div>
@@ -271,7 +271,7 @@
 								<!--begin::Person-->
 								<div class="mb-0">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Sophia Miles</a>
+									<a href="admin/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Sophia Miles</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<div class="text-muted fs-6 fw-semibold">Art Director</div>
@@ -288,7 +288,7 @@
 								<!--begin::Person-->
 								<div class="mb-0">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Oliver Lucas</a>
+									<a href="admin/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Oliver Lucas</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<div class="text-muted fs-6 fw-semibold">Marketing Manager</div>
@@ -305,7 +305,7 @@
 								<!--begin::Person-->
 								<div class="mb-0">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Amelia Miles</a>
+									<a href="admin/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Amelia Miles</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<div class="text-muted fs-6 fw-semibold">QA Managers</div>
@@ -322,7 +322,7 @@
 								<!--begin::Person-->
 								<div class="mb-0">
 									<!--begin::Name-->
-									<a href="admin/dist/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Liam James</a>
+									<a href="admin/pages/user-profile/projects" class="text-dark fw-bold text-hover-primary fs-3">Liam James</a>
 									<!--end::Name-->
 									<!--begin::Position-->
 									<div class="text-muted fs-6 fw-semibold">QA Managers</div>
@@ -350,10 +350,10 @@
 						<!--end::Top-->
 						<!--begin::Text-->
 						<p class="fs-5 fw-semibold text-gray-600 text-start mb-15">First, a disclaimer – the entire process of writing a blog post often takes more than a couple of hours, even if you can type eighty words per minute and your writing skills are sharp. From the seed of the idea to finally hitting “Publish,” you might spend several days or maybe even a week “writing” a blog post, but it’s important to spend those vital hours planning
-						<a href="admin/dist/pages/blog/post" class="link-primary pe-1">Your Post</a>(yes, thinking counts as working if you’re a blogger) before you actually write it.</p>
+						<a href="admin/pages/blog/post" class="link-primary pe-1">Your Post</a>(yes, thinking counts as working if you’re a blogger) before you actually write it.</p>
 						<!--end::Text-->
 						<!--begin::Action-->
-						<a href="admin/dist/pages/careers/apply" class="btn btn-primary mb-5">Apply Now</a>
+						<a href="admin/pages/careers/apply" class="btn btn-primary mb-5">Apply Now</a>
 						<!--end::Action-->
 					</div>
 					<!--end::Join-->
@@ -410,6 +410,17 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

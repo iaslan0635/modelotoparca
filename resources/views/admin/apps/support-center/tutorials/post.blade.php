@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -185,32 +185,32 @@
 						<ul class="nav flex-wrap border-transparent fw-bold">
 							<!--begin::Nav item-->
 							<li class="nav-item my-1">
-								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/dist/apps/support-center/overview">Overview</a>
+								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/apps/support-center/overview">Overview</a>
 							</li>
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item my-1">
-								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/dist/apps/support-center/tickets/list">tickets</a>
+								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/apps/support-center/tickets/list">tickets</a>
 							</li>
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item my-1">
-								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/dist/apps/support-center/tutorials/list">Tutorials</a>
+								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/apps/support-center/tutorials/list">Tutorials</a>
 							</li>
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item my-1">
-								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/dist/apps/support-center/faq">FAQ</a>
+								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/apps/support-center/faq">FAQ</a>
 							</li>
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item my-1">
-								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/dist/apps/support-center/licenses">Licenses</a>
+								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/apps/support-center/licenses">Licenses</a>
 							</li>
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item my-1">
-								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/dist/apps/support-center/contact">Contact US</a>
+								<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="admin/apps/support-center/contact">Contact US</a>
 							</li>
 							<!--end::Nav item-->
 						</ul>
@@ -297,8 +297,8 @@
 										<!--end::Image-->
 										<!--begin::Links-->
 										<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
-											<a href="admin/dist/pages/about" class="btn btn-primary">About Us</a>
-											<a href="admin/dist/pages/careers/apply" class="btn btn-light-primary ms-3">Join Us</a>
+											<a href="admin/pages/about" class="btn btn-primary">About Us</a>
+											<a href="admin/pages/careers/apply" class="btn btn-light-primary ms-3">Join Us</a>
 										</div>
 										<!--end::Links-->
 									</div>
@@ -309,7 +309,7 @@
 								<div class="fs-5 fw-semibold text-gray-600">
 									<!--begin::Text-->
 									<p class="mb-8">First, a disclaimer – the entire process of writing a blog post often takes more than a couple of hours, even if you can type eighty words per minute and your writing skills are sharp. From the seed of the idea to finally hitting “Publish,” you might spend several days or maybe even a week “writing” a blog post, but it’s important to spend those vital hours planning your post and even thinking about
-									<a href="admin/dist/pages/blog/post" class="link-primary pe-1">Your Post</a>(yes, thinking counts as working if you’re a blogger) before you actually write it.</p>
+									<a href="admin/pages/blog/post" class="link-primary pe-1">Your Post</a>(yes, thinking counts as working if you’re a blogger) before you actually write it.</p>
 									<!--end::Text-->
 									<!--begin::Text-->
 									<p class="mb-8">There’s an old maxim that states,
@@ -317,7 +317,7 @@
 									<!--end::Text-->
 									<!--begin::Text-->
 									<p class="mb-8">Before you do any of the following steps, be sure to pick a topic that actually interests you. Nothing – and
-									<a href="admin/dist/pages/blog/home" class="link-primary pe-1">I mean NOTHING</a>– will kill a blog post more effectively than a lack of enthusiasm from the writer. You can tell when a writer is bored by their subject, and it’s so cringe-worthy it’s a little embarrassing.</p>
+									<a href="admin/pages/blog/home" class="link-primary pe-1">I mean NOTHING</a>– will kill a blog post more effectively than a lack of enthusiasm from the writer. You can tell when a writer is bored by their subject, and it’s so cringe-worthy it’s a little embarrassing.</p>
 									<!--end::Text-->
 									<!--begin::Text-->
 									<p class="mb-17">I can hear your objections already. “But Dan, I have to blog for a cardboard box manufacturing company.” I feel your pain, I really do. During the course of my career, I’ve written content for dozens of clients in some less-than-thrilling industries (such as financial regulatory compliance and corporate housing), but the hallmark of a professional blogger is the ability to write well about any topic, no matter how dry it may be. Blogging is a lot easier, however, if you can muster at least a little enthusiasm for the topic at hand.</p>
@@ -335,7 +335,7 @@
 										<!--end::Avatar-->
 										<!--begin::Info-->
 										<div class="mb-0">
-											<a href="admin/dist/pages/user-profile/overview" class="text-gray-700 fw-bold text-hover-primary">Jane Johnson</a>
+											<a href="admin/pages/user-profile/overview" class="text-gray-700 fw-bold text-hover-primary">Jane Johnson</a>
 											<span class="text-gray-400 fs-7 fw-semibold d-block mt-1">Co-founder</span>
 										</div>
 										<!--end::Info-->
@@ -344,7 +344,7 @@
 									<!--begin::Text-->
 									<div class="mb-0 fs-6">
 										<div class="text-muted fw-semibold lh-lg mb-2">First, a disclaimer – the entire process of writing a blog post often takes more than a couple of hours, even if you can type eighty words per minute and your writing skills are sharp writing a blog post often takes more than a couple.</div>
-										<a href="admin/dist/pages/user-profile/overview" class="fw-semibold link-primary">Author’s Profile</a>
+										<a href="admin/pages/user-profile/overview" class="fw-semibold link-primary">Author’s Profile</a>
 									</div>
 									<!--end::Text-->
 								</div>
@@ -575,7 +575,7 @@
 									<!--begin::Body-->
 									<div class="m-0">
 										<!--begin::Title-->
-										<a href="admin/dist/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+										<a href="admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 										<!--end::Title-->
 										<!--begin::Text-->
 										<div class="fw-semibold fs-5 text-gray-600 text-dark my-4">We’ve been focused on making a the from also not been afraid to and step away been focused create eye</div>
@@ -583,7 +583,7 @@
 										<!--begin::Content-->
 										<div class="fs-6 fw-bold">
 											<!--begin::Author-->
-											<a href="admin/dist/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Jane Miller</a>
+											<a href="admin/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Jane Miller</a>
 											<!--end::Author-->
 											<!--begin::Date-->
 											<span class="text-muted">on Mar 21 2021</span>
@@ -608,7 +608,7 @@
 									<!--begin::Body-->
 									<div class="m-0">
 										<!--begin::Title-->
-										<a href="admin/dist/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+										<a href="admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 										<!--end::Title-->
 										<!--begin::Text-->
 										<div class="fw-semibold fs-5 text-gray-600 text-dark my-4">We’ve been focused on making the from v4 to v5 but we have also not been afraid to step away been focused</div>
@@ -616,7 +616,7 @@
 										<!--begin::Content-->
 										<div class="fs-6 fw-bold">
 											<!--begin::Author-->
-											<a href="admin/dist/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Cris Morgan</a>
+											<a href="admin/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Cris Morgan</a>
 											<!--end::Author-->
 											<!--begin::Date-->
 											<span class="text-muted">on Apr 14 2021</span>
@@ -641,7 +641,7 @@
 									<!--begin::Body-->
 									<div class="m-0">
 										<!--begin::Title-->
-										<a href="admin/dist/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+										<a href="admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 										<!--end::Title-->
 										<!--begin::Text-->
 										<div class="fw-semibold fs-5 text-gray-600 text-dark my-4">We’ve been focused on making the from v4 to v5 but we’ve also not been afraid to step away been focused</div>
@@ -649,7 +649,7 @@
 										<!--begin::Content-->
 										<div class="fs-6 fw-bold">
 											<!--begin::Author-->
-											<a href="admin/dist/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Carles Nilson</a>
+											<a href="admin/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Carles Nilson</a>
 											<!--end::Author-->
 											<!--begin::Date-->
 											<span class="text-muted">on May 14 2021</span>
@@ -1031,7 +1031,19 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/fslightbox/fslightbox.bundle.js"></script>
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/support-center/tickets/create.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

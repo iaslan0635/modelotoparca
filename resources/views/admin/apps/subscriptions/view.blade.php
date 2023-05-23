@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -151,7 +151,7 @@
 							<!--begin::Card title-->
 							<!--begin::Card toolbar-->
 							<div class="card-toolbar">
-								<a href="admin/dist/apps/subscriptions/add" class="btn btn-light-primary">Update Product</a>
+								<a href="admin/apps/subscriptions/add" class="btn btn-light-primary">Update Product</a>
 							</div>
 							<!--end::Card toolbar-->
 						</div>
@@ -173,7 +173,7 @@
 											<tr>
 												<td class="text-gray-400 min-w-175px w-175px">Bill to:</td>
 												<td class="text-gray-800 min-w-200px">
-													<a href="admin/dist/pages/apps/customers/view" class="text-gray-800 text-hover-primary">smith@kpmg.com</a>
+													<a href="admin/pages/apps/customers/view" class="text-gray-800 text-hover-primary">smith@kpmg.com</a>
 												</td>
 											</tr>
 											<!--end::Row-->
@@ -1024,7 +1024,7 @@
 							<!--end::Section-->
 							<!--begin::Actions-->
 							<div class="mb-0">
-								<a href="admin/dist/apps/subscriptions/add" class="btn btn-primary" id="kt_subscriptions_create_button">Edit Subscription</a>
+								<a href="admin/apps/subscriptions/add" class="btn btn-primary" id="kt_subscriptions_create_button">Edit Subscription</a>
 							</div>
 							<!--end::Actions-->
 						</div>
@@ -1041,6 +1041,17 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

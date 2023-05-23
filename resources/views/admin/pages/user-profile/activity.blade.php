@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -402,32 +402,32 @@
 					<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/overview">Overview</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/overview">Overview</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/projects">Projects</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/projects">Projects</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/campaigns">Campaigns</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/campaigns">Campaigns</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/documents">Documents</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/documents">Documents</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/dist/pages/user-profile/followers">Followers</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5" href="admin/pages/user-profile/followers">Followers</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item mt-2">
-							<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="admin/dist/pages/user-profile/activity">Activity</a>
+							<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="admin/pages/user-profile/activity">Activity</a>
 						</li>
 						<!--end::Nav item-->
 					</ul>
@@ -528,7 +528,7 @@
 											<!--begin::Record-->
 											<div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5">
 												<!--begin::Title-->
-												<a href="admin/dist/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
+												<a href="admin/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
 												<!--end::Title-->
 												<!--begin::Label-->
 												<div class="min-w-175px pe-2">
@@ -560,14 +560,14 @@
 												</div>
 												<!--end::Progress-->
 												<!--begin::Action-->
-												<a href="admin/dist/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+												<a href="admin/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
 												<!--end::Action-->
 											</div>
 											<!--end::Record-->
 											<!--begin::Record-->
 											<div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0">
 												<!--begin::Title-->
-												<a href="admin/dist/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
+												<a href="admin/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
 												<!--end::Title-->
 												<!--begin::Label-->
 												<div class="min-w-175px">
@@ -594,7 +594,7 @@
 												</div>
 												<!--end::Progress-->
 												<!--begin::Action-->
-												<a href="admin/dist/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+												<a href="admin/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
 												<!--end::Action-->
 											</div>
 											<!--end::Record-->
@@ -699,7 +699,7 @@
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
 														<!--begin::Desc-->
-														<a href="admin/dist/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+														<a href="admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 														<!--end::Desc-->
 														<!--begin::Number-->
 														<div class="text-gray-400">1.9mb</div>
@@ -711,7 +711,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 													<!--begin::Icon-->
-													<img alt="admin/dist/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+													<img alt="admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -728,7 +728,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center">
 													<!--begin::Icon-->
-													<img alt="admin/dist/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+													<img alt="admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -1156,7 +1156,7 @@
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
 														<!--begin::Desc-->
-														<a href="admin/dist/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+														<a href="admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 														<!--end::Desc-->
 														<!--begin::Number-->
 														<div class="text-gray-400">1.9mb</div>
@@ -1168,7 +1168,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 													<!--begin::Icon-->
-													<img alt="admin/dist/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+													<img alt="admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -1185,7 +1185,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center">
 													<!--begin::Icon-->
-													<img alt="admin/dist/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+													<img alt="admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -1677,7 +1677,7 @@
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
 														<!--begin::Desc-->
-														<a href="admin/dist/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+														<a href="admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 														<!--end::Desc-->
 														<!--begin::Number-->
 														<div class="text-gray-400">1.9mb</div>
@@ -1689,7 +1689,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 													<!--begin::Icon-->
-													<img alt="admin/dist/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+													<img alt="admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -1706,7 +1706,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center">
 													<!--begin::Icon-->
-													<img alt="admin/dist/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+													<img alt="admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -1832,7 +1832,7 @@
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
 														<!--begin::Desc-->
-														<a href="admin/dist/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+														<a href="admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 														<!--end::Desc-->
 														<!--begin::Number-->
 														<div class="text-gray-400">1.9mb</div>
@@ -1844,7 +1844,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 													<!--begin::Icon-->
-													<img alt="admin/dist/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+													<img alt="admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -1861,7 +1861,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center">
 													<!--begin::Icon-->
-													<img alt="admin/dist/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+													<img alt="admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -2127,6 +2127,23 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/pages/user-profile/general.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/type.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/details.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/finance.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

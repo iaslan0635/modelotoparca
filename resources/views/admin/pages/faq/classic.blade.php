@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -887,7 +887,7 @@
 									<!--begin::Body-->
 									<div class="m-0">
 										<!--begin::Title-->
-										<a href="admin/dist/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+										<a href="admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 										<!--end::Title-->
 										<!--begin::Text-->
 										<div class="fw-semibold fs-5 text-gray-600 text-dark my-4">We’ve been focused on making a the from also not been afraid to and step away been focused create eye</div>
@@ -895,7 +895,7 @@
 										<!--begin::Content-->
 										<div class="fs-6 fw-bold">
 											<!--begin::Author-->
-											<a href="admin/dist/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Jane Miller</a>
+											<a href="admin/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Jane Miller</a>
 											<!--end::Author-->
 											<!--begin::Date-->
 											<span class="text-muted">on Mar 21 2021</span>
@@ -920,7 +920,7 @@
 									<!--begin::Body-->
 									<div class="m-0">
 										<!--begin::Title-->
-										<a href="admin/dist/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+										<a href="admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 										<!--end::Title-->
 										<!--begin::Text-->
 										<div class="fw-semibold fs-5 text-gray-600 text-dark my-4">We’ve been focused on making the from v4 to v5 but we have also not been afraid to step away been focused</div>
@@ -928,7 +928,7 @@
 										<!--begin::Content-->
 										<div class="fs-6 fw-bold">
 											<!--begin::Author-->
-											<a href="admin/dist/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Cris Morgan</a>
+											<a href="admin/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Cris Morgan</a>
 											<!--end::Author-->
 											<!--begin::Date-->
 											<span class="text-muted">on Apr 14 2021</span>
@@ -953,7 +953,7 @@
 									<!--begin::Body-->
 									<div class="m-0">
 										<!--begin::Title-->
-										<a href="admin/dist/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+										<a href="admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 										<!--end::Title-->
 										<!--begin::Text-->
 										<div class="fw-semibold fs-5 text-gray-600 text-dark my-4">We’ve been focused on making the from v4 to v5 but we’ve also not been afraid to step away been focused</div>
@@ -961,7 +961,7 @@
 										<!--begin::Content-->
 										<div class="fs-6 fw-bold">
 											<!--begin::Author-->
-											<a href="admin/dist/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Carles Nilson</a>
+											<a href="admin/pages/user-profile/overview" class="text-gray-700 text-hover-primary">Carles Nilson</a>
 											<!--end::Author-->
 											<!--begin::Date-->
 											<span class="text-muted">on May 14 2021</span>
@@ -1031,6 +1031,17 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

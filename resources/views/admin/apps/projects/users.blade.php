@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -372,37 +372,37 @@
 					<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 						<!--begin::Nav item-->
 						<li class="nav-item">
-							<a class="nav-link text-active-primary py-5 me-6" href="admin/dist/apps/projects/project">Overview</a>
+							<a class="nav-link text-active-primary py-5 me-6" href="admin/apps/projects/project">Overview</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item">
-							<a class="nav-link text-active-primary py-5 me-6" href="admin/dist/apps/projects/targets">Targets</a>
+							<a class="nav-link text-active-primary py-5 me-6" href="admin/apps/projects/targets">Targets</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item">
-							<a class="nav-link text-active-primary py-5 me-6" href="admin/dist/apps/projects/budget">Budget</a>
+							<a class="nav-link text-active-primary py-5 me-6" href="admin/apps/projects/budget">Budget</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item">
-							<a class="nav-link text-active-primary py-5 me-6 active" href="admin/dist/apps/projects/users">Users</a>
+							<a class="nav-link text-active-primary py-5 me-6 active" href="admin/apps/projects/users">Users</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item">
-							<a class="nav-link text-active-primary py-5 me-6" href="admin/dist/apps/projects/files">Files</a>
+							<a class="nav-link text-active-primary py-5 me-6" href="admin/apps/projects/files">Files</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item">
-							<a class="nav-link text-active-primary py-5 me-6" href="admin/dist/apps/projects/activity">Activity</a>
+							<a class="nav-link text-active-primary py-5 me-6" href="admin/apps/projects/activity">Activity</a>
 						</li>
 						<!--end::Nav item-->
 						<!--begin::Nav item-->
 						<li class="nav-item">
-							<a class="nav-link text-active-primary py-5 me-6" href="admin/dist/apps/projects/settings">Settings</a>
+							<a class="nav-link text-active-primary py-5 me-6" href="admin/apps/projects/settings">Settings</a>
 						</li>
 						<!--end::Nav item-->
 					</ul>
@@ -3273,6 +3273,20 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/custom/apps/projects/list/list.js"></script>
+<script src="assets/js/custom/apps/projects/users/users.js"></script>
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
+<script src="assets/js/custom/utilities/modals/new-target.js"></script>
 @endpush

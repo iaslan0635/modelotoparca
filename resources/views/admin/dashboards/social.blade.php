@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -50,7 +50,7 @@
 				<!--begin::Secondary button-->
 				<!--end::Secondary button-->
 				<!--begin::Primary button-->
-				<a href="admin/dist/pages/social/feeds" class="btn btn-sm fw-bold btn-primary">Feeds</a>
+				<a href="admin/pages/social/feeds" class="btn btn-sm fw-bold btn-primary">Feeds</a>
 				<!--end::Primary button-->
 			</div>
 			<!--end::Actions-->
@@ -224,7 +224,7 @@
 								<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_create_app" data-bs-toggle="modal">Try now</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm btn-light" href="admin/dist/pages/user-profile/activity">Learn more</a>
+								<a class="btn btn-sm btn-light" href="admin/pages/user-profile/activity">Learn more</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -1995,7 +1995,20 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+<script src="assets/js/custom/utilities/modals/create-campaign.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

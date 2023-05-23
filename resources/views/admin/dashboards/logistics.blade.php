@@ -14,7 +14,7 @@
 				<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
 					<!--begin::Item-->
 					<li class="breadcrumb-item text-muted">
-						<a href="admin/dist/index" class="text-muted text-hover-primary">Home</a>
+						<a href="admin/index" class="text-muted text-hover-primary">Home</a>
 					</li>
 					<!--end::Item-->
 					<!--begin::Item-->
@@ -32,10 +32,10 @@
 			<!--begin::Actions-->
 			<div class="d-flex align-items-center gap-2 gap-lg-3">
 				<!--begin::Secondary button-->
-				<a href="admin/dist/apps/customers/list" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Add Customer</a>
+				<a href="admin/apps/customers/list" class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Add Customer</a>
 				<!--end::Secondary button-->
 				<!--begin::Primary button-->
-				<a href="admin/dist/apps/ecommerce/sales/add-order" class="btn btn-sm fw-bold btn-primary">New Shipment</a>
+				<a href="admin/apps/ecommerce/sales/add-order" class="btn btn-sm fw-bold btn-primary">New Shipment</a>
 				<!--end::Primary button-->
 			</div>
 			<!--end::Actions-->
@@ -75,7 +75,7 @@
 								<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_offer_a_deal" data-bs-toggle="modal">Start Now</a>
 								<!--end::Link-->
 								<!--begin::Link-->
-								<a class="btn btn-sm btn-light" href="admin/dist/apps/invoices/view/invoice-2">Quick Guide</a>
+								<a class="btn btn-sm btn-light" href="admin/apps/invoices/view/invoice-2">Quick Guide</a>
 								<!--end::Link-->
 							</div>
 							<!--end::Links-->
@@ -1462,7 +1462,7 @@
 									<!--end::Title-->
 									<!--begin::Toolbar-->
 									<div class="card-toolbar">
-										<a href="admin/dist/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
+										<a href="admin/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
 									</div>
 									<!--end::Toolbar-->
 								</div>
@@ -1490,7 +1490,7 @@
 									<!--end::Title-->
 									<!--begin::Toolbar-->
 									<div class="card-toolbar">
-										<a href="admin/dist/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
+										<a href="admin/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
 									</div>
 									<!--end::Toolbar-->
 								</div>
@@ -2097,7 +2097,7 @@
 							</div>
 							<!--end::Item-->
 							<div class="text-center pt-9">
-								<a href="admin/dist/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Vehicle</a>
+								<a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Vehicle</a>
 							</div>
 						</div>
 						<!--end::Body-->
@@ -2175,6 +2175,10 @@
 	<!--end::Content-->
 </div>
 @endsection
+@push('styles')
+<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+@endpush
 @push('vendor_scripts')
 <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 <script src="assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
@@ -2189,4 +2193,16 @@
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+@endpush
+@push('custom_scripts')
+<script src="assets/js/widgets.bundle.js"></script>
+<script src="assets/js/custom/widgets.js"></script>
+<script src="assets/js/custom/apps/chat/chat.js"></script>
+<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/type.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/details.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/finance.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/complete.js"></script>
+<script src="assets/js/custom/utilities/modals/offer-a-deal/main.js"></script>
+<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 @endpush

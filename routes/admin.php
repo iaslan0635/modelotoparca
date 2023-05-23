@@ -10,3 +10,5 @@ $temp = function () {
 
 Route::view("/", "admin.index");
 Route::fallback($temp);
+
+Route::resource("products", "");
