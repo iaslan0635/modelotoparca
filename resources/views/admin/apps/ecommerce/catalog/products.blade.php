@@ -297,6 +297,7 @@
 						<!--end::Table body-->
 					</table>
 					<!--end::Table-->
+                    {{ $products->links() }}
 				</div>
 				<!--end::Card body-->
 			</div>
