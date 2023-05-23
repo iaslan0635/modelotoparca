@@ -41,12 +41,12 @@
 				<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-semibold flex-nowrap">
 					<!--begin::Nav item-->
 					<li class="nav-item">
-						<a class="nav-link text-active-primary me-6 active" href="/admin/apps/file-manager/folders.html">Files</a>
+						<a class="nav-link text-active-primary me-6 active" href="/admin/apps/file-manager/folders">Files</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item">
-						<a class="nav-link text-active-primary me-6" href="/admin/apps/file-manager/settings.html">Settings</a>
+						<a class="nav-link text-active-primary me-6" href="/admin/apps/file-manager/settings">Settings</a>
 					</li>
 					<!--end::Nav item-->
 				</ul>
@@ -80,7 +80,7 @@
 				<!--begin::Toolbar-->
 				<div class="d-flex justify-content-end" data-kt-filemanager-table-toolbar="base">
 					<!--begin::Back to folders-->
-					<a href="/admin/apps/file-manager/folders.html" class="btn btn-icon btn-light-primary me-3">
+					<a href="/admin/apps/file-manager/folders" class="btn btn-icon btn-light-primary me-3">
 						<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
 						<span class="svg-icon svg-icon-2">
 							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +144,7 @@
 						</svg>
 					</span>
 					<!--end::Svg Icon-->
-					<a href="/admin/apps/file-manager/folders.html">Keenthemes</a>
+					<a href="/admin/apps/file-manager/folders">Keenthemes</a>
 					<!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
 					<span class="svg-icon svg-icon-2 svg-icon-primary mx-1">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -152,7 +152,7 @@
 						</svg>
 					</span>
 					<!--end::Svg Icon-->
-					<a href="/admin/apps/file-manager/folders.html">themes</a>
+					<a href="/admin/apps/file-manager/folders">themes</a>
 					<!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
 					<span class="svg-icon svg-icon-2 svg-icon-primary mx-1">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -160,7 +160,7 @@
 						</svg>
 					</span>
 					<!--end::Svg Icon-->
-					<a href="/admin/apps/file-manager/folders.html">html</a>
+					<a href="/admin/apps/file-manager/folders">html</a>
 					<!--begin::Svg Icon | path: icons/duotune/arrows/arr071.svg-->
 					<span class="svg-icon svg-icon-2 svg-icon-primary mx-1">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -347,7 +347,7 @@
 								</div>
 								<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 								<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-								<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+								<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 							</div>
 							<!--end::Link-->
 						</div>

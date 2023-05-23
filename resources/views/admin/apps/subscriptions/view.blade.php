@@ -16,7 +16,7 @@
 					<!--begin::Card title-->
 					<!--begin::Card toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/subscriptions/add.html" class="btn btn-light-primary">Update Product</a>
+						<a href="/admin/apps/subscriptions/add" class="btn btn-light-primary">Update Product</a>
 					</div>
 					<!--end::Card toolbar-->
 				</div>
@@ -38,7 +38,7 @@
 									<tr>
 										<td class="text-gray-400 min-w-175px w-175px">Bill to:</td>
 										<td class="text-gray-800 min-w-200px">
-											<a href="/admin/pages/apps/customers/view.html" class="text-gray-800 text-hover-primary">smith@kpmg.com</a>
+											<a href="/admin/pages/apps/customers/view" class="text-gray-800 text-hover-primary">smith@kpmg.com</a>
 										</td>
 									</tr>
 									<!--end::Row-->
@@ -889,7 +889,7 @@
 					<!--end::Section-->
 					<!--begin::Actions-->
 					<div class="mb-0">
-						<a href="/admin/apps/subscriptions/add.html" class="btn btn-primary" id="kt_subscriptions_create_button">Edit Subscription</a>
+						<a href="/admin/apps/subscriptions/add" class="btn btn-primary" id="kt_subscriptions_create_button">Edit Subscription</a>
 					</div>
 					<!--end::Actions-->
 				</div>

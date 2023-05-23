@@ -12,7 +12,7 @@ License: For each use you must have a valid license purchased only from above li
 -->
 <html lang="en">
 <!--begin::Head-->
-<head><base href="../../../"/>
+<head><base href="/"/>
     <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular & Laravel by Keenthemes</title>
     <meta charset="utf-8" />
     <meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask & Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -66,7 +66,7 @@ License: For each use you must have a valid license purchased only from above li
                 <!--end::sidebar mobile toggle-->
                 <!--begin::Mobile logo-->
                 <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-                    <a href="/admin/index.html" class="d-lg-none">
+                    <a href="/admin/index" class="d-lg-none">
                         <img alt="Logo" src="assets/media/logos/default-small.svg" class="h-30px" />
                     </a>
                 </div>
@@ -100,7 +100,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/index.html" class="menu-link">
+                                                            <a href="/admin/index" class="menu-link">
 																		<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 																			<span class="svg-icon svg-icon-primary svg-icon-1">
@@ -128,7 +128,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/dashboards/ecommerce.html" class="menu-link">
+                                                            <a href="/admin/dashboards/ecommerce" class="menu-link">
 																		<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 																			<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
 																			<span class="svg-icon svg-icon-danger svg-icon-1">
@@ -155,7 +155,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/dashboards/projects.html" class="menu-link">
+                                                            <a href="/admin/dashboards/projects" class="menu-link">
 																		<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 																			<!--begin::Svg Icon | path: icons/duotune/abstract/abs045.svg-->
 																			<span class="svg-icon svg-icon-info svg-icon-1">
@@ -181,7 +181,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/dashboards/online-courses.html" class="menu-link">
+                                                            <a href="/admin/dashboards/online-courses" class="menu-link">
 																		<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 																			<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 																			<span class="svg-icon svg-icon-success svg-icon-1">
@@ -207,7 +207,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/dashboards/marketing.html" class="menu-link">
+                                                            <a href="/admin/dashboards/marketing" class="menu-link">
 																		<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 																			<!--begin::Svg Icon | path: icons/duotune/graphs/gra001.svg-->
 																			<span class="svg-icon svg-icon-dark svg-icon-1">
@@ -233,7 +233,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/dashboards/bidding.html" class="menu-link">
+                                                            <a href="/admin/dashboards/bidding" class="menu-link">
 																		<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
 																			<span class="svg-icon svg-icon-warning svg-icon-1">
@@ -259,7 +259,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/dashboards/pos.html" class="menu-link">
+                                                            <a href="/admin/dashboards/pos" class="menu-link">
 																		<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 																			<!--begin::Svg Icon | path: icons/duotune/abstract/abs043.svg-->
 																			<span class="svg-icon svg-icon-danger svg-icon-1">
@@ -285,7 +285,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/dashboards/call-center.html" class="menu-link">
+                                                            <a href="/admin/dashboards/call-center" class="menu-link">
 																		<span class="menu-custom-icon d-flex flex-center flex-shrink-0 rounded w-40px h-40px me-3">
 																			<!--begin::Svg Icon | path: icons/duotune/communication/com004.svg-->
 																			<span class="svg-icon svg-icon-primary svg-icon-1">
@@ -315,7 +315,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <div class="fs-6 fw-bold text-gray-800">Landing Page Template</div>
                                                         <div class="fs-7 fw-semibold text-muted">Onpe page landing template with pricing & others</div>
                                                     </div>
-                                                    <a href="/admin/landing.html" class="btn btn-sm btn-primary fw-bold">Explore</a>
+                                                    <a href="/admin/landing" class="btn btn-sm btn-primary fw-bold">Explore</a>
                                                 </div>
                                                 <!--end:Landing-->
                                             </div>
@@ -328,7 +328,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/logistics.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/logistics" class="menu-link py-2">
                                                         <span class="menu-title">Logistics</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -337,7 +337,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/website-analytics.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/website-analytics" class="menu-link py-2">
                                                         <span class="menu-title">Website Analytics</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -346,7 +346,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/finance-performance.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/finance-performance" class="menu-link py-2">
                                                         <span class="menu-title">Finance Performance</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -355,7 +355,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/store-analytics.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/store-analytics" class="menu-link py-2">
                                                         <span class="menu-title">Store Analytics</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -364,7 +364,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/social.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/social" class="menu-link py-2">
                                                         <span class="menu-title">Social</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -373,7 +373,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/delivery.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/delivery" class="menu-link py-2">
                                                         <span class="menu-title">Delivery</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -382,7 +382,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/crypto.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/crypto" class="menu-link py-2">
                                                         <span class="menu-title">Crypto</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -391,7 +391,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/school.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/school" class="menu-link py-2">
                                                         <span class="menu-title">School</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -400,7 +400,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin:Menu item-->
                                                 <div class="menu-item p-0 m-0">
                                                     <!--begin:Menu link-->
-                                                    <a href="/admin/dashboards/podcast.html" class="menu-link py-2">
+                                                    <a href="/admin/dashboards/podcast" class="menu-link py-2">
                                                         <span class="menu-title">Podcast</span>
                                                     </a>
                                                     <!--end:Menu link-->
@@ -477,7 +477,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/pages/user-profile/overview.html" class="menu-link">
+                                                                    <a href="/admin/pages/user-profile/overview" class="menu-link">
                                                                         <span class="menu-title">Overview</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -486,7 +486,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/pages/user-profile/projects.html" class="menu-link">
+                                                                    <a href="/admin/pages/user-profile/projects" class="menu-link">
                                                                         <span class="menu-title">Projects</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -495,7 +495,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/pages/user-profile/campaigns.html" class="menu-link">
+                                                                    <a href="/admin/pages/user-profile/campaigns" class="menu-link">
                                                                         <span class="menu-title">Campaigns</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -504,7 +504,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/pages/user-profile/documents.html" class="menu-link">
+                                                                    <a href="/admin/pages/user-profile/documents" class="menu-link">
                                                                         <span class="menu-title">Documents</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -513,7 +513,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/pages/user-profile/followers.html" class="menu-link">
+                                                                    <a href="/admin/pages/user-profile/followers" class="menu-link">
                                                                         <span class="menu-title">Followers</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -522,7 +522,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/pages/user-profile/activity.html" class="menu-link">
+                                                                    <a href="/admin/pages/user-profile/activity" class="menu-link">
                                                                         <span class="menu-title">Activity</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -540,7 +540,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/about.html" class="menu-link">
+                                                                        <a href="/admin/pages/about" class="menu-link">
                                                                             <span class="menu-title">About</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -549,7 +549,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/team.html" class="menu-link">
+                                                                        <a href="/admin/pages/team" class="menu-link">
                                                                             <span class="menu-title">Our Team</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -558,7 +558,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/contact.html" class="menu-link">
+                                                                        <a href="/admin/pages/contact" class="menu-link">
                                                                             <span class="menu-title">Contact Us</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -567,7 +567,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/licenses.html" class="menu-link">
+                                                                        <a href="/admin/pages/licenses" class="menu-link">
                                                                             <span class="menu-title">Licenses</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -576,7 +576,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/sitemap.html" class="menu-link">
+                                                                        <a href="/admin/pages/sitemap" class="menu-link">
                                                                             <span class="menu-title">Sitemap</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -592,7 +592,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/careers/list.html" class="menu-link">
+                                                                        <a href="/admin/pages/careers/list" class="menu-link">
                                                                             <span class="menu-title">Careers List</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -601,7 +601,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/careers/apply.html" class="menu-link">
+                                                                        <a href="/admin/pages/careers/apply" class="menu-link">
                                                                             <span class="menu-title">Careers Apply</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -621,7 +621,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/faq/classic.html" class="menu-link">
+                                                                        <a href="/admin/pages/faq/classic" class="menu-link">
                                                                             <span class="menu-title">FAQ Classic</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -630,7 +630,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/faq/extended.html" class="menu-link">
+                                                                        <a href="/admin/pages/faq/extended" class="menu-link">
                                                                             <span class="menu-title">FAQ Extended</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -646,7 +646,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/blog/home.html" class="menu-link">
+                                                                        <a href="/admin/pages/blog/home" class="menu-link">
                                                                             <span class="menu-title">Blog Home</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -655,7 +655,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/blog/post.html" class="menu-link">
+                                                                        <a href="/admin/pages/blog/post" class="menu-link">
                                                                             <span class="menu-title">Blog Post</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -671,7 +671,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/pricing/column.html" class="menu-link">
+                                                                        <a href="/admin/pages/pricing/column" class="menu-link">
                                                                             <span class="menu-title">Column Pricing</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -680,7 +680,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/pricing/table.html" class="menu-link">
+                                                                        <a href="/admin/pages/pricing/table" class="menu-link">
                                                                             <span class="menu-title">Table Pricing</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -700,7 +700,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/social/feeds.html" class="menu-link">
+                                                                        <a href="/admin/pages/social/feeds" class="menu-link">
                                                                             <span class="menu-title">Feeds</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -709,7 +709,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/social/activity.html" class="menu-link">
+                                                                        <a href="/admin/pages/social/activity" class="menu-link">
                                                                             <span class="menu-title">Activty</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -718,7 +718,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/social/followers.html" class="menu-link">
+                                                                        <a href="/admin/pages/social/followers" class="menu-link">
                                                                             <span class="menu-title">Followers</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -727,7 +727,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/pages/social/settings.html" class="menu-link">
+                                                                        <a href="/admin/pages/social/settings" class="menu-link">
                                                                             <span class="menu-title">Settings</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -763,7 +763,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/overview.html" class="menu-link">
+                                                                    <a href="/admin/account/overview" class="menu-link">
                                                                         <span class="menu-title">Overview</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -772,7 +772,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/settings.html" class="menu-link">
+                                                                    <a href="/admin/account/settings" class="menu-link">
                                                                         <span class="menu-title">Settings</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -781,7 +781,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/security.html" class="menu-link">
+                                                                    <a href="/admin/account/security" class="menu-link">
                                                                         <span class="menu-title">Security</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -790,7 +790,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/activity.html" class="menu-link">
+                                                                    <a href="/admin/account/activity" class="menu-link">
                                                                         <span class="menu-title">Activity</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -799,7 +799,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/billing.html" class="menu-link">
+                                                                    <a href="/admin/account/billing" class="menu-link">
                                                                         <span class="menu-title">Billing</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -812,7 +812,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/statements.html" class="menu-link">
+                                                                    <a href="/admin/account/statements" class="menu-link">
                                                                         <span class="menu-title">Statements</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -821,7 +821,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/referrals.html" class="menu-link">
+                                                                    <a href="/admin/account/referrals" class="menu-link">
                                                                         <span class="menu-title">Referrals</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -830,7 +830,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/api-keys.html" class="menu-link">
+                                                                    <a href="/admin/account/api-keys" class="menu-link">
                                                                         <span class="menu-title">API Keys</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -839,7 +839,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                 <!--begin:Menu item-->
                                                                 <div class="menu-item p-0 m-0">
                                                                     <!--begin:Menu link-->
-                                                                    <a href="/admin/account/logs.html" class="menu-link">
+                                                                    <a href="/admin/account/logs" class="menu-link">
                                                                         <span class="menu-title">Logs</span>
                                                                     </a>
                                                                     <!--end:Menu link-->
@@ -874,7 +874,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/corporate/sign-in.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/corporate/sign-in" class="menu-link">
                                                                     <span class="menu-title">Sign-in</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -883,7 +883,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/corporate/sign-up.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/corporate/sign-up" class="menu-link">
                                                                     <span class="menu-title">Sign-up</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -892,7 +892,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/corporate/two-steps.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/corporate/two-steps" class="menu-link">
                                                                     <span class="menu-title">Two-steps</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -901,7 +901,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/corporate/reset-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/corporate/reset-password" class="menu-link">
                                                                     <span class="menu-title">Reset Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -910,7 +910,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/corporate/new-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/corporate/new-password" class="menu-link">
                                                                     <span class="menu-title">New Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -926,7 +926,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/overlay/sign-in.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/overlay/sign-in" class="menu-link">
                                                                     <span class="menu-title">Sign-in</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -935,7 +935,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/overlay/sign-up.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/overlay/sign-up" class="menu-link">
                                                                     <span class="menu-title">Sign-up</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -944,7 +944,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/overlay/two-steps.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/overlay/two-steps" class="menu-link">
                                                                     <span class="menu-title">Two-steps</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -953,7 +953,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/overlay/reset-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/overlay/reset-password" class="menu-link">
                                                                     <span class="menu-title">Reset Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -962,7 +962,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/overlay/new-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/overlay/new-password" class="menu-link">
                                                                     <span class="menu-title">New Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -982,7 +982,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/creative/sign-in.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/creative/sign-in" class="menu-link">
                                                                     <span class="menu-title">Sign-in</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -991,7 +991,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/creative/sign-up.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/creative/sign-up" class="menu-link">
                                                                     <span class="menu-title">Sign-up</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1000,7 +1000,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/creative/two-steps.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/creative/two-steps" class="menu-link">
                                                                     <span class="menu-title">Two-steps</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1009,7 +1009,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/creative/reset-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/creative/reset-password" class="menu-link">
                                                                     <span class="menu-title">Reset Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1018,7 +1018,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/creative/new-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/creative/new-password" class="menu-link">
                                                                     <span class="menu-title">New Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1034,7 +1034,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/fancy/sign-in.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/fancy/sign-in" class="menu-link">
                                                                     <span class="menu-title">Sign-in</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1043,7 +1043,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/fancy/sign-up.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/fancy/sign-up" class="menu-link">
                                                                     <span class="menu-title">Sign-up</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1052,7 +1052,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/fancy/two-steps.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/fancy/two-steps" class="menu-link">
                                                                     <span class="menu-title">Two-steps</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1061,7 +1061,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/fancy/reset-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/fancy/reset-password" class="menu-link">
                                                                     <span class="menu-title">Reset Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1070,7 +1070,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/layouts/fancy/new-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/layouts/fancy/new-password" class="menu-link">
                                                                     <span class="menu-title">New Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1090,7 +1090,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/extended/multi-steps-sign-up.html" class="menu-link">
+                                                                <a href="/admin/authentication/extended/multi-steps-sign-up" class="menu-link">
                                                                     <span class="menu-title">Multi-steps Sign-up</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1099,7 +1099,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/extended/two-factor-auth.html" class="menu-link">
+                                                                <a href="/admin/authentication/extended/two-factor-auth" class="menu-link">
                                                                     <span class="menu-title">Two Factor Auth</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1108,7 +1108,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/general/welcome.html" class="menu-link">
+                                                                <a href="/admin/authentication/general/welcome" class="menu-link">
                                                                     <span class="menu-title">Welcome Message</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1117,7 +1117,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/general/verify-email.html" class="menu-link">
+                                                                <a href="/admin/authentication/general/verify-email" class="menu-link">
                                                                     <span class="menu-title">Verify Email</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1126,7 +1126,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/extended/coming-soon.html" class="menu-link">
+                                                                <a href="/admin/authentication/extended/coming-soon" class="menu-link">
                                                                     <span class="menu-title">Coming Soon</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1135,7 +1135,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/general/password-confirmation.html" class="menu-link">
+                                                                <a href="/admin/authentication/general/password-confirmation" class="menu-link">
                                                                     <span class="menu-title">Password Confirmation</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1144,7 +1144,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/general/account-deactivated.html" class="menu-link">
+                                                                <a href="/admin/authentication/general/account-deactivated" class="menu-link">
                                                                     <span class="menu-title">Account Deactivation</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1153,7 +1153,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/general/error-404.html" class="menu-link">
+                                                                <a href="/admin/authentication/general/error-404" class="menu-link">
                                                                     <span class="menu-title">Error 404</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1162,7 +1162,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/general/error-500.html" class="menu-link">
+                                                                <a href="/admin/authentication/general/error-500" class="menu-link">
                                                                     <span class="menu-title">Error 500</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1182,7 +1182,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/email/welcome-message.html" class="menu-link">
+                                                                <a href="/admin/authentication/email/welcome-message" class="menu-link">
                                                                     <span class="menu-title">Welcome Message</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1191,7 +1191,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/email/reset-password.html" class="menu-link">
+                                                                <a href="/admin/authentication/email/reset-password" class="menu-link">
                                                                     <span class="menu-title">Reset Password</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1200,7 +1200,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/email/subscription-confirmed.html" class="menu-link">
+                                                                <a href="/admin/authentication/email/subscription-confirmed" class="menu-link">
                                                                     <span class="menu-title">Subscription Confirmed</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1209,7 +1209,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/email/card-declined.html" class="menu-link">
+                                                                <a href="/admin/authentication/email/card-declined" class="menu-link">
                                                                     <span class="menu-title">Credit Card Declined</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1218,7 +1218,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/email/promo-1.html" class="menu-link">
+                                                                <a href="/admin/authentication/email/promo-1" class="menu-link">
                                                                     <span class="menu-title">Promo 1</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1227,7 +1227,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/email/promo-2.html" class="menu-link">
+                                                                <a href="/admin/authentication/email/promo-2" class="menu-link">
                                                                     <span class="menu-title">Promo 2</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1236,7 +1236,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <!--begin:Menu item-->
                                                             <div class="menu-item p-0 m-0">
                                                                 <!--begin:Menu link-->
-                                                                <a href="/admin/authentication/email/promo-3.html" class="menu-link">
+                                                                <a href="/admin/authentication/email/promo-3" class="menu-link">
                                                                     <span class="menu-title">Promo 3</span>
                                                                 </a>
                                                                 <!--end:Menu link-->
@@ -1268,7 +1268,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/general/invite-friends.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/general/invite-friends" class="menu-link">
                                                                             <span class="menu-title">Invite Friends</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1277,7 +1277,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/general/view-users.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/general/view-users" class="menu-link">
                                                                             <span class="menu-title">View Users</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1286,7 +1286,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/general/select-users.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/general/select-users" class="menu-link">
                                                                             <span class="menu-title">Select Users</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1295,7 +1295,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/general/upgrade-plan.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/general/upgrade-plan" class="menu-link">
                                                                             <span class="menu-title">Upgrade Plan</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1304,7 +1304,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/general/share-earn.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/general/share-earn" class="menu-link">
                                                                             <span class="menu-title">Share & Earn</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1313,7 +1313,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/forms/new-target.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/forms/new-target" class="menu-link">
                                                                             <span class="menu-title">New Target</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1322,7 +1322,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/forms/new-card.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/forms/new-card" class="menu-link">
                                                                             <span class="menu-title">New Card</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1331,7 +1331,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/forms/new-address.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/forms/new-address" class="menu-link">
                                                                             <span class="menu-title">New Address</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1340,7 +1340,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/forms/create-api-key.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/forms/create-api-key" class="menu-link">
                                                                             <span class="menu-title">Create API Key</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1349,7 +1349,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/forms/bidding.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/forms/bidding" class="menu-link">
                                                                             <span class="menu-title">Bidding</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1369,7 +1369,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/wizards/create-app.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/wizards/create-app" class="menu-link">
                                                                             <span class="menu-title">Create App</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1378,7 +1378,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/wizards/create-campaign.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/wizards/create-campaign" class="menu-link">
                                                                             <span class="menu-title">Create Campaign</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1387,7 +1387,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/wizards/create-account.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/wizards/create-account" class="menu-link">
                                                                             <span class="menu-title">Create Business Acc</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1396,7 +1396,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/wizards/create-project.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/wizards/create-project" class="menu-link">
                                                                             <span class="menu-title">Create Project</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1405,7 +1405,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/wizards/top-up-wallet.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/wizards/top-up-wallet" class="menu-link">
                                                                             <span class="menu-title">Top Up Wallet</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1414,7 +1414,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/wizards/offer-a-deal.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/wizards/offer-a-deal" class="menu-link">
                                                                             <span class="menu-title">Offer a Deal</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1423,7 +1423,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/wizards/two-factor-authentication.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/wizards/two-factor-authentication" class="menu-link">
                                                                             <span class="menu-title">Two Factor Auth</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1439,7 +1439,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/search/horizontal.html" class="menu-link">
+                                                                        <a href="/admin/utilities/search/horizontal" class="menu-link">
                                                                             <span class="menu-title">Horizontal</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1448,7 +1448,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/search/vertical.html" class="menu-link">
+                                                                        <a href="/admin/utilities/search/vertical" class="menu-link">
                                                                             <span class="menu-title">Vertical</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1457,7 +1457,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/search/users.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/search/users" class="menu-link">
                                                                             <span class="menu-title">Users</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1466,7 +1466,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/search/select-location.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/search/select-location" class="menu-link">
                                                                             <span class="menu-title">Select Location</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1486,7 +1486,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/wizards/horizontal.html" class="menu-link">
+                                                                        <a href="/admin/utilities/wizards/horizontal" class="menu-link">
                                                                             <span class="menu-title">Horizontal</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1495,7 +1495,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/wizards/vertical.html" class="menu-link">
+                                                                        <a href="/admin/utilities/wizards/vertical" class="menu-link">
                                                                             <span class="menu-title">Vertical</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1504,7 +1504,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/wizards/two-factor-authentication.html" class="menu-link">
+                                                                        <a href="/admin/utilities/wizards/two-factor-authentication" class="menu-link">
                                                                             <span class="menu-title">Two Factor Auth</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1513,7 +1513,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/wizards/create-app.html" class="menu-link">
+                                                                        <a href="/admin/utilities/wizards/create-app" class="menu-link">
                                                                             <span class="menu-title">Create App</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1522,7 +1522,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/wizards/create-campaign.html" class="menu-link">
+                                                                        <a href="/admin/utilities/wizards/create-campaign" class="menu-link">
                                                                             <span class="menu-title">Create Campaign</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1531,7 +1531,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/wizards/create-account.html" class="menu-link">
+                                                                        <a href="/admin/utilities/wizards/create-account" class="menu-link">
                                                                             <span class="menu-title">Create Account</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1540,7 +1540,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/wizards/create-project.html" class="menu-link">
+                                                                        <a href="/admin/utilities/wizards/create-project" class="menu-link">
                                                                             <span class="menu-title">Create Project</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1549,7 +1549,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/modals/wizards/top-up-wallet.html" class="menu-link">
+                                                                        <a href="/admin/utilities/modals/wizards/top-up-wallet" class="menu-link">
                                                                             <span class="menu-title">Top Up Wallet</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1558,7 +1558,7 @@ License: For each use you must have a valid license purchased only from above li
                                                                     <!--begin:Menu item-->
                                                                     <div class="menu-item p-0 m-0">
                                                                         <!--begin:Menu link-->
-                                                                        <a href="/admin/utilities/wizards/offer-a-deal.html" class="menu-link">
+                                                                        <a href="/admin/utilities/wizards/offer-a-deal" class="menu-link">
                                                                             <span class="menu-title">Offer a Deal</span>
                                                                         </a>
                                                                         <!--end:Menu link-->
@@ -1590,7 +1590,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/widgets/lists.html" class="menu-link">
+                                                            <a href="/admin/widgets/lists" class="menu-link">
                                                                 <span class="menu-title">Lists</span>
                                                             </a>
                                                             <!--end:Menu link-->
@@ -1599,7 +1599,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/widgets/statistics.html" class="menu-link">
+                                                            <a href="/admin/widgets/statistics" class="menu-link">
                                                                 <span class="menu-title">Statistics</span>
                                                             </a>
                                                             <!--end:Menu link-->
@@ -1608,7 +1608,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/widgets/charts.html" class="menu-link">
+                                                            <a href="/admin/widgets/charts" class="menu-link">
                                                                 <span class="menu-title">Charts</span>
                                                             </a>
                                                             <!--end:Menu link-->
@@ -1617,7 +1617,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/widgets/mixed.html" class="menu-link">
+                                                            <a href="/admin/widgets/mixed" class="menu-link">
                                                                 <span class="menu-title">Mixed</span>
                                                             </a>
                                                             <!--end:Menu link-->
@@ -1626,7 +1626,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/widgets/tables.html" class="menu-link">
+                                                            <a href="/admin/widgets/tables" class="menu-link">
                                                                 <span class="menu-title">Tables</span>
                                                             </a>
                                                             <!--end:Menu link-->
@@ -1635,7 +1635,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/widgets/feeds.html" class="menu-link">
+                                                            <a href="/admin/widgets/feeds" class="menu-link">
                                                                 <span class="menu-title">Feeds</span>
                                                             </a>
                                                             <!--end:Menu link-->
@@ -1693,7 +1693,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/projects/list.html">
+                                                <a class="menu-link" href="/admin/apps/projects/list">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -1705,7 +1705,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/projects/project.html">
+                                                <a class="menu-link" href="/admin/apps/projects/project">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -1717,7 +1717,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/projects/targets.html">
+                                                <a class="menu-link" href="/admin/apps/projects/targets">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -1729,7 +1729,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/projects/budget.html">
+                                                <a class="menu-link" href="/admin/apps/projects/budget">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -1741,7 +1741,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/projects/users.html">
+                                                <a class="menu-link" href="/admin/apps/projects/users">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -1753,7 +1753,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/projects/files.html">
+                                                <a class="menu-link" href="/admin/apps/projects/files">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -1765,7 +1765,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/projects/activity.html">
+                                                <a class="menu-link" href="/admin/apps/projects/activity">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -1777,7 +1777,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/projects/settings.html">
+                                                <a class="menu-link" href="/admin/apps/projects/settings">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -1828,7 +1828,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link active" href="/admin/apps/ecommerce/catalog/products.html">
+                                                        <a class="menu-link active" href="/admin/apps/ecommerce/catalog/products">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1840,7 +1840,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/categories.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/categories">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1852,7 +1852,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/add-product.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/add-product">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1864,7 +1864,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/edit-product.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/edit-product">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1876,7 +1876,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/add-category.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/add-category">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1888,7 +1888,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/edit-category.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/catalog/edit-category">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1917,7 +1917,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/sales/listing.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/sales/listing">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1929,7 +1929,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/sales/details.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/sales/details">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1941,7 +1941,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/sales/add-order.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/sales/add-order">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1953,7 +1953,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/sales/edit-order.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/sales/edit-order">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1982,7 +1982,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/customers/listing.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/customers/listing">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -1994,7 +1994,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/customers/details.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/customers/details">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2023,7 +2023,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/view.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/view">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2035,7 +2035,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/sales.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/sales">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2047,7 +2047,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/returns.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/returns">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2059,7 +2059,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/customer-orders.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/customer-orders">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2071,7 +2071,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/shipping.html">
+                                                        <a class="menu-link" href="/admin/apps/ecommerce/reports/shipping">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2087,7 +2087,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/settings.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/settings">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2123,7 +2123,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/support-center/overview.html">
+                                                <a class="menu-link" href="/admin/apps/support-center/overview">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2148,7 +2148,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/support-center/tickets/list.html">
+                                                        <a class="menu-link" href="/admin/apps/support-center/tickets/list">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2160,7 +2160,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/support-center/tickets/view.html">
+                                                        <a class="menu-link" href="/admin/apps/support-center/tickets/view">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2189,7 +2189,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/support-center/tutorials/list.html">
+                                                        <a class="menu-link" href="/admin/apps/support-center/tutorials/list">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2201,7 +2201,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/support-center/tutorials/post.html">
+                                                        <a class="menu-link" href="/admin/apps/support-center/tutorials/post">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2217,7 +2217,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/support-center/faq.html">
+                                                <a class="menu-link" href="/admin/apps/support-center/faq">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2229,7 +2229,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/support-center/licenses.html">
+                                                <a class="menu-link" href="/admin/apps/support-center/licenses">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2241,7 +2241,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/support-center/contact.html">
+                                                <a class="menu-link" href="/admin/apps/support-center/contact">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2290,7 +2290,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/user-management/users/list.html">
+                                                        <a class="menu-link" href="/admin/apps/user-management/users/list">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2302,7 +2302,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/user-management/users/view.html">
+                                                        <a class="menu-link" href="/admin/apps/user-management/users/view">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2331,7 +2331,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/user-management/roles/list.html">
+                                                        <a class="menu-link" href="/admin/apps/user-management/roles/list">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2343,7 +2343,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/user-management/roles/view.html">
+                                                        <a class="menu-link" href="/admin/apps/user-management/roles/view">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2359,7 +2359,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/user-management/permissions.html">
+                                                <a class="menu-link" href="/admin/apps/user-management/permissions">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2396,7 +2396,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/contacts/getting-started.html">
+                                                <a class="menu-link" href="/admin/apps/contacts/getting-started">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2408,7 +2408,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/contacts/add-contact.html">
+                                                <a class="menu-link" href="/admin/apps/contacts/add-contact">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2420,7 +2420,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/contacts/edit-contact.html">
+                                                <a class="menu-link" href="/admin/apps/contacts/edit-contact">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2432,7 +2432,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/contacts/view-contact.html">
+                                                <a class="menu-link" href="/admin/apps/contacts/view-contact">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2469,7 +2469,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/subscriptions/getting-started.html">
+                                                <a class="menu-link" href="/admin/apps/subscriptions/getting-started">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2481,7 +2481,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/subscriptions/list.html">
+                                                <a class="menu-link" href="/admin/apps/subscriptions/list">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2493,7 +2493,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/subscriptions/add.html">
+                                                <a class="menu-link" href="/admin/apps/subscriptions/add">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2505,7 +2505,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/subscriptions/view.html">
+                                                <a class="menu-link" href="/admin/apps/subscriptions/view">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2541,7 +2541,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/customers/getting-started.html">
+                                                <a class="menu-link" href="/admin/apps/customers/getting-started">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2553,7 +2553,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/customers/list.html">
+                                                <a class="menu-link" href="/admin/apps/customers/list">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2565,7 +2565,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/customers/view.html">
+                                                <a class="menu-link" href="/admin/apps/customers/view">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2614,7 +2614,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/invoices/view/invoice-1.html">
+                                                        <a class="menu-link" href="/admin/apps/invoices/view/invoice-1">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2626,7 +2626,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/invoices/view/invoice-2.html">
+                                                        <a class="menu-link" href="/admin/apps/invoices/view/invoice-2">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2638,7 +2638,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/apps/invoices/view/invoice-3.html">
+                                                        <a class="menu-link" href="/admin/apps/invoices/view/invoice-3">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -2654,7 +2654,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/invoices/create.html">
+                                                <a class="menu-link" href="/admin/apps/invoices/create">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2691,7 +2691,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/file-manager/folders.html">
+                                                <a class="menu-link" href="/admin/apps/file-manager/folders">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2703,7 +2703,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/file-manager/files.html">
+                                                <a class="menu-link" href="/admin/apps/file-manager/files">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2715,7 +2715,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/file-manager/blank.html">
+                                                <a class="menu-link" href="/admin/apps/file-manager/blank">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2727,7 +2727,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/file-manager/settings.html">
+                                                <a class="menu-link" href="/admin/apps/file-manager/settings">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2763,7 +2763,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/inbox/listing.html">
+                                                <a class="menu-link" href="/admin/apps/inbox/listing">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2778,7 +2778,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/inbox/compose.html">
+                                                <a class="menu-link" href="/admin/apps/inbox/compose">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2790,7 +2790,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/inbox/reply.html">
+                                                <a class="menu-link" href="/admin/apps/inbox/reply">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2827,7 +2827,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/chat/private.html">
+                                                <a class="menu-link" href="/admin/apps/chat/private">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2839,7 +2839,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/chat/group.html">
+                                                <a class="menu-link" href="/admin/apps/chat/group">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2851,7 +2851,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/chat/drawer.html">
+                                                <a class="menu-link" href="/admin/apps/chat/drawer">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -2867,7 +2867,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/calendar.html">
+                                        <a class="menu-link" href="/admin/apps/calendar">
 													<span class="menu-icon">
 														<!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
 														<span class="svg-icon svg-icon-2">
@@ -2914,7 +2914,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/layouts/light-sidebar.html" class="menu-link">
+                                                            <a href="/admin/layouts/light-sidebar" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -2926,7 +2926,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/layouts/dark-sidebar.html" class="menu-link">
+                                                            <a href="/admin/layouts/dark-sidebar" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -2938,7 +2938,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/layouts/light-header.html" class="menu-link">
+                                                            <a href="/admin/layouts/light-header" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -2950,7 +2950,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/layouts/dark-header.html" class="menu-link">
+                                                            <a href="/admin/layouts/dark-header" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -2969,7 +2969,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/toolbars/classic.html" class="menu-link">
+                                                            <a href="/admin/toolbars/classic" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -2981,7 +2981,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/toolbars/saas.html" class="menu-link">
+                                                            <a href="/admin/toolbars/saas" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -2993,7 +2993,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/toolbars/accounting.html" class="menu-link">
+                                                            <a href="/admin/toolbars/accounting" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -3005,7 +3005,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/toolbars/extended.html" class="menu-link">
+                                                            <a href="/admin/toolbars/extended" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -3017,7 +3017,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <!--begin:Menu item-->
                                                         <div class="menu-item p-0 m-0">
                                                             <!--begin:Menu link-->
-                                                            <a href="/admin/toolbars/reports.html" class="menu-link">
+                                                            <a href="/admin/toolbars/reports" class="menu-link">
 																		<span class="menu-bullet">
 																			<span class="bullet bullet-dot bg-gray-300i h-6px w-6px"></span>
 																		</span>
@@ -3037,7 +3037,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         <div class="fs-6 fw-bold text-gray-800">Layout Builder</div>
                                                         <div class="fs-7 fw-semibold text-muted">Customize, preview and export</div>
                                                     </div>
-                                                    <a href="https://preview.keenthemes.com/metronic8/layout-builder.html" class="btn btn-sm btn-primary fw-bold">Try Builder</a>
+                                                    <a href="https://preview.keenthemes.com/metronic8/layout-builder" class="btn btn-sm btn-primary fw-bold">Try Builder</a>
                                                 </div>
                                                 <!--end:Layout Builder-->
                                             </div>
@@ -3812,7 +3812,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Actions-->
                                         <div class="d-flex justify-content-end">
                                             <button type="reset" class="btn btn-sm btn-light fw-bold btn-active-light-primary me-2" data-kt-search-element="advanced-options-form-cancel">Cancel</button>
-                                            <a href="/admin/pages/search/horizontal.html" class="btn btn-sm fw-bold btn-primary" data-kt-search-element="advanced-options-form-search">Search</a>
+                                            <a href="/admin/pages/search/horizontal" class="btn btn-sm fw-bold btn-primary" data-kt-search-element="advanced-options-form-search">Search</a>
                                         </div>
                                         <!--end::Actions-->
                                     </form>
@@ -4162,7 +4162,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Items-->
                                         <!--begin::View more-->
                                         <div class="py-3 text-center border-top">
-                                            <a href="/admin/pages/user-profile/activity.html" class="btn btn-color-gray-600 btn-active-color-primary">View All
+                                            <a href="/admin/pages/user-profile/activity" class="btn btn-color-gray-600 btn-active-color-primary">View All
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                                 <span class="svg-icon svg-icon-5">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4415,7 +4415,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Items-->
                                         <!--begin::View more-->
                                         <div class="py-3 text-center border-top">
-                                            <a href="/admin/pages/user-profile/activity.html" class="btn btn-color-gray-600 btn-active-color-primary">View All
+                                            <a href="/admin/pages/user-profile/activity" class="btn btn-color-gray-600 btn-active-color-primary">View All
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                                 <span class="svg-icon svg-icon-5">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4484,7 +4484,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="row g-0">
                                     <!--begin:Item-->
                                     <div class="col-6">
-                                        <a href="/admin/apps/projects/budget.html" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end border-bottom">
+                                        <a href="/admin/apps/projects/budget" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end border-bottom">
                                             <!--begin::Svg Icon | path: icons/duotune/finance/fin009.svg-->
                                             <span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4500,7 +4500,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end:Item-->
                                     <!--begin:Item-->
                                     <div class="col-6">
-                                        <a href="/admin/apps/projects/settings.html" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-bottom">
+                                        <a href="/admin/apps/projects/settings" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-bottom">
                                             <!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
                                             <span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4516,7 +4516,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end:Item-->
                                     <!--begin:Item-->
                                     <div class="col-6">
-                                        <a href="/admin/apps/projects/list.html" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end">
+                                        <a href="/admin/apps/projects/list" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end">
                                             <!--begin::Svg Icon | path: icons/duotune/abstract/abs042.svg-->
                                             <span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4532,7 +4532,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end:Item-->
                                     <!--begin:Item-->
                                     <div class="col-6">
-                                        <a href="/admin/apps/projects/users.html" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light">
+                                        <a href="/admin/apps/projects/users" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light">
                                             <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                                             <span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4550,7 +4550,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--end:Nav-->
                                 <!--begin::View more-->
                                 <div class="py-2 text-center border-top">
-                                    <a href="/admin/pages/user-profile/activity.html" class="btn btn-color-gray-600 btn-active-color-primary">View All
+                                    <a href="/admin/pages/user-profile/activity" class="btn btn-color-gray-600 btn-active-color-primary">View All
                                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                         <span class="svg-icon svg-icon-5">
 												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4693,12 +4693,12 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--end::Menu separator-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <a href="/admin/account/overview.html" class="menu-link px-5">My Profile</a>
+                                    <a href="/admin/account/overview" class="menu-link px-5">My Profile</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <a href="/admin/apps/projects/list.html" class="menu-link px-5">
+                                    <a href="/admin/apps/projects/list" class="menu-link px-5">
                                         <span class="menu-text">My Projects</span>
                                         <span class="menu-badge">
 													<span class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>
@@ -4716,22 +4716,22 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="menu-sub menu-sub-dropdown w-175px py-4">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/referrals.html" class="menu-link px-5">Referrals</a>
+                                            <a href="/admin/account/referrals" class="menu-link px-5">Referrals</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/billing.html" class="menu-link px-5">Billing</a>
+                                            <a href="/admin/account/billing" class="menu-link px-5">Billing</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/statements.html" class="menu-link px-5">Payments</a>
+                                            <a href="/admin/account/statements" class="menu-link px-5">Payments</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/statements.html" class="menu-link d-flex flex-stack px-5">Statements
+                                            <a href="/admin/account/statements" class="menu-link d-flex flex-stack px-5">Statements
                                                 <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i></a>
                                         </div>
                                         <!--end::Menu item-->
@@ -4754,7 +4754,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <a href="/admin/account/statements.html" class="menu-link px-5">My Statements</a>
+                                    <a href="/admin/account/statements" class="menu-link px-5">My Statements</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu separator-->
@@ -4771,7 +4771,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="menu-sub menu-sub-dropdown w-175px py-4">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/settings.html" class="menu-link d-flex px-5 active">
+                                            <a href="/admin/account/settings" class="menu-link d-flex px-5 active">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1" src="assets/media/flags/united-states.svg" alt="" />
 													</span>English</a>
@@ -4779,7 +4779,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/settings.html" class="menu-link d-flex px-5">
+                                            <a href="/admin/account/settings" class="menu-link d-flex px-5">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1" src="assets/media/flags/spain.svg" alt="" />
 													</span>Spanish</a>
@@ -4787,7 +4787,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/settings.html" class="menu-link d-flex px-5">
+                                            <a href="/admin/account/settings" class="menu-link d-flex px-5">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1" src="assets/media/flags/germany.svg" alt="" />
 													</span>German</a>
@@ -4795,7 +4795,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/settings.html" class="menu-link d-flex px-5">
+                                            <a href="/admin/account/settings" class="menu-link d-flex px-5">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1" src="assets/media/flags/japan.svg" alt="" />
 													</span>Japanese</a>
@@ -4803,7 +4803,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/account/settings.html" class="menu-link d-flex px-5">
+                                            <a href="/admin/account/settings" class="menu-link d-flex px-5">
 													<span class="symbol symbol-20px me-4">
 														<img class="rounded-1" src="assets/media/flags/france.svg" alt="" />
 													</span>French</a>
@@ -4815,12 +4815,12 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5 my-1">
-                                    <a href="/admin/account/settings.html" class="menu-link px-5">Account Settings</a>
+                                    <a href="/admin/account/settings" class="menu-link px-5">Account Settings</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <a href="/admin/authentication/layouts/corporate/sign-in.html" class="menu-link px-5">Sign Out</a>
+                                    <a href="/admin/authentication/layouts/corporate/sign-in" class="menu-link px-5">Sign Out</a>
                                 </div>
                                 <!--end::Menu item-->
                             </div>
@@ -4857,7 +4857,7 @@ License: For each use you must have a valid license purchased only from above li
                 <!--begin::Logo-->
                 <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
                     <!--begin::Logo image-->
-                    <a href="/admin/index.html">
+                    <a href="/admin/index">
                         <img alt="Logo" src="assets/media/logos/default-dark.svg" class="h-25px app-sidebar-logo-default" />
                         <img alt="Logo" src="assets/media/logos/default-small.svg" class="h-20px app-sidebar-logo-minimize" />
                     </a>
@@ -4907,7 +4907,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/index.html">
+                                        <a class="menu-link" href="/admin/index">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -4919,7 +4919,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/dashboards/ecommerce.html">
+                                        <a class="menu-link" href="/admin/dashboards/ecommerce">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -4931,7 +4931,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/dashboards/projects.html">
+                                        <a class="menu-link" href="/admin/dashboards/projects">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -4943,7 +4943,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/dashboards/online-courses.html">
+                                        <a class="menu-link" href="/admin/dashboards/online-courses">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -4955,7 +4955,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/dashboards/marketing.html">
+                                        <a class="menu-link" href="/admin/dashboards/marketing">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -4968,7 +4968,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/bidding.html">
+                                            <a class="menu-link" href="/admin/dashboards/bidding">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -4980,7 +4980,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/pos.html">
+                                            <a class="menu-link" href="/admin/dashboards/pos">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -4992,7 +4992,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/call-center.html">
+                                            <a class="menu-link" href="/admin/dashboards/call-center">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5004,7 +5004,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/logistics.html">
+                                            <a class="menu-link" href="/admin/dashboards/logistics">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5016,7 +5016,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/website-analytics.html">
+                                            <a class="menu-link" href="/admin/dashboards/website-analytics">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5028,7 +5028,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/finance-performance.html">
+                                            <a class="menu-link" href="/admin/dashboards/finance-performance">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5040,7 +5040,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/store-analytics.html">
+                                            <a class="menu-link" href="/admin/dashboards/store-analytics">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5052,7 +5052,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/social.html">
+                                            <a class="menu-link" href="/admin/dashboards/social">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5064,7 +5064,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/delivery.html">
+                                            <a class="menu-link" href="/admin/dashboards/delivery">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5076,7 +5076,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/crypto.html">
+                                            <a class="menu-link" href="/admin/dashboards/crypto">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5088,7 +5088,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/school.html">
+                                            <a class="menu-link" href="/admin/dashboards/school">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5100,7 +5100,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/dashboards/podcast.html">
+                                            <a class="menu-link" href="/admin/dashboards/podcast">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5112,7 +5112,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
-                                            <a class="menu-link" href="/admin/landing.html">
+                                            <a class="menu-link" href="/admin/landing">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -5182,7 +5182,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/user-profile/overview.html">
+                                        <a class="menu-link" href="/admin/pages/user-profile/overview">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5194,7 +5194,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/user-profile/projects.html">
+                                        <a class="menu-link" href="/admin/pages/user-profile/projects">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5206,7 +5206,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/user-profile/campaigns.html">
+                                        <a class="menu-link" href="/admin/pages/user-profile/campaigns">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5218,7 +5218,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/user-profile/documents.html">
+                                        <a class="menu-link" href="/admin/pages/user-profile/documents">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5230,7 +5230,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/user-profile/followers.html">
+                                        <a class="menu-link" href="/admin/pages/user-profile/followers">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5242,7 +5242,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/user-profile/activity.html">
+                                        <a class="menu-link" href="/admin/pages/user-profile/activity">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5280,7 +5280,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/overview.html">
+                                        <a class="menu-link" href="/admin/account/overview">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5292,7 +5292,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/settings.html">
+                                        <a class="menu-link" href="/admin/account/settings">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5304,7 +5304,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/security.html">
+                                        <a class="menu-link" href="/admin/account/security">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5316,7 +5316,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/activity.html">
+                                        <a class="menu-link" href="/admin/account/activity">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5328,7 +5328,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/billing.html">
+                                        <a class="menu-link" href="/admin/account/billing">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5340,7 +5340,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/statements.html">
+                                        <a class="menu-link" href="/admin/account/statements">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5352,7 +5352,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/referrals.html">
+                                        <a class="menu-link" href="/admin/account/referrals">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5364,7 +5364,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/api-keys.html">
+                                        <a class="menu-link" href="/admin/account/api-keys">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5376,7 +5376,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/account/logs.html">
+                                        <a class="menu-link" href="/admin/account/logs">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5425,7 +5425,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/sign-in.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/sign-in">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5437,7 +5437,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/sign-up.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/sign-up">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5449,7 +5449,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/two-steps.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/two-steps">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5461,7 +5461,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/reset-password.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/reset-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5473,7 +5473,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/new-password.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/corporate/new-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5502,7 +5502,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/sign-in.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/sign-in">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5514,7 +5514,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/sign-up.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/sign-up">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5526,7 +5526,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/two-steps.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/two-steps">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5538,7 +5538,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/reset-password.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/reset-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5550,7 +5550,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/new-password.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/overlay/new-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5579,7 +5579,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/creative/sign-in.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/creative/sign-in">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5591,7 +5591,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/creative/sign-up.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/creative/sign-up">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5603,7 +5603,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/creative/two-steps.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/creative/two-steps">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5615,7 +5615,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/creative/reset-password.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/creative/reset-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5627,7 +5627,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/creative/new-password.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/creative/new-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5656,7 +5656,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/sign-in.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/sign-in">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5668,7 +5668,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/sign-up.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/sign-up">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5680,7 +5680,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/two-steps.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/two-steps">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5692,7 +5692,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/reset-password.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/reset-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5704,7 +5704,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/new-password.html">
+                                                <a class="menu-link" href="/admin/authentication/layouts/fancy/new-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5733,7 +5733,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/email/welcome-message.html">
+                                                <a class="menu-link" href="/admin/authentication/email/welcome-message">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5745,7 +5745,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/email/reset-password.html">
+                                                <a class="menu-link" href="/admin/authentication/email/reset-password">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5757,7 +5757,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/email/subscription-confirmed.html">
+                                                <a class="menu-link" href="/admin/authentication/email/subscription-confirmed">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5769,7 +5769,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/email/card-declined.html">
+                                                <a class="menu-link" href="/admin/authentication/email/card-declined">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5781,7 +5781,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/email/promo-1.html">
+                                                <a class="menu-link" href="/admin/authentication/email/promo-1">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5793,7 +5793,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/email/promo-2.html">
+                                                <a class="menu-link" href="/admin/authentication/email/promo-2">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5805,7 +5805,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/authentication/email/promo-3.html">
+                                                <a class="menu-link" href="/admin/authentication/email/promo-3">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -5821,7 +5821,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/extended/multi-steps-sign-up.html">
+                                        <a class="menu-link" href="/admin/authentication/extended/multi-steps-sign-up">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5833,7 +5833,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/extended/two-factor-auth.html">
+                                        <a class="menu-link" href="/admin/authentication/extended/two-factor-auth">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5845,7 +5845,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/general/welcome.html">
+                                        <a class="menu-link" href="/admin/authentication/general/welcome">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5857,7 +5857,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/general/verify-email.html">
+                                        <a class="menu-link" href="/admin/authentication/general/verify-email">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5869,7 +5869,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/general/coming-soon.html">
+                                        <a class="menu-link" href="/admin/authentication/general/coming-soon">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5881,7 +5881,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/general/password-confirmation.html">
+                                        <a class="menu-link" href="/admin/authentication/general/password-confirmation">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5893,7 +5893,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/general/account-deactivated.html">
+                                        <a class="menu-link" href="/admin/authentication/general/account-deactivated">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5905,7 +5905,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/general/error-404.html">
+                                        <a class="menu-link" href="/admin/authentication/general/error-404">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5917,7 +5917,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/authentication/general/error-500.html">
+                                        <a class="menu-link" href="/admin/authentication/general/error-500">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5953,7 +5953,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/about.html">
+                                        <a class="menu-link" href="/admin/pages/about">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5965,7 +5965,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/team.html">
+                                        <a class="menu-link" href="/admin/pages/team">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5977,7 +5977,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/contact.html">
+                                        <a class="menu-link" href="/admin/pages/contact">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -5989,7 +5989,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/licenses.html">
+                                        <a class="menu-link" href="/admin/pages/licenses">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6001,7 +6001,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/sitemap.html">
+                                        <a class="menu-link" href="/admin/pages/sitemap">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6037,7 +6037,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/social/feeds.html">
+                                        <a class="menu-link" href="/admin/pages/social/feeds">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6049,7 +6049,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/social/activity.html">
+                                        <a class="menu-link" href="/admin/pages/social/activity">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6061,7 +6061,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/social/followers.html">
+                                        <a class="menu-link" href="/admin/pages/social/followers">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6073,7 +6073,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/social/settings.html">
+                                        <a class="menu-link" href="/admin/pages/social/settings">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6109,7 +6109,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/blog/home.html">
+                                        <a class="menu-link" href="/admin/pages/blog/home">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6121,7 +6121,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/blog/post.html">
+                                        <a class="menu-link" href="/admin/pages/blog/post">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6158,7 +6158,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/faq/classic.html">
+                                        <a class="menu-link" href="/admin/pages/faq/classic">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6170,7 +6170,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/faq/extended.html">
+                                        <a class="menu-link" href="/admin/pages/faq/extended">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6206,7 +6206,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/pricing/column.html">
+                                        <a class="menu-link" href="/admin/pages/pricing/column">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6218,7 +6218,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/pricing/table.html">
+                                        <a class="menu-link" href="/admin/pages/pricing/table">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6254,7 +6254,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/careers/list.html">
+                                        <a class="menu-link" href="/admin/pages/careers/list">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6266,7 +6266,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/pages/careers/apply.html">
+                                        <a class="menu-link" href="/admin/pages/careers/apply">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6328,7 +6328,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/general/invite-friends.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/general/invite-friends">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6340,7 +6340,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/general/view-users.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/general/view-users">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6352,7 +6352,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/general/select-users.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/general/select-users">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6364,7 +6364,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/general/upgrade-plan.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/general/upgrade-plan">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6376,7 +6376,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/general/share-earn.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/general/share-earn">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6405,7 +6405,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/forms/new-target.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/forms/new-target">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6417,7 +6417,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/forms/new-card.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/forms/new-card">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6429,7 +6429,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/forms/new-address.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/forms/new-address">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6441,7 +6441,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/forms/create-api-key.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/forms/create-api-key">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6453,7 +6453,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/forms/bidding.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/forms/bidding">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6482,7 +6482,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/create-app.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/create-app">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6494,7 +6494,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/create-campaign.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/create-campaign">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6506,7 +6506,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/create-account.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/create-account">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6518,7 +6518,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/create-project.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/create-project">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6530,7 +6530,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/top-up-wallet.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/top-up-wallet">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6542,7 +6542,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/offer-a-deal.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/offer-a-deal">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6554,7 +6554,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/two-factor-authentication.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/wizards/two-factor-authentication">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6583,7 +6583,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/search/users.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/search/users">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6595,7 +6595,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin:Menu item-->
                                                     <div class="menu-item">
                                                         <!--begin:Menu link-->
-                                                        <a class="menu-link" href="/admin/utilities/modals/search/select-location.html">
+                                                        <a class="menu-link" href="/admin/utilities/modals/search/select-location">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -6628,7 +6628,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/search/horizontal.html">
+                                                <a class="menu-link" href="/admin/utilities/search/horizontal">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6640,7 +6640,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/search/vertical.html">
+                                                <a class="menu-link" href="/admin/utilities/search/vertical">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6652,7 +6652,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/search/users.html">
+                                                <a class="menu-link" href="/admin/utilities/search/users">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6664,7 +6664,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/search/select-location.html">
+                                                <a class="menu-link" href="/admin/utilities/search/select-location">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6693,7 +6693,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/wizards/horizontal.html">
+                                                <a class="menu-link" href="/admin/utilities/wizards/horizontal">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6705,7 +6705,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/wizards/vertical.html">
+                                                <a class="menu-link" href="/admin/utilities/wizards/vertical">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6717,7 +6717,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/wizards/two-factor-authentication.html">
+                                                <a class="menu-link" href="/admin/utilities/wizards/two-factor-authentication">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6729,7 +6729,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/wizards/create-app.html">
+                                                <a class="menu-link" href="/admin/utilities/wizards/create-app">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6741,7 +6741,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/wizards/create-campaign.html">
+                                                <a class="menu-link" href="/admin/utilities/wizards/create-campaign">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6753,7 +6753,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/wizards/create-account.html">
+                                                <a class="menu-link" href="/admin/utilities/wizards/create-account">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6765,7 +6765,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/wizards/create-project.html">
+                                                <a class="menu-link" href="/admin/utilities/wizards/create-project">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6777,7 +6777,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/modals/wizards/top-up-wallet.html">
+                                                <a class="menu-link" href="/admin/utilities/modals/wizards/top-up-wallet">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6789,7 +6789,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/utilities/wizards/offer-a-deal.html">
+                                                <a class="menu-link" href="/admin/utilities/wizards/offer-a-deal">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -6829,7 +6829,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/widgets/lists.html">
+                                        <a class="menu-link" href="/admin/widgets/lists">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6841,7 +6841,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/widgets/statistics.html">
+                                        <a class="menu-link" href="/admin/widgets/statistics">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6853,7 +6853,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/widgets/charts.html">
+                                        <a class="menu-link" href="/admin/widgets/charts">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6865,7 +6865,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/widgets/mixed.html">
+                                        <a class="menu-link" href="/admin/widgets/mixed">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6877,7 +6877,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/widgets/tables.html">
+                                        <a class="menu-link" href="/admin/widgets/tables">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6889,7 +6889,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/widgets/feeds.html">
+                                        <a class="menu-link" href="/admin/widgets/feeds">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6934,7 +6934,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/projects/list.html">
+                                        <a class="menu-link" href="/admin/apps/projects/list">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6946,7 +6946,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/projects/project.html">
+                                        <a class="menu-link" href="/admin/apps/projects/project">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6958,7 +6958,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/projects/targets.html">
+                                        <a class="menu-link" href="/admin/apps/projects/targets">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6970,7 +6970,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/projects/budget.html">
+                                        <a class="menu-link" href="/admin/apps/projects/budget">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6982,7 +6982,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/projects/users.html">
+                                        <a class="menu-link" href="/admin/apps/projects/users">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -6994,7 +6994,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/projects/files.html">
+                                        <a class="menu-link" href="/admin/apps/projects/files">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7006,7 +7006,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/projects/activity.html">
+                                        <a class="menu-link" href="/admin/apps/projects/activity">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7018,7 +7018,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/projects/settings.html">
+                                        <a class="menu-link" href="/admin/apps/projects/settings">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7068,7 +7068,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link active" href="/admin/apps/ecommerce/catalog/products.html">
+                                                <a class="menu-link active" href="/admin/apps/ecommerce/catalog/products">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7080,7 +7080,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/categories.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/categories">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7092,7 +7092,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/add-product.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/add-product">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7104,7 +7104,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/edit-product.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/edit-product">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7116,7 +7116,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/add-category.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/add-category">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7128,7 +7128,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/edit-category.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/catalog/edit-category">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7157,7 +7157,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/sales/listing.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/sales/listing">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7169,7 +7169,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/sales/details.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/sales/details">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7181,7 +7181,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/sales/add-order.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/sales/add-order">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7193,7 +7193,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/sales/edit-order.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/sales/edit-order">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7222,7 +7222,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/customers/listing.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/customers/listing">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7234,7 +7234,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/customers/details.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/customers/details">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7263,7 +7263,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/view.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/view">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7275,7 +7275,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/sales.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/sales">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7287,7 +7287,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/returns.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/returns">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7299,7 +7299,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/customer-orders.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/customer-orders">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7311,7 +7311,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/shipping.html">
+                                                <a class="menu-link" href="/admin/apps/ecommerce/reports/shipping">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7327,7 +7327,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/ecommerce/settings.html">
+                                        <a class="menu-link" href="/admin/apps/ecommerce/settings">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7363,7 +7363,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/contacts/getting-started.html">
+                                        <a class="menu-link" href="/admin/apps/contacts/getting-started">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7375,7 +7375,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/contacts/add-contact.html">
+                                        <a class="menu-link" href="/admin/apps/contacts/add-contact">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7387,7 +7387,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/contacts/edit-contact.html">
+                                        <a class="menu-link" href="/admin/apps/contacts/edit-contact">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7399,7 +7399,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/contacts/view-contact.html">
+                                        <a class="menu-link" href="/admin/apps/contacts/view-contact">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7435,7 +7435,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/support-center/overview.html">
+                                        <a class="menu-link" href="/admin/apps/support-center/overview">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7460,7 +7460,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/support-center/tickets/list.html">
+                                                <a class="menu-link" href="/admin/apps/support-center/tickets/list">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7472,7 +7472,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/support-center/tickets/view.html">
+                                                <a class="menu-link" href="/admin/apps/support-center/tickets/view">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7501,7 +7501,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/support-center/tutorials/list.html">
+                                                <a class="menu-link" href="/admin/apps/support-center/tutorials/list">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7513,7 +7513,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/support-center/tutorials/post.html">
+                                                <a class="menu-link" href="/admin/apps/support-center/tutorials/post">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7529,7 +7529,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/support-center/faq.html">
+                                        <a class="menu-link" href="/admin/apps/support-center/faq">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7541,7 +7541,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/support-center/licenses.html">
+                                        <a class="menu-link" href="/admin/apps/support-center/licenses">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7553,7 +7553,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/support-center/contact.html">
+                                        <a class="menu-link" href="/admin/apps/support-center/contact">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7602,7 +7602,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/user-management/users/list.html">
+                                                <a class="menu-link" href="/admin/apps/user-management/users/list">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7614,7 +7614,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/user-management/users/view.html">
+                                                <a class="menu-link" href="/admin/apps/user-management/users/view">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7643,7 +7643,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/user-management/roles/list.html">
+                                                <a class="menu-link" href="/admin/apps/user-management/roles/list">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7655,7 +7655,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/user-management/roles/view.html">
+                                                <a class="menu-link" href="/admin/apps/user-management/roles/view">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7671,7 +7671,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/user-management/permissions.html">
+                                        <a class="menu-link" href="/admin/apps/user-management/permissions">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7707,7 +7707,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/customers/getting-started.html">
+                                        <a class="menu-link" href="/admin/apps/customers/getting-started">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7719,7 +7719,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/customers/list.html">
+                                        <a class="menu-link" href="/admin/apps/customers/list">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7731,7 +7731,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/customers/view.html">
+                                        <a class="menu-link" href="/admin/apps/customers/view">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7770,7 +7770,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/subscriptions/getting-started.html">
+                                        <a class="menu-link" href="/admin/apps/subscriptions/getting-started">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7782,7 +7782,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/subscriptions/list.html">
+                                        <a class="menu-link" href="/admin/apps/subscriptions/list">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7794,7 +7794,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/subscriptions/add.html">
+                                        <a class="menu-link" href="/admin/apps/subscriptions/add">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7806,7 +7806,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/subscriptions/view.html">
+                                        <a class="menu-link" href="/admin/apps/subscriptions/view">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7855,7 +7855,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/invoices/view/invoice-1.html">
+                                                <a class="menu-link" href="/admin/apps/invoices/view/invoice-1">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7867,7 +7867,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/invoices/view/invoice-2.html">
+                                                <a class="menu-link" href="/admin/apps/invoices/view/invoice-2">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7879,7 +7879,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="/admin/apps/invoices/view/invoice-3.html">
+                                                <a class="menu-link" href="/admin/apps/invoices/view/invoice-3">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -7895,7 +7895,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/invoices/create.html">
+                                        <a class="menu-link" href="/admin/apps/invoices/create">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7931,7 +7931,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/file-manager/folders.html">
+                                        <a class="menu-link" href="/admin/apps/file-manager/folders">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7943,7 +7943,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/file-manager/files.html">
+                                        <a class="menu-link" href="/admin/apps/file-manager/files">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7955,7 +7955,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/file-manager/blank.html">
+                                        <a class="menu-link" href="/admin/apps/file-manager/blank">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -7967,7 +7967,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/file-manager/settings.html">
+                                        <a class="menu-link" href="/admin/apps/file-manager/settings">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8003,7 +8003,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/inbox/listing.html">
+                                        <a class="menu-link" href="/admin/apps/inbox/listing">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8018,7 +8018,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/inbox/compose.html">
+                                        <a class="menu-link" href="/admin/apps/inbox/compose">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8030,7 +8030,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/inbox/reply.html">
+                                        <a class="menu-link" href="/admin/apps/inbox/reply">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8067,7 +8067,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/chat/private.html">
+                                        <a class="menu-link" href="/admin/apps/chat/private">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8079,7 +8079,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/chat/group.html">
+                                        <a class="menu-link" href="/admin/apps/chat/group">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8091,7 +8091,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/apps/chat/drawer.html">
+                                        <a class="menu-link" href="/admin/apps/chat/drawer">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8107,7 +8107,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="/admin/apps/calendar.html">
+                                <a class="menu-link" href="/admin/apps/calendar">
 											<span class="menu-icon">
 												<!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
 												<span class="svg-icon svg-icon-2">
@@ -8156,7 +8156,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/layouts/light-sidebar.html">
+                                        <a class="menu-link" href="/admin/layouts/light-sidebar">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8168,7 +8168,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/layouts/dark-sidebar.html">
+                                        <a class="menu-link" href="/admin/layouts/dark-sidebar">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8180,7 +8180,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/layouts/light-header.html">
+                                        <a class="menu-link" href="/admin/layouts/light-header">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8192,7 +8192,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/layouts/dark-header.html">
+                                        <a class="menu-link" href="/admin/layouts/dark-header">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8228,7 +8228,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/toolbars/classic.html">
+                                        <a class="menu-link" href="/admin/toolbars/classic">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8240,7 +8240,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/toolbars/saas.html">
+                                        <a class="menu-link" href="/admin/toolbars/saas">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8252,7 +8252,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/toolbars/accounting.html">
+                                        <a class="menu-link" href="/admin/toolbars/accounting">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8264,7 +8264,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/toolbars/extended.html">
+                                        <a class="menu-link" href="/admin/toolbars/extended">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8276,7 +8276,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin:Menu item-->
                                     <div class="menu-item">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link" href="/admin/toolbars/reports.html">
+                                        <a class="menu-link" href="/admin/toolbars/reports">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -8292,7 +8292,7 @@ License: For each use you must have a valid license purchased only from above li
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="https://preview.keenthemes.com/metronic8/layout-builder.html">
+                                <a class="menu-link" href="https://preview.keenthemes.com/metronic8/layout-builder">
 											<span class="menu-icon">
 												<!--begin::Svg Icon | path: icons/duotune/abstract/abs014.svg-->
 												<span class="svg-icon svg-icon-2">
@@ -8510,7 +8510,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--begin::Record-->
                                 <div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5">
                                     <!--begin::Title-->
-                                    <a href="/admin/apps/projects/project.html" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
+                                    <a href="/admin/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
                                     <!--end::Title-->
                                     <!--begin::Label-->
                                     <div class="min-w-175px pe-2">
@@ -8542,14 +8542,14 @@ License: For each use you must have a valid license purchased only from above li
                                     </div>
                                     <!--end::Progress-->
                                     <!--begin::Action-->
-                                    <a href="/admin/apps/projects/project.html" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+                                    <a href="/admin/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
                                     <!--end::Action-->
                                 </div>
                                 <!--end::Record-->
                                 <!--begin::Record-->
                                 <div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0">
                                     <!--begin::Title-->
-                                    <a href="/admin/apps/projects/project.html" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
+                                    <a href="/admin/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
                                     <!--end::Title-->
                                     <!--begin::Label-->
                                     <div class="min-w-175px">
@@ -8576,7 +8576,7 @@ License: For each use you must have a valid license purchased only from above li
                                     </div>
                                     <!--end::Progress-->
                                     <!--begin::Action-->
-                                    <a href="/admin/apps/projects/project.html" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+                                    <a href="/admin/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
                                     <!--end::Action-->
                                 </div>
                                 <!--end::Record-->
@@ -8681,7 +8681,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-semibold">
                                             <!--begin::Desc-->
-                                            <a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+                                            <a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
                                             <!--end::Desc-->
                                             <!--begin::Number-->
                                             <div class="text-gray-400">1.9mb</div>
@@ -8693,7 +8693,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin::Item-->
                                     <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
                                         <!--begin::Icon-->
-                                        <img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+                                        <img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
                                         <!--end::Icon-->
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-semibold">
@@ -8710,7 +8710,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--begin::Item-->
                                     <div class="d-flex flex-aligns-center">
                                         <!--begin::Icon-->
-                                        <img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+                                        <img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
                                         <!--end::Icon-->
                                         <!--begin::Info-->
                                         <div class="ms-1 fw-semibold">
@@ -9043,7 +9043,7 @@ License: For each use you must have a valid license purchased only from above li
         <!--end::Body-->
         <!--begin::Footer-->
         <div class="card-footer py-5 text-center" id="kt_activities_footer">
-            <a href="/admin/pages/user-profile/activity.html" class="btn btn-bg-body text-primary">View All Activities
+            <a href="/admin/pages/user-profile/activity" class="btn btn-bg-body text-primary">View All Activities
                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                 <span class="svg-icon svg-icon-3 svg-icon-primary">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10008,7 +10008,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Wrapper-->
                         <div class="d-flex flex-column me-2 me-lg-5">
                             <!--begin::Title-->
-                            <a href="https://preview.keenthemes.com/metronic8/layout-builder.html" class="text-dark text-hover-primary fw-bold fs-6 fs-lg-4 mb-1">Layout Builder</a>
+                            <a href="https://preview.keenthemes.com/metronic8/layout-builder" class="text-dark text-hover-primary fw-bold fs-6 fs-lg-4 mb-1">Layout Builder</a>
                             <!--end::Title-->
                             <!--begin::Description-->
                             <div class="text-muted fw-semibold fs-7 fs-lg-6">Build your layout, preview it and export the HTML for server side integration.</div>

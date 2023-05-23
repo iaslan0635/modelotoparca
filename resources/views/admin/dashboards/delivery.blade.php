@@ -27,7 +27,7 @@
 						<a class="btn btn-sm bg-white btn-color-gray-800 me-2" data-bs-target="#kt_modal_bidding" data-bs-toggle="modal">New Delivery</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="/admin/pages/user-profile/projects.html">Quick Guide</a>
+						<a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="/admin/pages/user-profile/projects">Quick Guide</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->
@@ -1487,7 +1487,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">Add Product</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">Add Product</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>
@@ -1509,7 +1509,7 @@
 							<!--end::Icon-->
 							<!--begin::Section-->
 							<div class="flex-grow-1">
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Fjallraven</a>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Fjallraven</a>
 								<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-6437</span>
 							</div>
 							<!--end::Section-->
@@ -1532,7 +1532,7 @@
 							<!--end::Icon-->
 							<!--begin::Section-->
 							<div class="flex-grow-1">
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Nike AirMax</a>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Nike AirMax</a>
 								<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-1836</span>
 							</div>
 							<!--end::Section-->
@@ -1555,7 +1555,7 @@
 							<!--end::Icon-->
 							<!--begin::Section-->
 							<div class="flex-grow-1">
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Bose QC 35</a>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Bose QC 35</a>
 								<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-6254</span>
 							</div>
 							<!--end::Section-->
@@ -1578,7 +1578,7 @@
 							<!--end::Icon-->
 							<!--begin::Section-->
 							<div class="flex-grow-1">
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Greeny</a>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Greeny</a>
 								<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-1746</span>
 							</div>
 							<!--end::Section-->
@@ -1601,7 +1601,7 @@
 							<!--end::Icon-->
 							<!--begin::Section-->
 							<div class="flex-grow-1">
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Apple Watches</a>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Apple Watches</a>
 								<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-6245</span>
 							</div>
 							<!--end::Section-->
@@ -1624,7 +1624,7 @@
 							<!--end::Icon-->
 							<!--begin::Section-->
 							<div class="flex-grow-1">
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Friendly Robot</a>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Friendly Robot</a>
 								<span class="text-gray-400 fw-semibold d-block fs-7">Item: #XDG-2347</span>
 							</div>
 							<!--end::Section-->
@@ -1655,7 +1655,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">Add Product</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">Add Product</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>

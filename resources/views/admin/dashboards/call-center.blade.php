@@ -267,7 +267,7 @@
 											<!--end::Symbol-->
 											<!--begin::Info-->
 											<div class="m-0">
-												<a href="/admin/pages/user-profile/projects.html" class="text-white text-opacity-75 fs-8">Projects</a>
+												<a href="/admin/pages/user-profile/projects" class="text-white text-opacity-75 fs-8">Projects</a>
 												<span class="fw-bold text-white fs-7 d-block">Up to 500</span>
 											</div>
 											<!--end::Info-->
@@ -291,7 +291,7 @@
 											<!--end::Symbol-->
 											<!--begin::Info-->
 											<div class="m-0">
-												<a href="/admin/apps/user-management/users/list.html" class="text-white text-opacity-75 fs-8">Tasks</a>
+												<a href="/admin/apps/user-management/users/list" class="text-white text-opacity-75 fs-8">Tasks</a>
 												<span class="fw-bold text-white fs-7 d-block">Unlimited</span>
 											</div>
 											<!--end::Info-->
@@ -866,7 +866,7 @@
 												<img src="assets/media/avatars/300-3.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/apps/projects/users.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
+												<a href="/admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Haiti</span>
 											</div>
 										</div>
@@ -913,7 +913,7 @@
 												<img src="assets/media/avatars/300-10.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/apps/projects/users.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
+												<a href="/admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jane Cooper</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Monaco</span>
 											</div>
 										</div>
@@ -960,7 +960,7 @@
 												<img src="assets/media/avatars/300-9.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/apps/projects/users.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
+												<a href="/admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Jacob Jones</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Poland</span>
 											</div>
 										</div>
@@ -1007,7 +1007,7 @@
 												<img src="assets/media/avatars/300-2.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/apps/projects/users.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
+												<a href="/admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Kiribatir</span>
 											</div>
 										</div>
@@ -1054,7 +1054,7 @@
 												<img src="assets/media/avatars/300-1.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/apps/projects/users.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ralph Edwards</a>
+												<a href="/admin/apps/projects/users" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Ralph Edwards</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Iceland</span>
 											</div>
 										</div>
@@ -1123,7 +1123,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">PDF Report</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>
@@ -1153,7 +1153,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">PDF Report</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>

@@ -643,7 +643,7 @@
 							<!--end::Title-->
 							<!--begin::Notice-->
 							<div class="text-muted fw-semibold fs-6">If you need more info, please
-							<a href="/admin/authentication/layouts/corporate/sign-in.html" class="link-primary fw-bold">Sign In</a>.</div>
+							<a href="/admin/authentication/layouts/corporate/sign-in" class="link-primary fw-bold">Sign In</a>.</div>
 							<!--end::Notice-->
 						</div>
 						<!--end::Heading-->
@@ -672,7 +672,7 @@
 									<div class="fw-semibold">
 										<h4 class="text-gray-900 fw-bold">We need your attention!</h4>
 										<div class="fs-6 text-gray-700">To start using great tools, please,
-										<a href="/admin/utilities/wizards/vertical.html" class="fw-bold">Create Team Platform</a></div>
+										<a href="/admin/utilities/wizards/vertical" class="fw-bold">Create Team Platform</a></div>
 									</div>
 									<!--end::Content-->
 								</div>

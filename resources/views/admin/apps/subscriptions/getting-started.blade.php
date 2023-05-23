@@ -15,7 +15,7 @@
 				<br />Kickstart your business by adding a your first subscription</p>
 				<!--end::Description-->
 				<!--begin::Action-->
-				<a href="/admin/apps/subscriptions/add.html" class="btn btn-primary">Add Subscription</a>
+				<a href="/admin/apps/subscriptions/add" class="btn btn-primary">Add Subscription</a>
 				<!--end::Action-->
 			</div>
 			<!--end::Wrapper-->

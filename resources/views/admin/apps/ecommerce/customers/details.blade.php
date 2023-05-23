@@ -58,7 +58,7 @@
 						<!--begin::Details item-->
 						<div class="fw-bold mt-5">Latest Transaction</div>
 						<div class="text-gray-600">
-							<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary">#14534</a>
+							<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary">#14534</a>
 						</div>
 						<!--begin::Details item-->
 					</div>
@@ -183,7 +183,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#15998</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15998</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->
@@ -206,7 +206,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#14829</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14829</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->
@@ -229,7 +229,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#14492</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14492</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->
@@ -252,7 +252,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#15461</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15461</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->
@@ -275,7 +275,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#14630</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14630</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->
@@ -298,7 +298,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#15897</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15897</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->
@@ -321,7 +321,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#15692</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15692</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->
@@ -344,7 +344,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#14373</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#14373</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->
@@ -367,7 +367,7 @@
 									<tr>
 										<!--begin::order=-->
 										<td>
-											<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-600 text-hover-primary mb-1">#15068</a>
+											<a href="/admin/apps/ecommerce/sales/details" class="text-gray-600 text-hover-primary mb-1">#15068</a>
 										</td>
 										<!--end::order=-->
 										<!--begin::Status=-->

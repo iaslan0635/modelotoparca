@@ -2504,7 +2504,7 @@
 											<!--begin::Info-->
 											<div class="m-0">
 												<span class="fw-semibold text-gray-400 d-block fs-8">Manager</span>
-												<a href="/admin/pages/user-profile/overview.html" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
+												<a href="/admin/pages/user-profile/overview" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
 											</div>
 											<!--end::Info-->
 										</div>
@@ -2585,7 +2585,7 @@
 									</div>
 									<!--end::Users group-->
 									<!--begin::Actions-->
-									<a href="/admin/apps/projects/project.html" class="text-primary opacity-75-hover fs-6 fw-semibold">View Project
+									<a href="/admin/apps/projects/project" class="text-primary opacity-75-hover fs-6 fw-semibold">View Project
 									<!--begin::Svg Icon | path: icons/duotune/arrows/arr095.svg-->
 									<span class="svg-icon svg-icon-4 svg-icon-gray-800 ms-1">
 										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3198,7 +3198,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">History</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">History</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>
@@ -3500,7 +3500,7 @@
 						<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_new_address" data-bs-toggle="modal">Try Now</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/apps/user-management/users/view.html">Learn More</a>
+						<a class="btn btn-sm btn-light" href="/admin/apps/user-management/users/view">Learn More</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->

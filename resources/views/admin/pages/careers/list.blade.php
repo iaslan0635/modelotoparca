@@ -537,7 +537,7 @@
 						<!--end::Section-->
 						<!--end::Accordion-->
 						<!--begin::Apply-->
-						<a href="/admin/pages/careers/apply.html" class="btn btn-sm btn-primary mt-5">Apply Now</a>
+						<a href="/admin/pages/careers/apply" class="btn btn-sm btn-primary mt-5">Apply Now</a>
 						<!--end::Apply-->
 					</div>
 					<!--end::Job-->
@@ -1045,7 +1045,7 @@
 						<!--end::Section-->
 						<!--end::Accordion-->
 						<!--begin::Apply-->
-						<a href="/admin/pages/careers/apply.html" class="btn btn-sm btn-primary mt-5">Apply Now</a>
+						<a href="/admin/pages/careers/apply" class="btn btn-sm btn-primary mt-5">Apply Now</a>
 						<!--end::Apply-->
 					</div>
 					<!--end::Job-->
@@ -1170,7 +1170,7 @@
 							</div>
 							<!--end::Item-->
 							<!--begin::Link-->
-							<a href="/admin/pages/blog/post.html" class="link-primary fs-6 fw-semibold">Explore More</a>
+							<a href="/admin/pages/blog/post" class="link-primary fs-6 fw-semibold">Explore More</a>
 							<!--end::Link-->
 						</div>
 						<!--end::Body-->
@@ -1214,7 +1214,7 @@
 							<!--begin::Body-->
 							<div class="m-0">
 								<!--begin::Title-->
-								<a href="/admin/pages/user-profile/overview.html" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+								<a href="/admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 								<!--end::Title-->
 								<!--begin::Text-->
 								<div class="fw-semibold fs-5 text-gray-600 text-dark mt-3 mb-5">We’ve been focused on making a the from also not been afraid to and step away been focused create eye</div>
@@ -1222,7 +1222,7 @@
 								<!--begin::Content-->
 								<div class="fs-6 fw-bold">
 									<!--begin::Author-->
-									<a href="/admin/apps/projects/users.html" class="text-gray-700 text-hover-primary">Jane Miller</a>
+									<a href="/admin/apps/projects/users" class="text-gray-700 text-hover-primary">Jane Miller</a>
 									<!--end::Author-->
 									<!--begin::Date-->
 									<span class="text-muted">on Mar 21 2021</span>
@@ -1254,7 +1254,7 @@
 							<!--begin::Body-->
 							<div class="m-0">
 								<!--begin::Title-->
-								<a href="/admin/pages/user-profile/overview.html" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+								<a href="/admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 								<!--end::Title-->
 								<!--begin::Text-->
 								<div class="fw-semibold fs-5 text-gray-600 text-dark mt-3 mb-5">We’ve been focused on making the from v4 to v5 but we have also not been afraid to step away been focused</div>
@@ -1262,7 +1262,7 @@
 								<!--begin::Content-->
 								<div class="fs-6 fw-bold">
 									<!--begin::Author-->
-									<a href="/admin/apps/projects/users.html" class="text-gray-700 text-hover-primary">Cris Morgan</a>
+									<a href="/admin/apps/projects/users" class="text-gray-700 text-hover-primary">Cris Morgan</a>
 									<!--end::Author-->
 									<!--begin::Date-->
 									<span class="text-muted">on Apr 14 2021</span>
@@ -1294,7 +1294,7 @@
 							<!--begin::Body-->
 							<div class="m-0">
 								<!--begin::Title-->
-								<a href="/admin/pages/user-profile/overview.html" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
+								<a href="/admin/pages/user-profile/overview" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base">Admin Panel - How To Started the Dashboard Tutorial</a>
 								<!--end::Title-->
 								<!--begin::Text-->
 								<div class="fw-semibold fs-5 text-gray-600 text-dark mt-3 mb-5">We’ve been focused on making the from v4 to v5 but we’ve also not been afraid to step away been focused</div>
@@ -1302,7 +1302,7 @@
 								<!--begin::Content-->
 								<div class="fs-6 fw-bold">
 									<!--begin::Author-->
-									<a href="/admin/apps/projects/users.html" class="text-gray-700 text-hover-primary">Carles Nilson</a>
+									<a href="/admin/apps/projects/users" class="text-gray-700 text-hover-primary">Carles Nilson</a>
 									<!--end::Author-->
 									<!--begin::Date-->
 									<span class="text-muted">on May 14 2021</span>

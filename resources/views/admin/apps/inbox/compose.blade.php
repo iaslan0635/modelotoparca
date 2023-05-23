@@ -10,7 +10,7 @@
 				<!--begin::Aside content-->
 				<div class="card-body">
 					<!--begin::Button-->
-					<a href="/admin/apps/inbox/compose.html" class="btn btn-primary fw-bold w-100 mb-8">New Message</a>
+					<a href="/admin/apps/inbox/compose" class="btn btn-primary fw-bold w-100 mb-8">New Message</a>
 					<!--end::Button-->
 					<!--begin::Menu-->
 					<div class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary mb-10">

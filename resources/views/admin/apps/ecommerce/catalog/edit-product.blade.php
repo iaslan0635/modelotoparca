@@ -2,7 +2,7 @@
 @section('content')
 <div id="kt_app_content_container" class="app-container container-xxl">
 	<!--begin::Form-->
-	<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="/admin/apps/ecommerce/catalog/products.html">
+	<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="/admin/apps/ecommerce/catalog/products">
 		<!--begin::Aside column-->
 		<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
 			<!--begin::Thumbnail settings-->
@@ -128,7 +128,7 @@
 					<!--end::Description-->
 					<!--end::Input group-->
 					<!--begin::Button-->
-					<a href="/admin/apps/ecommerce/catalog/add-category.html" class="btn btn-light-primary btn-sm mb-10">
+					<a href="/admin/apps/ecommerce/catalog/add-category" class="btn btn-light-primary btn-sm mb-10">
 					<!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
 					<span class="svg-icon svg-icon-2">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -917,7 +917,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<div class="symbol-label bg-light-danger">
@@ -995,7 +995,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<span class="symbol-label" style="background-image:url(assets/media/avatars/300-1.jpg)"></span>
@@ -1071,7 +1071,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<span class="symbol-label" style="background-image:url(assets/media/avatars/300-5.jpg)"></span>
@@ -1147,7 +1147,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<span class="symbol-label" style="background-image:url(assets/media/avatars/300-25.jpg)"></span>
@@ -1223,7 +1223,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<div class="symbol-label bg-light-warning">
@@ -1301,7 +1301,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<span class="symbol-label" style="background-image:url(assets/media/avatars/300-9.jpg)"></span>
@@ -1377,7 +1377,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<div class="symbol-label bg-light-danger">
@@ -1455,7 +1455,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<div class="symbol-label bg-light-primary">
@@ -1533,7 +1533,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<span class="symbol-label" style="background-image:url(assets/media/avatars/300-23.jpg)"></span>
@@ -1609,7 +1609,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<div class="symbol-label bg-light-danger">
@@ -1687,7 +1687,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<span class="symbol-label" style="background-image:url(assets/media/avatars/300-12.jpg)"></span>
@@ -1763,7 +1763,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<div class="symbol-label bg-light-info">
@@ -1841,7 +1841,7 @@
 												<!--end::Rating-->
 											</td>
 											<td>
-												<a href="/admin/apps/inbox/reply.html" class="d-flex text-dark text-gray-800 text-hover-primary">
+												<a href="/admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
 													<!--begin::Avatar-->
 													<div class="symbol symbol-circle symbol-25px me-3">
 														<span class="symbol-label" style="background-image:url(assets/media/avatars/300-13.jpg)"></span>
@@ -1872,7 +1872,7 @@
 			<!--end::Tab content-->
 			<div class="d-flex justify-content-end">
 				<!--begin::Button-->
-				<a href="/admin/apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+				<a href="/admin/apps/ecommerce/catalog/products" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
 				<!--end::Button-->
 				<!--begin::Button-->
 				<button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">

@@ -25,7 +25,7 @@
 			<!--begin::Card toolbar-->
 			<div class="card-toolbar">
 				<!--begin::Add customer-->
-				<a href="/admin/apps/ecommerce/catalog/add-category.html" class="btn btn-primary">Add Category</a>
+				<a href="/admin/apps/ecommerce/catalog/add-category" class="btn btn-primary">Add Category</a>
 				<!--end::Add customer-->
 			</div>
 			<!--end::Card toolbar-->
@@ -66,13 +66,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/68.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Computers</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Computers</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Our computers and tablets include all the big brands.</div>
@@ -102,7 +102,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -129,13 +129,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/71.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Watches</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Watches</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Our range of watches are perfect whether you’re looking to upgrade</div>
@@ -165,7 +165,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -192,13 +192,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/58.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Headphones</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Headphones</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Our big range of headphones makes it easy to upgrade your device at a great price.</div>
@@ -228,7 +228,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -255,13 +255,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/52.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Footwear</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Footwear</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Whatever your activity needs are, we’ve got you covered.</div>
@@ -291,7 +291,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -318,13 +318,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/76.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Cameras</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Cameras</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">You’ll find exactly what you’re looking for with our huge range of cameras.</div>
@@ -354,7 +354,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -381,13 +381,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/207.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Shirts</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Shirts</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Any occasion, any time, we have everything you'll ever need.</div>
@@ -417,7 +417,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -444,13 +444,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/50.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Household</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Household</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Spice up your home decor with our wide selection.</div>
@@ -480,7 +480,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -507,13 +507,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/193.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Toys</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Toys</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Get the perfect gift for the little ones.</div>
@@ -543,7 +543,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -570,13 +570,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/169.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Handbags</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Handbags</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Great fashion, great selections, great prices</div>
@@ -606,7 +606,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -633,13 +633,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/177.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Wines</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Wines</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">Great taste, great selections, great prices</div>
@@ -669,7 +669,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -696,13 +696,13 @@
 						<td>
 							<div class="d-flex">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-category" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/151.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-category.html" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Sandals</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-category" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1" data-kt-ecommerce-category-filter="category_name">Sandals</a>
 									<!--end::Title-->
 									<!--begin::Description-->
 									<div class="text-muted fs-7 fw-bold">In season summer footwear with a huge range of options</div>
@@ -732,7 +732,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/ecommerce/catalog/add-category.html" class="menu-link px-3">Edit</a>
+									<a href="/admin/apps/ecommerce/catalog/add-category" class="menu-link px-3">Edit</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->

@@ -97,7 +97,7 @@
 											<td>
 												<div class="d-flex align-items-center">
 													<!--begin::Thumbnail-->
-													<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+													<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 														<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/1.gif);"></span>
 													</a>
 													<!--end::Thumbnail-->
@@ -125,7 +125,7 @@
 											<td>
 												<div class="d-flex align-items-center">
 													<!--begin::Thumbnail-->
-													<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+													<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 														<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/100.gif);"></span>
 													</a>
 													<!--end::Thumbnail-->
@@ -196,7 +196,7 @@
 					</div>
 					<!-- end::Actions-->
 					<!-- begin::Action-->
-					<a href="/admin/apps/invoices/create.html" class="btn btn-primary my-1">Create Invoice</a>
+					<a href="/admin/apps/invoices/create" class="btn btn-primary my-1">Create Invoice</a>
 					<!-- end::Action-->
 				</div>
 				<!-- end::Footer-->

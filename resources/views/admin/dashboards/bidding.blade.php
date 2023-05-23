@@ -36,7 +36,7 @@
 									<!--begin::Title-->
 									<div class="mb-6">
 										<span class="text-gray-400 fs-7 fw-bold me-2 d-block lh-1 pb-1">NFT ID: 34356776</span>
-										<a href="/admin/apps/projects/users.html" class="text-gray-800 text-hover-primary fs-1 fw-bold">California Art</a>
+										<a href="/admin/apps/projects/users" class="text-gray-800 text-hover-primary fs-1 fw-bold">California Art</a>
 									</div>
 									<!--end::Title-->
 									<!--begin::Items-->
@@ -51,7 +51,7 @@
 											<!--begin::Info-->
 											<div class="m-0">
 												<span class="fw-semibold text-gray-400 d-block fs-8">Creator</span>
-												<a href="/admin/apps/projects/users.html" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
+												<a href="/admin/apps/projects/users" class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
 											</div>
 											<!--end::Info-->
 										</div>
@@ -152,7 +152,7 @@
 					<a class="btn btn-sm btn-primary flex-shrink-0 me-2" data-bs-target="#kt_modal_bidding" data-bs-toggle="modal">Place a Bid</a>
 					<!--end::Link-->
 					<!--begin::Link-->
-					<a class="btn btn-sm btn-light flex-shrink-0" href="/admin/apps/ecommerce/sales/listing.html">View Item</a>
+					<a class="btn btn-sm btn-light flex-shrink-0" href="/admin/apps/ecommerce/sales/listing">View Item</a>
 					<!--end::Link-->
 				</div>
 				<!--end::Footer-->
@@ -199,7 +199,7 @@
 					<a class="btn btn-sm btn-primary flex-shrink-0 me-2" data-bs-target="#kt_modal_bidding" data-bs-toggle="modal">Place a Bid</a>
 					<!--end::Link-->
 					<!--begin::Link-->
-					<a class="btn btn-sm btn-light flex-shrink-0" href="/admin/apps/ecommerce/sales/listing.html">View Item</a>
+					<a class="btn btn-sm btn-light flex-shrink-0" href="/admin/apps/ecommerce/sales/listing">View Item</a>
 					<!--end::Link-->
 				</div>
 				<!--end::Footer-->
@@ -701,7 +701,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">History</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">History</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>
@@ -1313,7 +1313,7 @@
 												<img src="assets/media/avatars/300-1.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/account/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Brooklyn Simmons</a>
+												<a href="/admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Brooklyn Simmons</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 											</div>
 										</div>
@@ -1366,7 +1366,7 @@
 												<img src="assets/media/avatars/300-2.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/account/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Annette Black</a>
+												<a href="/admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Annette Black</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 											</div>
 										</div>
@@ -1419,7 +1419,7 @@
 												<img src="assets/media/avatars/300-12.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/account/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
+												<a href="/admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Esther Howard</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 											</div>
 										</div>
@@ -1472,7 +1472,7 @@
 												<img src="assets/media/avatars/300-11.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/account/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
+												<a href="/admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Guy Hawkins</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 											</div>
 										</div>
@@ -1525,7 +1525,7 @@
 												<img src="assets/media/avatars/300-3.jpg" class="" alt="" />
 											</div>
 											<div class="d-flex justify-content-start flex-column">
-												<a href="/admin/account/overview.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinney</a>
+												<a href="/admin/account/overview" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Marvin McKinney</a>
 												<span class="text-gray-400 fw-semibold d-block fs-7">Zuid Area</span>
 											</div>
 										</div>
@@ -1613,7 +1613,7 @@
 						<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_create_app" data-bs-toggle="modal">Try Now</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/account/settings.html">Learn More</a>
+						<a class="btn btn-sm btn-light" href="/admin/account/settings">Learn More</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->
@@ -1743,7 +1743,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#XGY-346</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#XGY-346</a>
 								</td>
 								<td class="text-end">7 min ago</td>
 								<td class="text-end">
@@ -1778,7 +1778,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#YHD-047</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#YHD-047</a>
 								</td>
 								<td class="text-end">52 min ago</td>
 								<td class="text-end">
@@ -1813,7 +1813,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SRR-678</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#SRR-678</a>
 								</td>
 								<td class="text-end">1 hour ago</td>
 								<td class="text-end">
@@ -1848,7 +1848,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#PXF-534</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#PXF-534</a>
 								</td>
 								<td class="text-end">3 hour ago</td>
 								<td class="text-end">
@@ -1883,7 +1883,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#XGD-249</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#XGD-249</a>
 								</td>
 								<td class="text-end">2 day ago</td>
 								<td class="text-end">
@@ -1918,7 +1918,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SKP-035</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#SKP-035</a>
 								</td>
 								<td class="text-end">2 day ago</td>
 								<td class="text-end">
@@ -1953,7 +1953,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SKP-567</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#SKP-567</a>
 								</td>
 								<td class="text-end">7 min ago</td>
 								<td class="text-end">

@@ -10,7 +10,7 @@
 				<!--begin::Aside content-->
 				<div class="card-body">
 					<!--begin::Button-->
-					<a href="/admin/apps/inbox/compose.html" class="btn btn-primary fw-bold w-100 mb-8">New Message</a>
+					<a href="/admin/apps/inbox/compose" class="btn btn-primary fw-bold w-100 mb-8">New Message</a>
 					<!--end::Button-->
 					<!--begin::Menu-->
 					<div class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary mb-10">
@@ -406,7 +406,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<div class="symbol-label bg-light-danger">
@@ -424,7 +424,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Digital PPV Customer Confirmation</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Thank you for ordering UFC 240 Holloway vs Edgar Alternate camera angles...</span>
@@ -477,7 +477,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<span class="symbol-label" style="background-image:url(assets/media/avatars/300-1.jpg)"></span>
@@ -493,7 +493,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Your iBuy.com grocery shopping confirmation</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Please make sure that you have one of the following cards with you when we deliver your order...</span>
@@ -542,7 +542,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<span class="symbol-label" style="background-image:url(assets/media/avatars/300-5.jpg)"></span>
@@ -558,7 +558,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Your Order #224820998666029 has been Confirmed</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Your Order #224820998666029 has been placed on Saturday, 29 June</span>
@@ -607,7 +607,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<span class="symbol-label" style="background-image:url(assets/media/avatars/300-25.jpg)"></span>
@@ -623,7 +623,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Payment Notification DLOP2329KD</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Your payment of 4500USD to AirCar has been authorized and confirmed, thank you your account. This...</span>
@@ -675,7 +675,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<div class="symbol-label bg-light-warning">
@@ -693,7 +693,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Congratulations on your iRun Coach subscription</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Congratulations on your iRun Coach subscription. You made no space for excuses and you</span>
@@ -742,7 +742,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<span class="symbol-label" style="background-image:url(assets/media/avatars/300-9.jpg)"></span>
@@ -758,7 +758,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Pay bills & win up to 600$ Cashback!</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Congratulations on your iRun Coach subscription. You made no space for excuses and you decided on a healthier and happier life...</span>
@@ -807,7 +807,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<div class="symbol-label bg-light-danger">
@@ -825,7 +825,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Activate your LIPO Account today</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Thank you for creating a LIPO Account. Please click the link below to activate your account.</span>
@@ -877,7 +877,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<div class="symbol-label bg-light-primary">
@@ -895,7 +895,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">About your request for PalmLake</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">What you requested can't be arranged ahead of time but PalmLake said they'll do their best to accommodate you upon arrival....</span>
@@ -944,7 +944,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<span class="symbol-label" style="background-image:url(assets/media/avatars/300-23.jpg)"></span>
@@ -960,7 +960,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Welcome, Patty</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Discover interesting ideas and unique perspectives. Read, explore and follow your interests. Get personalized recommendations delivered to you....</span>
@@ -1009,7 +1009,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<div class="symbol-label bg-light-danger">
@@ -1027,7 +1027,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Free Video Marketing Guide</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Video has rolled into every marketing platform or channel, leaving...</span>
@@ -1079,7 +1079,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<span class="symbol-label" style="background-image:url(assets/media/avatars/300-12.jpg)"></span>
@@ -1095,7 +1095,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Your iBuy.com grocery shopping confirmation</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Please make sure that you have one of the following cards with you when we deliver your order...</span>
@@ -1144,7 +1144,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<div class="symbol-label bg-light-info">
@@ -1162,7 +1162,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Your Order #224820998666029 has been Confirmed</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Your Order #224820998666029 has been placed on Saturday, 07 March</span>
@@ -1211,7 +1211,7 @@
 								</td>
 								<!--begin::Author-->
 								<td class="w-150px w-md-175px">
-									<a href="/admin/apps/inbox/reply.html" class="d-flex align-items-center text-dark">
+									<a href="/admin/apps/inbox/reply" class="d-flex align-items-center text-dark">
 										<!--begin::Avatar-->
 										<div class="symbol symbol-35px me-3">
 											<span class="symbol-label" style="background-image:url(assets/media/avatars/300-13.jpg)"></span>
@@ -1227,7 +1227,7 @@
 								<td>
 									<div class="text-dark mb-1">
 										<!--begin::Heading-->
-										<a href="/admin/apps/inbox/reply.html" class="text-dark">
+										<a href="/admin/apps/inbox/reply" class="text-dark">
 											<span class="fw-bold">Payment Notification DLOP2329KD</span>
 											<span class="fw-bold d-none d-md-inine">-</span>
 											<span class="d-none d-md-inine text-muted">Your payment of 4500USD to AirCar has been authorized and confirmed, thank you your account. This...</span>

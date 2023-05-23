@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
 <div id="kt_app_content_container" class="app-container container-xxl">
-	<form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="/admin/apps/ecommerce/catalog/categories.html">
+	<form id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="/admin/apps/ecommerce/catalog/categories">
 		<!--begin::Aside column-->
 		<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
 			<!--begin::Thumbnail settings-->
@@ -377,7 +377,7 @@
 			<!--end::Automation-->
 			<div class="d-flex justify-content-end">
 				<!--begin::Button-->
-				<a href="/admin/apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+				<a href="/admin/apps/ecommerce/catalog/products" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
 				<!--end::Button-->
 				<!--begin::Button-->
 				<button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">

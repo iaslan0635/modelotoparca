@@ -1071,7 +1071,7 @@
 						<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_new_address" data-bs-toggle="modal">Try Now</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/apps/user-management/users/view.html">Learn More</a>
+						<a class="btn btn-sm btn-light" href="/admin/apps/user-management/users/view">Learn More</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->

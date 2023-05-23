@@ -179,7 +179,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->
@@ -255,7 +255,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->
@@ -326,7 +326,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->
@@ -402,7 +402,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->
@@ -473,7 +473,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->
@@ -549,7 +549,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->
@@ -620,7 +620,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->
@@ -696,7 +696,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->
@@ -767,7 +767,7 @@
 		<!--begin::Col-->
 		<div class="col-md-6 col-xl-4">
 			<!--begin::Card-->
-			<a href="/admin/apps/projects/project.html" class="card border-hover-primary">
+			<a href="/admin/apps/projects/project" class="card border-hover-primary">
 				<!--begin::Card header-->
 				<div class="card-header border-0 pt-9">
 					<!--begin::Card Title-->

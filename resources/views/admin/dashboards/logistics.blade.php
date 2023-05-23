@@ -29,7 +29,7 @@
 						<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_offer_a_deal" data-bs-toggle="modal">Start Now</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/apps/invoices/view/invoice-2.html">Quick Guide</a>
+						<a class="btn btn-sm btn-light" href="/admin/apps/invoices/view/invoice-2">Quick Guide</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->
@@ -1416,7 +1416,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="/admin/apps/ecommerce/sales/listing.html" class="btn btn-sm btn-light">View All</a>
+								<a href="/admin/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -1444,7 +1444,7 @@
 							<!--end::Title-->
 							<!--begin::Toolbar-->
 							<div class="card-toolbar">
-								<a href="/admin/apps/ecommerce/sales/listing.html" class="btn btn-sm btn-light">View All</a>
+								<a href="/admin/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
 							</div>
 							<!--end::Toolbar-->
 						</div>
@@ -2051,7 +2051,7 @@
 					</div>
 					<!--end::Item-->
 					<div class="text-center pt-9">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-primary">Add Vehicle</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Vehicle</a>
 					</div>
 				</div>
 				<!--end::Body-->

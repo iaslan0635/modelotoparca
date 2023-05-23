@@ -237,37 +237,37 @@
 			<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/project.html">Overview</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/project">Overview</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/targets.html">Targets</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/targets">Targets</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/budget.html">Budget</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/budget">Budget</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/users.html">Users</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/users">Users</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6 active" href="/admin/apps/projects/files.html">Files</a>
+					<a class="nav-link text-active-primary py-5 me-6 active" href="/admin/apps/projects/files">Files</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/activity.html">Activity</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/activity">Activity</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/settings.html">Settings</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/settings">Settings</a>
 				</li>
 				<!--end::Nav item-->
 			</ul>
@@ -296,7 +296,7 @@
 				<input type="text" id="kt_filter_search" class="form-control form-control-sm form-control-solid bg-body fw-semibold fs-7 w-150px ps-11" placeholder="Search" />
 			</div>
 			<!--end::Search-->
-			<a href="/admin/apps/file-manager/folders.html" class='btn btn-primary btn-sm fw-bolder'>File Manager</a>
+			<a href="/admin/apps/file-manager/folders" class='btn btn-primary btn-sm fw-bolder'>File Manager</a>
 		</div>
 		<!--end::Controls-->
 	</div>
@@ -310,7 +310,7 @@
 				<!--begin::Card body-->
 				<div class="card-body d-flex justify-content-center text-center flex-column p-8">
 					<!--begin::Name-->
-					<a href="/admin/apps/file-manager/files.html" class="text-gray-800 text-hover-primary d-flex flex-column">
+					<a href="/admin/apps/file-manager/files" class="text-gray-800 text-hover-primary d-flex flex-column">
 						<!--begin::Image-->
 						<div class="symbol symbol-60px mb-5">
 							<img src="assets/media/svg/files/pdf.svg" class="theme-light-show" alt="" />
@@ -338,7 +338,7 @@
 				<!--begin::Card body-->
 				<div class="card-body d-flex justify-content-center text-center flex-column p-8">
 					<!--begin::Name-->
-					<a href="/admin/apps/file-manager/files.html" class="text-gray-800 text-hover-primary d-flex flex-column">
+					<a href="/admin/apps/file-manager/files" class="text-gray-800 text-hover-primary d-flex flex-column">
 						<!--begin::Image-->
 						<div class="symbol symbol-60px mb-5">
 							<img src="assets/media/svg/files/doc.svg" class="theme-light-show" alt="" />
@@ -366,7 +366,7 @@
 				<!--begin::Card body-->
 				<div class="card-body d-flex justify-content-center text-center flex-column p-8">
 					<!--begin::Name-->
-					<a href="/admin/apps/file-manager/files.html" class="text-gray-800 text-hover-primary d-flex flex-column">
+					<a href="/admin/apps/file-manager/files" class="text-gray-800 text-hover-primary d-flex flex-column">
 						<!--begin::Image-->
 						<div class="symbol symbol-60px mb-5">
 							<img src="assets/media/svg/files/css.svg" class="theme-light-show" alt="" />
@@ -394,7 +394,7 @@
 				<!--begin::Card body-->
 				<div class="card-body d-flex justify-content-center text-center flex-column p-8">
 					<!--begin::Name-->
-					<a href="/admin/apps/file-manager/files.html" class="text-gray-800 text-hover-primary d-flex flex-column">
+					<a href="/admin/apps/file-manager/files" class="text-gray-800 text-hover-primary d-flex flex-column">
 						<!--begin::Image-->
 						<div class="symbol symbol-60px mb-5">
 							<img src="assets/media/svg/files/ai.svg" class="theme-light-show" alt="" />
@@ -422,7 +422,7 @@
 				<!--begin::Card body-->
 				<div class="card-body d-flex justify-content-center text-center flex-column p-8">
 					<!--begin::Name-->
-					<a href="/admin/apps/file-manager/files.html" class="text-gray-800 text-hover-primary d-flex flex-column">
+					<a href="/admin/apps/file-manager/files" class="text-gray-800 text-hover-primary d-flex flex-column">
 						<!--begin::Image-->
 						<div class="symbol symbol-60px mb-5">
 							<img src="assets/media/svg/files/sql.svg" class="theme-light-show" alt="" />
@@ -450,7 +450,7 @@
 				<!--begin::Card body-->
 				<div class="card-body d-flex justify-content-center text-center flex-column p-8">
 					<!--begin::Name-->
-					<a href="/admin/apps/file-manager/files.html" class="text-gray-800 text-hover-primary d-flex flex-column">
+					<a href="/admin/apps/file-manager/files" class="text-gray-800 text-hover-primary d-flex flex-column">
 						<!--begin::Image-->
 						<div class="symbol symbol-60px mb-5">
 							<img src="assets/media/svg/files/xml.svg" class="theme-light-show" alt="" />
@@ -478,7 +478,7 @@
 				<!--begin::Card body-->
 				<div class="card-body d-flex justify-content-center text-center flex-column p-8">
 					<!--begin::Name-->
-					<a href="/admin/apps/file-manager/files.html" class="text-gray-800 text-hover-primary d-flex flex-column">
+					<a href="/admin/apps/file-manager/files" class="text-gray-800 text-hover-primary d-flex flex-column">
 						<!--begin::Image-->
 						<div class="symbol symbol-60px mb-5">
 							<img src="assets/media/svg/files/tif.svg" class="theme-light-show" alt="" />

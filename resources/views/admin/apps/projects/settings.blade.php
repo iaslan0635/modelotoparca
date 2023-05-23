@@ -237,37 +237,37 @@
 			<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/project.html">Overview</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/project">Overview</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/targets.html">Targets</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/targets">Targets</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/budget.html">Budget</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/budget">Budget</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/users.html">Users</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/users">Users</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/files.html">Files</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/files">Files</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/activity.html">Activity</a>
+					<a class="nav-link text-active-primary py-5 me-6" href="/admin/apps/projects/activity">Activity</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item">
-					<a class="nav-link text-active-primary py-5 me-6 active" href="/admin/apps/projects/settings.html">Settings</a>
+					<a class="nav-link text-active-primary py-5 me-6 active" href="/admin/apps/projects/settings">Settings</a>
 				</li>
 				<!--end::Nav item-->
 			</ul>

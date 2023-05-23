@@ -268,42 +268,42 @@
 			<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/overview.html">Overview</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/overview">Overview</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/settings.html">Settings</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/settings">Settings</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/security.html">Security</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/security">Security</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/billing.html">Billing</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/billing">Billing</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/statements.html">Statements</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/statements">Statements</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/referrals.html">Referrals</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/referrals">Referrals</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/api-keys.html">API Keys</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/api-keys">API Keys</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/logs.html">Logs</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/logs">Logs</a>
 				</li>
 				<!--end::Nav item-->
 			</ul>
@@ -404,7 +404,7 @@
 									<!--begin::Record-->
 									<div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5">
 										<!--begin::Title-->
-										<a href="/admin/apps/projects/project.html" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
+										<a href="/admin/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<div class="min-w-175px pe-2">
@@ -436,14 +436,14 @@
 										</div>
 										<!--end::Progress-->
 										<!--begin::Action-->
-										<a href="/admin/apps/projects/project.html" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+										<a href="/admin/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
 										<!--end::Action-->
 									</div>
 									<!--end::Record-->
 									<!--begin::Record-->
 									<div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0">
 										<!--begin::Title-->
-										<a href="/admin/apps/projects/project.html" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
+										<a href="/admin/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<div class="min-w-175px">
@@ -470,7 +470,7 @@
 										</div>
 										<!--end::Progress-->
 										<!--begin::Action-->
-										<a href="/admin/apps/projects/project.html" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+										<a href="/admin/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
 										<!--end::Action-->
 									</div>
 									<!--end::Record-->
@@ -575,7 +575,7 @@
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
 												<!--begin::Desc-->
-												<a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+												<a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 												<!--end::Desc-->
 												<!--begin::Number-->
 												<div class="text-gray-400">1.9mb</div>
@@ -587,7 +587,7 @@
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 											<!--begin::Icon-->
-											<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+											<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
@@ -604,7 +604,7 @@
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center">
 											<!--begin::Icon-->
-											<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+											<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
@@ -1032,7 +1032,7 @@
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
 												<!--begin::Desc-->
-												<a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+												<a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 												<!--end::Desc-->
 												<!--begin::Number-->
 												<div class="text-gray-400">1.9mb</div>
@@ -1044,7 +1044,7 @@
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 											<!--begin::Icon-->
-											<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+											<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
@@ -1061,7 +1061,7 @@
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center">
 											<!--begin::Icon-->
-											<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+											<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
@@ -1553,7 +1553,7 @@
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
 												<!--begin::Desc-->
-												<a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+												<a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 												<!--end::Desc-->
 												<!--begin::Number-->
 												<div class="text-gray-400">1.9mb</div>
@@ -1565,7 +1565,7 @@
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 											<!--begin::Icon-->
-											<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+											<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
@@ -1582,7 +1582,7 @@
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center">
 											<!--begin::Icon-->
-											<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+											<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
@@ -1708,7 +1708,7 @@
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
 												<!--begin::Desc-->
-												<a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+												<a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 												<!--end::Desc-->
 												<!--begin::Number-->
 												<div class="text-gray-400">1.9mb</div>
@@ -1720,7 +1720,7 @@
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 											<!--begin::Icon-->
-											<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+											<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">
@@ -1737,7 +1737,7 @@
 										<!--begin::Item-->
 										<div class="d-flex flex-aligns-center">
 											<!--begin::Icon-->
-											<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+											<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 											<!--end::Icon-->
 											<!--begin::Info-->
 											<div class="ms-1 fw-semibold">

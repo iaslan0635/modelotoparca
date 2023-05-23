@@ -173,7 +173,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -205,7 +205,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -228,7 +228,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -260,7 +260,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -283,7 +283,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -315,7 +315,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -338,7 +338,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -370,7 +370,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -393,7 +393,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Brian Cox</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Brian Cox</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -425,7 +425,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -448,7 +448,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Mikaela Collins</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Mikaela Collins</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -480,7 +480,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -503,7 +503,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Francis Mitcham</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Francis Mitcham</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -535,7 +535,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -558,7 +558,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Olivia Wild</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Olivia Wild</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -590,7 +590,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -613,7 +613,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Neil Owen</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Neil Owen</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -645,7 +645,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -668,7 +668,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Dan Wilson</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Dan Wilson</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -700,7 +700,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -723,7 +723,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Bold</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Emma Bold</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -755,7 +755,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -778,7 +778,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Ana Crown</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Ana Crown</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -810,7 +810,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -833,7 +833,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -865,7 +865,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -888,7 +888,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -920,7 +920,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -943,7 +943,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -975,7 +975,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -998,7 +998,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1030,7 +1030,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1053,7 +1053,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Brian Cox</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Brian Cox</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1085,7 +1085,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1108,7 +1108,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Mikaela Collins</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Mikaela Collins</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1140,7 +1140,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1163,7 +1163,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Francis Mitcham</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Francis Mitcham</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1195,7 +1195,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1218,7 +1218,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Olivia Wild</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Olivia Wild</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1250,7 +1250,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1273,7 +1273,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Neil Owen</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Neil Owen</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1305,7 +1305,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1328,7 +1328,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Dan Wilson</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Dan Wilson</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1360,7 +1360,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1383,7 +1383,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Bold</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Emma Bold</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1415,7 +1415,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1438,7 +1438,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Ana Crown</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Ana Crown</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1470,7 +1470,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1493,7 +1493,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1525,7 +1525,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1548,7 +1548,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1580,7 +1580,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1603,7 +1603,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1635,7 +1635,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1658,7 +1658,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1690,7 +1690,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1713,7 +1713,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Brian Cox</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Brian Cox</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1745,7 +1745,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1768,7 +1768,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Mikaela Collins</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Mikaela Collins</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1800,7 +1800,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1823,7 +1823,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Francis Mitcham</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Francis Mitcham</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1855,7 +1855,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1878,7 +1878,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Olivia Wild</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Olivia Wild</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1910,7 +1910,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1933,7 +1933,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Neil Owen</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Neil Owen</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -1965,7 +1965,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -1988,7 +1988,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Dan Wilson</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Dan Wilson</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -2020,7 +2020,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -2043,7 +2043,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Bold</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Emma Bold</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -2075,7 +2075,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -2098,7 +2098,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Ana Crown</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Ana Crown</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -2130,7 +2130,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -2153,7 +2153,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -2185,7 +2185,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -2208,7 +2208,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -2240,7 +2240,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -2263,7 +2263,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -2295,7 +2295,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -2318,7 +2318,7 @@
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
 						<td>
-							<a href="/admin/apps/customers/view.html" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
+							<a href="/admin/apps/customers/view" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
 						</td>
 						<!--end::Name=-->
 						<!--begin::Email=-->
@@ -2350,7 +2350,7 @@
 							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
 								<!--begin::Menu item-->
 								<div class="menu-item px-3">
-									<a href="/admin/apps/customers/view.html" class="menu-link px-3">View</a>
+									<a href="/admin/apps/customers/view" class="menu-link px-3">View</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -2379,7 +2379,7 @@
 			<!--begin::Modal content-->
 			<div class="modal-content">
 				<!--begin::Form-->
-				<form class="form" action="#" id="kt_modal_add_customer_form" data-kt-redirect="/admin/apps/customers/list.html">
+				<form class="form" action="#" id="kt_modal_add_customer_form" data-kt-redirect="/admin/apps/customers/list">
 					<!--begin::Modal header-->
 					<div class="modal-header" id="kt_modal_add_customer_header">
 						<!--begin::Modal title-->

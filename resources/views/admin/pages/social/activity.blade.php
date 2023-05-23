@@ -19,7 +19,7 @@
 						<!--begin::Info-->
 						<div class="text-center">
 							<!--begin::Name-->
-							<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 fw-bold text-hover-primary fs-4">Jerry Kane</a>
+							<a href="/admin/pages/user-profile/overview" class="text-gray-800 fw-bold text-hover-primary fs-4">Jerry Kane</a>
 							<!--end::Name-->
 							<!--begin::Position-->
 							<span class="text-muted d-block fw-semibold">Grade 8, AE3 Student</span>
@@ -60,7 +60,7 @@
 						<ul class="nav nav-pills nav-pills-custom flex-column border-transparent fs-5 fw-bold">
 							<!--begin::Nav item-->
 							<li class="nav-item mt-5">
-								<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="/admin/pages/social/feeds.html">
+								<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="/admin/pages/social/feeds">
 								<!--begin::Svg Icon | path: icons/duotune/general/gen010.svg-->
 								<span class="svg-icon svg-icon-3 svg-icon-muted me-3">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item mt-5">
-								<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0 active" href="/admin/pages/social/activity.html">
+								<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0 active" href="/admin/pages/social/activity">
 								<!--begin::Svg Icon | path: icons/duotune/arrows/arr070.svg-->
 								<span class="svg-icon svg-icon-3 svg-icon-muted me-3">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +94,7 @@
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item mt-5">
-								<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="/admin/pages/social/followers.html">
+								<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="/admin/pages/social/followers">
 								<!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->
 								<span class="svg-icon svg-icon-3 svg-icon-muted me-3">
 									<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@
 							<!--end::Nav item-->
 							<!--begin::Nav item-->
 							<li class="nav-item mt-5">
-								<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="/admin/pages/social/settings.html">
+								<a class="nav-link text-muted text-active-primary ms-0 py-0 me-10 ps-9 border-0" href="/admin/pages/social/settings">
 								<!--begin::Svg Icon | path: icons/duotune/coding/cod001.svg-->
 								<span class="svg-icon svg-icon-3 svg-icon-muted me-3">
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1405,7 +1405,7 @@
 											<!--begin::Record-->
 											<div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5">
 												<!--begin::Title-->
-												<a href="/admin/apps/projects/project.html" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
+												<a href="/admin/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Meeting with customer</a>
 												<!--end::Title-->
 												<!--begin::Label-->
 												<div class="min-w-175px pe-2">
@@ -1437,14 +1437,14 @@
 												</div>
 												<!--end::Progress-->
 												<!--begin::Action-->
-												<a href="/admin/apps/projects/project.html" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+												<a href="/admin/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
 												<!--end::Action-->
 											</div>
 											<!--end::Record-->
 											<!--begin::Record-->
 											<div class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0">
 												<!--begin::Title-->
-												<a href="/admin/apps/projects/project.html" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
+												<a href="/admin/apps/projects/project" class="fs-5 text-dark text-hover-primary fw-semibold w-375px min-w-200px">Project Delivery Preparation</a>
 												<!--end::Title-->
 												<!--begin::Label-->
 												<div class="min-w-175px">
@@ -1471,7 +1471,7 @@
 												</div>
 												<!--end::Progress-->
 												<!--begin::Action-->
-												<a href="/admin/apps/projects/project.html" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+												<a href="/admin/apps/projects/project" class="btn btn-sm btn-light btn-active-light-primary">View</a>
 												<!--end::Action-->
 											</div>
 											<!--end::Record-->
@@ -1576,7 +1576,7 @@
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
 														<!--begin::Desc-->
-														<a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+														<a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 														<!--end::Desc-->
 														<!--begin::Number-->
 														<div class="text-gray-400">1.9mb</div>
@@ -1588,7 +1588,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 													<!--begin::Icon-->
-													<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+													<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -1605,7 +1605,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center">
 													<!--begin::Icon-->
-													<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+													<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -2033,7 +2033,7 @@
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
 														<!--begin::Desc-->
-														<a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+														<a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 														<!--end::Desc-->
 														<!--begin::Number-->
 														<div class="text-gray-400">1.9mb</div>
@@ -2045,7 +2045,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 													<!--begin::Icon-->
-													<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+													<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -2062,7 +2062,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center">
 													<!--begin::Icon-->
-													<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+													<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -2554,7 +2554,7 @@
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
 														<!--begin::Desc-->
-														<a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+														<a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 														<!--end::Desc-->
 														<!--begin::Number-->
 														<div class="text-gray-400">1.9mb</div>
@@ -2566,7 +2566,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 													<!--begin::Icon-->
-													<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+													<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -2583,7 +2583,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center">
 													<!--begin::Icon-->
-													<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+													<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -2709,7 +2709,7 @@
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
 														<!--begin::Desc-->
-														<a href="/admin/apps/projects/project.html" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
+														<a href="/admin/apps/projects/project" class="fs-6 text-hover-primary fw-bold">Finance KPI App Guidelines</a>
 														<!--end::Desc-->
 														<!--begin::Number-->
 														<div class="text-gray-400">1.9mb</div>
@@ -2721,7 +2721,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center pe-10 pe-lg-20">
 													<!--begin::Icon-->
-													<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
+													<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/doc.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -2738,7 +2738,7 @@
 												<!--begin::Item-->
 												<div class="d-flex flex-aligns-center">
 													<!--begin::Icon-->
-													<img alt="/admin/apps/projects/project.html" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
+													<img alt="/admin/apps/projects/project" class="w-30px me-3" src="assets/media/svg/files/css.svg" />
 													<!--end::Icon-->
 													<!--begin::Info-->
 													<div class="ms-1 fw-semibold">
@@ -3109,12 +3109,12 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">Jacob Jones</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Jacob Jones</a>
 								<span class="text-muted fw-semibold d-block fs-7">Barone LLC.</span>
 							</div>
 							<!--end:Author-->
 							<!--begin:Action-->
-							<a href="/admin/pages/user-profile/overview.html" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+							<a href="/admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 							<!--end:Action-->
 						</div>
 						<!--end::Section-->
@@ -3134,12 +3134,12 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">Annette Black</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Annette Black</a>
 								<span class="text-muted fw-semibold d-block fs-7">Binford Ltd.</span>
 							</div>
 							<!--end:Author-->
 							<!--begin:Action-->
-							<a href="/admin/pages/user-profile/overview.html" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+							<a href="/admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 							<!--end:Action-->
 						</div>
 						<!--end::Section-->
@@ -3159,12 +3159,12 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">Devon Lane</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Devon Lane</a>
 								<span class="text-muted fw-semibold d-block fs-7">Acme Co.</span>
 							</div>
 							<!--end:Author-->
 							<!--begin:Action-->
-							<a href="/admin/pages/user-profile/overview.html" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+							<a href="/admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 							<!--end:Action-->
 						</div>
 						<!--end::Section-->
@@ -3184,12 +3184,12 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">Kristin Watson</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Kristin Watson</a>
 								<span class="text-muted fw-semibold d-block fs-7">Biffco Enterprises Ltd.</span>
 							</div>
 							<!--end:Author-->
 							<!--begin:Action-->
-							<a href="/admin/pages/user-profile/overview.html" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+							<a href="/admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 							<!--end:Action-->
 						</div>
 						<!--end::Section-->
@@ -3209,12 +3209,12 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">Eleanor Pena</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Eleanor Pena</a>
 								<span class="text-muted fw-semibold d-block fs-7">Abstergo Ltd.</span>
 							</div>
 							<!--end:Author-->
 							<!--begin:Action-->
-							<a href="/admin/pages/user-profile/overview.html" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
+							<a href="/admin/pages/user-profile/overview" class="btn btn-sm btn-light fs-8 fw-bold">Follow</a>
 							<!--end:Action-->
 						</div>
 						<!--end::Section-->
@@ -3234,7 +3234,7 @@
 					</h3>
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/pages/social/activity.html" class="btn btn-sm btn-light">View All</a>
+						<a href="/admin/pages/social/activity" class="btn btn-sm btn-light">View All</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>

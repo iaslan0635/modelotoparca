@@ -43,7 +43,7 @@
 				<!--end::Card body-->
 				<!--begin::Card footer-->
 				<div class="card-footer flex-wrap pt-0">
-					<a href="/admin/apps/user-management/roles/view.html" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
+					<a href="/admin/apps/user-management/roles/view" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
 					<button type="button" class="btn btn-light btn-active-light-primary my-1" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Edit Role</button>
 				</div>
 				<!--end::Card footer-->
@@ -91,7 +91,7 @@
 				<!--end::Card body-->
 				<!--begin::Card footer-->
 				<div class="card-footer flex-wrap pt-0">
-					<a href="/admin/apps/user-management/roles/view.html" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
+					<a href="/admin/apps/user-management/roles/view" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
 					<button type="button" class="btn btn-light btn-active-light-primary my-1" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Edit Role</button>
 				</div>
 				<!--end::Card footer-->
@@ -139,7 +139,7 @@
 				<!--end::Card body-->
 				<!--begin::Card footer-->
 				<div class="card-footer flex-wrap pt-0">
-					<a href="/admin/apps/user-management/roles/view.html" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
+					<a href="/admin/apps/user-management/roles/view" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
 					<button type="button" class="btn btn-light btn-active-light-primary my-1" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Edit Role</button>
 				</div>
 				<!--end::Card footer-->
@@ -183,7 +183,7 @@
 				<!--end::Card body-->
 				<!--begin::Card footer-->
 				<div class="card-footer flex-wrap pt-0">
-					<a href="/admin/apps/user-management/roles/view.html" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
+					<a href="/admin/apps/user-management/roles/view" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
 					<button type="button" class="btn btn-light btn-active-light-primary my-1" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Edit Role</button>
 				</div>
 				<!--end::Card footer-->
@@ -227,7 +227,7 @@
 				<!--end::Card body-->
 				<!--begin::Card footer-->
 				<div class="card-footer flex-wrap pt-0">
-					<a href="/admin/apps/user-management/roles/view.html" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
+					<a href="/admin/apps/user-management/roles/view" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
 					<button type="button" class="btn btn-light btn-active-light-primary my-1" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Edit Role</button>
 				</div>
 				<!--end::Card footer-->

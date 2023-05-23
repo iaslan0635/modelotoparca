@@ -36,7 +36,7 @@
 			<!--begin::Modal content-->
 			<div class="modal-content">
 				<!--begin::Form-->
-				<form class="form" action="#" id="kt_modal_add_customer_form" data-kt-redirect="/admin/apps/customers/list.html">
+				<form class="form" action="#" id="kt_modal_add_customer_form" data-kt-redirect="/admin/apps/customers/list">
 					<!--begin::Modal header-->
 					<div class="modal-header" id="kt_modal_add_customer_header">
 						<!--begin::Modal title-->

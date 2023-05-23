@@ -1782,7 +1782,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">PDF Report</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>
@@ -1812,7 +1812,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/add-product.html" class="btn btn-sm btn-light">PDF Report</a>
+						<a href="/admin/apps/ecommerce/catalog/add-product" class="btn btn-sm btn-light">PDF Report</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>

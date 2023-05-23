@@ -42,32 +42,32 @@
 				<ul class="nav flex-wrap border-transparent fw-bold">
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/overview.html">Overview</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/overview">Overview</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase active" href="/admin/apps/support-center/tickets/list.html">tickets</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase active" href="/admin/apps/support-center/tickets/list">tickets</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/tutorials/list.html">Tutorials</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/tutorials/list">Tutorials</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/faq.html">FAQ</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/faq">FAQ</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/licenses.html">Licenses</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/licenses">Licenses</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/contact.html">Contact US</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/contact">Contact US</a>
 					</li>
 					<!--end::Nav item-->
 				</ul>
@@ -131,7 +131,7 @@
 									<!--begin::Content-->
 									<div class="d-flex align-items-center mb-2">
 										<!--begin::Title-->
-										<a href="/admin/apps/support-center/tickets/view.html" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">How to use Netronic with Django Framework?</a>
+										<a href="/admin/apps/support-center/tickets/view" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">How to use Netronic with Django Framework?</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<span class="badge badge-light my-1">React</span>
@@ -165,7 +165,7 @@
 									<!--begin::Content-->
 									<div class="d-flex align-items-center mb-2">
 										<!--begin::Title-->
-										<a href="/admin/apps/support-center/tickets/view.html" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Admin theme npm issue</a>
+										<a href="/admin/apps/support-center/tickets/view" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Admin theme npm issue</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<span class="badge badge-light my-1">Angular</span>
@@ -197,7 +197,7 @@
 									<!--begin::Content-->
 									<div class="d-flex align-items-center mb-2">
 										<!--begin::Title-->
-										<a href="/admin/apps/support-center/tickets/view.html" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Admin theme authentication to node.js / strapi backend</a>
+										<a href="/admin/apps/support-center/tickets/view" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Admin theme authentication to node.js / strapi backend</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<span class="badge badge-light my-1">warning</span>
@@ -229,7 +229,7 @@
 									<!--begin::Content-->
 									<div class="d-flex align-items-center mb-2">
 										<!--begin::Title-->
-										<a href="/admin/apps/support-center/tickets/view.html" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">How to use Admin theme with Django Framework?</a>
+										<a href="/admin/apps/support-center/tickets/view" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">How to use Admin theme with Django Framework?</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<span class="badge badge-light my-1">HTML</span>
@@ -263,7 +263,7 @@
 									<!--begin::Content-->
 									<div class="d-flex align-items-center mb-2">
 										<!--begin::Title-->
-										<a href="/admin/apps/support-center/tickets/view.html" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Reducing footprint of Start theme</a>
+										<a href="/admin/apps/support-center/tickets/view" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Reducing footprint of Start theme</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<span class="badge badge-light my-1">Angular</span>
@@ -295,7 +295,7 @@
 									<!--begin::Content-->
 									<div class="d-flex align-items-center mb-2">
 										<!--begin::Title-->
-										<a href="/admin/apps/support-center/tickets/view.html" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Admin theme node.js / strapi backend</a>
+										<a href="/admin/apps/support-center/tickets/view" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Admin theme node.js / strapi backend</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<span class="badge badge-light my-1">React</span>
@@ -329,7 +329,7 @@
 									<!--begin::Content-->
 									<div class="d-flex align-items-center mb-2">
 										<!--begin::Title-->
-										<a href="/admin/apps/support-center/tickets/view.html" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Admin theme npm issue</a>
+										<a href="/admin/apps/support-center/tickets/view" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">Admin theme npm issue</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<span class="badge badge-light my-1">View</span>
@@ -361,7 +361,7 @@
 									<!--begin::Content-->
 									<div class="d-flex align-items-center mb-2">
 										<!--begin::Title-->
-										<a href="/admin/apps/support-center/tickets/view.html" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">How to use Admin theme with Django Framework?</a>
+										<a href="/admin/apps/support-center/tickets/view" class="text-dark text-hover-primary fs-4 me-3 fw-semibold">How to use Admin theme with Django Framework?</a>
 										<!--end::Title-->
 										<!--begin::Label-->
 										<span class="badge badge-light my-1">PHP</span>

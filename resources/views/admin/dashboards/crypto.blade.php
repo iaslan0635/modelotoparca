@@ -601,7 +601,7 @@
 						<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_create_account" data-bs-toggle="modal">Try Now</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/apps/ecommerce/sales/listing.html">Learn More</a>
+						<a class="btn btn-sm btn-light" href="/admin/apps/ecommerce/sales/listing">Learn More</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->

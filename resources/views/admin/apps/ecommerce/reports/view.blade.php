@@ -111,13 +111,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/32.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 32</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 32</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -200,13 +200,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/50.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 50</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 50</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -289,13 +289,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/22.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 22</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 22</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -378,13 +378,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/14.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 14</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 14</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -467,13 +467,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/17.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 17</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 17</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -556,13 +556,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/18.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 18</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 18</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -645,13 +645,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/30.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 30</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 30</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -734,13 +734,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/48.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 48</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 48</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -823,13 +823,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/11.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 11</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 11</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -912,13 +912,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/45.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 45</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 45</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1001,13 +1001,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/40.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 40</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 40</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1090,13 +1090,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/39.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 39</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 39</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1179,13 +1179,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/2.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 2</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 2</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1268,13 +1268,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/6.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 6</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 6</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1357,13 +1357,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/28.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 28</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 28</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1446,13 +1446,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/29.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 29</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 29</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1535,13 +1535,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/12.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 12</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 12</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1624,13 +1624,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/20.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 20</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 20</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1713,13 +1713,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/38.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 38</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 38</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1802,13 +1802,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/8.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 8</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 8</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1891,13 +1891,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/41.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 41</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 41</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -1980,13 +1980,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/49.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 49</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 49</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2069,13 +2069,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/23.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 23</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 23</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2158,13 +2158,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/25.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 25</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 25</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2247,13 +2247,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/15.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 15</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 15</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2336,13 +2336,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/33.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 33</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 33</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2425,13 +2425,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/34.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 34</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 34</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2514,13 +2514,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/3.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 3</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 3</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2603,13 +2603,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/36.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 36</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 36</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2692,13 +2692,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/27.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 27</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 27</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2781,13 +2781,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/5.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 5</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 5</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2870,13 +2870,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/44.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 44</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 44</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -2959,13 +2959,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/47.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 47</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 47</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3048,13 +3048,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/9.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 9</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 9</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3137,13 +3137,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/43.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 43</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 43</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3226,13 +3226,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/42.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 42</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 42</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3315,13 +3315,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/21.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 21</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 21</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3404,13 +3404,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/24.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 24</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 24</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3493,13 +3493,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/7.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 7</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 7</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3582,13 +3582,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/46.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 46</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 46</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3671,13 +3671,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/1.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 1</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 1</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3760,13 +3760,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/13.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 13</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 13</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3849,13 +3849,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/4.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 4</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 4</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -3938,13 +3938,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/16.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 16</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 16</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -4027,13 +4027,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/37.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 37</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 37</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -4116,13 +4116,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/26.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 26</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 26</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -4205,13 +4205,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/31.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 31</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 31</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -4294,13 +4294,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/10.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 10</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 10</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -4383,13 +4383,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/19.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 19</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 19</a>
 									<!--end::Title-->
 								</div>
 							</div>
@@ -4472,13 +4472,13 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<!--begin::Thumbnail-->
-								<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+								<a href="/admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
 									<span class="symbol-label" style="background-image:url(assets/media//stock/ecommerce/35.gif);"></span>
 								</a>
 								<!--end::Thumbnail-->
 								<div class="ms-5">
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 35</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">Product 35</a>
 									<!--end::Title-->
 								</div>
 							</div>

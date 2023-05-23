@@ -586,7 +586,7 @@
 						<a class="btn btn-sm btn-success btn-color-white me-2" data-bs-target="#kt_modal_invite_friends" data-bs-toggle="modal">Psychologist</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="/admin/pages/careers/list.html">Nurse</a>
+						<a class="btn btn-sm bg-white btn-color-white bg-opacity-20" href="/admin/pages/careers/list">Nurse</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->
@@ -1800,7 +1800,7 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">UI/UX Design</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">UI/UX Design</a>
 								<span class="text-muted fw-semibold d-block fs-7">40+ Courses</span>
 							</div>
 							<!--end:Author-->
@@ -1834,7 +1834,7 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">QA Analysis</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">QA Analysis</a>
 								<span class="text-muted fw-semibold d-block fs-7">18 Courses</span>
 							</div>
 							<!--end:Author-->
@@ -1868,7 +1868,7 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">Web Development</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Web Development</a>
 								<span class="text-muted fw-semibold d-block fs-7">120+ Courses</span>
 							</div>
 							<!--end:Author-->
@@ -1902,7 +1902,7 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">Marketing</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Marketing</a>
 								<span class="text-muted fw-semibold d-block fs-7">50+ Courses.</span>
 							</div>
 							<!--end:Author-->
@@ -1936,7 +1936,7 @@
 						<div class="d-flex align-items-center flex-row-fluid flex-wrap">
 							<!--begin:Author-->
 							<div class="flex-grow-1 me-2">
-								<a href="/admin/pages/user-profile/overview.html" class="text-gray-800 text-hover-primary fs-6 fw-bold">Philosophy</a>
+								<a href="/admin/pages/user-profile/overview" class="text-gray-800 text-hover-primary fs-6 fw-bold">Philosophy</a>
 								<span class="text-muted fw-semibold d-block fs-7">24+ Courses</span>
 							</div>
 							<!--end:Author-->

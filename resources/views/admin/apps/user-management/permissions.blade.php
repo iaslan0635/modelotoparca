@@ -64,7 +64,7 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->
@@ -106,11 +106,11 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-danger fs-7 m-1">Developer</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-success fs-7 m-1">Analyst</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-info fs-7 m-1">Support</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-warning fs-7 m-1">Trial</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-danger fs-7 m-1">Developer</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-success fs-7 m-1">Analyst</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-info fs-7 m-1">Support</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-warning fs-7 m-1">Trial</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->
@@ -152,8 +152,8 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-success fs-7 m-1">Analyst</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-success fs-7 m-1">Analyst</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->
@@ -195,8 +195,8 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-success fs-7 m-1">Analyst</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-success fs-7 m-1">Analyst</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->
@@ -238,8 +238,8 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-success fs-7 m-1">Analyst</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-success fs-7 m-1">Analyst</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->
@@ -281,9 +281,9 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-danger fs-7 m-1">Developer</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-info fs-7 m-1">Support</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-danger fs-7 m-1">Developer</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-info fs-7 m-1">Support</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->
@@ -325,8 +325,8 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-danger fs-7 m-1">Developer</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-danger fs-7 m-1">Developer</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->
@@ -368,8 +368,8 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-danger fs-7 m-1">Developer</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-danger fs-7 m-1">Developer</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->
@@ -411,8 +411,8 @@
 						<!--end::Name=-->
 						<!--begin::Assigned to=-->
 						<td>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-primary fs-7 m-1">Administrator</a>
-							<a href="/admin/apps/user-management/roles/view.html" class="badge badge-light-danger fs-7 m-1">Developer</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-primary fs-7 m-1">Administrator</a>
+							<a href="/admin/apps/user-management/roles/view" class="badge badge-light-danger fs-7 m-1">Developer</a>
 						</td>
 						<!--end::Assigned to=-->
 						<!--begin::Created Date-->

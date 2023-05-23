@@ -109,7 +109,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Emma Smith</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Emma Smith</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -140,7 +140,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Melody Macy</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Melody Macy</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -171,7 +171,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Max Smith</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Max Smith</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -202,7 +202,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Sean Bean</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Sean Bean</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -233,7 +233,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Brian Cox</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Brian Cox</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -264,7 +264,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Mikaela Collins</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Mikaela Collins</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -295,7 +295,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Francis Mitcham</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Francis Mitcham</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -326,7 +326,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Olivia Wild</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Olivia Wild</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -357,7 +357,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Neil Owen</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Neil Owen</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -388,7 +388,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Dan Wilson</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Dan Wilson</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -419,7 +419,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Emma Bold</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Emma Bold</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -450,7 +450,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Ana Crown</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Ana Crown</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -481,7 +481,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Robert Doe</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Robert Doe</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -512,7 +512,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">John Miller</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">John Miller</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -543,7 +543,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Lucy Kunic</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Lucy Kunic</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -574,7 +574,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Ethan Wilder</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Ethan Wilder</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -605,7 +605,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Ana Crown</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Ana Crown</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -636,7 +636,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Emma Smith</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Emma Smith</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -667,7 +667,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Melody Macy</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Melody Macy</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -698,7 +698,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Max Smith</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Max Smith</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -729,7 +729,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Sean Bean</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Sean Bean</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -760,7 +760,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Brian Cox</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Brian Cox</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -791,7 +791,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Mikaela Collins</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Mikaela Collins</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -822,7 +822,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Francis Mitcham</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Francis Mitcham</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -853,7 +853,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Olivia Wild</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Olivia Wild</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -884,7 +884,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Neil Owen</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Neil Owen</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -915,7 +915,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Dan Wilson</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Dan Wilson</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -946,7 +946,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Emma Bold</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Emma Bold</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -977,7 +977,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Ana Crown</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Ana Crown</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1008,7 +1008,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Robert Doe</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Robert Doe</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1039,7 +1039,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">John Miller</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">John Miller</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1070,7 +1070,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Lucy Kunic</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Lucy Kunic</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1101,7 +1101,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Ethan Wilder</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Ethan Wilder</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1132,7 +1132,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Lucy Kunic</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Lucy Kunic</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1163,7 +1163,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Emma Smith</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Emma Smith</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1194,7 +1194,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Melody Macy</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Melody Macy</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1225,7 +1225,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Max Smith</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Max Smith</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1256,7 +1256,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Sean Bean</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Sean Bean</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1287,7 +1287,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Brian Cox</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Brian Cox</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1318,7 +1318,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Mikaela Collins</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Mikaela Collins</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1349,7 +1349,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Francis Mitcham</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Francis Mitcham</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1380,7 +1380,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Olivia Wild</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Olivia Wild</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1411,7 +1411,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Neil Owen</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Neil Owen</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1442,7 +1442,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Dan Wilson</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Dan Wilson</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1473,7 +1473,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Emma Bold</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Emma Bold</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1504,7 +1504,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Ana Crown</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Ana Crown</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1535,7 +1535,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Robert Doe</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Robert Doe</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1566,7 +1566,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">John Miller</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">John Miller</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1597,7 +1597,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Lucy Kunic</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Lucy Kunic</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->
@@ -1628,7 +1628,7 @@
 					<tr>
 						<!--begin::Customer name=-->
 						<td>
-							<a href="/admin/apps/ecommerce/customers/details.html" class="text-dark text-hover-primary">Ethan Wilder</a>
+							<a href="/admin/apps/ecommerce/customers/details" class="text-dark text-hover-primary">Ethan Wilder</a>
 						</td>
 						<!--end::Customer name=-->
 						<!--begin::Email=-->

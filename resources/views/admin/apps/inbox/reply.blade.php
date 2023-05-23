@@ -10,7 +10,7 @@
 				<!--begin::Aside content-->
 				<div class="card-body">
 					<!--begin::Button-->
-					<a href="/admin/apps/inbox/compose.html" class="btn btn-primary fw-bold w-100 mb-8">New Message</a>
+					<a href="/admin/apps/inbox/compose" class="btn btn-primary fw-bold w-100 mb-8">New Message</a>
 					<!--end::Button-->
 					<!--begin::Menu-->
 					<div class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary mb-10">
@@ -206,7 +206,7 @@
 					<!--begin::Actions-->
 					<div class="d-flex">
 						<!--begin::Back-->
-						<a href="/admin/apps/inbox/listing.html" class="btn btn-sm btn-icon btn-clear btn-active-light-primary me-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Back">
+						<a href="/admin/apps/inbox/listing" class="btn btn-sm btn-icon btn-clear btn-active-light-primary me-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Back">
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr063.svg-->
 							<span class="svg-icon svg-icon-1 m-0">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

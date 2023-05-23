@@ -163,7 +163,7 @@
 						<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_create_app" data-bs-toggle="modal">Try now</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/pages/user-profile/activity.html">Learn more</a>
+						<a class="btn btn-sm btn-light" href="/admin/pages/user-profile/activity">Learn more</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->

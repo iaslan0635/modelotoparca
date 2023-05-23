@@ -41,12 +41,12 @@
 				<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-semibold flex-nowrap">
 					<!--begin::Nav item-->
 					<li class="nav-item">
-						<a class="nav-link text-active-primary me-6 active" href="/admin/apps/file-manager/folders.html">Files</a>
+						<a class="nav-link text-active-primary me-6 active" href="/admin/apps/file-manager/folders">Files</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item">
-						<a class="nav-link text-active-primary me-6" href="/admin/apps/file-manager/settings.html">Settings</a>
+						<a class="nav-link text-active-primary me-6" href="/admin/apps/file-manager/settings">Settings</a>
 					</li>
 					<!--end::Nav item-->
 				</ul>
@@ -204,7 +204,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">account</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">account</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -262,7 +262,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -289,7 +289,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -339,7 +339,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">apps</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">apps</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -397,7 +397,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -424,7 +424,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -474,7 +474,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">widgets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">widgets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -532,7 +532,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -559,7 +559,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -609,7 +609,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">assets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">assets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -667,7 +667,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -694,7 +694,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -744,7 +744,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">documentation</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">documentation</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -802,7 +802,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -829,7 +829,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -879,7 +879,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">layouts</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">layouts</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -937,7 +937,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -964,7 +964,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1014,7 +1014,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">modals</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">modals</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -1072,7 +1072,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -1099,7 +1099,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1149,7 +1149,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">authentication</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">authentication</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -1207,7 +1207,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -1234,7 +1234,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1284,7 +1284,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">dashboards</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">dashboards</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -1342,7 +1342,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -1369,7 +1369,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1419,7 +1419,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">media</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">media</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -1477,7 +1477,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -1504,7 +1504,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1554,7 +1554,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">customers</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">customers</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -1612,7 +1612,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -1639,7 +1639,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1689,7 +1689,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">user-management</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">user-management</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -1747,7 +1747,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -1774,7 +1774,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1824,7 +1824,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">subscriptions</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">subscriptions</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -1882,7 +1882,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -1909,7 +1909,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -1959,7 +1959,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">forms</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">forms</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -2017,7 +2017,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -2044,7 +2044,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2094,7 +2094,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">buttons</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">buttons</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -2152,7 +2152,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -2179,7 +2179,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2229,7 +2229,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">datatables</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">datatables</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -2287,7 +2287,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -2314,7 +2314,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2364,7 +2364,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">account</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">account</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -2422,7 +2422,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -2449,7 +2449,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2499,7 +2499,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">apps</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">apps</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -2557,7 +2557,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -2584,7 +2584,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2634,7 +2634,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">widgets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">widgets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -2692,7 +2692,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -2719,7 +2719,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2769,7 +2769,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">assets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">assets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -2827,7 +2827,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -2854,7 +2854,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -2904,7 +2904,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">documentation</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">documentation</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -2962,7 +2962,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -2989,7 +2989,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3039,7 +3039,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">layouts</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">layouts</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -3097,7 +3097,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -3124,7 +3124,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3174,7 +3174,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">modals</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">modals</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -3232,7 +3232,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -3259,7 +3259,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3309,7 +3309,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">authentication</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">authentication</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -3367,7 +3367,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -3394,7 +3394,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3444,7 +3444,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">dashboards</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">dashboards</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -3502,7 +3502,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -3529,7 +3529,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3579,7 +3579,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">media</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">media</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -3637,7 +3637,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -3664,7 +3664,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3714,7 +3714,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">customers</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">customers</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -3772,7 +3772,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -3799,7 +3799,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3849,7 +3849,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">user-management</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">user-management</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -3907,7 +3907,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -3934,7 +3934,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -3984,7 +3984,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">subscriptions</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">subscriptions</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -4042,7 +4042,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -4069,7 +4069,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4119,7 +4119,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">forms</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">forms</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -4177,7 +4177,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -4204,7 +4204,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4254,7 +4254,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">buttons</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">buttons</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -4312,7 +4312,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -4339,7 +4339,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4389,7 +4389,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">datatables</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">datatables</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -4447,7 +4447,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -4474,7 +4474,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4524,7 +4524,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">account</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">account</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -4582,7 +4582,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -4609,7 +4609,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4659,7 +4659,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">apps</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">apps</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -4717,7 +4717,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -4744,7 +4744,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4794,7 +4794,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">widgets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">widgets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -4852,7 +4852,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -4879,7 +4879,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -4929,7 +4929,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">assets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">assets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -4987,7 +4987,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -5014,7 +5014,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -5064,7 +5064,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">documentation</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">documentation</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -5122,7 +5122,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -5149,7 +5149,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -5199,7 +5199,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">layouts</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">layouts</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -5257,7 +5257,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -5284,7 +5284,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -5334,7 +5334,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">modals</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">modals</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -5392,7 +5392,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -5419,7 +5419,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -5469,7 +5469,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">authentication</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">authentication</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -5527,7 +5527,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -5554,7 +5554,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -5604,7 +5604,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">dashboards</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">dashboards</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -5662,7 +5662,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -5689,7 +5689,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -5739,7 +5739,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">media</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">media</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -5797,7 +5797,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -5824,7 +5824,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -5874,7 +5874,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">customers</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">customers</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -5932,7 +5932,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -5959,7 +5959,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -6009,7 +6009,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">user-management</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">user-management</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -6067,7 +6067,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -6094,7 +6094,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -6144,7 +6144,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">subscriptions</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">subscriptions</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -6202,7 +6202,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -6229,7 +6229,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -6279,7 +6279,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">forms</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">forms</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -6337,7 +6337,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -6364,7 +6364,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -6414,7 +6414,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">buttons</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">buttons</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -6472,7 +6472,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -6499,7 +6499,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -6549,7 +6549,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">datatables</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">datatables</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -6607,7 +6607,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -6634,7 +6634,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -6684,7 +6684,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">account</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">account</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -6742,7 +6742,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -6769,7 +6769,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -6819,7 +6819,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">apps</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">apps</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -6877,7 +6877,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -6904,7 +6904,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -6954,7 +6954,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">widgets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">widgets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -7012,7 +7012,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -7039,7 +7039,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -7089,7 +7089,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">assets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">assets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -7147,7 +7147,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -7174,7 +7174,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -7224,7 +7224,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">documentation</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">documentation</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -7282,7 +7282,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -7309,7 +7309,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -7359,7 +7359,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">layouts</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">layouts</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -7417,7 +7417,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -7444,7 +7444,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -7494,7 +7494,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">modals</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">modals</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -7552,7 +7552,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -7579,7 +7579,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -7629,7 +7629,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">authentication</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">authentication</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -7687,7 +7687,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -7714,7 +7714,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -7764,7 +7764,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">dashboards</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">dashboards</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -7822,7 +7822,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -7849,7 +7849,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -7899,7 +7899,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">media</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">media</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -7957,7 +7957,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -7984,7 +7984,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -8034,7 +8034,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">customers</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">customers</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -8092,7 +8092,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -8119,7 +8119,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -8169,7 +8169,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">user-management</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">user-management</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -8227,7 +8227,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -8254,7 +8254,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -8304,7 +8304,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">subscriptions</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">subscriptions</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -8362,7 +8362,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -8389,7 +8389,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -8439,7 +8439,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">forms</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">forms</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -8497,7 +8497,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -8524,7 +8524,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -8574,7 +8574,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">buttons</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">buttons</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -8632,7 +8632,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -8659,7 +8659,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -8709,7 +8709,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">datatables</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">datatables</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -8767,7 +8767,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -8794,7 +8794,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -8844,7 +8844,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">account</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">account</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -8902,7 +8902,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -8929,7 +8929,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -8979,7 +8979,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">apps</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">apps</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -9037,7 +9037,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -9064,7 +9064,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -9114,7 +9114,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">widgets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">widgets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -9172,7 +9172,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -9199,7 +9199,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -9249,7 +9249,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">assets</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">assets</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -9307,7 +9307,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -9334,7 +9334,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -9384,7 +9384,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">documentation</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">documentation</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -9442,7 +9442,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -9469,7 +9469,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -9519,7 +9519,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">layouts</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">layouts</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -9577,7 +9577,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -9604,7 +9604,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -9654,7 +9654,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">modals</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">modals</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -9712,7 +9712,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -9739,7 +9739,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -9789,7 +9789,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">authentication</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">authentication</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -9847,7 +9847,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -9874,7 +9874,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -9924,7 +9924,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">dashboards</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">dashboards</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -9982,7 +9982,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -10009,7 +10009,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -10059,7 +10059,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">media</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">media</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -10117,7 +10117,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -10144,7 +10144,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -10194,7 +10194,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">customers</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">customers</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -10252,7 +10252,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -10279,7 +10279,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -10329,7 +10329,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">user-management</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">user-management</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -10387,7 +10387,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -10414,7 +10414,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -10464,7 +10464,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">subscriptions</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">subscriptions</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -10522,7 +10522,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -10549,7 +10549,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -10599,7 +10599,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">forms</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">forms</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -10657,7 +10657,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -10684,7 +10684,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -10734,7 +10734,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">buttons</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">buttons</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -10792,7 +10792,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -10819,7 +10819,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -10869,7 +10869,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">datatables</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">datatables</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -10927,7 +10927,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -10954,7 +10954,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -10994,7 +10994,7 @@
 						</td>
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
-						<td data-order="index.html">
+						<td data-order="index">
 							<div class="d-flex align-items-center">
 								<!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
 								<span class="svg-icon svg-icon-2x svg-icon-primary me-4">
@@ -11004,7 +11004,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">index.html</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">index</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -11062,7 +11062,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -11089,7 +11089,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -11129,7 +11129,7 @@
 						</td>
 						<!--end::Checkbox-->
 						<!--begin::Name=-->
-						<td data-order="landing.html">
+						<td data-order="landing">
 							<div class="d-flex align-items-center">
 								<!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
 								<span class="svg-icon svg-icon-2x svg-icon-primary me-4">
@@ -11139,7 +11139,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<a href="/admin/apps/file-manager/files/.html" class="text-gray-800 text-hover-primary">landing.html</a>
+								<a href="/admin/apps/file-manager/files/" class="text-gray-800 text-hover-primary">landing</a>
 							</div>
 						</td>
 						<!--end::Name=-->
@@ -11197,7 +11197,7 @@
 													</div>
 													<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 													<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-													<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+													<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 												</div>
 												<!--end::Link-->
 											</div>
@@ -11224,7 +11224,7 @@
 									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-150px py-4" data-kt-menu="true">
 										<!--begin::Menu item-->
 										<div class="menu-item px-3">
-											<a href="/admin/apps/file-manager/files.html" class="menu-link px-3">View</a>
+											<a href="/admin/apps/file-manager/files" class="menu-link px-3">View</a>
 										</div>
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
@@ -11405,7 +11405,7 @@
 								</div>
 								<input type="text" class="form-control form-control-sm" value="https://path/to/file/or/folder/" />
 								<div class="text-muted fw-normal mt-2 fs-8 px-3">Read only.
-								<a href="/admin/apps/file-manager/settings/.html" class="ms-2">Change permissions</a></div>
+								<a href="/admin/apps/file-manager/settings/" class="ms-2">Change permissions</a></div>
 							</div>
 							<!--end::Link-->
 						</div>

@@ -2164,7 +2164,7 @@
 						<a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_new_card" data-bs-toggle="modal">Try now</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/pages/user-profile/followers.html">Learn more</a>
+						<a class="btn btn-sm btn-light" href="/admin/pages/user-profile/followers">Learn more</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->

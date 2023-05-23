@@ -268,42 +268,42 @@
 			<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/overview.html">Overview</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/overview">Overview</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/settings.html">Settings</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/settings">Settings</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="/admin/account/security.html">Security</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="/admin/account/security">Security</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/billing.html">Billing</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/billing">Billing</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/statements.html">Statements</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/statements">Statements</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/referrals.html">Referrals</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/referrals">Referrals</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/api-keys.html">API Keys</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/api-keys">API Keys</a>
 				</li>
 				<!--end::Nav item-->
 				<!--begin::Nav item-->
 				<li class="nav-item mt-2">
-					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/logs.html">Logs</a>
+					<a class="nav-link text-active-primary ms-0 me-10 py-5" href="/admin/account/logs">Logs</a>
 				</li>
 				<!--end::Nav item-->
 			</ul>

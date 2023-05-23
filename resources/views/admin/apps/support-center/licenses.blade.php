@@ -42,32 +42,32 @@
 				<ul class="nav flex-wrap border-transparent fw-bold">
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/overview.html">Overview</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/overview">Overview</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/tickets/list.html">tickets</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/tickets/list">tickets</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/tutorials/list.html">Tutorials</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/tutorials/list">Tutorials</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/faq.html">FAQ</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/faq">FAQ</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase active" href="/admin/apps/support-center/licenses.html">Licenses</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase active" href="/admin/apps/support-center/licenses">Licenses</a>
 					</li>
 					<!--end::Nav item-->
 					<!--begin::Nav item-->
 					<li class="nav-item my-1">
-						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/contact.html">Contact US</a>
+						<a class="btn btn-color-gray-600 btn-active-secondary btn-active-color-primary fw-bolder fs-8 fs-lg-base nav-link px-3 px-lg-8 mx-1 text-uppercase" href="/admin/apps/support-center/contact">Contact US</a>
 					</li>
 					<!--end::Nav item-->
 				</ul>

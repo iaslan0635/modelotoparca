@@ -584,7 +584,7 @@
 												<img src="assets/media/stock/ecommerce/210.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 											</td>
 											<td>
@@ -602,7 +602,7 @@
 												<img src="assets/media/stock/ecommerce/215.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1321</span>
 											</td>
 											<td>
@@ -620,7 +620,7 @@
 												<img src="assets/media/stock/ecommerce/209.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-4312</span>
 											</td>
 											<td>
@@ -665,7 +665,7 @@
 												<img src="assets/media/stock/ecommerce/197.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-4312</span>
 											</td>
 											<td>
@@ -683,7 +683,7 @@
 												<img src="assets/media/stock/ecommerce/178.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-3122</span>
 											</td>
 											<td>
@@ -701,7 +701,7 @@
 												<img src="assets/media/stock/ecommerce/22.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1142</span>
 											</td>
 											<td>
@@ -746,7 +746,7 @@
 												<img src="assets/media/stock/ecommerce/1.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1324</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1324</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1523</span>
 											</td>
 											<td>
@@ -764,7 +764,7 @@
 												<img src="assets/media/stock/ecommerce/24.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-5314</span>
 											</td>
 											<td>
@@ -782,7 +782,7 @@
 												<img src="assets/media/stock/ecommerce/71.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-4222</span>
 											</td>
 											<td>
@@ -827,7 +827,7 @@
 												<img src="assets/media/stock/ecommerce/41.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 2635</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 2635</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1523</span>
 											</td>
 											<td>
@@ -845,7 +845,7 @@
 												<img src="assets/media/stock/ecommerce/63.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2745</span>
 											</td>
 											<td>
@@ -863,7 +863,7 @@
 												<img src="assets/media/stock/ecommerce/59.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-5173</span>
 											</td>
 											<td>
@@ -908,7 +908,7 @@
 												<img src="assets/media/stock/ecommerce/10.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Nike</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Nike</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2163</span>
 											</td>
 											<td>
@@ -926,7 +926,7 @@
 												<img src="assets/media/stock/ecommerce/96.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Adidas</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Adidas</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2162</span>
 											</td>
 											<td>
@@ -944,7 +944,7 @@
 												<img src="assets/media/stock/ecommerce/13.gif" class="w-50px ms-n1" alt="" />
 											</td>
 											<td class="ps-0">
-												<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Puma</a>
+												<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Puma</a>
 												<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-1537</span>
 											</td>
 											<td>
@@ -1138,10 +1138,10 @@
 					<!--begin::Links-->
 					<div class="text-center mb-1">
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-primary me-2" href="/admin/apps/ecommerce/sales/listing.html">View App</a>
+						<a class="btn btn-sm btn-primary me-2" href="/admin/apps/ecommerce/sales/listing">View App</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/apps/ecommerce/catalog/add-product.html">New Product</a>
+						<a class="btn btn-sm btn-light" href="/admin/apps/ecommerce/catalog/add-product">New Product</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->
@@ -1271,7 +1271,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#XGY-346</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#XGY-346</a>
 								</td>
 								<td class="text-end">7 min ago</td>
 								<td class="text-end">
@@ -1306,7 +1306,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#YHD-047</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#YHD-047</a>
 								</td>
 								<td class="text-end">52 min ago</td>
 								<td class="text-end">
@@ -1341,7 +1341,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SRR-678</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#SRR-678</a>
 								</td>
 								<td class="text-end">1 hour ago</td>
 								<td class="text-end">
@@ -1376,7 +1376,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#PXF-534</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#PXF-534</a>
 								</td>
 								<td class="text-end">3 hour ago</td>
 								<td class="text-end">
@@ -1411,7 +1411,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#XGD-249</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#XGD-249</a>
 								</td>
 								<td class="text-end">2 day ago</td>
 								<td class="text-end">
@@ -1446,7 +1446,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SKP-035</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#SKP-035</a>
 								</td>
 								<td class="text-end">2 day ago</td>
 								<td class="text-end">
@@ -1481,7 +1481,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary">#SKP-567</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary">#SKP-567</a>
 								</td>
 								<td class="text-end">7 min ago</td>
 								<td class="text-end">
@@ -1542,7 +1542,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/sales/details.html" class="btn btn-sm btn-light">Order Details</a>
+						<a href="/admin/apps/ecommerce/sales/details" class="btn btn-sm btn-light">Order Details</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>
@@ -1561,7 +1561,7 @@
 									<img src="assets/media/stock/ecommerce/210.gif" class="w-50px ms-n1 me-1" alt="" />
 									<!--end::Icon-->
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
 									<!--end::Title-->
 								</div>
 								<!--end::Wrapper-->
@@ -1655,7 +1655,7 @@
 							<div class="d-flex flex-stack">
 								<!--begin::Name-->
 								<span class="text-gray-400 fw-bold">To:
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Jason Bourne</a></span>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Jason Bourne</a></span>
 								<!--end::Name-->
 								<!--begin::Label-->
 								<span class="badge badge-light-success">Delivered</span>
@@ -1674,7 +1674,7 @@
 									<img src="assets/media/stock/ecommerce/209.gif" class="w-50px ms-n1 me-1" alt="" />
 									<!--end::Icon-->
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
 									<!--end::Title-->
 								</div>
 								<!--end::Wrapper-->
@@ -1768,7 +1768,7 @@
 							<div class="d-flex flex-stack">
 								<!--begin::Name-->
 								<span class="text-gray-400 fw-bold">To:
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Marie Durant</a></span>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Marie Durant</a></span>
 								<!--end::Name-->
 								<!--begin::Label-->
 								<span class="badge badge-light-primary">Shipping</span>
@@ -1787,7 +1787,7 @@
 									<img src="assets/media/stock/ecommerce/214.gif" class="w-50px ms-n1 me-1" alt="" />
 									<!--end::Icon-->
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
 									<!--end::Title-->
 								</div>
 								<!--end::Wrapper-->
@@ -1881,7 +1881,7 @@
 							<div class="d-flex flex-stack">
 								<!--begin::Name-->
 								<span class="text-gray-400 fw-bold">To:
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Dan Wilson</a></span>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Dan Wilson</a></span>
 								<!--end::Name-->
 								<!--begin::Label-->
 								<span class="badge badge-light-danger">Confirmed</span>
@@ -1900,7 +1900,7 @@
 									<img src="assets/media/stock/ecommerce/211.gif" class="w-50px ms-n1 me-1" alt="" />
 									<!--end::Icon-->
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Elephant 1802</a>
 									<!--end::Title-->
 								</div>
 								<!--end::Wrapper-->
@@ -1994,7 +1994,7 @@
 							<div class="d-flex flex-stack">
 								<!--begin::Name-->
 								<span class="text-gray-400 fw-bold">To:
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Lebron Wayde</a></span>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Lebron Wayde</a></span>
 								<!--end::Name-->
 								<!--begin::Label-->
 								<span class="badge badge-light-success">Delivered</span>
@@ -2013,7 +2013,7 @@
 									<img src="assets/media/stock/ecommerce/215.gif" class="w-50px ms-n1 me-1" alt="" />
 									<!--end::Icon-->
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">RiseUP</a>
 									<!--end::Title-->
 								</div>
 								<!--end::Wrapper-->
@@ -2107,7 +2107,7 @@
 							<div class="d-flex flex-stack">
 								<!--begin::Name-->
 								<span class="text-gray-400 fw-bold">To:
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Ana Simmons</a></span>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Ana Simmons</a></span>
 								<!--end::Name-->
 								<!--begin::Label-->
 								<span class="badge badge-light-primary">Shipping</span>
@@ -2126,7 +2126,7 @@
 									<img src="assets/media/stock/ecommerce/192.gif" class="w-50px ms-n1 me-1" alt="" />
 									<!--end::Icon-->
 									<!--begin::Title-->
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fw-bold">Yellow Stone</a>
 									<!--end::Title-->
 								</div>
 								<!--end::Wrapper-->
@@ -2220,7 +2220,7 @@
 							<div class="d-flex flex-stack">
 								<!--begin::Name-->
 								<span class="text-gray-400 fw-bold">To:
-								<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 text-hover-primary fw-bold">Kevin Leonard</a></span>
+								<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">Kevin Leonard</a></span>
 								<!--end::Name-->
 								<!--begin::Label-->
 								<span class="badge badge-light-danger">Confirmed</span>
@@ -2285,7 +2285,7 @@
 							</div>
 							<!--end::Status-->
 							<!--begin::Search-->
-							<a href="/admin/apps/ecommerce/catalog/products.html" class="btn btn-light btn-sm">View Stock</a>
+							<a href="/admin/apps/ecommerce/catalog/products" class="btn btn-light btn-sm">View Stock</a>
 							<!--end::Search-->
 						</div>
 						<!--begin::Filters-->
@@ -2316,7 +2316,7 @@
 							<tr>
 								<!--begin::Item-->
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-dark text-hover-primary">Macbook Air M1</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Macbook Air M1</a>
 								</td>
 								<!--end::Item-->
 								<!--begin::Product ID-->
@@ -2342,7 +2342,7 @@
 							<tr>
 								<!--begin::Item-->
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-dark text-hover-primary">Surface Laptop 4</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Surface Laptop 4</a>
 								</td>
 								<!--end::Item-->
 								<!--begin::Product ID-->
@@ -2368,7 +2368,7 @@
 							<tr>
 								<!--begin::Item-->
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-dark text-hover-primary">Logitech MX 250</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Logitech MX 250</a>
 								</td>
 								<!--end::Item-->
 								<!--begin::Product ID-->
@@ -2394,7 +2394,7 @@
 							<tr>
 								<!--begin::Item-->
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-dark text-hover-primary">AudioEngine HD3</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">AudioEngine HD3</a>
 								</td>
 								<!--end::Item-->
 								<!--begin::Product ID-->
@@ -2420,7 +2420,7 @@
 							<tr>
 								<!--begin::Item-->
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-dark text-hover-primary">HP Hyper LTR</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">HP Hyper LTR</a>
 								</td>
 								<!--end::Item-->
 								<!--begin::Product ID-->
@@ -2446,7 +2446,7 @@
 							<tr>
 								<!--begin::Item-->
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-dark text-hover-primary">Dell 32 UltraSharp</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Dell 32 UltraSharp</a>
 								</td>
 								<!--end::Item-->
 								<!--begin::Product ID-->
@@ -2472,7 +2472,7 @@
 							<tr>
 								<!--begin::Item-->
 								<td>
-									<a href="/admin/apps/ecommerce/catalog/edit-product.html" class="text-dark text-hover-primary">Google Pixel 6 Pro</a>
+									<a href="/admin/apps/ecommerce/catalog/edit-product" class="text-dark text-hover-primary">Google Pixel 6 Pro</a>
 								</td>
 								<!--end::Item-->
 								<!--begin::Product ID-->

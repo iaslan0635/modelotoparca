@@ -339,10 +339,10 @@
 					<!--begin::Links-->
 					<div class="text-center mb-1">
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-primary me-2" href="/admin/apps/ecommerce/customers/listing.html">Try now</a>
+						<a class="btn btn-sm btn-primary me-2" href="/admin/apps/ecommerce/customers/listing">Try now</a>
 						<!--end::Link-->
 						<!--begin::Link-->
-						<a class="btn btn-sm btn-light" href="/admin/apps/invoices/view/invoice-1.html">Learn more</a>
+						<a class="btn btn-sm btn-light" href="/admin/apps/invoices/view/invoice-1">Learn more</a>
 						<!--end::Link-->
 					</div>
 					<!--end::Links-->
@@ -473,7 +473,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/catalog/categories.html" class="btn btn-sm btn-light">View All</a>
+						<a href="/admin/apps/ecommerce/catalog/categories" class="btn btn-sm btn-light">View All</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>
@@ -500,7 +500,7 @@
 										<img src="assets/media/stock/ecommerce/210.gif" class="w-50px" alt="" />
 									</td>
 									<td class="ps-0">
-										<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
+										<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Elephant 1802</a>
 										<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 									</td>
 									<td>
@@ -512,7 +512,7 @@
 										<img src="assets/media/stock/ecommerce/215.gif" class="w-50px" alt="" />
 									</td>
 									<td class="ps-0">
-										<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
+										<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Red Laga</a>
 										<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 									</td>
 									<td>
@@ -524,7 +524,7 @@
 										<img src="assets/media/stock/ecommerce/209.gif" class="w-50px" alt="" />
 									</td>
 									<td class="ps-0">
-										<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
+										<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">RiseUP</a>
 										<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 									</td>
 									<td>
@@ -536,7 +536,7 @@
 										<img src="assets/media/stock/ecommerce/214.gif" class="w-50px" alt="" />
 									</td>
 									<td class="ps-0">
-										<a href="/admin/apps/ecommerce/sales/details.html" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Yellow Stone</a>
+										<a href="/admin/apps/ecommerce/sales/details" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 text-start pe-0">Yellow Stone</a>
 										<span class="text-gray-400 fw-semibold fs-7 d-block text-start ps-0">Item: #XDG-2347</span>
 									</td>
 									<td>
@@ -1050,7 +1050,7 @@
 					<!--end::Title-->
 					<!--begin::Toolbar-->
 					<div class="card-toolbar">
-						<a href="/admin/apps/ecommerce/sales/listing.html" class="btn btn-sm btn-light">View All</a>
+						<a href="/admin/apps/ecommerce/sales/listing" class="btn btn-sm btn-light">View All</a>
 					</div>
 					<!--end::Toolbar-->
 				</div>
@@ -2136,7 +2136,7 @@
 						<!--end::Item-->
 						<!--begin::Link-->
 						<div class="text-center pt-8 d-1">
-							<a href="/admin/apps/ecommerce/sales/details.html" class="text-primary opacity-75-hover fs-6 fw-bold">View Store Analytics
+							<a href="/admin/apps/ecommerce/sales/details" class="text-primary opacity-75-hover fs-6 fw-bold">View Store Analytics
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 							<span class="svg-icon svg-icon-3 svg-icon-primary">
 								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
