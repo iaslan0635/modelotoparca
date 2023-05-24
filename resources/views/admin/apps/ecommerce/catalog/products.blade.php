@@ -210,9 +210,6 @@
 						<!--end::Table head-->
 						<!--begin::Table body-->
                         <tbody class="fw-semibold text-gray-600">
-                        @php
-                            /* TODO:TEMP */ $products = \App\Models\Product::paginate();
-                        @endphp
                         @foreach($products as $product)
                             @php
                                 $link = route("admin.products.edit", $product)
@@ -230,13 +227,13 @@
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <!--begin::Thumbnail-->
-                                        <a href="admin/apps/ecommerce/catalog/edit-product" class="symbol symbol-50px">
+                                        <a href="{{ $link }}" class="symbol symbol-50px">
                                             <span class="symbol-label" style="background-image:url({{ $product->image?->url }});"></span>
                                         </a>
                                         <!--end::Thumbnail-->
                                         <div class="ms-5">
                                             <!--begin::Title-->
-                                            <a href="admin/apps/ecommerce/catalog/edit-product" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">{{ $product->title }}</a>
+                                            <a href="{{ $link }}" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name">{{ $product->title }}</a>
                                             <!--end::Title-->
                                         </div>
                                     </div>
@@ -278,7 +275,7 @@
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="admin/apps/ecommerce/catalog/edit-product" class="menu-link px-3">Edit</a>
+                                            <a href="{{ $link }}" class="menu-link px-3">Edit</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->

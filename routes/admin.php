@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 $temp = function () {
@@ -11,4 +12,4 @@ $temp = function () {
 Route::view("/", "admin.index");
 Route::fallback($temp);
 
-Route::resource("products", "");
+Route::resource("products", ProductController::class)->only(["index", "show", "update"]);
