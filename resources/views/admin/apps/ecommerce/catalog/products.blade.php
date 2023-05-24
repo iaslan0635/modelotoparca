@@ -160,7 +160,9 @@
 								</svg>
 							</span>
 							<!--end::Svg Icon-->
-							<input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Product" />
+                            <form>
+							    <input type="text" name="search" class="form-control form-control-solid w-250px ps-14" placeholder="Ürün Ara" value="{{ \request()->input("search") }}" />
+                            </form>
 						</div>
 						<!--end::Search-->
 					</div>

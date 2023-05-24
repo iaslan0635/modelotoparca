@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Packages\Search;
+use Elastic\ScoutDriverPlus\Paginator;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,9 +13,15 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate();
+        if ($search = $request->input("search")) {
+            /** @var Paginator $hits */
+            ['products' => $hits] = Search::query($search);
+            $products = $hits->onlyModels();
+        }
+        else
+            $products = Product::paginate();
         return view("admin.apps.ecommerce.catalog.products", compact("products"));
     }
 
