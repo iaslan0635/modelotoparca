@@ -212,7 +212,7 @@
                         <tbody class="fw-semibold text-gray-600">
                         @foreach($products as $product)
                             @php
-                                $link = route("admin.products.edit", $product)
+                                $link = route("admin.products.show", $product)
                             @endphp
                                 <!--begin::Table row-->
                             <tr>
