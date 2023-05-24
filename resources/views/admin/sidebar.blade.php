@@ -38,13 +38,13 @@
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
-                <a class="menu-link" href="{{ route("admin.products.index") }}">
+                <a class="menu-link" href="{{ route("admin.import.index") }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
                         <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                         <!--end::Svg Icon-->
                     </span>
-                    <span class="menu-title">Ürünler</span>
+                    <span class="menu-title">İçe aktar</span>
                 </a>
                 <!--end:Menu link-->
             </div>

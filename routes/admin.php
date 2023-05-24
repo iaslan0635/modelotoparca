@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ImportController;
 use Illuminate\Support\Facades\Route;
 
 $temp = function () {
@@ -13,3 +14,9 @@ Route::view("/", "admin.index");
 Route::fallback($temp);
 
 Route::resource("products", ProductController::class)->only(["index", "show", "update"]);
+Route::controller(ImportController::class)->prefix("import")->name("import.")->group(function () {
+    Route::get("", "index")->name("index");
+    Route::post("ITEMS_WEB", "ITEMS_WEB")->name("ITEMS_WEB");
+    Route::post("ITEMSUBS", "ITEMSUBS")->name("ITEMSUBS");
+    Route::post("ITMCLSAS", "ITMCLSAS")->name("ITMCLSAS");
+});

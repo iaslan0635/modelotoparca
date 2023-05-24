@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ImportController;
 use App\Http\Controllers\OemController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
@@ -49,13 +48,6 @@ Route::prefix('p/{product:slug}')->group(function () {
     Route::get('quickview', [ProductController::class, 'quickview'])->name('quickview');
     Route::get('/', [ProductController::class, 'show'])->name('product.show');
 });
-
-Route::prefix("import/")->controller(ImportController::class)->group(function () {
-    Route::get("/", "index");
-    Route::post("tiger", "tiger");
-    Route::post("alternative", "alternative");
-});
-
 
 Route::view('cart', 'cart')->name('cart');
 Route::view('checkout', 'checkout')->name('checkout');

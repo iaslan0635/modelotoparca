@@ -9347,10 +9347,10 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Vendors Javascript(used by this page)-->
-		@yield("vendor_scripts")
+		@stack("vendor_scripts")
 		<!--end::Vendors Javascript-->
 		<!--begin::Custom Javascript(used by this page)-->
-		@yield("custom_scripts")
+		@stack("custom_scripts")
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
 	</body>
