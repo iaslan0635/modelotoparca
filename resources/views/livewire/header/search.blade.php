@@ -4,7 +4,7 @@
             <div class="search__shadow"></div>
             <input name="query" class="search__input" wire:model="query" type="text"
                    placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
-            <button class="search__button search__button--start" type="button">
+            <button class="search__button search__button--start" type="button" style="position: relative;">
                 <span class="search__button-icon">
                     <svg width="20" height="20">
                         <path
@@ -12,6 +12,9 @@
                     </svg>
                 </span>
                 <span class="search__button-title">Araç Seç</span>
+                @if(\App\Facades\Garage::hasChosen())
+                    <div style="content: ' ';border-radius: 100%;background-color: var(--red);position: absolute;top: -.25rem;right: -.25rem;z-index: 1;height: .75rem;aspect-ratio: 1;"></div>
+                @endif
             </button>
             <div wire:ignore class="search__dropdown search__dropdown--vehicle-picker vehicle-picker">
                 <div class="search__dropdown-arrow"></div>
