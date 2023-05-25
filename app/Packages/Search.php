@@ -2,6 +2,7 @@
 
 namespace App\Packages;
 
+use App\Facades\Garage;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductOem;
@@ -359,7 +360,20 @@ class Search
                 request()->input('max_price')
             ));
 
+        if (Garage::hasChosen())
+            $finalQuery->must(self::carFilter(Garage::chosen()));
+
         return $finalQuery;
+    }
+
+    private static function carFilter(int $id)
+    {
+        return Query::nested()->path("cars")
+            ->query(
+                Query::term()
+                    ->field("cars.id")
+                    ->value($id)
+            );
     }
 
     public static function query(string $term, $sortBy = null): array
