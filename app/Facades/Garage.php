@@ -6,6 +6,8 @@ use App\Models\Car;
 
 class Garage
 {
+    private static null|Car $chosen_cache;
+
     public static function add(Car $car): void
     {
         self::addRaw([
@@ -39,9 +41,9 @@ class Garage
         return session('garage_chosen');
     }
 
-    public static function findChosen($columns = ['*']): Car
+    public static function findChosen(): Car
     {
-        return Car::find(self::chosen(), $columns);
+        return self::$chosen_cache ?? (self::$chosen_cache = Car::find(self::chosen()));
     }
 
     public static function choose(int $id): void
