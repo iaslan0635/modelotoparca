@@ -143,6 +143,7 @@ class TigerImporter extends Importer
         Bus::batch($chunks)
             ->then(function () use ($ids) {
                 foreach ($ids as $id)
+                    Log::info("Working");
                     SparetoConnectJob::dispatch($id);
             })->dispatch();
     }
