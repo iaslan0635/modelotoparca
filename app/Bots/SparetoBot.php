@@ -63,7 +63,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
     public static function dispatchAllFields(Product $product)
     {
         foreach (self::newForAllFields($product) as $job)
-            self::dispatch($job);
+            dispatch($job);
     }
 
     private static function isDone(string $keyword)

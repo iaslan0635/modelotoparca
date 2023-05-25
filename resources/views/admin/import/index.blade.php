@@ -67,7 +67,7 @@
                                 <!--begin::Card header-->
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <h2>{{ $route }}.xlsx</h2>
+                                        <h2>Bot</h2>
                                     </div>
                                 </div>
                                 <!--end::Card header-->
@@ -75,8 +75,8 @@
                                 <div class="card-body pt-0">
                                     <!--begin::Input group-->
                                     <div class="fv-row mb-2">
-                                        <a href="{{ route('admin.import.sparetobot_bot') }}">Botu çalıştır</a>
-                                        <a href="{{ route('admin.import.sparetobot_connect') }}">Bot sonuçlarını eşleştir</a>
+                                        <a class="btn btn-primary me-4" href="{{ route('admin.import.sparetobot_bot') }}">Botu çalıştır</a>
+                                        <a class="btn btn-primary" href="{{ route('admin.import.sparetobot_connect') }}">Bot sonuçlarını eşleştir</a>
                                     </div>
                                     <!--end::Input group-->
                                 </div>

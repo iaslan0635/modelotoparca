@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 $temp = function () {
     $segments = request()->segments();
-    $view = implode(".", $segments);
-    return view(str_replace(".html", "", $view));
+    $view = str_replace(".html", "", implode(".", $segments));
+    abort_unless(View::exists($view), 444, "View not exists");
+    return view($view);
 };
 
 Route::view("/", "admin.index");
-Route::fallback($temp);
 
 Route::prefix("products/{product}/edit")->name("products.edit.")->controller(ProductController::class)->group(function () {
     Route::get("spareto", "push_spareto")->name("spareto");
@@ -23,6 +23,8 @@ Route::controller(ImportController::class)->prefix("import")->name("import.")->g
     Route::post("ITEMS_WEB", "ITEMS_WEB")->name("ITEMS_WEB");
     Route::post("ITEMSUBS", "ITEMSUBS")->name("ITEMSUBS");
     Route::post("ITMCLSAS", "ITMCLSAS")->name("ITMCLSAS");
-    Route::post("sparetobot_bot", "sparetobot_bot")->name("sparetobot_bot");
-    Route::post("sparetobot_connect", "sparetobot_connect")->name("sparetobot_connect");
+    Route::get("sparetobot_bot", "sparetobot_bot")->name("sparetobot_bot");
+    Route::get("sparetobot_connect", "sparetobot_connect")->name("sparetobot_connect");
 });
+
+Route::fallback($temp);
