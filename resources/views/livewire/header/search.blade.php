@@ -13,7 +13,27 @@
                 </span>
                 <span class="search__button-title">Araç Seç</span>
             </button>
-            <livewire:garage/>
+            <div wire:ignore class="search__dropdown search__dropdown--vehicle-picker vehicle-picker">
+                <div class="search__dropdown-arrow"></div>
+                <div wire:ignore class="vehicle-picker__panel vehicle-picker__panel--list vehicle-picker__panel--active" data-panel="list">
+                    <div class="vehicle-picker__panel-body">
+                        <div class="vehicle-picker__text">
+                            Aracınız ile tam uyumlu parçaları bulmak için seçiniz
+                        </div>
+                        <div class="vehicles-list">
+                            <livewire:garage />
+                        </div>
+                        <div class="vehicle-picker__actions">
+                            <button type="button" class="btn btn-primary btn-sm" data-to-panel="form">Yeni Araç Ekle</button>
+                        </div>
+                    </div>
+                </div>
+                <livewire:car-search :homepage-variant="false" />
+                <div wire:loading.flex
+                     style="display: none; background: rgba(255, 255, 255, 0.29);backdrop-filter: blur(10px);position: absolute;inset: 0;justify-content: center;align-items: center;">
+                    <div class="spinner-border"></div>
+                </div>
+            </div>
             <button class="search__button search__button--end" type="submit">
                                 <span class="search__button-icon"><svg width="20" height="20">
                                         <path d="M19.2,17.8c0,0-0.2,0.5-0.5,0.8c-0.4,0.4-0.9,0.6-0.9,0.6s-0.9,0.7-2.8-1.6c-1.1-1.4-2.2-2.8-3.1-3.9C10.9,14.5,9.5,15,8,15

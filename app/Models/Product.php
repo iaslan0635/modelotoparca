@@ -112,4 +112,9 @@ class Product extends BaseModel implements CanVisit
             //static::addGlobalScope("chosen_car", fn(Builder $builder) => $builder->whereRelation('cars', "id", "=", $chosen));
         }
     }
+
+    public function sparetoConnections()
+    {
+        return $this->hasMany(SparetoConnection::class);
+    }
 }

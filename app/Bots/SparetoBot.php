@@ -6,6 +6,7 @@ use App\Facades\SparetoCache;
 use App\Models\Car;
 use App\Models\Product;
 use App\Models\SparetoConnection;
+use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,7 +19,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class SparetoBot implements ShouldQueue, ShouldBeUnique
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, Batchable;
 
 
     public function __construct(public string $keyword, public string $keywordField)
@@ -35,24 +36,34 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         return $this->keyword;
     }
 
-    private static function safeDispatch(string|null $keyword, string $field)
+    private static function safeNew(string|null $keyword, string $field)
     {
-        if (blank($keyword) || self::isDone($keyword)) return;
+        if (blank($keyword) || self::isDone($keyword)) return null;
 
-        SparetoBot::dispatch($keyword, $field)->onQueue('spareto');
+        return (new SparetoBot($keyword, $field))->onQueue('spareto');
     }
 
-    public static function dispatchAllFields(Product $product)
+    /** @return self[] */
+    public static function newForAllFields(Product $product)
     {
-        self::safeDispatch($product->cross_code, "cross_code");
-        self::safeDispatch($product->producercode, "producercode");
+        $jobs = [];
+        $jobs[] = self::safeNew($product->cross_code, "cross_code");
+        $jobs[] = self::safeNew($product->producercode, "producercode");
 
         $oems = collect(explode(',', $product->oem_codes ?? ''))
             ->map(fn(string $s) => trim($s))
             ->filter();
 
         foreach ($oems as $oem)
-            self::safeDispatch($oem, "oem");
+            $jobs[] = self::safeNew($oem, "oem");
+
+        return array_filter($jobs, fn($j) => !is_null($j));
+    }
+
+    public static function dispatchAllFields(Product $product)
+    {
+        foreach (self::newForAllFields($product) as $job)
+            self::dispatch($job);
     }
 
     private static function isDone(string $keyword)

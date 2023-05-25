@@ -31,6 +31,8 @@ class CarSearch extends Component
 
     public $spesificCars;
 
+    public $homepageVariant;
+
     private const HIERARCHY = ['maker', 'car', 'year', 'spesificCar', 'engine'];
 
     public function resetTo(string $prop)

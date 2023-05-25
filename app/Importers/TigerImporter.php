@@ -2,10 +2,15 @@
 
 namespace App\Importers;
 
+use App\Bots\SparetoBot;
+use App\Jobs\SparetoConnectJob;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
+use App\Models\SparetobotDone;
+use Illuminate\Bus\Batch;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -125,8 +130,19 @@ class TigerImporter extends Importer
 
         if ($this->shouldAddToIndex()) {
             ProductSimilar::query()->searchable();
-            Product::query()->searchable();
+            Product::whereIn("id", $ids)->searchable();
             Log::info("Added to index");
         }
+
+        SparetobotDone::truncate();
+        $jobs = [];
+        foreach (Product::whereIn("id", $ids)->cursor() as $product)
+            array_push($jobs, ...SparetoBot::newForAllFields($product));
+
+        Bus::batch($jobs)
+            ->then(function (Batch $batch) use ($ids) {
+                foreach ($ids as $id)
+                    SparetoConnectJob::dispatch($id);
+            });
     }
 }
