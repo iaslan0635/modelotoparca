@@ -140,9 +140,9 @@ class TigerImporter extends Importer
             array_push($jobs, ...SparetoBot::newForAllFields($product));
 
         Bus::batch($jobs)
-            ->then(function (Batch $batch) use ($ids) {
+            ->then(function () use ($ids) {
                 foreach ($ids as $id)
                     SparetoConnectJob::dispatch($id);
-            });
+            })->dispatch();
     }
 }
