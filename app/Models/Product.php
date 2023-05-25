@@ -110,7 +110,7 @@ class Product extends BaseModel implements CanVisit
     {
         if (Garage::hasChosen()) {
             $chosen = Garage::chosen();
-            static::addGlobalScope("chosen_car", fn(Builder $builder) => throw new \Exception("NO WAYAYAY"));
+            static::addGlobalScope("chosen_car", fn(Builder $builder) => $builder->whereRelation('cars', "id", "=", $chosen));
         }
     }
 
