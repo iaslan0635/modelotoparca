@@ -129,7 +129,7 @@ class CarSearch extends Component
     public function add()
     {
         $car = Car::query()->findOrFail($this->engine);
-        GarageFacade::add($car);
+        GarageFacade::addAndChoose($car);
         $this->emit('reloadData');
 //        dd(route('car.search', $car));
         $this->redirect(route('car.search', $car->permalink));
