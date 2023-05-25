@@ -68,6 +68,8 @@
                                 <div class="card-header">
                                     <div class="card-title">
                                         <h2>Bot</h2>
+                                        <span class="badge badge-primary">Bot kuyruğu {{ \DB::table("jobs")->where("queue", "spareto")->count() }}</span>
+                                        <span class="badge badge-primary">Bağlantı kuyruğu {{ \DB::table("jobs")->where("queue", "default")->count() }}</span>
                                     </div>
                                 </div>
                                 <!--end::Card header-->
