@@ -24,6 +24,7 @@
                             <livewire:garage />
                         </div>
                         <div class="vehicle-picker__actions">
+                            <button type="button" class="btn btn-dark btn-sm" wire:click="deselect" >Araç seçimini kaldır</button>
                             <button type="button" class="btn btn-primary btn-sm" data-to-panel="form">Yeni Araç Ekle</button>
                         </div>
                     </div>

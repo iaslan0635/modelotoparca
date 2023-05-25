@@ -56,4 +56,9 @@ class Garage
         if (!$alreadyExists) self::add($car);
         self::choose($id);
     }
+
+    public static function deselect()
+    {
+        session()->remove("garage_chosen");
+    }
 }

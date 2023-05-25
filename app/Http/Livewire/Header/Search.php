@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Header;
 
+use App\Facades\Garage;
 use App\Packages\Search as Searchable;
 use Elastic\ScoutDriverPlus\Support\Query;
 use Livewire\Component;
@@ -36,7 +37,12 @@ class Search extends Component
         ]);
     }
 
-    // @formatter:off
+    public function deselect()
+    {
+        Garage::deselect();
+        $this->emit('reload');
+    }
+
     public function reloadData()
     {
     return $this->emit('forwardCallToGarage', 'reloadData', func_get_args());
@@ -51,6 +57,5 @@ class Search extends Component
     {
     return $this->emit('forwardCallToGarage', 'remove', func_get_args());
     }
-    // @formatter:on
 
 }
