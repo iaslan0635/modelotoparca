@@ -23,4 +23,6 @@ Route::controller(ImportController::class)->prefix("import")->name("import.")->g
     Route::post("ITEMS_WEB", "ITEMS_WEB")->name("ITEMS_WEB");
     Route::post("ITEMSUBS", "ITEMSUBS")->name("ITEMSUBS");
     Route::post("ITMCLSAS", "ITMCLSAS")->name("ITMCLSAS");
+    Route::post("sparetobot_bot", "sparetobot_bot")->name("sparetobot_bot");
+    Route::post("sparetobot_connect", "sparetobot_connect")->name("sparetobot_connect");
 });

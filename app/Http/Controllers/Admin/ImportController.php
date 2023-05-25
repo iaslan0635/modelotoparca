@@ -46,4 +46,16 @@ class ImportController extends Controller
     {
         abort(500, "Not imlemented");
     }
+
+    public function sparetobot_bot()
+    {
+        \Artisan::call("spareto:bot");
+        return back();
+    }
+
+    public function sparetobot_connect()
+    {
+        \Artisan::call("spareto:connect");
+        return back();
+    }
 }
