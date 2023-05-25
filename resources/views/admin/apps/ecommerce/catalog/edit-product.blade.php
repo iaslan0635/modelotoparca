@@ -145,7 +145,7 @@
 		<!--begin::Content container-->
 		<div id="kt_app_content_container" class="app-container container-xxl">
 			<!--begin::Form-->
-			<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/apps/ecommerce/catalog/products">
+			<div class="form d-flex flex-column flex-lg-row">
 				<!--begin::Aside column-->
 				<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
 					<!--begin::Thumbnail settings-->
@@ -379,7 +379,7 @@
 					<ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
 						<!--begin:::Tab item-->
 						<li class="nav-item">
-							<a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connections">Ürün bağlantıları</a>
+							<a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connections">Ürün bağlantısı ekle</a>
 						</li>
 						<!--end:::Tab item-->
 					</ul>
@@ -389,61 +389,49 @@
 						<!--begin::Tab pane-->
 						<div class="tab-pane fade show active" id="spareto_connections" role="tabpanel">
 							<div class="d-flex flex-column gap-7 gap-lg-10">
-								<!--begin::Reviews-->
+								<!--begin::Card-->
 								<div class="card card-flush py-4">
 									<!--begin::Card header-->
 									<div class="card-header">
 										<!--begin::Card title-->
 										<div class="card-title">
-											<h2>Spareto Ürün bağlantıları</h2>
+											<h2>Spareto Ürün bağlantısı ekle</h2>
 										</div>
 										<!--end::Card title-->
 									</div>
 									<!--end::Card header-->
-									<!--begin::Card body-->
+									<!--begin::Card bodyi-->
 									<div class="card-body pt-0">
-										<!--begin::Table-->
-										<table class="table table-row-dashed fs-6 gy-5 my-0" id="spareto_connections">
-											<!--begin::Table head-->
-											<thead>
-												<tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
-													<th class="w-10px pe-2">
-														<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-															<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#spareto_connections .form-check-input" value="1" />
-														</div>
-													</th>
-													<th class="min-w-125px">Spareto url</th>
-												</tr>
-											</thead>
-											<!--end::Table head-->
-											<!--begin::Table body-->
-											<tbody>
-                                            @foreach($product->sparetoConnections as $connection)
-                                                <tr>
-													<td>
-														<!--begin::Checkbox-->
-														<div class="form-check form-check-sm form-check-custom form-check-solid mt-1">
-															<input class="form-check-input" type="checkbox" value="1" />
-														</div>
-														<!--end::Checkbox-->
-													</td>
-													<td>
-														<a href="admin/apps/inbox/reply" class="d-flex text-dark text-gray-800 text-hover-primary">
-															<!--begin::Name-->
-															<span class="fw-bold">{{ $connection->url }}</span>
-															<!--end::Name-->
-														</a>
-													</td>
-												</tr>
-                                            @endforeach
-											</tbody>
-											<!--end::Table body-->
-										</table>
-										<!--end::Table-->
+                                        <form action="{{ route('admin.products.edit.spareto', $product) }}">
+                                            <input name="url" type="text" class="form-control" placeholder="https://spareto.com/products/..."/>
+                                            <button type="submit" class="btn btn-primary mt-4">Bağla</button>
+                                        </form>
 									</div>
 									<!--end::Card body-->
 								</div>
-								<!--end::Reviews-->
+								<!--end::Card-->
+                                <!--begin::Card-->
+                                <div class="card card-flush py-4">
+                                    <!--begin::Card header-->
+                                    <div class="card-header">
+                                        <!--begin::Card title-->
+                                        <div class="card-title">
+                                            <h2>Elle oem ekle</h2>
+                                        </div>
+                                        <!--end::Card title-->
+                                    </div>
+                                    <!--end::Card header-->
+                                    <!--begin::Card body-->
+                                    <div class="card-body pt-0">
+                                        <form action="{{ route('admin.products.edit.oem', $product) }}">
+                                            <input name="oem" type="text" class="form-control mb-2" placeholder="Oem kodu"/>
+                                            <input name="brand" type="text" class="form-control" placeholder="Marka"/>
+                                            <button type="submit" class="btn btn-primary mt-4">Bağla</button>
+                                        </form>
+                                    </div>
+                                    <!--end::Card body-->
+                                </div>
+                                <!--end::Card-->
 							</div>
 						</div>
 						<!--end::Tab pane-->
@@ -463,7 +451,7 @@
 					</div>
 				</div>
 				<!--end::Main column-->
-			</form>
+			</div>
 			<!--end::Form-->
 		</div>
 		<!--end::Content container-->

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ImportController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 $temp = function () {
@@ -13,6 +13,10 @@ $temp = function () {
 Route::view("/", "admin.index");
 Route::fallback($temp);
 
+Route::prefix("products/{product}/edit")->name("products.edit.")->controller(ProductController::class)->group(function () {
+    Route::get("spareto", "push_spareto")->name("spareto");
+    Route::get("oem", "push_oem")->name("oem");
+});
 Route::resource("products", ProductController::class)->only(["index", "show", "update"]);
 Route::controller(ImportController::class)->prefix("import")->name("import.")->group(function () {
     Route::get("", "index")->name("index");

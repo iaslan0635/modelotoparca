@@ -33,18 +33,18 @@ class SparetoConnectJob implements ShouldQueue
 
     public function handle(): void
     {
-/*
-        $hasConnectionsOtherThanOem = $this->query()->where("connected_by", "!=", "oem")->exists();
+        /*
+                $hasConnectionsOtherThanOem = $this->query()->where("connected_by", "!=", "oem")->exists();
 
-        $filteredConnections = !$hasConnectionsOtherThanOem ? $this->unapplied()->get() :
-            $this->unapplied()->where("connected_by", "!=", "oem")->get();
-*/
+                $filteredConnections = !$hasConnectionsOtherThanOem ? $this->unapplied()->get() :
+                    $this->unapplied()->where("connected_by", "!=", "oem")->get();
+        */
         $filteredConnections = $this->unapplied()->where("connected_by", "!=", "oem")->get();
         foreach ($filteredConnections as $connection)
-            $this->connect($connection);
+            self::connect($connection);
     }
 
-    private function connect(SparetoConnection $connection)
+    public static function connect(SparetoConnection $connection)
     {
         $targetRef = $connection->product_id;
         $crawler = SparetoCache::crawler($connection->url);
