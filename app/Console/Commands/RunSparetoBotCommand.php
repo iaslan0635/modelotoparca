@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Bots\SparetoBot;
 use App\Models\Product;
+use App\Models\SparetobotDone;
 use Illuminate\Console\Command;
 
 class RunSparetoBotCommand extends Command
@@ -12,6 +13,7 @@ class RunSparetoBotCommand extends Command
 
     public function handle(): void
     {
+        SparetobotDone::truncate();
         $this->withProgressBar(Product::all(), fn(Product $product) => SparetoBot::dispatchAllFields($product));
     }
 }
