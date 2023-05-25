@@ -857,33 +857,7 @@
                         <div class="block">
                             <div class="products-view">
 
-                                <div class="products-view__options view-options view-options--offcanvas--mobile">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h5>Seçiminiz</h5>
-                                            </div>
-                                            <div class="card-divider"></div>
-                                            <div class="card-body card-body--padding--2">
-                                                <div class="vehicles-list vehicles-list--layout--account">
-                                                    <div class="vehicles-list__body">
-                                                        <div class="vehicles-list__item">
-                                                            <div class="vehicles-list__item-info">
-                                                                <div class="vehicles-list__item-name">{{ $car->name }}</div>
-                                                                <div class="vehicles-list__item-details">{{ $car->short_name }} - Power : {{ $car->power }} / {{ ($car->power)*1.361 }} HP  - Capacity: {{ $car->capacity }} - From/To : {{ $car->from_year }}/{{ $car->to_year }}</div>
-                                                            </div>
-                                                            <button onclick="window.location.href = '/'" type="button" class="vehicles-list__item-remove">
-                                                                <svg width="16" height="16">
-                                                                    <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z"></path>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-divider"></div>
-
-                                        </div>
-                                </div>
+                                <x-car-selection />
 
                                 <div class="products-view__options view-options view-options--offcanvas--mobile">
                                     <div class="view-options__body">
@@ -1073,9 +1047,7 @@
                                                                             d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"/>
                                                                     </svg>
                                                                 </div>
-                                                                <div class="status-badge__text">Part Fit for 2011 Ford
-                                                                    Focus S
-                                                                </div>
+                                                                <x-compatible-badge/>
                                                                 <div class="status-badge__tooltip" tabindex="0"
                                                                      data-toggle="tooltip"
                                                                      title="Part&#x20;Fit&#x20;for&#x20;2011&#x20;Ford&#x20;Focus&#x20;S"></div>

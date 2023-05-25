@@ -39,6 +39,11 @@ class Garage
         return session('garage_chosen');
     }
 
+    public static function findChosen($columns = ['*']): Car
+    {
+        return Car::find(self::chosen(), $columns);
+    }
+
     public static function choose(int $id): void
     {
         session()->put('garage_chosen', $id);
