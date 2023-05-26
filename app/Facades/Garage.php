@@ -32,6 +32,9 @@ class Garage
 
     public static function remove(int $id): void
     {
+        if (self::chosen() === $id)
+            self::deselect();
+
         $cars = self::items();
         session()->put('garage_cars', collect($cars)->filter(fn($car) => $car['id'] !== $id)->all());
     }
