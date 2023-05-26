@@ -154,7 +154,7 @@ class Search
 
         $suggestions = [];
         foreach ($suggestionOems->highlights() as $highlight)
-            foreach ($highlight->raw()["oem"] as $item)
+            foreach ($highlight->raw()["oem_regex"] as $item)
                 if (!in_array($item, $suggestions))
                     $suggestions[] = $item;
 
