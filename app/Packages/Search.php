@@ -351,7 +351,7 @@ class Search
                 request()->input('max_price')
             ));
 
-        if (Garage::hasChosen())
+        if (Garage::chosen())
             $finalQuery->must(self::carFilter(Garage::chosen()));
 
         return $finalQuery;

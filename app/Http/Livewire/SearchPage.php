@@ -31,11 +31,11 @@ class SearchPage extends Component
         "producercode2",
         "similar_product_codes",
         "producercode_unbranded",
-        "cross_code_regexed",
-        "producercode_regexed",
-        "producercode2_regexed",
-        "similar_product_codes_regexed",
-        "oem_codes_regexed",
+        "cross_code_regex",
+        "producercode_regex",
+        "producercode2_regex",
+        "similar_product_codes_regex",
+        "oem_codes_regex",
         "oem_codes_unspaced",
     ];
 
