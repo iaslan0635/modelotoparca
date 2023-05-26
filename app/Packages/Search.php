@@ -147,18 +147,8 @@ class Search
         $oemSuggestQuery = Query::bool()
             ->should(Query::prefix()->field('oem_regex')->value($cleanTerm)->caseInsensitive(true));
 
-        $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->highlight('oem_regex', [
-            'pre_tags' => ['<strong>'],
-            'post_tags' => ['</strong>'],
-        ])->execute();
-
-        $suggestions = [];
-        foreach ($suggestionOems->highlights() as $highlight)
-            foreach ($highlight->raw()["oem_regex"] as $item)
-                if (!in_array($item, $suggestions))
-                    $suggestions[] = $item;
-
-        return $suggestions;
+        $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->execute();
+        return $suggestionOems->models()->pluck("oem")->unique()->all();
     }
 
     private static function suggestionsCrossCode(string $term)
