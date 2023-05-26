@@ -16,7 +16,7 @@ class SearchPage extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public string $query;
+    public $query;
 
     public $category;
 
@@ -39,19 +39,9 @@ class SearchPage extends Component
         "oem_codes_unspaced",
     ];
 
-    /** BUG: livewire sondaki sıfırları siliyor */
-    protected $queryString = [/*'query',*/
-        'category'];
+    protected $queryString = ['query', 'category'];
 
     public $sortBy;
-
-    public function __construct($id = null)
-    {
-        request()->validate(["query" => "required|string|min:3"]);
-
-        $this->query = request()->get("query");;
-        parent::__construct($id);
-    }
 
     public function render()
     {
