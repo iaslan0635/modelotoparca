@@ -2,8 +2,7 @@
     <div class="search">
         <form action="{{ route("search") }}" class="search__body">
             <div class="search__shadow"></div>
-            <input name="query" class="search__input" wire:model="query" type="text"
-                   placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
+            <input name="query" class="search__input" wire:model="query" type="text" placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
             <button class="search__button search__button--start" type="button" style="position: relative;">
                 <span class="search__button-icon">
                     <svg width="20" height="20">
@@ -51,8 +50,7 @@
                 <div class="search__decor-start"></div>
                 <div class="search__decor-end"></div>
             </div>
-            <div
-                class="search__dropdown search__dropdown--suggestions suggestions {{ strlen($query) >= 3 ? "search__dropdown--open":null }}">
+            <div wire:ignore.self class="search__dropdown search__dropdown--suggestions suggestions">
                 <div class="suggestions__group">
                     <div class="suggestions__group-title">Ürünler</div>
                     <div class="suggestions__group-content">
