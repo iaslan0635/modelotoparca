@@ -41,7 +41,7 @@ class Garage
         return session('garage_chosen');
     }
 
-    public static function findChosen(): Car
+    public static function findChosen(): Car|null
     {
         return self::$chosen_cache ?? (self::$chosen_cache = Car::find(self::chosen()));
     }
@@ -59,7 +59,7 @@ class Garage
     public static function addAndChoose(Car $car)
     {
         $id = $car->id;
-        $alreadyExists = collect(self::items())->contains(fn (array $i) => $id == $i["id"]);
+        $alreadyExists = collect(self::items())->contains(fn(array $i) => $id == $i["id"]);
         if (!$alreadyExists) self::add($car);
         self::choose($id);
     }
