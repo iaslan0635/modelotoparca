@@ -148,7 +148,7 @@ class Search
             ->should(Query::prefix()->field('oem_regex')->value($cleanTerm)->caseInsensitive(true));
 
         $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->execute();
-        return $suggestionOems->models()->pluck("oem")->unique()->all();
+        return $suggestionOems->models()->pluck("oem")->unique()->map(fn(string $s) => "<strong>$s</strong>")->all();
     }
 
     private static function suggestionsCrossCode(string $term)
