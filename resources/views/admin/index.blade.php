@@ -58,10 +58,10 @@
 							<!--begin::Title-->
 							<div class="card-title d-flex flex-column">
 								<!--begin::Amount-->
-								<span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
+								<span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">{{\App\Models\Product::all()->count()}}</span>
 								<!--end::Amount-->
 								<!--begin::Subtitle-->
-								<span class="text-white opacity-75 pt-1 fw-semibold fs-6">Active Projects</span>
+								<span class="text-white opacity-75 pt-1 fw-semibold fs-6">Toplam Ürün Mevcuttur</span>
 								<!--end::Subtitle-->
 							</div>
 							<!--end::Title-->
@@ -72,7 +72,7 @@
 							<!--begin::Progress-->
 							<div class="d-flex align-items-center flex-column mt-3 w-100">
 								<div class="d-flex justify-content-between fw-bold fs-6 text-white opacity-75 w-100 mt-auto mb-2">
-									<span>43 Pending</span>
+									<span>43 Ürün Satıştadır</span>
 									<span>72%</span>
 								</div>
 								<div class="h-8px mx-3 w-100 bg-white bg-opacity-50 rounded">
