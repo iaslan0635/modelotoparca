@@ -29,7 +29,7 @@ class Search
     {
         return Query::nested()
             ->path('cars')
-            ->query(Query::match()->field('cars.regex_name')->query(preg_replace('/[^\w\s]/', '', $term))
+            ->query(Query::match()->field('cars.regex_name')->operator("AND")->query(preg_replace('/[^\w\s]/', '', $term))
                 ->boost(self::BOOST["car"]));
     }
 
