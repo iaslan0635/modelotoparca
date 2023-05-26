@@ -50,7 +50,7 @@ class SparetoCache
     {
         return HTTP::withOptions([
             'proxy' => 'socks5://127.0.0.1:9050',
-            'connect_timeout' => 30
+            'connect_timeout' => 60
         ])->get($url)->throw()->body();
     }
 
