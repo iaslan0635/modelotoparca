@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use App\Packages\Search as Searchable;
 use App\Packages\Utils;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -25,18 +24,20 @@ class SearchPage extends Component
     public $highlights = [];
 
     const CODE_FIELDS = [
+        "part_number",
         "producercode",
-        "cross_code",
-        "oem_codes",
-        "producercode2",
-        "similar_product_codes",
         "producercode_unbranded",
-        "cross_code_regex",
+        "producercode_unbranded_regex",
+        "cross_code",
+        "producercode2",
+        "part_number_regex",
         "producercode_regex",
+        "cross_code_regex",
         "producercode2_regex",
-        "similar_product_codes_regex",
-        "oem_codes_regex",
-        "oem_codes_unspaced",
+        "oems.oem",
+        "oems.oem_regex",
+        "similars.code",
+        "similars.code_regex",
     ];
 
     protected $queryString = ['query', 'category'];
