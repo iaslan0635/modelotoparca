@@ -147,7 +147,7 @@ class Search
         $oemSuggestQuery = Query::bool()
             ->should(Query::prefix()->field('oem_regex')->value($cleanTerm)->caseInsensitive(true));
 
-        $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->highlight('oem', [
+        $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->highlight('oem_regex', [
             'pre_tags' => ['<strong>'],
             'post_tags' => ['</strong>'],
         ])->execute();
