@@ -142,10 +142,10 @@ class Search
             ->boost(self::BOOST["producercode_unbranded"]);
     }
 
-    private static function suggestionsOem(string $term)
+    private static function suggestionsOem(string $cleanTerm)
     {
         $oemSuggestQuery = Query::bool()
-            ->should(Query::prefix()->field('oem')->value($term)->caseInsensitive(true));
+            ->should(Query::prefix()->field('oem_regex')->value($cleanTerm)->caseInsensitive(true));
 
         $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->highlight('oem', [
             'pre_tags' => ['<strong>'],
@@ -298,7 +298,7 @@ class Search
         return $products->paginate(12);
     }
 
-    private static function results(BoolQueryBuilder $finalQuery, BoolQueryBuilder $finalQueryWithoutBrandFilter, string|null $sortBy, string $term)
+    private static function results(BoolQueryBuilder $finalQuery, BoolQueryBuilder $finalQueryWithoutBrandFilter, string|null $sortBy, string $term, string $cleanTerm)
     {
         $products = self::paginateProducts($finalQuery, $sortBy);
 
@@ -332,7 +332,7 @@ class Search
         return [
             'products' => $products,
             'suggestions' => [
-                'oems' => self::suggestionsOem($term),
+                'oems' => self::suggestionsOem($cleanTerm),
                 'cross_codes' => self::suggestionsCrossCode($term),
                 'producercodes' => self::suggestionsProducerCode($term),
                 'producercodes2' => self::suggestionsProducerCode2($term)
@@ -423,6 +423,6 @@ class Search
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter);
 
 
-        return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term);
+        return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
     }
 }
