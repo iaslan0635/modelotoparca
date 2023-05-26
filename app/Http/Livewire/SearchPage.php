@@ -2,7 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Product;
 use App\Packages\Search as Searchable;
+use App\Packages\Utils;
+use Barryvdh\Debugbar\Facades\Debugbar;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,6 +23,21 @@ class SearchPage extends Component
     public $term = 'product';
 
     public $highlights = [];
+
+    const CODE_FIELDS = [
+        "producercode",
+        "cross_code",
+        "oem_codes",
+        "producercode2",
+        "similar_product_codes",
+        "producercode_unbranded",
+        "cross_code_regexed",
+        "producercode_regexed",
+        "producercode2_regexed",
+        "similar_product_codes_regexed",
+        "oem_codes_regexed",
+        "oem_codes_unspaced",
+    ];
 
     /** BUG: livewire sondaki sıfırları siliyor */
     protected $queryString = [/*'query',*/
@@ -38,11 +57,15 @@ class SearchPage extends Component
     {
         $search = $this->search();
 
-        return view('livewire.search-page', [
-            'products' => $search['products'],
-            'brands' => $search['brands'],
-            'categories' => $search['categories'],
-        ]);
+        return view('livewire.search-page', $search);
+    }
+
+    function isCodeHighlight(array $a)
+    {
+        foreach (self::CODE_FIELDS as $codeField) {
+            if (array_key_exists($codeField, $a)) return true;
+        }
+        return false;
     }
 
     public function search()
@@ -54,7 +77,33 @@ class SearchPage extends Component
 //        $this->term = $query['term'];
         $this->highlights = $query['highlights'];
 
-        return ['products' => $products, 'brands' => $brands, 'categories' => $categories];
+
+        $searchedOnCode = $this->highlights->some($this->isCodeHighlight(...));
+        Debugbar::info($searchedOnCode);
+
+        if ($searchedOnCode) {
+            /** @var Collection<int, Product> $pm */
+            $pm = $products->models();
+            $idMatcher = fn(Product $p, Product $i) => $p->id === $i->id;
+
+            $alternatives = $pm->map(fn(Product $p) => $p->alternatives()->get())->flatten();
+            $alternatives = Utils::uniqueOn($alternatives, $pm, $idMatcher);
+
+            $similars = $pm->map(fn(Product $p) => $p->similars()->get())->flatten();
+            $similars = Utils::uniqueOn($similars, $alternatives, $idMatcher);
+            $similars = Utils::uniqueOn($similars, $pm, $idMatcher);
+        } else {
+            $alternatives = null;
+            $similars = null;
+        }
+
+        return compact(
+            'products',
+            'brands',
+            'categories',
+            'alternatives',
+            'similars'
+        );
     }
 
     public function changeCategory($id)

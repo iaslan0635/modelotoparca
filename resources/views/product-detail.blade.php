@@ -465,7 +465,7 @@
                                                 </div>
                                             </div>
                                             <div class="products-list__content">
-                                                @foreach($product->crosses as $cross)
+                                                @foreach($product->crosses()->get() as $cross)
                                                     <div class="products-list__item">
                                                         <div class="product-card">
                                                             <div class="product-card__actions-list">

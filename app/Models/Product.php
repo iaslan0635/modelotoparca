@@ -7,12 +7,12 @@ use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
 use Elastic\ScoutDriverPlus\Searchable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Builder;
 
 class Product extends BaseModel implements CanVisit
 {
@@ -81,19 +81,21 @@ class Product extends BaseModel implements CanVisit
     {
         return $this
             ->hasMany(Product::class, 'cross_code', 'cross_code')
-            ->where('id', '!=', $this->id);
+            ->where('products.id', '!=', $this->id);
     }
 
-    public function similars(): HasMany
+    public function similars()
     {
-        return $this->hasMany(ProductSimilar::class);
+        return $this
+            ->belongsToMany(Product::class, 'product_similars', 'product_id', 'code', 'id', 'cross_code')
+            ->where('products.id', '!=', $this->id);
     }
 
     public function alternatives(): BelongsToMany
     {
         return $this
             ->belongsToMany(Product::class, 'alternatives', 'product_id', 'alternative_id')
-            ->where('id', '!=', $this->id);
+            ->where('products.id', '!=', $this->id);
     }
 
     public function fullTitle(): Attribute
