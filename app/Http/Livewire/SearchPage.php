@@ -69,7 +69,6 @@ class SearchPage extends Component
 
 
         $searchedOnCode = $this->highlights->some($this->isCodeHighlight(...));
-        Debugbar::info($searchedOnCode);
 
         if ($searchedOnCode) {
             /** @var Collection<int, Product> $pm */
