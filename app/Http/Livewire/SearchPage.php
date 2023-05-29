@@ -47,7 +47,6 @@ class SearchPage extends Component
     public function render()
     {
         $search = $this->search();
-
         return view('livewire.search-page', $search);
     }
 

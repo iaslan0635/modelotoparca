@@ -11,6 +11,8 @@ use Elastic\ScoutDriverPlus\Builders\QueryBuilderInterface;
 use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 
 class Search
@@ -67,15 +69,9 @@ class Search
 
     private static function productQuery(string $term)
     {
-        return Query::multiMatch()
-            ->fields([
-                'title',
-                'sub_title',
-            ])
-            ->query($term)
-            ->operator("AND")
-//            ->fuzziness('AUTO')
-            ->boost(self::BOOST["title"]);
+        return Query::bool()
+            ->should(Query::matchPhrasePrefix()->field('sub_title')->query($term))
+            ->should(Query::matchPhrasePrefix()->field('title')->query($term));
     }
 
     private static function crossQuery(string $term)
@@ -367,7 +363,7 @@ class Search
             );
     }
 
-    public static function query(string $term, $sortBy = null): array
+    public static function query(string|null $term, $sortBy = null): array
     {
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
         $regex = '/[^a-zA-Z0-9]+/';
@@ -375,10 +371,11 @@ class Search
         //dd($term);
         if (empty($term))
             return [
-                'products' => [],
-                'suggestions' => [],
-                'categories' => [],
-                'highlights' => []
+                'products' => new LengthAwarePaginator([], 0, 1, 0),
+                'suggestions' => collect(),
+                'categories' => collect(),
+                'highlights' => collect(),
+                'brands' => collect()
             ];
 
         $oemQuery = self::oemQuery($term);
