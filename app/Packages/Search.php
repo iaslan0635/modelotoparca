@@ -12,7 +12,6 @@ use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 
 class Search
@@ -69,9 +68,18 @@ class Search
 
     private static function productQuery(string $term)
     {
-        return Query::bool()
-            ->should(Query::matchPhrasePrefix()->field('sub_title')->query($term))
-            ->should(Query::matchPhrasePrefix()->field('title')->query($term));
+        $query = Query::bool();
+        foreach (['sub_title', 'title'] as $field) {
+            $subQuery = Query::bool();
+            $words = explode(" ", $term);
+            $last = array_pop($words);
+            foreach ($words as $word) {
+                $subQuery->must(Query::match()->field($field)->query($word));
+            }
+            $subQuery->must(Query::prefix()->field($field)->value($last));
+            $query->should($subQuery);
+        }
+        return $query;
     }
 
     private static function crossQuery(string $term)
