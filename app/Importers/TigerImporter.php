@@ -88,51 +88,42 @@ class TigerImporter extends Importer
     public function import(callable|null $statusHook = null)
     {
         $statusHook ??= $this->noop();
-        $ids = [];
-        Product::withoutSyncingToSearch(function () use ($statusHook, &$ids) {
-            for ($i = 2; $i <= $this->getRowCount(); $i++) {
-                $statusHook($i);
-                [
-                    "product" => $productData,
-                    "price" => $priceData,
-                ] = $this->mapData($i);
+        for ($i = 2; $i <= $this->getRowCount(); $i++) {
+            $statusHook($i);
+            [
+                "product" => $productData,
+                "price" => $priceData,
+            ] = $this->mapData($i);
 
-                $productId = $this->pop($productData, "id");
-                $categoryId = $this->pop($productData, "_category");
+            $productId = $this->pop($productData, "id");
+            $categoryId = $this->pop($productData, "_category");
 
-                $product = Product::updateOrCreate(["id" => $productId], $productData);
+            $product = Product::updateOrCreate(["id" => $productId], $productData);
 
-                $oems = $this->explode($productData["oem_codes"]) ?? [];
-                foreach ($oems as $oem)
-                    ProductOem::updateOrCreate(["logicalref" => $productId, "oem" => $oem, "brand" => ""]);
+            $oems = $this->explode($productData["oem_codes"]) ?? [];
+            foreach ($oems as $oem)
+                ProductOem::updateOrCreate(["logicalref" => $productId, "oem" => $oem, "brand" => ""]);
 
-                $priceProductId = $this->pop($priceData, "product_id");
-                Price::query()->updateOrInsert(["product_id" => $priceProductId], $priceData);
+            $priceProductId = $this->pop($priceData, "product_id");
+            Price::query()->updateOrInsert(["product_id" => $priceProductId], $priceData);
 
-                DB::table("product_categories")->insertOrIgnore([
+            DB::table("product_categories")->insertOrIgnore([
+                "product_id" => $productId,
+                "category_id" => $categoryId
+            ]);
+
+            $similars = $this->explode($productData["similar_product_codes"]) ?? [];
+            foreach ($similars as $similar)
+                DB::table("product_similars")->insertOrIgnore([
                     "product_id" => $productId,
-                    "category_id" => $categoryId
+                    "code" => $similar
                 ]);
-
-                $similars = $this->explode($productData["similar_product_codes"]) ?? [];
-                foreach ($similars as $similar)
-                    DB::table("product_similars")->insertOrIgnore([
-                        "product_id" => $productId,
-                        "code" => $similar
-                    ]);
-
-                $ids[] = $product->id;
-            }
-        });
+        }
 
 //        Product::whereNotIn("id", $ids)->delete();
 //        Price::whereNotIn("product_id", $ids)->delete();
 
-        if ($this->shouldAddToIndex()) {
-            ProductSimilar::query()->searchable();
-            Product::whereIn("id", $ids)->searchable();
-            Log::info("Added to index");
-        }
+        ProductSimilar::query()->searchable();
 
         SparetobotDone::truncate();
         foreach (Product::whereIn("id", $ids)->cursor() as $product)

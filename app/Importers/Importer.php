@@ -40,11 +40,6 @@ abstract class Importer
         };
     }
 
-    protected function shouldAddToIndex()
-    {
-        return App::isProduction();
-    }
-
     protected function noop()
     {
         return function () {

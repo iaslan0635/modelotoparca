@@ -68,18 +68,7 @@ class Search
 
     private static function productQuery(string $term)
     {
-        $query = Query::bool();
-        foreach (['sub_title', 'title'] as $field) {
-            $subQuery = Query::bool();
-            $words = explode(" ", $term);
-            $last = array_pop($words);
-            foreach ($words as $word) {
-                $subQuery->must(Query::match()->field($field)->query($word));
-            }
-            $subQuery->must(Query::prefix()->field($field)->value($last));
-            $query->should($subQuery);
-        }
-        return $query;
+        return Query::multiMatch()->fields(['sub_title', 'title'])->query($term);
     }
 
     private static function crossQuery(string $term)
@@ -410,7 +399,13 @@ class Search
             $compoundQuery = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
             $compoundQueryWithoutBrandFilter = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
         } else {
-            $compoundQuery = self::combineQueries($productQuery, $carQuery);
+            $compoundQuery = Query::multiMatch()
+                ->fields([
+                    "cars.regex_name",
+                    "sub_title",
+                    "title",
+                    "cars.name",
+                ])->query($term)->operator("AND");
             $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $carQuery);
         }
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
