@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +17,11 @@ Route::view("/", "admin.index");
 Route::prefix("products/{product}/edit")->name("products.edit.")->controller(ProductController::class)->group(function () {
     Route::get("spareto", "push_spareto")->name("spareto");
     Route::get("oem", "push_oem")->name("oem");
+    Route::post("image", "push_image")->name("image");
 });
-Route::resource("products", ProductController::class)->only(["index", "show", "update"]);
+
+Route::resource("products", ProductController::class)->only(["index", "show"]);
+Route::resource("categories", CategoryController::class)->only(["index", "show"]);
 Route::controller(ImportController::class)->prefix("import")->name("import.")->group(function () {
     Route::get("", "index")->name("index");
     Route::post("ITEMS_WEB", "ITEMS_WEB")->name("ITEMS_WEB");

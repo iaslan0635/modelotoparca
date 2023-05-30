@@ -200,12 +200,12 @@
 										<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
 									</div>
 								</th>
-								<th class="min-w-200px">Product</th>
-								<th class="text-end min-w-100px">SKU</th>
-								<th class="text-end min-w-70px">Qty</th>
-								<th class="text-end min-w-100px">Price</th>
-								<th class="text-end min-w-100px">Status</th>
-								<th class="text-end min-w-70px">Actions</th>
+								<th class="pe-0 min-w-200px">Product</th>
+								<th class="pe-0 text-end min-w-100px">SKU</th>
+								<th class="pe-0 text-end min-w-70px">Qty</th>
+								<th class="pe-0 text-end min-w-100px">Price</th>
+								<th class="pe-0 text-end min-w-100px">Status</th>
+								<th class="pe-0 text-end min-w-70px">Actions</th>
 							</tr>
 							<!--end::Table row-->
 						</thead>
@@ -307,12 +307,6 @@
 	<!--end::Content-->
 </div>
 @endsection
-@push('styles')
-<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
-@endpush
-@push('vendor_scripts')
-<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
-@endpush
 @push('custom_scripts')
 <script src="assets/js/custom/apps/ecommerce/catalog/products.js"></script>
 <script src="assets/js/widgets.bundle.js"></script>

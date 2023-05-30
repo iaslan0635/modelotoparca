@@ -58,4 +58,12 @@ class ProductController extends Controller
         ]);
         return back();
     }
+
+    public function push_image(Product $product, Request $request)
+    {
+        $file = $request->file("file")->storePublicly("images");
+        abort_unless($file, 400, "Unable to read file");
+        $product->image()->create(["path" => $file]);
+        return "success";
+    }
 }
