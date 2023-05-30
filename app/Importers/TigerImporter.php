@@ -4,6 +4,7 @@ namespace App\Importers;
 
 use App\Bots\SparetoBot;
 use App\Jobs\SparetoConnectJob;
+use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
@@ -88,6 +89,7 @@ class TigerImporter extends Importer
     public function import(callable|null $statusHook = null)
     {
         $statusHook ??= $this->noop();
+        $ids = [];
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
             $statusHook($i);
             [
@@ -118,12 +120,15 @@ class TigerImporter extends Importer
                     "product_id" => $productId,
                     "code" => $similar
                 ]);
+
+            $ids[] = $product->id;
         }
 
 //        Product::whereNotIn("id", $ids)->delete();
 //        Price::whereNotIn("product_id", $ids)->delete();
 
         ProductSimilar::query()->searchable();
+        Category::query()->searchable();
 
         SparetobotDone::truncate();
         foreach (Product::whereIn("id", $ids)->cursor() as $product)
