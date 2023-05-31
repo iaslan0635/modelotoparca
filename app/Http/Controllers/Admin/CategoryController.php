@@ -12,14 +12,22 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $categories = Product::paginate();
+        $categories = Category::paginate();
         return view("admin.apps.ecommerce.catalog.categories", compact("categories"));
     }
 
     public function show(Category $category)
     {
-        return view("admin.apps.ecommerce.catalog.edit-product", compact("category"));
+        return view("admin.apps.ecommerce.catalog.edit-category", compact("category"));
+    }
+
+    public function push_image(Category $category, Request $request)
+    {
+        $file = $request->file("file")->storePublicly("images");
+        abort_unless($file, 400, "Unable to read file");
+        $category->image()->create(["path" => $file]);
+        return "success";
     }
 }

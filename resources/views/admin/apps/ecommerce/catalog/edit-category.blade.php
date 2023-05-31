@@ -291,49 +291,6 @@
                                     <div class="card-header">
                                         <!--begin::Card title-->
                                         <div class="card-title">
-                                            <h2>Spareto Ürün bağlantısı ekle</h2>
-                                        </div>
-                                        <!--end::Card title-->
-                                    </div>
-                                    <!--end::Card header-->
-                                    <!--begin::Card bodyi-->
-                                    <div class="card-body pt-0">
-                                        <form action="{{ route('admin.categories.edit.spareto', $category) }}">
-                                            <input name="url" type="text" class="form-control" placeholder="https://spareto.com/categories/..."/>
-                                            <button type="submit" class="btn btn-primary mt-4">Bağla</button>
-                                        </form>
-                                    </div>
-                                    <!--end::Card body-->
-                                </div>
-                                <!--end::Card-->
-                                <!--begin::Card-->
-                                <div class="card card-flush py-4">
-                                    <!--begin::Card header-->
-                                    <div class="card-header">
-                                        <!--begin::Card title-->
-                                        <div class="card-title">
-                                            <h2>Elle oem ekle</h2>
-                                        </div>
-                                        <!--end::Card title-->
-                                    </div>
-                                    <!--end::Card header-->
-                                    <!--begin::Card body-->
-                                    <div class="card-body pt-0">
-                                        <form action="{{ route('admin.categories.edit.oem', $category) }}">
-                                            <input name="oem" type="text" class="form-control mb-2" placeholder="Oem kodu"/>
-                                            <input name="brand" type="text" class="form-control" placeholder="Marka"/>
-                                            <button type="submit" class="btn btn-primary mt-4">Bağla</button>
-                                        </form>
-                                    </div>
-                                    <!--end::Card body-->
-                                </div>
-                                <!--end::Card-->
-                                <!--begin::Card-->
-                                <div class="card card-flush py-4">
-                                    <!--begin::Card header-->
-                                    <div class="card-header">
-                                        <!--begin::Card title-->
-                                        <div class="card-title">
                                             <h2>Resim ekle</h2>
                                         </div>
                                         <!--end::Card title-->
@@ -401,4 +358,12 @@
 <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
 <script src="assets/js/custom/utilities/modals/create-app.js"></script>
 <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+<script>
+    $('.dropzone.image')
+        .dropzone({
+{{--            url: "{{ route('admin.products.edit.image', $product) }}",--}}
+            url: "/",
+            headers: {"X-CSRF-TOKEN": "{{ csrf_token() }}"}
+        })
+</script>
 @endpush

@@ -19,9 +19,13 @@ Route::prefix("products/{product}/edit")->name("products.edit.")->controller(Pro
     Route::get("oem", "push_oem")->name("oem");
     Route::post("image", "push_image")->name("image");
 });
-
 Route::resource("products", ProductController::class)->only(["index", "show"]);
+
+Route::prefix("categories/{category}/edit")->name("categories.edit.")->controller(CategoryController::class)->group(function () {
+    Route::post("image", "push_image")->name("image");
+});
 Route::resource("categories", CategoryController::class)->only(["index", "show"]);
+
 Route::controller(ImportController::class)->prefix("import")->name("import.")->group(function () {
     Route::get("", "index")->name("index");
     Route::post("ITEMS_WEB", "ITEMS_WEB")->name("ITEMS_WEB");

@@ -223,10 +223,10 @@
                                             <div class="ms-5">
                                                 <!--begin::Title-->
                                                 <a href="{{ route("admin.categories.show", $category) }}" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1"
-                                                   data-kt-ecommerce-category-filter="category_name">{{ $category->title }}</a>
+                                                   data-kt-ecommerce-category-filter="category_name">{{ $category->name }}</a>
                                                 <!--end::Title-->
                                                 <!--begin::Description-->
-                                                <div class="text-muted fs-7 fw-bold">{{ $category->description }}</div>
+                                                <div class="text-muted fs-7 fw-bold">{{ $category->slug }}</div>
                                                 <!--end::Description-->
                                             </div>
                                         </div>

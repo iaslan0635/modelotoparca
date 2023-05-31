@@ -411,8 +411,6 @@ class Search
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
         $finalQuery = self::finalizeQuery($compoundQuery);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter);
-
-
         return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
     }
 }
