@@ -334,7 +334,7 @@ class Search
         return $compoundQuery;
     }
 
-    private static function finalizeQuery(BoolQueryBuilder $query)
+    private static function finalizeQuery(QueryBuilderInterface $query)
     {
         $finalQuery = Query::bool()->must($query);
 
@@ -399,13 +399,7 @@ class Search
             $compoundQuery = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
             $compoundQueryWithoutBrandFilter = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
         } else {
-            $compoundQuery = Query::multiMatch()
-                ->fields([
-                    "cars.regex_name",
-                    "sub_title",
-                    "title",
-                    "cars.name",
-                ])->query($term)->operator("AND");
+            $compoundQuery = self::combineQueries($productQuery, $carQuery);
             $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $carQuery);
         }
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
