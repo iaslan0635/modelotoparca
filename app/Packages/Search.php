@@ -312,6 +312,7 @@ class Search
 
         $highlights = $products->getCollection()->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
 
+        self::log($term);
         return [
             'products' => $products,
             'suggestions' => [
@@ -406,5 +407,13 @@ class Search
         $finalQuery = self::finalizeQuery($compoundQuery);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter);
         return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
+    }
+
+    protected static function log(string $query)
+    {
+        \App\Models\Search::create([
+            "query" => $query,
+            "user_id" => \auth()->id()
+        ]);
     }
 }
