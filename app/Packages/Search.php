@@ -68,7 +68,18 @@ class Search
 
     private static function productQuery(string $term)
     {
-        return Query::multiMatch()->fields(['sub_title', 'title'])->query($term);
+        $query = Query::bool();
+        foreach (['sub_title', 'title'] as $field) {
+            $subQuery = Query::bool();
+            $words = explode(" ", $term);
+            $last = array_pop($words);
+            foreach ($words as $word) {
+                $subQuery->must(Query::match()->field($field)->query($word));
+            }
+            $subQuery->must(Query::prefix()->field($field)->value($last));
+            $query->should($subQuery);
+        }
+        return $query;
     }
 
     private static function crossQuery(string $term)
@@ -312,7 +323,6 @@ class Search
 
         $highlights = $products->getCollection()->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
 
-        self::log($term);
         return [
             'products' => $products,
             'suggestions' => [
@@ -335,7 +345,7 @@ class Search
         return $compoundQuery;
     }
 
-    private static function finalizeQuery(QueryBuilderInterface $query)
+    private static function finalizeQuery(BoolQueryBuilder $query)
     {
         $finalQuery = Query::bool()->must($query);
 
@@ -406,14 +416,8 @@ class Search
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
         $finalQuery = self::finalizeQuery($compoundQuery);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter);
-        return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
-    }
 
-    protected static function log(string $query)
-    {
-        \App\Models\Search::create([
-            "query" => $query,
-            "user_id" => \auth()->id()
-        ]);
+
+        return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
     }
 }
