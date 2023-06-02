@@ -454,29 +454,10 @@
                                             <!--end::Card title-->
                                         </div>
                                         <!--end::Card header-->
-                                        <!--begin::Card body-->
-                                        <div class="card-body pt-0">
-                                            <!--begin::Input group-->
-                                            <div class="fv-row mb-2">
-                                                <!--begin::Dropzone-->
-                                                <div class="dropzone image">
-                                                    <!--begin::Message-->
-                                                    <div class="dz-message needsclick">
-                                                        <!--begin::Icon-->
-                                                        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
-                                                        <!--end::Icon-->
-                                                        <!--begin::Info-->
-                                                        <div class="ms-4">
-                                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Dosyayı buraya bırakın veya yüklemek için tıklayın.</h3>
-                                                        </div>
-                                                        <!--end::Info-->
-                                                    </div>
-                                                </div>
-                                                <!--end::Dropzone-->
-                                            </div>
-                                            <!--end::Input group-->
-                                        </div>
-                                        <!--end::Card body-->
+                                        <x-admin.image-manager
+                                            :images="$product->images"
+                                            :upload_action="route('admin.categories.edit.image', $product)"
+                                        />
                                     </div>
                                     <!--end::Card-->
                                 </div>

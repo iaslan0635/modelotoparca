@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +24,10 @@ Route::resource("products", ProductController::class)->only(["index", "show"]);
 
 Route::prefix("categories/{category}/edit")->name("categories.edit.")->controller(CategoryController::class)->group(function () {
     Route::post("image", "push_image")->name("image");
+    Route::post("delete_image", "delete_image")->name("delete_image");
 });
 Route::resource("categories", CategoryController::class)->only(["index", "show"]);
+Route::post("delete_image", [ImageController::class, "delete"])->name("delete-image");
 
 Route::controller(ImportController::class)->prefix("import")->name("import.")->group(function () {
     Route::get("", "index")->name("index");

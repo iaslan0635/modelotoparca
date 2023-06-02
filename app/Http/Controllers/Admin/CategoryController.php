@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
     public function push_image(Category $category, Request $request)
     {
-        $file = $request->file("file")->storePublicly("images");
+        $file = $this->store_file($request->file("file"), "images/categories");
         abort_unless($file, 400, "Unable to read file");
         $category->image()->create(["path" => $file]);
         return "success";
