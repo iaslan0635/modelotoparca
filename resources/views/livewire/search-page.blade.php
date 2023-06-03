@@ -299,6 +299,9 @@
                             </div>
                             <div class="products-list__content" wire:loading.remove>
                                 @foreach($products as $product)
+                                    @if(is_null($product->model()))
+                                        @continue
+                                    @endif
                                     <div class="products-list__item">
                                         <div class="product-card">
                                             <div class="product-card__actions-list">
