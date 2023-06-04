@@ -27,7 +27,7 @@
                                     <div class="widget-filters__list">
                                         <div class="widget-filters__item">
                                             <div class="filter filter--opened" data-collapse-item>
-                                                <button type="button" class="filter__title"
+                                                <button type="button" wire:click="changeCategory(NULL)" class="filter__title"
                                                         data-collapse-trigger>
                                                     Kategoriler
                                                     <span class="filter__arrow">
