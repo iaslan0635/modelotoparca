@@ -31,7 +31,7 @@ class Search
         return Query::nested()
             ->path('cars')
             ->query(Query::match()->field('cars.regex_name')->operator("AND")->query(preg_replace('/[^\w\s]/', '', $term))
-                ->boost(self::BOOST["car"]));
+                ->boost(self::BOOST["car"])->fuzziness('AUTO'));
     }
 
     private static function oemQuery(string $term)
@@ -346,7 +346,7 @@ class Search
         return $compoundQuery;
     }
 
-    private static function finalizeQuery(BoolQueryBuilder $query)
+    private static function finalizeQuery(BoolQueryBuilder $query, $selectCategory)
     {
         $finalQuery = Query::bool()->must($query);
 
@@ -358,6 +358,9 @@ class Search
 
         if (Garage::chosen())
             $finalQuery->must(self::carFilter(Garage::chosen()));
+
+        if ($selectCategory)
+            $finalQuery->must(self::categoryFilter($selectCategory));
 
         return $finalQuery;
     }
@@ -372,7 +375,17 @@ class Search
             );
     }
 
-    public static function query(string|null $term, $sortBy = null): array
+    private static function categoryFilter(int $id)
+    {
+        return Query::nested()->path("categories")
+            ->query(
+                Query::term()
+                    ->field("categories.id")
+                    ->value($id)
+            );
+    }
+
+    public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null): array
     {
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
         $regex = '/[^a-zA-Z0-9]+/';
@@ -403,7 +416,7 @@ class Search
         $producerUnbrandedRegexQuery = self::producerUnbrandedRegexQuery($cleanTerm);
 
         $foundCodes = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
-        $finalFoundCodes = self::finalizeQuery($foundCodes);
+        $finalFoundCodes = self::finalizeQuery($foundCodes, $selectCategory);
 
         $ifCodes = self::paginateProducts($finalFoundCodes, $sortBy)->total();
 
@@ -415,14 +428,14 @@ class Search
             $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $carQuery);
         }
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
-        $finalQuery = self::finalizeQuery($compoundQuery);
-        $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter);
+        $finalQuery = self::finalizeQuery($compoundQuery, $selectCategory);
+        $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter, $selectCategory);
 
 
         return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
     }
 
-    protected static function log(string $query)
+    protected static function log(string $query): void
     {
         \App\Models\Search::create([
             "query" => $query,

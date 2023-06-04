@@ -60,7 +60,7 @@ class SearchPage extends Component
 
     public function search()
     {
-        $query = Searchable::query($this->query, $this->sortBy);
+        $query = Searchable::query($this->query, $this->sortBy, $this->category);
         $products = $query['products'];
         $brands = $query["brands"];
         $categories = $query['categories'];
