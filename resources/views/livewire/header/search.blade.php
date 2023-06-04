@@ -2,7 +2,8 @@
     <div class="search">
         <form action="{{ route("search") }}" class="search__body">
             <div class="search__shadow"></div>
-            <input name="query" class="search__input" wire:model="query" type="text" placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
+            <input name="query" class="search__input" wire:model="query" type="text"
+                   placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
             <button class="search__button search__button--start" type="button" style="position: relative;">
                 <span class="search__button-icon">
                     <svg width="20" height="20">
@@ -12,26 +13,31 @@
                 </span>
                 <span class="search__button-title">Araç Seç</span>
                 @if(\App\Facades\Garage::hasChosen())
-                    <div style="content: ' ';border-radius: 100%;background-color: var(--red);position: absolute;top: -.25rem;right: -.25rem;z-index: 1;height: .75rem;aspect-ratio: 1;"></div>
+                    <div
+                        style="content: ' ';border-radius: 100%;background-color: var(--red);position: absolute;top: -.25rem;right: -.25rem;z-index: 1;height: .75rem;aspect-ratio: 1;"></div>
                 @endif
             </button>
             <div wire:ignore class="search__dropdown search__dropdown--vehicle-picker vehicle-picker">
                 <div class="search__dropdown-arrow"></div>
-                <div wire:ignore class="vehicle-picker__panel vehicle-picker__panel--list vehicle-picker__panel--active" data-panel="list">
+                <div wire:ignore class="vehicle-picker__panel vehicle-picker__panel--list vehicle-picker__panel--active"
+                     data-panel="list">
                     <div class="vehicle-picker__panel-body">
                         <div class="vehicle-picker__text">
                             Aracınız ile tam uyumlu parçaları bulmak için seçiniz
                         </div>
                         <div class="vehicles-list">
-                            <livewire:garage />
+                            <livewire:garage/>
                         </div>
                         <div class="vehicle-picker__actions">
-                            <button type="button" class="btn btn-dark btn-sm" wire:click="deselect" >Araç seçimini kaldır</button>
-                            <button type="button" class="btn btn-primary btn-sm" data-to-panel="form">Yeni Araç Ekle</button>
+                            <button type="button" class="btn btn-dark btn-sm" wire:click="deselect">Araç seçimini
+                                kaldır
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm" data-to-panel="form">Yeni Araç Ekle
+                            </button>
                         </div>
                     </div>
                 </div>
-                <livewire:car-search :homepage-variant="false" />
+                <livewire:car-search :homepage-variant="false"/>
                 <div wire:loading.flex
                      style="display: none; background: rgba(255, 255, 255, 0.29);backdrop-filter: blur(3px);position: absolute;inset: 0;justify-content: center;align-items: center;">
                     <div class="spinner-border"></div>
@@ -92,7 +98,7 @@
                     <div class="suggestions__group-content">
                         @foreach($categories as ["category" => $category])
                             <a class="suggestions__item suggestions__category"
-                               href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
+                               href="{{ route('search', ['query' => $query, 'category' => $category->id]) }}">{{ $category->name }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -102,7 +108,8 @@
                         @foreach($suggestions as $key => $suggestion)
                             @foreach($suggestion as $item)
                                 <a class="suggestions__item suggestions__category"
-                                   href="{{ route('search', ['query' => strip_tags($item)]) }}">{{ ucfirst($key) }} - {!! $item !!}</a>
+                                   href="{{ route('search', ['query' => strip_tags($item)]) }}">{{ ucfirst($key) }}
+                                    - {!! $item !!}</a>
                             @endforeach
                         @endforeach
                     </div>
