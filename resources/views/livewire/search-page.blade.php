@@ -26,7 +26,6 @@
                                     </div>
                                     <div class="widget-filters__list">
                                         <div class="widget-filters__item">
-                                            <button wire:click="changeCategory(NULL)">Geri Dön</button>
                                             <div class="filter filter--opened" data-collapse-item>
                                                 <button type="button" class="filter__title"
                                                         data-collapse-trigger>
@@ -42,6 +41,12 @@
                                                     <div class="filter__container">
                                                         <div class="filter-categories">
                                                             <ul class="filter-categories__list">
+                                                                @if($category)
+                                                                    <li class="filter-categories__item filter-categories__item--current">
+                                                                        <a href="#"
+                                                                           wire:click="cleanCategory">Geri Dön</a>
+                                                                    </li>
+                                                                @endif
                                                                 @foreach($categories as ["category" => $category, "count" => $count])
                                                                     <li class="filter-categories__item filter-categories__item--current">
                                                                         <a href="#"

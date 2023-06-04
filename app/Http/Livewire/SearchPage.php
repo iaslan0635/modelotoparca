@@ -99,4 +99,9 @@ class SearchPage extends Component
     {
         $this->category = $id;
     }
+
+    public function cleanCategory()
+    {
+        $this->category = null;
+    }
 }
