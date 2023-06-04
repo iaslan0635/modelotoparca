@@ -208,7 +208,7 @@
                                     </div>
                                 </div>
                                 <div class="view-options__legend">
-                                    {{ $products->total() }} adet üründen {{ $products->perPage() }} tanesi
+                                    {{ $products->total() }} adet üründen {{ count($products) }} tanesi
                                     gösteriliyor.
                                 </div>
                                 <div class="view-options__spring"></div>
