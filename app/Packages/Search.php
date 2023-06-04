@@ -31,7 +31,7 @@ class Search
         return Query::nested()
             ->path('cars')
             ->query(Query::match()->field('cars.regex_name')->operator("AND")->query(preg_replace('/[^\w\s]/', '', $term))
-                ->boost(self::BOOST["car"])->fuzziness('AUTO'));
+                ->boost(self::BOOST["car"]));
     }
 
     private static function oemQuery(string $term)
