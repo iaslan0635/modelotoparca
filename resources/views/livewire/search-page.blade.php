@@ -51,7 +51,7 @@
                                                                     <li class="filter-categories__item filter-categories__item--current">
                                                                         <a href="#"
                                                                            wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
-                                                                        <div
+                                                                        <div style="display: none"
                                                                             class="filter-categories__counter">{{ $count }}</div>
                                                                     </li>
                                                                 @endforeach
