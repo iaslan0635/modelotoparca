@@ -90,7 +90,6 @@ class TigerImporter extends Importer
     public function import(callable|null $statusHook = null)
     {
         $statusHook ??= $this->noop();
-        $ids = [];
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
             $statusHook($i);
             [
@@ -123,7 +122,7 @@ class TigerImporter extends Importer
                     "code" => $similar
                 ]);
 
-            $ids[] = $product->id;
+            SparetoBot::dispatchAllFields($product);
         }
 
 //        Product::whereNotIn("id", $ids)->delete();
@@ -133,7 +132,5 @@ class TigerImporter extends Importer
         Category::query()->searchable();
 
         \Cache::set("not_running_bot", false);
-        foreach (Product::whereIn("id", $ids)->cursor() as $product)
-            SparetoBot::dispatchAllFields($product);
     }
 }
