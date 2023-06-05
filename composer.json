@@ -24,6 +24,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
         "phpoffice/phpspreadsheet": "^1.28",
+        "predis/predis": "^2.1",
         "symfony/css-selector": "^6.2",
         "symfony/dom-crawler": "^6.2"
     },

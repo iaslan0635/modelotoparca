@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Bots\SparetoBot;
 use App\Facades\SparetoCache;
+use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
 use App\Models\SparetoConnection;
@@ -72,5 +73,12 @@ class SparetoConnectJob implements ShouldQueue
 
         $connection->is_connection_applied = true;
         $connection->save();
+    }
+
+    public static function connectAll()
+    {
+        foreach (Product::all("id") as $product) {
+            self::dispatch($product->id);
+        }
     }
 }

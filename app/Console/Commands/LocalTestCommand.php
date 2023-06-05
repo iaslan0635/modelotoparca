@@ -11,6 +11,6 @@ class LocalTestCommand extends Command
 
     public function handle()
     {
-        (new SparetoBot("DF4225", "cross_code"))->handle(false);
+        (new SparetoBot("DF4225", "cross_code"))->handle();
     }
 }

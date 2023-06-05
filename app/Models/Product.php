@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Product extends BaseModel implements CanVisit
 {
     use Searchable, HasImages, HasVisits;
+    public $incrementing = false;
 
     protected $casts = [
         'specifications' => 'array',
@@ -54,6 +55,8 @@ class Product extends BaseModel implements CanVisit
                 'brand' => $this->brand?->toSearchableArray(),
                 'price' => $this->price?->price,
                 'similars' => $this->similars->map->toSearchableArray()
+            ] + [
+                'full_text' => collect([$this->title, $this->sub_title])->merge($this->cars->map(fn (Car $car) => $car->getRegexedName()))->join(" | "),
             ];
     }
 

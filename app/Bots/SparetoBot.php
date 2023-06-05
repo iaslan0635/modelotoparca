@@ -39,7 +39,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
     private static function safeNew(string|null $keyword, string $field)
     {
-        if (blank($keyword) || self::isDone($keyword)) return null;
+        if (blank($keyword)) return null;
 
         return (new SparetoBot($keyword, $field))->onQueue('spareto');
     }
@@ -67,17 +67,8 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
             dispatch($job);
     }
 
-    private static function isDone(string $keyword)
+    public function handle()
     {
-        return DB::table('sparetobot_dones')->where('keyword', '=', $keyword)->exists();
-    }
-
-
-    public function handle(bool $doubleCheck = true)
-    {
-        if ($doubleCheck && self::isDone($this->keyword))
-            return;
-
         $url = 'https://spareto.com/products?keywords=' . urlencode($this->keyword);
         $crawler = SparetoCache::crawler($url);
         if (!$crawler->filter('div #products-js')->count())
@@ -88,8 +79,6 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
             $pageCrawler = SparetoCache::crawler($url . '&page=' . $i);
             $pageCrawler->filter('#products-js  .card-col')->each($this->scrapeProduct(...));
         }
-
-        DB::table('sparetobot_dones')->insertOrIgnore(['keyword' => $this->keyword]);
     }
 
     private function scrapeProduct(Crawler $productCrawler)

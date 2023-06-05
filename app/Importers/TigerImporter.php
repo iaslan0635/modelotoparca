@@ -11,6 +11,7 @@ use App\Models\ProductOem;
 use App\Models\ProductSimilar;
 use App\Models\SparetobotDone;
 use Illuminate\Bus\Batch;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -81,7 +82,7 @@ class TigerImporter extends Importer
             "price" => [
                 'product_id' => $id,
                 'price' => $c('AG'),
-                'currency' => self::CURRENCY_MAP[intval($c('AH'))],
+                'currency' => Arr::get(self::CURRENCY_MAP, intval($c('AH')), "try"),
             ]
         ];
     }
@@ -100,6 +101,7 @@ class TigerImporter extends Importer
             $productId = $this->pop($productData, "id");
             $categoryId = $this->pop($productData, "_category");
 
+            if ($productId === null) continue;
             $product = Product::updateOrCreate(["id" => $productId], $productData);
 
             $oems = $this->explode($productData["oem_codes"]) ?? [];
@@ -130,7 +132,7 @@ class TigerImporter extends Importer
         ProductSimilar::query()->searchable();
         Category::query()->searchable();
 
-        SparetobotDone::truncate();
+        \Cache::set("not_running_bot", false);
         foreach (Product::whereIn("id", $ids)->cursor() as $product)
             SparetoBot::dispatchAllFields($product);
     }
