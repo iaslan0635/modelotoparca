@@ -40,10 +40,6 @@ Route::controller(ImportController::class)->prefix("import")->name("import.")->g
 
 Route::fallback($temp);
 
-
-
-
 Route::get("/sales-list", function () {
     return view('admin.apps.ecommerce.sales.listing');
 });
-
