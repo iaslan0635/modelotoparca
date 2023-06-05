@@ -120,16 +120,13 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
             Product::query()->whereIn('id', $sameCrosses)->update(compact('dimensions', 'specifications'));
 
         $connect = function ($targetRef, $connectedBy) use ($url) {
-            $connection = SparetoConnection::create([
+            SparetoConnection::create([
                 "product_id" => $targetRef,
                 "url" => $url,
                 "keyword" => $this->keyword,
                 "keyword_field" => $this->keywordField,
                 "connected_by" => $connectedBy,
             ]);
-
-            if ($connectedBy !== "oem")
-                SparetoConnectJob::connect($connection);
         };
 
         foreach ($sameCrosses as $targetRef)
