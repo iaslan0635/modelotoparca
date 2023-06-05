@@ -78,6 +78,9 @@ Route::get("/order-details", function () {
     return view('account.order-details');
 });
 
+
+
+
 Route::get("/connections", function () {
     $models = \App\Models\SparetoConnection::paginate();
     $cols = array_keys(\App\Models\SparetoConnection::first()->attributesToArray());
