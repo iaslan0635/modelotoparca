@@ -47,13 +47,7 @@ class SparetoCache
 
     public static function has(string $url)
     {
-        if (self::driver()->has(self::getCacheFileName($url))) return true;
-        if (self::hashedDriver()->has(self::getHashedCacheFileName($url))) {
-            $path = self::hashedDriver()->path(self::getHashedCacheFileName($url));
-            $to_path = self::driver()->path(self::getCacheFileName($url));
-            copy($path, $to_path);
-            return true;
-        } else return false;
+        return self::driver()->has(self::getCacheFileName($url));
     }
 
     protected static function request(string $url)
@@ -62,11 +56,6 @@ class SparetoCache
             'proxy' => 'socks5://127.0.0.1:9050',
             'connect_timeout' => 60
         ])->get($url)->throw()->body();
-    }
-
-    protected static function getHashedCacheFileName(string $url)
-    {
-        return hash("sha256", $url) . ".html";
     }
 
     protected static function getCacheFileName(string $url)
