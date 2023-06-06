@@ -3,9 +3,9 @@
 namespace App\Bots;
 
 use App\Facades\SparetoCache;
-use App\Jobs\SparetoConnectJob;
 use App\Models\Car;
 use App\Models\Product;
+use App\Models\ProductOem;
 use App\Models\SparetoConnection;
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
@@ -15,7 +15,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler;
 
 class SparetoBot implements ShouldQueue, ShouldBeUnique
@@ -176,11 +175,11 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
     private function findSameOems(Collection $oems)
     {
         $isQueryFiltered = false;
-        $sameOemsQuery = Product::query();
+        $sameOemsQuery = ProductOem::query();
         foreach ($oems->pluck('oems')->flatten() as $oem) {
             $unspacedOem = str_replace(' ', '', $oem);
             if (blank($unspacedOem)) continue; // prevent search for empty string
-            $sameOemsQuery->orWhereRaw('FIND_IN_SET(?, oem_codes_unspaced)', [$unspacedOem]);
+            $sameOemsQuery->orWhere('oem_unpaced', '=', $unspacedOem);
             $isQueryFiltered = true;
         }
 
