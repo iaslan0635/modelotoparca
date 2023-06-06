@@ -11,6 +11,7 @@ use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
@@ -174,16 +175,17 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
     private function findSameOems(Collection $oems)
     {
-        $isQueryFiltered = false;
-        $sameOemsQuery = ProductOem::query();
-        foreach ($oems->pluck('oems')->flatten() as $oem) {
-            $unspacedOem = str_replace(' ', '', $oem);
-            if (blank($unspacedOem)) continue; // prevent search for empty string
-            $sameOemsQuery->orWhere('oem_unpaced', '=', $unspacedOem);
-            $isQueryFiltered = true;
-        }
+        $valid_oems = $oems->pluck('oems')->flatten()
+            ->map(fn(string $oem) => str_replace(' ', '', $oem))
+            ->filter(fn(string $oem) => filled($oem));
 
-        return $isQueryFiltered ? $sameOemsQuery->pluck('id') : collect();
+        if ($valid_oems->isEmpty()) return collect();
+
+        return ProductOem::query()->whereNull("connection_id")
+            ->where(function (Builder $q) use ($valid_oems) {
+                foreach ($valid_oems as $oem)
+                    $q->orWhere('oem_unpaced', '=', $oem);
+            })->pluck('id');
     }
 
     public static function extractOems(Crawler $crawler): Collection
