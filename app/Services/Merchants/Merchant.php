@@ -2,6 +2,7 @@
 
 namespace App\Services\Merchants;
 
+use App\Models\MerchantOrder;
 use App\Models\Product;
 
 interface Merchant
@@ -14,7 +15,7 @@ interface Merchant
 
     public function updateProduct(Product $product);
 
-    public function updateOrder(TODO $order);
+    public function updateOrder(MerchantOrder $order);
 
     public function updateDeliveryCode();
 
@@ -29,19 +30,19 @@ interface Merchant
 
     public function getOrders();
 
-    public function approveOrder(TODO $order);
+    public function approveOrder(MerchantOrder $order);
 
-    public function declineOrder(TODO $order);
+    public function declineOrder(MerchantOrder $order);
 
     public function refundedOrders();
 
-    public function aprroveRefundedOrder(TODO $order);
+    public function aprroveRefundedOrder(MerchantOrder $order);
 
-    public function declineRefundedOrder(TODO $order);
+    public function declineRefundedOrder(MerchantOrder $order);
 
     public function getQuestions();
 
-    public function sendQuestionAnswer(TODO $question);
+    public function sendQuestionAnswer(MerchantOrder $question);
 
     public function deleteProduct(Product $product);
 }
