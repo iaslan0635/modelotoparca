@@ -8,14 +8,14 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('product_oems', function (Blueprint $table) {
-            $table->string("oem_unpaced")->storedAs("REPLACE(`oem`, ' ', '')")->index();
+            $table->string("oem_unspaced")->storedAs("REPLACE(`oem`, ' ', '')")->index();
         });
     }
 
     public function down(): void
     {
         Schema::table('product_oems', function (Blueprint $table) {
-            $table->dropColumn("oem_unpaced");
+            $table->dropColumn("oem_unspaced");
         });
     }
 };
