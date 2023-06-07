@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Facades\Garage;
+use App\Packages\Utils;
 use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
 use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Product extends BaseModel implements CanVisit
 {
     use Searchable, HasImages, HasVisits;
+
     public $incrementing = false;
 
     protected $casts = [
@@ -56,7 +59,7 @@ class Product extends BaseModel implements CanVisit
                 'price' => $this->price?->price,
                 'similars' => $this->similars->map->toSearchableArray()
             ] + [
-                'full_text' => collect([$this->title, $this->sub_title])->merge($this->cars->map(fn (Car $car) => $car->getRegexedName()))->join(" | "),
+                'full_text' => collect([$this->title, $this->sub_title])->merge($this->cars->map(fn(Car $car) => $car->getRegexedName()))->join(" | "),
             ];
     }
 
@@ -90,7 +93,7 @@ class Product extends BaseModel implements CanVisit
     public function similars()
     {
         return $this
-            ->belongsToMany(Product::class, 'product_similars', 'product_id', 'code', 'id', 'cross_code')
+            ->belongsToMany(Product::class, 'product_similars', 'product_id', 'code', 'id', 'producercode')
             ->where('products.id', '!=', $this->id);
     }
 
@@ -119,8 +122,21 @@ class Product extends BaseModel implements CanVisit
         }
     }
 
-    public function sparetoConnections()
+    /**
+     * @param Collection<int, Product> $products
+     * @return array<Collection>
+     */
+    public static function alternativesAndSimilars(Collection $products)
     {
-        return $this->hasMany(SparetoConnection::class);
+        $idMatcher = fn(Product $p, Product $i) => $p->id === $i->id;
+
+        $alternatives = $products->map(fn(Product $p) => $p->alternatives()->get())->flatten();
+        $alternatives = Utils::uniqueOn($alternatives, $products, $idMatcher);
+
+        $similars = $products->map(fn(Product $p) => $p->similars()->get())->flatten();
+        $similars = Utils::uniqueOn($similars, $alternatives, $idMatcher);
+        $similars = Utils::uniqueOn($similars, $products, $idMatcher);
+
+        return [$alternatives, $similars];
     }
 }

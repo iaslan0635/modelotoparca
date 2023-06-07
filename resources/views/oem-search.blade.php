@@ -1116,6 +1116,8 @@
                                         @endforeach
                                     </div>
                                 </div>
+                                <x-product-list-appendix :products="$alternatives"/>
+                                <x-product-list-appendix :products="$similars"/>
                                 <div class="products-view__pagination">
                                     <nav aria-label="Page navigation example">
                                         {{ $products->withQueryString()->links() }}

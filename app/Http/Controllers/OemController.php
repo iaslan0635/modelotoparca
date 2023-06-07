@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Packages\SubSearch;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -22,6 +23,7 @@ class OemController extends Controller
             }
         }
 
-        return view('oem-search', compact('products', 'oem', 'categories', 'brands'));
+        list($alternatives, $similars) = Product::alternativesAndSimilars($products->getCollection());
+        return view('oem-search', compact('products', 'oem', 'categories', 'brands', 'alternatives', 'similars'));
     }
 }

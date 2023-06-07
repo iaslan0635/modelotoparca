@@ -72,15 +72,7 @@ class SearchPage extends Component
 
         if ($searchedOnCode) {
             /** @var Collection<int, Product> $pm */
-            $pm = $products->models();
-            $idMatcher = fn(Product $p, Product $i) => $p->id === $i->id;
-
-            $alternatives = $pm->map(fn(Product $p) => $p->alternatives()->get())->flatten();
-            $alternatives = Utils::uniqueOn($alternatives, $pm, $idMatcher);
-
-            $similars = $pm->map(fn(Product $p) => $p->similars()->get())->flatten();
-            $similars = Utils::uniqueOn($similars, $alternatives, $idMatcher);
-            $similars = Utils::uniqueOn($similars, $pm, $idMatcher);
+            list($alternatives, $similars) = Product::alternativesAndSimilars($products->models());
         } else {
             $alternatives = null;
             $similars = null;
