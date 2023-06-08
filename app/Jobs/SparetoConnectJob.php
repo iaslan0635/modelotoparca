@@ -71,6 +71,7 @@ class SparetoConnectJob implements ShouldQueue
 
         $connection->is_connection_applied = true;
         $connection->save();
+        Product::where("id", $targetRef)->searchable();
     }
 
     public static function connectAll()

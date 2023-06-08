@@ -57,7 +57,9 @@ class Product extends BaseModel implements CanVisit
                 'categories' => $this->categories->map->toSearchableArray(),
                 'brand' => $this->brand?->toSearchableArray(),
                 'price' => $this->price?->price,
-                'similars' => $this->similars->map->toSearchableArray()
+//                BUG: causes recursive call on itself by self->similar->self
+//                'similars' => $this->similars->map->toSearchableArray()
+                'similars' => []
             ] + [
                 'full_text' => collect([$this->title, $this->sub_title])->merge($this->cars->map(fn(Car $car) => $car->getRegexedName()))->join(" | "),
             ];
