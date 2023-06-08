@@ -53,7 +53,7 @@ class Product extends BaseModel implements CanVisit
                 'producercode2_regex' => $this->producercode2 ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode2)) : null,
             ] + [
                 'oems' => $this->oems->map->toSearchableArray(),
-                'cars' => $this->cars->map->toSearchableArray(),
+                'cars' => $this->cars->filter(fn (Car $car) => $car->body_type !== "truck")->map->toSearchableArray(),
                 'categories' => $this->categories->map->toSearchableArray(),
                 'brand' => $this->brand?->toSearchableArray(),
                 'price' => $this->price?->price,
