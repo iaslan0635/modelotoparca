@@ -8,12 +8,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class SparetoCache
 {
-
-    protected static function hashedDriver(): FilesystemAdapter
-    {
-        return \Storage::createLocalDriver(["root" => storage_path("spareto_cache_hashed")]);
-    }
-
     protected static function driver(): FilesystemAdapter
     {
         return \Storage::createLocalDriver(["root" => storage_path("spareto_cache")]);
