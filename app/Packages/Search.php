@@ -69,16 +69,11 @@ class Search
     private static function productQuery(string $term)
     {
         $query = Query::bool();
-        foreach (['sub_title', 'title'] as $field) {
-            $subQuery = Query::bool();
-            $words = explode(" ", $term);
-            $last = array_pop($words);
-            foreach ($words as $word) {
-                $subQuery->must(Query::match()->field($field)->query($word));
-            }
-            $subQuery->must(Query::prefix()->field($field)->value($last));
-            $query->should($subQuery);
+        $words = explode(" ", $term);
+        foreach ($words as $word) {
+            $query->must(Query::prefix()->field('full_text')->value($word));
         }
+
         return $query;
     }
 
@@ -279,6 +274,7 @@ class Search
             ->highlight('oems.oem')
             ->highlight('oems.oem_regex')
             ->highlight('cars.name')
+            ->highlight('full_text')
             ->highlight('cars.regex_name')
             ->highlight('similars.code')
             ->highlight('similars.code_regex');

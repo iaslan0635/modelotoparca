@@ -3,6 +3,7 @@
 return [
     "title" => "Başlıkdan bulundu",
     "sub_title" => "Alt başlıktan bulundu",
+    'full_text' => 'Birleşik verilerden bulundu',
     "cross_code" => "Karşılaştırma kodundan bulundu",
     "producercode" => "Üretici kodundan bulundu",
     "producercode2" => "Üretici kodu 2'den bulundu",
