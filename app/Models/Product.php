@@ -10,11 +10,11 @@ use Coderflex\Laravisit\Concerns\HasVisits;
 use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection;
 
 class Product extends BaseModel implements CanVisit
 {
@@ -36,7 +36,7 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        return [
+        return $this->toSearchableArrayWithOnlyCrossCode() + [
                 'id' => $this->id,
                 'title' => $this->title,
                 'sub_title' => $this->sub_title,
@@ -47,22 +47,26 @@ class Product extends BaseModel implements CanVisit
                 'producercode_unbranded' => $this->producercode_unbranded,
                 'producercode_unbranded_regex' => $this->producercode_unbranded ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode_unbranded)) : null,
                 'producercode_regex' => $this->producercode ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode)) : null,
-                'cross_code' => $this->cross_code,
-                'cross_code_regex' => $this->cross_code ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->cross_code)) : null,
                 'producercode2' => $this->producercode2,
                 'producercode2_regex' => $this->producercode2 ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode2)) : null,
             ] + [
                 'oems' => $this->oems->map->toSearchableArray(),
-                'cars' => $this->cars->filter(fn (Car $car) => $car->body_type !== "truck")->map->toSearchableArray(),
+                'cars' => $this->cars->filter(fn(Car $car) => $car->body_type !== "truck")->map->toSearchableArray(),
+                'similars' => $this->similars->map->toSearchableArrayWithOnlyCrossCode(),
                 'categories' => $this->categories->map->toSearchableArray(),
                 'brand' => $this->brand?->toSearchableArray(),
                 'price' => $this->price?->price,
-//                BUG: causes recursive call on itself by self->similar->self
-//                'similars' => $this->similars->map->toSearchableArray()
-                'similars' => []
             ] + [
                 'full_text' => collect([$this->title, $this->sub_title])->merge($this->cars->map(fn(Car $car) => $car->getRegexedName()))->join(" | "),
             ];
+    }
+
+    public function toSearchableArrayWithOnlyCrossCode()
+    {
+        return [
+            'cross_code' => $this->cross_code,
+            'cross_code_regex' => $this->cross_code ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->cross_code)) : null,
+        ];
     }
 
     public function categories(): BelongsToMany
