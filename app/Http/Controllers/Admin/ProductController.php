@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProductController as CustomerProductController;
 use App\Jobs\SparetoConnectJob;
 use App\Models\Product;
 use App\Models\SparetoConnection;
@@ -28,7 +29,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view("admin.apps.ecommerce.catalog.edit-product", compact("product"));
+        return view("admin.apps.ecommerce.catalog.edit-product", CustomerProductController::getViewData($product));
     }
 
     public function push_spareto(int $productId, Request $request)

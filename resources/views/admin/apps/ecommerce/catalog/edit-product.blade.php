@@ -389,9 +389,15 @@
                         <!--begin:::Tabs-->
                         <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
                             <!--begin:::Tab item-->
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connections">Ürün bağlantısı ekle</a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connections">Ürün bağlantısı ekle</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#details">Ürün bilgileri</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#oems">Oem Kodlar</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#cars">Araçlar</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Pazaryerleri Durumu</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Sipariş Geçmişi</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Yorum Geçmişi</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Spareto Connections</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">N11 Soruları</a></li>
                             <!--end:::Tab item-->
                         </ul>
                         <!--end:::Tabs-->
@@ -411,7 +417,7 @@
                                             <!--end::Card title-->
                                         </div>
                                         <!--end::Card header-->
-                                        <!--begin::Card bodyi-->
+                                        <!--begin::Card body-->
                                         <div class="card-body pt-0">
                                             <form action="{{ route('admin.products.edit.spareto', $product) }}">
                                                 <input name="url" type="text" class="form-control" placeholder="https://spareto.com/products/..."/>
@@ -463,6 +469,133 @@
                                 </div>
                             </div>
                             <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade show" id="details" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Ürün bilgileri</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+                                            <p>{{ $product->description }}</p>
+                                        </div>
+                                        <!--end::Card body-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade show" id="oems" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Oem kodlar</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+                                            {{--                                            @if (count($oems)>0)--}}
+                                            <table
+                                                class="table table-row-dashed fs-6 gy-5 my-0">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width: 20%;" class="text-start">Marka</th>
+                                                    <th class="text-start">Oem Kodlar</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                @foreach($oems as $oem)
+                                                    <tr>
+                                                        <td class="analogs-table__column">{{ $oem->brand ?: "[Tiger Excel]" }}</td>
+                                                        <td style="width:100%; display: inline-block; word-break: break-all; font-weight: 700">
+                                                            @foreach(explode(',', $oem->oems) as $item)
+                                                                <a href="{{ route('oem.search', ['oem' => $item]) }}">
+                                                                    {{ $item }} {{ !$loop->last ? ",":null }}
+                                                                </a>
+                                                            @endforeach
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                            {{--                                            @endif--}}
+                                        </div>
+                                        <!--end::Card body-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade show" id="cars" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Araç bağlantıları</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+                                            <div class="accordion">
+                                                @foreach($car_brands as $brand => $cars_by_names)
+                                                    <x-accordion :id="'car-brand-'.$brand" :title="$brand">
+                                                        @foreach($cars_by_names as $name => $cars)
+                                                            <x-accordion :id="'car-'.$name" :title="$name">
+                                                                <table class="table table-row-dashed fs-6 gy-5 my-0">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Model</th>
+                                                                        <th>Yıl</th>
+                                                                        <th>Kapasite</th>
+                                                                        <th>Güç</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    @foreach($cars as $car)
+                                                                        <tr>
+                                                                            <td>{{ $car->name }}</td>
+                                                                            <td>{{ $car->produced_from ?? "0000-00-00" }}
+                                                                                - {{ $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d")) }}</td>
+                                                                            <td>{{ $car->capacity }}</td>
+                                                                            <td>{{ $car->power }}</td>
+                                                                        </tr>
+                                                                    @endforeach
+                                                                    </tbody>
+                                                                </table>
+                                                            </x-accordion>
+                                                        @endforeach
+                                                    </x-accordion>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <!--end::Card body-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
                         </div>
                         <!--end::Tab content-->
                         <div class="d-flex justify-content-end">
@@ -505,4 +638,7 @@
                 headers: {"X-CSRF-TOKEN": "{{ csrf_token() }}"}
             })
     </script>
+@endpush
+@push('stylesheets')
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @endpush
