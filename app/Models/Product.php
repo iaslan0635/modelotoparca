@@ -146,4 +146,9 @@ class Product extends BaseModel implements CanVisit
 
         return [$alternatives, $similars];
     }
+
+    public function sparetoConnections()
+    {
+        return $this->hasMany(SparetoConnection::class);
+    }
 }

@@ -389,14 +389,14 @@
                         <!--begin:::Tabs-->
                         <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
                             <!--begin:::Tab item-->
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connections">Ürün bağlantısı ekle</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connect">Ürün Bağlantısı Ekle</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#spareto_connections">Spareto Eşleşmeleri</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#details">Ürün bilgileri</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#oems">Oem Kodlar</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#cars">Araçlar</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#cars">Uyumlu Araçlar</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Pazaryerleri Durumu</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Sipariş Geçmişi</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Yorum Geçmişi</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Spareto Connections</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">N11 Soruları</a></li>
                             <!--end:::Tab item-->
                         </ul>
@@ -404,7 +404,7 @@
                         <!--begin::Tab content-->
                         <div class="tab-content">
                             <!--begin::Tab pane-->
-                            <div class="tab-pane fade show active" id="spareto_connections" role="tabpanel">
+                            <div class="tab-pane fade show active" id="spareto_connect" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <!--begin::Card-->
                                     <div class="card card-flush py-4">
@@ -470,7 +470,55 @@
                             </div>
                             <!--end::Tab pane-->
                             <!--begin::Tab pane-->
-                            <div class="tab-pane fade show" id="details" role="tabpanel">
+                            <div class="tab-pane fade" id="spareto_connections" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Spareto Ürün Eşleşmeleri (Bağlantı önerileri)</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+                                            <table
+                                                class="table table-row-dashed fs-6 gy-5 my-0">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-start">url</th>
+                                                    <th class="text-start">Eşleşme Sebebi</th>
+                                                    <th class="text-start"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($product->sparetoConnections as $con)
+                                                    <tr>
+                                                        <th><a href="{{$con->url}}" target="_blank">{{$con->url}}</a></th>
+                                                        <th><span class="badge badge-primary">{{$con->connected_by}}</span></th>
+                                                        <th>
+                                                            @if($con->is_connection_applied)
+                                                                <button class="btn btn-success" disabled="disabled">Bağlandı</button>
+                                                            @else
+                                                                <button class="btn btn-success" onclick="alert('Yapım aşamasında')">Bağla</button>
+                                                            @endif
+                                                        </th>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!--end::Card body-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="details" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <!--begin::Card-->
                                     <div class="card card-flush py-4">
@@ -494,7 +542,7 @@
                             </div>
                             <!--end::Tab pane-->
                             <!--begin::Tab pane-->
-                            <div class="tab-pane fade show" id="oems" role="tabpanel">
+                            <div class="tab-pane fade" id="oems" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <!--begin::Card-->
                                     <div class="card card-flush py-4">
@@ -509,12 +557,11 @@
                                         <!--end::Card header-->
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
-                                            {{--                                            @if (count($oems)>0)--}}
                                             <table
                                                 class="table table-row-dashed fs-6 gy-5 my-0">
                                                 <thead>
                                                 <tr>
-                                                    <th style="width: 20%;" class="text-start">Marka</th>
+                                                    <th class="text-start">Marka</th>
                                                     <th class="text-start">Oem Kodlar</th>
                                                 </tr>
                                                 </thead>
@@ -534,7 +581,6 @@
                                                 @endforeach
                                                 </tbody>
                                             </table>
-                                            {{--                                            @endif--}}
                                         </div>
                                         <!--end::Card body-->
                                     </div>
@@ -543,7 +589,7 @@
                             </div>
                             <!--end::Tab pane-->
                             <!--begin::Tab pane-->
-                            <div class="tab-pane fade show" id="cars" role="tabpanel">
+                            <div class="tab-pane fade" id="cars" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <!--begin::Card-->
                                     <div class="card card-flush py-4">
@@ -596,20 +642,27 @@
                                 </div>
                             </div>
                             <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="todo" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Yakında...</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
                         </div>
                         <!--end::Tab content-->
-                        <div class="d-flex justify-content-end">
-                            <!--begin::Button-->
-                            <a href="admin/apps/ecommerce/catalog/products" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
-                            <!--end::Button-->
-                            <!--begin::Button-->
-                            <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
-                                <span class="indicator-label">Save Changes</span>
-                                <span class="indicator-progress">Please wait...
-							<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                            </button>
-                            <!--end::Button-->
-                        </div>
                     </div>
                     <!--end::Main column-->
                 </div>
