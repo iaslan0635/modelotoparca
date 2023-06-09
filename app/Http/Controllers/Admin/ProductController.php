@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use ManagesImages;
+
     /**
      * Display a listing of the resource.
      */
@@ -62,9 +64,6 @@ class ProductController extends Controller
 
     public function push_image(Product $product, Request $request)
     {
-        $file = $request->file("file")->storePublicly("images");
-        abort_unless($file, 400, "Unable to read file");
-        $product->image()->create(["path" => $file]);
-        return "success";
+        return $this->storeImage($product, $request);
     }
 }

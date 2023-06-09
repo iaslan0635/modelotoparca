@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    use ManagesImages;
+
     /**
      * Display a listing of the resource.
      */
@@ -25,9 +27,6 @@ class CategoryController extends Controller
 
     public function push_image(Category $category, Request $request)
     {
-        $file = $this->store_file($request->file("file"), "images/categories");
-        abort_unless($file, 400, "Unable to read file");
-        $category->image()->create(["path" => $file]);
-        return "success";
+        return $this->storeImage($category, $request);
     }
 }

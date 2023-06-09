@@ -1,59 +1,67 @@
 @props([
     'images',
-    'delete_action',
     'upload_action'
 ])
 
-<!--begin::Card body-->
-<div class="card-body pt-0">
-    <div class="row">
+<!--begin::Thumbnail settings-->
+<div class="card card-flush py-4">
+    <!--begin::Card body-->
+    <div class="card-body text-center pt-0">
         @foreach($images as $image)
-        <div class="col-4 p-4">
-            <!--begin::Card-->
-            <div class="card overlay overflow-hidden">
-                <div class="card-body p-0">
-                    <div class="overlay-wrapper">
-                        <img src="{{ $image->path }}" alt="" class="w-100 rounded"/>
-                    </div>
-                    <div class="overlay-layer bg-dark bg-opacity-25">
-                        <form action="{{ route('admin.delete-image') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="image_id" value="{{ $image->id }}">
-                            <button type="submit" class="btn btn-danger btn-shadow">Sil</button>
-                        </form>
-                    </div>
-                </div>
+            <!--begin::Image input-->
+            <div class="image-input image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
+                <!--begin::Preview existing avatar-->
+                <div class="image-input-wrapper w-150px h-150px" style="background-image: url({{$image->url}})"></div>
+                <!--end::Preview existing avatar-->
+                <!--begin::Remove-->
+                <form action="{{ route('admin.delete-image') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="image_id" value="{{ $image->id }}">
+                    <button
+                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                        style="position: absolute; right: 0; top: 0;transform:translate(50%,-50%);"
+                        data-bs-toggle="tooltip" title="Resimi kaldır" type="submit">
+                        <i class="bi bi-x fs-2"></i>
+                    </button>
+                </form>
+                <!--end::Remove-->
             </div>
-            <!--end::Card-->
-        </div>
+            <!--end::Image input-->
         @endforeach
-    </div>
 
-    <!--begin::Input group-->
-    <div class="fv-row mb-2">
-        <!--begin::Dropzone-->
-        <div class="dropzone image">
-            <!--begin::Message-->
-            <div class="dz-message needsclick">
-                <!--begin::Icon-->
-                <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
-                <!--end::Icon-->
-                <!--begin::Info-->
-                <div class="ms-4">
-                    <h3 class="fs-5 fw-bold text-gray-900 mb-1">Dosyayı buraya bırakın veya yüklemek için tıklayın.</h3>
+        <!--begin::Input group-->
+        <div class="fv-row mb-2">
+            <!--begin::Dropzone-->
+            <div class="dropzone image">
+                <!--begin::Message-->
+                <div class="dz-message needsclick">
+                    <!--begin::Icon-->
+                    <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                    <!--end::Icon-->
+                    <!--begin::Info-->
+                    <div class="ms-4">
+                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Resim yükle.</h3>
+                    </div>
+                    <!--end::Info-->
                 </div>
-                <!--end::Info-->
             </div>
+            <!--end::Dropzone-->
         </div>
-        <!--end::Dropzone-->
+        <!--end::Input group-->
     </div>
-    <!--end::Input group-->
+    <!--end::Card body-->
 </div>
-<!--end::Card body-->
-<script>
-    $('.dropzone.image')
-        .dropzone({
-            url: "{{ $upload_action }}",
-            headers: {"X-CSRF-TOKEN": "{{ csrf_token() }}"}
-        })
-</script>
+<!--end::Thumbnail settings-->
+@once
+    @push('custom_scripts')
+        <script>
+            $(() => {
+                $('.dropzone.image')
+                    .dropzone({
+                        url: "{{ $upload_action }}",
+                        headers: {"X-CSRF-TOKEN": "{{ csrf_token() }}"}
+                    })
+            })
+        </script>
+    @endpush
+@endonce

@@ -151,58 +151,10 @@
                 <div id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/apps/ecommerce/catalog/categories">
                     <!--begin::Aside column-->
                     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
-                        <!--begin::Thumbnail settings-->
-                        <div class="card card-flush py-4">
-                            <!--begin::Card header-->
-                            <div class="card-header">
-                                <!--begin::Card title-->
-                                <div class="card-title">
-                                    <h2>Thumbnail</h2>
-                                </div>
-                                <!--end::Card title-->
-                            </div>
-                            <!--end::Card header-->
-                            <!--begin::Card body-->
-                            <div class="card-body text-center pt-0">
-                                <!--begin::Image input-->
-                                <!--begin::Image input-->
-                                <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
-                                    <!--begin::Preview existing avatar-->
-                                    <div class="image-input-wrapper w-150px h-150px" style="background-image: url(assets/media//stock/ecommerce/123.gif)"></div>
-                                    <!--end::Preview existing avatar-->
-                                    <!--begin::Label-->
-                                    <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change"
-                                           data-bs-toggle="tooltip" title="Change avatar">
-                                        <!--begin::Icon-->
-                                        <i class="bi bi-pencil-fill fs-7"></i>
-                                        <!--end::Icon-->
-                                        <!--begin::Inputs-->
-                                        <input type="file" name="avatar" accept=".png, .jpg, .jpeg"/>
-                                        <input type="hidden" name="avatar_remove"/>
-                                        <!--end::Inputs-->
-                                    </label>
-                                    <!--end::Label-->
-                                    <!--begin::Cancel-->
-                                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel"
-                                          data-bs-toggle="tooltip" title="Cancel avatar">
-									<i class="bi bi-x fs-2"></i>
-								</span>
-                                    <!--end::Cancel-->
-                                    <!--begin::Remove-->
-                                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove"
-                                          data-bs-toggle="tooltip" title="Remove avatar">
-									<i class="bi bi-x fs-2"></i>
-								</span>
-                                    <!--end::Remove-->
-                                </div>
-                                <!--end::Image input-->
-                                <!--begin::Description-->
-                                <div class="text-muted fs-7">Set the category thumbnail image. Only *.png, *.jpg and *.jpeg image files are accepted</div>
-                                <!--end::Description-->
-                            </div>
-                            <!--end::Card body-->
-                        </div>
-                        <!--end::Thumbnail settings-->
+                        <x-admin.image-manager
+                            :images="$category->images"
+                            :upload_action="route('admin.categories.edit.image', $category)"
+                        />
                         <!--begin::Status-->
                         <div class="card card-flush py-4">
                             <!--begin::Card header-->
@@ -294,23 +246,7 @@
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade show active" id="spareto_connections" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
-                                                <h2>Resim ekle</h2>
-                                            </div>
-                                            <!--end::Card title-->
-                                        </div>
-                                        <!--end::Card header-->
-                                        <x-admin.image-manager
-                                            :images="$category->images"
-                                            :upload_action="route('admin.categories.edit.image', $category)"
-                                        />
-                                    </div>
-                                    <!--end::Card-->
+
                                 </div>
                             </div>
                             <!--end::Tab pane-->
