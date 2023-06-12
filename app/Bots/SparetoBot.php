@@ -185,7 +185,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
             ->where(function (Builder $q) use ($valid_oems) {
                 foreach ($valid_oems as $oem)
                     $q->orWhere('oem_unspaced', '=', $oem);
-            })->pluck('id');
+            })->dd()->pluck('logicalref');
     }
 
     public static function extractOems(Crawler $crawler): Collection
