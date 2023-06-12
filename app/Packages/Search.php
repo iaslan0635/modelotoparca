@@ -71,7 +71,7 @@ class Search
         $query = Query::bool();
         $words = explode(" ", $term);
         foreach ($words as $word) {
-            $query->must(Query::prefix()->field('full_text')->value($word));
+            $query->must(Query::prefix()->field('full_text')->value($word)->caseInsensitive(true));
         }
 
         return $query;
