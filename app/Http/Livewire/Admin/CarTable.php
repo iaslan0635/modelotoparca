@@ -15,7 +15,7 @@ class CarTable extends Component
         return view('livewire.admin.car-table');
     }
 
-    public function toggleIndexing($index, int $prevState)
+    public function toggleIndexing($index, int|bool $prevState)
     {
         list("id" => $carId) = $this->cars[$index];
         $car = Car::find($carId);

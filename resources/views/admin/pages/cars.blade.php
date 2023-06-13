@@ -209,7 +209,7 @@
                                 <th>Güç</th>
                                 <th>Kapasite</th>
                                 <th>Üretim tarihi</th>
-                                <th>Aranabilir mi?</th>
+                                <th class="text-end">Aranabilir mi?</th>
                             </tr>
                             <!--end::Table row-->
                             </thead>

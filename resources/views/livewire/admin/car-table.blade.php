@@ -1,7 +1,7 @@
 <tbody class="fw-semibold text-gray-600">
 @foreach($cars as $car)
     @php if (is_array($car)) $car = (object) $car @endphp
-    <!--begin::Table row-->
+        <!--begin::Table row-->
     <tr>
         <td>
             <span class="fw-bold">{{ $car->name }}</span>
@@ -21,9 +21,10 @@
         <td>
             <span class="fw-bold">{{ $car->produced_from ?? "?" }} - {{ $car->produced_to ?? "∞" }}</span>
         </td>
-        <td>
-            <button class="btn btn-sm btn-{{$car->indexable ? "success": "danger"}}" wire:click="toggleIndexing({{$loop->index}}, {{(int)$car->indexable}})">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading></span>
+        <td class="text-end">
+            @php $action = "toggleIndexing($loop->index, $car->indexable)" @endphp
+            <button class="btn btn-sm btn-{{$car->indexable ? "success": "danger"}}" wire:click="{{ $action }}">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading wire:target="{{ $action }}"></span>
                 {{ $car->indexable ? "Aranabilir" : "Aranamaz" }}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
