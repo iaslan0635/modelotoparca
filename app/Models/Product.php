@@ -60,9 +60,9 @@ class Product extends BaseModel implements CanVisit
 
                 'full_text' => collect([$this->title, $this->sub_title])->merge($cars->map->getRegexedName())->join(" | "),
             ];
-        return $this->similars->isNotEmpty() ?
-            dump($var, $this->id, $this->similars->isNotEmpty(), $this->similars->map->toSearchableArrayWithOnlyCrossCode())
-            : $var;
+        if ($this->similars->isNotEmpty())
+            dump($var, $this->id, $this->similars->isNotEmpty(), $this->similars->map->toSearchableArrayWithOnlyCrossCode());
+        return $var;
     }
 
     public function toSearchableArrayWithOnlyCrossCode()
