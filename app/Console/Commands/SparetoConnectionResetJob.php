@@ -14,7 +14,7 @@ class SparetoConnectionResetJob extends Command
     public function handle()
     {
         SparetoConnection::where("is_connection_applied", true)->update(["is_connection_applied" => false]);
-        ProductOem::truncate();
+        ProductOem::whereNotNull("connection_id")->delete();
         DB::table("product_cars")->truncate();
     }
 }
