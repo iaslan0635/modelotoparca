@@ -37,6 +37,7 @@ class Product extends BaseModel implements CanVisit
     public function toSearchableArray()
     {
         dump($this->id, $this->similars);
+        dump($this->similars->map->toSearchableArrayWithOnlyCrossCode());
         $cars = $this->cars->filter(fn(Car $car) =>
             $car->body_type !== "truck" && $car->body_type !== "urban_bus"
         )->values();
