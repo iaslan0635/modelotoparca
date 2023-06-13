@@ -22,7 +22,7 @@
             <span class="fw-bold">{{ $car->produced_from ?? "?" }} - {{ $car->produced_to ?? "∞" }}</span>
         </td>
         <td class="text-end">
-            @php $action = "toggleIndexing($loop->index, $car->indexable)" @endphp
+            @php $action = "toggleIndexing($loop->index)" @endphp
             <button class="btn btn-sm btn-{{$car->indexable ? "success": "danger"}}" wire:click="{{ $action }}">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading wire:target="{{ $action }}"></span>
                 {{ $car->indexable ? "Aranabilir" : "Aranamaz" }}
