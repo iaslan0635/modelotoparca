@@ -36,8 +36,10 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        $cars = $this->cars->filter(fn(Car $car) => $car->body_type !== "truck" && $car->body_type !== "urban_bus")->values();
-        $var = $this->toSearchableArrayWithOnlyCrossCode() + [
+        $cars = $this->cars->filter(fn(Car $car) =>
+            $car->body_type !== "truck" && $car->body_type !== "urban_bus"
+        )->values();
+        return $this->toSearchableArrayWithOnlyCrossCode() + [
                 'id' => $this->id,
                 'title' => $this->title,
                 'sub_title' => $this->sub_title,
@@ -50,19 +52,16 @@ class Product extends BaseModel implements CanVisit
                 'producercode_regex' => $this->producercode ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode)) : null,
                 'producercode2' => $this->producercode2,
                 'producercode2_regex' => $this->producercode2 ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode2)) : null,
-
+            ] + [
                 'oems' => $this->oems->map->toSearchableArray(),
                 'cars' => $cars->map->toSearchableArray(),
                 'similars' => $this->similars->map->toSearchableArrayWithOnlyCrossCode(),
                 'categories' => $this->categories->map->toSearchableArray(),
                 'brand' => $this->brand?->toSearchableArray(),
                 'price' => $this->price?->price,
-
+            ] + [
                 'full_text' => collect([$this->title, $this->sub_title])->merge($cars->map->getRegexedName())->join(" | "),
             ];
-        if ($this->similars->isNotEmpty())
-            dump($var, $this->id, $this->similars->isNotEmpty(), $this->similars->map->toSearchableArrayWithOnlyCrossCode());
-        return $var;
     }
 
     public function toSearchableArrayWithOnlyCrossCode()
