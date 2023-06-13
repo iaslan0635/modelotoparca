@@ -36,12 +36,11 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        dump($this->id, $this->similars);
+        dump($this->id, $this->similars->isNotEmpty());
         dump($this->similars->map->toSearchableArrayWithOnlyCrossCode());
-        $cars = $this->cars->filter(fn(Car $car) =>
-            $car->body_type !== "truck" && $car->body_type !== "urban_bus"
+        $cars = $this->cars->filter(fn(Car $car) => $car->body_type !== "truck" && $car->body_type !== "urban_bus"
         )->values();
-        return dump($this->toSearchableArrayWithOnlyCrossCode() + [
+        $var = $this->toSearchableArrayWithOnlyCrossCode() + [
                 'id' => $this->id,
                 'title' => $this->title,
                 'sub_title' => $this->sub_title,
@@ -63,7 +62,8 @@ class Product extends BaseModel implements CanVisit
                 'price' => $this->price?->price,
 
                 'full_text' => collect([$this->title, $this->sub_title])->merge($cars->map->getRegexedName())->join(" | "),
-            ]);
+            ];
+        return $this->similars->isNotEmpty() ? dump($var) : $var;
     }
 
     public function toSearchableArrayWithOnlyCrossCode()
