@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\ProductCar;
 use App\Models\ProductOem;
 use App\Models\SparetoConnection;
 use Illuminate\Console\Command;
@@ -16,7 +17,7 @@ class SparetoConnectionResetJob extends Command
         DB::transaction(function () {
             SparetoConnection::where("is_connection_applied", true)->update(["is_connection_applied" => false]);
             ProductOem::whereNotNull("connection_id")->delete();
-            DB::table("product_cars")->truncate();
+            ProductCar::truncate();
         });
     }
 }

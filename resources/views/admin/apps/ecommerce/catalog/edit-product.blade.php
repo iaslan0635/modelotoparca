@@ -341,8 +341,7 @@
                         <!--begin:::Tabs-->
                         <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
                             <!--begin:::Tab item-->
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connect">Ürün Bağlantısı Ekle</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#spareto_connections">Spareto Eşleşmeleri</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connections">Spareto Eşleşmeleri</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#details">Ürün bilgileri</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#oems">Oem Kodlar</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#cars">Uyumlu Araçlar</a></li>
@@ -356,7 +355,7 @@
                         <!--begin::Tab content-->
                         <div class="tab-content">
                             <!--begin::Tab pane-->
-                            <div class="tab-pane fade show active" id="spareto_connect" role="tabpanel">
+                            <div class="tab-pane fade show active" id="spareto_connections" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
                                     <!--begin::Card-->
                                     <div class="card card-flush py-4">
@@ -385,34 +384,6 @@
                                         <div class="card-header">
                                             <!--begin::Card title-->
                                             <div class="card-title">
-                                                <h2>Elle oem ekle</h2>
-                                            </div>
-                                            <!--end::Card title-->
-                                        </div>
-                                        <!--end::Card header-->
-                                        <!--begin::Card body-->
-                                        <div class="card-body pt-0">
-                                            <form action="{{ route('admin.products.edit.oem', $product) }}">
-                                                <input name="oem" type="text" class="form-control mb-2" placeholder="Oem kodu"/>
-                                                <input name="brand" type="text" class="form-control" placeholder="Marka"/>
-                                                <button type="submit" class="btn btn-primary mt-4">Bağla</button>
-                                            </form>
-                                        </div>
-                                        <!--end::Card body-->
-                                    </div>
-                                    <!--end::Card-->
-                                </div>
-                            </div>
-                            <!--end::Tab pane-->
-                            <!--begin::Tab pane-->
-                            <div class="tab-pane fade" id="spareto_connections" role="tabpanel">
-                                <div class="d-flex flex-column gap-7 gap-lg-10">
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
                                                 <h2>Spareto Ürün Eşleşmeleri (Bağlantı önerileri)</h2>
                                             </div>
                                             <!--end::Card title-->
@@ -420,31 +391,7 @@
                                         <!--end::Card header-->
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
-                                            <table
-                                                class="table table-row-dashed fs-6 gy-5 my-0">
-                                                <thead>
-                                                <tr>
-                                                    <th class="text-start">url</th>
-                                                    <th class="text-start">Eşleşme Sebebi</th>
-                                                    <th class="text-start"></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($product->sparetoConnections as $con)
-                                                    <tr>
-                                                        <th><a href="{{$con->url}}" target="_blank">{{$con->url}}</a></th>
-                                                        <th><span class="badge badge-primary">{{$con->connected_by}}</span></th>
-                                                        <th>
-                                                            @if($con->is_connection_applied)
-                                                                <button class="btn btn-success" disabled="disabled">Bağlandı</button>
-                                                            @else
-                                                                <button class="btn btn-success" onclick="alert('Yapım aşamasında')">Bağla</button>
-                                                            @endif
-                                                        </th>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
+                                             <livewire:spareto-connection-editor :product="$product" />
                                         </div>
                                         <!--end::Card body-->
                                     </div>
@@ -479,6 +426,28 @@
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade" id="oems" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Elle oem ekle</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <!--begin::Card body-->
+                                        <div class="card-body pt-0">
+                                            <form action="{{ route('admin.products.edit.oem', $product) }}">
+                                                <input name="oem" type="text" class="form-control mb-2" placeholder="Oem kodu"/>
+                                                <input name="brand" type="text" class="form-control" placeholder="Marka"/>
+                                                <button type="submit" class="btn btn-primary mt-4">Bağla</button>
+                                            </form>
+                                        </div>
+                                        <!--end::Card body-->
+                                    </div>
+                                    <!--end::Card-->
                                     <!--begin::Card-->
                                     <div class="card card-flush py-4">
                                         <!--begin::Card header-->
