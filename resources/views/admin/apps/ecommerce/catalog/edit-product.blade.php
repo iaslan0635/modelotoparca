@@ -391,7 +391,7 @@
                                         <!--end::Card header-->
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
-                                             <livewire:spareto-connection-editor :product="$product" />
+                                             <livewire:admin.spareto-connection-editor :product="$product" />
                                         </div>
                                         <!--end::Card body-->
                                     </div>

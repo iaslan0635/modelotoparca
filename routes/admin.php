@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AnalysisController;
+use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
@@ -41,6 +42,11 @@ Route::controller(ImportController::class)->prefix("import")->name("import.")->g
 
 Route::controller(AnalysisController::class)->prefix("analysis")->name("analysis.")->group(function () {
     Route::get("search", "search")->name("search");
+});
+
+Route::controller(CarController::class)->prefix("cars")->name("cars.")->group(function () {
+    Route::get("", "index")->name("index");
+    Route::post("toggleIndexing", "toggleIndexing")->name("toggleIndexing");
 });
 
 Route::fallback($temp);

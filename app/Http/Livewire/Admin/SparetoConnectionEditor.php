@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Admin;
 
 use App\Facades\SparetoConnector;
 use App\Models\Product;
@@ -13,7 +13,7 @@ class SparetoConnectionEditor extends Component
 
     public function render()
     {
-        return view('livewire.spareto-connection-editor');
+        return view('livewire.admin.spareto-connection-editor');
     }
 
     public function connect($id)

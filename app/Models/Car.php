@@ -9,11 +9,17 @@ class Car extends BaseModel
 {
     use Searchable;
 
+    public $timestamps = false;
     protected $searchableAs = 'cars_index';
 
     public function searchableAs()
     {
         return $this->searchableAs;
+    }
+
+    public function shouldBeSearchable()
+    {
+        return $this->indexable;
     }
 
     public function toSearchableArray()
