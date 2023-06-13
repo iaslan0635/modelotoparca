@@ -217,7 +217,7 @@
                                         <span class="fw-bold">{{ $search->user_id ? \App\Models\User::find($search->user_id, "first_name")->first_name : "Misafir" }}</span>
                                     </td>
                                     <td class="text-end">
-                                        <span class="fw-bold text-dark">{{ $search->created_at }}</span>
+                                        <span class="fw-bold">{{ $search->created_at }}</span>
                                     </td>
                                 </tr>
                                 <!--end::Table row-->
