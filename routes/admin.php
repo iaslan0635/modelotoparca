@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AnalysisController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
@@ -36,6 +37,10 @@ Route::controller(ImportController::class)->prefix("import")->name("import.")->g
     Route::post("ITMCLSAS", "ITMCLSAS")->name("ITMCLSAS");
     Route::get("sparetobot_bot", "sparetobot_bot")->name("sparetobot_bot");
     Route::get("sparetobot_connect", "sparetobot_connect")->name("sparetobot_connect");
+});
+
+Route::controller(AnalysisController::class)->prefix("analysis")->name("analysis.")->group(function () {
+    Route::get("search", "search")->name("search");
 });
 
 Route::fallback($temp);
