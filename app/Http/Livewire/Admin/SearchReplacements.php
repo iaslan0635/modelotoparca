@@ -30,7 +30,7 @@ class SearchReplacements extends Component
                 "replacement" => $this->replacement
             ]);
         } catch (QueryException $e) {
-            if ($e->getCode() !== 23000) throw $e;
+            $this->emit("toast", "Önceden bu kayıt oluşturulmuş", "error");
         }
     }
 
