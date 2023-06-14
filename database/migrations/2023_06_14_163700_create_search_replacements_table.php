@@ -11,6 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('original');
             $table->string('replacement');
+
+            $table->unique(["original", "replacement"]);
             $table->timestamps();
         });
     }
