@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\SearchReplacement;
+use Illuminate\Database\QueryException;
 use Livewire\Component;
 
 class SearchReplacements extends Component
@@ -23,10 +24,14 @@ class SearchReplacements extends Component
 
     public function add()
     {
-        $this->searchReplacements[] = SearchReplacement::create([
-            "original" => $this->original,
-            "replacement" => $this->replacement
-        ]);
+        try {
+            $this->searchReplacements[] = SearchReplacement::create([
+                "original" => $this->original,
+                "replacement" => $this->replacement
+            ]);
+        } catch (QueryException $e) {
+            if ($e->getCode() !== 23000) throw $e;
+        }
     }
 
     public function delete(int $index)
