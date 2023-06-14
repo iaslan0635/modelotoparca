@@ -36,39 +36,34 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        $cars = $this->cars->filter(fn(Car $car) =>
-            $car->indexable && $car->body_type !== "truck" && $car->body_type !== "urban_bus"
+        $cars = $this->cars->filter(fn(Car $car) => $car->indexable && $car->body_type !== "truck" && $car->body_type !== "urban_bus"
         )->values();
-        return $this->toSearchableArrayWithOnlyCrossCode() + [
-                'id' => $this->id,
-                'title' => $this->title,
-                'sub_title' => $this->sub_title,
-                'slug' => $this->slug,
-                'part_number' => $this->part_number,
-                'part_number_regex' => $this->part_number ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->part_number)) : null,
-                'producercode' => $this->producercode,
-                'producercode_unbranded' => $this->producercode_unbranded,
-                'producercode_unbranded_regex' => $this->producercode_unbranded ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode_unbranded)) : null,
-                'producercode_regex' => $this->producercode ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode)) : null,
-                'producercode2' => $this->producercode2,
-                'producercode2_regex' => $this->producercode2 ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode2)) : null,
-
-                'oems' => $this->oems->map->toSearchableArray(),
-                'cars' => $cars->map->toSearchableArray(),
-                'similars' => $this->similars->map->toSearchableArrayWithOnlyCrossCode(),
-                'categories' => $this->categories->map->toSearchableArray(),
-                'brand' => $this->brand?->toSearchableArray(),
-                'price' => $this->price?->price,
-
-                'full_text' => collect([$this->title, $this->sub_title])->merge($cars->map->getRegexedName())->join(" | "),
-            ];
-    }
-
-    public function toSearchableArrayWithOnlyCrossCode()
-    {
+        $regex = fn($s) => strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $s));
+        $similars = collect(explode(",", $this->similar_product_codes))->map(fn($s) => trim($s));
         return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'sub_title' => $this->sub_title,
+            'slug' => $this->slug,
+            'part_number' => $this->part_number,
+            'part_number_regex' => $this->part_number ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->part_number)) : null,
+            'producercode' => $this->producercode,
+            'producercode_unbranded' => $this->producercode_unbranded,
+            'producercode_unbranded_regex' => $this->producercode_unbranded ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode_unbranded)) : null,
+            'producercode_regex' => $this->producercode ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode)) : null,
+            'producercode2' => $this->producercode2,
+            'producercode2_regex' => $this->producercode2 ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode2)) : null,
             'cross_code' => $this->cross_code,
-            'cross_code_regex' => $this->cross_code ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->cross_code)) : null,
+            'cross_code_regex' => $this->cross_code ? $regex($this->cross_code) : null,
+
+            'oems' => $this->oems->map->toSearchableArray(),
+            'cars' => $cars->map->toSearchableArray(),
+            'similars' => $similars->map(fn($s) => ["code" => $s, "code_regex" => $regex($s)]),
+            'categories' => $this->categories->map->toSearchableArray(),
+            'brand' => $this->brand?->toSearchableArray(),
+            'price' => $this->price?->price,
+
+            'full_text' => collect([$this->title, $this->sub_title])->merge($cars->map->getRegexedName())->join(" | "),
         ];
     }
 
