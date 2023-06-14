@@ -576,13 +576,9 @@
                                              data-layout="table" data-with-features="false">
                                             <div class="products-list__head">
                                                 <div class="products-list__column products-list__column--image">#</div>
-                                                <div class="products-list__column products-list__column--meta">Ürün
-                                                    Kodu
-                                                </div>
-                                                <div class="products-list__column products-list__column--product">Ürün
-                                                </div>
-                                                <div class="products-list__column products-list__column--price">Fiyat
-                                                </div>
+                                                <div class="products-list__column products-list__column--meta">Ürün Kodu</div>
+                                                <div class="products-list__column products-list__column--product">Ürün</div>
+                                                <div class="products-list__column products-list__column--price">Fiyat</div>
                                             </div>
                                             <div class="products-list__content">
                                                 @foreach($product->similars()->get() as $cross)

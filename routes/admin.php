@@ -42,6 +42,7 @@ Route::controller(ImportController::class)->prefix("import")->name("import.")->g
 
 Route::controller(AnalysisController::class)->prefix("analysis")->name("analysis.")->group(function () {
     Route::get("search", "search")->name("search");
+    Route::get("search-replacements", "searchReplacements")->name("search-replacements");
 });
 
 Route::controller(CarController::class)->prefix("cars")->name("cars.")->group(function () {

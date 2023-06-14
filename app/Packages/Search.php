@@ -6,6 +6,7 @@ use App\Facades\Garage;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductOem;
+use App\Models\SearchReplacement;
 use Elastic\ScoutDriverPlus\Builders\BoolQueryBuilder;
 use Elastic\ScoutDriverPlus\Builders\QueryBuilderInterface;
 use Elastic\ScoutDriverPlus\Decorators\Hit;
@@ -384,6 +385,12 @@ class Search
     public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null): array
     {
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
+
+        $records = SearchReplacement::all();
+        $originals = $records->map->original;
+        $replacements = $records->map->replacement;
+        $term = str_replace($originals, $replacements, $term);
+
         $regex = '/[^a-zA-Z0-9]+/';
         $cleanTerm = strtolower(preg_replace($regex, '', $term));
         //dd($term);

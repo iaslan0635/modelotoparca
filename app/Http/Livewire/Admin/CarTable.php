@@ -17,7 +17,7 @@ class CarTable extends Component
 
     public function toggleIndexing($index)
     {
-        list("id" => $carId, "indexable" => $prevState) = $this->cars[$index];
+        ["id" => $carId, "indexable" => $prevState] = $this->cars[$index];
         $car = Car::find($carId);
         $car->indexable = !$prevState;
         $car->save();
