@@ -22,8 +22,8 @@
                 </div>
                 <div class="col-5"><input type="text" class="form-control" placeholder="renault" wire:model.defer="replacement"/></div>
                 <div class="col">
-                    <button class="btn btn-primary" wire:click="add()">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading wire:target="add()"></span>
+                    <button class="btn btn-primary" wire:click="add(0)">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading wire:target="add(0)"></span>
                         Ekle
                     </button>
                 </div>
@@ -61,7 +61,10 @@
                             <span class="fw-bold">{{ $replacement["replacement"] }}</span>
                         </td>
                         <td class="text-end">
-                            <button class="btn btn-sm btn-danger" wire:click="delete({{$key}})">Sil</button>
+                            <button class="btn btn-sm btn-danger" wire:click="delete({{$key}})">
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading wire:target="delete({{$key}})"></span>
+                                Sil
+                            </button>
                         </td>
                     </tr>
                     <!--end::Table row-->
