@@ -58,7 +58,7 @@
                                         <div class="departments__item-menu">
                                             <div class="megamenu departments__megamenu departments__megamenu--size--xl">
                                                 <div class="megamenu__image">
-                                                    <img src="{{ $root->imageUrl() }}" alt="">
+                                                    <img src="{{ $root->imageUrl() }}" style="max-height: 400px">
                                                 </div>
                                                 <div class="block block-brands block-brands--layout--columns-8-full">
                                                     <div class="container">
