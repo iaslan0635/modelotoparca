@@ -217,7 +217,7 @@
                                         <div class="d-flex">
                                             <!--begin::Thumbnail-->
                                             <a href="{{ route("admin.categories.show", $category) }}" class="symbol symbol-50px">
-                                                <span class="symbol-label" style="background-image:url({{ $category->image?->url }});"></span>
+                                                <span class="symbol-label" style="background-image:url({{ $category->imageUrl() }});"></span>
                                             </a>
                                             <!--end::Thumbnail-->
                                             <div class="ms-5">

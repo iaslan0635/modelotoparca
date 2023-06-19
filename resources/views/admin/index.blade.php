@@ -476,7 +476,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="symbol symbol-50px me-3">
-                                                        <img src="{{ $product->image?->url }}" class="" alt="" />
+                                                        <img src="{{ $product->imageUrl() }}" class="" alt="" />
                                                     </div>
                                                     <div class="d-flex justify-content-start flex-column">
                                                         <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $product->title }}</a>

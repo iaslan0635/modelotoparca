@@ -230,7 +230,7 @@
                                     <div class="d-flex align-items-center">
                                         <!--begin::Thumbnail-->
                                         <a href="{{ $link }}" class="symbol symbol-50px">
-                                            <span class="symbol-label" style="background-image:url({{ $product->image?->url }});"></span>
+                                            <span class="symbol-label" style="background-image:url({{ $product->imageUrl() }});"></span>
                                         </a>
                                         <!--end::Thumbnail-->
                                         <div class="ms-5">
