@@ -123,6 +123,7 @@ class TigerImporter extends Importer
                 ]);
 
             SparetoBot::dispatchAllFields($product);
+            $product->searchable();
         }
 
 //        Product::whereNotIn("id", $ids)->delete();
