@@ -40,7 +40,7 @@
                     <!--end::Icon-->
                     <!--begin::Info-->
                     <div class="ms-4">
-                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Resim yükle.</h3>
+                        <h3 class="fs-5 fw-bold text-gray-900 mb-1">Resim yükle</h3>
                     </div>
                     <!--end::Info-->
                 </div>
