@@ -236,7 +236,7 @@
                         <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
                             <!--begin:::Tab item-->
                             <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connections">Ürün bağlantısı ekle</a>
+                                <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#todo"></a>
                             </li>
                             <!--end:::Tab item-->
                         </ul>
@@ -244,7 +244,7 @@
                         <!--begin::Tab content-->
                         <div class="tab-content">
                             <!--begin::Tab pane-->
-                            <div class="tab-pane fade show active" id="spareto_connections" role="tabpanel">
+                            <div class="tab-pane fade show active" id="todo" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
 
                                 </div>
