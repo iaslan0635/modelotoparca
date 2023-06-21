@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OemController;
@@ -13,7 +14,7 @@ Route::get('/', function () {
     $categories = Category::root()->limit(15)->orderBy("order")->get(["slug", "name", "id"]);
     $featured_products = Product::query()->limit(20)->with("price:id,price,currency,product_id")->get(["id", "slug", "sku", "title"]);
     return view('home', compact('categories', 'featured_products'));
-});
+})->name('welcome');
 
 Route::get('cart', function () {
     /*$product = Product::find(2508);
@@ -58,7 +59,7 @@ Route::view('add-adress', 'account.add-adress')->name('add-adress');
 
 Route::get("/login", function () {
     return view('auth.login');
-});
+})->name('login-view');
 Route::get("/dashboard", function () {
     return view('account.dashboard');
 });
@@ -78,7 +79,8 @@ Route::get("/order-details", function () {
     return view('account.order-details');
 });
 
-
+Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::post('login', [AuthController::class, 'login'])->name('login');
 
 
 Route::get("/connections", function () {

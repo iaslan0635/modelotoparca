@@ -32,7 +32,8 @@
                 <div class="departments">
                     <button class="departments__button" type="button">
                                 <span class="departments__button-icon"><svg width="16px" height="12px">
-                                        <path d="M0,7L0,5L16,5L16,7L0,7ZM0,0L16,0L16,2L0,2L0,0ZM12,12L0,12L0,10L12,10L12,12Z"/>
+                                        <path
+                                            d="M0,7L0,5L16,5L16,7L0,7ZM0,0L16,0L16,2L0,2L0,0ZM12,12L0,12L0,10L12,10L12,12Z"/>
                                     </svg>
                                 </span>
                         <span class="departments__button-title">Ürün Kategorileri</span>
@@ -65,15 +66,19 @@
                                                         <ul class="block-brands__list">
                                                             @foreach($root->children as $child)
                                                                 <li class="block-brands__item">
-                                                                    <a href="{{ route("category.show", $child) }}" class="block-brands__item-link">
+                                                                    <a href="{{ route("category.show", $child) }}"
+                                                                       class="block-brands__item-link">
                                                                         <img src="{{ $child->imageUrl() }}" alt="">
-                                                                        <span class="block-brands__item-name">{{ $child->name }}</span>
+                                                                        <span
+                                                                            class="block-brands__item-name">{{ $child->name }}</span>
                                                                     </a>
                                                                 </li>
-                                                                <li class="block-brands__divider" role="presentation"></li>
+                                                                <li class="block-brands__divider"
+                                                                    role="presentation"></li>
                                                             @endforeach
                                                             <li class="block-brands__item">
-                                                                <a href="{{ route("category.show", $root) }}" class="block-brands__item-link">
+                                                                <a href="{{ route("category.show", $root) }}"
+                                                                   class="block-brands__item-link">
                                                                     <img src="{{ $root->imageUrl() }}" alt="">
                                                                     <span class="block-brands__item-name">Tüm {{ $root->name }} Kategorileri</span>
                                                                 </a>
@@ -152,7 +157,8 @@
                 </div>
                 <div class="logo__image">
                     <!-- logo -->
-                    <img style="max-width: 160px" src="https://websitem.modelotoparca.com/public/images/default/dark-logo.png">
+                    <img style="max-width: 160px"
+                         src="https://websitem.modelotoparca.com/public/images/default/dark-logo.png">
                     <!-- logo / end -->
                 </div>
             </a>
@@ -160,8 +166,8 @@
         <livewire:header.search/>
         <div class="header__indicators">
             @auth()
-            <div class="indicator">
-                <a href="wishlist.html" class="indicator__button">
+                <div class="indicator">
+                    <a href="wishlist.html" class="indicator__button">
                             <span class="indicator__icon">
                                 <svg width="32" height="32">
                                     <path d="M23,4c3.9,0,7,3.1,7,7c0,6.3-11.4,15.9-14,16.9C13.4,26.9,2,17.3,2,11c0-3.9,3.1-7,7-7c2.1,0,4.1,1,5.4,2.6l1.6,2l1.6-2
@@ -169,47 +175,51 @@
 	z"/>
                                 </svg>
                             </span>
-                </a>
-            </div>
-            @endauth
-            <div class="indicator indicator--trigger--click">
-                <a href="account-login.html" class="indicator__button">
+                    </a>
+                </div>
+            @else
+                <div class="indicator indicator--trigger--click">
+                    <a href="{{ route('login-view') }}" class="indicator__button">
                             <span class="indicator__icon">
                                 <svg width="32" height="32">
                                     <path d="M16,18C9.4,18,4,23.4,4,30H2c0-6.2,4-11.5,9.6-13.3C9.4,15.3,8,12.8,8,10c0-4.4,3.6-8,8-8s8,3.6,8,8c0,2.8-1.5,5.3-3.6,6.7
 	C26,18.5,30,23.8,30,30h-2C28,23.4,22.6,18,16,18z M22,10c0-3.3-2.7-6-6-6s-6,2.7-6,6s2.7,6,6,6S22,13.3,22,10z"/>
                                 </svg>
                             </span>
-                    <span class="indicator__title">Giriş Yap</span>
-                </a>
-                <div class="indicator__content">
-                    <div class="account-menu">
-                        <form class="account-menu__form">
-                            <div class="account-menu__form-title">
-                                Hesabınız ile Giriş Yap
-                            </div>
-                            <div class="form-group">
-                                <label for="header-signin-email" class="sr-only">Email address</label>
-                                <input id="header-signin-email" type="email" class="form-control form-control-sm" placeholder="Email address">
-                            </div>
-                            <div class="form-group">
-                                <label for="header-signin-password" class="sr-only">Password</label>
-                                <div class="account-menu__form-forgot">
-                                    <input id="header-signin-password" type="password" class="form-control form-control-sm" placeholder="Password">
-                                    <a href="" class="account-menu__form-forgot-link">Forgot?</a>
+                        <span class="indicator__title">Giriş Yap</span>
+                    </a>
+                    <div class="indicator__content">
+                        <div class="account-menu">
+                            <form class="account-menu__form" action="{{ route('login') }}" method="POST">
+                                @csrf
+                                <div class="account-menu__form-title">
+                                    Hesabınız ile Giriş Yap
                                 </div>
-                            </div>
-                            <div class="form-group account-menu__form-button">
-                                <button type="submit" class="btn btn-primary btn-sm">Giriş Yap</button>
-                            </div>
-                            <div class="account-menu__form-link">
-                                <a href="account-login.html">Yeni Hesap Oluştur</a>
-                            </div>
-                        </form>
-                        <div class="account-menu__divider"></div>
+                                <div class="form-group">
+                                    <label for="header-signin-email" class="sr-only">Email address</label>
+                                    <input id="header-signin-email" name="email" type="email"
+                                           class="form-control form-control-sm" placeholder="Email address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="header-signin-password" class="sr-only">Password</label>
+                                    <div class="account-menu__form-forgot">
+                                        <input id="header-signin-password" name="password" type="password"
+                                               class="form-control form-control-sm" placeholder="Password">
+                                        <a href="" class="account-menu__form-forgot-link">Forgot?</a>
+                                    </div>
+                                </div>
+                                <div class="form-group account-menu__form-button">
+                                    <button type="submit" class="btn btn-primary btn-sm">Giriş Yap</button>
+                                </div>
+                                <div class="account-menu__form-link">
+                                    <a href="{{ route('login-view') }}">Yeni Hesap Oluştur</a>
+                                </div>
+                            </form>
+                            <div class="account-menu__divider"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endauth
             <livewire:header.cart/>
         </div>
     </div>
