@@ -166,6 +166,45 @@
         <livewire:header.search/>
         <div class="header__indicators">
             @auth()
+                <div class="indicator indicator--trigger--click">
+                    <a href="account-login.html" class="indicator__button">
+                            <span class="indicator__icon">
+                                <svg width="32" height="32">
+                                    <path d="M16,18C9.4,18,4,23.4,4,30H2c0-6.2,4-11.5,9.6-13.3C9.4,15.3,8,12.8,8,10c0-4.4,3.6-8,8-8s8,3.6,8,8c0,2.8-1.5,5.3-3.6,6.7
+	C26,18.5,30,23.8,30,30h-2C28,23.4,22.6,18,16,18z M22,10c0-3.3-2.7-6-6-6s-6,2.7-6,6s2.7,6,6,6S22,13.3,22,10z" />
+                                </svg>
+                            </span>
+                        <span class="indicator__title">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</span>
+                        <span class="indicator__value">Hesabım</span>
+                    </a>
+                    <div class="indicator__content">
+                        <div class="account-menu">
+                            <div class="account-menu__divider"></div>
+                            <a href="" class="account-menu__user">
+                                <div class="account-menu__user-avatar">
+                                    <img src="images/avatars/avatar-4.jpg" alt="">
+                                </div>
+                                <div class="account-menu__user-info">
+                                    <div class="account-menu__user-name">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</div>
+                                    <div class="account-menu__user-email">{{Auth::user()->email}}</div>
+                                </div>
+                            </a>
+                            <div class="account-menu__divider"></div>
+                            <ul class="account-menu__links">
+                                <li><a href="#">Hesabım</a></li>
+                                <li><a href="#">Garajım</a></li>
+                                <li><a href="#">Siparişlerim</a></li>
+                                <li><a href="#">Adreslerim</a></li>
+                                <li><a href="#">Takip Listem</a></li>
+                            </ul>
+                            <div class="account-menu__divider"></div>
+                            <ul class="account-menu__links">
+                                <li><a href="{{Auth::logout()}}">Çıkış Yap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="indicator">
                     <a href="wishlist.html" class="indicator__button">
                             <span class="indicator__icon">
