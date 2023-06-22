@@ -199,12 +199,12 @@
                             </ul>
                             <div class="account-menu__divider"></div>
                             <ul class="account-menu__links">
-                                <li><a href="{{Auth::logout()}}">Çıkış Yap</a></li>
+                                <li><a href="{{route('logout')}}">Çıkış Yap</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
+-
                 <div class="indicator">
                     <a href="wishlist.html" class="indicator__button">
                             <span class="indicator__icon">
