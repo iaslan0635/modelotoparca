@@ -67,12 +67,12 @@
                                     <div class="form-group">
                                         <label for="signup-name">Adınız</label>
                                         <input id="signup-name" type="text" name="first_name" class="form-control"
-                                               placeholder="Ali">
+                                               placeholder="Adınız">
                                     </div>
                                     <div class="form-group">
                                         <label for="signup-last-name">Soyadınız</label>
                                         <input id="signup-last-name" type="text" name="last_name" class="form-control"
-                                               placeholder="Veli">
+                                               placeholder="Soyadınız">
                                     </div>
                                     <div class="form-group">
                                         <label for="signup-gender">Cinsiyetiniz</label>
@@ -89,18 +89,18 @@
                                     <div class="form-group">
                                         <label for="signup-email">E-Posta Adresi</label>
                                         <input id="signup-email" type="email" name="email" class="form-control"
-                                               placeholder="musteri@modelotoparca.com">
+                                               placeholder="email@email.com">
                                     </div>
                                     <div class="form-group">
                                         <label for="signup-password">Şifre</label>
                                         <input id="signup-password" type="password" name="password" class="form-control"
-                                               placeholder="Secret word">
+                                               placeholder="Şifre Yazınız">
                                     </div>
                                     <div class="form-group">
                                         <label for="signup-confirm">Şifre Tekrarı</label>
                                         <input id="signup-confirm" type="password" name="password_confirmation"
                                                class="form-control"
-                                               placeholder="Secret word">
+                                               placeholder="Şifre Tekrarı">
                                     </div>
                                     <div class="form-group mb-0">
                                         <button type="submit" class="btn btn-primary mt-3">Kayıt Ol</button>
