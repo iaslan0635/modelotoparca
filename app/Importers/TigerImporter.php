@@ -3,18 +3,13 @@
 namespace App\Importers;
 
 use App\Bots\SparetoBot;
-use App\Jobs\SparetoConnectJob;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
-use App\Models\SparetobotDone;
-use Illuminate\Bus\Batch;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class TigerImporter extends Importer
@@ -24,6 +19,9 @@ class TigerImporter extends Importer
         1 => "usd",
         20 => "eur",
     ];
+
+    const IMAGE_11 = 0b10;
+    const IMAGE_12 = 0b01;
 
     public static function getUsedTables(): array
     {
@@ -56,6 +54,10 @@ class TigerImporter extends Importer
         $allWebNames = implode(" ", [$c('F'), $c('G'), $c('H'), $c('I')]);
         $oems = $c('V');
 
+        $image_appendix = 0;
+        if ($c('P')) $image_appendix |= self::IMAGE_11; // IMAGEINC
+        if ($c('Q')) $image_appendix |= self::IMAGE_12; // IMAGE2INC
+
         return [
             "product" => [
                 'id' => $id,
@@ -76,6 +78,7 @@ class TigerImporter extends Importer
                 'oem_codes' => $oems,
                 'similar_product_codes' => $c('Y'),
                 'fitting_position' => $c('AK'),
+                'image_appendix' => $image_appendix,
 
                 '_category' => $c("O"),
             ],

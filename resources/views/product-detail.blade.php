@@ -40,9 +40,9 @@
 {{--                                        </svg>--}}
 {{--                                    </button>--}}
                                     <div class="owl-carousel">
-                                        @foreach($product->images as $image)
+                                        @foreach($product->imageUrls() as $image)
 
-                                            <a class="image image--type--product" href="{{ $image->url }}"
+                                            <a class="image image--type--product" href="{{ $image }}"
                                                target="_blank" data-width="700" data-height="700">
                                                 <div class="image__body">
 
@@ -52,7 +52,7 @@
                                                                   src="https://web.modelotoparca.com/images/brands/{{ $product->brand->name }}.png" alt="">
                                                         </div>
                                                     </div>
-                                                    <img class="image__tag" src="{{ $image->url }}" alt="">
+                                                    <img class="image__tag" src="{{ $image }}" alt="">
                                                 </div>
                                             </a>
                                         @endforeach
@@ -60,10 +60,10 @@
                                 </div>
                                 <div class="product-gallery__thumbnails">
                                     <div class="owl-carousel">
-                                        @foreach($product->images as $image)
+                                        @foreach($product->imageUrls() as $image)
                                             <div class="product-gallery__thumbnails-item image image--type--product">
                                                 <div class="image__body">
-                                                    <img class="image__tag" src="{{ $image->url }}" alt="">
+                                                    <img class="image__tag" src="{{ $image }}" alt="">
                                                 </div>
                                             </div>
                                         @endforeach

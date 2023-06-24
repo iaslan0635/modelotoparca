@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Facades\Garage;
+use App\Importers\TigerImporter;
 use App\Packages\Utils;
 use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
@@ -18,7 +19,11 @@ use Illuminate\Support\Collection;
 
 class Product extends BaseModel implements CanVisit
 {
-    use Searchable, HasImages, HasVisits;
+    use Searchable, HasVisits;
+    use HasImages {
+        imageUrls as protected databaseImageUrls;
+        imageUrl as protected databaseImageUrl;
+    }
 
     public $incrementing = false;
 
@@ -32,6 +37,32 @@ class Product extends BaseModel implements CanVisit
     public function searchableAs()
     {
         return $this->searchableAs;
+    }
+
+    protected function getImagePath($suffix)
+    {
+        return asset("storage/images/{$this->id}_$suffix");
+    }
+
+    public function imageUrls()
+    {
+        $images = [];
+        if ($this->image_appendix & TigerImporter::IMAGE_11)
+            $images[] = $this->getImagePath("11");
+        if ($this->image_appendix & TigerImporter::IMAGE_12)
+            $images[] = $this->getImagePath("12");
+
+        return $this->databaseImageUrls()->merge($images);
+    }
+
+    public function imageUrl()
+    {
+        if ($this->image_appendix & TigerImporter::IMAGE_12)
+            return $this->getImagePath("11");
+        if ($this->image_appendix & TigerImporter::IMAGE_11)
+            return $this->getImagePath("12");
+
+        return $this->databaseImageUrl();
     }
 
     public function toSearchableArray()

@@ -9,9 +9,7 @@ trait ManagesImages
 {
     protected function storeImage(Model $model, Request $request)
     {
-        $file = $request->file("file")->storePublicly("images", ["disk" => "public"]);
-        abort_unless($file, 400, "Unable to read file");
-        $model->image()->create(["path" => $file]);
+        $model->storeImage($request->file("file"));
         return "success";
     }
 }

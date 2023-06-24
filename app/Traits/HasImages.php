@@ -3,22 +3,19 @@
 namespace App\Traits;
 
 use App\Models\Image;
+use Exception;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Collection;
 
 trait HasImages
 {
-    public function saveImages(int $model_id, array|string $images): void
+    public function storeImage(UploadedFile $image): void
     {
-        $images = Arr::wrap($images);
-
-        $this->images()->createMany(Arr::map($images, fn($image) => [
-            'model' => self::class,
-            'model_id' => $model_id,
-            'path' => Storage::url($image->store('public/images')),
-        ]));
+        $path = $image->storePublicly("images", ["disk" => "public"]);
+        if (!$path) throw new Exception("Unable to store image");
+        $this->images()->create(["path" => $path]);
     }
 
     public function images(): MorphMany
@@ -33,6 +30,16 @@ trait HasImages
 
     public function imageUrl(): string
     {
-        return $this->image?->url ?? asset("/images/products/defaults/product-1.jpg");
+        return $this->image?->url ?? $this->defaultImage();
+    }
+
+    public function defaultImage(): string
+    {
+        return asset("/images/products/defaults/product-1.jpg");
+    }
+
+    public function imageUrls(): Collection
+    {
+        return $this->images->map(fn (Image $image) => $image->url);
     }
 }
