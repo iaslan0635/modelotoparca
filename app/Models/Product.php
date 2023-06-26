@@ -41,10 +41,10 @@ class Product extends BaseModel implements CanVisit
 
     protected function getImagePath($suffix)
     {
-        return asset("storage/images/{$this->id}_$suffix");
+        return asset("storage/images/{$this->id}_$suffix.JPG");
     }
 
-    public function imageUrls()
+    public function imageUrls(): Collection
     {
         $images = [];
         if ($this->image_appendix & TigerImporter::IMAGE_11)
@@ -52,7 +52,7 @@ class Product extends BaseModel implements CanVisit
         if ($this->image_appendix & TigerImporter::IMAGE_12)
             $images[] = $this->getImagePath("12");
 
-        return $this->databaseImageUrls()->merge($images);
+        return collect($this->databaseImageUrls())->merge($images);
     }
 
     public function imageUrl()
