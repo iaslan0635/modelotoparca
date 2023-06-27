@@ -39,7 +39,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
     private static function safeNew(string|null $keyword, string $field)
     {
-        if (blank($keyword) || strlen($keyword) <= 3) return null;
+        if (blank($keyword) || strlen($keyword) < 5) return null;
 
         return (new SparetoBot($keyword, $field))->onQueue('spareto');
     }
