@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 $temp = function () {
     $segments = request()->segments();
     $view = str_replace(".html", "", implode(".", $segments));
-    abort_unless(View::exists($view), 444, "View not exists");
+    abort_unless(View::exists($view), 404, "View not exists");
     return view($view);
 };
 

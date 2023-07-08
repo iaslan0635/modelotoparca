@@ -41,7 +41,7 @@ class Product extends BaseModel implements CanVisit
 
     protected function getImagePath($suffix)
     {
-        return asset("storage/images/{$this->id}_$suffix.JPG");
+        return asset("storage/imported_images/{$this->id}_$suffix.JPG");
     }
 
     public function imageUrls(): Collection
