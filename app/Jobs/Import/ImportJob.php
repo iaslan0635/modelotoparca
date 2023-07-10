@@ -3,6 +3,7 @@
 namespace App\Jobs\Import;
 
 use App\Importers\Importer;
+use Elastic\Adapter\Exceptions\BulkOperationException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -23,8 +24,12 @@ abstract class ImportJob implements ShouldQueue
 
     public function handle(): void
     {
-        $this->getImporter(Storage::path($this->filePath))->import();
-//        Storage::delete($this->filePath);
+        try {
+            $this->getImporter(Storage::path($this->filePath))->import();
+            //        Storage::delete($this->filePath);
+        } catch (BulkOperationException $exception) {
+            throw new \Exception("Elasticsearch bulk import failed. Raw Result: " . json_encode($exception->rawResult()));
+        }
     }
 
     protected abstract function getImporter(string $path): Importer;
