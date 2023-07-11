@@ -57,9 +57,9 @@ class Product extends BaseModel implements CanVisit
 
     public function imageUrl()
     {
-        if ($this->image_appendix & TigerImporter::IMAGE_12)
-            return $this->getImagePath("11");
         if ($this->image_appendix & TigerImporter::IMAGE_11)
+            return $this->getImagePath("11");
+        if ($this->image_appendix & TigerImporter::IMAGE_12)
             return $this->getImagePath("12");
 
         return $this->databaseImageUrl();
