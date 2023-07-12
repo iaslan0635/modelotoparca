@@ -60,7 +60,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="address-first-name">Ad</label>
                                     <input type="text" class="form-control" id="address-first-name" name="first_name"
-                                           placeholder="Ad" value="{{ old('first_name', $address??->first_name) }}">
+                                           placeholder="Ad" value="{{ old('first_name', $address?->first_name) }}">
                                     @error('first_name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group col-md-6">
