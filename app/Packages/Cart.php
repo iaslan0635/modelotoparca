@@ -122,7 +122,7 @@ class Cart
         $total += (new Cart)->getTotalWithShipping();
 
         if (count(self::getItems()) === 0) {
-        return 0;
+            return 0;
         }
 
         return $total;
@@ -164,8 +164,8 @@ class Cart
         $total = self::subTotal();
 
         $taxRate = session('cart.taxRate');
-        if (! is_null($taxRate)) {
-        return $total * $taxRate / 100;
+        if (!is_null($taxRate)) {
+            return $total * $taxRate / 100;
         }
 
         return 0;
@@ -175,10 +175,10 @@ class Cart
     {
         $shippingCost = session('cart.shippingCost');
         if (count(self::getItems()) === 0) {
-        return 0;
+            return 0;
         }
-        if (! is_null($shippingCost)) {
-        return $shippingCost;
+        if (!is_null($shippingCost)) {
+            return $shippingCost;
         }
 
         return 0;
@@ -191,21 +191,21 @@ class Cart
 
     public static function formattedTotal(): string
     {
-        return number_format(self::getTotal(), 2).' ₺';
+        return number_format(self::getTotal(), 2) . ' ₺';
     }
 
     public static function formattedSubTotal(): string
     {
-        return number_format(self::subTotal(), 2).' ₺';
+        return number_format(self::subTotal(), 2) . ' ₺';
     }
 
     public static function formattedShipping(): string
     {
-        return number_format(self::getTotalWithShipping(), 2).' ₺';
+        return number_format(self::getTotalWithShipping(), 2) . ' ₺';
     }
 
     public static function formattedTax(): string
     {
-        return number_format(self::getTotalWithTax(), 2).' ₺';
+        return number_format(self::getTotalWithTax(), 2) . ' ₺';
     }
 }

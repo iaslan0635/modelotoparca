@@ -7,17 +7,17 @@
             <div class="container container--max--xl">
                 <div class="row">
                     <div class="col-12 col-lg-3 d-flex">
-@include('account.partials.navigation')
+                        @include('account.partials.navigation')
                     </div>
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="card">
                             <div class="order-header">
                                 <div class="order-header__actions">
-                                    <a href="account-orders.html" class="btn btn-xs btn-secondary">Back to list</a>
+                                    <a href="{{ route('order-history') }}" class="btn btn-xs btn-secondary">Back to list</a>
                                 </div>
-                                <h5 class="order-header__title">Order #9478</h5>
+                                <h5 class="order-header__title">Order #{{ $order->id }}</h5>
                                 <div class="order-header__subtitle">
-                                    Was placed on <mark>Oct 19, 2020</mark> and is currently <mark>Pending</mark>.
+                                    Was placed on <mark>{{ $order->created_at->format("d M Y") }}</mark> and is currently <mark>Pending</mark>.
                                 </div>
                             </div>
                             <div class="card-divider"></div>
@@ -26,42 +26,28 @@
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Total</th>
+                                            <th>Ürün</th>
+                                            <th>Tutar</th>
                                         </tr>
                                         </thead>
                                         <tbody class="card-table__body card-table__body--merge-rows">
-                                        <tr>
-                                            <td>Brandix Spark Plug Kit ASR-400 × 2</td>
-                                            <td>$38.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brandix Brake Kit BDX-750Z370-S × 1</td>
-                                            <td>$224.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Left Headlight Of Brandix Z54 × 3</td>
-                                            <td>$1047.00</td>
-                                        </tr>
+                                        @foreach($order->items as $item)
+                                            <tr>
+                                                <td>{{ $item->product_data['title'] }}</td>
+                                                <td>{{ \App\Facades\TaxFacade::formattedPrice($item->price_data['price']) }}</td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                         <tbody class="card-table__body card-table__body--merge-rows">
                                         <tr>
-                                            <th>Subtotal</th>
-                                            <td>$1309.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Shipping</th>
-                                            <td>$25.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Tax</th>
-                                            <td>$262.00</td>
+                                            <th>Ara Toplam</th>
+                                            <td>{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
                                         </tr>
                                         </tbody>
                                         <tfoot>
                                         <tr>
-                                            <th>Total</th>
-                                            <td>$1596.00</td>
+                                            <th>Toplam</th>
+                                            <td>{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
                                         </tr>
                                         </tfoot>
                                     </table>
@@ -72,22 +58,20 @@
                             <div class="col-sm-6 col-12 px-2">
                                 <div class="card address-card address-card--featured">
                                     <div class="address-card__badge tag-badge tag-badge--theme">
-                                        Shipping Address
+                                        Kargo Adresi
                                     </div>
                                     <div class="address-card__body">
-                                        <div class="address-card__name">Ryan Ford</div>
+                                        <div class="address-card__name">{{ $order->shipmentAddress->fullName }}</div>
                                         <div class="address-card__row">
-                                            Random Federation<br>
-                                            115302, Moscow<br>
-                                            ul. Varshavskaya, 15-2-178
+                                            {{ $order->shipmentAddress->address }}
                                         </div>
                                         <div class="address-card__row">
-                                            <div class="address-card__row-title">Phone Number</div>
-                                            <div class="address-card__row-content">38 972 588-42-36</div>
+                                            <div class="address-card__row-title">Telefon Numarası</div>
+                                            <div class="address-card__row-content">{{ $order->shipmentAddress->phone }}</div>
                                         </div>
                                         <div class="address-card__row">
-                                            <div class="address-card__row-title">Email Address</div>
-                                            <div class="address-card__row-content">stroyka@example.com</div>
+                                            <div class="address-card__row-title">İl / İlçe</div>
+                                            <div class="address-card__row-content">{{ $order->shipmentAddress->city }} / {{ $order->shipmentAddress->district }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -95,22 +79,20 @@
                             <div class="col-sm-6 col-12 px-2 mt-sm-0 mt-3">
                                 <div class="card address-card address-card--featured">
                                     <div class="address-card__badge tag-badge tag-badge--theme">
-                                        Billing Address
+                                        Fatura Adresi
                                     </div>
                                     <div class="address-card__body">
-                                        <div class="address-card__name">Ryan Ford</div>
+                                        <div class="address-card__name">{{ $order->invoiceAddress->fullName }}</div>
                                         <div class="address-card__row">
-                                            Random Federation<br>
-                                            115302, Moscow<br>
-                                            ul. Varshavskaya, 15-2-178
+                                            {{ $order->invoiceAddress->address }}
                                         </div>
                                         <div class="address-card__row">
-                                            <div class="address-card__row-title">Phone Number</div>
-                                            <div class="address-card__row-content">38 972 588-42-36</div>
+                                            <div class="address-card__row-title">Telefon Numarası</div>
+                                            <div class="address-card__row-content">{{ $order->invoiceAddress->phone }}</div>
                                         </div>
                                         <div class="address-card__row">
-                                            <div class="address-card__row-title">Email Address</div>
-                                            <div class="address-card__row-content">stroyka@example.com</div>
+                                            <div class="address-card__row-title">İl / İlçe</div>
+                                            <div class="address-card__row-content">{{ $order->invoiceAddress->city }} / {{ $order->invoiceAddress->district }}</div>
                                         </div>
                                     </div>
                                 </div>

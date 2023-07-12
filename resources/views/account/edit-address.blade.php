@@ -11,7 +11,7 @@
                             <h4 class="account-nav__title">Hesabım</h4>
                             <ul class="account-nav__list">
                                 <li class="account-nav__item  account-nav__item--active ">
-                                    <a href="#">Yeni Adres Ekle</a>
+                                    <a href="#">Adres Düzenle</a>
                                 </li>
 
                                 <li class="account-nav__divider" role="presentation"></li>
@@ -21,7 +21,7 @@
                             </ul>
                         </div>
                     </div>
-                    <livewire:user.add-address :type="old('type', 'individual')" />
+                    <livewire:user.add-address :address="$address" :edit="true" :type="old('type', $address->type)" />
                 </div>
             </div>
         </div>
