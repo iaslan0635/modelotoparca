@@ -28,17 +28,17 @@
                                     Varsayılan
                                 </div>
                                 <div class="address-card__body">
-                                    <div class="address-card__name">{{ auth()->user()->addresses[0]->fullName }}</div>
+                                    <div class="address-card__name">{{ auth()->user()->addresses[0]?->fullName }}</div>
                                     <div class="address-card__row">
-                                        {{ auth()->user()->addresses[0]->address }}
+                                        {{ auth()->user()->addresses[0]?->address }}
                                     </div>
                                     <div class="address-card__row">
                                         <div class="address-card__row-title">Telefon Numarası</div>
-                                        <div class="address-card__row-content">{{ auth()->user()->addresses[0]->phone }}</div>
+                                        <div class="address-card__row-content">{{ auth()->user()->addresses[0]?->phone }}</div>
                                     </div>
                                     <div class="address-card__row">
                                         <div class="address-card__row-title">İl / İlçe</div>
-                                        <div class="address-card__row-content">{{ auth()->user()->addresses[0]->city }} / {{ auth()->user()->addresses[0]->district }}</div>
+                                        <div class="address-card__row-content">{{ auth()->user()->addresses[0]?->city }} / {{ auth()->user()->addresses[0]?->district }}</div>
                                     </div>
                                 </div>
                             </div>
