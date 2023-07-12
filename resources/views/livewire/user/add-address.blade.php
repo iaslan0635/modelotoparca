@@ -1,5 +1,5 @@
 <div class="col-12 col-lg-9 mt-4 mt-lg-0">
-    <form method="POST" action="{{ $edit ? route('addresses.update', $address?):route('addresses.store') }}">
+    <form method="POST" action="{{ $edit ? route('addresses.update', $address):route('addresses.store') }}">
         @csrf
         @if($edit)
             @method('PUT')
