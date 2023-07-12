@@ -1,5 +1,5 @@
 <div class="col-12 col-lg-9 mt-4 mt-lg-0">
-    <form method="POST" action="{{ $edit ? route('addresses.update', $address):route('addresses.store') }}">
+    <form method="POST" action="{{ $edit ? route('addresses.update', $address?):route('addresses.store') }}">
         @csrf
         @if($edit)
             @method('PUT')
@@ -60,13 +60,13 @@
                                 <div class="form-group col-md-6">
                                     <label for="address-first-name">Ad</label>
                                     <input type="text" class="form-control" id="address-first-name" name="first_name"
-                                           placeholder="Ad" value="{{ old('first_name', $address->first_name) }}">
+                                           placeholder="Ad" value="{{ old('first_name', $address??->first_name) }}">
                                     @error('first_name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="address-last-name">Soyad</label>
                                     <input type="text" class="form-control" id="address-last-name" name="last_name"
-                                           value="{{ old('last_name', $address->last_name) }}" placeholder="Soyad">
+                                           value="{{ old('last_name', $address?->last_name) }}" placeholder="Soyad">
                                     @error('last_name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                 <div class="form-group col-md-12 mb-0">
                                     <label for="address-identity">T.C. Kimlik Numarası </label>
                                     <input type="text" class="form-control" id="address-identity" name="identity"
-                                           value="{{ old('identity', $address->identity) }}" placeholder="Avcılar">
+                                           value="{{ old('identity', $address?->identity) }}" placeholder="Avcılar">
                                     @error('identity') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -83,13 +83,13 @@
                                 <div class="form-group col-md-6 mb-0">
                                     <label for="address-email">Vergi Dairesi </label>
                                     <input type="text" class="form-control" id="address-email" name="tax_office"
-                                           value="{{ old('tax_office', $address->tax_office) }}" placeholder="Avcılar">
+                                           value="{{ old('tax_office', $address?->tax_office) }}" placeholder="Avcılar">
                                     @error('tax_office') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group col-md-6 mb-0">
                                     <label for="address-tax-number">Vergi No</label>
                                     <input type="text" class="form-control" id="address-tax-number" name="tax_number"
-                                           value="{{ old('tax_number', $address->tax_number) }}" placeholder="1123">
+                                           value="{{ old('tax_number', $address?->tax_number) }}" placeholder="1123">
                                     @error('tax_number') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                                 <label for="address-company-name">Şirket Adı<span
                                         class="text-muted">(Varsa)</span></label>
                                 <input type="text" class="form-control" id="address-company-name" name="company_name"
-                                       value="{{ old('company_name', $address->company_name) }}"
+                                       value="{{ old('company_name', $address?->company_name) }}"
                                        placeholder="Şirket Adı">
                                 @error('company_name') <span class="error">{{ $message }}</span> @enderror
                             </div>
@@ -106,7 +106,7 @@
                         <div class="form-group">
                             <label for="address-phone">Telefon Numarası</label>
                             <input type="text" class="form-control" id="address-phone" name="phone"
-                                   placeholder="05xx xxx xx xx" value="{{ old('phone', $address->phone) }}">
+                                   placeholder="05xx xxx xx xx" value="{{ old('phone', $address?->phone) }}">
                         </div>
                         <div class="form-group">
                             <label for="address-country">İl</label>
@@ -135,7 +135,7 @@
                         <div class="form-group">
                             <label for="address-address1">Adres</label>
                             <textarea type="text" class="form-control" name="address" id="address-address1"
-                                      placeholder="Mahalle">{{ old('address', $address->address) }}</textarea>
+                                      placeholder="Mahalle">{{ old('address', $address?->address) }}</textarea>
                         </div>
                         <div class="form-group mb-0 pt-3 mt-3">
 
