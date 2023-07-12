@@ -16,7 +16,7 @@ class OrderController extends Controller
             'order_agreement' => 'required'
         ]);
 
-        if (count(auth()->user()->addresses) > 0){
+        if (count(auth()->user()->addresses) === 0){
             return redirect()->route('add-adress');
         }
 
