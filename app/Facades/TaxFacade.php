@@ -4,7 +4,7 @@ namespace App\Facades;
 
 class TaxFacade
 {
-    public static function calculate($amount, $percentage): float
+    public static function calculate($amount, $percentage = 0): float
     {
         return (float)$amount + (($amount / 100) * $percentage);
     }

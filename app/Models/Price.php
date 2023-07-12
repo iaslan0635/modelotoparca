@@ -12,7 +12,7 @@ class Price extends BaseModel
     protected $with = ['tax'];
     protected function price(): Attribute
     {
-        return Attribute::get(fn(string $value) => TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax->vat_amount));
+        return Attribute::get(fn(string $value) => TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount));
     }
 
     public function tax(): HasOne
