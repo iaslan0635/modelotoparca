@@ -16,6 +16,10 @@ class OrderController extends Controller
             'order_agreement' => 'required'
         ]);
 
+        if (count(auth()->user()->addresses) > 0){
+            return redirect()->route('add-adress');
+        }
+
         $order = auth()->user()->orders()->create([
             'payment_method' => $request->input('checkout_payment_method'),
             'shipment_address_id' => auth()->user()->addresses[0]->id,
