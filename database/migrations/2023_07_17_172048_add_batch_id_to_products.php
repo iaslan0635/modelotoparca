@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string("batch_id")->nullable()->after("brand_id");
+            $table->string("batch_id")->index()->nullable()->after("brand_id");
         });
     }
 
