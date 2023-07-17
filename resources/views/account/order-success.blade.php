@@ -25,15 +25,15 @@
                         <ul class="order-success__meta-list">
                             <li class="order-success__meta-item">
                                 <span class="order-success__meta-title">Sipariş Numarası:</span>
-                                <span class="order-success__meta-value">#9478</span>
+                                <span class="order-success__meta-value">#{{ $order->id }}</span>
                             </li>
                             <li class="order-success__meta-item">
                                 <span class="order-success__meta-title">Oluşturulma Tarihi:</span>
-                                <span class="order-success__meta-value">Oct 19, 2020</span>
+                                <span class="order-success__meta-value">{{ $order->created_at->diffForHumans() }}</span>
                             </li>
                             <li class="order-success__meta-item">
                                 <span class="order-success__meta-title">Toplam Tutar:</span>
-                                <span class="order-success__meta-value">$1596.00</span>
+                                <span class="order-success__meta-value">{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</span>
                             </li>
                             <li class="order-success__meta-item">
                                 <span class="order-success__meta-title">Ödeme Yöntemi:</span>
@@ -52,111 +52,49 @@
                                 </tr>
                                 </thead>
                                 <tbody class="order-list__products">
-                                <tr>
-                                    <td class="order-list__column-image">
-                                        <div class="image image--type--product">
-                                            <a href="product-full.html" class="image__body">
-                                                <img class="image__tag" src="images/products/product-1-40x40.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="order-list__column-product">
-                                        <a href="product-full.html">Brandix Spark Plug Kit ASR-400</a>
-                                        <div class="order-list__options">
-                                            <ul class="order-list__options-list">
-                                                <li class="order-list__options-item">
+                                @foreach($order->items as $item)
+                                    <tr>
+                                        <td class="order-list__column-image">
+                                            <div class="image image--type--product">
+                                                <a href="{{ route('product.show', $item->product->id) }}" class="image__body">
+                                                    <img class="image__tag" src="{{ $item->product->imageUrl() }}" alt="">
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="order-list__column-product">
+                                            <a href="{{ route('product.show', $item->product->id) }}">{{ $item->product_data['title'] }}</a>
+                                            <div class="order-list__options">
+                                                <ul class="order-list__options-list">
+                                                    <li class="order-list__options-item">
                                                             <span class="order-list__options-label">
                                                                 Color:
                                                             </span>
-                                                    <span class="order-list__options-value">
+                                                        <span class="order-list__options-value">
                                                                 True Red
                                                             </span>
-                                                </li>
-                                                <li class="order-list__options-item">
-                                                            <span class="order-list__options-label">
-                                                                Material:
-                                                            </span>
-                                                    <span class="order-list__options-value">
-                                                                Aluminium
-                                                            </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td class="order-list__column-quantity" data-title="Quantity:">
-                                        2
-                                    </td>
-                                    <td class="order-list__column-total">
-                                        $38.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-list__column-image">
-                                        <div class="image image--type--product">
-                                            <a href="product-full.html" class="image__body">
-                                                <img class="image__tag" src="images/products/product-2-40x40.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="order-list__column-product">
-                                        <a href="product-full.html">Brandix Brake Kit BDX-750Z370-S</a>
-                                    </td>
-                                    <td class="order-list__column-quantity" data-title="Quantity:">
-                                        1
-                                    </td>
-                                    <td class="order-list__column-total">
-                                        $224.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="order-list__column-image">
-                                        <div class="image image--type--product">
-                                            <a href="product-full.html" class="image__body">
-                                                <img class="image__tag" src="images/products/product-3-40x40.jpg" alt="">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="order-list__column-product">
-                                        <a href="product-full.html">Left Headlight Of Brandix Z54</a>
-                                        <div class="order-list__options">
-                                            <ul class="order-list__options-list">
-                                                <li class="order-list__options-item">
-                                                            <span class="order-list__options-label">
-                                                                Color:
-                                                            </span>
-                                                    <span class="order-list__options-value">
-                                                                Green
-                                                            </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td class="order-list__column-quantity" data-title="Quantity:">
-                                        3
-                                    </td>
-                                    <td class="order-list__column-total">
-                                        $1047.00
-                                    </td>
-                                </tr>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td class="order-list__column-quantity" data-title="Quantity:">
+                                            {{ $item->quantity }}
+                                        </td>
+                                        <td class="order-list__column-total">
+                                            {{ $item->formattedPrice }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                                 <tbody class="order-list__subtotals">
                                 <tr>
                                     <th class="order-list__column-label" colspan="3">Toplam</th>
-                                    <td class="order-list__column-total">$1309.00</td>
-                                </tr>
-                                <tr>
-                                    <th class="order-list__column-label" colspan="3">Kargo</th>
-                                    <td class="order-list__column-total">$25.00</td>
-                                </tr>
-                                <tr>
-                                    <th class="order-list__column-label" colspan="3">Vergi</th>
-                                    <td class="order-list__column-total">$262.00</td>
+                                    <td class="order-list__column-total">{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
                                 </tr>
                                 </tbody>
                                 <tfoot class="order-list__footer">
                                 <tr>
                                     <th class="order-list__column-label" colspan="3">Genel Toplam</th>
-                                    <td class="order-list__column-total">$1596.00</td>
+                                    <td class="order-list__column-total">{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -168,19 +106,17 @@
                                 Kargo Adresi
                             </div>
                             <div class="address-card__body">
-                                <div class="address-card__name">Ryan Ford</div>
+                                <div class="address-card__name">{{ $order->shipmentAddress->fullName }}</div>
                                 <div class="address-card__row">
-                                    Random Federation<br>
-                                    115302, Moscow<br>
-                                    ul. Varshavskaya, 15-2-178
+                                    {{ $order->shipmentAddress->address }}
                                 </div>
                                 <div class="address-card__row">
-                                    <div class="address-card__row-title">Phone Number</div>
-                                    <div class="address-card__row-content">38 972 588-42-36</div>
+                                    <div class="address-card__row-title">Telefon Numarası</div>
+                                    <div class="address-card__row-content">{{ $order->shipmentAddress->phone }}</div>
                                 </div>
                                 <div class="address-card__row">
-                                    <div class="address-card__row-title">Email Address</div>
-                                    <div class="address-card__row-content">stroyka@example.com</div>
+                                    <div class="address-card__row-title">İl / İlçe</div>
+                                    <div class="address-card__row-content">{{ $order->shipmentAddress->city }} / {{ $order->shipmentAddress->district }}</div>
                                 </div>
                             </div>
                         </div>
@@ -189,19 +125,17 @@
                                 Fatura Adresi
                             </div>
                             <div class="address-card__body">
-                                <div class="address-card__name">Ryan Ford</div>
+                                <div class="address-card__name">{{ $order->invoiceAddress->fullName }}</div>
                                 <div class="address-card__row">
-                                    Random Federation<br>
-                                    115302, Moscow<br>
-                                    ul. Varshavskaya, 15-2-178
+                                    {{ $order->invoiceAddress->address }}
                                 </div>
                                 <div class="address-card__row">
-                                    <div class="address-card__row-title">Phone Number</div>
-                                    <div class="address-card__row-content">38 972 588-42-36</div>
+                                    <div class="address-card__row-title">Telefon Numarası</div>
+                                    <div class="address-card__row-content">{{ $order->invoiceAddress->phone }}</div>
                                 </div>
                                 <div class="address-card__row">
-                                    <div class="address-card__row-title">Email Address</div>
-                                    <div class="address-card__row-content">stroyka@example.com</div>
+                                    <div class="address-card__row-title">İl / İlçe</div>
+                                    <div class="address-card__row-content">{{ $order->invoiceAddress->city }} / {{ $order->invoiceAddress->district }}</div>
                                 </div>
                             </div>
                         </div>

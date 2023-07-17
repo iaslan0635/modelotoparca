@@ -7,62 +7,51 @@
             <div class="container container--max--xl">
                 <div class="row">
                     <div class="col-12 col-lg-3 d-flex">
-@include('account.partials.navigation')
+                        @include('account.partials.navigation')
                     </div>
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="addresses-list">
-                            <a href="" class="addresses-list__item addresses-list__item--new">
+                            <a href="{{ route('add-adress') }}" class="addresses-list__item addresses-list__item--new">
                                 <div class="addresses-list__plus"></div>
                                 <div class="btn btn-secondary btn-sm">Add New</div>
                             </a>
                             <div class="addresses-list__divider"></div>
-                            <div class="addresses-list__item card address-card">
-                                <div class="address-card__badge tag-badge tag-badge--theme">Default</div>
-                                <div class="address-card__body">
-                                    <div class="address-card__name">Helena Garcia</div>
-                                    <div class="address-card__row">
-                                        Random Federation<br>
-                                        115302, Moscow<br>
-                                        ul. Varshavskaya, 15-2-178
-                                    </div>
-                                    <div class="address-card__row">
-                                        <div class="address-card__row-title">Phone Number</div>
-                                        <div class="address-card__row-content">38 972 588-42-36</div>
-                                    </div>
-                                    <div class="address-card__row">
-                                        <div class="address-card__row-title">Email Address</div>
-                                        <div class="address-card__row-content">helena@example.com</div>
-                                    </div>
-                                    <div class="address-card__footer">
-                                        <a href="">Edit</a>&nbsp;&nbsp;
-                                        <a href="">Remove</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="addresses-list__divider"></div>
-                            <div class="addresses-list__item card address-card">
-                                <div class="address-card__body">
-                                    <div class="address-card__name">Jupiter Saturnov</div>
-                                    <div class="address-card__row">
-                                        RandomLand<br>
-                                        4b4f53, MarsGrad<br>
-                                        Sun Orbit, 43.3241-85.239
-                                    </div>
-                                    <div class="address-card__row">
-                                        <div class="address-card__row-title">Phone Number</div>
-                                        <div class="address-card__row-content">ZX 971 972-57-26</div>
-                                    </div>
-                                    <div class="address-card__row">
-                                        <div class="address-card__row-title">Email Address</div>
-                                        <div class="address-card__row-content">jupiter@example.com</div>
-                                    </div>
-                                    <div class="address-card__footer">
-                                        <a href="">Edit</a>&nbsp;&nbsp;
-                                        <a href="">Remove</a>
+                            @foreach(auth()->user()->addresses as $address)
+                                <div class="addresses-list__item card address-card">
+                                    <div class="address-card__badge tag-badge tag-badge--theme">{{ $address->type === "company" ? "Şirket":"Bireysel" }}</div>
+                                    <div class="address-card__body">
+                                        <div class="address-card__name">{{ $address->fullName }}</div>
+                                        <div class="address-card__row">
+                                            {{ $address->address }}
+                                        </div>
+                                        <div class="address-card__row">
+                                            <div class="address-card__row-title">Telefon Numarası</div>
+                                            <div class="address-card__row-content">{{ $address->phone }}</div>
+                                        </div>
+                                        <div class="address-card__row">
+                                            <div class="address-card__row-title">İl / İlçe</div>
+                                            <div class="address-card__row-content">{{ "$address->city / $address->district" }}</div>
+                                        </div>
+                                        <div class="address-card__footer">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a href="{{ route('addresses.edit', $address) }}">Düzenle</a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form
+                                                        action="{{ route('addresses.destroy', $address) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger btn-sm">Sil</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="addresses-list__divider"></div>
+                                <div class="addresses-list__divider"></div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
