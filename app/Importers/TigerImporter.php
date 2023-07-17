@@ -92,6 +92,7 @@ class TigerImporter extends Importer
 
     public function import(callable|null $statusHook = null)
     {
+        $batchId = Str::ulid();
         $statusHook ??= $this->noop();
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
             $statusHook($i);
@@ -104,7 +105,7 @@ class TigerImporter extends Importer
             $categoryId = $this->pop($productData, "_category");
 
             if ($productId === null) continue;
-            $product = Product::updateOrCreate(["id" => $productId], $productData);
+            $product = Product::updateOrCreate(["id" => $productId, "batch_id" => $batchId], $productData);
 
             $oems = $this->explode($productData["oem_codes"]) ?? [];
             foreach ($oems as $oem)
@@ -129,8 +130,7 @@ class TigerImporter extends Importer
             $product->searchable();
         }
 
-//        Product::whereNotIn("id", $ids)->delete();
-//        Price::whereNotIn("product_id", $ids)->delete();
+        Product::whereNot("batch_id", $batchId)->update(["status" => "0"]);
 
         ProductSimilar::query()->searchable();
         Category::query()->searchable();
