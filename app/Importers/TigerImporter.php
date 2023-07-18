@@ -105,7 +105,7 @@ class TigerImporter extends Importer
             $categoryId = $this->pop($productData, "_category");
 
             if ($productId === null) continue;
-            $product = Product::updateOrCreate(["id" => $productId, "batch_id" => $batchId], $productData);
+            $product = Product::updateOrCreate(["id" => $productId], $productData + ["batch_id" => $batchId]);
 
             $oems = $this->explode($productData["oem_codes"]) ?? [];
             foreach ($oems as $oem)
