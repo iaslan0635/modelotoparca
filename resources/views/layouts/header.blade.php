@@ -48,7 +48,7 @@
                         <div class="departments__body">
                             <ul class="departments__list">
                                 <li class="departments__list-padding" role="presentation"></li>
-                                @foreach($__Categories as $root)
+                                @foreach(\App\Models\Category::getHeaderCategories() as $root)
                                     <li class="departments__item departments__item--submenu--megamenu departments__item--has-submenu">
                                         <a href="{{ route('category.show', $root) }}" class="departments__item-link">
                                             <img src="{{ $root->imageUrl() }}" class="category-icon-image">

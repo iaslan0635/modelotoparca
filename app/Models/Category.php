@@ -72,4 +72,17 @@ class Category extends BaseModel
     {
         return Attribute::get(fn () => CategoryFacade::getTree($this->id));
     }
+
+    public static function getHeaderCategories()
+    {
+        // OPTIMIZE: Use cache
+        $children10 = ['children' => fn ($q) => $q->limit(23)];
+        return Category::root()
+            ->orderBy('order')
+            ->with('image')
+            ->limit(10)
+            ->get()
+            // limit each parent separately not overall
+            ->map(fn ($m) => $m->load($children10));
+    }
 }

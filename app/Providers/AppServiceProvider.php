@@ -27,17 +27,5 @@ class AppServiceProvider extends ServiceProvider
         if (config("app.force_https")) URL::forceScheme("https");
         Schema::defaultStringLength(255);
         Paginator::useBootstrapFour();
-
-        //if (app()->isProduction()) {
-            $children10 = ['children' => fn ($q) => $q->limit(23)];
-            $categories = Category::root()
-                ->orderBy('order')
-                ->with('image')
-                ->limit(10)
-                ->get()
-                // limit each parent separately not overall
-                ->map(fn ($m) => $m->load($children10));
-            View::share('__Categories', $categories);
-        //}
     }
 }
