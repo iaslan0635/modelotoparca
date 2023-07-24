@@ -387,7 +387,6 @@ class Search
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
 
         $term = SearchReplacement::replace($term);
-        dd($term);
 
         $regex = '/[^a-zA-Z0-9]+/';
         $cleanTerm = strtolower(preg_replace($regex, '', $term));
