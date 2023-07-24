@@ -23,6 +23,12 @@ class TigerImporter extends Importer
     const IMAGE_11 = 0b10;
     const IMAGE_12 = 0b01;
 
+    public function __construct(string $file, public readonly bool $appendMode = false)
+    {
+        parent::__construct($file);
+    }
+
+
     public static function getUsedTables(): array
     {
         return ["products", "prices", "product_similars"];
@@ -130,7 +136,8 @@ class TigerImporter extends Importer
             $product->searchable();
         }
 
-        Product::whereNot("batch_id", $batchId)->update(["status" => "0"]);
+        if (!$this->appendMode)
+            Product::whereNot("batch_id", $batchId)->update(["status" => "0"]);
 
         ProductSimilar::query()->searchable();
         Category::query()->searchable();

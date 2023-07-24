@@ -36,6 +36,7 @@ Route::post("delete_image", [ImageController::class, "delete"])->name("delete-im
 Route::controller(ImportController::class)->prefix("import")->name("import.")->group(function () {
     Route::get("", "index")->name("index");
     Route::post("ITEMS_WEB", "ITEMS_WEB")->name("ITEMS_WEB");
+    Route::post("ITEMS_WEB__APPEND", "ITEMS_WEB__APPEND")->name("ITEMS_WEB__APPEND");
     Route::post("ITEMSUBS", "ITEMSUBS")->name("ITEMSUBS");
     Route::post("ITMCLSAS", "ITMCLSAS")->name("ITMCLSAS");
     Route::get("sparetobot_bot", "sparetobot_bot")->name("sparetobot_bot");

@@ -31,7 +31,7 @@
                                     <!--begin::Card header-->
                                     <div class="card-header">
                                         <div class="card-title">
-                                            <h2>{{ $route }}.xlsx</h2>
+                                            <h2>{{ str_replace("__APPEND", "", $route) }}.xlsx @if(str_ends_with($route, "__APPEND")) (Ekleme modu) @endif </h2>
                                         </div>
                                     </div>
                                     <!--end::Card header-->

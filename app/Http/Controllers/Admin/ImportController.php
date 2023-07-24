@@ -7,6 +7,7 @@ use App\Console\Commands\RunSparetoBotCommand;
 use App\Http\Controllers\Controller;
 use App\Jobs\Import\ImportAlternativeJob;
 use App\Jobs\Import\ImportTigerJob;
+use App\Jobs\Import\AppendImportTigerJob;
 use App\Jobs\SparetoConnectJob;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class ImportController extends Controller
 
     public function index()
     {
-        return view("admin.import.index", ["routes" => ["ITEMS_WEB", "ITEMSUBS", "ITMCLSAS"]]);
+        return view("admin.import.index", ["routes" => ["ITEMS_WEB", "ITEMS_WEB__APPEND", "ITEMSUBS", "ITMCLSAS"]]);
     }
 
     protected function storeFile(): string
@@ -30,7 +31,11 @@ class ImportController extends Controller
     public function ITEMS_WEB()
     {
         ImportTigerJob::dispatch($this->storeFile())->onQueue(self::QUEUE);
+    }
 
+    public function ITEMS_WEB__APPEND()
+    {
+        AppendImportTigerJob::dispatch($this->storeFile())->onQueue(self::QUEUE);
     }
 
     public function ITEMSUBS()
