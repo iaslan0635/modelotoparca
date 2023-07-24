@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController as CustomerProductController;
 use App\Jobs\SparetoConnectJob;
+use App\Models\Car;
 use App\Models\Product;
 use App\Models\SparetoConnection;
 use App\Packages\Search;
+use Elastic\ScoutDriverPlus\Decorators\Hit;
 use Elastic\ScoutDriverPlus\Paginator;
+use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -65,5 +68,20 @@ class ProductController extends Controller
     public function push_image(Product $product, Request $request)
     {
         return $this->storeImage($product, $request);
+    }
+
+    public function searchForSelect2(Request $request)
+    {
+        $query = $request->input("q");
+        $cars = $query ? Car::searchQuery(Query::match()->field("name")->query($query))->paginate(10)->onlyModels() : Car::paginate(10);
+        return [
+            "results" => $cars->map(fn(Car $car) => [
+                "id" => $car->id,
+                "text" => $car->name
+            ])->all(),
+            "pagination" => [
+                "more" => $cars->hasMorePages() && $cars->count() > 0
+            ]
+        ];
     }
 }

@@ -494,56 +494,7 @@
                             <!--end::Tab pane-->
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade" id="cars" role="tabpanel">
-                                <div class="d-flex flex-column gap-7 gap-lg-10">
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
-                                                <h2>Araç bağlantıları</h2>
-                                            </div>
-                                            <!--end::Card title-->
-                                        </div>
-                                        <!--end::Card header-->
-                                        <!--begin::Card body-->
-                                        <div class="card-body pt-0">
-                                            <div class="accordion">
-                                                @foreach($car_brands as $brand => $cars_by_names)
-                                                    <x-accordion :id="'car-brand-'.$brand" :title="$brand">
-                                                        @foreach($cars_by_names as $name => $cars)
-                                                            <x-accordion :id="'car-'.$name" :title="$name">
-                                                                <table class="table table-row-dashed fs-6 gy-5 my-0">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>Model</th>
-                                                                        <th>Yıl</th>
-                                                                        <th>Kapasite</th>
-                                                                        <th>Güç</th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    @foreach($cars as $car)
-                                                                        <tr>
-                                                                            <td>{{ $car->name }}</td>
-                                                                            <td>{{ $car->produced_from ?? "0000-00-00" }}
-                                                                                - {{ $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d")) }}</td>
-                                                                            <td>{{ $car->capacity }}</td>
-                                                                            <td>{{ $car->power }}</td>
-                                                                        </tr>
-                                                                    @endforeach
-                                                                    </tbody>
-                                                                </table>
-                                                            </x-accordion>
-                                                        @endforeach
-                                                    </x-accordion>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                        <!--end::Card body-->
-                                    </div>
-                                    <!--end::Card-->
-                                </div>
+                                <livewire:admin.car-panel :car_brands="$car_brands" :product_id="$product->id" />
                             </div>
                             <!--end::Tab pane-->
                             <!--begin::Tab pane-->
