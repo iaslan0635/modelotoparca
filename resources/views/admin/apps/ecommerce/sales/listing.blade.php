@@ -245,7 +245,7 @@
                                     <!--end::Checkbox-->
                                     <!--begin::Order ID=-->
                                     <td data-kt-ecommerce-order-filter="order_id">
-                                        <a href="admin/apps/ecommerce/sales/details" class="text-gray-800 text-hover-primary fw-bold">{{ $order->id }}</a>
+                                        <a href="{{ route('admin.order.show', $order) }}" class="text-gray-800 text-hover-primary fw-bold">{{ $order->id }}</a>
                                     </td>
                                     <!--end::Order ID=-->
                                     <!--begin::Customer=-->
@@ -302,7 +302,7 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="admin/apps/ecommerce/sales/details" class="menu-link px-3">View</a>
+                                                <a href="{{ route('admin.order.show', $order) }}" class="menu-link px-3">View</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->

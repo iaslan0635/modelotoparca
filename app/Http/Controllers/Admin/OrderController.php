@@ -20,4 +20,25 @@ class OrderController extends Controller
 
         return view('admin.apps.ecommerce.sales.listing', compact('orders'));
     }
+
+    public function show(Order $order)
+    {
+        $order->load(['user.addresses', 'invoiceAddress', 'shipmentAddress', 'items.product']);
+        return view('admin.apps.ecommerce.sales.details', compact('order'));
+    }
+
+    public function edit(Order $order)
+    {
+        $order->load(['user.addresses', 'invoiceAddress', 'shipmentAddress', 'items.product']);
+        return view('admin.apps.ecommerce.sales.edit-order', compact('order'));
+    }
+
+    public function update(Order $order, Request $request)
+    {
+        $order->update([
+            'payment_status' => $request->input('payment_status')
+        ]);
+
+        return back();
+    }
 }

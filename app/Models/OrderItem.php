@@ -20,4 +20,9 @@ class OrderItem extends BaseModel
     {
         return Attribute::get(fn() => number_format($this->price, 2) . ' ₺');
     }
+
+    protected function formattedTotalPrice(): Attribute
+    {
+        return Attribute::get(fn() => number_format($this->price * $this->quantity, 2) . ' ₺');
+    }
 }
