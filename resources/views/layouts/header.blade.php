@@ -191,11 +191,11 @@
                             </a>
                             <div class="account-menu__divider"></div>
                             <ul class="account-menu__links">
-                                <li><a href="#">Hesabım</a></li>
-                                <li><a href="#">Garajım</a></li>
-                                <li><a href="#">Siparişlerim</a></li>
-                                <li><a href="#">Adreslerim</a></li>
-                                <li><a href="#">Takip Listem</a></li>
+                                <li><a href="{{ route('dashboard') }}">Hesabım</a></li>
+                                <li><a href="{{ route('garage') }}">Garajım</a></li>
+                                <li><a href="{{ route('order-history') }}">Siparişlerim</a></li>
+                                <li><a href="{{ route('adreslerim') }}">Adreslerim</a></li>
+                                <li><a href="{{ route('takip-listem') }}">Takip Listem</a></li>
                             </ul>
                             <div class="account-menu__divider"></div>
                             <ul class="account-menu__links">
@@ -204,9 +204,9 @@
                         </div>
                     </div>
                 </div>
--
+
                 <div class="indicator">
-                    <a href="wishlist.html" class="indicator__button">
+                    <a href="{{ route('takip-listem') }}" class="indicator__button">
                             <span class="indicator__icon">
                                 <svg width="32" height="32">
                                     <path d="M23,4c3.9,0,7,3.1,7,7c0,6.3-11.4,15.9-14,16.9C13.4,26.9,2,17.3,2,11c0-3.9,3.1-7,7-7c2.1,0,4.1,1,5.4,2.6l1.6,2l1.6-2

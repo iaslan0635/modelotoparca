@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\OrderStatuses;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -63,5 +64,10 @@ class User extends Authenticatable
     public function pendingOrders(): HasMany
     {
         return $this->hasMany(Order::class)->where('payment_status', '=', OrderStatuses::PENDING);
+    }
+
+    public function whislist(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

@@ -55,10 +55,13 @@ Route::middleware('auth')->group(function (){
     Route::put('update-profile', [ProfileController::class, 'update'])->name('update-profile');
     Route::get("/garage", function () {
         return view('account.garage');
-    });
+    })->name('garage');
     Route::get("/adreslerim", function () {
         return view('account.adress');
-    });
+    })->name('adreslerim');
+    Route::get("/takip-listem", function () {
+        return view('account.whislist');
+    })->name('takip-listem');
     Route::view('adres-ekle', 'account.add-adress')->name('add-adress');
     Route::resource('addresses', AddressController::class)->except(['index', 'create', 'show']);
     Route::get("/order-history", [OrderController::class, 'history'])->name('order-history');

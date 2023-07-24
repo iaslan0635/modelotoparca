@@ -92,7 +92,7 @@
 
                 <!-- Wishlist -->
                 <li class="aiz-side-nav-item">
-                    <a href="#" class="aiz-side-nav-link ">
+                    <a href="{{ route('takip-listem') }}" class="aiz-side-nav-link ">
                         <svg id="Group_8116" data-name="Group 8116" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="14" viewBox="0 0 16 14">
                             <defs>
                                 <clipPath id="clip-path">

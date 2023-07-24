@@ -103,16 +103,9 @@
                                                 <span class="fs-14 fw-400 text-secondary">Toplam Siparişiniz</span>
                                             </div>
                                         </div>
-
                                     </div>
-
-
                                 </div>
-
                             </div>
-
-
-
 
                             <div class="dashboard__orders card">
                                 <div class="card-header">

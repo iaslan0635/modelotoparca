@@ -32,13 +32,13 @@
                             <div class="product-gallery product-gallery--layout--product-full product__gallery"
                                  data-layout="product-full">
                                 <div class="product-gallery__featured">
-{{--                                    <button type="button" class="product-gallery__zoom">--}}
-{{--                                        <svg width="24" height="24">--}}
-{{--                                            <path d="M15,18c-2,0-3.8-0.6-5.2-1.7c-1,1.3-2.1,2.8-3.5,4.6c-2.2,2.8-3.4,1.9-3.4,1.9s-0.6-0.3-1.1-0.7--}}
-{{--	c-0.4-0.4-0.7-1-0.7-1s-0.9-1.2,1.9-3.3c1.8-1.4,3.3-2.5,4.6-3.5C6.6,12.8,6,11,6,9c0-5,4-9,9-9s9,4,9,9S20,18,15,18z M15,2--}}
-{{--	c-3.9,0-7,3.1-7,7s3.1,7,7,7s7-3.1,7-7S18.9,2,15,2z M16,13h-2v-3h-3V8h3V5h2v3h3v2h-3V13z"/>--}}
-{{--                                        </svg>--}}
-{{--                                    </button>--}}
+                                    {{--                                    <button type="button" class="product-gallery__zoom">--}}
+                                    {{--                                        <svg width="24" height="24">--}}
+                                    {{--                                            <path d="M15,18c-2,0-3.8-0.6-5.2-1.7c-1,1.3-2.1,2.8-3.5,4.6c-2.2,2.8-3.4,1.9-3.4,1.9s-0.6-0.3-1.1-0.7--}}
+                                    {{--	c-0.4-0.4-0.7-1-0.7-1s-0.9-1.2,1.9-3.3c1.8-1.4,3.3-2.5,4.6-3.5C6.6,12.8,6,11,6,9c0-5,4-9,9-9s9,4,9,9S20,18,15,18z M15,2--}}
+                                    {{--	c-3.9,0-7,3.1-7,7s3.1,7,7,7s7-3.1,7-7S18.9,2,15,2z M16,13h-2v-3h-3V8h3V5h2v3h3v2h-3V13z"/>--}}
+                                    {{--                                        </svg>--}}
+                                    {{--                                    </button>--}}
                                     <div class="owl-carousel">
                                         @foreach($product->imageUrls() as $image)
 
@@ -47,9 +47,10 @@
                                                 <div class="image__body">
 
                                                     <div class="product-card__badges" style="text-align: -webkit-right">
-                                                        <div  style=" right:5px;">
-                                                            <img  style="max-width: 150px; max-height: 25px;"
-                                                                  src="https://web.modelotoparca.com/images/brands/{{ $product->brand->name }}.png" alt="">
+                                                        <div style=" right:5px;">
+                                                            <img style="max-width: 150px; max-height: 25px;"
+                                                                 src="https://web.modelotoparca.com/images/brands/{{ $product->brand->name }}.png"
+                                                                 alt="">
                                                         </div>
                                                     </div>
                                                     <img class="image__tag" src="{{ $image }}" alt="">
@@ -140,14 +141,7 @@
                                     <div class="product__actions">
                                         <livewire:add-to-cart :product="$product"/>
                                         <div class="product__actions-divider"></div>
-                                        <button class="product__actions-item product__actions-item--wishlist"
-                                                type="button">
-                                            <svg width="16" height="16">
-                                                <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
-	l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
-                                            </svg>
-                                            <span>Favorilerime Ekle</span>
-                                        </button>
+                                        <livewire:product.whislist :product="$product"/>
                                     </div>
                                     <div class="product__tags-and-share-links">
                                         <div class="product__tags tags tags--sm">
@@ -181,9 +175,12 @@
                                     <li class="product-tabs__item product-tabs__item--active"><a
                                             href="#product-tab-cars">Uyumlu Araçlar</a></li>
                                     <li class="product-tabs__item"><a href="#product-tab-oem-codes">Oem Kodlar</a></li>
-                                    <li class="product-tabs__item"><a href="#product-same-products">Eşdeğer Ürünler</a></li>
-                                    <li class="product-tabs__item"><a href="#product-similar-products">Benzer Ürünler</a></li>
-                                    <li class="product-tabs__item"><a href="#product-alternative-products">Alternatif Ürünler</a></li>
+                                    <li class="product-tabs__item"><a href="#product-same-products">Eşdeğer Ürünler</a>
+                                    </li>
+                                    <li class="product-tabs__item"><a href="#product-similar-products">Benzer
+                                            Ürünler</a></li>
+                                    <li class="product-tabs__item"><a href="#product-alternative-products">Alternatif
+                                            Ürünler</a></li>
                                     <li class="product-tabs__item"><a href="#product-tab-reviews">Değerlendirmeler
                                             <span class="product-tabs__item-counter">0</span></a>
                                     </li>
@@ -329,12 +326,14 @@
 
                                         <div class="compatible-cars row mt-2">
                                             @foreach($car_brands as $brand => $cars_by_names)
-                                                <div class="compatible-cars-list mt-2 brand" data-id="{{ $loop->index }}">
+                                                <div class="compatible-cars-list mt-2 brand"
+                                                     data-id="{{ $loop->index }}">
                                                     <div class="uyumluSelectButtons">
-                                                   <img class="lazy loaded" src="https://websitem.modelotoparca.com/public/maker/{{ $brand }}.png"
+                                                        <img class="lazy loaded"
+                                                             src="https://websitem.modelotoparca.com/public/maker/{{ $brand }}.png"
 
-                                                        alt=""
-                                                        data-ll-status="loaded">
+                                                             alt=""
+                                                             data-ll-status="loaded">
                                                         <br>
                                                         {{ $brand }}
                                                     </div>
@@ -346,8 +345,9 @@
                                             @foreach($car_brands as $brand => $cars_by_names)
                                                 @php $index = $loop->index; @endphp
                                                 @foreach($cars_by_names as $name => $cars)
-                                                    <div class="uyumlu-car-select-line model col-md-12 models-{{ $index }}"
-                                                         style="display: {{ $index === 0 ? "block":"none" }}">
+                                                    <div
+                                                        class="uyumlu-car-select-line model col-md-12 models-{{ $index }}"
+                                                        style="display: {{ $index === 0 ? "block":"none" }}">
                                                         <div class="title">{{ $name }}</div>
                                                         <div class="content" style="display: none">
                                                             <div class="card-body">
@@ -410,43 +410,41 @@
                                                     <div class="row">
 
                                                         @if (count($oems)>0)
-                                                        <table
-                                                            class="analogs-table">
-                                                            <thead>
-                                                            <tr>
-                                                                <th class="analogs-table__column analogs-table__column--name">
-                                                                    Marka
-                                                                </th>
-                                                                <th  style="text-align: center" class="analogs-table__column analogs-table__column--name">
-                                                                    Oem Kodlar
-                                                                </th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                            @foreach($oems as $oem)
+                                                            <table
+                                                                class="analogs-table">
+                                                                <thead>
                                                                 <tr>
-                                                                    <td class="analogs-table__column">{{ $oem->brand }}</td>
-                                                                    <td style="width:100%; display: inline-block; word-break: break-all; font-weight: 700">
-                                                                        @foreach(explode(',', $oem->oems) as $item)
-                                                                            <a href="{{ route('oem.search', ['oem' => $item]) }}">
-                                                                                {{ $item }} {{ !$loop->last ? ",":null }}
-                                                                            </a>
-                                                                        @endforeach
-                                                                    </td>
+                                                                    <th class="analogs-table__column analogs-table__column--name">
+                                                                        Marka
+                                                                    </th>
+                                                                    <th style="text-align: center"
+                                                                        class="analogs-table__column analogs-table__column--name">
+                                                                        Oem Kodlar
+                                                                    </th>
                                                                 </tr>
-                                                            @endforeach
-                                                            </tbody>
-                                                        </table>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                @foreach($oems as $oem)
+                                                                    <tr>
+                                                                        <td class="analogs-table__column">{{ $oem->brand }}</td>
+                                                                        <td style="width:100%; display: inline-block; word-break: break-all; font-weight: 700">
+                                                                            @foreach(explode(',', $oem->oems) as $item)
+                                                                                <a href="{{ route('oem.search', ['oem' => $item]) }}">
+                                                                                    {{ $item }} {{ !$loop->last ? ",":null }}
+                                                                                </a>
+                                                                            @endforeach
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                                </tbody>
+                                                            </table>
                                                         @endif
                                                     </div>
                                                 </div>
                                             </div>
 
                                         </div>
-
-
-
 
 
                                     </div>
@@ -576,9 +574,13 @@
                                              data-layout="table" data-with-features="false">
                                             <div class="products-list__head">
                                                 <div class="products-list__column products-list__column--image">#</div>
-                                                <div class="products-list__column products-list__column--meta">Ürün Kodu</div>
-                                                <div class="products-list__column products-list__column--product">Ürün</div>
-                                                <div class="products-list__column products-list__column--price">Fiyat</div>
+                                                <div class="products-list__column products-list__column--meta">Ürün
+                                                    Kodu
+                                                </div>
+                                                <div class="products-list__column products-list__column--product">Ürün
+                                                </div>
+                                                <div class="products-list__column products-list__column--price">Fiyat
+                                                </div>
                                             </div>
                                             <div class="products-list__content">
                                                 @foreach($product->similars()->get() as $cross)
@@ -860,7 +862,7 @@
 
         for (let brand of brands) {
             brand.addEventListener('click', function () {
-                for (let xb of brands){
+                for (let xb of brands) {
                     for (let xm of document.getElementsByClassName(`models-${xb.dataset.id}`)) {
                         xm.style.display = "none"
                     }
