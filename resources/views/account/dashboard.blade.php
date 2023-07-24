@@ -96,7 +96,7 @@
                         <div class="dashboard">
 
                                 @if(count(auth()->user()->addresses) > 0)
-                                    <div class="dashboard__address card address-card address-card--featured">
+                                    <div style="width: calc(60% - 12px)" class="dashboard__address card address-card address-card--featured">
                                         <div class="address-card__badge tag-badge tag-badge--theme">
                                             Varsayılan Adres
                                         </div>
@@ -116,7 +116,7 @@
                                         </div>
                                     </div>
                                 @else
-                                <div class="dashboard__ord card-bisque address-card address-card--featured">
+                                <div style="width: calc(60% - 12px)" class="dashboard__ord card-bisque address-card address-card--featured">
                                     <div class="h-100">
                                         <div class="address-card__row-title">Kayıtlı Adres Bulunmamaktadır</div>
                                     <a href="{{ route('add-adress') }}" class="addresses-list__item addresses-list__item--new">
