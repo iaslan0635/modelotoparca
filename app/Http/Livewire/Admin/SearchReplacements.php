@@ -39,6 +39,7 @@ class SearchReplacements extends Component
     {
         ["id" => $id] = $this->searchReplacements[$index];
         SearchReplacement::whereId($id)->delete();
+        SearchReplacement::clearCache();
         unset($this->searchReplacements[$index]);
     }
 }
