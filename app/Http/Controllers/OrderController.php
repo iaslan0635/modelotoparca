@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\OrderStatuses;
 use App\Models\Order;
 use App\Packages\Cart;
 use Illuminate\Http\Request;
@@ -24,6 +25,8 @@ class OrderController extends Controller
             'payment_method' => $request->input('checkout_payment_method'),
             'shipment_address_id' => auth()->user()->addresses[0]->id,
             'invoice_address_id' => auth()->user()->addresses[0]->id,
+            'payment_status' => OrderStatuses::PENDING,
+            'shipment_status' => OrderStatuses::PENDING
         ]);
 
         foreach (Cart::getItems() as $item) {

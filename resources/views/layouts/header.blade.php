@@ -167,7 +167,7 @@
         <div class="header__indicators">
             @auth()
                 <div class="indicator indicator--trigger--click">
-                    <a href="account-login.html" class="indicator__button">
+                    <a href="{{ route('dashboard') }}" class="indicator__button">
                             <span class="indicator__icon">
                                 <svg width="32" height="32">
                                     <path d="M16,18C9.4,18,4,23.4,4,30H2c0-6.2,4-11.5,9.6-13.3C9.4,15.3,8,12.8,8,10c0-4.4,3.6-8,8-8s8,3.6,8,8c0,2.8-1.5,5.3-3.6,6.7

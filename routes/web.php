@@ -48,7 +48,7 @@ Route::get("/login", function () {
 Route::middleware('auth')->group(function (){
     Route::get("/dashboard", function () {
         return view('account.dashboard');
-    });
+    })->name('dashboard');
     Route::get("/edit-profile", function () {
         return view('account.edit-profile');
     })->name('edit-profile');

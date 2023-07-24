@@ -99,7 +99,7 @@
                                                 </g>
                                             </svg>
                                             <div class="ml-3 d-flex flex-column justify-content-between">
-                                                <span class="fs-20 fw-700 mb-1">95</span>
+                                                <span class="fs-20 fw-700 mb-1">{{ auth()->user()->orders_count }}</span>
                                                 <span class="fs-14 fw-400 text-secondary">Toplam Siparişiniz</span>
                                             </div>
                                         </div>
@@ -135,7 +135,7 @@
                                                 <tr>
                                                     <td><a href="{{ route('order-details', $order) }}">#{{ $order->id }}</a></td>
                                                     <td>{{ $order->created_at->diffForHumans() }}</td>
-                                                    <td>Pending</td>
+                                                    <td>{{ __("status.".$order->payment_status) }}</td>
                                                     <td>{{ count($order->items) }} ürün için {{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
                                                 </tr>
                                             @endforeach

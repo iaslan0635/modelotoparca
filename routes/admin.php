@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,4 @@ Route::controller(CarController::class)->prefix("cars")->name("cars.")->group(fu
 
 Route::fallback($temp);
 
-Route::get("/sales-list", function () {
-    return view('admin.apps.ecommerce.sales.listing');
-});
+Route::get("/sales-list", [OrderController::class, 'list']);

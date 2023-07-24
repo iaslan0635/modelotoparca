@@ -12,9 +12,6 @@
             </div>
             <div class="profile-card__name">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</div>
             <div class="profile-card__email">{{ auth()->user()->email }}</div>
-            <div class="profile-card__edit">
-                <a href="{{ route('edit-profile') }}" class="btn btn-secondary btn-sm">Profilimi Düzenle</a>
-            </div>
         </div>
         <hr>
         <!-- Menus -->
@@ -60,7 +57,7 @@
                             </g>
                         </svg>
                         <span class="aiz-side-nav-text ml-3">Siparişlerim</span>
-                        <span class="badge badge-inline badge-success">1</span>
+                        <span class="badge badge-inline badge-success">{{ auth()->user()->pending_orders_count }}</span>
                     </a>
                 </li>
                 <!-- Earning Points -->
