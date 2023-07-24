@@ -18,8 +18,8 @@ class SearchReplacement extends BaseModel
             "search_replacements",
             function () {
                 $srs = SearchReplacement::get(["original", "replacement"]);
-                $originals = $srs->pluck("original");
-                $replacements = $srs->pluck("replacement");
+                $originals = $srs->pluck("original")->all();
+                $replacements = $srs->pluck("replacement")->all();
                 return [$originals, $replacements];
             }
         );
