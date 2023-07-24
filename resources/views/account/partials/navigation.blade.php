@@ -10,8 +10,11 @@
             <div class="profile-card__avatar">
                 <img src="images/avatars/avatar-4.jpg" alt="">
             </div>
-            <div class="profile-card__name">Helena Garcia</div>
-            <div class="profile-card__email">red-parts@example.com</div>
+            <div class="profile-card__name">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</div>
+            <div class="profile-card__email">{{ auth()->user()->email }}</div>
+            <div class="profile-card__edit">
+                <a href="{{ route('edit-profile') }}" class="btn btn-secondary btn-sm">Profilimi Düzenle</a>
+            </div>
         </div>
         <hr>
         <!-- Menus -->
