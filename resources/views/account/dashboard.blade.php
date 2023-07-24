@@ -32,13 +32,15 @@
                                         </div>
                                     </div>
                                 @else
-                                <div style="width: calc(60% - 12px)" class="dashboard__ord card-bisque address-card address-card--featured">
+                                <div style="width: calc(60% - 12px)" class="dashboard__ord card-white address-card address-card--featured">
                                     <div class="h-100">
+                                        <div class="addresses-list">
+                                        <a href="{{ route('add-adress') }}" class="addresses-list__item addresses-list__item--new">
                                         <div class="address-card__row-title">Kayıtlı Adres Bulunmamaktadır</div>
-                                    <a href="{{ route('add-adress') }}" class="addresses-list__item addresses-list__item--new">
                                         <div class="addresses-list__plus"></div>
                                         <div class="btn btn-secondary btn-sm">Yeni Adres Ekle</div>
-                                    </a>
+                                        </a>
+                                        </div>
                                     </div>
                                 </div>
                                 @endif
