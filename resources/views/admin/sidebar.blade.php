@@ -183,11 +183,11 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="admin/sales-list">
+                        <a class="menu-link" href="admin/sales-list?type=incargo">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
-                            <span class="menu-title">Yeni Siparişler</span>
+                            <span class="menu-title">Kargoda ki Siparişler</span>
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -195,7 +195,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="admin/sales-list">
+                        <a class="menu-link" href="admin/sales-list?type=cancelled">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
@@ -207,7 +207,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="admin/sales-list">
+                        <a class="menu-link" href="admin/sales-list?type=completed">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>

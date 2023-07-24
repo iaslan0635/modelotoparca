@@ -17,7 +17,7 @@
                                 </div>
                                 <h5 class="order-header__title">Order #{{ $order->id }}</h5>
                                 <div class="order-header__subtitle">
-                                    Was placed on <mark>{{ $order->created_at->format("d M Y") }}</mark> and is currently <mark>Pending</mark>.
+                                    Was placed on <mark>{{ $order->created_at->format("d M Y") }}</mark> and is currently <mark>{{ __("status.". $order->payment_status) }}</mark>.
                                 </div>
                             </div>
                             <div class="card-divider"></div>

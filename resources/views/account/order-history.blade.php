@@ -7,7 +7,7 @@
             <div class="container container--max--xl">
                 <div class="row">
                     <div class="col-12 col-lg-3 d-flex">
-@include('account.partials.navigation')
+                        @include('account.partials.navigation')
                     </div>
                     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
                         <div class="card">
@@ -29,10 +29,12 @@
                                         <tbody>
                                         @foreach($orders as $order)
                                             <tr>
-                                                <td><a href="{{ route('order-details', $order) }}">#{{ $order->id }}</a></td>
+                                                <td><a href="{{ route('order-details', $order) }}">#{{ $order->id }}</a>
+                                                </td>
                                                 <td>{{ $order->created_at->diffForHumans() }}</td>
-                                                <td>Pending</td>
-                                                <td>{{ count($order->items) }} ürün için {{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                                <td>{{ __("status.". $order->payment_status) }}</td>
+                                                <td>{{ count($order->items) }} ürün
+                                                    için {{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>

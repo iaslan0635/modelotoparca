@@ -14,7 +14,7 @@ class Search extends Component
     public $term = 'product';
 
     public $highlights = [];
-    protected $queryString = ['query'];
+    //protected $queryString = ['query'];
 
     public function render()
     {
