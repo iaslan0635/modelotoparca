@@ -14,7 +14,7 @@ class SearchReplacements extends Component
 
     public function mount()
     {
-        $this->searchReplacements = SearchReplacement::orderBy("id", "desc")->all()->toArray();
+        $this->searchReplacements = SearchReplacement::all()->toArray();
     }
 
     public function render()
