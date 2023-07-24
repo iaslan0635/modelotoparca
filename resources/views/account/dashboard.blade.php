@@ -65,7 +65,7 @@
                                             </svg>
                                             <div class="ml-3 d-flex flex-column justify-content-between">
                                                 <span class="fs-20 fw-700 mb-1">01</span>
-                                                <span class="fs-14 fw-400 text-secondary">Products in Cart</span>
+                                                <span class="fs-14 fw-400 text-secondary">Sepetinizde Ürün</span>
                                             </div>
                                         </div>
 
@@ -84,7 +84,7 @@
                                             </svg>
                                             <div class="ml-3 d-flex flex-column justify-content-between">
                                                 <span class="fs-20 fw-700 mb-1">07</span>
-                                                <span class="fs-14 fw-400 text-secondary">Products in Wishlist</span>
+                                                <span class="fs-14 fw-400 text-secondary">Takip Listenizdeki Ürünler</span>
                                             </div>
                                         </div>
 
@@ -98,7 +98,7 @@
                                             </svg>
                                             <div class="ml-3 d-flex flex-column justify-content-between">
                                                 <span class="fs-20 fw-700 mb-1">95</span>
-                                                <span class="fs-14 fw-400 text-secondary">Total Products Ordered</span>
+                                                <span class="fs-14 fw-400 text-secondary">Toplam Siparişiniz</span>
                                             </div>
                                         </div>
 
