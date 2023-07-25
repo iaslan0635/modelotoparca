@@ -1,26 +1,8 @@
 @extends('layouts.master')
 @section('content')
-    <div class="block-header block-header--has-breadcrumb">
-        <div class="container">
-            <div class="block-header__body">
-                <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">
-                    <ol class="breadcrumb__list">
-                        <li class="breadcrumb__spaceship-safe-area" role="presentation"></li>
-                        <li class="breadcrumb__item breadcrumb__item--parent breadcrumb__item--first">
-                            <a href="index.html" class="breadcrumb__item-link">Home</a>
-                        </li>
-                        <li class="breadcrumb__item breadcrumb__item--parent">
-                            <a href="" class="breadcrumb__item-link">Breadcrumb</a>
-                        </li>
-                        <li class="breadcrumb__item breadcrumb__item--current breadcrumb__item--last"
-                            aria-current="page">
-                            <span class="breadcrumb__item-link">Current Page</span>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
+    <x-breadcrumb :parts="[
+            ['name' => 'Ürün detayı']
+        ]" />
     <div class="block-split">
         <div class="container">
             <div class="block-split__row row no-gutters">
@@ -49,7 +31,7 @@
                                                     <div class="product-card__badges" style="text-align: -webkit-right">
                                                         <div style=" right:5px;">
                                                             <img style="max-width: 150px; max-height: 25px;"
-                                                                 src="https://web.modelotoparca.com/images/brands/{{ $product->brand->name }}.png"
+                                                                 src="https://web.modelotoparca.com/images/brands/{{ $product->brand?->name }}.png"
                                                                  alt="">
                                                         </div>
                                                     </div>
@@ -129,7 +111,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Marka</th>
-                                                    <td><a href="">{{ $product->brand->name }}</a></td>
+                                                    <td><a href="">{{ $product->brand?->name }}</a></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Cross code</th>

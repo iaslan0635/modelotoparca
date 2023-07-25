@@ -3,13 +3,9 @@
 
     <!-- site__body -->
     <div class="site__body">
-        <div class="block-header block-header--has-breadcrumb block-header--has-title">
-            <div class="container">
-                <div class="block-header__body">
-                    <h1 class="block-header__title">Tüm Kategoriler  </h1>
-                </div>
-            </div>
-        </div>
+        <x-breadcrumb :parts="[
+            ['name' => 'Tüm Kategoriler']
+        ]" />
         <div class="block block-split">
             <div class="container">
                 <div class="block-split__row row no-gutters">

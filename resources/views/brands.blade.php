@@ -2,13 +2,9 @@
 @section('content')
 
     <div class="site__body">
-        <div class="block-header block-header--has-breadcrumb block-header--has-title">
-            <div class="container">
-                <div class="block-header__body">
-                    <h1 class="block-header__title">Markalar</h1>
-                </div>
-            </div>
-        </div>
+        <x-breadcrumb :parts="[
+            ['name' => 'Markalar']
+        ]" />
     <div class="block block-brands block-brands--layout--columns-8-full">
         <div class="container">
             <ul class="block-brands__list">

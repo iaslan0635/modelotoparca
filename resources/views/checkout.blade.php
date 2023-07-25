@@ -3,15 +3,9 @@
     <!-- site__body -->
     <div class="site__body">
         <div class="block-space block-space--layout--divider-xs"></div>
-        <div class="block-header block-header--has-breadcrumb block-header--has-title">
-            <div class="container">
-                <div class="block-header__body">
-                    <nav class="breadcrumb block-header__breadcrumb" aria-label="breadcrumb">
-                    </nav>
-                    <h1 class="block-header__title">Satın Al</h1>
-                </div>
-            </div>
-        </div>
+        <x-breadcrumb :parts="[
+            ['name' => 'Satın Al']
+        ]" />
         <div class="checkout block">
             <div class="container container--max--xl">
                 <div class="row">
