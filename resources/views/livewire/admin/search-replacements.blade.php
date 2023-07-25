@@ -51,7 +51,7 @@
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody class="fw-semibold text-gray-600">
-                @foreach(array_reverse($searchReplacements) as $key => $replacement)
+                @foreach(array_reverse($searchReplacements, true) as $key => $replacement)
                     <!--begin::Table row-->
                     <tr>
                         <td>
