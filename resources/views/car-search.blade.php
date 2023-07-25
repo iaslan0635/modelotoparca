@@ -2,7 +2,8 @@
 @section('content')
     <div class="site__body">
         <x-breadcrumb :parts="[
-            ['name' => 'Arama']
+            ['name' => 'Araç'],
+            ['name' => $car->name]
         ]" />
         <div class="block-split block-split--has-sidebar">
             <div class="container">

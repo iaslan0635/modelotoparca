@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
     <x-breadcrumb :parts="[
-            ['name' => 'Ürün detayı']
+            ['name' => 'Ürünler'],
+            ['name' => \Str::limit($product->title, 20)]
         ]" />
     <div class="block-split">
         <div class="container">

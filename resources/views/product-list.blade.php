@@ -3,7 +3,8 @@
 
     <div class="site__body">
         <x-breadcrumb :parts="[
-            ['name' => 'Kategoriler']
+            ['name' => 'Kategoriler', 'link' => route('category.index')],
+            ['name' => $category->name]
         ]" />
         <div class="block-split block-split--has-sidebar">
             <div class="container">

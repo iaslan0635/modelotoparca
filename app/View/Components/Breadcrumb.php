@@ -7,14 +7,8 @@ use Illuminate\View\Component;
 
 class Breadcrumb extends Component
 {
-    private $presetParts;
-
     public function __construct(public array $parts)
     {
-        $temp = array_map(fn($p) => $this->replacePart($p), $this->parts);
-        $this->presetParts = [
-            "categories" => ["name" => "Kategoriler", "link" => route("category.index")]
-        ];
     }
 
     public function render(): View
@@ -29,13 +23,7 @@ class Breadcrumb extends Component
                 "name" => "Anasayfa",
                 "link" => route("welcome")
             ],
-            ...array_map(fn($p) => $this->replacePart($p), $this->parts)
+            ...$this->parts
         ];
-    }
-
-    private function replacePart($part)
-    {
-        if (is_array($part)) return $part;
-        return $this->presetParts[$part];
     }
 }

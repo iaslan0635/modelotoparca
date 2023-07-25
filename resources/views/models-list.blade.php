@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <x-breadcrumb :parts="[
-            ['name' => 'Araç markaları']
+            ['name' => 'Araç üreticileri']
         ]" />
     <div class="block block-split">
         <div class="container">
