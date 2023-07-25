@@ -9,7 +9,7 @@ class SearchReplacement extends BaseModel
     public static function replace(string $string): string
     {
         [$originals, $replacements] = SearchReplacement::getReplacements();
-        return str_replace($originals, $replacements, $string);
+        return str_ireplace($originals, $replacements, $string);
     }
 
     public static function getReplacements(): array
