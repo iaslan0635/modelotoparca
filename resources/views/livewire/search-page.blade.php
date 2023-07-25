@@ -310,7 +310,7 @@
                                             <div class="product-card__actions-list">
                                                 <button
                                                     class="product-card__action product-card__action--quickview"
-                                                    data-slug="{{ $product->model()->slug }}" type="button"
+                                                    data-slug="{{ $product->model()?->slug }}" type="button"
                                                     aria-label="Quick view">
                                                     <svg width="16" height="16">
                                                         <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
@@ -343,31 +343,31 @@
                                                     <a href="{{ route('product.show', $product->model()) }}"
                                                        class="image__body">
                                                         <img loading="lazy" class="image__tag"
-                                                             src="{{ $product->model()->imageUrl() }}" alt="">
+                                                             src="{{ $product->model()?->imageUrl() }}" alt="">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="product-card__info">
                                                 <div class="product-card__meta">
-                                                    <span class="product-card__meta-title"> {{ $product->model()->producercode }} </span>
+                                                    <span class="product-card__meta-title"> {{ $product->model()?->producercode }} </span>
                                                 </div>
                                                 <div class="product-card__name">
                                                     <div>
                                                         <div class="product-card__badges">
-                                                            <div class="tag-badge tag-badge--sale">{{ $product->model()->brand->name }}</div>
+                                                            <div class="tag-badge tag-badge--sale">{{ $product->model()?->brand->name }}</div>
                                                         </div>
-                                                        <a href="{{ route('product.show', $product->model()) }}">{{ $product->model()->fullTitle }}</a>
+                                                        <a href="{{ route('product.show', $product->model()) }}">{{ $product->model()?->fullTitle }}</a>
                                                     </div>
                                                 </div>
                                                 <div class="product-card__features">
                                                     <ul>
-                                                        @foreach(($product->model()->specifications ?? []) as $key => $spec)
+                                                        @foreach(($product->model()?->specifications ?? []) as $key => $spec)
                                                             <li>{{ "{$key} : {$spec}" }}</li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
                                                 <div class="status-badge status-badge--style--success status-badge--has-icon status-badge--has-text">
-                                                    @foreach($highlights[$product->model()->id] ?? [] as $key => $mark)
+                                                    @foreach($highlights[$product->model()?->id] ?? [] as $key => $mark)
                                                         <div class="status-badge__body mt-2">
                                                             <div class="status-badge__icon">
                                                                 <svg width="13" height="13">
@@ -382,7 +382,7 @@
                                             <div class="product-card__footer">
                                                 <div class="product-card__prices">
                                                     <div
-                                                        class="product-card__price product-card__price--current">{{ $product->model()->price?->formattedPrice }}</div>
+                                                        class="product-card__price product-card__price--current">{{ $product->model()?->price?->formattedPrice }}</div>
                                                 </div>
                                                 <button class="product-card__addtocart-icon" type="button"
                                                         aria-label="Add to cart">
@@ -394,7 +394,7 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
                                                     </svg>
                                                 </button>
-                                                <livewire:add-to-cart :wire:key="$product->model()->id"
+                                                <livewire:add-to-cart :wire:key="$product->model()?->id"
                                                                       :product="$product->model()"
                                                                       :quantity_mode="false"/>
                                                 <button class="product-card__wishlist" type="button">
