@@ -8,8 +8,6 @@ class Image extends BaseModel
 {
     protected function url(): Attribute
     {
-        return Attribute::get(function () {
-            return asset("storage/$this->path");
-        });
+        return Attribute::get(fn() => asset("storage/$this->path"));
     }
 }

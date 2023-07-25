@@ -73,12 +73,13 @@
                                     <div class="suggestions__product-name">{{ $product->model()->fullTitle }}
                                         / {{ implode(',', array_keys($highlights[$product->model()->id] ?? [])) }}</div>
                                     <div class="suggestions__product-rating">
-
+                                        {{ $product->model()->brand?->name }}
                                     </div>
                                 </div>
-                                <div class="suggestions__product-price">
-                                    {{ $product->model()->brand?->name }}
-                                    <img class="image__tag" src="{{ $product->model()->brand?->imageUrl() }}">
+                                <div class="suggestions__product-image image image--type--product">
+                                    <div class="image__body">
+                                        <img class="image__tag" src="{{ $product->model()->brand?->imageUrl() }}">
+                                    </div>
                                 </div>
                             </a>
                         @endforeach

@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use App\Enums\BrandType;
-use App\Traits\HasImages;
 use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Brand extends BaseModel
 {
-    use Searchable, HasImages;
+    use Searchable;
 
     protected $guarded = [];
 
@@ -37,5 +36,11 @@ class Brand extends BaseModel
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    // We didn't use the HasImage trait because image are stored according to brand name
+    public function imageUrl()
+    {
+        return asset("images/brands/$this->name.png");
     }
 }

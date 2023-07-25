@@ -32,7 +32,7 @@
                                                     <div class="product-card__badges" style="text-align: -webkit-right">
                                                         <div style=" right:5px;">
                                                             <img style="max-width: 150px; max-height: 25px;"
-                                                                 src="https://web.modelotoparca.com/images/brands/{{ $product->brand?->name }}.png"
+                                                                 src="{{ $product->brand?->imageUrl() }}"
                                                                  alt="">
                                                         </div>
                                                     </div>
@@ -506,7 +506,7 @@
                                                                         <div class="product-card__badges">
                                                                             <img
                                                                                 style="max-width: 60px; max-height: 30px;"
-                                                                                src="https://web.modelotoparca.com/images/brands/{{ $cross->brand->name}}.png"
+                                                                                src="{{ $cross->brand?->imageUrl() }}"
                                                                                 alt="">
                                                                             |
                                                                         </div>
