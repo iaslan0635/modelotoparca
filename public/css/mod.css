@@ -285,3 +285,10 @@
     max-width: initial;
     border: 0;
 }
+
+
+.category-icon-image
+{
+    max-height: 40px;
+    padding: 5px;
+}
