@@ -12,6 +12,6 @@ class SparetoConnectCommand extends Command
 
     public function handle()
     {
-        $this->withProgressBar(Product::all("id"), fn(Product $p) => SparetoConnectJob::dispatch($p->id));
+        SparetoConnectJob::connectAll(null);
     }
 }
