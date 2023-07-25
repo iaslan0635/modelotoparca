@@ -8,7 +8,10 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('search_replacements', function (Blueprint $table) {
-            $table->dropUnique("search_replacements_original_replacement_unique");
+            try {
+                $table->dropUnique("search_replacements_original_replacement_unique");
+            } catch (\Throwable $t) {
+            }
             $table->unique("original");
         });
     }
@@ -16,7 +19,10 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('search_replacements', function (Blueprint $table) {
-            $table->dropUnique("search_replacements_original_unique");
+            try {
+                $table->dropUnique("search_replacements_original_unique");
+            } catch (\Throwable $t) {
+            }
             $table->unique(["original", "replacement"]);
         });
     }

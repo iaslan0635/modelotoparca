@@ -73,22 +73,13 @@
                                     <div class="suggestions__product-name">{{ $product->model()->fullTitle }}
                                         / {{ implode(',', array_keys($highlights[$product->model()->id] ?? [])) }}</div>
                                     <div class="suggestions__product-rating">
-                                        <div class="suggestions__product-rating-stars">
-                                            <div class="rating">
-                                                <div class="rating__body">
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="suggestions__product-rating-label">5 on 22 reviews</div>
+
                                     </div>
                                 </div>
-                                <div
-                                    class="suggestions__product-price">{{ $product->model()->price->formattedPrice }}</div>
+                                <div class="suggestions__product-price">
+                                    {{ $product->model()->brand?->name }}
+                                    {{ $product->model()->brand?->imageUrl() }}
+                                </div>
                             </a>
                         @endforeach
                     </div>
