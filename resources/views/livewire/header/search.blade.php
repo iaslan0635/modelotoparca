@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="suggestions__product-price">
                                     {{ $product->model()->brand?->name }}
-                                    {{ $product->model()->brand?->imageUrl() }}
+                                    <img src="{{ $product->model()->brand?->imageUrl() }}">
                                 </div>
                             </a>
                         @endforeach
