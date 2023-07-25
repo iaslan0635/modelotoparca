@@ -2,12 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Bots\SparetoBot;
-use App\Facades\SparetoCache;
 use App\Facades\SparetoConnector;
 use App\Models\Product;
-use App\Models\ProductCar;
-use App\Models\ProductOem;
 use App\Models\SparetoConnection;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -19,13 +15,18 @@ class SparetoConnectJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(public int $productId)
+    public function __construct(
+        public readonly int    $productId,
+        public readonly string $batchId)
     {
     }
 
     private function query()
     {
-        return SparetoConnection::where("product_id", $this->productId);
+        $query = SparetoConnection::where("product_id", $this->productId);
+        if ($this->batchId !== null)
+            $query->where("batch_id", $this->batchId);
+        return $query;
     }
 
     private function unapplied()
@@ -49,10 +50,10 @@ class SparetoConnectJob implements ShouldQueue
         SparetoConnector::connect($connection);
     }
 
-    public static function connectAll()
+    public static function connectAll(string|null $batchId)
     {
-        foreach (Product::all("id") as $product) {
-            self::dispatch($product->id);
+        foreach (Product::pluck("id") as $productId) {
+            dispatch(new SparetoConnectJob($productId, $batchId));
         }
     }
 }

@@ -7,7 +7,6 @@ use App\Models\Car;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\SparetoConnection;
-use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,10 +19,13 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class SparetoBot implements ShouldQueue, ShouldBeUnique
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, Batchable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
 
-    public function __construct(public string $keyword, public string $keywordField)
+    public function __construct(
+        public readonly string $keyword,
+        public readonly string $keywordField,
+        public readonly string $batchId)
     {
     }
 
@@ -37,33 +39,33 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         return $this->keyword;
     }
 
-    private static function safeNew(string|null $keyword, string $field)
+    private static function safeNew(string|null $keyword, string $field, string $batchId)
     {
         if (blank($keyword) || strlen($keyword) < 5) return null;
 
-        return (new SparetoBot($keyword, $field))->onQueue('spareto');
+        return (new SparetoBot($keyword, $field, $batchId))->onQueue('spareto');
     }
 
     /** @return self[] */
-    public static function newForAllFields(Product $product)
+    public static function newForAllFields(Product $product, string $batchId)
     {
         $jobs = [];
-        $jobs[] = self::safeNew($product->cross_code, "cross_code");
-        $jobs[] = self::safeNew($product->producercode, "producercode");
+        $jobs[] = self::safeNew($product->cross_code, "cross_code", $batchId);
+        $jobs[] = self::safeNew($product->producercode, "producercode", $batchId);
 
         $oems = collect(explode(',', $product->oem_codes ?? ''))
             ->map(fn(string $s) => trim($s))
             ->filter();
 
         foreach ($oems as $oem)
-            $jobs[] = self::safeNew($oem, "oem");
+            $jobs[] = self::safeNew($oem, "oem", $batchId);
 
         return array_filter($jobs, fn($j) => !is_null($j));
     }
 
-    public static function dispatchAllFields(Product $product)
+    public static function dispatchAllFields(Product $product, string $batchId)
     {
-        foreach (self::newForAllFields($product) as $job)
+        foreach (self::newForAllFields($product, $batchId) as $job)
             dispatch($job);
     }
 
@@ -126,6 +128,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
                 "keyword" => $this->keyword,
                 "keyword_field" => $this->keywordField,
                 "connected_by" => $connectedBy,
+                "batch_id" => $this->batchId
             ]);
         };
 

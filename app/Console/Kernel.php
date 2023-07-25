@@ -7,6 +7,7 @@ use Cache;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,13 +16,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(fn() => Log::info("cron works!"))->everyMinute();
         $schedule->call(function () {
             if (!DB::table("jobs")->where("queue", "spareto")->exists()) {
-                SparetoConnectJob::connectAll();
+                SparetoConnectJob::connectAll(Cache::get("bot_batch_id"));
                 Cache::set("not_running_bot", true);
             }
-        })->skip(fn() => Cache::has("not_running_bot") && Cache::get("not_running_bot"))
+        })
+            ->skip(fn() => Cache::has("not_running_bot") && Cache::get("not_running_bot"))
             ->everyMinute();
     }
 
