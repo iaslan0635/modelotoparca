@@ -384,13 +384,12 @@ class Search
 
     public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null): array
     {
-        $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
+        $cleanTerm = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $term));
 
         $term = SearchReplacement::replace($term);
+        $cleanTerm = SearchReplacement::replace($cleanTerm);
+        $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
 
-        $regex = '/[^a-zA-Z0-9]+/';
-        $cleanTerm = strtolower(preg_replace($regex, '', $term));
-        //dd($term);
         if (empty($term))
             return [
                 'products' => new LengthAwarePaginator([], 0, 1, 0),
