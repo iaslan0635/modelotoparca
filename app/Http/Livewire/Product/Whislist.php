@@ -11,7 +11,7 @@ class Whislist extends Component
 
     public function render()
     {
-        if (auth()->user()->whislist()->where('product_id', $this->product->id)->exists()) {
+        if (auth()->user()?->whislist()->where('product_id', $this->product->id)->exists()) {
             $this->status = true;
         }
         return view('livewire.product.whislist');
