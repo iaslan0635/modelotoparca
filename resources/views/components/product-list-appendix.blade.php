@@ -58,29 +58,10 @@
                             <div class="product-card__name">
                                 <div>
                                     <div class="product-card__badges">
-                                        <div
-                                            class="tag-badge tag-badge--sale">{{ $product->brand->name }}</div>
-                                        <div class="tag-badge tag-badge--new">new</div>
-                                        <div class="tag-badge tag-badge--hot">hot</div>
+                                        <div class="tag-badge tag-badge--sale">{{ $product->brand->name }}</div>
                                     </div>
                                     <a href="{{ route('product.show', $product) }}">{{ $product->fullTitle }}</a>
                                 </div>
-                            </div>
-                            <div class="product-card__rating">
-                                <div class="rating product-card__rating-stars">
-                                    <div class="rating__body">
-                                        <div
-                                            class="rating__star rating__star--active"></div>
-                                        <div
-                                            class="rating__star rating__star--active"></div>
-                                        <div
-                                            class="rating__star rating__star--active"></div>
-                                        <div
-                                            class="rating__star rating__star--active"></div>
-                                        <div class="rating__star"></div>
-                                    </div>
-                                </div>
-                                <div class="product-card__rating-label">4 on 3 reviews</div>
                             </div>
                             <div class="product-card__features">
                                 <ul>
