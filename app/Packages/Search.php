@@ -72,6 +72,7 @@ class Search
         $query = Query::bool();
         $words = explode(" ", $term);
         foreach ($words as $word) {
+            if (empty($word)) continue;
             $query->must(Query::prefix()->field('full_text')->value($word)->caseInsensitive(true));
         }
 
@@ -382,6 +383,18 @@ class Search
             );
     }
 
+    private static function termWiseQueryCombination(array $termPairs, array $queryFnPairs)
+    {
+        $queries = [];
+        [$terms, $regexTerms] = $termPairs;
+        foreach ($queryFnPairs as [$queryFn, $regexQueryFn]) {
+            foreach ($terms as $term) $queries[] = $queryFn($term);
+            foreach ($regexTerms as $regexTerm) $queries[] = $queryFn($regexTerm);
+        }
+
+        return $queries;
+    }
+
     public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null): array
     {
         if (empty($term))
@@ -395,36 +408,43 @@ class Search
 
         $cleanTerm = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $term));
 
-        $term = SearchReplacement::replace($term);
-        $cleanTerm = SearchReplacement::replace($cleanTerm);
+        $replacedTerm = SearchReplacement::replace($term);
+        $cleanReplacedTerm = SearchReplacement::replace($cleanTerm);
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
 
-        $oemQuery = self::oemQuery($term);
-        $oemRegexQuery = self::oemRegexQuery($cleanTerm);
-        $similarQuery = self::similarQuery($term);
-        $similarRegexQuery = self::similarRegexQuery($cleanTerm);
-        $carQuery = self::carQuery($term);
-        $productQuery = self::productQuery($term);
-        $crossQuery = self::crossQuery($term);
-        $crossRegexQuery = self::crossRegexQuery($cleanTerm);
-        $producerQuery = self::producerQuery($term);
-        $producerRegexQuery = self::producerRegexQuery($cleanTerm);
-        $producer2Query = self::producer2Query($term);
-        $producer2RegexQuery = self::producer2RegexQuery($cleanTerm);
-        $producerUnbrandedQuery = self::producerUnbrandedQuery($term);
-        $producerUnbrandedRegexQuery = self::producerUnbrandedRegexQuery($cleanTerm);
+        $termWiseQueryCombinations = self::termWiseQueryCombination(
+            [
+                [$term, $cleanTerm],
+                [$replacedTerm, $cleanReplacedTerm]
+            ],
+            [
+                [self::oemQuery(...), self::oemRegexQuery(...)],
+                [self::similarQuery(...), self::similarRegexQuery(...)],
+                [self::crossQuery(...), self::crossRegexQuery(...)],
+                [self::producerQuery(...), self::producerRegexQuery(...)],
+                [self::producer2Query(...), self::producer2RegexQuery(...)],
+                [self::producerUnbrandedQuery(...), self::producerUnbrandedRegexQuery(...)],
+            ]
+        );
 
-        $foundCodes = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+        $foundCodes = self::combineQueries(...$termWiseQueryCombinations);
         $finalFoundCodes = self::finalizeQuery($foundCodes, $selectCategory);
 
         $ifCodes = self::paginateProducts($finalFoundCodes, $sortBy)->total();
 
         if ($ifCodes > 0) {
-            $compoundQuery = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
-            $compoundQueryWithoutBrandFilter = self::combineQueries($oemQuery, $oemRegexQuery, $similarQuery, $similarRegexQuery, $crossQuery, $crossRegexQuery, $producerQuery, $producerUnbrandedQuery, $producerUnbrandedRegexQuery, $producerRegexQuery, $producer2Query, $producer2RegexQuery);
+            $compoundQuery = self::combineQueries(...$termWiseQueryCombinations);
+            $compoundQueryWithoutBrandFilter = self::combineQueries(...$termWiseQueryCombinations);
         } else {
-            $compoundQuery = self::combineQueries($productQuery, $carQuery);
-            $compoundQueryWithoutBrandFilter = self::combineQueries($productQuery, $carQuery);
+            $nonCodeQueries = [
+                self::carQuery($term),
+                self::carQuery($replacedTerm),
+                self::productQuery($term),
+                self::productQuery($replacedTerm)
+            ];
+
+            $compoundQuery = self::combineQueries(...$nonCodeQueries);
+            $compoundQueryWithoutBrandFilter = self::combineQueries(...$nonCodeQueries);
         }
         if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
         $finalQuery = self::finalizeQuery($compoundQuery, $selectCategory);
