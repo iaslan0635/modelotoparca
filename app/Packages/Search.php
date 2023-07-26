@@ -384,12 +384,6 @@ class Search
 
     public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null): array
     {
-        $cleanTerm = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $term));
-
-        $term = SearchReplacement::replace($term);
-        $cleanTerm = SearchReplacement::replace($cleanTerm);
-        $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
-
         if (empty($term))
             return [
                 'products' => new LengthAwarePaginator([], 0, 1, 0),
@@ -398,6 +392,12 @@ class Search
                 'highlights' => collect(),
                 'brands' => collect()
             ];
+
+        $cleanTerm = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $term));
+
+        $term = SearchReplacement::replace($term);
+        $cleanTerm = SearchReplacement::replace($cleanTerm);
+        $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
 
         $oemQuery = self::oemQuery($term);
         $oemRegexQuery = self::oemRegexQuery($cleanTerm);
