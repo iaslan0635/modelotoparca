@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
             if (!DB::table("jobs")->where("queue", "spareto")->exists()) {
                 SparetoConnectJob::connectAll(Cache::get("bot_batch_id"));
                 Cache::set("not_running_bot", true);
+                Cache::delete("bot_batch_id");
             }
         })
             ->skip(fn() => Cache::has("not_running_bot") && Cache::get("not_running_bot"))
