@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
                 Cache::delete("bot_batch_id");
             }
         })
-            ->skip(fn() => Cache::has("not_running_bot") && Cache::get("not_running_bot"))
+            ->skip(fn() => Cache::get("not_running_bot", false))
             ->everyMinute();
     }
 

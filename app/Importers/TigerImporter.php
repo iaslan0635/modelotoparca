@@ -143,8 +143,6 @@ class TigerImporter extends Importer
         Category::query()->searchable();
 
         \Cache::set("not_running_bot", false);
-
-        if ($this->appendMode)
-            \Cache::set("bot_batch_id", $batchId);
+        \Cache::set("bot_batch_id", $batchId);
     }
 }
