@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Facades\SparetoConnector;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController as CustomerProductController;
 use App\Jobs\SparetoConnectJob;
@@ -49,7 +50,7 @@ class ProductController extends Controller
         ]);
 
         dispatch(function () use ($connection) {
-            SparetoConnectJob::connect($connection);
+            SparetoConnector::connect($connection);
         })->onQueue("immediate");
         return back();
     }

@@ -17,7 +17,7 @@ class SparetoConnectJob implements ShouldQueue
 
     public function __construct(
         public readonly int    $productId,
-        public readonly string $batchId)
+        public readonly string|null $batchId)
     {
     }
 
@@ -42,18 +42,13 @@ class SparetoConnectJob implements ShouldQueue
             $this->unapplied()->where("connected_by", "!=", "oem")->get();
 
         foreach ($filteredConnections as $connection)
-            self::connect($connection);
-    }
-
-    public static function connect(SparetoConnection $connection)
-    {
-        SparetoConnector::connect($connection);
+            SparetoConnector::connect($connection);
     }
 
     public static function connectAll(string|null $batchId)
     {
         foreach (Product::pluck("id") as $productId) {
-            dispatch(new SparetoConnectJob($productId, $batchId ?? "NO-BATCH"));
+            dispatch(new SparetoConnectJob($productId, $batchId));
         }
     }
 }
