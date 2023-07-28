@@ -3,6 +3,7 @@
 namespace App\Bots;
 
 use App\Facades\SparetoCache;
+use App\Models\Brand;
 use App\Models\Car;
 use App\Models\Product;
 use App\Models\ProductOem;
@@ -86,9 +87,11 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
     private function scrapeProduct(Crawler $productCrawler)
     {
         $partNumberEl = $productCrawler->filter('.card-product-main .part_number');
-        if (!$partNumberEl->count()) return;
+        $brandEl = $productCrawler->filter(".brand");
+        if (!$partNumberEl->count() || !$brandEl->count()) return;
 
         $partNumber = $partNumberEl->text();
+        $brand = $brandEl->text();
 
         $url = $productCrawler->filter('.card-product-main a')->link()->getUri();
         $crawler = SparetoCache::crawler($url);
@@ -140,11 +143,11 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         foreach ($sameOems as $targetRef)
             $connect($targetRef, "oem");
 
-        $sameProducerCodes = self::findSameProducerCodes($partNumber);
+        $sameProducerCodes = self::findSameProducerCodes($partNumber, $brand);
         foreach ($sameProducerCodes as $targetRef)
             $connect($targetRef, "producercode");
 
-        $sameProducerCodes2 = self::findSameProducerCodes2($partNumber);
+        $sameProducerCodes2 = self::findSameProducerCodes2($partNumber, $brand);
         foreach ($sameProducerCodes2 as $targetRef)
             $connect($targetRef, "producercode2");
     }
@@ -162,18 +165,29 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
             Product::query()->where('cross_code_regexed', $partNumberRegexed)->pluck('id');
     }
 
-    private function findSameProducerCodes(string $crossCode)
+    private function findBrand(string $brandName): string|null
     {
-        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $crossCode);
-        return blank($partNumberRegexed) ? collect() : // prevent search for empty string
-            Product::query()->where('producercode_regexed', $partNumberRegexed)->pluck('id');
+        return Brand::where("name", $brandName)->value("name");
     }
 
-    private function findSameProducerCodes2(string $crossCode)
+    private function findSameProducerCodes(string $partNumber, string $brand)
     {
-        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $crossCode);
+        $brandId = $this->findBrand($brand);
+        if ($brandId === null) return collect();
+
+        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $partNumber);
         return blank($partNumberRegexed) ? collect() : // prevent search for empty string
-            Product::query()->where('producercode2_regexed', $partNumberRegexed)->pluck('id');
+            Product::query()->where('producercode_regexed', $partNumberRegexed)->where("brand_id", $brandId)->pluck('id');
+    }
+
+    private function findSameProducerCodes2(string $partNumber, string $brand)
+    {
+        $brandId = $this->findBrand($brand);
+        if ($brandId === null) return collect();
+
+        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $partNumber);
+        return blank($partNumberRegexed) ? collect() : // prevent search for empty string
+            Product::query()->where('producercode2_regexed', $partNumberRegexed)->where("brand_id", $brandId)->pluck('id');
     }
 
     private function findSameOems(Collection $oems)
