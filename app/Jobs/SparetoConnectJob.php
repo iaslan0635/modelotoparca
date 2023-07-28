@@ -53,7 +53,7 @@ class SparetoConnectJob implements ShouldQueue
     public static function connectAll(string|null $batchId)
     {
         foreach (Product::pluck("id") as $productId) {
-            dispatch(new SparetoConnectJob($productId, $batchId));
+            dispatch(new SparetoConnectJob($productId, $batchId ?? "NO-BATCH"));
         }
     }
 }
