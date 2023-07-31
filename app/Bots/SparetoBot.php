@@ -135,6 +135,10 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
             ]);
         };
 
+        $sameAbks = $this->findSameAbks($partNumber);
+        foreach ($sameAbks as $targetRef)
+            $connect($targetRef, "abk");
+
         foreach ($sameCrosses as $targetRef)
             $connect($targetRef, "cross_code");
 
@@ -158,11 +162,21 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         return $tbody->count() ? $tbody : $crawler;
     }
 
-    private function findSameCrosses(string $crossCode)
+    private function findSameCrosses(string $partNumber)
     {
-        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $crossCode);
+        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $partNumber);
         return blank($partNumberRegexed) ? collect() : // prevent search for empty string
-            Product::query()->where('cross_code_regexed', $partNumberRegexed)->pluck('id');
+            Product::query()
+                ->whereNull("abk") // abk will override connection
+                ->where('cross_code_regexed', $partNumberRegexed)
+                ->pluck('id');
+    }
+
+    private function findSameAbks(string $partNumber)
+    {
+        $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $partNumber);
+        return blank($partNumberRegexed) ? collect() : // prevent search for empty string
+            Product::query()->where('abk_regexed', $partNumberRegexed)->pluck('id');
     }
 
     private function findBrand(string $brandName): string|null
@@ -177,7 +191,11 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
         $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $partNumber);
         return blank($partNumberRegexed) ? collect() : // prevent search for empty string
-            Product::query()->where('producercode_regexed', $partNumberRegexed)->where("brand_id", $brandId)->pluck('id');
+            Product::query()
+                ->whereNull("abk") // abk will override connection
+                ->where('producercode_regexed', $partNumberRegexed)
+                ->where("brand_id", $brandId)
+                ->pluck('id');
     }
 
     private function findSameProducerCodes2(string $partNumber, string $brand)
@@ -187,7 +205,11 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
         $partNumberRegexed = preg_replace('/[^a-zA-Z0-9]/', '', $partNumber);
         return blank($partNumberRegexed) ? collect() : // prevent search for empty string
-            Product::query()->where('producercode2_regexed', $partNumberRegexed)->where("brand_id", $brandId)->pluck('id');
+            Product::query()
+                ->whereNull("abk") // abk will override connection
+                ->where('producercode2_regexed', $partNumberRegexed)
+                ->where("brand_id", $brandId)
+                ->pluck('id');
     }
 
     private function findSameOems(Collection $oems)
@@ -198,7 +220,9 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
 
         if ($valid_oems->isEmpty()) return collect();
 
-        return ProductOem::query()->whereNull("connection_id")
+        return ProductOem::query()
+            ->whereNull("abk") // abk will override connection
+            ->whereNull("connection_id")
             ->where(function (Builder $q) use ($valid_oems) {
                 foreach ($valid_oems as $oem)
                     $q->orWhere('oem_unspaced', '=', $oem);
