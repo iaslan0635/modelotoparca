@@ -53,6 +53,7 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         $jobs = [];
         $jobs[] = self::safeNew($product->cross_code, "cross_code", $batchId);
         $jobs[] = self::safeNew($product->producercode, "producercode", $batchId);
+        $jobs[] = self::safeNew($product->abk, "abk", $batchId);
 
         $oems = collect(explode(',', $product->oem_codes ?? ''))
             ->map(fn(string $s) => trim($s))
@@ -221,7 +222,10 @@ class SparetoBot implements ShouldQueue, ShouldBeUnique
         if ($valid_oems->isEmpty()) return collect();
 
         return ProductOem::query()
-            ->whereNull("abk") // abk will override connection
+            ->whereHas("product", function (Builder $query) {
+                // abk will override connection
+                $query->whereNull("abk");
+            })
             ->whereNull("connection_id")
             ->where(function (Builder $q) use ($valid_oems) {
                 foreach ($valid_oems as $oem)

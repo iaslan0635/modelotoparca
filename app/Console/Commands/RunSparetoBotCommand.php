@@ -14,6 +14,6 @@ class RunSparetoBotCommand extends Command
     public function handle(): void
     {
         SparetobotDone::truncate();
-        $this->withProgressBar(Product::all(), fn(Product $product) => SparetoBot::dispatchAllFields($product));
+        $this->withProgressBar(Product::all(), fn(Product $product) => SparetoBot::dispatchAllFields($product, "CLI"));
     }
 }

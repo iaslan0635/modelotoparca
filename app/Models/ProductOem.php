@@ -26,4 +26,9 @@ class ProductOem extends BaseModel
             'oem_regex' => strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->oem)),
         ];
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, "logicalref");
+    }
 }

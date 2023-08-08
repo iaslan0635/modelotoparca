@@ -85,6 +85,7 @@ class TigerImporter extends Importer
                 'similar_product_codes' => $c('Y'),
                 'fitting_position' => $c('AK'),
                 'image_appendix' => $image_appendix,
+                'abk' => $c("AN"),
 
                 '_category' => $c("O"),
             ],

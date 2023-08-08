@@ -181,4 +181,9 @@ class Product extends BaseModel implements CanVisit
     {
         return $this->hasMany(SparetoConnection::class);
     }
+
+    public function propertyValues(): BelongsToMany
+    {
+        return $this->belongsToMany(PropertyValue::class);
+    }
 }
