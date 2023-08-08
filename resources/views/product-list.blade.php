@@ -186,29 +186,55 @@
                                                                     <div class="filter-list">
                                                                         <div class="filter-list__list">
                                                                             @foreach($property->values as $key => $value)
-                                                                                <label class="filter-list__item ">
-                                                                                    <span
-                                                                                        class="input-check filter-list__input">
-                                                                                        <span class="input-check__body">
-                                                                                            <input class="input-check__input"
-                                                                                                   name="property[{{ $property->id }}][]"
-                                                                                                   value="{{ $value->value }}"
-                                                                                                   {{ request()->has("property.$property->id") ? in_array($value->value, request()->input("property.$property->id")) ? "checked":null:null }}
-                                                                                                   type="checkbox">
-                                                                                            <span
-                                                                                                class="input-check__box"></span>
-                                                                                            <span class="input-check__icon"><svg
-                                                                                                    width="9px" height="7px">
-                                                                                                    <path
-                                                                                                        d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
-                                                                                                </svg>
+                                                                                @if($property->search_type === "multiple")
+                                                                                    <label class="filter-list__item ">
+                                                                                        <span
+                                                                                            class="input-check filter-list__input">
+                                                                                            <span class="input-check__body">
+                                                                                                <input class="input-check__input"
+                                                                                                       name="property[{{ $property->id }}][]"
+                                                                                                       value="{{ $value->value }}"
+                                                                                                       {{ request()->has("property.$property->id") ? in_array($value->value, request()->input("property.$property->id")) ? "checked":null:null }}
+                                                                                                       type="checkbox">
+                                                                                                <span
+                                                                                                    class="input-check__box"></span>
+                                                                                                <span class="input-check__icon"><svg
+                                                                                                        width="9px" height="7px">
+                                                                                                        <path
+                                                                                                            d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
+                                                                                                    </svg>
+                                                                                                </span>
                                                                                             </span>
                                                                                         </span>
-                                                                                    </span>
-                                                                                    <span class="filter-list__title">
-                                                                                        {{ $value->value }}
-                                                                                    </span>
-                                                                                </label>
+                                                                                            <span class="filter-list__title">
+                                                                                            {{ $value->value }}
+                                                                                        </span>
+                                                                                    </label>
+                                                                                @elseif($property->search_type === "none")
+                                                                                    <label class="filter-list__item ">
+                                                                                        <span
+                                                                                            class="input-check filter-list__input">
+                                                                                            <span class="input-check__body">
+                                                                                                <input class="input-check__input"
+                                                                                                       name="property[{{ $property->id }}][]"
+                                                                                                       value="{{ $value->value }}"
+                                                                                                       {{ request()->has("property.$property->id") ? in_array($value->value, request()->input("property.$property->id")) ? "checked":null:null }}
+                                                                                                       type="radio">
+                                                                                                <span
+                                                                                                    class="input-check__box"></span>
+                                                                                                <span class="input-check__icon"><svg
+                                                                                                        width="9px" height="7px">
+                                                                                                        <path
+                                                                                                            d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
+                                                                                                    </svg>
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </span>
+                                                                                            <span class="filter-list__title">
+                                                                                            {{ $value->value }}
+                                                                                        </span>
+                                                                                    </label>
+                                                                                @endif
                                                                             @endforeach
                                                                         </div>
                                                                     </div>
