@@ -85,4 +85,9 @@ class Category extends BaseModel
             // limit each parent separately not overall
             ->map(fn ($m) => $m->load($children10));
     }
+
+    public function properties(): BelongsToMany
+    {
+        return $this->belongsToMany(Property::class);
+    }
 }

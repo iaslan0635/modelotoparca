@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\CategoryFacade;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Property;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -19,6 +20,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
+        $category->load('properties');
         $tree = CategoryFacade::getTree($category->id);
 
         $minPrice = request()->input('min_price', 0);
@@ -39,6 +41,12 @@ class CategoryController extends Controller
             $query->orderBy('products.title', 'asc');
         } elseif (request()->has('sortBy') && request()->input('sortBy') === 'title-desc') {
             $query->orderBy('products.title', 'desc');
+        }
+
+        foreach (request()->input('property') as $key => $values){
+            $query->whereHas("propertyValues", function (Builder $builder) use ($values, $key) {
+                $builder->where("property_id", $key)->whereIn("value", $values);
+            });
         }
 
         $query->whereRelation('categories', fn(Builder $q) => $q->whereIn('id', $tree['childs']));
