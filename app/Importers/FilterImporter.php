@@ -8,12 +8,10 @@ use App\Models\Property;
 class FilterImporter extends Importer
 {
     const LOGICALREF_COLUMN = "H";
-    protected array $transformers;
 
     public function __construct(string $file)
     {
         parent::__construct($file);
-        $this->transformers = $this->getTransformers();
     }
 
     public static function getUsedTables(): array
@@ -26,6 +24,7 @@ class FilterImporter extends Importer
         $statusHook ??= $this->noop();
 
         $properties = Property::all();
+        $transformers = collect($this->getTransformers());
 
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
             $statusHook($i);
@@ -42,6 +41,9 @@ class FilterImporter extends Importer
 
                 $value = $getCell($cell);
                 if (!$value) continue;
+
+                $transformer = $transformers->get($property->transformer);
+                if ($transformer) $value = $transformer($value);
 
                 $product->propertyValues()->create([
                     "property_id" => $property->id,
