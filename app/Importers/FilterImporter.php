@@ -8,6 +8,13 @@ use App\Models\Property;
 class FilterImporter extends Importer
 {
     const LOGICALREF_COLUMN = "H";
+    protected array $transformers;
+
+    public function __construct(string $file)
+    {
+        parent::__construct($file);
+        $this->transformers = $this->getTransformers();
+    }
 
     public static function getUsedTables(): array
     {
@@ -42,5 +49,12 @@ class FilterImporter extends Importer
                 ]);
             }
         }
+    }
+
+    private function getTransformers(): array
+    {
+        return [
+            "only_float" => fn($v) => floatval($v),
+        ];
     }
 }
