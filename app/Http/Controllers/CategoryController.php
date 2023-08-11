@@ -43,7 +43,7 @@ class CategoryController extends Controller
             $query->orderBy('products.title', 'desc');
         }
 
-        foreach (request()->input('property') as $key => $values){
+        foreach (request()->input('property', []) as $key => $values){
             $query->whereHas("propertyValues", function (Builder $builder) use ($values, $key) {
                 $builder->where("property_id", $key)->whereIn("value", $values);
             });
