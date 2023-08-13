@@ -240,7 +240,7 @@
                                         @foreach(\App\Models\Category::getHeaderCategories() as $root)
                                         <li data-mobile-menu-item>
                                             <a href="{{ route('category.show', $root) }}" class="" data-mobile-menu-trigger>
-                                                <img src="{{ $root->imageUrl() }}" style="max-height: 400px">  {{ $root->name }}
+                                                <img src="{{ $root->imageUrl() }}" style="max-height: 40px">  {{ $root->name }}
                                                 <svg width="7" height="11">
                                                     <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
 	C-0.1,9.8-0.1,10.4,0.3,10.7z" />
@@ -254,7 +254,8 @@
                                                                 <path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z" />
                                                             </svg>
                                                         </button>
-                                                       <div class="mobile-menu__panel-title"> <img src="{{ $root->imageUrl() }}" style="max-height: 400px"> {{ $root->name }}</div>
+                                                       <div class="mobile-menu__panel-title">
+                                                           <img src="{{ $root->imageUrl() }}" style="max-height: 40px"> {{ $root->name }}</div>
                                                     </div>
                                                     <div class="mobile-menu__panel-body">
                                                         <ul class="mobile-menu__links">
