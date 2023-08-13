@@ -9,7 +9,7 @@
                 </button>
                 <a class="mobile-header__logo" href="/">
                     <!-- mobile-logo -->
-                            <img style="max-width: 130px; height: 30px" src="https://websitem.modelotoparca.com/public/images/default/dark-logo.png">
+                            <img style="max-width: 130px; height: 30px" src="https://site.modelotoparca.com/storage/imported_images/modelotomotiv-logo.png">
                     <!-- mobile-logo / end -->
                 </a>
                 <div class="mobile-header__search mobile-search">

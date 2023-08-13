@@ -158,7 +158,7 @@
                 <div class="logo__image">
                     <!-- logo -->
                     <img style="max-width: 160px"
-                         src="https://websitem.modelotoparca.com/public/images/default/dark-logo.png">
+                         src="https://site.modelotoparca.com/storage/imported_images/modelotomotiv-logo.png">
                     <!-- logo / end -->
                 </div>
             </a>
