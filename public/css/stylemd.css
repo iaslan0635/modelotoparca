@@ -1,0 +1,60 @@
+
+
+.uyumluSelectButtons {
+    text-align: center;
+    padding: 10px 25px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+    background-color: #ececec;
+    font-size: 0.81rem ;
+}
+.uyumluSelectButtons>img{
+    height: 29px;
+    width: inherit;
+    max-width: inherit;
+    margin: 0 auto;
+}
+
+.uyumluSelectButtons.active{
+    background-color: #b2b2b2
+}
+.uyumluSelectButtons:hover{
+    background-color: #b6b6b6
+}
+.uyumluSelectButtons>h4 {
+    font-size: 14px
+}
+
+.uyumlu-car-select {
+    display:flex;
+    align-items:center;
+    width:100%;
+    padding-right:50px;
+    position:relative
+}
+
+.uyumlu-car-select-line {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    transition: .3s;
+    cursor: pointer;
+}
+.uyumlu-car-select-line>title{
+    font-size: 25px;
+}
+
+.category-icon-image {
+    max-width: 2rem;
+
+}
+
+.compatible-cars {
+    margin-bottom: 15px;
+}
+
+.compatible-cars-list {
+    margin-right: 15px;
+}
