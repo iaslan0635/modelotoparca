@@ -240,7 +240,7 @@
                                         @foreach(\App\Models\Category::getHeaderCategories() as $root)
                                         <li data-mobile-menu-item>
                                             <a href="{{ route('category.show', $root) }}" class="" data-mobile-menu-trigger>
-                                                <img src="{{ $root->imageUrl() }}" style="max-height: 40px">  {{ $root->name }}
+                                                <img src="{{ $root->imageUrl() }}" style="max-height: 34px; max-width: 34px">  {{ $root->name }}
                                                 <svg width="7" height="11">
                                                     <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
 	C-0.1,9.8-0.1,10.4,0.3,10.7z" />
@@ -255,14 +255,14 @@
                                                             </svg>
                                                         </button>
                                                        <div class="mobile-menu__panel-title">
-                                                           <img src="{{ $root->imageUrl() }}" style="max-height: 40px"> {{ $root->name }}</div>
+                                                           <img src="{{ $root->imageUrl() }}" style="max-height: 34px; max-width: 34px"> {{ $root->name }}</div>
                                                     </div>
                                                     <div class="mobile-menu__panel-body">
                                                         <ul class="mobile-menu__links">
                                                             @foreach($root->children as $child)
                                                             <li data-mobile-menu-item>
                                                                 <a href="{{ route("category.show", $child) }}" class="" data-mobile-menu-trigger>
-                                                                    <img src="{{ $child->imageUrl() }}"   style="max-height: 40px" alt="">  {{ $child->name }}
+                                                                    <img src="{{ $child->imageUrl() }}"  style="max-height: 34px; max-width: 34px">  {{ $child->name }}
                                                                 </a>
                                                             </li>
                                                             @endforeach
