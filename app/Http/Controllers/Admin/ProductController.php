@@ -44,7 +44,8 @@ class ProductController extends Controller
             "product_id" => $productId,
             "connected_by" => "manual",
             "keyword_field" => "manual",
-            "keyword" => "manual"
+            "keyword" => "manual",
+            "batch_id" => "MANUAL"
         ]);
 
         dispatch(function () use ($connection) {

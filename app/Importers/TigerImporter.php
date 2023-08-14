@@ -3,11 +3,13 @@
 namespace App\Importers;
 
 use App\Bots\SparetoBot;
+use App\Facades\SparetoConnector;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
+use App\Models\SparetoConnection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -112,7 +114,31 @@ class TigerImporter extends Importer
             $categoryId = $this->pop($productData, "_category");
 
             if ($productId === null) continue;
-            $product = Product::updateOrCreate(["id" => $productId], $productData + ["batch_id" => $batchId]);
+            $product = Product::findOrNew($productId);
+            $product->fill($productData + ["id" => $productId, "batch_id" => $batchId]);
+            if ($product->exists) {
+                $dirty = array_keys($product->getDirty());
+                $botProps = [
+                    "producercode",
+                    "cross_code",
+                    "oem_codes",
+                    "abk",
+                ];
+                $isBotChanged = false;
+                foreach ($botProps as $prop) {
+                    if (array_search($prop, $dirty)) {
+                        $isBotChanged = true;
+                        break;
+                    }
+                }
+                if ($isBotChanged) {
+                    $connections = SparetoConnection::whereNot("connected_by", "manual")->where("product_id", $product->id)->get();
+                    foreach ($connections as $connection) {
+                        SparetoConnector::disconnect($connection, true);
+                    }
+                }
+            }
+            $product->save();
 
             $oems = $this->explode($productData["oem_codes"]) ?? [];
             foreach ($oems as $oem)

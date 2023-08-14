@@ -44,13 +44,17 @@ class SparetoConnector
         });
     }
 
-    public static function disconnect(SparetoConnection $connection)
+    public static function disconnect(SparetoConnection $connection, $deleteConnection = false)
     {
-        DB::transaction(function () use ($connection) {
+        DB::transaction(function () use ($deleteConnection, $connection) {
             ProductCar::where("connection_id", $connection->id)->delete();
             ProductOem::where("connection_id", $connection->id)->delete();
-            $connection->is_connection_applied = false;
-            $connection->save();
+            if ($deleteConnection) {
+                $connection->delete();
+            } else {
+                $connection->is_connection_applied = false;
+                $connection->save();
+            }
 
             Product::where("id", $connection->product_id)->searchable();
         });

@@ -4,6 +4,7 @@ namespace App\Importers;
 
 use App\Models\Product;
 use App\Models\Property;
+use App\Models\PropertyValue;
 
 class FilterImporter extends Importer
 {
@@ -45,10 +46,12 @@ class FilterImporter extends Importer
                 $transformer = $transformers->get($property->transformer);
                 if ($transformer) $value = $transformer($value);
 
-                $product->propertyValues()->create([
+                $propertyValue = PropertyValue::firstOrCreate([
                     "property_id" => $property->id,
                     "value" => $value
                 ]);
+
+                $product->propertyValues()->attach($propertyValue->id);
             }
         }
     }
