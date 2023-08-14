@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Property;
 use Illuminate\Database\Seeder;
 
 class PropertySeeder extends Seeder
@@ -10,8 +11,22 @@ class PropertySeeder extends Seeder
     public function run(): void
     {
         $d = ['excel_file' => 'oil'];
-        Category::findOrFail(79295) //Yağlar ve sıvılar
-        ->properties()->createMany([
+        $categories = Category::whereIn("id", [
+            79295,
+            78132,
+            82613,
+            78133,
+            82614,
+            82611,
+            82612,
+            79300,
+            79296,
+            79301,
+            79304,
+            79299,
+        ])->get();
+
+        $properties = [
             [...$d, 'name' => 'KATEGORİ', 'excel_column' => 'A'],
             [...$d, 'name' => 'ARAÇ TİPİ', 'excel_column' => 'B'],
             [...$d, 'name' => 'CODE', 'excel_column' => 'C'],
@@ -30,6 +45,11 @@ class PropertySeeder extends Seeder
             [...$d, 'name' => 'Spesifikasyonlar', 'excel_column' => 'Q'],
             [...$d, 'name' => 'OEM PERFORMANSLARI', 'excel_column' => 'R'],
             [...$d, 'name' => 'ÜRÜN ÖZELLİĞİ', 'excel_column' => 'S'],
-        ]);
+        ];
+
+        foreach ($properties as $property) {
+            $prop = Property::create($property);
+            $prop->category()->saveMany($categories);
+        }
     }
 }
