@@ -10,4 +10,9 @@ class Property extends BaseModel
     {
         return $this->hasMany(PropertyValue::class);
     }
+
+    public function category()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }
