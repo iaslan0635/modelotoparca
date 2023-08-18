@@ -23,8 +23,7 @@
                 <!--begin::Form-->
                     <!--begin::Main column-->
                     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-                        <div class="d-flex flex-column gap-7 gap-lg-10">
-                            <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/apps/ecommerce/catalog/products">
+                        <form class="d-flex flex-column gap-7 gap-lg-10">
                             @foreach($routes as $route)
                                 <!--begin::Card-->
                                 <div class="card card-flush py-4">
@@ -62,35 +61,34 @@
                                 </div>
                                 <!--end::Card-->
                             @endforeach
-                            </form>
-                            <!--begin::Card-->
-                            <div class="card card-flush py-4">
-                                <!--begin::Card header-->
-                                <div class="card-header">
-                                    <div class="card-title">
-                                        <h2>Bot</h2>
-                                        <span class="badge badge-primary mx-4">İçe aktarım kuyruğu: {{ \DB::table("jobs")->where("queue", "import")->count() }}</span>
-                                        <span class="badge badge-primary mx-4">Bot kuyruğu: {{ \DB::table("jobs")->where("queue", "spareto")->count() }}</span>
-                                        <span class="badge badge-primary">Bağlantı kuyruğu: {{ \DB::table("jobs")->where("queue", "default")->count() }}</span>
-                                    </div>
+                        </form>
+                        <!--begin::Card-->
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h2>Bot</h2>
+                                    <span class="badge badge-primary mx-4">İçe aktarım kuyruğu: {{ \DB::table("jobs")->where("queue", "import")->count() }}</span>
+                                    <span class="badge badge-primary mx-4">Bot kuyruğu: {{ \DB::table("jobs")->where("queue", "spareto")->count() }}</span>
+                                    <span class="badge badge-primary">Bağlantı kuyruğu: {{ \DB::table("jobs")->where("queue", "default")->count() }}</span>
                                 </div>
-                                <!--end::Card header-->
-                                <!--begin::Card body-->
-                                <div class="card-body pt-0">
-                                    <!--begin::Input group-->
-                                    <div class="fv-row mb-2">
-                                        <a class="btn btn-primary me-4" href="{{ route('admin.import.sparetobot_bot') }}">Botu çalıştır</a>
-                                        <form action="{{ route('admin.import.sparetobot_connect') }}" method="get">
-                                            <button class="btn btn-primary">Bot sonuçlarını eşleştir</button>
-                                            <input type="text" name="batch-id" class="form-control d-inline w-25" placeholder="Batch id">
-                                        </form>
-                                    </div>
-                                    <!--end::Input group-->
-                                </div>
-                                <!--end::Card header-->
                             </div>
-                            <!--end::Card-->
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-2">
+                                    <a class="btn btn-primary me-4" href="{{ route('admin.import.sparetobot_bot') }}">Botu çalıştır</a>
+                                    <form action="{{ route('admin.import.sparetobot_connect') }}" method="get">
+                                        <button class="btn btn-primary">Bot sonuçlarını eşleştir</button>
+                                        <input type="text" name="batch-id" class="form-control d-inline w-25" placeholder="Batch id">
+                                    </form>
+                                </div>
+                                <!--end::Input group-->
+                            </div>
+                            <!--end::Card header-->
                         </div>
+                        <!--end::Card-->
                     </div>
                     <!--end::Main column-->
                 <!--end::Form-->
