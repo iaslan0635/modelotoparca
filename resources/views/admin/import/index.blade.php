@@ -70,7 +70,7 @@
                                     <h2>Bot</h2>
                                     <span class="badge badge-primary mx-4">İçe aktarım kuyruğu: {{ \DB::table("jobs")->where("queue", "import")->count() }}</span>
                                     <span class="badge badge-primary mx-4">Bot kuyruğu: {{ \DB::table("jobs")->where("queue", "spareto")->count() }}</span>
-                                    <span class="badge badge-primary">Bağlantı kuyruğu: {{ \DB::table("jobs")->where("queue", "default")->count() }}</span>
+                                    <span class="badge badge-primary">Bağlantı kuyruğu: {{ \DB::table("jobs")->where("queue", "spareto_connect")->count() }}</span>
                                 </div>
                             </div>
                             <!--end::Card header-->
