@@ -31,7 +31,7 @@ class SparetoConnectJob implements ShouldQueue
 
     private function unapplied()
     {
-        return $this->query()->where("is_connection_applied", false)->where("is_denied", false);
+        return $this->query()->where("is_connection_applied", false);
     }
 
     public function handle(): void
@@ -41,9 +41,6 @@ class SparetoConnectJob implements ShouldQueue
         $filteredConnections = $hasConnectionsOtherThanOem
             ? $this->unapplied()->where("connected_by", "!=", "oem")->get()
             : $this->unapplied()->get();
-
-        if ($hasConnectionsOtherThanOem)
-            $this->unapplied()->where("connected_by", "=", "oem")->update(["is_denied" => true]);
 
         foreach ($filteredConnections as $connection)
             SparetoConnector::connect($connection);
