@@ -14,6 +14,7 @@ use Illuminate\Queue\SerializesModels;
 class SparetoConnectJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    public $queue = "spareto";
 
     public function __construct(
         public readonly int    $productId,
