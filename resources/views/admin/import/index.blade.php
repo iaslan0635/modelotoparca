@@ -79,7 +79,10 @@
                                     <!--begin::Input group-->
                                     <div class="fv-row mb-2">
                                         <a class="btn btn-primary me-4" href="{{ route('admin.import.sparetobot_bot') }}">Botu çalıştır</a>
-                                        <a class="btn btn-primary" href="{{ route('admin.import.sparetobot_connect') }}">Bot sonuçlarını eşleştir</a>
+                                        <form action="{{ route('admin.import.sparetobot_connect') }}" method="get">
+                                            <button class="btn btn-primary">Bot sonuçlarını eşleştir</button>
+                                            <input type="text" name="batch-id" class="form-control d-inline w-25" placeholder="Batch id">
+                                        </form>
                                     </div>
                                     <!--end::Input group-->
                                 </div>

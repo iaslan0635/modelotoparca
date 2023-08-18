@@ -62,7 +62,7 @@ class ImportController extends Controller
 
     public function sparetobot_connect()
     {
-        \Artisan::call("spareto:connect");
+        \Artisan::call("spareto:connect", ["batch-id" => \request()->get("batch-id")]);
         return back();
     }
 }

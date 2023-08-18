@@ -3,15 +3,14 @@
 namespace App\Console\Commands;
 
 use App\Jobs\SparetoConnectJob;
-use App\Models\Product;
 use Illuminate\Console\Command;
 
 class SparetoConnectCommand extends Command
 {
-    protected $signature = 'spareto:connect';
+    protected $signature = 'spareto:connect {batch-id?}';
 
     public function handle()
     {
-        SparetoConnectJob::connectAll(null);
+        SparetoConnectJob::connectAll($this->argument("batch-id"));
     }
 }
