@@ -21,7 +21,6 @@ use Symfony\Component\DomCrawler\Crawler;
 class SparetoBot implements ShouldQueue, ShouldBeUnique
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $queue = "spareto";
 
     public function __construct(
         public readonly string $keyword,

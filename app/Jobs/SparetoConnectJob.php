@@ -14,7 +14,6 @@ use Illuminate\Queue\SerializesModels;
 class SparetoConnectJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $queue = "spareto_connect";
 
     public function __construct(
         public readonly int    $productId,
@@ -52,7 +51,7 @@ class SparetoConnectJob implements ShouldQueue
         $query = Product::query();
         if ($batchId !== null) $query->where("batch_id", $batchId);
         foreach ($query->pluck("id") as $productId) {
-            dispatch(new SparetoConnectJob($productId, $batchId));
+            dispatch(new SparetoConnectJob($productId, $batchId))->onQueue('spareto_connect');
         }
     }
 }
