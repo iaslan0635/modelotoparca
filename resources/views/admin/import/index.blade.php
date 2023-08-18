@@ -21,10 +21,10 @@
             <!--begin::Content container-->
             <div id="kt_app_content_container" class="app-container container-xxl">
                 <!--begin::Form-->
-                <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/apps/ecommerce/catalog/products">
                     <!--begin::Main column-->
                     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                         <div class="d-flex flex-column gap-7 gap-lg-10">
+                            <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="admin/apps/ecommerce/catalog/products">
                             @foreach($routes as $route)
                                 <!--begin::Card-->
                                 <div class="card card-flush py-4">
@@ -62,6 +62,7 @@
                                 </div>
                                 <!--end::Card-->
                             @endforeach
+                            </form>
                             <!--begin::Card-->
                             <div class="card card-flush py-4">
                                 <!--begin::Card header-->
@@ -92,7 +93,6 @@
                         </div>
                     </div>
                     <!--end::Main column-->
-                </form>
                 <!--end::Form-->
             </div>
             <!--end::Content container-->
