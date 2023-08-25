@@ -16,16 +16,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->call(fn() => Log::info("cron works!"))->everyMinute();
-        $schedule->call(function () {
-            if (!DB::table("jobs")->where("queue", "spareto")->exists()) {
-                SparetoConnectJob::connectAll(Cache::get("bot_batch_id"));
-                Cache::set("not_running_bot", true);
-                Cache::delete("bot_batch_id");
-            }
-        })
-            ->skip(fn() => Cache::get("not_running_bot") ?? false)
-            ->everyMinute();
     }
 
     /**

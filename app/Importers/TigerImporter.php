@@ -2,7 +2,7 @@
 
 namespace App\Importers;
 
-use App\Bots\SparetoBot;
+use App\Bots\SparetoBotBatch;
 use App\Facades\SparetoConnector;
 use App\Models\Category;
 use App\Models\Price;
@@ -159,17 +159,15 @@ class TigerImporter extends Importer
                     "code" => $similar
                 ]);
 
-            SparetoBot::dispatchAllFields($product, $batchId);
             $product->searchable();
         }
+
+        SparetoBotBatch::dispatchForAll($batchId);
 
         if (!$this->appendMode)
             Product::whereNot("batch_id", $batchId)->update(["status" => "0"]);
 
         ProductSimilar::query()->searchable();
         Category::query()->searchable();
-
-        \Cache::set("not_running_bot", false);
-        \Cache::set("bot_batch_id", $batchId);
     }
 }
