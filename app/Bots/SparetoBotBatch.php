@@ -36,7 +36,7 @@ class SparetoBotBatch implements ShouldQueue
         }
     }
 
-    public static function dispatchInBatches($botParamsArray, string $batchId, int $batchCount = 32)
+    public static function dispatchInBatches($botParamsArray, string $batchId, int $batchCount = 1000)
     {
         $trait = new class {
             use EnumeratesValues {
@@ -57,7 +57,7 @@ class SparetoBotBatch implements ShouldQueue
             ->dispatch();
     }
 
-    public static function dispatchForAll(string $batchId, int $batchCount = 32)
+    public static function dispatchForAll(string $batchId, int $batchCount = 1000)
     {
         $botToParams = fn(SparetoBot $bot) => [
             "keyword" => $bot->keyword,
