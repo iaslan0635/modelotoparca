@@ -6,7 +6,6 @@ use App\Jobs\SparetoConnectJob;
 use App\Models\Product;
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -15,7 +14,7 @@ use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Traits\EnumeratesValues;
 use Throwable;
 
-class SparetoBotBatch implements ShouldQueue, ShouldBeUnique
+class SparetoBotBatch implements ShouldQueue
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -48,7 +47,9 @@ class SparetoBotBatch implements ShouldQueue, ShouldBeUnique
 
         $botParamsArrayArray = collect($botParamsArray)->chunk(ceil(count($botParamsArray) / $batchCount));
         Bus::batch(
-            $botParamsArrayArray->map(fn($bpa) => new SparetoBotBatch($trait->getArrayableItems($bpa)))
+            $botParamsArrayArray->map(
+                fn($bpa) => (new SparetoBotBatch($trait->getArrayableItems($bpa)))->onQueue("spareto")
+            )
         )->finally(function () use ($batchId) {
             SparetoConnectJob::connectAll($batchId);
         })->dispatch();
