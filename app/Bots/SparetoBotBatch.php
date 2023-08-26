@@ -18,7 +18,6 @@ use Throwable;
 class SparetoBotBatch implements ShouldQueue, ShouldBeUnique
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    use EnumeratesValues;
 
     public function __construct(
         public readonly array $botParamsArray
@@ -40,9 +39,16 @@ class SparetoBotBatch implements ShouldQueue, ShouldBeUnique
 
     public static function dispatchInBatches($botParamsArray, string $batchId, int $batchCount = 32)
     {
+        $trait = new class {
+            use EnumeratesValues {
+                getArrayableItems as public;
+            }
+        };
+
+
         $botParamsArrayArray = collect($botParamsArray)->chunk(ceil(count($botParamsArray) / $batchCount));
         Bus::batch(
-            $botParamsArrayArray->map(fn($bpa) => new SparetoBotBatch($this->getArrayableItems($bpa)))
+            $botParamsArrayArray->map(fn($bpa) => new SparetoBotBatch($trait->getArrayableItems($bpa)))
         )->finally(function () use ($batchId) {
             SparetoConnectJob::connectAll($batchId);
         })->dispatch();
