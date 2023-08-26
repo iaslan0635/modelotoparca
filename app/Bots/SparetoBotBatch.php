@@ -50,9 +50,11 @@ class SparetoBotBatch implements ShouldQueue
             $botParamsArrayArray->map(
                 fn($bpa) => (new SparetoBotBatch($trait->getArrayableItems($bpa)))->onQueue("spareto")
             )
-        )->finally(function () use ($batchId) {
-            SparetoConnectJob::connectAll($batchId);
-        })->dispatch();
+        )->onQueue("spareto")
+            ->finally(function () use ($batchId) {
+                SparetoConnectJob::connectAll($batchId);
+            })
+            ->dispatch();
     }
 
     public static function dispatchForAll(string $batchId, int $batchCount = 32)
