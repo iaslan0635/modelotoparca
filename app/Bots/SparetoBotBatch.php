@@ -12,11 +12,13 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Traits\EnumeratesValues;
 use Throwable;
 
 class SparetoBotBatch implements ShouldQueue, ShouldBeUnique
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use EnumeratesValues;
 
     public function __construct(
         public readonly array $botParamsArray
@@ -39,9 +41,8 @@ class SparetoBotBatch implements ShouldQueue, ShouldBeUnique
     public static function dispatchInBatches($botParamsArray, string $batchId, int $batchCount = 32)
     {
         $botParamsArrayArray = collect($botParamsArray)->chunk(ceil(count($botParamsArray) / $batchCount));
-
         Bus::batch(
-            $botParamsArrayArray->map(fn($bpa) => new SparetoBotBatch($bpa))
+            $botParamsArrayArray->map(fn($bpa) => new SparetoBotBatch($this->getArrayableItems($bpa)))
         )->finally(function () use ($batchId) {
             SparetoConnectJob::connectAll($batchId);
         })->dispatch();

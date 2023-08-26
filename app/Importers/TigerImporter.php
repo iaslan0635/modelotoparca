@@ -158,11 +158,10 @@ class TigerImporter extends Importer
                     "product_id" => $productId,
                     "code" => $similar
                 ]);
-
-            $product->searchable();
         }
 
         SparetoBotBatch::dispatchForAll($batchId);
+        Product::where("batch_id", $batchId)->searchable();
 
         if (!$this->appendMode)
             Product::whereNot("batch_id", $batchId)->update(["status" => "0"]);
