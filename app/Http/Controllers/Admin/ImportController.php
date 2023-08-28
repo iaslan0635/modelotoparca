@@ -12,6 +12,7 @@ use App\Jobs\Import\AppendImportTigerJob;
 use App\Jobs\SparetoConnectJob;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class ImportController extends Controller
 {
@@ -64,5 +65,13 @@ class ImportController extends Controller
     {
         \Artisan::call("spareto:connect", ["batch-id" => \request()->get("batch-id")]);
         return back();
+    }
+
+    public function track_ITEMS_WEB()
+    {
+        return [
+            "current" => Redis::get("tiger_import:progress"),
+            "max" => Redis::get("tiger_import:progress_max"),
+        ];
     }
 }

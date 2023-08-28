@@ -10,25 +10,18 @@ class FilterImporter extends Importer
 {
     const LOGICALREF_COLUMN = "H";
 
-    public function __construct(string $file)
-    {
-        parent::__construct($file);
-    }
-
     public static function getUsedTables(): array
     {
         return ['property_values', 'product_property_value'];
     }
 
-    public function import(?callable $statusHook = null)
+    public function import()
     {
-        $statusHook ??= $this->noop();
-
         $properties = Property::all();
         $transformers = collect($this->getTransformers());
 
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
-            $statusHook($i);
+            $this->status($i);
             $getCell = $this->makeCellGetter($i);
             $id = $getCell(static::LOGICALREF_COLUMN);
 

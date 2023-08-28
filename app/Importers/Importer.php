@@ -2,7 +2,6 @@
 
 namespace App\Importers;
 
-use Illuminate\Support\Facades\App;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
@@ -10,14 +9,17 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 abstract class Importer
 {
     protected Worksheet $sheet;
+    /* @var ?callable */
+    protected $statusHook;
 
     /** @return string[] */
     abstract public static function getUsedTables(): array;
 
-    public function __construct(string $file)
+    public function __construct(string $file, ?callable $statusHook)
     {
         $spreadsheet = (new Xlsx())->load($file);
         $this->sheet = $spreadsheet->getActiveSheet();
+        $this->statusHook = $statusHook;
     }
 
     public function getRowCount(): int
@@ -46,5 +48,10 @@ abstract class Importer
         };
     }
 
-    public abstract function import(callable|null $statusHook = null);
+    protected function status(int $i)
+    {
+        if ($this->statusHook) ($this->statusHook)($i);
+    }
+
+    public abstract function import();
 }

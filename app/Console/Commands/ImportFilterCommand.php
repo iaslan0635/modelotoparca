@@ -10,8 +10,8 @@ class ImportFilterCommand extends ImportCommand
 {
     protected string $importVerb = "filter";
 
-    protected function getImporter(string $file): Importer
+    protected function getImporter(string $file, ?callable $statusHook): Importer
     {
-        return new FilterImporter($file);
+        return new FilterImporter($file, $statusHook);
     }
 }

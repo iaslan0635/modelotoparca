@@ -42,6 +42,7 @@ Route::controller(ImportController::class)->prefix("import")->name("import.")->g
     Route::post("FILTER_OIL", "FILTER_OIL")->name("FILTER_OIL");
     Route::get("sparetobot_bot", "sparetobot_bot")->name("sparetobot_bot");
     Route::get("sparetobot_connect", "sparetobot_connect")->name("sparetobot_connect");
+    Route::get("track_ITEMS_WEB", "track_ITEMS_WEB")->name("track_ITEMS_WEB");
 });
 
 Route::controller(AnalysisController::class)->prefix("analysis")->name("analysis.")->group(function () {

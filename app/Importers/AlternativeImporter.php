@@ -17,11 +17,10 @@ class AlternativeImporter extends Importer
         return $this->sheet->getHighestRow('B');
     }
 
-    public function import(callable|null $statusHook = null)
+    public function import()
     {
-        $statusHook ??= $this->noop();
         $H = $this->getRowCount();
-        Product::withoutSyncingToSearch(function () use ($statusHook, $H) {
+        Product::withoutSyncingToSearch(function () use ($H) {
             $mainRefs = collect($this->sheet->rangeToArray("B2:B$H"))->pluck(0);
             $subRefs = collect($this->sheet->rangeToArray("C2:C$H"))->pluck(0);
 
@@ -34,7 +33,7 @@ class AlternativeImporter extends Importer
             $i = 1;
             foreach ($refMap as $mainRef => $subs) {
                 $i += count($subs);
-                $statusHook($i);
+                $this->status($i);
 
                 foreach ($subs as $sub)
                     DB::table("alternatives")->insertOrIgnore([

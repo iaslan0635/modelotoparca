@@ -25,9 +25,9 @@ class TigerImporter extends Importer
     const IMAGE_11 = 0b10;
     const IMAGE_12 = 0b01;
 
-    public function __construct(string $file, public readonly bool $appendMode = false)
+    public function __construct(string $file, ?callable $statusHook, public readonly bool $appendMode = false)
     {
-        parent::__construct($file);
+        parent::__construct($file, $statusHook);
     }
 
 
@@ -99,12 +99,11 @@ class TigerImporter extends Importer
         ];
     }
 
-    public function import(callable|null $statusHook = null)
+    public function import()
     {
         $batchId = Str::ulid();
-        $statusHook ??= $this->noop();
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
-            $statusHook($i);
+            $this->status($i);
             [
                 "product" => $productData,
                 "price" => $priceData,

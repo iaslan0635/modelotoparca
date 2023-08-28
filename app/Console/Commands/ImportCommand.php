@@ -18,14 +18,21 @@ abstract class ImportCommand extends Command
         parent::__construct();
     }
 
-    protected abstract function getImporter(string $file): Importer;
+    protected abstract function getImporter(string $file, ?callable $statusHook): Importer;
 
     public function handle(): void
     {
         $truncate = $this->option("truncate") && $this->confirm("Truncate all tables to be exported?");
 
         $file = $this->argument("file");
-        $importer = $this->getImporter($file);
+
+
+        $progress = $this->output->createProgressBar();
+        $progress->start();
+
+        $importer = $this->getImporter($file, $progress->setProgress(...));
+        $progress->setMaxSteps($importer->getRowCount());
+        $importer->import();
 
         if ($truncate) {
             $info = new Info($this->output);
@@ -35,9 +42,5 @@ abstract class ImportCommand extends Command
                 $info->render("Truncated $table");
             }
         }
-
-        $progress = $this->output->createProgressBar($importer->getRowCount());
-        $progress->start();
-        $importer->import($progress->setProgress(...));
     }
 }

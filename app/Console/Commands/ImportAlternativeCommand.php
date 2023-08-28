@@ -9,8 +9,8 @@ class ImportAlternativeCommand extends ImportCommand
 {
     protected string $importVerb = "alternative";
 
-    protected function getImporter(string $file): Importer
+    protected function getImporter(string $file, ?callable $statusHook): Importer
     {
-        return new AlternativeImporter($file);
+        return new AlternativeImporter($file, $statusHook);
     }
 }
