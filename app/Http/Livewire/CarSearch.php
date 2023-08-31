@@ -31,7 +31,7 @@ class CarSearch extends Component
 
     public $spesificCars;
 
-    public $homepageVariant;
+    public $variant;
 
     private const HIERARCHY = ['maker', 'car', 'year', 'spesificCar', 'engine'];
 
@@ -72,7 +72,7 @@ class CarSearch extends Component
                     'name' => "$x->power Kw / {$this->kwToHp($x->power)} Hp / $x->capacity cc",
                 ])->toArray();
 
-        return view('livewire.car-search');
+        return view("livewire.car-search.$this->variant-variant");
     }
 
     private function kwToHp(string $kw)

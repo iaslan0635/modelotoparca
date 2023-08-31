@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-    <livewire:car-search :homepage-variant="true"/>
+    <livewire:car-search variant="homepage"/>
     <div class="block block-slideshow">
         <div class="container">
             <div class="block-slideshow__carousel">

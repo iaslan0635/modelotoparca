@@ -1,27 +1,5 @@
 <div class="d-flex flex-column gap-7 gap-lg-10">
-    <!--begin::Card-->
-    <div class="card card-flush py-4">
-        <!--begin::Card header-->
-        <div class="card-header">
-            <!--begin::Card title-->
-            <div class="card-title">
-                <h2>Araç bağlantısı ekle</h2>
-            </div>
-            <!--end::Card title-->
-        </div>
-        <!--end::Card header-->
-        <!--begin::Card body-->
-        <div class="card-body pt-0">
-            <div wire:ignore>
-                <select id="car-connector" class="form-select form-select-transparent" name="..." data-placeholder="...">
-                    <option></option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary mt-4" wire:loading.class="btn-loading" wire:click="connectCar()">Bağla</button>
-        </div>
-        <!--end::Card body-->
-    </div>
-    <!--end::Card-->
+    <livewire:car-search variant="admin" />
     <!--begin::Card-->
     <div class="card card-flush py-4">
         <!--begin::Card header-->
@@ -83,8 +61,8 @@
                     dataType: 'json'
                 }
             });
-
         })
+
         document.addEventListener('livewire:load', () => {
             const component = @this;
             $("#car-connector").on("select2:select", (e) => {

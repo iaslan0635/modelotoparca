@@ -12,18 +12,27 @@ class CarPanel extends Component
     public $product_id;
     public $chosen_car_id;
 
+    protected $listeners = ['submitCarIds' => 'alert'];
+
     public function render()
     {
         return view('livewire.admin.car-panel');
     }
 
-    public function connectCar()
+    public function alert(array $ids)
     {
-        if (!$this->chosen_car_id)
-            return $this->emit("toast", "Araba seçiniz", "error");
+        if (empty($ids))
+            return $this->emit("toast", "Araç seçiniz", "error");
 
+        foreach ($ids as $id) {
+            $this->connectCar($id);
+        }
+    }
+
+    private function connectCar(int $id)
+    {
         $car = ProductCar::firstOrCreate([
-            "car_id" => $this->chosen_car_id,
+            "car_id" => $id,
             "logicalref" => $this->product_id
         ])->car;
 
