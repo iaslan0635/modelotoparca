@@ -10,6 +10,7 @@ use Livewire\Component;
 class SparetoConnectionEditor extends Component
 {
     public Product $product;
+    public ?bool $connectionFilter = null;
 
     public function render()
     {
@@ -26,5 +27,17 @@ class SparetoConnectionEditor extends Component
     {
         SparetoConnector::disconnect(SparetoConnection::findOrFail($id));
         $this->product->refresh();
+    }
+
+    public function applyConnectionFilter(?bool $filter)
+    {
+        $this->connectionFilter = $filter;
+    }
+
+    public function getConnections()
+    {
+        $query = $this->product->sparetoConnections();
+        if ($this->connectionFilter !== null) $query->where("is_connection_applied", $this->connectionFilter);
+        return $query->get();
     }
 }
