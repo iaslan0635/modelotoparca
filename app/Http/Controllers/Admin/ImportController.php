@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Bots\SparetoBot;
 use App\Console\Commands\RunSparetoBotCommand;
 use App\Http\Controllers\Controller;
+use App\Jobs\Import\AppendImportTigerJob;
 use App\Jobs\Import\ImportAlternativeJob;
 use App\Jobs\Import\ImportFilterJob;
-use App\Jobs\Import\ImportTigerJob;
-use App\Jobs\Import\AppendImportTigerJob;
+use App\Jobs\Import\OuterExcelImportJob;
 use App\Jobs\SparetoConnectJob;
-use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
 class ImportController extends Controller
@@ -32,7 +30,7 @@ class ImportController extends Controller
 
     public function ITEMS_WEB()
     {
-        ImportTigerJob::dispatch($this->storeFile())->onQueue(self::QUEUE);
+        OuterExcelImportJob::dispatch($this->storeFile())->onQueue(self::QUEUE);
     }
 
     public function ITEMS_WEB__APPEND()

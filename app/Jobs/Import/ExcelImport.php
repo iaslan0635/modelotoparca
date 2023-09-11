@@ -14,6 +14,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ExcelImport implements ShouldQueue
@@ -236,7 +237,9 @@ class ExcelImport implements ShouldQueue
             'abk' => $product->abk,
         ]);
 
-        $realProduct->categories()->attach($product->dominantref);
+//        DB::table()
+
+        $realProduct->categories()->syncWithoutDetaching([$product->dominantref]);
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $product->price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), "try"),

@@ -57,6 +57,8 @@ HTML;
                     'specifications' => $product['specification']
                 ]);
 
+                \Log::info(json_encode($product['oem']));
+
                 foreach ($product['oem'] as $oem) {
                     ProductOem::firstOrCreate([
                         'logicalref' => $product_id,

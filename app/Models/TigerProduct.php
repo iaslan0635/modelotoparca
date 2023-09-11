@@ -7,14 +7,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TigerProduct extends BaseModel
 {
+    public function getForeignKey()
+    {
+        return "product_id";
+    }
+
     public function vehicles(): BelongsToMany
     {
-        return $this->belongsToMany(Car::class);
+        return $this->belongsToMany(Car::class, 'product_cars', 'logicalref', 'car_id');
     }
 
     public function oems(): HasMany
     {
-        return $this->hasMany(ProductOem::class);
+        return $this->hasMany(ProductOem::class, "logicalref");
     }
 
     public function similars(): HasMany
