@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Importers\Importer;
-use App\Importers\TigerImporter;
+use App\Importers\TigerImportMapper;
 use Illuminate\Support\Facades\Redis;
 
 class ImportTigerCommand extends ImportCommand
@@ -16,7 +16,7 @@ class ImportTigerCommand extends ImportCommand
             Redis::set("tiger_import:progress", $i);
         };
 
-        $importer = new TigerImporter($file,
+        $importer = new TigerImportMapper($file,
             !$statusHook ? $trackingHook :
                 function (int $i) use ($trackingHook, $statusHook) {
                     $trackingHook($i);

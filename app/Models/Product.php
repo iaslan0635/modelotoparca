@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Facades\Garage;
-use App\Importers\TigerImporter;
+use App\Jobs\Import\ExcelImport;
 use App\Packages\Utils;
 use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
@@ -47,9 +47,9 @@ class Product extends BaseModel implements CanVisit
     public function imageUrls(): Collection
     {
         $images = [];
-        if ($this->image_appendix & TigerImporter::IMAGE_11)
+        if ($this->image_appendix & ExcelImport::IMAGE_11)
             $images[] = $this->getImagePath("11");
-        if ($this->image_appendix & TigerImporter::IMAGE_12)
+        if ($this->image_appendix & ExcelImport::IMAGE_12)
             $images[] = $this->getImagePath("12");
 
         return collect($this->databaseImageUrls())->merge($images);
@@ -57,9 +57,9 @@ class Product extends BaseModel implements CanVisit
 
     public function imageUrl()
     {
-        if ($this->image_appendix & TigerImporter::IMAGE_11)
+        if ($this->image_appendix & ExcelImport::IMAGE_11)
             return $this->getImagePath("11");
-        if ($this->image_appendix & TigerImporter::IMAGE_12)
+        if ($this->image_appendix & ExcelImport::IMAGE_12)
             return $this->getImagePath("12");
 
         return $this->databaseImageUrl();
