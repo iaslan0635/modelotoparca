@@ -179,9 +179,10 @@ class ExcelImport implements ShouldQueue
                 'abk' => $this->data['abk'],
             ]);
 
-            $product->similars()->firstOrCreate([
-                'code' => $product->cross_code,
-            ]);
+            if ($product->cross_code)
+                $product->similars()->firstOrCreate([
+                    'code' => $product->cross_code,
+                ]);
 
             $oems = explode(',', $product->oem_codes);
 

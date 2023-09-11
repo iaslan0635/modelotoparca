@@ -36,7 +36,7 @@ class TigerProduct extends BaseModel
                     $old = $model->getOriginal($column);
                     Log::create([
                         'product_id' => $model->id,
-                        'message' => "Değişiklik yapıldı \n Eski: $old, Yeni: $new",
+                        'message' => "Değişiklik yapıldı Kolon : $column \n Eski: $old, Yeni: $new",
                     ]);
                 }
             }

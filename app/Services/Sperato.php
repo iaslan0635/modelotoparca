@@ -16,14 +16,7 @@ class Sperato
 {
     public static function request(string $url)
     {
-        $proxy_ip = '45.141.178.155';
-        $proxy_port = '50100';
-        $proxy_username = 'thehard189';
-        $proxy_password = '6RRZanoS7t';
-
-        $response = Http::withOptions([
-            'proxy' => "http://{$proxy_username}:{$proxy_password}@{$proxy_ip}:{$proxy_port}",
-        ])->withoutVerifying()->get($url);
+        $response = Http::withoutVerifying()->get($url);
 
         // Yanıtı işleme veya görüntüleme
         if ($response->successful()) {
