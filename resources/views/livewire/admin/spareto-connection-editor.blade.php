@@ -1,3 +1,6 @@
+Kapalıyız 😥
+
+{{--
 <table
     class="table table-row-dashed fs-6 gy-5 my-0">
     <thead>
@@ -41,3 +44,4 @@
     @endforeach
     </tbody>
 </table>
+--}}

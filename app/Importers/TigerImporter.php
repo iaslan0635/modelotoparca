@@ -2,14 +2,11 @@
 
 namespace App\Importers;
 
-use App\Bots\SparetoBotBatch;
-use App\Facades\SparetoConnector;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
-use App\Models\SparetoConnection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -130,12 +127,6 @@ class TigerImporter extends Importer
                         break;
                     }
                 }
-                if ($isBotChanged) {
-                    $connections = SparetoConnection::whereNot("connected_by", "manual")->where("product_id", $product->id)->get();
-                    foreach ($connections as $connection) {
-                        SparetoConnector::disconnect($connection, true);
-                    }
-                }
             }
             $product->save();
 
@@ -159,7 +150,6 @@ class TigerImporter extends Importer
                 ]);
         }
 
-        SparetoBotBatch::dispatchForAll($batchId);
         Product::where("batch_id", $batchId)->searchable();
 
         if (!$this->appendMode)
