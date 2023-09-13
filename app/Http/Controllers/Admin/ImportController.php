@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Bots\SparetoBot;
-use App\Console\Commands\RunSparetoBotCommand;
 use App\Http\Controllers\Controller;
 use App\Jobs\Import\AppendImportTigerJob;
 use App\Jobs\Import\ImportAlternativeJob;
 use App\Jobs\Import\ImportFilterJob;
 use App\Jobs\Import\OuterExcelImportJob;
-use App\Jobs\SparetoConnectJob;
-use Illuminate\Support\Facades\Redis;
 
 class ImportController extends Controller
 {
@@ -51,25 +47,5 @@ class ImportController extends Controller
     public function ITMCLSAS()
     {
         abort(500, "Not imlemented");
-    }
-
-    public function sparetobot_bot()
-    {
-        \Artisan::call("spareto:bot");
-        return back();
-    }
-
-    public function sparetobot_connect()
-    {
-        \Artisan::call("spareto:connect", ["batch-id" => \request()->get("batch-id")]);
-        return back();
-    }
-
-    public function track_ITEMS_WEB()
-    {
-        return [
-            "current" => Redis::get("tiger_import:progress"),
-            "max" => Redis::get("tiger_import:progress_max"),
-        ];
     }
 }

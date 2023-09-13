@@ -68,13 +68,7 @@
                             <div class="card-header">
                                 <div class="card-title w-100">
                                     <h2>Bot</h2>
-                                    <span class="badge badge-primary mx-4">İçe aktarım kuyruğu: {{ \DB::table("jobs")->where("queue", "import")->count() }}</span>
-                                    <span class="badge badge-primary mx-4">Bot kuyruğu: {{ \DB::table("jobs")->where("queue", "spareto")->count() }}</span>
-                                    <span class="badge badge-primary">Bağlantı kuyruğu: {{ \DB::table("jobs")->where("queue", "spareto_connect")->count() }}</span>
-                                    <span class="ms-4" style="white-space: nowrap">Tiger Import:</span>
-                                    <div class="progress w-100 ms-4" role="progressbar">
-                                        <div id="ITEMS_WEB-progress" class="progress-bar bg-primary" style="width: 0"></div>
-                                    </div>
+                                    <span class="badge badge-primary mx-4">İşlem kuyruğu: {{ \DB::table("jobs")->where("queue", "defualt")->count() }}</span>
                                 </div>
                             </div>
                             <!--end::Card header-->
