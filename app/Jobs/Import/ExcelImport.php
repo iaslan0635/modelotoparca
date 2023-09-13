@@ -14,7 +14,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ExcelImport implements ShouldQueue
@@ -201,7 +200,13 @@ class ExcelImport implements ShouldQueue
             ];
 
             foreach ($search_predence as $field) {
-                if (strlen($this->data[$field]) > 0) {
+                if (strlen($this->data[$field]) === 0) continue;
+                if ($field === "oem_codes") {
+                    $oems = explode(",", $this->data[$field]);
+                    foreach ($oems as $oem) {
+                        Sperato::smash($oem, $product->id);
+                    }
+                } else {
                     $found = Sperato::smash($this->data[$field], $product->id);
                     if ($found) break;
                 }
