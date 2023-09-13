@@ -8,7 +8,10 @@
                 <!--begin::Page title-->
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
-                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">İçe aktar</h1>
+                    <h1 class="page-heading">
+                        İçe aktar
+                        <span class="d-inline badge badge-primary mx-4">İşlem kuyruğu: {{ \DB::table("jobs")->count() }}</span>
+                    </h1>
                     <!--end::Title-->
                 </div>
                 <!--end::Page title-->
@@ -62,31 +65,6 @@
                                 <!--end::Card-->
                             @endforeach
                         </form>
-                        <!--begin::Card-->
-                        <div class="card card-flush py-4">
-                            <!--begin::Card header-->
-                            <div class="card-header">
-                                <div class="card-title w-100">
-                                    <h2>Bot</h2>
-                                    <span class="badge badge-primary mx-4">İşlem kuyruğu: {{ \DB::table("jobs")->where("queue", "defualt")->count() }}</span>
-                                </div>
-                            </div>
-                            <!--end::Card header-->
-                            <!--begin::Card body-->
-                            <div class="card-body pt-0">
-                                <!--begin::Input group-->
-                                <div class="fv-row mb-2">
-                                    <a class="btn btn-primary me-4" href="{{ route('admin.import.sparetobot_bot') }}">Botu çalıştır</a>
-                                    <form action="{{ route('admin.import.sparetobot_connect') }}" method="get">
-                                        <button class="btn btn-primary">Bot sonuçlarını eşleştir</button>
-                                        <input type="text" name="batch-id" class="form-control d-inline w-25" placeholder="Batch id">
-                                    </form>
-                                </div>
-                                <!--end::Input group-->
-                            </div>
-                            <!--end::Card header-->
-                        </div>
-                        <!--end::Card-->
                     </div>
                     <!--end::Main column-->
                 <!--end::Form-->
