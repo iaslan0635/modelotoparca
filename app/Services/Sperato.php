@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Car;
 use App\Models\Log;
 use App\Models\Product;
 use App\Models\ProductOem;
@@ -64,24 +65,12 @@ HTML;
                     ]);
                 }
 
-                /*
-                TODO: connect maker
+                $productModel = Product::find($product_id);
                 foreach ($product['vehicles'] as $vehicle) {
-                    [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
-                    $vehic = Car::firstOrCreate([
-                        'permalink' => $vehicle['permalink'],
-                    ], [
-                        'name' => $vehicle['model'],
-                        'short_name' => $vehicle['short_name'],
-                        'produced_from' => $from,
-                        'produced_to' => $to,
-                        'power' => $vehicle['power'],
-//                        'hp' => $vehicle['hp'],
-                    ]);
-
-                    $thisProduct->vehicles()->attach($vehic->id);
+//                    [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
+                    $carId = Car::where('permalink', $vehicle['permalink'])->value("id");
+                    if ($carId) $productModel->cars()->attach($carId);
                 }
-                */
             }
         } else {
             Log::create([
