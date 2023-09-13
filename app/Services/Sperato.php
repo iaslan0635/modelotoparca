@@ -2,10 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Car;
-use App\Models\CrossCode;
 use App\Models\Log;
-use App\Models\Oem;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
