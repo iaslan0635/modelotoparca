@@ -70,7 +70,10 @@ class Product extends BaseModel implements CanVisit
         $cars = $this->cars->filter(fn(Car $car) => $car->indexable && $car->body_type !== "truck" && $car->body_type !== "urban_bus"
         )->values();
         $regex = fn($s) => strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $s));
+
         $similars = collect(explode(",", $this->similar_product_codes))->map(fn($s) => trim($s));
+        $similars->push(...$this->similarCodes->map(fn(ProductSimilar $ps) => $ps->code));
+
         return [
             'id' => $this->id,
             'title' => $this->title,
@@ -130,6 +133,11 @@ class Product extends BaseModel implements CanVisit
         return $this
             ->belongsToMany(Product::class, 'product_similars', 'product_id', 'code', 'id', 'producercode')
             ->where('products.id', '!=', $this->id);
+    }
+
+    public function similarCodes()
+    {
+        return $this->hasMany(ProductSimilar::class);
     }
 
     public function alternatives(): BelongsToMany
