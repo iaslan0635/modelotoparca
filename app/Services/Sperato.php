@@ -35,38 +35,46 @@ HTML;
         $links = [];
 
         $products = $crawler->filter('#products-js')->filter('.card-col');
+        if ($products->count() <= 0) {
+            Log::create([
+                'product_id' => $product_id,
+                'message' => 'Ürün bulunamadı, Kelime : ' . $keyword,
+            ]);
 
-        if ($products->count() > 0) {
-            $products->each(function ($cardElement) use (&$links) {
-                $links[] = $cardElement->filter('a')->attr('href');
-            });
+            return false;
+        }
 
-            for ($i = 0; $i <= 0; $i++) {
-                $product = self::getProduct($links[$i]);
+        $products->each(function ($cardElement) use (&$links) {
+            $links[] = $cardElement->filter('a')->attr('href');
+        });
 
-                Product::query()->where("id", $product_id)->update([
-                    'dimensions' => $product['dimension'],
-                    'specifications' => $product['specification']
+        for ($i = 0; $i <= 0; $i++) {
+            $product = self::getProduct($links[$i]);
+
+            Product::query()->where("id", $product_id)->update([
+                'dimensions' => $product['dimension'],
+                'specifications' => $product['specification']
+            ]);
+
+            \Log::info(json_encode($product['oem']));
+
+            foreach ($product['oem'] as $oem) {
+                ProductOem::firstOrCreate([
+                    'logicalref' => $product_id,
+                    'oem' => $oem,
+                    'brand' => ""
                 ]);
+            }
 
-                \Log::info(json_encode($product['oem']));
+            foreach ($product['cross'] as $cross) {
+                ProductSimilar::firstOrCreate([
+                    'product_id' => $product_id,
+                    'code' => $cross,
+                ]);
+            }
 
-                foreach ($product['oem'] as $oem) {
-                    ProductOem::firstOrCreate([
-                        'logicalref' => $product_id,
-                        'oem' => $oem,
-                        'brand' => ""
-                    ]);
-                }
-
-                foreach ($product['cross'] as $cross) {
-                    ProductSimilar::firstOrCreate([
-                        'product_id' => $product_id,
-                        'code' => $cross,
-                    ]);
-                }
-
-                $productModel = Product::find($product_id);
+            $productModel = Product::find($product_id);
+            if ($productModel)
                 foreach ($product['vehicles'] as $vehicle) {
                     [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
                     $car = Car::where('permalink', $vehicle['permalink'])->first("id");
@@ -86,15 +94,9 @@ HTML;
                     }
                     $productModel->cars()->syncWithoutDetaching([$car->id]);
                 }
-            }
-        } else {
-            Log::create([
-                'product_id' => $product_id,
-                'message' => 'Ürün bulunamadı, Kelime : ' . $keyword,
-            ]);
         }
 
-        return $products->count() > 0;
+        return true;
     }
 
     public static function getProduct(string $url): array
