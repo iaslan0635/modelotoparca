@@ -12,7 +12,7 @@ class TigerProduct extends BaseModel
         return "product_id";
     }
 
-    public function vehicles(): BelongsToMany
+    public function cars(): BelongsToMany
     {
         return $this->belongsToMany(Car::class, 'product_cars', 'logicalref', 'car_id');
     }

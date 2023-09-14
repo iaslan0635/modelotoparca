@@ -100,7 +100,7 @@ class ExcelImport implements ShouldQueue
                         ->where('logicalref', $product->id)
                         ->delete();
 
-                    $product->vehicles()->sync([]);
+                    $product->cars()->sync([]);
                     $product->update([
                         'producercode' => $this->data['producercode'],
                         'cross_code' => $this->data['cross_code'],
