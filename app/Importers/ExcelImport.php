@@ -3,8 +3,9 @@
 namespace App\Importers;
 
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class ExcelImport implements ToModel
+class ExcelImport implements ToModel, WithStartRow
 {
     /**
      * @return \Illuminate\Database\Eloquent\Model|null
@@ -56,5 +57,10 @@ class ExcelImport implements ToModel
         dispatch(new \App\Jobs\Import\ExcelImport($productData));
 
         return null;
+    }
+
+    public function startRow(): int
+    {
+        return 1;
     }
 }
