@@ -129,7 +129,8 @@ class ExcelImport implements ShouldQueue
                             Sperato::smash($oem, $product->id);
                         }
                     } else {
-                        Sperato::smash($this->data[$alan], $product->id);
+                        if($this->data[$alan])
+                            Sperato::smash($this->data[$alan], $product->id);
                     }
                     $degisiklikYapildi = true;
                 }
