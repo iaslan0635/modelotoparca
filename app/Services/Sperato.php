@@ -91,6 +91,7 @@ HTML;
                         'maker_id' => $makerId
                     ]);
                 }
+
                 ProductCar::firstOrCreate([
                     "logicalref" => $product_id,
                     "car_id" => $car->id
