@@ -245,7 +245,7 @@ class ExcelImport implements ShouldQueue
 
 //        DB::table()
 
-        $realProduct->categories()->syncWithoutDetaching([$product->dominantref]);
+        $realProduct->categories()->sync([$product->dominantref]);
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $product->price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), "try"),
