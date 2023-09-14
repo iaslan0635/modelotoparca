@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\Log;
 use App\Models\Maker;
 use App\Models\Product;
+use App\Models\ProductCar;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
 use Illuminate\Support\Facades\Http;
@@ -73,27 +74,28 @@ HTML;
                 ]);
             }
 
-            $productModel = Product::find($product_id);
-            if ($productModel)
-                foreach ($product['vehicles'] as $vehicle) {
-                    [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
-                    $car = Car::where('permalink', $vehicle['permalink'])->first("id");
-                    if (!$car) {
-                        $makerSlug = explode("/", $vehicle['permalink'])[0];
-                        $maker = Maker::where("permalink", "vehicles/$makerSlug")->first("id");
-                        $makerId = $maker ? $maker->id : 0;
-                        $car = Car::create([
-                            'permalink' => $vehicle['permalink'],
-                            'name' => $vehicle['model'],
-                            'short_name' => $vehicle['short_name'],
-                            'produced_from' => $from,
-                            'produced_to' => $to,
-                            'power' => $vehicle['power'],
-                            'maker_id' => $makerId
-                        ]);
-                    }
-                    $productModel->cars()->syncWithoutDetaching([$car->id]);
+            foreach ($product['vehicles'] as $vehicle) {
+                [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
+                $car = Car::where('permalink', $vehicle['permalink'])->first("id");
+                if (!$car) {
+                    $makerSlug = explode("/", $vehicle['permalink'])[0];
+                    $maker = Maker::where("permalink", "vehicles/$makerSlug")->first("id");
+                    $makerId = $maker ? $maker->id : 0;
+                    $car = Car::create([
+                        'permalink' => $vehicle['permalink'],
+                        'name' => $vehicle['model'],
+                        'short_name' => $vehicle['short_name'],
+                        'produced_from' => $from,
+                        'produced_to' => $to,
+                        'power' => $vehicle['power'],
+                        'maker_id' => $makerId
+                    ]);
                 }
+                ProductCar::firstOrCreate([
+                    "logicalref" => $product_id,
+                    "car_id" => $car->id
+                ]);
+            }
         }
 
         return true;
