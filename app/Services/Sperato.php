@@ -84,7 +84,7 @@ HTML;
                             'maker_id' => $makerId
                         ]);
                     }
-                    $productModel->cars()->attach($car->id);
+                    $productModel->cars()->syncWithoutDetaching([$car->id]);
                 }
             }
         } else {
