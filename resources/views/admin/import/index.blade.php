@@ -89,13 +89,6 @@
                 headers: {"X-CSRF-TOKEN": "{{ csrf_token() }}"}
             })
         @endforeach
-
-        const trackRoute = @js(route("admin.import.track_ITEMS_WEB"));
-        const progress = document.querySelector("#ITEMS_WEB-progress")
-        setInterval(async () => {
-            const {current, max} = await (await fetch(trackRoute)).json()
-            progress.style.width = ((100 * current) / max) + "%"
-        }, 1000)
     </script>
     <script src="assets/js/widgets.bundle.js"></script>
     <script src="assets/js/custom/widgets.js"></script>
