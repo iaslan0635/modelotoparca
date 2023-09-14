@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Car;
 use App\Models\Log;
+use App\Models\Maker;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
@@ -67,9 +68,23 @@ HTML;
 
                 $productModel = Product::find($product_id);
                 foreach ($product['vehicles'] as $vehicle) {
-//                    [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
-                    $carId = Car::where('permalink', $vehicle['permalink'])->value("id");
-                    if ($carId) $productModel->cars()->attach($carId);
+                    [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
+                    $car = Car::where('permalink', $vehicle['permalink'])->first("id");
+                    if (!$car) {
+                        $makerSlug = explode("/", $vehicle['permalink'])[0];
+                        $maker = Maker::where("permalink", "vehicles/$makerSlug")->first("id");
+                        $makerId = $maker ? $maker->id : 0;
+                        $car = Car::create([
+                            'permalink' => $vehicle['permalink'],
+                            'name' => $vehicle['model'],
+                            'short_name' => $vehicle['short_name'],
+                            'produced_from' => $from,
+                            'produced_to' => $to,
+                            'power' => $vehicle['power'],
+                            'maker_id' => $makerId
+                        ]);
+                    }
+                    $productModel->cars()->attach($car->id);
                 }
             }
         } else {
