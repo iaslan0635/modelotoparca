@@ -10,6 +10,7 @@ use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,6 +19,13 @@ Route::get('/', function () {
     $featured_products = Product::query()->limit(20)->with("price:id,price,currency,product_id")->get(["id", "slug", "sku", "title", "image_appendix"]);
     return view('home', compact('categories', 'featured_products'));
 })->name('welcome');
+
+Route::get('ip', function (){
+    return Http::withOptions([
+        'proxy' => 'socks5://127.0.0.1:9050',
+        'connect_timeout' => 60
+    ])->withoutVerifying()->get('icanhazip.com')->body();
+});
 
 Route::view('search', 'search')->name('search');
 Route::view('product-list', 'product-list')->name('product-list');
