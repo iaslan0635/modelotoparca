@@ -20,13 +20,6 @@ Route::get('/', function () {
     return view('home', compact('categories', 'featured_products'));
 })->name('welcome');
 
-Route::get('ip', function (){
-    return Http::withOptions([
-        'proxy' => 'socks5://127.0.0.1:9050',
-        'connect_timeout' => 60
-    ])->withoutVerifying()->get(request()->query('url'))->body();
-});
-
 Route::view('search', 'search')->name('search');
 Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');

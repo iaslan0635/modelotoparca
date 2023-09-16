@@ -16,7 +16,10 @@ class Sperato
 {
     public static function request(string $url)
     {
-        $response = Http::withoutVerifying()->get($url);
+        $response = Http::withOptions([
+            'proxy' => 'socks5://127.0.0.1:9050',
+            'connect_timeout' => 60
+        ])->withoutVerifying()->get($url);
 
         // Yanıtı işleme veya görüntüleme
         if ($response->successful()) {
