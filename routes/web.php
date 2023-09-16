@@ -24,7 +24,7 @@ Route::get('ip', function (){
     return Http::withOptions([
         'proxy' => 'socks5://127.0.0.1:9050',
         'connect_timeout' => 60
-    ])->withoutVerifying()->get('icanhazip.com')->body();
+    ])->withoutVerifying()->get(request()->query('url'))->body();
 });
 
 Route::view('search', 'search')->name('search');
