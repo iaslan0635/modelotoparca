@@ -308,7 +308,7 @@
                                     @if(!$product->model())
                                         <div class="products-list__item">
                                             <div class="d-block product-card text-center">
-                                                Model yok
+                                                Model yok (ref: {{ $product->document()->id() }})
                                             </div>
                                         </div>
                                         @continue
