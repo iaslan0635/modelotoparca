@@ -356,7 +356,7 @@
                                                         <div class="product-card__badges">
                                                             <div class="tag-badge tag-badge--sale">{{ $product->model()?->brand->name }}</div>
                                                         </div>
-                                                        <a href="{{ route('product.show', $product->model()) }}">{{ $product->model()?->fullTitle }}</a>
+                                                        <a href="{{ $product->model() ? route('product.show', $product->model()) : "" }}">{{ $product->model()?->fullTitle }}</a>
                                                     </div>
                                                 </div>
                                                 <div class="product-card__features">
