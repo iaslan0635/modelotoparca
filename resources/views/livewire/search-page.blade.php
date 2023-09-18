@@ -306,6 +306,11 @@
                             <div class="products-list__content" wire:loading.remove>
                                 @foreach($products as $product)
                                     @if(!$product->model())
+                                        <div class="products-list__item">
+                                            <div class="d-block product-card text-center">
+                                                Model yok
+                                            </div>
+                                        </div>
                                         @continue
                                     @endif
                                     <div class="products-list__item">
