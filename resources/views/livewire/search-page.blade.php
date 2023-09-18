@@ -305,6 +305,9 @@
                             </div>
                             <div class="products-list__content" wire:loading.remove>
                                 @foreach($products as $product)
+                                    @if(!$product->model())
+                                        @continue
+                                    @endif
                                     <div class="products-list__item">
                                         <div class="product-card">
                                             <div class="product-card__actions-list">
@@ -340,7 +343,7 @@
                                             </div>
                                             <div class="product-card__image">
                                                 <div class="image image--type--product">
-                                                    <a href="{{ $product->model() ? route('product.show', $product->model()) : "" }}"
+                                                    <a href="{{ route('product.show', $product->model()) }}"
                                                        class="image__body">
                                                         <img loading="lazy" class="image__tag"
                                                              src="{{ $product->model()?->imageUrl() }}" alt="">
@@ -356,7 +359,7 @@
                                                         <div class="product-card__badges">
                                                             <div class="tag-badge tag-badge--sale">{{ $product->model()?->brand->name }}</div>
                                                         </div>
-                                                        <a href="{{ $product->model() ? route('product.show', $product->model()) : "" }}">{{ $product->model()?->fullTitle }}</a>
+                                                        <a href="{{ route('product.show', $product->model()) }}">{{ $product->model()?->fullTitle }}</a>
                                                     </div>
                                                 </div>
                                                 <div class="product-card__features">
