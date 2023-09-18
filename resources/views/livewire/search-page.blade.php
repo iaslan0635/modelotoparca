@@ -340,7 +340,7 @@
                                             </div>
                                             <div class="product-card__image">
                                                 <div class="image image--type--product">
-                                                    <a href="{{ route('product.show', $product->model()) }}"
+                                                    <a href="{{ $product->model() ? route('product.show', $product->model()) : "" }}"
                                                        class="image__body">
                                                         <img loading="lazy" class="image__tag"
                                                              src="{{ $product->model()?->imageUrl() }}" alt="">
