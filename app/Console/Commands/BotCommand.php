@@ -14,7 +14,14 @@ class BotCommand extends Command
     {
         $ids = TigerProduct::query()->pluck("id");
 
-        $this->withProgressBar($ids, $this->handleProduct(...));
+        $this->withProgressBar($ids, function (int $id) {
+            try {
+                $this->handleProduct($id);
+            } catch (\Throwable $throwable) {
+                $this->info("Exception on $id");
+                report($throwable);
+            }
+        });
     }
 
     public function handleProduct(int $productId)
