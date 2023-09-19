@@ -77,6 +77,12 @@ HTML;
                 ]);
             }
 
+            \DB::table("semih")->insert([
+                'product_id' => $product_id,
+                'text' => json_encode($product['vehicles'])
+            ]);
+
+
             foreach ($product['vehicles'] as $vehicle) {
                 [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
                 $car = Car::where('permalink', $vehicle['permalink'])->first("id");

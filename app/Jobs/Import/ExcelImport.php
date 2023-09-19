@@ -108,7 +108,6 @@ class ExcelImport implements ShouldQueue
                         'producercode2' => $this->data['producercode2'],
                         'abk' => $this->data['abk'],
                     ]);
-
                     if ($this->data['cross_code']) {
                         $product->similars()->firstOrCreate([
                             'code' => $this->data['cross_code'],
