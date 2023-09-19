@@ -52,8 +52,9 @@ HTML;
             $links[] = $cardElement->filter('a')->attr('href');
         });
 
-        for ($i = 0; $i <= 0; $i++) {
-            $product = self::getProduct($links[$i]);
+
+        foreach ($links as $link) {
+            $product = self::getProduct($link);
 
             Product::query()->where("id", $product_id)->update([
                 'dimensions' => $product['dimension'],
