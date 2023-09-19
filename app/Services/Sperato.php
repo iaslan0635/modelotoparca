@@ -79,7 +79,7 @@ HTML;
 
             \DB::table("semih")->insert([
                 'product_id' => $product_id,
-                'text' => json_encode($product['vehicles'])
+                'text' => json_encode($product)
             ]);
 
 
