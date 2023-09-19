@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Product;
+use App\Models\TigerProduct;
 use App\Services\Sperato;
 use Illuminate\Console\Command;
 
@@ -12,14 +12,14 @@ class BotCommand extends Command
 
     public function handle(): void
     {
-        $ids = Product::query()->pluck("id");
+        $ids = TigerProduct::query()->pluck("id");
 
         $this->withProgressBar($ids, $this->handleProduct(...));
     }
 
     public function handleProduct(int $productId)
     {
-        $product = Product::findOrFail($productId);
+        $product = TigerProduct::findOrFail($productId);
         $search_predence = [
             'abk',
             'producercode',
