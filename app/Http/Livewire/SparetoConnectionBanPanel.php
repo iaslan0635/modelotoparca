@@ -16,11 +16,11 @@ class SparetoConnectionBanPanel extends Component
 
     public function ban()
     {
-        $this->url->update(["is_banned" => true]);
+        SparetoProduct::where('id', $this->url->id)->update(["is_banned" => true]);
     }
 
     public function unban()
     {
-        $this->url->update(["is_banned" => false]);
+        SparetoProduct::where('id', $this->url->id)->update(["is_banned" => false]);
     }
 }
