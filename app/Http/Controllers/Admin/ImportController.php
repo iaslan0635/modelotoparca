@@ -10,8 +10,6 @@ use App\Jobs\Import\OuterExcelImportJob;
 
 class ImportController extends Controller
 {
-    protected const QUEUE = "import";
-
     public function index()
     {
         return view("admin.import.index", ["routes" => ["ITEMS_WEB", "ITEMS_WEB__APPEND", "ITEMSUBS", "ITMCLSAS", "FILTER_OIL"]]);
@@ -26,22 +24,22 @@ class ImportController extends Controller
 
     public function ITEMS_WEB()
     {
-        OuterExcelImportJob::dispatch($this->storeFile())->onQueue(self::QUEUE);
+        OuterExcelImportJob::dispatch($this->storeFile());
     }
 
     public function ITEMS_WEB__APPEND()
     {
-        AppendImportTigerJob::dispatch($this->storeFile())->onQueue(self::QUEUE);
+        AppendImportTigerJob::dispatch($this->storeFile());
     }
 
     public function ITEMSUBS()
     {
-        ImportAlternativeJob::dispatch($this->storeFile())->onQueue(self::QUEUE);
+        ImportAlternativeJob::dispatch($this->storeFile());
     }
 
     public function FILTER_OIL()
     {
-        ImportFilterJob::dispatch($this->storeFile())->onQueue(self::QUEUE);
+        ImportFilterJob::dispatch($this->storeFile());
     }
 
     public function ITMCLSAS()
