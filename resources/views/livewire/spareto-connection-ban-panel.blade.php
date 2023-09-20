@@ -4,7 +4,13 @@
             {{$url->url}}
         </a>
     </td>
-    <td>{{$url->is_banned ? "Evet" : "Hayır"}}</td>
+    <td>
+        @if($url->is_banned)
+            <span class="badge rounded-pill text-bg-danger">Hayır</span>
+        @else
+            <span class="badge rounded-pill text-bg-primary">Evet</span>
+        @endif
+    </td>
     <td>
         @if($url->is_banned)
             <button class="btn btn-success" wire:click="unban" wire:loading.attr="disabled">
