@@ -376,7 +376,7 @@
                                         <div class="card-header">
                                             <!--begin::Card title-->
                                             <div class="card-title">
-                                                <h2>Spareto Ürün Eşleşmeleri</h2>
+                                                <h2>Spareto Ürün Eşleşmeleri ({{ count($product->sparetoUrls) }})</h2>
                                             </div>
                                             <!--end::Card title-->
                                         </div>
