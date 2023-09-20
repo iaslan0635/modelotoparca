@@ -1,5 +1,9 @@
 <tr>
-    <td>{{$url->url}}</td>
+    <td>
+        <a href="{{'https://spareto.com'.$url->url}}" target="_blank">
+            {{$url->url}}
+        </a>
+    </td>
     <td>{{$url->is_banned ? "Evet" : "Hayır"}}</td>
     <td>
         @if($url->is_banned)
