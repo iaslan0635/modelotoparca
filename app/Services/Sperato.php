@@ -43,7 +43,7 @@ HTML;
         if ($products->count() <= 0) {
             Log::create([
                 'product_id' => $product_id,
-                'message' => 'Ürün bulunamadı, Kelime : ' . $keyword,
+                'message' => 'Ürün bulunamadı, Kelime: ' . $keyword,
             ]);
 
             return false;
@@ -67,11 +67,10 @@ HTML;
 
             \Log::info(json_encode($product['oem']));
 
-            foreach ($product['oem'] as $oem) {
+            foreach ($product['oem'] as $pair) {
                 ProductOem::firstOrCreate([
                     'logicalref' => $product_id,
-                    'oem' => $oem,
-                    'brand' => ""
+                    ...$pair
                 ]);
             }
 
@@ -166,12 +165,13 @@ HTML;
                 if ($divElement->nodeName() === 'h3') {
                     $stop = true;
                 } elseif (!$stop) {
+                    $brand = $divElement->filter(".col-md-2.col-4.pl-4")->text();
                     $divElements = $divElement->filter('.col-md-10.col-8');
-                    $divElements->each(function (Crawler $divElement) use (&$oem, &$cross) {
+                    $divElements->each(function (Crawler $divElement) use ($brand, &$oem, &$cross) {
                         $innerElements = $divElement->filter('span, a');
 
-                        $innerElements->each(function (Crawler $innerElement) use (&$oem, &$cross) {
-                            $oem[] = $innerElement->text();
+                        $innerElements->each(function (Crawler $innerElement) use ($brand, &$oem, &$cross) {
+                            $oem[] = ["brand" => $brand, "oem" => $innerElement->text()];
                         });
                     });
                 }
