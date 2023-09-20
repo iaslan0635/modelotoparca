@@ -6,9 +6,9 @@
     </td>
     <td>
         @if($url->is_banned)
-            <span class="badge rounded-pill text-white text-bg-success">Hayır</span>
+            <span class="badge rounded-pill text-white text-bg-success">Evet</span>
         @else
-            <span class="badge rounded-pill text-white text-bg-danger">Evet</span>
+            <span class="badge rounded-pill text-white text-bg-danger">Hayır</span>
         @endif
     </td>
     <td>
