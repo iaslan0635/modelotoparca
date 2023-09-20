@@ -6,6 +6,7 @@ use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
+use App\Models\SparetoProduct;
 use App\Models\TigerProduct;
 use App\Services\Sperato;
 use Illuminate\Bus\Queueable;
@@ -133,6 +134,8 @@ class ExcelImport implements ShouldQueue
                     }
                 }
             }
+
+            if ($degisiklikYapildi) SparetoProduct::where('product_id', $product->id)->delete();
         } else {
             $product = TigerProduct::create([
                 'id' => $this->data['id'],
