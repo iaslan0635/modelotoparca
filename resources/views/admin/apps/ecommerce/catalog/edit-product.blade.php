@@ -363,19 +363,6 @@
                                         <div class="card-header">
                                             <!--begin::Card title-->
                                             <div class="card-title">
-                                                <h2>Spareto Ürün bağlantısı ekle</h2>
-                                            </div>
-                                            <!--end::Card title-->
-                                        </div>
-                                        <!--end::Card header-->
-                                    </div>
-                                    <!--end::Card-->
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
                                                 <h2>Spareto Ürün Eşleşmeleri ({{ count($product->sparetoUrls) }})</h2>
                                             </div>
                                             <!--end::Card title-->
