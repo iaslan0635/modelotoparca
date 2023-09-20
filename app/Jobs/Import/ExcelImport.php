@@ -102,6 +102,8 @@ class ExcelImport implements ShouldQueue
                         ->delete();
 
                     $product->cars()->sync([]);
+                    SparetoProduct::where('product_id', $product->id)->delete();
+
                     $product->update([
                         'producercode' => $this->data['producercode'],
                         'cross_code' => $this->data['cross_code'],
@@ -134,8 +136,6 @@ class ExcelImport implements ShouldQueue
                     }
                 }
             }
-
-            if ($degisiklikYapildi) SparetoProduct::where('product_id', $product->id)->delete();
         } else {
             $product = TigerProduct::create([
                 'id' => $this->data['id'],
