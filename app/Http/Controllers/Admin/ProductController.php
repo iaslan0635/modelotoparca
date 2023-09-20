@@ -6,6 +6,7 @@ use App\Facades\SparetoConnector;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController as CustomerProductController;
 use App\Models\Car;
+use App\Models\Log;
 use App\Models\Product;
 use App\Models\SparetoConnection;
 use App\Models\SparetoProduct;
@@ -34,7 +35,9 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view("admin.apps.ecommerce.catalog.edit-product", CustomerProductController::getViewData($product));
+        return view("admin.apps.ecommerce.catalog.edit-product",
+            [...CustomerProductController::getViewData($product), "logs" => Log::where("product_id", $product->id)->orderByDesc("created_at")->get()]
+        );
     }
     public function push_oem(Product $product, Request $request)
     {
