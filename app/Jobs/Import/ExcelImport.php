@@ -125,13 +125,12 @@ class ExcelImport implements ShouldQueue
                     if ($alan === "oem_codes") {
                         $oems = explode(",", $this->data[$alan]);
                         foreach ($oems as $oem) {
-                            Sperato::smash($oem, $product->id);
+                            $degisiklikYapildi = Sperato::smash($oem, $product->id);
                         }
                     } else {
                         if($this->data[$alan])
-                            Sperato::smash($this->data[$alan], $product->id);
+                            $degisiklikYapildi = Sperato::smash($this->data[$alan], $product->id);
                     }
-                    $degisiklikYapildi = true;
                 }
             }
         } else {
