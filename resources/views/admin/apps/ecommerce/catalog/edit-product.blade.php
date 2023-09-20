@@ -368,14 +368,6 @@
                                             <!--end::Card title-->
                                         </div>
                                         <!--end::Card header-->
-                                        <!--begin::Card body-->
-                                        <div class="card-body pt-0">
-                                            <form action="{{ route('admin.products.edit.spareto', $product) }}">
-                                                <input name="url" type="text" class="form-control" placeholder="https://spareto.com/products/..."/>
-                                                <button type="submit" class="btn btn-primary mt-4">Bağla</button>
-                                            </form>
-                                        </div>
-                                        <!--end::Card body-->
                                     </div>
                                     <!--end::Card-->
                                     <!--begin::Card-->
@@ -384,13 +376,27 @@
                                         <div class="card-header">
                                             <!--begin::Card title-->
                                             <div class="card-title">
-                                                <h2>Spareto Ürün Eşleşmeleri (Bağlantı önerileri)</h2>
+                                                <h2>Spareto Ürün Eşleşmeleri</h2>
                                             </div>
                                             <!--end::Card title-->
                                         </div>
                                         <!--end::Card header-->
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
+                                            <table class="table table-responsive">
+                                                <thead>
+                                                <tr>
+                                                    <th>Url</th>
+                                                    <th>Yasaklı mı?</th>
+                                                    <th>İşlemler</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($product->sparetoUrls as $url)
+                                                    <livewire:spareto-connection-ban-panel :url="$url" />
+                                                @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
                                         <!--end::Card body-->
                                     </div>

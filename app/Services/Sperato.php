@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
+use App\Models\SparetoProduct;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -53,7 +54,10 @@ HTML;
         });
 
 
+        $added = false;
         foreach ($links as $link) {
+            $connection = SparetoProduct::firstOrCreate(['product_id' => $product_id, 'url' => $link]);
+            if ($connection->is_banned) continue;
             $product = self::getProduct($link);
 
             Product::query()->where("id", $product_id)->update([
@@ -77,11 +81,6 @@ HTML;
                     'code' => $cross,
                 ]);
             }
-
-            \DB::table("semih")->insert([
-                'product_id' => $product_id,
-                'text' => json_encode($product)
-            ]);
 
 
             foreach ($product['vehicles'] as $vehicle) {
@@ -107,9 +106,11 @@ HTML;
                     "car_id" => $car->id
                 ]);
             }
+
+            $added = true;
         }
 
-        return true;
+        return $added;
     }
 
     public static function getProduct(string $url): array

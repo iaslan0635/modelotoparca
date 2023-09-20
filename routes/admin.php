@@ -19,11 +19,13 @@ $temp = function () {
 Route::view("/", "admin.index");
 
 Route::prefix("products/{product}/edit")->name("products.edit.")->controller(ProductController::class)->group(function () {
-    Route::get("spareto", "push_spareto")->name("spareto");
     Route::get("oem", "push_oem")->name("oem");
     Route::post("image", "push_image")->name("image");
     Route::get("searchForSelect2", "searchForSelect2")->name("searchForSelect2");
 });
+
+Route::post('spareto-connection/toggle-ban/{sp}/{bool}', [ProductController::class, 'sparetoConnectionBan'])->name('add-product-spareto-connection');
+
 Route::resource("products", ProductController::class)->only(["index", "show"]);
 
 Route::prefix("categories/{category}/edit")->name("categories.edit.")->controller(CategoryController::class)->group(function () {

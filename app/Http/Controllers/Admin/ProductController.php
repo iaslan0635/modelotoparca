@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController as CustomerProductController;
 use App\Models\Car;
 use App\Models\Product;
 use App\Models\SparetoConnection;
+use App\Models\SparetoProduct;
 use App\Packages\Search;
 use Elastic\ScoutDriverPlus\Paginator;
 use Elastic\ScoutDriverPlus\Support\Query;
@@ -35,25 +36,6 @@ class ProductController extends Controller
     {
         return view("admin.apps.ecommerce.catalog.edit-product", CustomerProductController::getViewData($product));
     }
-
-    public function push_spareto(int $productId, Request $request)
-    {
-        $url = $request->input("url");
-        $connection = SparetoConnection::create([
-            "url" => $url,
-            "product_id" => $productId,
-            "connected_by" => "manual",
-            "keyword_field" => "manual",
-            "keyword" => "manual",
-            "batch_id" => "MANUAL"
-        ]);
-
-        dispatch(function () use ($connection) {
-            SparetoConnector::connect($connection);
-        })->onQueue("immediate");
-        return back();
-    }
-
     public function push_oem(Product $product, Request $request)
     {
         $oem = $request->input("oem");
@@ -61,6 +43,7 @@ class ProductController extends Controller
         $product->oems()->firstOrCreate([
             "oem" => $oem,
             "brand" => $brand,
+            "type" => "manual"
         ]);
         return back();
     }
@@ -83,5 +66,10 @@ class ProductController extends Controller
                 "more" => $cars->hasMorePages() && $cars->count() > 0
             ]
         ];
+    }
+
+    public function sparetoConnectionBan(SparetoProduct $sp, int $bool)
+    {
+
     }
 }
