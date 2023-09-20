@@ -102,7 +102,7 @@ class ExcelImport implements ShouldQueue
                         ->delete();
 
                     $product->cars()->sync([]);
-                    SparetoProduct::where('product_id', $product->id)->delete();
+                    SparetoProduct::where('product_id', $product->id)->where("is_banned", false)->delete();
 
                     $product->update([
                         'producercode' => $this->data['producercode'],
