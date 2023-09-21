@@ -14,7 +14,7 @@ class OuterExcelImportJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(public $file)
+    public function __construct(public $file, bool $append)
     {
     }
 

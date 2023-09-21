@@ -24,12 +24,12 @@ class ImportController extends Controller
 
     public function ITEMS_WEB()
     {
-        OuterExcelImportJob::dispatch($this->storeFile());
+        dispatch(new OuterExcelImportJob($this->storeFile(), false));
     }
 
     public function ITEMS_WEB__APPEND()
     {
-        AppendImportTigerJob::dispatch($this->storeFile());
+        dispatch(new OuterExcelImportJob($this->storeFile(), true));
     }
 
     public function ITEMSUBS()
