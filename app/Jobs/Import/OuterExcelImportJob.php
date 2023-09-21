@@ -3,6 +3,8 @@
 namespace App\Jobs\Import;
 
 use App\Importers\ExcelImport;
+use App\Models\Product;
+use App\Models\TigerProduct;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -14,12 +16,17 @@ class OuterExcelImportJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct(public $file, bool $append)
+    public function __construct(public $file, public bool $append)
     {
     }
 
     public function handle(): void
     {
+        if (!$this->append) {
+            Product::update(["status" => false]);
+            TigerProduct::update(["active" => 1]);
+        }
+
         Excel::import(new ExcelImport, $this->file);
     }
 }
