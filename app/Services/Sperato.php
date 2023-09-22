@@ -49,6 +49,11 @@ HTML;
             return false;
         }
 
+        Log::create([
+            'product_id' => $product_id,
+            'message' => $products->count() . " Adet ürün var"
+        ]);
+
         $products->each(function ($cardElement) use (&$links) {
             $links[] = $cardElement->filter('a')->attr('href');
         });
