@@ -48,7 +48,7 @@ class ExcelImport implements ShouldQueue
     {
         $product = TigerProduct::find($this->data['id']);
         if ($product) {
-            $product->update([
+            $product->fill([
                 'active' => $this->data['active'],
                 'card_type' => $this->data['card_type'],
                 'code' => $this->data['code'],
@@ -82,6 +82,11 @@ class ExcelImport implements ShouldQueue
                 'fitting_position' => $this->data['fitting_position'],
                 'onhand' => $this->data['onhand'],
                 'condition' => $this->data['condition'],
+                'producercode' => $this->data['producercode'],
+                'cross_code' => $this->data['cross_code'],
+                'oem_codes' => $this->data['oem_codes'],
+                'producercode2' => $this->data['producercode2'],
+                'abk' => $this->data['abk'],
             ]);
             $veriler = [
                 'abk',
@@ -91,50 +96,33 @@ class ExcelImport implements ShouldQueue
                 'oem_codes',
             ];
 
-            $degisiklikYapildi = false;
+            $isChaged = $product->isDirty($veriler);
+            $product->save();
 
-            foreach ($veriler as $alan) {
-                if (!$degisiklikYapildi && $this->data[$alan] !== $product->$alan) {
-                    ProductSimilar::query()->where('product_id', $product->id)->delete();
+            if ($isChaged) {
+                ProductSimilar::query()->where('product_id', $product->id)->delete();
 
-                    ProductOem::query()->where('type', '=', 'automatic')
-                        ->where('logicalref', $product->id)
-                        ->delete();
+                ProductOem::query()->where('type', '=', 'automatic')
+                    ->where('logicalref', $product->id)
+                    ->delete();
 
-                    $product->cars()->sync([]);
-                    SparetoProduct::where('product_id', $product->id)->where("is_banned", false)->delete();
+                $product->cars()->sync([]);
+                SparetoProduct::where('product_id', $product->id)->where("is_banned", false)->delete();
 
-                    $product->update([
-                        'producercode' => $this->data['producercode'],
-                        'cross_code' => $this->data['cross_code'],
-                        'oem_codes' => $this->data['oem_codes'],
-                        'producercode2' => $this->data['producercode2'],
-                        'abk' => $this->data['abk'],
+                if ($this->data['cross_code']) {
+                    $product->similars()->firstOrCreate([
+                        'code' => $this->data['cross_code'],
                     ]);
-                    if ($this->data['cross_code']) {
-                        $product->similars()->firstOrCreate([
-                            'code' => $this->data['cross_code'],
-                        ]);
-                    }
-
-                    $oems = explode(',', $this->data['oem_codes']);
-
-                    foreach ($oems as $oem) {
-                        $product->oems()->firstOrCreate([
-                            'oem' => $oem,
-                        ]);
-                    }
-
-                    if ($alan === "oem_codes") {
-                        $oems = explode(",", $this->data[$alan]);
-                        foreach ($oems as $oem) {
-                            $degisiklikYapildi = Sperato::smash($oem, $product->id);
-                        }
-                    } else {
-                        if($this->data[$alan])
-                            $degisiklikYapildi = Sperato::smash($this->data[$alan], $product->id);
-                    }
                 }
+
+                $oems = explode(',', $this->data['oem_codes']);
+                foreach ($oems as $oem) {
+                    $product->oems()->firstOrCreate([
+                        'oem' => $oem,
+                    ]);
+                }
+
+                $this->runBot($product);
             }
         } else {
             $product = TigerProduct::create([
@@ -192,26 +180,7 @@ class ExcelImport implements ShouldQueue
                 ]);
             }
 
-            $search_predence = [
-                'abk',
-                'producercode',
-                'producercode2',
-                'cross_code',
-                'oem_codes',
-            ];
-
-            foreach ($search_predence as $field) {
-                if (strlen($this->data[$field]) === 0) continue;
-                if ($field === "oem_codes") {
-                    $oems = explode(",", $this->data[$field]);
-                    foreach ($oems as $oem) {
-                        Sperato::smash($oem, $product->id);
-                    }
-                } else {
-                    $found = Sperato::smash($this->data[$field], $product->id);
-                    if ($found) break;
-                }
-            }
+            $this->runBot($product);
         }
 
         $id = $product->id;
@@ -251,5 +220,29 @@ class ExcelImport implements ShouldQueue
             'price' => $product->price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), "try"),
         ]);
+    }
+
+    private function runBot(TigerProduct $product): void
+    {
+        $search_predence = [
+            'abk',
+            'producercode',
+            'producercode2',
+            'cross_code',
+            'oem_codes',
+        ];
+
+        foreach ($search_predence as $field) {
+            if (strlen($this->data[$field]) === 0) continue;
+            if ($field === "oem_codes") {
+                $oems = explode(",", $this->data[$field]);
+                foreach ($oems as $oem) {
+                    Sperato::smash($oem, $product->id);
+                }
+            } else {
+                $found = Sperato::smash($this->data[$field], $product->id);
+                if ($found) break;
+            }
+        }
     }
 }
