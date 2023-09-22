@@ -43,7 +43,7 @@ HTML;
         if ($products->count() <= 0) {
             Log::create([
                 'product_id' => $product_id,
-                'message' => 'Ürün bulunamadı, Kelime: ' . $keyword,
+                'message' => 'Ürün bulunamadı, Anahtar Kelime: ' . $keyword,
             ]);
 
             return false;
@@ -51,7 +51,7 @@ HTML;
 
         Log::create([
             'product_id' => $product_id,
-            'message' => $products->count() . " Adet ürün var"
+            'message' => $products->count() . " Adet ürün çekildi. Anahtar Kelime: ". $keyword
         ]);
 
         $products->each(function ($cardElement) use (&$links) {
