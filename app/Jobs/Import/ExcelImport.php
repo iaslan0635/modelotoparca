@@ -49,7 +49,7 @@ class ExcelImport implements ShouldQueue
         $product = TigerProduct::find($this->data['id']);
         if ($product) {
             $product->fill([
-                'active' => $this->data['active'],
+                'active' => $this->data['active'] ?? 1,
                 'card_type' => $this->data['card_type'],
                 'code' => $this->data['code'],
                 'name' => $this->data['name'],
