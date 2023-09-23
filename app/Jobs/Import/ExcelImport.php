@@ -127,7 +127,7 @@ class ExcelImport implements ShouldQueue
         } else {
             $product = TigerProduct::create([
                 'id' => $this->data['id'],
-                'active' => $this->data['active'],
+                'active' => $this->data['active'] ?? 1,
                 'card_type' => $this->data['card_type'],
                 'code' => $this->data['code'],
                 'name' => $this->data['name'],
