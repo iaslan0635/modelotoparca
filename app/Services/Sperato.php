@@ -54,8 +54,9 @@ HTML;
             'message' => $products->count() . " Adet ürün çekildi. Anahtar Kelime: ". $keyword
         ]);
 
-        $products->each(function ($cardElement) use (&$links) {
-            $links[] = $cardElement->filter('a')->attr('href');
+        $products->each(function (Crawler $cardElement) use (&$links) {
+            if ($cardElement->attr("class") === "card-col")
+                $links[] = $cardElement->filter('a')->attr('href');
         });
 
 
