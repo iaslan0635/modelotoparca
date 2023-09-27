@@ -122,7 +122,7 @@ class ExcelImport implements ShouldQueue
                     ]);
                 }
 
-                $this->runBot($product);
+                self::runBot($product);
             }
         } else {
             $product = TigerProduct::create([
@@ -180,7 +180,7 @@ class ExcelImport implements ShouldQueue
                 ]);
             }
 
-            $this->runBot($product);
+            self::runBot($product);
         }
 
         $id = $product->id;
@@ -222,7 +222,7 @@ class ExcelImport implements ShouldQueue
         ]);
     }
 
-    private function runBot(TigerProduct $product): void
+    public static function runBot(TigerProduct $product): void
     {
         $search_predence = [
             'abk',
@@ -233,14 +233,14 @@ class ExcelImport implements ShouldQueue
         ];
 
         foreach ($search_predence as $field) {
-            if (strlen($this->data[$field]) === 0) continue;
+            if (strlen($product[$field]) === 0) continue;
             if ($field === "oem_codes") {
-                $oems = explode(",", $this->data[$field]);
+                $oems = explode(",", $product[$field]);
                 foreach ($oems as $oem) {
                     Sperato::smash($oem, $product->id);
                 }
             } else {
-                $found = Sperato::smash($this->data[$field], $product->id);
+                $found = Sperato::smash($product[$field], $product->id);
                 if ($found) break;
             }
         }

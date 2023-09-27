@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Facades\SparetoConnector;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController as CustomerProductController;
+use App\Jobs\RunSingleBotJob;
 use App\Models\Car;
 use App\Models\Log;
 use App\Models\Product;
 use App\Models\SparetoConnection;
 use App\Models\SparetoProduct;
+use App\Models\TigerProduct;
 use App\Packages\Search;
 use Elastic\ScoutDriverPlus\Paginator;
 use Elastic\ScoutDriverPlus\Support\Query;
@@ -71,8 +73,9 @@ class ProductController extends Controller
         ];
     }
 
-    public function sparetoConnectionBan(SparetoProduct $sp, int $bool)
+    public function rerunBot(Product $product)
     {
-
+        dispatch(new RunSingleBotJob(TigerProduct::findOrFail($product->id)));
+        return back();
     }
 }

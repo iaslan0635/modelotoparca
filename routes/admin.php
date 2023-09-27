@@ -22,9 +22,8 @@ Route::prefix("products/{product}/edit")->name("products.edit.")->controller(Pro
     Route::get("oem", "push_oem")->name("oem");
     Route::post("image", "push_image")->name("image");
     Route::get("searchForSelect2", "searchForSelect2")->name("searchForSelect2");
+    Route::get("rerunBot", "rerunBot")->name("rerunBot");
 });
-
-Route::post('spareto-connection/toggle-ban/{sp}/{bool}', [ProductController::class, 'sparetoConnectionBan'])->name('add-product-spareto-connection');
 
 Route::resource("products", ProductController::class)->only(["index", "show"]);
 
