@@ -40,7 +40,7 @@
                 <!--begin::Actions-->
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
                     <!--begin::Primary button-->
-                    <a href="{{ route('admin.products.edit.rerunBot', $product) }}" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">
+                    <a href="{{ route('admin.products.edit.rerunBot', $product) }}" class="btn btn-sm fw-bold btn-primary">
                         Bot ile Yeniden Çek
                     </a>
                     <!--end::Primary button-->
