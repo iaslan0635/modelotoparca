@@ -110,9 +110,9 @@ HTML;
                     "logicalref" => $product_id,
                     "car_id" => $car->id
                 ]);
-            }
 
-            $added = true;
+                $added = true;
+            }
         }
 
         return $added;
