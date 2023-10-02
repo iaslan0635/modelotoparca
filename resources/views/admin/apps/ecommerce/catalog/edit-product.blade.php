@@ -375,8 +375,8 @@
                                                         <td class="analogs-table__column">{{ $oem->brand ?: "[Tiger Excel]" }}</td>
                                                         <td style="width:100%; display: inline-block; word-break: break-all; font-weight: 700">
                                                             @foreach(explode(',', $oem->oems) as $item)
-                                                                <a href="{{ route('oem.search', ['oem' => $item]) }}">
-                                                                    {{ $item }} {{ !$loop->last ? ",":null }}
+                                                                <a href="{{ $item ? route('oem.search', ['oem' => $item]) : null }}">
+                                                                    {{ $item }} {{ !$loop->last ? ",": null }}
                                                                 </a>
                                                             @endforeach
                                                         </td>
