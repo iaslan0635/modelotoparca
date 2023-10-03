@@ -20,10 +20,10 @@ class Breadcrumb extends Component
     {
         return [
             [
-                "name" => "Anasayfa",
-                "link" => route("welcome")
+                'name' => 'Anasayfa',
+                'link' => route('welcome'),
             ],
-            ...$this->parts
+            ...$this->parts,
         ];
     }
 }

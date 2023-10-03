@@ -10,13 +10,12 @@ use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', function () {
-    $categories = Category::root()->limit(15)->orderBy("order")->get(["slug", "name", "id"]);
-    $featured_products = Product::query()->limit(20)->with("price:id,price,currency,product_id")->get(["id", "slug", "sku", "title", "image_appendix"]);
+    $categories = Category::root()->limit(15)->orderBy('order')->get(['slug', 'name', 'id']);
+    $featured_products = Product::query()->limit(20)->with('price:id,price,currency,product_id')->get(['id', 'slug', 'sku', 'title', 'image_appendix']);
+
     return view('home', compact('categories', 'featured_products'));
 })->name('welcome');
 
@@ -42,39 +41,40 @@ Route::get('order-success', [OrderController::class, 'success'])->name('order-su
 
 //account
 
-Route::get("/login", function () {
+Route::get('/login', function () {
     return view('auth.login');
 })->name('login-view')->middleware('guest');
 
-Route::middleware('auth')->group(function (){
-    Route::get("/dashboard", function () {
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
         return view('account.dashboard');
     })->name('dashboard');
-    Route::get("/edit-profile", function () {
+    Route::get('/edit-profile', function () {
         return view('account.edit-profile');
     })->name('edit-profile');
     Route::put('update-profile', [ProfileController::class, 'update'])->name('update-profile');
-    Route::get("/garage", function () {
+    Route::get('/garage', function () {
         return view('account.garage');
     })->name('garage');
-    Route::get("/adreslerim", function () {
+    Route::get('/adreslerim', function () {
         return view('account.adress');
     })->name('adreslerim');
-    Route::get("/takip-listem", function () {
+    Route::get('/takip-listem', function () {
         return view('account.whislist');
     })->name('takip-listem');
     Route::view('adres-ekle', 'account.add-adress')->name('add-adress');
     Route::resource('addresses', AddressController::class)->except(['index', 'create', 'show']);
-    Route::get("/order-history", [OrderController::class, 'history'])->name('order-history');
-    Route::get("/order-details/{order}", [OrderController::class, 'detail'])->name('order-details');
+    Route::get('/order-history', [OrderController::class, 'history'])->name('order-history');
+    Route::get('/order-details/{order}', [OrderController::class, 'detail'])->name('order-details');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::post('register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 
-Route::get("/connections", function () {
+Route::get('/connections', function () {
     $models = \App\Models\SparetoConnection::paginate();
     $cols = array_keys(\App\Models\SparetoConnection::first()->attributesToArray());
-    return view("admin.temp.table", compact("models", "cols"));
+
+    return view('admin.temp.table', compact('models', 'cols'));
 });

@@ -10,7 +10,7 @@ class CategoryFacade
 {
     public static function getTree($selectId)
     {
-        $data = Cache::remember('all_categories', TTL::MONTH, fn() => Category::query()->get(['id', 'parent_id'])->toArray());
+        $data = Cache::remember('all_categories', TTL::MONTH, fn () => Category::query()->get(['id', 'parent_id'])->toArray());
 
         $tree = new Tree($data, [
             'rootId' => null,
@@ -36,8 +36,8 @@ class CategoryFacade
     public static function belirli_kelimeleri_kalin_yap($kelimeler, $text)
     {
         $kelimeler = preg_quote($kelimeler); // Özel karakterleri escape ediyoruz
-        $pattern = '/(' . $kelimeler . ')/'; // Kalın yapılacak kelimelerin regex pattern'i
-        $text = preg_replace_callback($pattern, function($matches) {
+        $pattern = '/('.$kelimeler.')/'; // Kalın yapılacak kelimelerin regex pattern'i
+        $text = preg_replace_callback($pattern, function ($matches) {
             return "<b>{$matches[0]}</b>"; // Kalın yapılacak kelimeleri bold tagleri ile sarıyoruz
         }, $text);
 
@@ -53,5 +53,4 @@ class CategoryFacade
         }
         dd($result);
     }
-
 }

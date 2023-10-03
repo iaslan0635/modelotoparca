@@ -13,6 +13,6 @@ class Controller extends BaseController
 
     protected function store_file(UploadedFile $file, string $path)
     {
-        return "/storage/" . $file->storePublicly($path, ["disk" => "public"]);
+        return '/storage/'.$file->storePublicly($path, ['disk' => 'public']);
     }
 }

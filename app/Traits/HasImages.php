@@ -13,9 +13,11 @@ trait HasImages
 {
     public function storeImage(UploadedFile $image): void
     {
-        $path = $image->storePublicly("images", ["disk" => "public"]);
-        if (!$path) throw new Exception("Unable to store image");
-        $this->images()->create(["path" => $path]);
+        $path = $image->storePublicly('images', ['disk' => 'public']);
+        if (! $path) {
+            throw new Exception('Unable to store image');
+        }
+        $this->images()->create(['path' => $path]);
     }
 
     public function images(): MorphMany
@@ -35,7 +37,7 @@ trait HasImages
 
     public function defaultImage(): string
     {
-        return asset("/images/products/defaults/product-1.jpg");
+        return asset('/images/products/defaults/product-1.jpg');
     }
 
     public function imageUrls(): Collection

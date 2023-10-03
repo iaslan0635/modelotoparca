@@ -10,9 +10,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Price extends BaseModel
 {
     protected $with = ['tax'];
+
     protected function price(): Attribute
     {
-        return Attribute::get(fn(string $value) => TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount));
+        return Attribute::get(fn (string $value) => TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount));
     }
 
     public function tax(): HasOne
@@ -22,6 +23,6 @@ class Price extends BaseModel
 
     protected function formattedPrice(): Attribute
     {
-        return Attribute::get(fn() => number_format($this->price, 2) . ' ₺');
+        return Attribute::get(fn () => number_format($this->price, 2).' ₺');
     }
 }

@@ -14,10 +14,10 @@ class OrderController extends Controller
     public function complete(Request $request)
     {
         $request->validate([
-            'order_agreement' => 'required'
+            'order_agreement' => 'required',
         ]);
 
-        if (count(auth()->user()->addresses) === 0){
+        if (count(auth()->user()->addresses) === 0) {
             return redirect()->route('add-adress');
         }
 
@@ -26,7 +26,7 @@ class OrderController extends Controller
             'shipment_address_id' => auth()->user()->addresses[0]->id,
             'invoice_address_id' => auth()->user()->addresses[0]->id,
             'payment_status' => OrderStatuses::PENDING,
-            'shipment_status' => OrderStatuses::PENDING
+            'shipment_status' => OrderStatuses::PENDING,
         ]);
 
         foreach (Cart::getItems() as $item) {
@@ -37,7 +37,7 @@ class OrderController extends Controller
                 'quantity' => $item->quantity,
                 'product_data' => $item->model,
                 'tax_data' => $item->model->price->tax,
-                'price_data' => $item->model->price
+                'price_data' => $item->model->price,
             ]);
         }
 
@@ -53,18 +53,21 @@ class OrderController extends Controller
     public function success()
     {
         $order = Order::with(['items.product.price', 'user.addresses'])->findOrFail(session()->get('order_number'));
+
         return view('account.order-success', compact('order'));
     }
 
     public function detail(Order $order)
     {
         $order->load('items.product.price');
+
         return view('account.order-details', compact('order'));
     }
 
     public function history()
     {
         $orders = Order::where('user_id', auth()->id())->orderByDesc('id')->paginate(5);
+
         return view('account.order-history', compact('orders'));
     }
 }

@@ -77,6 +77,7 @@ class Category extends BaseModel
     {
         // OPTIMIZE: Use cache
         $children10 = ['children' => fn ($q) => $q->limit(23)];
+
         return Category::root()
             ->orderBy('order')
             ->with('image')

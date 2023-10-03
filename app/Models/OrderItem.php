@@ -9,8 +9,9 @@ class OrderItem extends BaseModel
 {
     protected $casts = [
         'product_data' => 'array',
-        'price_data' => 'array'
+        'price_data' => 'array',
     ];
+
     public function product(): HasOne
     {
         return $this->hasOne(Product::class, 'id', 'product_id');
@@ -18,11 +19,11 @@ class OrderItem extends BaseModel
 
     protected function formattedPrice(): Attribute
     {
-        return Attribute::get(fn() => number_format($this->price, 2) . ' ₺');
+        return Attribute::get(fn () => number_format($this->price, 2).' ₺');
     }
 
     protected function formattedTotalPrice(): Attribute
     {
-        return Attribute::get(fn() => number_format($this->price * $this->quantity, 2) . ' ₺');
+        return Attribute::get(fn () => number_format($this->price * $this->quantity, 2).' ₺');
     }
 }

@@ -29,6 +29,6 @@ class ProductOem extends BaseModel
 
     public function product()
     {
-        return $this->belongsTo(Product::class, "logicalref");
+        return $this->belongsTo(Product::class, 'logicalref');
     }
 }

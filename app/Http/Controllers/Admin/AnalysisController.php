@@ -9,13 +9,13 @@ class AnalysisController extends Controller
 {
     public function search()
     {
-        return view("admin.pages.search-analysis", [
-            "searches" => Search::orderByDesc("id")->paginate()
+        return view('admin.pages.search-analysis', [
+            'searches' => Search::orderByDesc('id')->paginate(),
         ]);
     }
 
     public function searchReplacements()
     {
-        return view("admin.pages.search-replacements");
+        return view('admin.pages.search-replacements');
     }
 }

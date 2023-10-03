@@ -12,7 +12,7 @@ class CarController extends Controller
     {
         $car = Car::query()->where('permalink', '=', $permalink)->firstOrFail();
         extract(SubSearch::query(request(),
-            fn(Builder $query) => $query->whereRelation('cars', fn($q) => $q->where('id', $car->id))
+            fn (Builder $query) => $query->whereRelation('cars', fn ($q) => $q->where('id', $car->id))
         ));
 
         $products = $query->paginate(12);

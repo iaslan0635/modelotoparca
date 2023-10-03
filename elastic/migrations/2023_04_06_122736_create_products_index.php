@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Elastic\Adapter\Indices\Mapping;
@@ -33,39 +34,39 @@ final class CreateProductsIndex implements MigrationInterface
             $mapping->nested('oems', [
                 'properties' => [
                     'oem' => ['type' => 'keyword'],
-                    'oem_regex' => ['type' => 'keyword']
-                ]
+                    'oem_regex' => ['type' => 'keyword'],
+                ],
             ]);
             $mapping->nested('cars', [
                 'properties' => [
                     'name' => [
-                        'type' => 'text'
-                    ]
-                ]
+                        'type' => 'text',
+                    ],
+                ],
             ]);
             $mapping->nested('categories', [
                 'properties' => [
                     'name' => [
-                        'type' => 'text'
-                    ]
-                ]
+                        'type' => 'text',
+                    ],
+                ],
             ]);
             $mapping->nested('brand', [
                 'properties' => [
                     'name' => [
-                        'type' => 'text'
-                    ]
-                ]
+                        'type' => 'text',
+                    ],
+                ],
             ]);
             $mapping->nested('similars', [
                 'properties' => [
                     'code' => [
-                        'type' => 'keyword'
+                        'type' => 'keyword',
                     ],
                     'code_regex' => [
-                        'type' => 'keyword'
-                    ]
-                ]
+                        'type' => 'keyword',
+                    ],
+                ],
             ]);
 
         });
@@ -76,6 +77,6 @@ final class CreateProductsIndex implements MigrationInterface
      */
     public function down(): void
     {
-        Index::dropIfExists("products_index");
+        Index::dropIfExists('products_index');
     }
 }

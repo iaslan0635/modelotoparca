@@ -11,7 +11,7 @@ class PropertySeeder extends Seeder
     public function run(): void
     {
         $d = ['excel_file' => 'oil', 'show_filter' => 1];
-        $categories = Category::whereIn("id", [
+        $categories = Category::whereIn('id', [
             79295,
             78132,
             82613,

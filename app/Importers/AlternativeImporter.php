@@ -9,7 +9,7 @@ class AlternativeImporter extends Importer
 {
     public static function getUsedTables(): array
     {
-        return ["alternatives"];
+        return ['alternatives'];
     }
 
     public function getRowCount(): int
@@ -35,15 +35,16 @@ class AlternativeImporter extends Importer
                 $i += count($subs);
                 $this->status($i);
 
-                foreach ($subs as $sub)
-                    DB::table("alternatives")->insertOrIgnore([
-                        "product_id" => $mainRef,
-                        "alternative_id" => $sub
+                foreach ($subs as $sub) {
+                    DB::table('alternatives')->insertOrIgnore([
+                        'product_id' => $mainRef,
+                        'alternative_id' => $sub,
                     ]);
+                }
             }
 
-//            $allMainRefs = array_keys($refMap);
-//            DB::table("alternatives")->whereNotIn("product_id", $allMainRefs)->delete();
+            //            $allMainRefs = array_keys($refMap);
+            //            DB::table("alternatives")->whereNotIn("product_id", $allMainRefs)->delete();
         });
     }
 }

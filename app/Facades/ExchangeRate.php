@@ -39,7 +39,7 @@ class ExchangeRate
     public static function convertFromTRY(string $currency, string $moneyAsTRY): string
     {
         if ($currency === 'try') {
-        return $moneyAsTRY;
+            return $moneyAsTRY;
         }
         $value = bcdiv($moneyAsTRY, self::get($currency), 2);
         if (is_null($value)) {
@@ -52,7 +52,7 @@ class ExchangeRate
     public static function convertToTRY(string $currency, string $moneyAsCurrency): string
     {
         if ($currency === 'try') {
-        return $moneyAsCurrency;
+            return $moneyAsCurrency;
         }
 
         return bcmul($moneyAsCurrency, self::get($currency), 2);

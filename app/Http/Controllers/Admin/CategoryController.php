@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -17,12 +16,13 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate();
-        return view("admin.apps.ecommerce.catalog.categories", compact("categories"));
+
+        return view('admin.apps.ecommerce.catalog.categories', compact('categories'));
     }
 
     public function show(Category $category)
     {
-        return view("admin.apps.ecommerce.catalog.edit-category", compact("category"));
+        return view('admin.apps.ecommerce.catalog.edit-category', compact('category'));
     }
 
     public function push_image(Category $category, Request $request)

@@ -7,7 +7,7 @@ use App\Importers\Importer;
 
 class ImportAlternativeCommand extends ImportCommand
 {
-    protected string $importVerb = "alternative";
+    protected string $importVerb = 'alternative';
 
     protected function getImporter(string $file, ?callable $statusHook): Importer
     {

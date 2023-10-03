@@ -8,7 +8,9 @@ use Livewire\Component;
 class CarTable extends Component
 {
     public array $cars;
+
     public array|null $editingModel = null;
+
     public int|null $editingIndex = null;
 
     const EDITABLE_FIELDS = [
@@ -18,9 +20,8 @@ class CarTable extends Component
         'power',
         'capacity',
         'produced_from',
-        'produced_to'
+        'produced_to',
     ];
-
 
     public function render()
     {
@@ -29,9 +30,9 @@ class CarTable extends Component
 
     public function toggleIndexing($index)
     {
-        ["id" => $carId, "indexable" => $prevState] = $this->cars[$index];
+        ['id' => $carId, 'indexable' => $prevState] = $this->cars[$index];
         $car = Car::find($carId);
-        $car->indexable = !$prevState;
+        $car->indexable = ! $prevState;
         $car->save();
         $this->cars[$index] = $car;
     }
@@ -44,8 +45,8 @@ class CarTable extends Component
 
     public function exitEditing()
     {
-        ["id" => $id] = $this->editingModel;
-        unset($this->editingModel["id"]);
+        ['id' => $id] = $this->editingModel;
+        unset($this->editingModel['id']);
 
         $car = Car::find($id);
         $car->update($this->editingModel);

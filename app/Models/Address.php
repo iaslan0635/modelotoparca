@@ -11,6 +11,6 @@ class Address extends BaseModel
 
     protected function fullName(): Attribute
     {
-        return Attribute::get(fn($value) => $this->type === "individual" ? "$this->first_name $this->last_name":"$this->company_name");
+        return Attribute::get(fn ($value) => $this->type === 'individual' ? "$this->first_name $this->last_name" : "$this->company_name");
     }
 }

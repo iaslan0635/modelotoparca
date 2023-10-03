@@ -13,19 +13,20 @@ abstract class ImportCommand extends Command
 
     public function __construct()
     {
-        if (empty($this->importVerb)) throw new \Exception('$importVerb must be set');
+        if (empty($this->importVerb)) {
+            throw new \Exception('$importVerb must be set');
+        }
         $this->signature = "import:$this->importVerb {file} {--truncate}";
         parent::__construct();
     }
 
-    protected abstract function getImporter(string $file, ?callable $statusHook): Importer;
+    abstract protected function getImporter(string $file, ?callable $statusHook): Importer;
 
     public function handle(): void
     {
-        $truncate = $this->option("truncate") && $this->confirm("Truncate all tables to be exported?");
+        $truncate = $this->option('truncate') && $this->confirm('Truncate all tables to be exported?');
 
-        $file = $this->argument("file");
-
+        $file = $this->argument('file');
 
         $progress = $this->output->createProgressBar();
         $progress->start();

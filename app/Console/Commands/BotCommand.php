@@ -12,7 +12,7 @@ class BotCommand extends Command
 
     public function handle(): void
     {
-        $ids = TigerProduct::query()->pluck("id");
+        $ids = TigerProduct::query()->pluck('id');
 
         $this->withProgressBar($ids, function (int $id) {
             try {
@@ -37,14 +37,18 @@ class BotCommand extends Command
 
         foreach ($search_predence as $field) {
             $value = $product->getAttribute($field);
-            if (strlen($value) === 0) continue;
-            if ($field === "oem_codes") {
-                foreach (explode(",", $value) as $oem) {
+            if (strlen($value) === 0) {
+                continue;
+            }
+            if ($field === 'oem_codes') {
+                foreach (explode(',', $value) as $oem) {
                     Sperato::smash($oem, $product->id);
                 }
             } else {
                 $found = Sperato::smash($value, $product->id);
-                if ($found) break;
+                if ($found) {
+                    break;
+                }
             }
         }
     }

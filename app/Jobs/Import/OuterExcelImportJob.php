@@ -22,9 +22,9 @@ class OuterExcelImportJob implements ShouldQueue
 
     public function handle(): void
     {
-        if (!$this->append) {
-            Product::query()->update(["status" => false]);
-            TigerProduct::query()->update(["active" => 1]);
+        if (! $this->append) {
+            Product::query()->update(['status' => false]);
+            TigerProduct::query()->update(['active' => 1]);
         }
 
         Excel::import(new ExcelImport, $this->file);

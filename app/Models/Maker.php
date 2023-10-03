@@ -6,7 +6,7 @@ class Maker extends BaseModel
 {
     public $timestamps = false;
 
-    function cars()
+    public function cars()
     {
         return $this->hasMany(Car::class);
     }

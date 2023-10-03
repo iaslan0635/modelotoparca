@@ -36,6 +36,6 @@ class SubSearch
             $query = $query->whereIn('brand_id', $request->input('brands'));
         }
 
-        return compact("filters", "query", "brands");
+        return compact('filters', 'query', 'brands');
     }
 }

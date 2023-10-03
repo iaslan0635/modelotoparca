@@ -18,21 +18,21 @@ use Illuminate\Support\Collection;
 class Search
 {
     const BOOST = [
-        "producercode_unbranded" => 16,
-        "cross_code" => 14,
-        "producercode" => 12,
-        "similar_product_codes" => 10,
-        "oem" => 8,
-        "title" => 6,
-        "car" => 1
+        'producercode_unbranded' => 16,
+        'cross_code' => 14,
+        'producercode' => 12,
+        'similar_product_codes' => 10,
+        'oem' => 8,
+        'title' => 6,
+        'car' => 1,
     ];
 
     private static function carQuery(string $term)
     {
         return Query::nested()
             ->path('cars')
-            ->query(Query::match()->field('cars.regex_name')->operator("AND")->query(preg_replace('/[^\w\s]/', '', $term))
-                ->boost(self::BOOST["car"]));
+            ->query(Query::match()->field('cars.regex_name')->operator('AND')->query(preg_replace('/[^\w\s]/', '', $term))
+                ->boost(self::BOOST['car']));
     }
 
     private static function oemQuery(string $term)
@@ -40,7 +40,7 @@ class Search
         return Query::nested()
             ->path('oems')
             ->query(Query::term()->field('oems.oem')->value($term)
-                ->boost(self::BOOST["oem"]));
+                ->boost(self::BOOST['oem']));
     }
 
     private static function oemRegexQuery(string $cleanTerm)
@@ -48,7 +48,7 @@ class Search
         return Query::nested()
             ->path('oems')
             ->query(Query::term()->field('oems.oem_regex')->value($cleanTerm)
-                ->boost(self::BOOST["oem"]));
+                ->boost(self::BOOST['oem']));
     }
 
     private static function similarQuery(string $term)
@@ -56,7 +56,7 @@ class Search
         return Query::nested()
             ->path('similars')
             ->query(Query::term()->field('similars.code')->value($term)
-                ->boost(self::BOOST["similar_product_codes"]));
+                ->boost(self::BOOST['similar_product_codes']));
     }
 
     private static function similarRegexQuery(string $cleanTerm)
@@ -64,15 +64,17 @@ class Search
         return Query::nested()
             ->path('similars')
             ->query(Query::term()->field('similars.code_regex')->value($cleanTerm)
-                ->boost(self::BOOST["similar_product_codes"]));
+                ->boost(self::BOOST['similar_product_codes']));
     }
 
     private static function productQuery(string $term)
     {
         $query = Query::bool();
-        $words = explode(" ", $term);
+        $words = explode(' ', $term);
         foreach ($words as $word) {
-            if (empty($word)) continue;
+            if (empty($word)) {
+                continue;
+            }
             $query->must(Query::prefix()->field('full_text')->value($word)->caseInsensitive(true));
         }
 
@@ -84,7 +86,7 @@ class Search
         return Query::term()
             ->field('cross_code')
             ->value($term)
-            ->boost(self::BOOST["cross_code"]);
+            ->boost(self::BOOST['cross_code']);
     }
 
     private static function crossRegexQuery(string $cleanTerm)
@@ -92,7 +94,7 @@ class Search
         return Query::term()
             ->field('cross_code_regex')
             ->value($cleanTerm)->caseInsensitive(true)
-            ->boost(self::BOOST["cross_code"]);
+            ->boost(self::BOOST['cross_code']);
     }
 
     private static function producerQuery(string $term)
@@ -100,7 +102,7 @@ class Search
         return Query::term()
             ->field('producercode')
             ->value($term)
-            ->boost(self::BOOST["producercode"]);
+            ->boost(self::BOOST['producercode']);
     }
 
     private static function producerRegexQuery(string $cleanTerm)
@@ -108,7 +110,7 @@ class Search
         return Query::term()
             ->field('producercode_regex')
             ->value($cleanTerm)->caseInsensitive(true)
-            ->boost(self::BOOST["producercode"]);
+            ->boost(self::BOOST['producercode']);
     }
 
     private static function producer2Query(string $term)
@@ -116,7 +118,7 @@ class Search
         return Query::term()
             ->field('producercode2')
             ->value($term)
-            ->boost(self::BOOST["producercode"]);
+            ->boost(self::BOOST['producercode']);
     }
 
     private static function producer2RegexQuery(string $cleanTerm)
@@ -124,7 +126,7 @@ class Search
         return Query::term()
             ->field('producercode2_regex')
             ->value($cleanTerm)->caseInsensitive(true)
-            ->boost(self::BOOST["producercode"]);
+            ->boost(self::BOOST['producercode']);
     }
 
     private static function producerUnbrandedQuery(string $term)
@@ -132,7 +134,7 @@ class Search
         return Query::term()
             ->field('producercode_unbranded')
             ->value($term)
-            ->boost(self::BOOST["producercode_unbranded"]);
+            ->boost(self::BOOST['producercode_unbranded']);
     }
 
     private static function producerUnbrandedRegexQuery(string $cleanTerm)
@@ -140,7 +142,7 @@ class Search
         return Query::term()
             ->field('producercode_unbranded_regex')
             ->value($cleanTerm)->caseInsensitive(true)
-            ->boost(self::BOOST["producercode_unbranded"]);
+            ->boost(self::BOOST['producercode_unbranded']);
     }
 
     private static function suggestionsOem(string $cleanTerm)
@@ -149,7 +151,8 @@ class Search
             ->should(Query::prefix()->field('oem_regex')->value($cleanTerm)->caseInsensitive(true));
 
         $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->execute();
-        return $suggestionOems->models()->pluck("oem")->unique()->map(fn(string $s) => "<strong>$s</strong>")->all();
+
+        return $suggestionOems->models()->pluck('oem')->unique()->map(fn (string $s) => "<strong>$s</strong>")->all();
     }
 
     private static function suggestionsCrossCode(string $term)
@@ -168,15 +171,19 @@ class Search
 
         $suggestions = [];
         foreach ($suggestion->highlights() as $highlight) {
-            if (isset($highlight->raw()["cross_code"])) {
-                foreach ($highlight->raw()["cross_code"] as $item)
-                    if (!in_array($item, $suggestions))
+            if (isset($highlight->raw()['cross_code'])) {
+                foreach ($highlight->raw()['cross_code'] as $item) {
+                    if (! in_array($item, $suggestions)) {
                         $suggestions[] = $item;
+                    }
+                }
             }
-            if (isset($highlight->raw()["cross_code_regex"])) {
-                foreach ($highlight->raw()["cross_code_regex"] as $item)
-                    if (!in_array($item, $suggestions))
+            if (isset($highlight->raw()['cross_code_regex'])) {
+                foreach ($highlight->raw()['cross_code_regex'] as $item) {
+                    if (! in_array($item, $suggestions)) {
                         $suggestions[] = $item;
+                    }
+                }
             }
         }
 
@@ -199,14 +206,20 @@ class Search
 
         $suggestions = [];
         foreach ($suggestion->highlights() as $highlight) {
-            if (isset($highlight->raw()["producercode"]))
-                foreach ($highlight->raw()["producercode"] as $item)
-                    if (!in_array($item, $suggestions))
+            if (isset($highlight->raw()['producercode'])) {
+                foreach ($highlight->raw()['producercode'] as $item) {
+                    if (! in_array($item, $suggestions)) {
                         $suggestions[] = $item;
-            if (isset($highlight->raw()["producercode_regex"]))
-                foreach ($highlight->raw()["producercode_regex"] as $item)
-                    if (!in_array($item, $suggestions))
+                    }
+                }
+            }
+            if (isset($highlight->raw()['producercode_regex'])) {
+                foreach ($highlight->raw()['producercode_regex'] as $item) {
+                    if (! in_array($item, $suggestions)) {
                         $suggestions[] = $item;
+                    }
+                }
+            }
         }
 
         return $suggestions;
@@ -228,14 +241,20 @@ class Search
 
         $suggestions = [];
         foreach ($suggestion->highlights() as $highlight) {
-            if (isset($highlight->raw()["producercode2"]))
-                foreach ($highlight->raw()["producercode2"] as $item)
-                    if (!in_array($item, $suggestions))
+            if (isset($highlight->raw()['producercode2'])) {
+                foreach ($highlight->raw()['producercode2'] as $item) {
+                    if (! in_array($item, $suggestions)) {
                         $suggestions[] = $item;
-            if (isset($highlight->raw()["producercode2_regex"]))
-                foreach ($highlight->raw()["producercode2_regex"] as $item)
-                    if (!in_array($item, $suggestions))
+                    }
+                }
+            }
+            if (isset($highlight->raw()['producercode2_regex'])) {
+                foreach ($highlight->raw()['producercode2_regex'] as $item) {
+                    if (! in_array($item, $suggestions)) {
                         $suggestions[] = $item;
+                    }
+                }
+            }
         }
 
         return $suggestions;
@@ -253,8 +272,12 @@ class Search
         $filter = Query::range()
             ->field('price');
 
-        if ($min !== null) $filter->gte(request()->input('min_price', 0));
-        if ($max !== null) $filter->lte(request()->input('max_price', 99999));
+        if ($min !== null) {
+            $filter->gte(request()->input('min_price', 0));
+        }
+        if ($max !== null) {
+            $filter->lte(request()->input('max_price', 99999));
+        }
 
         return $filter;
     }
@@ -295,52 +318,55 @@ class Search
         $products = self::paginateProducts($finalQuery, $sortBy);
 
         $productsWithCategories = Product::searchQuery($finalQuery)
-            ->refineModels(fn(Builder $q) => $q->select(["id"]))
+            ->refineModels(fn (Builder $q) => $q->select(['id']))
             ->load(['categories'])->size(100)->execute()->models();
 
         $productsWithBrand = Product::searchQuery($finalQueryWithoutBrandFilter)
-            ->refineModels(fn(Builder $q) => $q->select(["id", "brand_id"]))
+            ->refineModels(fn (Builder $q) => $q->select(['id', 'brand_id']))
             ->load(['brand'])->size(1000)->execute()->models();
 
         $categories = $productsWithCategories
-            ->map(fn(Product $product) => $product->categories)->flatten()
-            ->groupBy("id")
-            ->map(fn(Collection $cats) => [
-                "category" => $cats[0],
-                "count" => $cats->count()
+            ->map(fn (Product $product) => $product->categories)->flatten()
+            ->groupBy('id')
+            ->map(fn (Collection $cats) => [
+                'category' => $cats[0],
+                'count' => $cats->count(),
             ]);
 
         $brands = $productsWithBrand
-            ->map(fn(Product $product) => $product->brand)
-            ->filter(fn(Brand|null $brand) => $brand !== null)
-            ->groupBy("id")
-            ->map(fn(Collection $brandCollection) => [
-                "brand" => $brandCollection[0],
-                "count" => $brandCollection->count()
+            ->map(fn (Product $product) => $product->brand)
+            ->filter(fn (Brand|null $brand) => $brand !== null)
+            ->groupBy('id')
+            ->map(fn (Collection $brandCollection) => [
+                'brand' => $brandCollection[0],
+                'count' => $brandCollection->count(),
             ]);
 
-        $highlights = $products->getCollection()->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
+        $highlights = $products->getCollection()->mapWithKeys(fn (Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
 
         self::log($term);
+
         return [
             'products' => $products,
             'suggestions' => [
                 'oems' => self::suggestionsOem($cleanTerm),
                 'cross_codes' => self::suggestionsCrossCode($term),
                 'producercodes' => self::suggestionsProducerCode($term),
-                'producercodes2' => self::suggestionsProducerCode2($term)
+                'producercodes2' => self::suggestionsProducerCode2($term),
             ],
             'categories' => $categories,
             'highlights' => $highlights,
-            'brands' => $brands
+            'brands' => $brands,
         ];
     }
 
     private static function combineQueries(QueryBuilderInterface ...$queries)
     {
         $compoundQuery = Query::bool()->minimumShouldMatch(1);
-        foreach ($queries as $query)
+        foreach ($queries as $query) {
             $compoundQuery->should($query);
+        }
+
         return $compoundQuery;
     }
 
@@ -348,37 +374,40 @@ class Search
     {
         $finalQuery = Query::bool()->must($query);
 
-        if (request()->has('min_price') || request()->has('max_price'))
+        if (request()->has('min_price') || request()->has('max_price')) {
             $finalQuery->must(self::priceFilter(
                 request()->input('min_price'),
                 request()->input('max_price')
             ));
+        }
 
-        if (Garage::chosen())
+        if (Garage::chosen()) {
             $finalQuery->must(self::carFilter(Garage::chosen()));
+        }
 
-        if ($selectCategory)
+        if ($selectCategory) {
             $finalQuery->must(self::categoryFilter($selectCategory));
+        }
 
         return $finalQuery;
     }
 
     private static function carFilter(int $id)
     {
-        return Query::nested()->path("cars")
+        return Query::nested()->path('cars')
             ->query(
                 Query::term()
-                    ->field("cars.id")
+                    ->field('cars.id')
                     ->value($id)
             );
     }
 
     private static function categoryFilter(int $id)
     {
-        return Query::nested()->path("categories")
+        return Query::nested()->path('categories')
             ->query(
                 Query::term()
-                    ->field("categories.id")
+                    ->field('categories.id')
                     ->value($id)
             );
     }
@@ -388,8 +417,12 @@ class Search
         $queries = [];
         [$terms, $regexTerms] = $termPairs;
         foreach ($queryFnPairs as [$queryFn, $regexQueryFn]) {
-            foreach ($terms as $term) $queries[] = $queryFn($term);
-            foreach ($regexTerms as $regexTerm) $queries[] = $queryFn($regexTerm);
+            foreach ($terms as $term) {
+                $queries[] = $queryFn($term);
+            }
+            foreach ($regexTerms as $regexTerm) {
+                $queries[] = $queryFn($regexTerm);
+            }
         }
 
         return $queries;
@@ -397,14 +430,15 @@ class Search
 
     public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null): array
     {
-        if (empty($term))
+        if (empty($term)) {
             return [
                 'products' => new LengthAwarePaginator([], 0, 1, 0),
                 'suggestions' => collect(),
                 'categories' => collect(),
                 'highlights' => collect(),
-                'brands' => collect()
+                'brands' => collect(),
             ];
+        }
 
         $cleanTerm = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $term));
 
@@ -415,7 +449,7 @@ class Search
         $termWiseQueryCombinations = self::termWiseQueryCombination(
             [
                 [$term, $cleanTerm],
-                [$replacedTerm, $cleanReplacedTerm]
+                [$replacedTerm, $cleanReplacedTerm],
             ],
             [
                 [self::oemQuery(...), self::oemRegexQuery(...)],
@@ -440,16 +474,17 @@ class Search
                 self::carQuery($term),
                 self::carQuery($replacedTerm),
                 self::productQuery($term),
-                self::productQuery($replacedTerm)
+                self::productQuery($replacedTerm),
             ];
 
             $compoundQuery = self::combineQueries(...$nonCodeQueries);
             $compoundQueryWithoutBrandFilter = self::combineQueries(...$nonCodeQueries);
         }
-        if (request()->has('brands')) $compoundQuery->filter(self::brandFilter(request()->input('brands')));
+        if (request()->has('brands')) {
+            $compoundQuery->filter(self::brandFilter(request()->input('brands')));
+        }
         $finalQuery = self::finalizeQuery($compoundQuery, $selectCategory);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter, $selectCategory);
-
 
         return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
     }
@@ -457,8 +492,8 @@ class Search
     protected static function log(string $query): void
     {
         \App\Models\Search::create([
-            "query" => $query,
-            "user_id" => \auth()->id()
+            'query' => $query,
+            'user_id' => \auth()->id(),
         ]);
     }
 }

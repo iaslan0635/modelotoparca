@@ -9,7 +9,7 @@ class TigerProduct extends BaseModel
 {
     public function getForeignKey()
     {
-        return "product_id";
+        return 'product_id';
     }
 
     public function cars(): BelongsToMany
@@ -19,7 +19,7 @@ class TigerProduct extends BaseModel
 
     public function oems(): HasMany
     {
-        return $this->hasMany(ProductOem::class, "logicalref");
+        return $this->hasMany(ProductOem::class, 'logicalref');
     }
 
     public function similars(): HasMany
@@ -31,8 +31,9 @@ class TigerProduct extends BaseModel
     {
         self::saved(function (TigerProduct $model) {
             foreach ($model->getChanges() as $column => $new) {
-                if ($column === "updated_at" || $column === "created_at")
+                if ($column === 'updated_at' || $column === 'created_at') {
                     continue;
+                }
 
                 $old = $model->getOriginal($column);
                 Log::create([

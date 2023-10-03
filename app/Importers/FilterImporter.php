@@ -8,7 +8,7 @@ use App\Models\PropertyValue;
 
 class FilterImporter extends Importer
 {
-    const LOGICALREF_COLUMN = "H";
+    const LOGICALREF_COLUMN = 'H';
 
     public static function getUsedTables(): array
     {
@@ -28,20 +28,28 @@ class FilterImporter extends Importer
             /** @var Property $property */
             foreach ($properties as $property) {
                 $cell = $property->excel_column;
-                if (!$cell) continue;
+                if (! $cell) {
+                    continue;
+                }
 
-                $product = Product::find($id, "id");
-                if (!$product) continue;
+                $product = Product::find($id, 'id');
+                if (! $product) {
+                    continue;
+                }
 
                 $value = $getCell($cell);
-                if (!$value) continue;
+                if (! $value) {
+                    continue;
+                }
 
                 $transformer = $transformers->get($property->transformer);
-                if ($transformer) $value = $transformer($value);
+                if ($transformer) {
+                    $value = $transformer($value);
+                }
 
                 $propertyValue = PropertyValue::firstOrCreate([
-                    "property_id" => $property->id,
-                    "value" => $value
+                    'property_id' => $property->id,
+                    'value' => $value,
                 ]);
 
                 $product->propertyValues()->attach($propertyValue->id);
@@ -52,7 +60,7 @@ class FilterImporter extends Importer
     private function getTransformers(): array
     {
         return [
-            "only_float" => fn($v) => floatval($v),
+            'only_float' => fn ($v) => floatval($v),
         ];
     }
 }

@@ -19,14 +19,14 @@ class Sperato
     {
         $response = Http::withOptions([
             'proxy' => 'socks5://127.0.0.1:9050',
-            'connect_timeout' => 60
+            'connect_timeout' => 60,
         ])->withoutVerifying()->get($url);
 
         // Yanıtı işleme veya görüntüleme
         if ($response->successful()) {
             return $response->body();
         } else {
-            return 'Proxy isteği başarısız ' . $response->status();
+            return 'Proxy isteği başarısız '.$response->status();
         }
     }
 
@@ -43,7 +43,7 @@ HTML;
         if ($products->count() <= 0) {
             Log::create([
                 'product_id' => $product_id,
-                'message' => 'Ürün bulunamadı, Anahtar Kelime: ' . $keyword,
+                'message' => 'Ürün bulunamadı, Anahtar Kelime: '.$keyword,
             ]);
 
             return false;
@@ -51,24 +51,26 @@ HTML;
 
         Log::create([
             'product_id' => $product_id,
-            'message' => $products->count() . " Adet ürün çekildi. Anahtar Kelime: ". $keyword
+            'message' => $products->count().' Adet ürün çekildi. Anahtar Kelime: '.$keyword,
         ]);
 
         $products->each(function (Crawler $cardElement) use (&$links) {
-            if ($cardElement->attr("class") === "card-col")
+            if ($cardElement->attr('class') === 'card-col') {
                 $links[] = $cardElement->filter('a')->attr('href');
+            }
         });
-
 
         $added = false;
         foreach ($links as $link) {
             $connection = SparetoProduct::firstOrCreate(['product_id' => $product_id, 'url' => $link]);
-            if ($connection->is_banned) continue;
+            if ($connection->is_banned) {
+                continue;
+            }
             $product = self::getProduct($link);
 
-            Product::query()->where("id", $product_id)->update([
+            Product::query()->where('id', $product_id)->update([
                 'dimensions' => $product['dimension'],
-                'specifications' => $product['specification']
+                'specifications' => $product['specification'],
             ]);
 
             \Log::info(json_encode($product['oem']));
@@ -76,7 +78,7 @@ HTML;
             foreach ($product['oem'] as $pair) {
                 ProductOem::firstOrCreate([
                     'logicalref' => $product_id,
-                    ...$pair
+                    ...$pair,
                 ]);
             }
 
@@ -87,13 +89,12 @@ HTML;
                 ]);
             }
 
-
             foreach ($product['vehicles'] as $vehicle) {
-                [$from, $to] = array_map(fn($v) => $v === "..." ? null : $v, explode(" - ", $vehicle['produced']));
-                $car = Car::where('permalink', $vehicle['permalink'])->first("id");
-                if (!$car) {
-                    $makerSlug = explode("/", $vehicle['permalink'])[0];
-                    $maker = Maker::where("permalink", "vehicles/$makerSlug")->first("id");
+                [$from, $to] = array_map(fn ($v) => $v === '...' ? null : $v, explode(' - ', $vehicle['produced']));
+                $car = Car::where('permalink', $vehicle['permalink'])->first('id');
+                if (! $car) {
+                    $makerSlug = explode('/', $vehicle['permalink'])[0];
+                    $maker = Maker::where('permalink', "vehicles/$makerSlug")->first('id');
                     $makerId = $maker ? $maker->id : 0;
                     $car = Car::create([
                         'permalink' => $vehicle['permalink'],
@@ -102,13 +103,13 @@ HTML;
                         'produced_from' => $from,
                         'produced_to' => $to,
                         'power' => $vehicle['power'],
-                        'maker_id' => $makerId
+                        'maker_id' => $makerId,
                     ]);
                 }
 
                 ProductCar::firstOrCreate([
-                    "logicalref" => $product_id,
-                    "car_id" => $car->id
+                    'logicalref' => $product_id,
+                    'car_id' => $car->id,
                 ]);
 
                 $added = true;
@@ -170,14 +171,14 @@ HTML;
             $oemDivs->each(function (Crawler $divElement) use (&$oem, &$stop) {
                 if ($divElement->nodeName() === 'h3') {
                     $stop = true;
-                } elseif (!$stop) {
-                    $brand = $divElement->filter(".col-md-2.col-4.pl-4")->text();
+                } elseif (! $stop) {
+                    $brand = $divElement->filter('.col-md-2.col-4.pl-4')->text();
                     $divElements = $divElement->filter('.col-md-10.col-8');
                     $divElements->each(function (Crawler $divElement) use ($brand, &$oem, &$cross) {
                         $innerElements = $divElement->filter('span, a');
 
                         $innerElements->each(function (Crawler $innerElement) use ($brand, &$oem, &$cross) {
-                            $oem[] = ["brand" => $brand, "oem" => $innerElement->text()];
+                            $oem[] = ['brand' => $brand, 'oem' => $innerElement->text()];
                         });
                     });
                 }

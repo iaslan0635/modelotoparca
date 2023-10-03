@@ -12,7 +12,7 @@ class OrderController extends Controller
     {
         $orders = Order::query()->with(['user', 'items']);
 
-        if ($request->has('type')){
+        if ($request->has('type')) {
             $orders->where('payment_status', '=', $request->input('type'));
         }
 
@@ -24,19 +24,21 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $order->load(['user.addresses', 'invoiceAddress', 'shipmentAddress', 'items.product']);
+
         return view('admin.apps.ecommerce.sales.details', compact('order'));
     }
 
     public function edit(Order $order)
     {
         $order->load(['user.addresses', 'invoiceAddress', 'shipmentAddress', 'items.product']);
+
         return view('admin.apps.ecommerce.sales.edit-order', compact('order'));
     }
 
     public function update(Order $order, Request $request)
     {
         $order->update([
-            'payment_status' => $request->input('payment_status')
+            'payment_status' => $request->input('payment_status'),
         ]);
 
         return back();

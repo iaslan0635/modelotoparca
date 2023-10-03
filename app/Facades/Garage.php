@@ -27,16 +27,18 @@ class Garage
     public static function items(): array
     {
         $items = session('garage_cars', []);
+
         return is_array($items) ? $items : [];
     }
 
     public static function remove(int $id): void
     {
-        if (self::chosen() === $id)
+        if (self::chosen() === $id) {
             self::deselect();
+        }
 
         $cars = self::items();
-        session()->put('garage_cars', collect($cars)->filter(fn($car) => $car['id'] !== $id)->all());
+        session()->put('garage_cars', collect($cars)->filter(fn ($car) => $car['id'] !== $id)->all());
     }
 
     public static function chosen(): int|null
@@ -62,13 +64,15 @@ class Garage
     public static function addAndChoose(Car $car)
     {
         $id = $car->id;
-        $alreadyExists = collect(self::items())->contains(fn(array $i) => $id == $i["id"]);
-        if (!$alreadyExists) self::add($car);
+        $alreadyExists = collect(self::items())->contains(fn (array $i) => $id == $i['id']);
+        if (! $alreadyExists) {
+            self::add($car);
+        }
         self::choose($id);
     }
 
     public static function deselect()
     {
-        session()->remove("garage_chosen");
+        session()->remove('garage_chosen');
     }
 }

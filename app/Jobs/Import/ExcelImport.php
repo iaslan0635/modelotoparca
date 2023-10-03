@@ -24,14 +24,14 @@ class ExcelImport implements ShouldQueue
     public $data;
 
     const CURRENCY_MAP = [
-        160 => "try",
-        1 => "usd",
-        20 => "eur",
+        160 => 'try',
+        1 => 'usd',
+        20 => 'eur',
     ];
 
     const IMAGE_11 = 0b10;
-    const IMAGE_12 = 0b01;
 
+    const IMAGE_12 = 0b01;
 
     /**
      * Create a new job instance.
@@ -107,7 +107,7 @@ class ExcelImport implements ShouldQueue
                     ->delete();
 
                 $product->cars()->sync([]);
-                SparetoProduct::where('product_id', $product->id)->where("is_banned", false)->delete();
+                SparetoProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
 
                 if ($this->data['cross_code']) {
                     $product->similars()->firstOrCreate([
@@ -167,10 +167,11 @@ class ExcelImport implements ShouldQueue
                 'abk' => $this->data['abk'],
             ]);
 
-            if ($product->cross_code)
+            if ($product->cross_code) {
                 $product->similars()->firstOrCreate([
                     'code' => $product->cross_code,
                 ]);
+            }
 
             $oems = explode(',', $product->oem_codes);
 
@@ -185,22 +186,26 @@ class ExcelImport implements ShouldQueue
 
         $id = $product->id;
         $title = $product->web_name ?? $product->name;
-        $allWebNames = implode(" ", [$product->name, $product->name2, $product->name3, $product->name4]);
+        $allWebNames = implode(' ', [$product->name, $product->name2, $product->name3, $product->name4]);
 
         $image_appendix = 0;
-        if ($product->image1) $image_appendix |= self::IMAGE_11; // IMAGEINC
-        if ($product->image2) $image_appendix |= self::IMAGE_12; // IMAGE2INC
+        if ($product->image1) {
+            $image_appendix |= self::IMAGE_11;
+        } // IMAGEINC
+        if ($product->image2) {
+            $image_appendix |= self::IMAGE_12;
+        } // IMAGE2INC
 
         $realProduct = Product::updateOrCreate(['id' => $id], [
             'brand_id' => $product->markref,
             'title' => $title,
             'sub_title' => $allWebNames,
             'description' => $allWebNames,
-            'slug' => Str::slug($title) . "-" . $id,
+            'slug' => Str::slug($title).'-'.$id,
             'sku' => $product->code,
             'quantity' => $product->onhand,
             'status' => intval($product->active) === 0,
-            'type' => "simple",
+            'type' => 'simple',
             'ecommerce' => intval($product->market_place) === 1,
             'part_number' => $product->cross_code,
             'producercode' => $product->producercode,
@@ -213,12 +218,12 @@ class ExcelImport implements ShouldQueue
             'abk' => $product->abk,
         ]);
 
-//        DB::table()
+        //        DB::table()
 
         $realProduct->categories()->sync([$product->dominantref]);
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $product->price,
-            'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), "try"),
+            'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), 'try'),
         ]);
     }
 
@@ -233,15 +238,19 @@ class ExcelImport implements ShouldQueue
         ];
 
         foreach ($search_predence as $field) {
-            if (strlen($product[$field]) === 0) continue;
-            if ($field === "oem_codes") {
-                $oems = explode(",", $product[$field]);
+            if (strlen($product[$field]) === 0) {
+                continue;
+            }
+            if ($field === 'oem_codes') {
+                $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
                     Sperato::smash($oem, $product->id);
                 }
             } else {
                 $found = Sperato::smash($product[$field], $product->id);
-                if ($found) break;
+                if ($found) {
+                    break;
+                }
             }
         }
     }

@@ -9,7 +9,9 @@ use Livewire\Component;
 class CarPanel extends Component
 {
     public $car_brands;
+
     public $product_id;
+
     public $chosen_car_id;
 
     protected $listeners = ['submitCarIds' => 'alert'];
@@ -21,8 +23,9 @@ class CarPanel extends Component
 
     public function alert(array $ids)
     {
-        if (empty($ids))
-            return $this->emit("toast", "Araç seçiniz", "error");
+        if (empty($ids)) {
+            return $this->emit('toast', 'Araç seçiniz', 'error');
+        }
 
         foreach ($ids as $id) {
             $this->connectCar($id);
@@ -32,18 +35,20 @@ class CarPanel extends Component
     private function connectCar(int $id)
     {
         $car = ProductCar::firstOrCreate([
-            "car_id" => $id,
-            "logicalref" => $this->product_id
+            'car_id' => $id,
+            'logicalref' => $this->product_id,
         ])->car;
 
-        $maker = $car->maker?->name ?? "[Marka Yok]";
+        $maker = $car->maker?->name ?? '[Marka Yok]';
         $short_name = $car->short_name;
 
-        if (!array_key_exists($maker, $this->car_brands))
+        if (! array_key_exists($maker, $this->car_brands)) {
             $this->car_brands[$maker] = [];
+        }
 
-        if (!array_key_exists($short_name, $this->car_brands[$maker]))
+        if (! array_key_exists($short_name, $this->car_brands[$maker])) {
             $this->car_brands[$maker][$short_name] = [];
+        }
 
         $this->car_brands[$maker][$short_name][] = $car;
     }
@@ -55,8 +60,9 @@ class CarPanel extends Component
         $car->delete();
 
         for ($i = 0; $i < count($arr); $i++) {
-            if ($arr[$i]["id"] == $id)
+            if ($arr[$i]['id'] == $id) {
                 unset($arr[$i]);
+            }
         }
     }
 }

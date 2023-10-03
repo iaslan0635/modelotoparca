@@ -10,7 +10,7 @@ class LatestProducts
     {
         $items = Session::get('latest.products', []);
         if (! array_key_exists($product->id, $items)) {
-        $items[$product->id] = $product;
+            $items[$product->id] = $product;
         }
 
         Session::put('latest.products', $items);

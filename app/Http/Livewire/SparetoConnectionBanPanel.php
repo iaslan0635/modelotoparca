@@ -16,11 +16,11 @@ class SparetoConnectionBanPanel extends Component
 
     public function ban()
     {
-        $this->url->update(["is_banned" => true]);
+        $this->url->update(['is_banned' => true]);
     }
 
     public function unban()
     {
-        $this->url->update(["is_banned" => false]);
+        $this->url->update(['is_banned' => false]);
     }
 }

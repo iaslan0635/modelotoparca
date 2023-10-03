@@ -7,17 +7,18 @@ use GuzzleHttp\Client;
 
 class TrendyolMerchant implements Merchant
 {
-    public const name = "Trendyol";
-    public string $key = "trendyol";
+    public const name = 'Trendyol';
+
+    public string $key = 'trendyol';
+
     protected Client $client;
 
     public function __construct(
         protected string $username,
         protected string $password
-    )
-    {
+    ) {
         $this->client = new Client([
-            "baseUrl" => "..."
+            'baseUrl' => '...',
         ]);
     }
 
@@ -25,15 +26,15 @@ class TrendyolMerchant implements Merchant
     {
         return [
             'username' => [
-                'label' => "Kullanıcı adı",
+                'label' => 'Kullanıcı adı',
                 'type' => 'string',
-                'value' => $this->username
+                'value' => $this->username,
             ],
             'password' => [
                 'label' => 'Parola',
                 'type' => 'password',
-                'value' => $this->password
-            ]
+                'value' => $this->password,
+            ],
         ];
     }
 
@@ -54,12 +55,12 @@ class TrendyolMerchant implements Merchant
         return [
             'merchant' => $this->name,
             'merchant_id' => 1564456,
-            'number' => "13249813232",
+            'number' => '13249813232',
             'client' => [],
             'data' => [],
             'price' => 100,
-            'date' => "10.06.2023",
-            'status' => "completed",
+            'date' => '10.06.2023',
+            'status' => 'completed',
             'delivery_status' => 'processing',
             'payment_status' => 'pending',
             'lines' => [
@@ -67,10 +68,10 @@ class TrendyolMerchant implements Merchant
                     'quantity' => 2,
                     'product_name' => 'Efe',
                     'amount' => 10,
-                    'price' => 5
-                ]
+                    'price' => 5,
+                ],
             ],
-            'line_data' => []
+            'line_data' => [],
         ];
     }
 
@@ -80,12 +81,12 @@ class TrendyolMerchant implements Merchant
             'merchant' => $this->name,
             'merchant_id' => 1564456,
             'customer_fullname' => 'Ad Soyad',
-            'date' => "Datetime",
+            'date' => 'Datetime',
             'conversation' => [
-               'type' => 'question',
-               'text' => 'asddasdassad',
+                'type' => 'question',
+                'text' => 'asddasdassad',
             ],
-            'data' => []
+            'data' => [],
         ];
     }
 

@@ -702,7 +702,7 @@ class simple_html_dom_node
                         }
                     }
 
-                        // Check attribute availability
+                    // Check attribute availability
                     if ($att_inv) { // Attribute should NOT be set
                         if (isset($node->attr[$att_name])) {
                             $pass = false;
@@ -2485,7 +2485,7 @@ class Dom
             $offset,
             $maxLen
         );
-//         $contents = retrieve_url_contents($url);
+        //         $contents = retrieve_url_contents($url);
 
         if (empty($contents) || strlen($contents) > $maxLen) {
             $dom->clear();

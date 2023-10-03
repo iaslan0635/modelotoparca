@@ -4,18 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Schema::table('product_oems', function (Blueprint $table) {
-            $table->string("oem_unspaced")->storedAs("REPLACE(`oem`, ' ', '')")->index();
+            $table->string('oem_unspaced')->storedAs("REPLACE(`oem`, ' ', '')")->index();
         });
     }
 
     public function down(): void
     {
         Schema::table('product_oems', function (Blueprint $table) {
-            $table->dropColumn("oem_unspaced");
+            $table->dropColumn('oem_unspaced');
         });
     }
 };

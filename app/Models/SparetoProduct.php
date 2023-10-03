@@ -5,7 +5,7 @@ namespace App\Models;
 class SparetoProduct extends BaseModel
 {
     protected $casts = [
-        "is_banned" => "boolean"
+        'is_banned' => 'boolean',
     ];
 
     public function product()

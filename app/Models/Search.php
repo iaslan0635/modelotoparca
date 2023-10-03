@@ -6,6 +6,6 @@ class Search extends BaseModel
 {
     protected $fillable = [
         'query',
-        'user_id'
+        'user_id',
     ];
 }

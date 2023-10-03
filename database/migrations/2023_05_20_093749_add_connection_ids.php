@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table("product_oems", function (Blueprint $table) {
-            $table->integer("connection_id")->nullable()->index();
+        Schema::table('product_oems', function (Blueprint $table) {
+            $table->integer('connection_id')->nullable()->index();
         });
 
-        Schema::table("product_cars", function (Blueprint $table) {
-            $table->integer("connection_id")->nullable()->index();
+        Schema::table('product_cars', function (Blueprint $table) {
+            $table->integer('connection_id')->nullable()->index();
         });
     }
 
@@ -26,12 +26,12 @@ return new class extends Migration
     public function down(): void
     {
 
-        Schema::table("product_oems", function (Blueprint $table) {
-            $table->dropColumn("connection_id");
+        Schema::table('product_oems', function (Blueprint $table) {
+            $table->dropColumn('connection_id');
         });
 
-        Schema::table("product_cars", function (Blueprint $table) {
-            $table->dropColumn("connection_id");
+        Schema::table('product_cars', function (Blueprint $table) {
+            $table->dropColumn('connection_id');
         });
     }
 };

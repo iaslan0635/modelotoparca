@@ -10,7 +10,8 @@ class ImageController extends Controller
 {
     public function delete(Request $request)
     {
-        Image::where("id", $request->input("image_id"))->delete();
+        Image::where('id', $request->input('image_id'))->delete();
+
         return back();
     }
 }

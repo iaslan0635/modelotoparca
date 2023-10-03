@@ -9,7 +9,8 @@ trait ManagesImages
 {
     protected function storeImage(Model $model, Request $request)
     {
-        $model->storeImage($request->file("file"));
-        return "success";
+        $model->storeImage($request->file('file'));
+
+        return 'success';
     }
 }

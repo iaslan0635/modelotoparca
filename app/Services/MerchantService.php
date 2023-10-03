@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Product;
 use App\Services\Merchants\Merchant;
 use App\Services\Merchants\TrendyolMerchant;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +22,8 @@ class MerchantService
 
     public function idk(string $name)
     {
-        $records = DB::table("merchants")->where("name", $name)->get();
+        $records = DB::table('merchants')->where('name', $name)->get();
+
         return $records->mapWithKeys(fn ($record) => [$record->key => $record->value])->all();
     }
 
@@ -33,6 +33,7 @@ class MerchantService
         foreach ($this->mertchants as $mertchant) {
             $results[$mertchant::name] = $this->forwardCallTo($mertchant, $name, $arguments);
         }
+
         return $results;
     }
 }

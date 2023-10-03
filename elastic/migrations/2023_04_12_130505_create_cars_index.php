@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Elastic\Adapter\Indices\Mapping;
@@ -23,6 +24,6 @@ final class CreateCarsIndex implements MigrationInterface
      */
     public function down(): void
     {
-        Index::dropIfExists("cars_index");
+        Index::dropIfExists('cars_index');
     }
 }

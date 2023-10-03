@@ -44,33 +44,37 @@ class CarSearch extends Component
 
         $len = count(self::HIERARCHY);
         for ($i = $index + 1; $i < $len; $i++) {
-            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i] . 's'} = null;
+            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i].'s'} = null;
         }
     }
 
     public function render()
     {
         $this->makers ??= $this->maker(['id', 'name'])
-            ->filter(fn($m) => $m->name)->sort(fn($m) => $m->name)->values()->toArray();
+            ->filter(fn ($m) => $m->name)->sort(fn ($m) => $m->name)->values()->toArray();
 
-        if ($this->maker !== null)
+        if ($this->maker !== null) {
             $this->cars ??= $this->model('short_name')->pluck('short_name')->filter()->sort()->values()->toArray();
+        }
 
-        if ($this->car !== null)
+        if ($this->car !== null) {
             $this->years ??= $this->model(['from_year', 'to_year'])
-                ->map(fn($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
+                ->map(fn ($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
                 ->flatten()->unique()->filter()->sort()->values()->toArray();
+        }
 
-        if ($this->year !== null)
+        if ($this->year !== null) {
             $this->spesificCars ??= $this->model('name')->pluck('name')->filter()->sort()->values()->toArray();
+        }
 
-        if ($this->spesificCar !== null)
+        if ($this->spesificCar !== null) {
             $this->engines ??= $this->model(['power', 'capacity', 'id'])
-                ->sort(fn($x) => $x->power)->values()
-                ->map(fn($x) => [
+                ->sort(fn ($x) => $x->power)->values()
+                ->map(fn ($x) => [
                     'id' => $x->id,
                     'name' => "$x->power Kw / {$this->kwToHp($x->power)} Hp / $x->capacity cc",
                 ])->toArray();
+        }
 
         return view("livewire.car-search.$this->variant-variant");
     }
@@ -85,7 +89,7 @@ class CarSearch extends Component
         $builder = Car::query()->distinct();
 
         if ($this->year !== null) {
-            $builder->whereNested(fn($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
+            $builder->whereNested(fn ($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
         }
 
         if ($this->car !== null) {
@@ -131,7 +135,7 @@ class CarSearch extends Component
         $car = Car::query()->findOrFail($this->engine);
         GarageFacade::addAndChoose($car);
         $this->emit('reloadData');
-//        dd(route('car.search', $car));
+        //        dd(route('car.search', $car));
         $this->redirect(route('car.search', $car->permalink));
     }
 }

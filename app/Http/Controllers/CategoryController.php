@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Facades\CategoryFacade;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\Property;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -43,13 +42,13 @@ class CategoryController extends Controller
             $query->orderBy('products.title', 'desc');
         }
 
-        foreach (request()->input('property', []) as $key => $values){
-            $query->whereHas("propertyValues", function (Builder $builder) use ($values, $key) {
-                $builder->where("property_id", $key)->whereIn("value", $values);
+        foreach (request()->input('property', []) as $key => $values) {
+            $query->whereHas('propertyValues', function (Builder $builder) use ($values, $key) {
+                $builder->where('property_id', $key)->whereIn('value', $values);
             });
         }
 
-        $query->whereRelation('categories', fn(Builder $q) => $q->whereIn('id', $tree['childs']));
+        $query->whereRelation('categories', fn (Builder $q) => $q->whereIn('id', $tree['childs']));
 
         $brands = $query->get()->groupBy('brand_id');
 

@@ -21,20 +21,20 @@ class Search extends Component
         $categories = [];
         $results = [];
         $suggestions = [];
-//        dd($this->query);
+        //        dd($this->query);
         if (strlen($this->query) >= 3) {
             $result = Searchable::query($this->query);
-            $categories = $result["categories"];
-            $results = $result["products"];
-            $suggestions = $result["suggestions"];
+            $categories = $result['categories'];
+            $results = $result['products'];
+            $suggestions = $result['suggestions'];
 
-//            dd($result);
+            //            dd($result);
         }
 
         return view('livewire.header.search', [
             'results' => $results,
             'categories' => $categories,
-            'suggestions' => $suggestions
+            'suggestions' => $suggestions,
         ]);
     }
 
@@ -46,17 +46,16 @@ class Search extends Component
 
     public function reloadData()
     {
-    return $this->emit('forwardCallToGarage', 'reloadData', func_get_args());
+        return $this->emit('forwardCallToGarage', 'reloadData', func_get_args());
     }
 
     public function chooseCar()
     {
-    return $this->emit('forwardCallToGarage', 'chooseCar', func_get_args());
+        return $this->emit('forwardCallToGarage', 'chooseCar', func_get_args());
     }
 
     public function remove()
     {
-    return $this->emit('forwardCallToGarage', 'remove', func_get_args());
+        return $this->emit('forwardCallToGarage', 'remove', func_get_args());
     }
-
 }

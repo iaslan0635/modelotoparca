@@ -9,6 +9,7 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 abstract class Importer
 {
     protected Worksheet $sheet;
+
     /* @var ?callable */
     protected $statusHook;
 
@@ -31,6 +32,7 @@ abstract class Importer
     {
         $value = $array[$key];
         unset($array[$key]);
+
         return $value;
     }
 
@@ -38,6 +40,7 @@ abstract class Importer
     {
         return function ($column) use ($row) {
             $value = $this->sheet->getCell("$column$row")->getValue();
+
             return $value instanceof RichText ? $value->getPlainText() : $value;
         };
     }
@@ -50,8 +53,10 @@ abstract class Importer
 
     protected function status(int $i)
     {
-        if ($this->statusHook) ($this->statusHook)($i);
+        if ($this->statusHook) {
+            ($this->statusHook)($i);
+        }
     }
 
-    public abstract function import();
+    abstract public function import();
 }

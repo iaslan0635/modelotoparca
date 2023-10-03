@@ -8,8 +8,10 @@ use Livewire\Component;
 
 class SearchReplacements extends Component
 {
-    public string $original = "";
-    public string $replacement = "";
+    public string $original = '';
+
+    public string $replacement = '';
+
     public array $searchReplacements = [];
 
     public function mount()
@@ -26,18 +28,18 @@ class SearchReplacements extends Component
     {
         try {
             $this->searchReplacements[] = SearchReplacement::create([
-                "original" => $this->original,
-                "replacement" => $this->replacement
+                'original' => $this->original,
+                'replacement' => $this->replacement,
             ]);
             SearchReplacement::clearCache();
         } catch (QueryException) {
-            $this->emit("toast", "Önceden bu kayıt oluşturulmuş", "error");
+            $this->emit('toast', 'Önceden bu kayıt oluşturulmuş', 'error');
         }
     }
 
     public function delete(int $index)
     {
-        ["id" => $id] = $this->searchReplacements[$index];
+        ['id' => $id] = $this->searchReplacements[$index];
         SearchReplacement::whereId($id)->delete();
         SearchReplacement::clearCache();
         unset($this->searchReplacements[$index]);

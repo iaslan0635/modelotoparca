@@ -10,6 +10,7 @@ class Car extends BaseModel
     use Searchable;
 
     public $timestamps = false;
+
     protected $searchableAs = 'cars_index';
 
     public function searchableAs()

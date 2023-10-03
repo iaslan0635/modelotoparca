@@ -22,6 +22,7 @@ interface Merchant
     public function createPorudct(Product $product);
 
     public function getCategories();
+
     public function getCategoryAttributes();
 
     public function getCargoCompanies();

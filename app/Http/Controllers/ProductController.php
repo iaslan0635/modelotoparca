@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Maker;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Packages\LatestProducts;
@@ -13,6 +12,7 @@ class ProductController extends Controller
     {
         $oems = $product->oems()->groupBy('brand')->selectRaw('brand, GROUP_CONCAT(oem) as oems')->get();
         $car_brands = $product->cars()->with('maker')->get()->groupBy('maker.name')->map(fn ($a) => $a->groupBy('short_name')->all())->all();
+
         return compact('product', 'oems', 'car_brands');
     }
 
@@ -21,9 +21,7 @@ class ProductController extends Controller
         $product->load(['brand', 'oems', 'crosses', 'alternatives']);
         $product->visit()->withIP()->withUser();
 
-
-//            ->map(fn(ProductOem $oem) => ["brand" => $oem->brand, "oems" => explode(",", $oem->oem)]);
-
+        //            ->map(fn(ProductOem $oem) => ["brand" => $oem->brand, "oems" => explode(",", $oem->oem)]);
 
         LatestProducts::add($product);
 

@@ -6,7 +6,7 @@ class TrimFacade
 {
     public static function cleanText(string $text): string
     {
-        $characters = [".", ",", "?", "{", "}", "%", "$", "^", "'", '"', "<", ">", "!", "`", ";", "\n", '|', '½', "+", "-", "*", ":", "æ", "ß", "@", "é"];
+        $characters = ['.', ',', '?', '{', '}', '%', '$', '^', "'", '"', '<', '>', '!', '`', ';', "\n", '|', '½', '+', '-', '*', ':', 'æ', 'ß', '@', 'é'];
 
         return str_replace($characters, '', $text);
     }
