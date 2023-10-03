@@ -19,6 +19,7 @@ return new class extends Migration
             $table->dateTime('due_date')->nullable();
             $table->dateTime('paid_date')->nullable();
             $table->dateTime('refund_date')->nullable();
+            $table->decimal('refund_amount', 16)->default(0.00);
             $table->string('status', 255)->default('unpaid');
             $table->json('data')->nullable();
             $table->json('user_data')->nullable();
