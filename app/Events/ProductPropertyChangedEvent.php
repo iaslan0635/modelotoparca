@@ -14,8 +14,6 @@ class ProductPropertyChangedEvent
 {
     use Dispatchable, SerializesModels;
 
-    public const NOTIFICATION = \App\Notifications\ProductPropertyChangedNotification::class;
-
     /**
      * Create a new event instance.
      */

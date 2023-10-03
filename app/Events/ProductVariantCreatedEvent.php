@@ -14,8 +14,6 @@ class ProductVariantCreatedEvent
 {
     use Dispatchable, SerializesModels;
 
-    public const NOTIFICATION = \App\Notifications\ProductVariantCreatedNotification::class;
-
     /**
      * Create a new event instance.
      */

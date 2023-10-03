@@ -14,8 +14,6 @@ class BrandChangedEvent
 {
     use Dispatchable, SerializesModels;
 
-    public const NOTIFICATION = \App\Notifications\BrandChangedNotification::class;
-
     /**
      * Create a new event instance.
      */
