@@ -14,6 +14,8 @@ class PriceChangedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\PriceChangedNotification::class;
+
     /**
      * Create a new event instance.
      */

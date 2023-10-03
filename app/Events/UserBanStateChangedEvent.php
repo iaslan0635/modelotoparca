@@ -14,6 +14,8 @@ class UserBanStateChangedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\UserBanStateChangedNotification::class;
+
     /**
      * Create a new event instance.
      */

@@ -14,6 +14,8 @@ class InvoiceRefundChangedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\InvoiceRefundChangedNotification::class;
+
     /**
      * Create a new event instance.
      */

@@ -14,6 +14,8 @@ class ShipmentStatusChangedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\ShipmentStatusChangedNotification::class;
+
     /**
      * Create a new event instance.
      */

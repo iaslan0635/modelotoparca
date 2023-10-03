@@ -14,6 +14,8 @@ class UserActiveStateChangedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\UserActiveStateChangedNotification::class;
+
     /**
      * Create a new event instance.
      */

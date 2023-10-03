@@ -14,6 +14,8 @@ class MerchantOrderCreatedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\MerchantOrderCreatedNotification::class;
+
     /**
      * Create a new event instance.
      */

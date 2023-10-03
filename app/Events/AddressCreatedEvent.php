@@ -14,6 +14,8 @@ class AddressCreatedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\AddressCreatedNotification::class;
+
     /**
      * Create a new event instance.
      */

@@ -14,6 +14,8 @@ class InvoiceCreatedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\InvoiceCreatedNotification::class;
+
     /**
      * Create a new event instance.
      */

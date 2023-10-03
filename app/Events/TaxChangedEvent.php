@@ -14,6 +14,8 @@ class TaxChangedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\TaxChangedNotification::class;
+
     /**
      * Create a new event instance.
      */

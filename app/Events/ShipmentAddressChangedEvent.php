@@ -14,6 +14,8 @@ class ShipmentAddressChangedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\ShipmentAddressChangedNotification::class;
+
     /**
      * Create a new event instance.
      */

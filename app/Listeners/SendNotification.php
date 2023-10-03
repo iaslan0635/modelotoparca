@@ -2,6 +2,9 @@
 
 namespace App\Listeners;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+
 class SendNotification
 {
     /**
@@ -17,6 +20,7 @@ class SendNotification
      */
     public function handle(object $event): void
     {
-        //
+        $notificationClass = $event::NOTIFICATION;
+        Notification::send(User::all(), new $notificationClass($event));
     }
 }

@@ -14,6 +14,8 @@ class UserRegisteredEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\UserRegisteredNotification::class;
+
     /**
      * Create a new event instance.
      */

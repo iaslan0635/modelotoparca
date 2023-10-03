@@ -14,6 +14,8 @@ class PaymentStatusChangedEvent
 {
     use Dispatchable, SerializesModels;
 
+    public const NOTIFICATION = \App\Notifications\PaymentStatusChangedNotification::class;
+
     /**
      * Create a new event instance.
      */
