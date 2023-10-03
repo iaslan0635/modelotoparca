@@ -4,6 +4,8 @@ namespace App\Listeners;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Notification;
+use ReflectionClassConstant;
+use ReflectionException;
 
 class SendNotification
 {
@@ -17,10 +19,16 @@ class SendNotification
 
     /**
      * Handle the event.
+     * @noinspection PhpRedundantCatchClauseInspection
      */
     public function handle(object $event): void
     {
-        $notificationClass = $event::NOTIFICATION;
-        Notification::send(User::all(), new $notificationClass($event));
+        try {
+            $ref = new ReflectionClassConstant($event, "NOTIFICATION");
+            $notificationClass = $ref->getValue();
+            Notification::send(User::all(), new $notificationClass($event));
+        } catch (ReflectionException) {
+            // Ignore if $event::NOTIFICATION does not exists
+        }
     }
 }

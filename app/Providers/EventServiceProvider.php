@@ -28,15 +28,12 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\ShipmentStatusChangedListener::class,
         ],
         \App\Events\InvoiceAddressChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\InvoiceAddressChangedListener::class,
         ],
         \App\Events\ProductChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\ProductChangedListener::class,
         ],
         \App\Events\ProductCreatedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\ProductCreatedListener::class,
         ],
         \App\Events\OrderCreatedEvent::class => [
@@ -44,7 +41,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\OrderCreatedListener::class,
         ],
         \App\Events\AddressCreatedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\AddressCreatedListener::class,
         ],
         \App\Events\MerchantOrderCreatedEvent::class => [
@@ -56,11 +52,9 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\PriceChangedListener::class,
         ],
         \App\Events\ProductCategoryChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\ProductCategoryChangedListener::class,
         ],
         \App\Events\ProductPropertyChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\ProductPropertyChangedListener::class,
         ],
         \App\Events\TaxChangedEvent::class => [
@@ -72,11 +66,9 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\UserActiveStateChangedListener::class,
         ],
         \App\Events\ProductVariantChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\ProductVariantChangedListener::class,
         ],
         \App\Events\ProductVariantCreatedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\ProductVariantCreatedListener::class,
         ],
         \App\Events\InvoiceCreatedEvent::class => [
@@ -96,7 +88,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\InvoiceRefundChangedListener::class,
         ],
         \App\Events\BrandChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
             \App\Listeners\BrandChangedListener::class,
         ],
         \App\Events\UserRegisteredEvent::class => [
