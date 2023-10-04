@@ -2,25 +2,15 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use App\Notifications\InvoicePaidDateChangedNotification;
 use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Collection;
 
 class InvoicePaidDateChangedEvent implements Notifable
 {
     use Dispatchable, SerializesModels;
-
-    public function getNotification(): \Illuminate\Notifications\Notification {
-        return new \App\Notifications\InvoicePaidDateChangedNotification($this);
-    }
-
-    public function getNotificationAudience(): \Illuminate\Support\Collection|array {
-        return [];
-    }
 
     /**
      * Create a new event instance.
@@ -28,5 +18,15 @@ class InvoicePaidDateChangedEvent implements Notifable
     public function __construct()
     {
         //
+    }
+
+    public function getNotification(): Notification
+    {
+        return new InvoicePaidDateChangedNotification($this);
+    }
+
+    public function getNotificationAudience(): Collection|array
+    {
+        return [];
     }
 }

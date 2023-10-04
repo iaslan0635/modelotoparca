@@ -2,8 +2,8 @@
 
 namespace App\Notifications;
 
+use App\Events\PriceChangedEvent;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -14,7 +14,7 @@ class PriceChangedNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(public \App\Events\PriceChangedEvent $event)
+    public function __construct(public PriceChangedEvent $event)
     {
         //
     }
@@ -35,9 +35,9 @@ class PriceChangedNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**

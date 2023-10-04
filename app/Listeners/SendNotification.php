@@ -3,10 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\Notifable;
-use App\Models\User;
 use Illuminate\Support\Facades\Notification;
-use ReflectionClassConstant;
-use ReflectionException;
 
 class SendNotification
 {

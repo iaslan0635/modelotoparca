@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\ProductPropertyChangedEvent;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class ProductPropertyChangedListener
 {

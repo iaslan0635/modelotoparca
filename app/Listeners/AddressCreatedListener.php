@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\AddressCreatedEvent;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class AddressCreatedListener
 {
