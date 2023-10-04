@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\OrderStatuses;
+use App\Events\UserActiveStateChangedEvent;
+use App\Events\UserBanStateChangedEvent;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -75,5 +77,15 @@ class User extends Authenticatable
     public function whislist(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    protected static function booted(): void
+    {
+        static::updated(function (User $user) {
+            if ($user->wasChanged("banned"))
+                dispatch(new UserBanStateChangedEvent($user));
+            if ($user->wasChanged("is_active"))
+                dispatch(new UserActiveStateChangedEvent($user));
+        });
     }
 }

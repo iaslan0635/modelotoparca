@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use App\Notifications\UserActiveStateChangedNotification;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Notifications\Notification;
@@ -15,7 +16,9 @@ class UserActiveStateChangedEvent implements Notifable
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(
+        public User $user
+    )
     {
         //
     }
