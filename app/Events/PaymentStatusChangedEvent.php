@@ -30,6 +30,6 @@ class PaymentStatusChangedEvent implements Notifable
 
     public function getNotificationAudience(): Collection|array
     {
-        return [];
+        return [$this->order->user];
     }
 }

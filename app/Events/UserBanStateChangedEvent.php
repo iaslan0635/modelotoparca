@@ -30,6 +30,6 @@ class UserBanStateChangedEvent implements Notifable
 
     public function getNotificationAudience(): Collection|array
     {
-        return [];
+        return [$this->user];
     }
 }

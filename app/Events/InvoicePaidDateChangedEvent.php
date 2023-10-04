@@ -30,6 +30,6 @@ class InvoicePaidDateChangedEvent implements Notifable
 
     public function getNotificationAudience(): Collection|array
     {
-        return [];
+        return [$this->invoice->user];
     }
 }
