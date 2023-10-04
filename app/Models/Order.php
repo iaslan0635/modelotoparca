@@ -41,7 +41,7 @@ class Order extends BaseModel
             if ($order->wasChanged("shipment_status"))
                 dispatch(new ShipmentStatusChangedEvent($order));
             if ($order->wasChanged("shipment_address_id"))
-                dispatch(new ShipmentAddressChangedEvent($order)); // RELATION_CONFLICT
+                dispatch(new ShipmentAddressChangedEvent($order));
             if ($order->wasChanged("payment_status"))
                 dispatch(new PaymentStatusChangedEvent($order));
         });

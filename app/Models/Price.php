@@ -12,7 +12,7 @@ class Price extends BaseModel
 {
     protected $with = ['tax'];
     protected $dispatchesEvents =[
-        "updated" => PriceChangedEvent::class // RELATION_CONFLICT
+        "updated" => PriceChangedEvent::class
     ];
 
     protected function price(): Attribute
