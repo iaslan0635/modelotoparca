@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\PriceChangedEvent;
 use App\Facades\ExchangeRate;
 use App\Facades\TaxFacade;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -10,6 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Price extends BaseModel
 {
     protected $with = ['tax'];
+    protected $dispatchesEvents =[
+        "updated" => PriceChangedEvent::class
+    ];
 
     protected function price(): Attribute
     {

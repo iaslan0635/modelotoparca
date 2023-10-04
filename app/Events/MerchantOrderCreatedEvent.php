@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\MerchantOrder;
 use App\Notifications\MerchantOrderCreatedNotification;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Notifications\Notification;
@@ -15,7 +16,9 @@ class MerchantOrderCreatedEvent implements Notifable
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(
+        public MerchantOrder $merchantOrder
+    )
     {
         //
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegisteredEvent;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class AuthController extends Controller
         $user = User::create($data);
 
         \Auth::login($user);
+        dispatch(UserRegisteredEvent::class);
 
         return redirect()->route('welcome');
     }

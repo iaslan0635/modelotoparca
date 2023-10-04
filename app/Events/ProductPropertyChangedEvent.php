@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\PropertyValue;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -12,7 +13,9 @@ class ProductPropertyChangedEvent
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(
+        public PropertyValue $propertyValue
+    )
     {
         //
     }

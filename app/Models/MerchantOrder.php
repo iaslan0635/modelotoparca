@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\MerchantOrderCreatedEvent;
 use Illuminate\Database\Eloquent\Model;
 
 class MerchantOrder extends Model
@@ -12,5 +13,8 @@ class MerchantOrder extends Model
         'date' => 'datetime',
         'lines' => 'array',
         'line_data' => 'array',
+    ];
+    protected $dispatchesEvents =[
+        "created" => MerchantOrderCreatedEvent::class
     ];
 }

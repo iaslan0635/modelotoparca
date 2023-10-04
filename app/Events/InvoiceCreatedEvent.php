@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Invoice;
 use App\Notifications\InvoiceCreatedNotification;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Notifications\Notification;
@@ -15,7 +16,9 @@ class InvoiceCreatedEvent implements Notifable
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(
+        public Invoice $invoice
+    )
     {
         //
     }

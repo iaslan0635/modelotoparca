@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
+use App\Events\OrderCreatedEvent;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends BaseModel
 {
+    protected $dispatchesEvents =[
+        "created" => OrderCreatedEvent::class
+    ];
+
     public function items(): HasMany
     {
         return $this->hasMany(OrderItem::class);

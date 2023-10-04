@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Events\ProductChangedEvent;
+use App\Events\ProductCreatedEvent;
 use App\Facades\Garage;
 use App\Jobs\Import\ExcelImport;
 use App\Packages\Utils;
@@ -24,6 +26,10 @@ class Product extends BaseModel implements CanVisit
         imageUrls as protected databaseImageUrls;
         imageUrl as protected databaseImageUrl;
     }
+    protected $dispatchesEvents =[
+        "updated" => ProductChangedEvent::class,
+        "created" => ProductCreatedEvent::class
+    ];
 
     public $incrementing = false;
 
