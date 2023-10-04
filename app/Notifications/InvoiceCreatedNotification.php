@@ -5,7 +5,6 @@ namespace App\Notifications;
 use App\Events\InvoiceCreatedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class InvoiceCreatedNotification extends Notification
 {
@@ -52,8 +51,8 @@ class InvoiceCreatedNotification extends Notification
         ];
     }
 
-    public function toNetgsm(object $notifiable)
+    protected function getSmsTemplateData(): array
     {
-        // return (new \TarfinLabs\Netgsm\NetGsmSmsMessage("Hello! Welcome to the club {$notifiable->name}!"));
+        // TODO: Implement getSmsTemplateData() method.
     }
 }

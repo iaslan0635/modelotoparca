@@ -88,4 +88,9 @@ class User extends Authenticatable
                 dispatch(new UserActiveStateChangedEvent($user));
         });
     }
+
+    public function routeNotificationForNetgsm()
+    {
+        return "5050000000"; // ???
+    }
 }
