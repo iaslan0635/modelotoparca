@@ -10,11 +10,17 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class InvoicePaidDateChangedEvent
+class InvoicePaidDateChangedEvent implements Notifable
 {
     use Dispatchable, SerializesModels;
 
-    public const NOTIFICATION = \App\Notifications\InvoicePaidDateChangedNotification::class;
+    public function getNotification(): \Illuminate\Notifications\Notification {
+        return new \App\Notifications\InvoicePaidDateChangedNotification($this);
+    }
+
+    public function getNotificationAudience(): \Illuminate\Support\Collection|array {
+        return [];
+    }
 
     /**
      * Create a new event instance.

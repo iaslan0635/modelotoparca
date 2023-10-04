@@ -10,11 +10,17 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PriceChangedEvent
+class PriceChangedEvent implements Notifable
 {
     use Dispatchable, SerializesModels;
 
-    public const NOTIFICATION = \App\Notifications\PriceChangedNotification::class;
+    public function getNotification(): \Illuminate\Notifications\Notification {
+        return new \App\Notifications\PriceChangedNotification($this);
+    }
+
+    public function getNotificationAudience(): \Illuminate\Support\Collection|array {
+        return [];
+    }
 
     /**
      * Create a new event instance.

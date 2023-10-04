@@ -10,11 +10,17 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserActiveStateChangedEvent
+class UserActiveStateChangedEvent implements Notifable
 {
     use Dispatchable, SerializesModels;
 
-    public const NOTIFICATION = \App\Notifications\UserActiveStateChangedNotification::class;
+    public function getNotification(): \Illuminate\Notifications\Notification {
+        return new \App\Notifications\UserActiveStateChangedNotification($this);
+    }
+
+    public function getNotificationAudience(): \Illuminate\Support\Collection|array {
+        return [];
+    }
 
     /**
      * Create a new event instance.
