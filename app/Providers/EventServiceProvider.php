@@ -95,7 +95,8 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\UserBanStateChangedEvent::class => [
             \App\Listeners\SendNotification::class,
             \App\Listeners\UserBanStateChangedListener::class,
-        ],    ];
+        ],
+    ];
 
     /**
      * Register any events for your application.
