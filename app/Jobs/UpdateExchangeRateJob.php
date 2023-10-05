@@ -21,11 +21,13 @@ class UpdateExchangeRateJob
     public static function updateRates()
     {
         $xmlStirng = Http::get("https://www.tcmb.gov.tr/kurlar/today.xml")->body();
-        $xml = new SimpleXMLElement($xmlStirng);
-        $xml =
 
-        Cache::put('usd_price', (string) 19.3708, TTL::DAY); //Currency[@CurrencyCode="USD"]/BanknoteSelling
-        Cache::put('eur_price', (string) 21.3214, TTL::DAY); //Currency[@CurrencyCode="EUR"]/BanknoteSelling
+        $xml = new SimpleXMLElement($xmlStirng);
+        $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
+        $eur = (string)$xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
+
+        Cache::put('usd_price', $usd, TTL::DAY); //Currency[@CurrencyCode="USD"]/BanknoteSelling
+        Cache::put('eur_price', $eur, TTL::DAY); //Currency[@CurrencyCode="EUR"]/BanknoteSelling
     }
 
     public function handle()
