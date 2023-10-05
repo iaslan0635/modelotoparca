@@ -38,23 +38,13 @@ class ExchangeRate
 
     public static function convertFromTRY(string $currency, string $moneyAsTRY): string
     {
-        if ($currency === 'try') {
-            return $moneyAsTRY;
-        }
-        $value = bcdiv($moneyAsTRY, self::get($currency), 2);
-        if (is_null($value)) {
-            throw new \Exception('bcdiv failed (divisor is 0)');
-        }
-
-        return $value;
+        if ($currency === 'try') return $moneyAsTRY;
+        return bcdiv($moneyAsTRY, self::get($currency), 2);
     }
 
     public static function convertToTRY(string $currency, string $moneyAsCurrency): string
     {
-        if ($currency === 'try') {
-            return $moneyAsCurrency;
-        }
-
+        if ($currency === 'try') return $moneyAsCurrency;
         return bcmul($moneyAsCurrency, self::get($currency), 2);
     }
 }
