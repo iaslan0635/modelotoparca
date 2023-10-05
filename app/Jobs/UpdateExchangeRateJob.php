@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\Facades\ExchangeRate;
 use App\Facades\TTL;
-use Carbon\CarbonInterval;
+use App\Models\Price;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -40,13 +40,9 @@ class UpdateExchangeRateJob
     {
         foreach (['usd', 'eur'] as $currency) {
             $rate = ExchangeRate::get($currency);
-            DB::connection('web')->table('products')->where('currency', "'$currency'")->update([
+            Price::where("currency", $currency)->update([
                 'price' => DB::raw("CEIL($rate * 100 * untouchedPrice) / 100"),
             ]);
         }
-
-        DB::connection('web')->table('products')->where('currency', "'try'")->update([
-            'price' => DB::raw('untouchedPrice'),
-        ]);
     }
 }
