@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Import;
 
+use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
@@ -220,7 +221,10 @@ class ExcelImport implements ShouldQueue
 
         //        DB::table()
 
-        $realProduct->categories()->sync([$product->dominantref]);
+        $mainCategory = Category::find($product->dominantref, ["name"]);
+        $categories = Category::where("name", $mainCategory->name)->pluck("id");
+
+        $realProduct->categories()->sync($categories);
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $product->price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), 'try'),
