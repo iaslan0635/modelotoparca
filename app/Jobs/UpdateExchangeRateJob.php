@@ -20,11 +20,12 @@ class UpdateExchangeRateJob
 
     public static function updateRates()
     {
+        // TODO: find alternative to tcmb
         $xmlStirng = Http::get("https://www.tcmb.gov.tr/kurlar/today.xml")->body();
 
         $xml = new SimpleXMLElement($xmlStirng);
-        $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
-        $eur = (string)$xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
+        $usd = "27.62"; // (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
+        $eur = "29.15"; // (string)$xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
 
         Cache::put('usd_price', $usd, TTL::DAY);
         Cache::put('eur_price', $eur, TTL::DAY);
