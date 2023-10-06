@@ -65,7 +65,7 @@
                         </tr>
                         <tr>
                             <th>Brand</th>
-                            <td><a href="">{{ $product->brand->name }}</a></td>
+                            <td><a href="">{{ $product->brand?->name }}</a></td>
                         </tr>
                         <tr>
                             <th>Country</th>

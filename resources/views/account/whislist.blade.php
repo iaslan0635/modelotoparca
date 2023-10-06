@@ -33,7 +33,7 @@
                                                 </td>
                                                 <td>{{ $product->producercode }}</td>
                                                 <td>{{ $product->oem_codes }}</td>
-                                                <td>{{ $product->brand->name }}</td>
+                                                <td>{{ $product->brand?->name }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
