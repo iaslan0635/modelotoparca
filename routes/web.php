@@ -19,6 +19,14 @@ Route::get('/', function () {
     return view('home', compact('categories', 'featured_products'));
 })->name('welcome');
 
+Route::get('test', function (){
+    return \Illuminate\Support\Facades\Http::withHeaders([
+        'headers' => [
+            'User-Agent' => "PostmanRuntime/7.29.2"
+        ]
+    ])->get('https://www.tcmb.gov.tr/kurlar/today.xml')->body();
+});
+
 Route::view('search', 'search')->name('search');
 Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');
