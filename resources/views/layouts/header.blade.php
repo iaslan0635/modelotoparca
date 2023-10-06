@@ -63,7 +63,7 @@
                                                 <div class="block block-brands block-brands--layout--columns-8-full">
                                                     <div class="container">
                                                         <ul class="block-brands__list">
-                                                            @foreach($root->children as $child)
+                                                            @foreach($root->children->orderBy('name') as $child)
                                                                 <li class="block-brands__item">
                                                                     <a href="{{ route("category.show", $child) }}"
                                                                        class="block-brands__item-link">
