@@ -18,8 +18,7 @@ class PriceChangedEvent implements Notifable
      */
     public function __construct(
         public Price $price
-    )
-    {
+    ) {
         //
     }
 

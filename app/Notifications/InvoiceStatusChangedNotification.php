@@ -6,7 +6,6 @@ use App\Events\InvoiceStatusChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class InvoiceStatusChangedNotification extends Notification
 {
     use Queueable;

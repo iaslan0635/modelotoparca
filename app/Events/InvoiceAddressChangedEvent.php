@@ -15,8 +15,7 @@ class InvoiceAddressChangedEvent
      */
     public function __construct(
         public Order $order
-    )
-    {
+    ) {
         //
     }
 }

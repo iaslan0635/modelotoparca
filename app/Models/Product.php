@@ -26,9 +26,10 @@ class Product extends BaseModel implements CanVisit
         imageUrls as protected databaseImageUrls;
         imageUrl as protected databaseImageUrl;
     }
-    protected $dispatchesEvents =[
-        "updated" => ProductChangedEvent::class,
-        "created" => ProductCreatedEvent::class
+
+    protected $dispatchesEvents = [
+        'updated' => ProductChangedEvent::class,
+        'created' => ProductCreatedEvent::class,
     ];
 
     public $incrementing = false;

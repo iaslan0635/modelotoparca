@@ -6,7 +6,6 @@ use App\Events\PaymentStatusChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class PaymentStatusChangedNotification extends Notification
 {
     use Queueable;

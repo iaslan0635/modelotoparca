@@ -15,8 +15,7 @@ class BrandChangedEvent
      */
     public function __construct(
         public Brand $brand
-    )
-    {
+    ) {
         //
     }
 }

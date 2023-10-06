@@ -18,8 +18,7 @@ class InvoiceStatusChangedEvent implements Notifable
      */
     public function __construct(
         public Invoice $invoice
-    )
-    {
+    ) {
         //
     }
 

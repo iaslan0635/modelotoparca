@@ -18,8 +18,7 @@ class InvoiceRefundChangedEvent implements Notifable
      */
     public function __construct(
         public Invoice $invoice
-    )
-    {
+    ) {
         //
     }
 

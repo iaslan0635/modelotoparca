@@ -6,7 +6,6 @@ use App\Events\ShipmentAddressChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class ShipmentAddressChangedNotification extends Notification
 {
     use Queueable;

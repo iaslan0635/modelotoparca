@@ -18,8 +18,7 @@ class TaxChangedEvent implements Notifable
      */
     public function __construct(
         public Tax $tax
-    )
-    {
+    ) {
         //
     }
 

@@ -15,8 +15,7 @@ class ProductChangedEvent
      */
     public function __construct(
         public Product $product
-    )
-    {
+    ) {
         //
     }
 }

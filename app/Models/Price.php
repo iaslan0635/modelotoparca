@@ -11,8 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Price extends BaseModel
 {
     protected $with = ['tax'];
-    protected $dispatchesEvents =[
-        "updated" => PriceChangedEvent::class
+
+    protected $dispatchesEvents = [
+        'updated' => PriceChangedEvent::class,
     ];
 
     protected function price(): Attribute

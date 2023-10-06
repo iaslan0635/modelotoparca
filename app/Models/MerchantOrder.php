@@ -14,7 +14,8 @@ class MerchantOrder extends Model
         'lines' => 'array',
         'line_data' => 'array',
     ];
-    protected $dispatchesEvents =[
-        "created" => MerchantOrderCreatedEvent::class
+
+    protected $dispatchesEvents = [
+        'created' => MerchantOrderCreatedEvent::class,
     ];
 }

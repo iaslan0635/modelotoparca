@@ -15,8 +15,7 @@ class ProductPropertyChangedEvent
      */
     public function __construct(
         public PropertyValue $propertyValue
-    )
-    {
+    ) {
         //
     }
 }

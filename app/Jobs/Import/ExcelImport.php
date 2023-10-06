@@ -221,8 +221,8 @@ class ExcelImport implements ShouldQueue
 
         //        DB::table()
 
-        $mainCategory = Category::find($product->dominantref, ["name"]);
-        $categories = Category::where("name", $mainCategory->name)->pluck("id");
+        $mainCategory = Category::find($product->dominantref, ['name']);
+        $categories = Category::where('name', $mainCategory->name)->pluck('id');
 
         $realProduct->categories()->sync($categories);
         Price::updateOrCreate(['product_id' => $id], [

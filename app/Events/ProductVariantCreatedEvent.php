@@ -15,8 +15,7 @@ class ProductVariantCreatedEvent
      */
     public function __construct(
         public Variant $variant
-    )
-    {
+    ) {
         //
     }
 }

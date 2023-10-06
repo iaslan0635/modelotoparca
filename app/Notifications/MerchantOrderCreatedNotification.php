@@ -6,7 +6,6 @@ use App\Events\MerchantOrderCreatedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class MerchantOrderCreatedNotification extends Notification
 {
     use Queueable;

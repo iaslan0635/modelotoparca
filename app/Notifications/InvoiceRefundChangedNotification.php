@@ -6,7 +6,6 @@ use App\Events\InvoiceRefundChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class InvoiceRefundChangedNotification extends Notification
 {
     use Queueable;

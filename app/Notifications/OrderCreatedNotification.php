@@ -6,7 +6,6 @@ use App\Events\OrderCreatedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class OrderCreatedNotification extends Notification
 {
     use Queueable;

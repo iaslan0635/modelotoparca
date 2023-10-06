@@ -18,8 +18,7 @@ class MerchantOrderCreatedEvent implements Notifable
      */
     public function __construct(
         public MerchantOrder $merchantOrder
-    )
-    {
+    ) {
         //
     }
 

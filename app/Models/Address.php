@@ -12,8 +12,8 @@ class Address extends BaseModel
 {
     use SoftDeletes;
 
-    protected $dispatchesEvents =[
-        "created" => AddressCreatedEvent::class
+    protected $dispatchesEvents = [
+        'created' => AddressCreatedEvent::class,
     ];
 
     protected function fullName(): Attribute
@@ -24,13 +24,15 @@ class Address extends BaseModel
     protected static function booted(): void
     {
         static::updated(function (Address $address) {
-            $orderFromInvoice = Order::where("invoice_address_id", $address->id)->first();
-            $orderFromShipment = Order::where("shipment_address_id", $address->id)->first();
+            $orderFromInvoice = Order::where('invoice_address_id', $address->id)->first();
+            $orderFromShipment = Order::where('shipment_address_id', $address->id)->first();
 
-            if ($orderFromInvoice)
+            if ($orderFromInvoice) {
                 dispatch(new InvoiceAddressChangedEvent($orderFromInvoice));
-            if ($orderFromShipment)
+            }
+            if ($orderFromShipment) {
                 dispatch(new ShipmentAddressChangedEvent($orderFromShipment));
+            }
         });
     }
 }

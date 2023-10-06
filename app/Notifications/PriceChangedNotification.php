@@ -6,7 +6,6 @@ use App\Events\PriceChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class PriceChangedNotification extends Notification
 {
     use Queueable;

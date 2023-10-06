@@ -6,7 +6,6 @@ use App\Events\UserRegisteredEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class UserRegisteredNotification extends Notification
 {
     use Queueable;

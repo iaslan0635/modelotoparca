@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Invoice extends BaseModel
 {
-    protected $dispatchesEvents =[
-        "created" => InvoiceCreatedEvent::class
+    protected $dispatchesEvents = [
+        'created' => InvoiceCreatedEvent::class,
     ];
 
     public function user(): HasOne
@@ -22,12 +22,15 @@ class Invoice extends BaseModel
     protected static function booted(): void
     {
         static::updated(function (Invoice $invoice) {
-            if ($invoice->wasChanged("paid_date"))
+            if ($invoice->wasChanged('paid_date')) {
                 dispatch(new InvoicePaidDateChangedEvent($invoice));
-            if ($invoice->wasChanged("refund_date"))
+            }
+            if ($invoice->wasChanged('refund_date')) {
                 dispatch(new InvoiceRefundChangedEvent($invoice));
-            if ($invoice->wasChanged("status"))
+            }
+            if ($invoice->wasChanged('status')) {
                 dispatch(new InvoiceStatusChangedEvent($invoice));
+            }
         });
     }
 }

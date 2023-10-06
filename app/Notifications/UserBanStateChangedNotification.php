@@ -6,7 +6,6 @@ use App\Events\UserBanStateChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class UserBanStateChangedNotification extends Notification
 {
     use Queueable;

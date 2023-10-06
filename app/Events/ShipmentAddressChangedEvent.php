@@ -18,8 +18,7 @@ class ShipmentAddressChangedEvent implements Notifable
      */
     public function __construct(
         public Order $order
-    )
-    {
+    ) {
         //
     }
 

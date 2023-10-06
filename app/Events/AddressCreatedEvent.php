@@ -15,8 +15,7 @@ class AddressCreatedEvent
      */
     public function __construct(
         public Address $address
-    )
-    {
+    ) {
         //
     }
 }

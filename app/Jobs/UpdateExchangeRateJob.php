@@ -21,11 +21,11 @@ class UpdateExchangeRateJob
     public static function updateRates()
     {
         // TODO: find alternative to tcmb
-        $xmlStirng = Http::get("https://kur.doviz.day")->body();
+        $xmlStirng = Http::get('https://kur.doviz.day')->body();
 
         $xml = new SimpleXMLElement($xmlStirng);
-        $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
-        $eur = (string)$xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
+        $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
+        $eur = (string) $xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
 
         Cache::put('usd_price', $usd, TTL::DAY);
         Cache::put('eur_price', $eur, TTL::DAY);
@@ -41,7 +41,7 @@ class UpdateExchangeRateJob
     {
         foreach (['usd', 'eur'] as $currency) {
             $rate = ExchangeRate::get($currency);
-            Price::where("currency", $currency)->update([
+            Price::where('currency', $currency)->update([
                 'price' => DB::raw("CEIL($rate * 100 * untouchedPrice) / 100"),
             ]);
         }

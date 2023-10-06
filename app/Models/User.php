@@ -82,15 +82,17 @@ class User extends Authenticatable
     protected static function booted(): void
     {
         static::updated(function (User $user) {
-            if ($user->wasChanged("banned"))
+            if ($user->wasChanged('banned')) {
                 dispatch(new UserBanStateChangedEvent($user));
-            if ($user->wasChanged("is_active"))
+            }
+            if ($user->wasChanged('is_active')) {
                 dispatch(new UserActiveStateChangedEvent($user));
+            }
         });
     }
 
     public function routeNotificationForNetgsm()
     {
-        return "5050000000"; // ???
+        return '5050000000'; // ???
     }
 }

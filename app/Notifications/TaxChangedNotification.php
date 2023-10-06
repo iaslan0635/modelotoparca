@@ -6,7 +6,6 @@ use App\Events\TaxChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class TaxChangedNotification extends Notification
 {
     use Queueable;

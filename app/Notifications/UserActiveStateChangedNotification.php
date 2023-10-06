@@ -6,7 +6,6 @@ use App\Events\UserActiveStateChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-
 class UserActiveStateChangedNotification extends Notification
 {
     use Queueable;

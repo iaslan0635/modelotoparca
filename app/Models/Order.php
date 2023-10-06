@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends BaseModel
 {
-    protected $dispatchesEvents =[
-        "created" => OrderCreatedEvent::class
+    protected $dispatchesEvents = [
+        'created' => OrderCreatedEvent::class,
     ];
 
     public function items(): HasMany
@@ -39,14 +39,18 @@ class Order extends BaseModel
     protected static function booted(): void
     {
         static::updated(function (Order $order) {
-            if ($order->wasChanged("shipment_status"))
+            if ($order->wasChanged('shipment_status')) {
                 dispatch(new ShipmentStatusChangedEvent($order));
-            if ($order->wasChanged("shipment_address_id"))
+            }
+            if ($order->wasChanged('shipment_address_id')) {
                 dispatch(new ShipmentAddressChangedEvent($order));
-            if ($order->wasChanged("invoice_address_id"))
+            }
+            if ($order->wasChanged('invoice_address_id')) {
                 dispatch(new InvoiceAddressChangedEvent($order));
-            if ($order->wasChanged("payment_status"))
+            }
+            if ($order->wasChanged('payment_status')) {
                 dispatch(new PaymentStatusChangedEvent($order));
+            }
         });
     }
 }

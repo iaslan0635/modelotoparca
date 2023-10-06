@@ -13,9 +13,11 @@ class Brand extends BaseModel
     use HasImages {
         imageUrl as protected databaseImageUrl;
     }
+
     protected $guarded = [];
-    protected $dispatchesEvents =[
-        "updated" => Brand::class
+
+    protected $dispatchesEvents = [
+        'updated' => Brand::class,
     ];
 
     protected $casts = [

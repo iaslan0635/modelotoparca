@@ -11,8 +11,8 @@ class Variant extends BaseModel implements CanVisit
 {
     use HasVisits;
 
-    protected $dispatchesEvents =[
-        "updated" => ProductVariantChangedEvent::class,
-        "created" => ProductVariantCreatedEvent::class
+    protected $dispatchesEvents = [
+        'updated' => ProductVariantChangedEvent::class,
+        'created' => ProductVariantCreatedEvent::class,
     ];
 }
