@@ -24,7 +24,7 @@ Route::get('test', function (){
         'headers' => [
             'User-Agent' => "PostmanRuntime/7.29.2"
         ]
-    ])->get('https://www.tcmb.gov.tr/kurlar/today.xml')->body();
+    ])->get('http://www.tcmb.gov.tr/kurlar/today.xml')->body();
 });
 
 Route::view('search', 'search')->name('search');
