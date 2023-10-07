@@ -17,7 +17,7 @@
                                 <div class="vehicles-list__item-details">{{ $car->short_name }} - Power : {{ $car->power }} / {{ ($car->power)*1.361 }} HP -
                                     Capacity: {{ $car->capacity }} - From/To : {{ $car->from_year }}/{{ $car->to_year }}</div>
                             </div>
-                            <button onclick="window.location.href = '/'" type="button" class="vehicles-list__item-remove">
+                            <button onclick="window.location.href = '/garage/deselect'" type="button" class="vehicles-list__item-remove">
                                 <svg width="16" height="16">
                                     <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z"></path>
                                 </svg>

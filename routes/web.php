@@ -78,3 +78,8 @@ Route::get('/connections', function () {
 
     return view('admin.temp.table', compact('models', 'cols'));
 });
+
+Route::get('/garage/deselect', function () {
+    \App\Facades\Garage::deselect();
+    return redirect("/");
+});

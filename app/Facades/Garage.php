@@ -33,7 +33,7 @@ class Garage
 
     public static function remove(int $id): void
     {
-        if (self::chosen() === $id) {
+        if (self::chosen() == $id) {
             self::deselect();
         }
 
