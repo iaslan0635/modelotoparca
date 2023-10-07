@@ -47,10 +47,9 @@
                                                                            wire:click="cleanCategory">Geri Dön</a>
                                                                     </li>
                                                                 @endif
-                                                                @foreach($categories->sortBy("name") as ["category" => $category, "count" => $count])
+                                                                @foreach($categories->sortBy("name")->unique("name") as ["category" => $category, "count" => $count])
                                                                     <li class="filter-categories__item filter-categories__item--current">
-                                                                        <a href="#"
-                                                                           wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
+                                                                        <a href="#" wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
                                                                         <div style="display: none"
                                                                             class="filter-categories__counter">{{ $count }}</div>
                                                                     </li>
