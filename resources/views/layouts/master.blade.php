@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/stylemd.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mod.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.header-classic-variant-one.css') }}" media="(min-width: 1200px)">
+    <link rel="stylesheet" href="{{ asset('css/style.header-classic-variant-one.css') }}" {{--media="(min-width: 1200px)"--}}>
     <link rel="stylesheet" href="{{ asset('css/style.mobile-header-variant-one.css') }}" media="(max-width: 1199px)">
     <!-- font - fontawesome -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">

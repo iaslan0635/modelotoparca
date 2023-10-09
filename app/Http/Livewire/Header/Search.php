@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Header;
 
 use App\Facades\Garage;
 use App\Packages\Search as Searchable;
-use Elastic\ScoutDriverPlus\Support\Query;
 use Livewire\Component;
 
 class Search extends Component
@@ -15,6 +14,8 @@ class Search extends Component
 
     public $highlights = [];
     //protected $queryString = ['query'];
+
+    public bool $mobile = false;
 
     public function render()
     {
@@ -31,11 +32,13 @@ class Search extends Component
             //            dd($result);
         }
 
-        return view('livewire.header.search', [
+        $data = [
             'results' => $results,
             'categories' => $categories,
             'suggestions' => $suggestions,
-        ]);
+        ];
+
+        return view($this->mobile ? 'livewire.header.mobile-search' : 'livewire.header.search', $data);
     }
 
     public function deselect()

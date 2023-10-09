@@ -1117,7 +1117,7 @@
     // header vehicle
     */
     $(function () {
-        const input = $('.search__input');
+        const input = $('.search__input, .mobile-search__input');
         const suggestions = $('.search__dropdown--suggestions');
         const vehiclePicker = $('.search__dropdown--vehicle-picker');
         const vehiclePickerButton = $('.search__button--start');
