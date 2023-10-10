@@ -134,7 +134,7 @@
                                                                                 </span>
                                                                             </span>
                                                                                 <span class="filter-list__title">
-                                                                                {{ $brand[0]->brand->name }}
+                                                                                {{ $brand[0]?->brand?->name }}
                                                                             </span>
                                                                                 <span
                                                                                     class="filter-list__counter">{{ count($brand) }}</span>
@@ -274,7 +274,7 @@
                                                                    value="{{ $brands[$brand][0]->brand->id }}">
                                                             <a href="#"
                                                                class="applied-filters__button applied-filters__button--filter">
-                                                                Marka: {{ $brands[$brand][0]->brand->name }}
+                                                                Marka: {{ $brands[$brand][0]?->brand?->name }}
                                                                 <svg
                                                                     onclick="$(`#brand-{{ $brands[$brand][0]->brand->id }}`).remove() && $('#querySearch').submit()"
                                                                     width="9" height="9">
