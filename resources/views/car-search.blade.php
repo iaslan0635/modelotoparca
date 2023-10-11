@@ -45,7 +45,7 @@
                                                             <div class="filter__container">
                                                                 <div class="filter-categories">
                                                                     <ul class="filter-categories__list">
-                                                                        @foreach($categories as $child)
+                                                                        @foreach($categories->unique("name") as $child)
                                                                             @if($child->deepProductsCount > 0)
                                                                                 <li class="filter-categories__item filter-categories__item--child">
                                                                                     <img src="{{ $child->imageUrl() }}"
