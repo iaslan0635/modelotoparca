@@ -136,6 +136,6 @@ class CarSearch extends Component
         GarageFacade::addAndChoose($car);
         $this->emit('reloadData');
         //        dd(route('car.search', $car));
-        $this->redirect(route('car.search', $car->permalink));
+        $this->redirect(route('category.index', $car->permalink));
     }
 }
