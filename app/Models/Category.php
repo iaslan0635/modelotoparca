@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Facades\CategoryFacade;
+use App\Facades\Garage;
 use App\Facades\TTL;
 use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\HasVisits;
@@ -53,14 +54,24 @@ class Category extends BaseModel
         return $this->belongsToMany(Product::class, 'product_categories');
     }
 
-    protected function deepProducts()
+    protected function deepProducts(?int $carId = null)
     {
-        return $this->newQuery()->from('products')->join('product_categories', 'products.id', '=', 'product_categories.product_id')->whereIn('product_categories.category_id', $this->tree['childs']);
+        $query = Product::query()->join('product_categories', 'products.id', '=', 'product_categories.product_id')->whereIn('product_categories.category_id', $this->tree['childs']);
+        if ($carId) {
+            $query->whereRelation('cars', 'id', '=', $carId);
+        }
+
+        return $query;
     }
 
     protected function deepProductsCount(): Attribute
     {
-        return Attribute::get(fn () => Cache::remember("deep_product_count_{$this->id}", TTL::WEEK, fn () => $this->deepProducts()->count()));
+        if (Garage::hasChosen()) {
+            $carId = Garage::chosen();
+            return Attribute::get(fn() => Cache::remember("deep_product_count_{$this->id}_with_car_$carId", TTL::WEEK, fn() => $this->deepProducts($carId)->count()));
+        } else {
+            return Attribute::get(fn() => Cache::remember("deep_product_count_{$this->id}", TTL::WEEK, fn() => $this->deepProducts()->count()));
+        }
     }
 
     public function scopeRoot(Builder $query): void
