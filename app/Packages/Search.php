@@ -286,24 +286,24 @@ class Search
     private static function paginateProducts(BoolQueryBuilder $finalQuery, string|null $sortBy)
     {
         $products = Product::searchQuery($finalQuery);
-//            ->highlight('title')
-//            ->highlight('sub_title')
-//            ->highlight('cross_code')
-//            ->highlight('producercode')
-//            ->highlight('producercode2')
-//            ->highlight('cross_code_regex')
-//            ->highlight('producercode_regex')
-//            ->highlight('producercode_unbranded')
-//            ->highlight('producercode_unbranded_regex')
-//            ->highlight('producercode2_regex')
-//            ->highlight('similar_product_codes')
-//            ->highlight('oems.oem')
-//            ->highlight('oems.oem_regex')
-//            ->highlight('cars.name')
-//            ->highlight('full_text')
-//            ->highlight('cars.regex_name')
-//            ->highlight('similars.code')
-//            ->highlight('similars.code_regex');
+            ->highlight('title')
+            ->highlight('sub_title')
+            ->highlight('cross_code')
+            ->highlight('producercode')
+            ->highlight('producercode2')
+            ->highlight('cross_code_regex')
+            ->highlight('producercode_regex')
+            ->highlight('producercode_unbranded')
+            ->highlight('producercode_unbranded_regex')
+            ->highlight('producercode2_regex')
+            ->highlight('similar_product_codes')
+            ->highlight('oems.oem')
+            ->highlight('oems.oem_regex')
+            ->highlight('cars.name')
+            ->highlight('full_text')
+            ->highlight('cars.regex_name')
+            ->highlight('similars.code')
+            ->highlight('similars.code_regex');
 
         $tmp = $products->execute()->total();
 
