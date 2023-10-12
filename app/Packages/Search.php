@@ -285,7 +285,7 @@ class Search
 
     private static function paginateProducts(BoolQueryBuilder $finalQuery, string|null $sortBy)
     {
-        $products = Product::searchQuery($finalQuery);
+        $products = Product::searchQuery($finalQuery)
             ->highlight('title')
             ->highlight('sub_title')
             ->highlight('cross_code')
