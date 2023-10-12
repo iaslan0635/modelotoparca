@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\CategoryFacade;
+use App\Facades\Garage;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
@@ -31,6 +32,10 @@ class CategoryController extends Controller
             ->join('prices', 'products.id', '=', 'prices.product_id')
             ->whereBetween('prices.price', [$minPrice, $maxPrice])->select('products.*')
             ->distinct();
+
+        if (Garage::hasChosen()) {
+            $query->whereRelation('cars', 'id', '=', Garage::chosen());
+        }
 
         if (request()->has('sortBy') && request()->input('sortBy') === 'price-asc') {
             $query->orderBy('prices.price', 'asc');
