@@ -73,8 +73,6 @@ HTML;
                 'specifications' => $product['specification'],
             ]);
 
-            \Log::info(json_encode($product['oem']));
-
             foreach ($product['oem'] as $pair) {
                 ProductOem::firstOrCreate([
                     'logicalref' => $product_id,
@@ -141,8 +139,6 @@ HTML;
             $tdElements = $trElement->filter('td');
 
             $tdElements->each(function ($tdElement) use (&$trElement, &$dimension) {
-                \Log::info($trElement->text());
-
                 if ($tdElement->attr('itemprop') === 'name') {
                     $dimension[strtolower($tdElement->text())] = trim(str_replace($tdElement->text(), '', $trElement->text()));
                 }
