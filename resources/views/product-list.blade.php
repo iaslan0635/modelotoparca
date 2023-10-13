@@ -68,7 +68,7 @@
                                                                             <div
                                                                                 class="filter-categories__counter">{{ $category->products_count }}</div>
                                                                         </li>
-                                                                        @foreach($category->children->unique("name")->sortBy("name")->sortByDesc("products_count") as $child)
+                                                                        @foreach($category->children->unique("name")->sortBy("name") as $child)
                                                                             @if($child->deepProductsCount > 0)
                                                                                 <li class="filter-categories__item filter-categories__item--child">
                                                                                     <img src="{{ $child->imageUrl() }}"
