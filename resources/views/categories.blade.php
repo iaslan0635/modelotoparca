@@ -14,7 +14,7 @@
                         <div class="block">
                             <div class="categories-list categories-list--layout--columns-4-full">
                                 <ul class="categories-list__body">
-                                    @foreach(\App\Models\Category::where('parent_id',null)->get() as $root)
+                                    @foreach(\App\Models\Category::where('parent_id',null)->get()->sortBy("name") as $root)
                                     @if($root->deepProductsCount == 0) @continue @endif
                                     <li class="categories-list__item">
                                         <a href="{{ route('category.show', $root) }}">
