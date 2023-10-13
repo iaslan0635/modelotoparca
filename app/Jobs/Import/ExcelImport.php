@@ -186,7 +186,7 @@ class ExcelImport implements ShouldQueue
         }
 
         $id = $product->id;
-        $title = $product->web_name ?? $product->name;
+        $title = $product->web_name ?? $product->name ?? "BAŞLIKSIZ ÜRÜN";
         $allWebNames = implode(' ', [$product->name, $product->name2, $product->name3, $product->name4]);
 
         $image_appendix = 0;
