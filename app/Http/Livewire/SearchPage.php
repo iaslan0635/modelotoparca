@@ -92,6 +92,7 @@ class SearchPage extends Component
     public function changeCategory($id)
     {
         $this->category = $id;
+        $this->pa
     }
 
     public function cleanCategory()
