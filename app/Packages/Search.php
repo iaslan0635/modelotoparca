@@ -194,8 +194,8 @@ class Search
     private static function suggestionsProducerCode(string $term)
     {
         $suggestQuery = Query::bool()
-            ->should(Query::prefix()->field('producercode')->value($term)->caseInsensitive(true))
-            ->should(Query::prefix()->field('producercode_regex')->value($term)->caseInsensitive(true));
+            ->should(Query::matchPhrasePrefix()->field('producercode')->query($term))
+            ->should(Query::matchPhrasePrefix()->field('producercode_regex')->query($term));
 
         $suggestion = Product::searchQuery($suggestQuery)->highlight('producercode', [
             'pre_tags' => ['<strong>'],
