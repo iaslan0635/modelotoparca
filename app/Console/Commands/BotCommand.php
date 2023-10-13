@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\Import\ExcelImport;
 use App\Models\TigerProduct;
 use App\Services\Sperato;
 use Illuminate\Console\Command;
+use Throwable;
 
 class BotCommand extends Command
 {
@@ -17,7 +19,7 @@ class BotCommand extends Command
         $this->withProgressBar($ids, function (int $id) {
             try {
                 $this->handleProduct($id);
-            } catch (\Throwable $throwable) {
+            } catch (Throwable $throwable) {
                 $this->info("Exception on $id");
                 report($throwable);
             }
@@ -27,29 +29,6 @@ class BotCommand extends Command
     public function handleProduct(int $productId)
     {
         $product = TigerProduct::findOrFail($productId);
-        $search_predence = [
-            'abk',
-            'producercode',
-            'producercode2',
-            'cross_code',
-            'oem_codes',
-        ];
-
-        foreach ($search_predence as $field) {
-            $value = $product->getAttribute($field);
-            if (strlen($value) === 0) {
-                continue;
-            }
-            if ($field === 'oem_codes') {
-                foreach (explode(',', $value) as $oem) {
-                    Sperato::smash($oem, $product->id);
-                }
-            } else {
-                $found = Sperato::smash($value, $product->id);
-                if ($found) {
-                    break;
-                }
-            }
-        }
+        ExcelImport::runBot($product);
     }
 }

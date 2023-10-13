@@ -30,9 +30,12 @@ class Sperato
         }
     }
 
-    public static function smash(string $keyword, int $product_id)
+    public static function smash(string $keyword, int $product_id, ?string $brand_filter = null)
     {
-        $request = self::request("https://spareto.com/products?keywords=$keyword&per_page=48");
+        $url = "https://spareto.com/products?keywords=$keyword&per_page=48";
+        if ($brand_filter) $url .= "&brand=$brand_filter";
+
+        $request = self::request($url);
         $html = <<<HTML
 $request
 HTML;
@@ -40,10 +43,12 @@ HTML;
         $links = [];
 
         $products = $crawler->filter('#products-js')->filter('.card-col');
+
+        $logSuffix = $brand_filter ? "Marka filtresi: $brand_filter" : '';
         if ($products->count() <= 0) {
             Log::create([
                 'product_id' => $product_id,
-                'message' => 'Ürün bulunamadı, Anahtar Kelime: '.$keyword,
+                'message' => "Ürün bulunamadı, Anahtar Kelime: $keyword | $logSuffix",
             ]);
 
             return false;
@@ -51,7 +56,7 @@ HTML;
 
         Log::create([
             'product_id' => $product_id,
-            'message' => $products->count().' Adet ürün çekildi. Anahtar Kelime: '.$keyword,
+            'message' => "{$products->count()} Adet ürün çekildi. Anahtar Kelime: $keyword | $logSuffix",
         ]);
 
         $products->each(function (Crawler $cardElement) use (&$links) {

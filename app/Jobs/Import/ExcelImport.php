@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Import;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
@@ -202,7 +203,7 @@ class ExcelImport implements ShouldQueue
             'title' => $title,
             'sub_title' => $allWebNames,
             'description' => $allWebNames,
-            'slug' => Str::slug($title).'-'.$id,
+            'slug' => Str::slug($title) . '-' . $id,
             'sku' => $product->code,
             'quantity' => $product->onhand,
             'status' => intval($product->active) === 0,
@@ -253,11 +254,18 @@ class ExcelImport implements ShouldQueue
                     Sperato::smash($oem, $product->id);
                 }
             } else {
-                $found = Sperato::smash($product[$field], $product->id);
+                xdebug_break();
+                $brand_filter = $field === 'producercode' ? self::getBrand($product) : null;
+                $found = Sperato::smash($product[$field], $product->id, $brand_filter);
                 if ($found) {
                     break;
                 }
             }
         }
+    }
+
+    private static function getBrand(TigerProduct $product): ?string
+    {
+        return Brand::find($product->markref, ["name"])?->name;
     }
 }
