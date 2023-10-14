@@ -32,7 +32,9 @@
         <div class="suggestions__group-content">
             @foreach($categories as ["category" => $category])
                 <a class="suggestions__item suggestions__category"
-                   href="{{ route('search', ['query' => $query, 'category' => $category->id]) }}">{{ $category->name }}</a>
+                   href="{{ route('search', ['query' => $query, 'category' => $category->id]) }}">
+                    <span class="text-muted">{{ $category->allParents()->map(fn ($c) => $c->name)->join(" > ") }} &gt; </span> {{ $category->name }}
+                </a>
             @endforeach
         </div>
     </div>

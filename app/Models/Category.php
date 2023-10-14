@@ -49,6 +49,18 @@ class Category extends BaseModel
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
+    public function allParents()
+    {
+        $collection = collect();
+        $category = $this;
+
+        while ($category->parent !== null) {
+            $collection->prepend($category = $category->parent);
+        }
+
+        return $collection;
+    }
+
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'product_categories');

@@ -330,8 +330,10 @@ class Search
             ->refineModels(fn (Builder $q) => $q->select(['id', 'brand_id']))
             ->load(['brand'])->size(1000)->execute()->models();
 
-        $categories = $productsWithCategories
-            ->map(fn (Product $product) => $product->categories)->flatten()
+        $categories =
+//            $productsWithCategories
+//            ->map(fn (Product $product) => $product->categories)->flatten()
+            collect([\App\Models\Category::find(79548)])
             ->groupBy('id')
             ->map(fn (Collection $cats) => [
                 'category' => $cats[0],
