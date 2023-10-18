@@ -1,5 +1,5 @@
-<div>
-    @foreach(($category?->properties ?? []) as $property)
+<div id="hmm">
+    @foreach(($category->properties ?? []) as $property)
         @if($property->show_filter)
             <div class="widget-filters__item">
                 <div class="filter filter--opened" data-collapse-item>

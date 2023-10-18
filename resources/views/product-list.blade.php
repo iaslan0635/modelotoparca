@@ -170,7 +170,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <livewire:category-properties  />
+                                                <livewire:category-properties :category="$category" />
                                             </div>
                                             <div class="widget-filters__actions d-flex">
                                                 <button type="submit" class="btn btn-primary btn-sm">Filtrele</button>
