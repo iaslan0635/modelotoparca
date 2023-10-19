@@ -160,7 +160,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @foreach(($category?->properties ?? []) as $property)
+                                            @foreach(($properties ?? []) as [$property, $values])
                                                 @if($property->show_filter)
                                                     <div class="widget-filters__item">
                                                         <div class="filter filter--opened" data-collapse-item>
@@ -176,13 +176,13 @@
                                                                 <div class="filter__container">
                                                                     <div class="filter-list">
                                                                         <div class="filter-list__list">
-                                                                            @foreach($property->values as $key => $value)
+                                                                            @foreach($values as $value)
                                                                                 @if($property->search_type === "multiple")
-                                                                                    <label class="filter-list__item ">
+                                                                                    <label class="filter-list__item" wire:key="propVal{{$value->id}}">
                                                                                         <span class="input-check filter-list__input">
                                                                                             <span class="input-check__body">
                                                                                                 <input
-                                                                                                    {{ request()->has("property.$property->id") ? in_array($value->value, request()->input("property.$property->id")) ? "checked" : null : null }}
+                                                                                                    {{ request()->has("property.$property->id") ? in_array($value->value, \Arr::wrap(request()->input("property.$property->id"))) ? "checked" : null : null }}
                                                                                                     class="input-check__input" name="property[{{ $property->id }}][]" value="{{ $value->value }}" type="checkbox" wire:model="property.{{ $property->id }}">
                                                                                                 <span class="input-check__box"></span>
                                                                                                 <span class="input-check__icon">
@@ -195,11 +195,11 @@
                                                                                         <span class="filter-list__title">{{ $value->value }}</span>
                                                                                     </label>
                                                                                 @elseif($property->search_type === "none")
-                                                                                    <label class="filter-list__item" wire:click="changeProperty({{$property->id}}, '{{$value->value}}')">
+                                                                                    <label class="filter-list__item">
                                                                                         <span class="input-check filter-list__input">
                                                                                             <span class="input-check__body">
                                                                                                 <input
-                                                                                                    {{ request()->has("property.$property->id") ? in_array($value->value, request()->input("property.$property->id")) ? "checked" : null : null }}
+                                                                                                    {{ request()->has("property.$property->id") ? in_array($value->value, \Arr::wrap(request()->input("property.$property->id"))) ? "checked" : null : null }}
                                                                                                     class="input-check__input" name="property[{{ $property->id }}][]" value="{{ $value->value }}" type="radio"
                                                                                                     wire:model="property.{{ $property->id }}">
                                                                                                 <span class="input-check__box"></span>

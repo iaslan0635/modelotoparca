@@ -6,8 +6,11 @@ use App\Facades\CategoryFacade;
 use App\Facades\Garage;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Property;
+use App\Models\PropertyValue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Arr;
 use Livewire\Component;
 
 class CategoryPage extends Component
@@ -37,7 +40,6 @@ class CategoryPage extends Component
 
     public function render()
     {
-//        return "<h1 wire:click='changeProperty(1,2)'>A</h1>";
         $category = $this->category;
 
         $minPrice = $this->min_price ?? 0;
@@ -65,7 +67,7 @@ class CategoryPage extends Component
 
         foreach ($this->property ?? [] as $key => $values) {
             $query->whereHas('propertyValues', function (Builder $builder) use ($values, $key) {
-                $builder->where('property_id', $key)->whereIn('value', $values);
+                $builder->where('property_id', $key)->whereIn('value', Arr::wrap($values));
             });
         }
 
@@ -77,16 +79,14 @@ class CategoryPage extends Component
             $query->whereIn('brand_id', $this->brandsArray);
         }
 
-        $pids = $query->get()->map(function ($item) {
-            return $item->id;
-        });
+        $productIds = $query->pluck("id");
 
         $category->load([
-            'children' => function (HasMany $b) use ($pids) {
-                $b->whereHas('products', function ($q) use ($pids) {
-                    $q->whereIn('id', $pids);
-                })->withCount(['products' => function ($query) use ($pids) {
-                    $query->whereIn('id', $pids);
+            'children' => function (HasMany $b) use ($productIds) {
+                $b->whereHas('products', function ($q) use ($productIds) {
+                    $q->whereIn('id', $productIds);
+                })->withCount(['products' => function ($query) use ($productIds) {
+                    $query->whereIn('id', $productIds);
                 }]);
             },
         ]);
@@ -94,11 +94,9 @@ class CategoryPage extends Component
 
         $products = $query->paginate(12);
 
-        return view('livewire.category-page', compact('category', 'products', 'brands'));
-    }
+        $propertyValues = PropertyValue::whereHas("product", fn(Builder $q) => $q->whereIn("id", $productIds))->with("property")->get();
+        $properties = $propertyValues->map(fn(PropertyValue $pv) => $pv->property)->unique("id")->map(fn(Property $p) => [$p, $propertyValues->where("property.id", $p->id)]);
 
-    public function changeProperty($id, $value)
-    {
-        $this->property[$id] = [$value];
+        return view('livewire.category-page', compact('category', 'products', 'brands', 'properties'));
     }
 }

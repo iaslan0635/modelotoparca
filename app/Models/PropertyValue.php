@@ -17,4 +17,9 @@ class PropertyValue extends BaseModel
     {
         return $this->hasOne(Property::class, 'id', 'property_id');
     }
+
+    public function product()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }
