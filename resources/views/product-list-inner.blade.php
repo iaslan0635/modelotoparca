@@ -195,7 +195,7 @@
                                                                                         <span class="filter-list__title">{{ $value->value }}</span>
                                                                                     </label>
                                                                                 @elseif($property->search_type === "none")
-                                                                                    <label class="filter-list__item">
+                                                                                    <label class="filter-list__item" wire:key="propVal{{$value->id}}">
                                                                                         <span class="input-check filter-list__input">
                                                                                             <span class="input-check__body">
                                                                                                 <input
