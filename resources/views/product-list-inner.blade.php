@@ -162,7 +162,7 @@
                                             </div>
                                             @foreach(($properties ?? []) as [$property, $values])
                                                 @if($property->show_filter)
-                                                    <div class="widget-filters__item">
+                                                    <div class="widget-filters__item" wire:key="prop-{{$property->id}}">
                                                         <div class="filter filter--opened" data-collapse-item>
                                                             <button type="button" class="filter__title" data-collapse-trigger>{{ $property->name }}
                                                                 <span class="filter__arrow">
@@ -178,7 +178,7 @@
                                                                         <div class="filter-list__list">
                                                                             @foreach($values as $value)
                                                                                 @if($property->search_type === "multiple")
-                                                                                    <label class="filter-list__item" wire:key="propVal{{$value->id}}">
+                                                                                    <label class="filter-list__item" wire:key="prop-val{{$value->id}}">
                                                                                         <span class="input-check filter-list__input">
                                                                                             <span class="input-check__body">
                                                                                                 <input
