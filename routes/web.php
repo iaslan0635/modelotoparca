@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Livewire\CategoryPage;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,7 @@ Route::get('araba/{permalink}', [CarController::class, 'show'])->name('car.searc
 Route::get('oem/{oem}', [OemController::class, 'show'])->name('oem.search')->where('oem', '.*');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
-Route::get('c/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('c/{category:slug}', CategoryPage::class)->name('category.show');
 Route::prefix('p/{product:slug}')->group(function () {
     Route::get('quickview', [ProductController::class, 'quickview'])->name('quickview');
     Route::get('/', [ProductController::class, 'show'])->name('product.show');
