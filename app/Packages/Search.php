@@ -304,7 +304,7 @@ class Search
             ->highlight('oems.oem')
             ->highlight('oems.oem_regex')
             ->highlight('cars.name')
-//            ->highlight('full_text')
+            ->highlight('full_text')
             ->highlight('cars.regex_name')
             ->highlight('similars.code')
             ->highlight('similars.code_regex');
