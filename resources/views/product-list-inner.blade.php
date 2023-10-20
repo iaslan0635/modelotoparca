@@ -44,7 +44,7 @@
                                                             <div class="filter-categories">
                                                                 <ul class="filter-categories__list">
                                                                     @foreach($parents->unique("name")->sortBy("name") as $parent)
-                                                                        <li class="filter-categories__item filter-categories__item--parent">
+                                                                        <li class="filter-categories__item filter-categories__item--parent" wire:key="cat-parent-{{$parent->id}}">
                                                                             <span class="filter-categories__arrow"><svg
                                                                                     width="6" height="9">
                                                                                     <path d="M5.7,8.7L5.7,8.7c-0.4,0.4-0.9,0.4-1.3,0L0,4.5l4.4-4.2c0.4-0.4,0.9-0.3,1.3,0l0,0c0.4,0.4,0.4,1,0,1.3l-3,2.9l3,2.9 C6.1,7.8,6.1,8.4,5.7,8.7z"/>
@@ -55,14 +55,14 @@
                                                                             <div class="filter-categories__counter">{{ $parent->deepProductsCount }}</div>
                                                                         </li>
                                                                     @endforeach
-                                                                    <li class="filter-categories__item filter-categories__item--current">
+                                                                    <li class="filter-categories__item filter-categories__item--current" wire:key="cat-current">
                                                                         <img src="{{ $category->imageUrl() }}" class="category-icon-image">
                                                                         <a href="{{ route('category.show', [...request()->query(), 'category' => $category]) }}">{{ $category->name }}</a>
                                                                         <div class="filter-categories__counter">{{ $category->products_count }}</div>
                                                                     </li>
                                                                     @foreach($category->children->unique("name")->sortBy("name") as $child)
                                                                         @if($child->deepProductsCount > 0)
-                                                                            <li class="filter-categories__item filter-categories__item--child">
+                                                                            <li class="filter-categories__item filter-categories__item--child" wire:key="cat-{{$child->id}}">
                                                                                 <img src="{{ $child->imageUrl() }}" class="category-icon-image">
                                                                                 <a href="{{ route('category.show', [...request()->query(), 'category' => $child]) }}">{{ $child->name }}</a>
                                                                                 <div class="filter-categories__counter">{{ $child->products_count }}</div>
@@ -128,7 +128,7 @@
                                                             <div class="filter-list">
                                                                 <div class="filter-list__list">
                                                                     @foreach($brands as $key => $brand)
-                                                                        <label class="filter-list__item ">
+                                                                        <label class="filter-list__item" wire:key="brand-top-{{$key}}">
                                                                             <span
                                                                                 class="input-check filter-list__input">
                                                                                 <span class="input-check__body">
@@ -178,7 +178,7 @@
                                                                         <div class="filter-list__list">
                                                                             @foreach($values as $value)
                                                                                 @if($property->search_type === "multiple")
-                                                                                    <label class="filter-list__item" wire:key="prop-val{{$value->id}}">
+                                                                                    <label class="filter-list__item" wire:key="prop-val-{{$value->id}}">
                                                                                         <span class="input-check filter-list__input">
                                                                                             <span class="input-check__body">
                                                                                                 <input
@@ -195,7 +195,7 @@
                                                                                         <span class="filter-list__title">{{ $value->value }}</span>
                                                                                     </label>
                                                                                 @elseif($property->search_type === "none")
-                                                                                    <label class="filter-list__item" wire:key="propVal{{$value->id}}">
+                                                                                    <label class="filter-list__item" wire:key="prop-val-{{$value->id}}">
                                                                                         <span class="input-check filter-list__input">
                                                                                             <span class="input-check__body">
                                                                                                 <input
@@ -317,9 +317,9 @@
                                         <form method="GET" id="querySearch">
                                             <ul class="applied-filters__list">
                                                 @if(request()->has('min_price'))
-                                                    <input type="hidden" name="min_price" id="min-price"
+                                                    <input type="hidden" name="min_price" id="min-price" wire:key="max-price-input"
                                                            value="{{ request()->input('min_price') }}">
-                                                    <li class="applied-filters__item">
+                                                    <li class="applied-filters__item" wire:key="max-price">
                                                         <a href="#"
                                                            class="applied-filters__button applied-filters__button--filter">
                                                             En düşük fiyat: {{ request()->input('min_price') }}
@@ -331,9 +331,9 @@
                                                     </li>
                                                 @endif
                                                 @if(request()->has('max_price'))
-                                                    <input type="hidden" name="max_price" id="max-price"
+                                                    <input type="hidden" name="max_price" id="max-price" wire:key="min-price-input"
                                                            value="{{ request()->input('max_price') }}">
-                                                    <li class="applied-filters__item">
+                                                    <li class="applied-filters__item" wire:key="min-price">
                                                         <a href="#"
                                                            class="applied-filters__button applied-filters__button--filter">
                                                             En yüksek fiyat: {{ request()->input('max_price') }}
@@ -346,7 +346,7 @@
                                                 @endif
                                                 @foreach(request()->input('brands', []) as $brand)
                                                     @php if(!$brands->has($brand)) continue; @endphp
-                                                    <li class="applied-filters__item">
+                                                    <li class="applied-filters__item" wire:key="brand-{{$brand}}">
                                                         <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand][0]->brand->id }}"
                                                                value="{{ $brands[$brand][0]->brand->id }}">
                                                         <a href="#"
@@ -377,7 +377,7 @@
                                 </div>
                                 <div class="products-list__content">
                                     @foreach($products as $product)
-                                        <div class="products-list__item">
+                                        <div class="products-list__item" wire:key="product-{{$product->id}}">
                                             <div class="product-card">
                                                 <div class="product-card__actions-list">
                                                     <button
@@ -436,7 +436,7 @@
                                                     <div class="product-card__features">
                                                         <ul>
                                                             @foreach(($product->specifications ?? []) as $key => $spec)
-                                                                <li>{{ "{$key} : {$spec}" }}</li>
+                                                                <li wire:key="spec-{{$key}}" >{{ "{$key} : {$spec}" }}</li>
                                                             @endforeach
                                                         </ul>
                                                     </div>
