@@ -261,6 +261,8 @@ class ExcelImport implements ShouldQueue
                 }
             }
         }
+
+        $product->actualProduct->searchable();
     }
 
     private static function getBrand(TigerProduct $product): ?string

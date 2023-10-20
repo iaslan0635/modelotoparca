@@ -27,6 +27,11 @@ class TigerProduct extends BaseModel
         return $this->hasMany(ProductSimilar::class);
     }
 
+    public function actualProduct()
+    {
+        return $this->hasOne(Product::class, "id", "id");
+    }
+
     protected static function booted()
     {
         self::saved(function (TigerProduct $model) {

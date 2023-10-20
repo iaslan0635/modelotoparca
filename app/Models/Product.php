@@ -78,8 +78,7 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        $cars = $this->cars->filter(fn (Car $car) => $car->indexable && $car->body_type !== 'truck' && $car->body_type !== 'urban_bus'
-        )->values();
+        $cars = $this->cars->filter(fn (Car $car) => $car->indexable && $car->body_type !== 'truck' && $car->body_type !== 'urban_bus')->values();
         $regex = fn ($s) => strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $s));
 
         $similars = collect(explode(',', $this->similar_product_codes))->map(fn ($s) => trim($s));
