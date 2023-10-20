@@ -76,8 +76,8 @@ class Search
             if (empty($word)) {
                 continue;
             }
-            $query->must(Query::prefix()->field('full_text')->value($word)->caseInsensitive(true));
-            $query->must(Query::prefix()->field('title')->value($word)->caseInsensitive(true));
+            $query->should(Query::prefix()->field('full_text')->value($word)->caseInsensitive(true));
+            $query->should(Query::prefix()->field('title')->value($word)->caseInsensitive(true));
         }
 
         return $query;
@@ -308,8 +308,6 @@ class Search
             ->highlight('cars.regex_name')
             ->highlight('similars.code')
             ->highlight('similars.code_regex');
-
-        $tmp = $products->execute()->total();
 
         if ($sortBy === 'price-asc') {
             $products->sort('price');
