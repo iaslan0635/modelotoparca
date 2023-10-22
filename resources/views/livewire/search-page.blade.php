@@ -50,7 +50,7 @@
                                                                 @foreach($categories->sortBy("name")->unique("name")->sortBy("name") as ["category" => $category, "count" => $count])
                                                                     <li class="filter-categories__item filter-categories__item--current">
                                                                         <a href="#" wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
-                                                                        <div style="display: none"
+                                                                        <div
                                                                             class="filter-categories__counter">{{ $count }}</div>
                                                                     </li>
                                                                 @endforeach

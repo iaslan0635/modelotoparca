@@ -338,7 +338,7 @@ class Search
             //collect([\App\Models\Category::find(79548)])
             ->groupBy('id')
             ->map(fn (Collection $cats) => [
-                'category' => $cats,
+                'category' => $cats[0],
                 'count' => $cats->count(),
             ]);
 
