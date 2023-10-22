@@ -67,7 +67,6 @@ class SearchPage extends Component
         $products = $query['products'];
         $brands = $query['brands'];
         $categories = $query['categories'];
-        dd($categories->sortBy("name"));
         //        $this->term = $query['term'];
         $this->highlights = $query['highlights'];
 
