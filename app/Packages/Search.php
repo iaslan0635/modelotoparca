@@ -336,7 +336,7 @@ class Search
             $productsWithCategories
             ->map(fn (Product $product) => $product->categories)->flatten()
             //collect([\App\Models\Category::find(79548)])
-            ->groupBy('id')
+            ->groupBy('name')
             ->map(fn (Collection $cats) => [
                 'category' => $cats[0],
                 'count' => $cats->count(),
