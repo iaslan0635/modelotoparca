@@ -98,6 +98,6 @@ class SearchPage extends Component
     public function cleanCategory()
     {
         $this->category = null;
-        $this->page = 1;
+        $this->resetPage();
     }
 }
