@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use App\Events\MerchantOrderCreatedEvent;
-use Illuminate\Database\Eloquent\Model;
-
-class MerchantOrder extends Model
+class MerchantOrder extends BaseModel
 {
     protected $casts = [
         'client' => 'array',

@@ -18,6 +18,7 @@
         "cknow/laravel-money": "^7.1",
         "coderflexx/laravisit": "^1.4",
         "guzzlehttp/guzzle": "^7.2",
+        "ismail0234/n11-php-api": "^1.1",
         "laravel/framework": "^10.0",
         "laravel/octane": "^1.5",
         "laravel/sanctum": "^3.2",

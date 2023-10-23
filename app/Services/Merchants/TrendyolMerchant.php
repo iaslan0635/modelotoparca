@@ -95,7 +95,7 @@ class TrendyolMerchant implements Merchant
         $request = $this->client->get();
     }
 
-    public function updateOrder(TODO $order)
+    public function updateOrder()
     {
         $request = $this->client->get();
     }

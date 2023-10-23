@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('price');
             $table->dateTime('date');
             $table->string('status');
-            $table->string('delivery_status');
-            $table->string('payment_status');
-            $table->json('lines');
-            $table->json('line_data');
+            $table->string('delivery_status')->nullable();
+            $table->string('payment_status')->nullable();
+            $table->json('lines')->nullable();
+            $table->json('line_data')->nullable();
             $table->timestamps();
         });
     }

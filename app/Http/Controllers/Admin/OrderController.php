@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\MerchantOrder;
 use App\Models\Order;
+use App\Services\MarketPlace;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -19,6 +21,18 @@ class OrderController extends Controller
         $orders = $orders->orderByDesc('id')->paginate(10);
 
         return view('admin.apps.ecommerce.sales.listing', compact('orders'));
+    }
+
+    public function marketplace(Request $request)
+    {
+        $orders = MerchantOrder::query();
+
+        if ($request->has('merchant')){
+            $orders->where('merchant', '=', $request->input('merchant'));
+        }
+
+        $orders = $orders->orderByDesc('id')->paginate(10);
+        return view('admin.apps.marketplace.orders', compact('orders'));
     }
 
     public function show(Order $order)
