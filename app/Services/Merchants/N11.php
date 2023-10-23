@@ -2,6 +2,7 @@
 
 namespace App\Services\Merchants;
 
+use App\Models\Image;
 use App\Models\MerchantOrder;
 use App\Models\Product;
 use IS\PazarYeri\N11\N11Client;
@@ -73,11 +74,15 @@ class N11 implements Merchant
         5 => "Şartlı Kargo Ücretsiz (Satıcı Öder)",
     ];
 
+    const CURRENCY = [
+        'try' => 1,
+        'usd' => 2,
+        'eur' => 3,
+    ];
+
     public static function orders()
     {
-        $client = new N11Client();
-        $client->setApiKey('604ab86f-4110-48d8-8d77-38ddaf80942b');
-        $client->setApiPassword('qYKHdp9c1GYe9laI');
+        $client = self::getClient();
         $orders = $client->order->orderList([
             'status' => 'Completed',
             'pagingData' => [
@@ -93,7 +98,7 @@ class N11 implements Merchant
                 if ($info->result->status === "success") {
                     $price = 0;
 
-                    foreach ($info->orderDetail->itemList as $item){
+                    foreach ($info->orderDetail->itemList as $item) {
                         $price += $item->sellerInvoiceAmount;
                     }
 
@@ -142,15 +147,81 @@ class N11 implements Merchant
 
     public function setStock($id, $stock)
     {
-        $client = new N11Client();
-        $client->setApiKey('604ab86f-4110-48d8-8d77-38ddaf80942b');
-        $client->setApiPassword('qYKHdp9c1GYe9laI');
+        $client = self::getClient();
         return $client->stock->UpdateStockByStockIdRequest($id, $stock);
     }
 
+    /** TODO: WIP */
     public function updateProduct(Product $product)
     {
-        // TODO: Implement updateProduct() method.
+        $client = self::getClient();
+
+        $price = number_format($product->price->price, 2, '.', '');
+        $client->product->SaveProduct(
+            [
+                'productSellerCode' => $product->sku,
+                'title' => $product->title,
+                'subtitle' => $product->sub_title,
+                'description' => $product->description,
+//                'domestic' => 'false', //?
+                'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
+                'specialProductInfoList' => [ //?
+                    'specialProductInfo' => [
+                        'key' => '?',
+                        'value' => '?',
+                    ]
+                ],
+                'price' => $price,
+                'currencyType' => self::CURRENCY[$product->price->currency],
+                'images' => [
+                    'image' =>
+                        $product->images->map(fn(Image $image, int $key) => [
+                            'url' => $image->url,
+                            'order' => $key,
+                        ])->toArray()
+                ],
+                'approvalStatus' => $product->status,
+                'attribute' => [], //?
+//                'productionDate' => '',
+//                'expirationDate' => '',
+                'productCondition' => 1, // Yeni (2. el değil)
+                'preparingDay' => 3, //?
+                'discount' => [ //?
+                    'startDate' => '',
+                    'endDate' => '',
+                    'type' => '',
+                    'value' => '',
+                ],
+                'shipmentTemplate' => 'termos', //?
+                'stockItems' => [
+                    'stockItem' => [
+                        [
+                            'bundle' => 'false',
+                            'mpn' => '112', //?
+                            'gtin' => '0190198066473', //?
+                            'oem' => '', //?
+                            'quantity' => $product->quantity, //?
+                            'n11CatalogId' => '', //?
+                            'sellerStockCode' => $product->sku,
+                            'optionPrice' => $price,
+                            'attributes' => [ //?
+                                'attribute' => [
+                                    [
+                                        'name' => 'Sezon',
+                                        'value' => '2013 Sonbahar-Kış'
+                                    ],
+                                    [
+                                        'name' => 'Cinsiyet',
+                                        'value' => 'Erkek',
+                                    ],
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                'maxPurchaseQuantity' => $product->quantity,
+            ]
+        );
     }
 
     public function updateOrder(MerchantOrder $order)
@@ -235,10 +306,16 @@ class N11 implements Merchant
 
     public function getProductList()
     {
+        $client = self::getClient();
+
+        return $client->product->getProductList();
+    }
+
+    public static function getClient()
+    {
         $client = new N11Client();
         $client->setApiKey('604ab86f-4110-48d8-8d77-38ddaf80942b');
         $client->setApiPassword('qYKHdp9c1GYe9laI');
-
-        return $client->product->getProductList();
+        return $client;
     }
 }
