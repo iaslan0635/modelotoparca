@@ -17,7 +17,7 @@ class AuthController extends Controller
         $user = User::create($data);
 
         \Auth::login($user);
-        dispatch(UserRegisteredEvent::class);
+        dispatch(new UserRegisteredEvent($user));
 
         return redirect()->route('welcome');
     }
