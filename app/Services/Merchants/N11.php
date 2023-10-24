@@ -151,77 +151,74 @@ class N11 implements Merchant
         return $client->stock->UpdateStockByStockIdRequest($id, $stock);
     }
 
-    /** TODO: WIP */
     public function updateProduct(Product $product)
     {
         $client = self::getClient();
 
         $price = number_format($product->price->price, 2, '.', '');
-        $client->product->SaveProduct(
-            [
-                'productSellerCode' => $product->sku,
-                'title' => $product->title,
-                'subtitle' => $product->sub_title,
-                'description' => $product->description,
+        $client->product->SaveProduct([
+            'productSellerCode' => $product->sku,
+            'title' => $product->title,
+            'subtitle' => $product->sub_title,
+            'description' => $product->description,
 //                'domestic' => 'false', //?
-                'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
-                'specialProductInfoList' => [ //?
-                    'specialProductInfo' => [
-                        'key' => '?',
-                        'value' => '?',
-                    ]
-                ],
-                'price' => $price,
-                'currencyType' => self::CURRENCY[$product->price->currency],
-                'images' => [
-                    'image' =>
-                        $product->images->map(fn(Image $image, int $key) => [
-                            'url' => $image->url,
-                            'order' => $key,
-                        ])->toArray()
-                ],
-                'approvalStatus' => $product->status,
-                'attribute' => [], //?
+            'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
+//            'specialProductInfoList' => [ //?
+//                'specialProductInfo' => [
+//                    'key' => '?',
+//                    'value' => '?',
+//                ]
+//            ],
+            'price' => $price,
+            'currencyType' => self::CURRENCY[$product->price->currency],
+            'images' => [
+                'image' =>
+                    $product->images->map(fn(Image $image, int $key) => [
+                        'url' => $image->url,
+                        'order' => $key,
+                    ])->toArray()
+            ],
+            'approvalStatus' => $product->status,
+//            'attribute' => [], //?
 //                'productionDate' => '',
 //                'expirationDate' => '',
-                'productCondition' => 1, // Yeni (2. el değil)
-                'preparingDay' => 3, //?
-                'discount' => [ //?
-                    'startDate' => '',
-                    'endDate' => '',
-                    'type' => '',
-                    'value' => '',
-                ],
-                'shipmentTemplate' => 'termos', //?
-                'stockItems' => [
-                    'stockItem' => [
-                        [
-                            'bundle' => 'false',
-                            'mpn' => '112', //?
-                            'gtin' => '0190198066473', //?
-                            'oem' => '', //?
-                            'quantity' => $product->quantity, //?
-                            'n11CatalogId' => '', //?
-                            'sellerStockCode' => $product->sku,
-                            'optionPrice' => $price,
-                            'attributes' => [ //?
-                                'attribute' => [
-                                    [
-                                        'name' => 'Sezon',
-                                        'value' => '2013 Sonbahar-Kış'
-                                    ],
-                                    [
-                                        'name' => 'Cinsiyet',
-                                        'value' => 'Erkek',
-                                    ],
-                                ]
-                            ]
-                        ]
+            'productCondition' => 1, // Yeni (2. el değil)
+            'preparingDay' => 3, //?
+//            'discount' => [ //?
+//                'startDate' => '',
+//                'endDate' => '',
+//                'type' => '',
+//                'value' => '',
+//            ],
+            'shipmentTemplate' => 'termos', //?
+            'stockItems' => [
+                'stockItem' => [
+                    [
+//                        'bundle' => 'false', //?
+//                        'mpn' => '112', //?
+//                        'gtin' => '0190198066473', //?
+                        'oem' => '', //?
+                        'quantity' => $product->quantity,
+//                        'n11CatalogId' => '', //?
+                        'sellerStockCode' => $product->sku,
+                        'optionPrice' => $price,
+//                        'attributes' => [ //?
+//                            'attribute' => [
+//                                [
+//                                    'name' => 'Sezon',
+//                                    'value' => '2013 Sonbahar-Kış'
+//                                ],
+//                                [
+//                                    'name' => 'Cinsiyet',
+//                                    'value' => 'Erkek',
+//                                ],
+//                            ]
+//                        ]
                     ]
-                ],
-                'maxPurchaseQuantity' => $product->quantity,
-            ]
-        );
+                ]
+            ],
+            'maxPurchaseQuantity' => $product->quantity,
+        ]);
     }
 
     public function updateOrder(MerchantOrder $order)
