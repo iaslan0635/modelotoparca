@@ -2,6 +2,7 @@
 
 namespace App\Services\Merchants;
 
+use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
 use App\Models\Product;
 
@@ -33,7 +34,7 @@ interface Merchant
 
     public function approveOrder(MerchantOrder $order);
 
-    public function declineOrder(MerchantOrder $order);
+    public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType);
 
     public function refundedOrders();
 

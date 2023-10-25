@@ -2,6 +2,7 @@
 
 namespace App\Services\Merchants;
 
+use App\Enums\OrderRejectReasonType;
 use App\Models\Image;
 use App\Models\MerchantOrder;
 use App\Models\Product;
@@ -233,7 +234,7 @@ class N11 implements Merchant
 
     public function createProduct(Product $product)
     {
-        // TODO: Implement createPorudct() method.
+        $this->updateProduct($product);
     }
 
     public function getCategories()
@@ -263,12 +264,25 @@ class N11 implements Merchant
 
     public function approveOrder(MerchantOrder $order)
     {
-        // TODO: Implement approveOrder() method.
+        static::getClient()->order->OrderItemAccept([
+            "orderItem" => [
+                "id" => $order->merchant_id
+            ]
+        ]);
     }
 
-    public function declineOrder(MerchantOrder $order)
+    public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType)
     {
-        // TODO: Implement declineOrder() method.
+        static::getClient()->order->OrderItemReject([
+            "orderItemList" => [
+                "orderItem" => [
+                    "id" => $order->merchant_id
+                ]
+            ],
+            "rejectReason" => $reason,
+            "rejectReasonType" => $reasonType === OrderRejectReasonType::OUT_OF_STOCK ? "OUT_OF_STOCK" : "OTHER",
+            // ternary kullanmamın sebebi eğer OrderRejectReasonType'ye farklı değerler eklenirse onların OTHER olarak gitmesi
+        ]);
     }
 
     public function refundedOrders()
@@ -298,7 +312,7 @@ class N11 implements Merchant
 
     public function deleteProduct(Product $product)
     {
-        // TODO: Implement deleteProduct() method.
+        self::getClient()->product->deleteProductBySellerCode($product->sku);
     }
 
     public function getProductList()

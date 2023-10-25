@@ -2,6 +2,8 @@
 
 namespace App\Services\Merchants;
 
+use App\Enums\OrderRejectReasonType;
+use App\Models\MerchantOrder;
 use App\Models\Product;
 use GuzzleHttp\Client;
 
@@ -95,7 +97,7 @@ class TrendyolMerchant implements Merchant
         $request = $this->client->get();
     }
 
-    public function updateOrder()
+    public function updateOrder(MerchantOrder $order)
     {
         $request = $this->client->get();
     }
@@ -103,5 +105,10 @@ class TrendyolMerchant implements Merchant
     public function updateDeliveryCode()
     {
 
+    }
+
+    public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType)
+    {
+        // TODO: Implement declineOrder() method.
     }
 }
