@@ -231,7 +231,7 @@ class N11 implements Merchant
         // TODO: Implement updateDeliveryCode() method.
     }
 
-    public function createPorudct(Product $product)
+    public function createProduct(Product $product)
     {
         // TODO: Implement createPorudct() method.
     }

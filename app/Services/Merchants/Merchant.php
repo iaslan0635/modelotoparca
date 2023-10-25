@@ -19,7 +19,7 @@ interface Merchant
 
     public function updateDeliveryCode();
 
-    public function createPorudct(Product $product);
+    public function createProduct(Product $product);
 
     public function getCategories();
 
