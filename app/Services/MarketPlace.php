@@ -12,12 +12,12 @@ class MarketPlace
      */
     public static function orders(): void
     {
-        N11::orders();
+        (new N11)->syncOrders();
     }
 
     public static function getClientOutput(MerchantOrder $order)
     {
-        if ($order->merchant === "n11"){
+        if ($order->merchant === "n11") {
             return N11::getClientOutput($order->client);
         }
     }

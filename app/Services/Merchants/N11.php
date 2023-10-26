@@ -3,10 +3,10 @@
 namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
+use App\Facades\N11Client\N11Client;
 use App\Models\Image;
 use App\Models\MerchantOrder;
 use App\Models\Product;
-use IS\PazarYeri\N11\N11Client;
 
 class N11 implements Merchant
 {
@@ -81,10 +81,16 @@ class N11 implements Merchant
         'eur' => 3,
     ];
 
-    public static function orders()
+    protected N11Client $client;
+
+    public function __construct()
     {
-        $client = self::getClient();
-        $orders = $client->order->orderList([
+        $this->client = app(N11Client::class);
+    }
+
+    public function syncOrders()
+    {
+        $orders = $this->client->order->orderList([
             'searchData' => [
                 'status' => 'Completed',
             ],
@@ -97,7 +103,7 @@ class N11 implements Merchant
         ]);
         if ($orders->result->status === "success") {
             foreach ($orders->orderList->order as $order) {
-                $info = $client->order->orderDetail($order->id);
+                $info = $this->client->order->orderDetail($order->id);
                 if ($info->result->status === "success") {
                     $price = 0;
 
@@ -150,16 +156,13 @@ class N11 implements Merchant
 
     public function setStock($id, $stock)
     {
-        $client = self::getClient();
-        return $client->stock->UpdateStockByStockIdRequest($id, $stock);
+        return $this->client->stock->UpdateStockByStockIdRequest($id, $stock);
     }
 
     public function updateProduct(Product $product)
     {
-        $client = self::getClient();
-
         $price = number_format($product->price->price, 2, '.', '');
-        $client->product->SaveProduct(["product" => [
+        $this->client->product->SaveProduct(["product" => [
             'productSellerCode' => $product->sku,
             'title' => $product->title,
             'subtitle' => $product->sub_title,
@@ -266,7 +269,7 @@ class N11 implements Merchant
 
     public function approveOrder(MerchantOrder $order)
     {
-        static::getClient()->order->OrderItemAccept([
+        $this->client->order->OrderItemAccept([
             "orderItem" => [
                 "id" => $order->merchant_id
             ]
@@ -275,7 +278,7 @@ class N11 implements Merchant
 
     public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType)
     {
-        static::getClient()->order->OrderItemReject([
+        $this->client->order->OrderItemReject([
             "orderItemList" => [
                 "orderItem" => [
                     "id" => $order->merchant_id
@@ -301,7 +304,7 @@ class N11 implements Merchant
 
     public function getClaims()
     {
-//        self::getClient()->
+
     }
 
     public function declineRefundedOrder(MerchantOrder $order)
@@ -313,7 +316,7 @@ class N11 implements Merchant
     {
         // TODO: sayfa sayıları ve boyutunu belirt
 
-        self::getClient()->product->GetProductQuestionList([
+        $this->client->product->GetProductQuestionList([
             "currentPage" => 0,
             "pageSize" => 100
         ]);
@@ -323,7 +326,7 @@ class N11 implements Merchant
     {
         //!
 
-        self::getClient()->product->SaveProductAnswer([
+        $this->client->product->SaveProductAnswer([
             "productQuestionId" => $question,
             "productAnswer" => ""
         ]);
@@ -331,21 +334,11 @@ class N11 implements Merchant
 
     public function deleteProduct(Product $product)
     {
-        self::getClient()->product->deleteProductBySellerCode($product->sku);
+        $this->client->product->deleteProductBySellerCode($product->sku);
     }
 
     public function getProductList()
     {
-        $client = self::getClient();
-
-        return $client->product->getProductList();
-    }
-
-    public static function getClient()
-    {
-        $client = new N11Client();
-        $client->setApiKey('604ab86f-4110-48d8-8d77-38ddaf80942b');
-        $client->setApiPassword('qYKHdp9c1GYe9laI');
-        return $client;
+        return $this->client->product->getProductList();
     }
 }
