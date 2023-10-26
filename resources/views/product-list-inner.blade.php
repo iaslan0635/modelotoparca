@@ -133,8 +133,7 @@
                                                                                 class="input-check filter-list__input">
                                                                                 <span class="input-check__body">
                                                                                     <input class="input-check__input"
-                                                                                           name="brands[]"
-                                                                                           value="{{ $key }}"
+                                                                                           name="brands[]" value="{{ $key }}" wire:model="brandsArray.{{$key}}"
                                                                                            {{ request()->has('brands') ? in_array($key, request()->input('brands')) ? "checked":null:null }}
                                                                                            type="checkbox">
                                                                                     <span
@@ -200,8 +199,7 @@
                                                                                             <span class="input-check__body">
                                                                                                 <input
                                                                                                     {{ request()->has("property.$property->id") ? in_array($value->value, \Arr::wrap(request()->input("property.$property->id"))) ? "checked" : null : null }}
-                                                                                                    class="input-check__input" name="property[{{ $property->id }}][]" value="{{ $value->value }}" type="radio"
-                                                                                                    wire:model="property.{{ $property->id }}">
+                                                                                                    class="input-check__input" name="property[{{ $property->id }}][]" value="{{ $value->value }}" type="checkbox" wire:model="property.{{ $property->id }}">
                                                                                                 <span class="input-check__box"></span>
                                                                                                 <span class="input-check__icon">
                                                                                                     <svg width="9px" height="7px">
