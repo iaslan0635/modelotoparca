@@ -456,7 +456,7 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
                                                         </svg>
                                                     </button>
-                                                    <livewire:add-to-cart :product="$product"
+                                                    <livewire:add-to-cart :product="$product" :key="$product->id"
                                                                           :quantity_mode="false"/>
                                                     <button class="product-card__wishlist" type="button">
                                                         <svg width="16" height="16">
