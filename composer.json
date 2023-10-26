@@ -30,7 +30,8 @@
         "predis/predis": "^2.1",
         "symfony/css-selector": "^6.2",
         "symfony/dom-crawler": "^6.2",
-        "tarfin-labs/netgsm": "^4.5"
+        "tarfin-labs/netgsm": "^4.5",
+        "ext-soap": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

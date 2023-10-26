@@ -6,7 +6,6 @@ use App\Enums\OrderRejectReasonType;
 use App\Models\Image;
 use App\Models\MerchantOrder;
 use App\Models\Product;
-use Illuminate\Pagination\Paginator;
 use IS\PazarYeri\N11\N11Client;
 
 class N11 implements Merchant
@@ -86,7 +85,9 @@ class N11 implements Merchant
     {
         $client = self::getClient();
         $orders = $client->order->orderList([
-            'status' => 'Completed',
+            'searchData' => [
+                'status' => 'Completed',
+            ],
             'pagingData' => [
                 // Şuanki Sayfa
                 'currentPage' => 0,
@@ -158,7 +159,7 @@ class N11 implements Merchant
         $client = self::getClient();
 
         $price = number_format($product->price->price, 2, '.', '');
-        $client->product->SaveProduct([
+        $client->product->SaveProduct(["product" => [
             'productSellerCode' => $product->sku,
             'title' => $product->title,
             'subtitle' => $product->sub_title,
@@ -220,7 +221,7 @@ class N11 implements Merchant
                 ]
             ],
             'maxPurchaseQuantity' => $product->quantity,
-        ]);
+        ]]);
     }
 
     public function updateOrder(MerchantOrder $order)
@@ -291,9 +292,16 @@ class N11 implements Merchant
         // TODO: Implement refundedOrders() method.
     }
 
-    public function aprroveRefundedOrder(MerchantOrder $order)
+    public function aprroveRefundedOrder(MerchantOrder $order, $id = null)
     {
         // TODO: Implement aprroveRefundedOrder() method.
+
+        $order->merchant_id;
+    }
+
+    public function getClaims()
+    {
+//        self::getClient()->
     }
 
     public function declineRefundedOrder(MerchantOrder $order)
