@@ -13,7 +13,7 @@
                     </div>
                     <div class="suggestions__product-info">
                         <div class="suggestions__product-name">
-                            {!! ($str = @$product->highlight()["full_text"][0]) ? explode($str, " | ")[0]
+                            {!! ($str = @$product->highlight()["full_text"][0]) ? explode(" | ", $str)[0]
                                 : (@$product->highlight()["title"][0] ?? $product->model()->fullTitle) !!}
                             / {{ implode(',', array_keys($highlights[$product->model()->id] ?? [])) }}</div>
                         <div class="suggestions__product-rating">
