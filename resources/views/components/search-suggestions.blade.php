@@ -13,7 +13,8 @@
                     </div>
                     <div class="suggestions__product-info">
                         <div class="suggestions__product-name">
-                            {!! @$product->highlight()["full_text"][0] ?? @$product->highlight()["title"][0] ?? $product->model()->fullTitle !!}
+                            {!! ($str = @$product->highlight()["full_text"][0]) ? explode($str, " | ")[0]
+                                : (@$product->highlight()["title"][0] ?? $product->model()->fullTitle) !!}
                             / {{ implode(',', array_keys($highlights[$product->model()->id] ?? [])) }}</div>
                         <div class="suggestions__product-rating">
                             {{ $product->model()->brand?->name }}
@@ -34,7 +35,7 @@
             @foreach($categories as ["category" => $category])
                 <a class="suggestions__item suggestions__category"
                    href="{{ route('search', ['query' => $query, 'category' => $category->id]) }}">
-                    <span class="text-muted">{{ $category->allParents()->map(fn ($c) => $c->name)->join(" > ") }} &gt; </span> {{ $category->name }}
+                    <span class="text-muted">{{ $category->allParents()->map(fn ($c) => $c->name)->join(" > ") }} &gt;</span> {{ $category->name }}
                 </a>
             @endforeach
         </div>
