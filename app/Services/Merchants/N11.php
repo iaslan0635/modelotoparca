@@ -6,6 +6,7 @@ use App\Enums\OrderRejectReasonType;
 use App\Models\Image;
 use App\Models\MerchantOrder;
 use App\Models\Product;
+use Illuminate\Pagination\Paginator;
 use IS\PazarYeri\N11\N11Client;
 
 class N11 implements Merchant
@@ -162,9 +163,9 @@ class N11 implements Merchant
             'title' => $product->title,
             'subtitle' => $product->sub_title,
             'description' => $product->description,
-//                'domestic' => 'false', //?
+//                'domestic' => 'false',
             'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
-//            'specialProductInfoList' => [ //?
+//            'specialProductInfoList' => [
 //                'specialProductInfo' => [
 //                    'key' => '?',
 //                    'value' => '?',
@@ -180,30 +181,30 @@ class N11 implements Merchant
                     ])->toArray()
             ],
             'approvalStatus' => $product->status,
-//            'attribute' => [], //?
+//            'attribute' => [],
 //                'productionDate' => '',
 //                'expirationDate' => '',
             'productCondition' => 1, // Yeni (2. el değil)
-            'preparingDay' => 3, //?
-//            'discount' => [ //?
+            'preparingDay' => 3,
+//            'discount' => [
 //                'startDate' => '',
 //                'endDate' => '',
 //                'type' => '',
 //                'value' => '',
 //            ],
-            'shipmentTemplate' => 'termos', //?
+            'shipmentTemplate' => 'termos',
             'stockItems' => [
                 'stockItem' => [
                     [
-//                        'bundle' => 'false', //?
-//                        'mpn' => '112', //?
-//                        'gtin' => '0190198066473', //?
-                        'oem' => '', //?
+//                        'bundle' => 'false',
+//                        'mpn' => '112',
+//                        'gtin' => '0190198066473',
+                        'oem' => '',
                         'quantity' => $product->quantity,
-//                        'n11CatalogId' => '', //?
+//                        'n11CatalogId' => '',
                         'sellerStockCode' => $product->sku,
                         'optionPrice' => $price,
-//                        'attributes' => [ //?
+//                        'attributes' => [
 //                            'attribute' => [
 //                                [
 //                                    'name' => 'Sezon',
@@ -302,12 +303,22 @@ class N11 implements Merchant
 
     public function getQuestions()
     {
-        // TODO: Implement getQuestions() method.
+        // TODO: sayfa sayıları ve boyutunu belirt
+
+        self::getClient()->product->GetProductQuestionList([
+            "currentPage" => 0,
+            "pageSize" => 100
+        ]);
     }
 
     public function sendQuestionAnswer(MerchantOrder $question)
     {
-        // TODO: Implement sendQuestionAnswer() method.
+        //!
+
+        self::getClient()->product->SaveProductAnswer([
+            "productQuestionId" => $question,
+            "productAnswer" => ""
+        ]);
     }
 
     public function deleteProduct(Product $product)
