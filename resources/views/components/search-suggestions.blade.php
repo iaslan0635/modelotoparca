@@ -14,6 +14,7 @@
                     <div class="suggestions__product-info">
                         <div class="suggestions__product-name">
                             {!! @$product->highlight()["title"][0] ?? $product->model()->fullTitle !!}
+                            {!! @$product->highlight()["full_text"][0] ?? 'hm' !!}
                             / {{ implode(',', array_keys($highlights[$product->model()->id] ?? [])) }}</div>
                         <div class="suggestions__product-rating">
                             {{ $product->model()->brand?->name }}
