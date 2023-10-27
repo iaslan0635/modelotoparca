@@ -442,6 +442,7 @@ class Search
 
     public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null): array
     {
+       Log::debug("EsQuery - Start: " . microtime(true));
         if (empty($term)) {
             return [
                 'products' => new LengthAwarePaginator([], 0, 1, 0),
@@ -498,7 +499,9 @@ class Search
         $finalQuery = self::finalizeQuery($compoundQuery, $selectCategory);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter, $selectCategory);
 
-        return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
+        $results = self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
+        Log::debug("EsQuery - Stop: " . microtime(true));
+        return $results;
     }
 
     protected static function log(string $query): void
