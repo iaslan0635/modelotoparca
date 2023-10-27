@@ -207,7 +207,7 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="{{ route('admin.marketplaces') }}">
+                        <a class="menu-link" href="{{-- route('admin.marketplaces') --}}">
 													<span class="menu-bullet">
 														<span class="bullet bullet-dot"></span>
 													</span>
