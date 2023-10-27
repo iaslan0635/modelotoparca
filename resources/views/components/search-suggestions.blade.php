@@ -2,6 +2,7 @@
     <div class="suggestions__group">
         <div class="suggestions__group-title">Ürünler</div>
         <div class="suggestions__group-content">
+            <span wire:loading>Yükleniyor...</span>
             @foreach($results as $product)
                 {{-- {{ dd($product->model()) }}--}}
                 <a class="suggestions__item suggestions__product"
@@ -33,6 +34,7 @@
     <div class="suggestions__group">
         <div class="suggestions__group-title">Kategoriler</div>
         <div class="suggestions__group-content">
+            <span wire:loading>Yükleniyor...</span>
             @foreach($categories as ["category" => $category])
                 <a class="suggestions__item suggestions__category"
                    href="{{ route('search', ['query' => $query, 'category' => $category->id]) }}">
@@ -44,6 +46,7 @@
     <div class="suggestions__group">
         <div class="suggestions__group-title">Öneriler</div>
         <div class="suggestions__group-content">
+            <span wire:loading>Yükleniyor...</span>
             @foreach($suggestions as $key => $suggestion)
                 @foreach($suggestion as $item)
                     <a class="suggestions__item suggestions__category"
