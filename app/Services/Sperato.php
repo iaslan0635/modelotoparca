@@ -32,6 +32,8 @@ class Sperato
 
     public static function smash(string $keyword, int $product_id, ?string $brand_filter = null)
     {
+        if (strlen(trim($keyword)) == 0) return false;
+
         $url = "https://spareto.com/products?keywords=$keyword&per_page=48";
         if ($brand_filter) $url .= "&brand=$brand_filter";
 
