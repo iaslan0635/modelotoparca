@@ -30,7 +30,7 @@ class BotCommand extends Command
     {
         $product = TigerProduct::findOrFail($productId);
         if ($this->option('queue')) {
-            dispatch(new RunSingleBotJob($product));
+            RunSingleBotJob::dispatch($product)->onQueue("low");
         }
         else {
             ExcelImport::runBot($product);
