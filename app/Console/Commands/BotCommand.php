@@ -3,14 +3,14 @@
 namespace App\Console\Commands;
 
 use App\Jobs\Import\ExcelImport;
+use App\Jobs\RunSingleBotJob;
 use App\Models\TigerProduct;
-use App\Services\Sperato;
 use Illuminate\Console\Command;
 use Throwable;
 
 class BotCommand extends Command
 {
-    protected $signature = 'bot';
+    protected $signature = 'bot {--queue}';
 
     public function handle(): void
     {
@@ -29,6 +29,9 @@ class BotCommand extends Command
     public function handleProduct(int $productId)
     {
         $product = TigerProduct::findOrFail($productId);
-        ExcelImport::runBot($product);
+        if ($this->option('queue'))
+            ExcelImport::runBot($product);
+        else
+            dispatch(new RunSingleBotJob($product));
     }
 }
