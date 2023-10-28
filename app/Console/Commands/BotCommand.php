@@ -29,9 +29,11 @@ class BotCommand extends Command
     public function handleProduct(int $productId)
     {
         $product = TigerProduct::findOrFail($productId);
-        if ($this->option('queue'))
-            ExcelImport::runBot($product);
-        else
+        if ($this->option('queue')) {
             dispatch(new RunSingleBotJob($product));
+        }
+        else {
+            ExcelImport::runBot($product);
+        }
     }
 }
