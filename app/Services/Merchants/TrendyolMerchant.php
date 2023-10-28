@@ -58,10 +58,8 @@ class TrendyolMerchant implements Merchant
                 ]
             ]
         ]);
-
-        $body = json_decode($request->getBody());
-
-        return $body->batchRequestId;
+        
+        return json_decode($request->getBody())->batchRequestId;
     }
 
     public function getOrders()
