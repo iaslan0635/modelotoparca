@@ -8,10 +8,6 @@ use App\Models\Product;
 
 interface Merchant
 {
-    public function getAuthenticationInfo();
-
-    public function setAuthenticationInfo(array $info);
-
     public function setStock(Product $product, $stock);
 
     public function updateProduct(Product $product);
@@ -24,7 +20,7 @@ interface Merchant
 
     public function getCategories();
 
-    public function getCategoryAttributes();
+    public function getCategoryAttributes($categoryId);
 
     public function getCargoCompanies();
 
@@ -40,11 +36,11 @@ interface Merchant
 
     public function aprroveRefundedOrder(MerchantOrder $order);
 
-    public function declineRefundedOrder(MerchantOrder $order);
+    public function declineRefundedOrder($claimReturnId, $denyReasonId, $denyReasonNote); // ???
 
     public function getQuestions();
 
-    public function sendQuestionAnswer(MerchantOrder $question);
+    public function sendQuestionAnswer(MerchantOrder $question, string $answer);
 
     public function deleteProduct(Product $product);
 }

@@ -6,6 +6,7 @@ use App\Enums\OrderRejectReasonType;
 use App\Facades\N11Client\N11Client;
 use App\Models\Image;
 use App\Models\MerchantOrder;
+use App\Models\MerchantQuestion;
 use App\Models\Product;
 
 class N11 implements Merchant
@@ -144,19 +145,9 @@ class N11 implements Merchant
         ];
     }
 
-    public function getAuthenticationInfo()
-    {
-        // TODO: Implement getAuthenticationInfo() method.
-    }
-
-    public function setAuthenticationInfo(array $info)
-    {
-        // TODO: Implement setAuthenticationInfo() method.
-    }
-
     public function setStock($id, $stock)
     {
-        return $this->client->stock->UpdateStockByStockIdRequest($id, $stock);
+        $this->client->stock->UpdateStockByStockIdRequest($id, $stock);
     }
 
     public function updateProduct(Product $product)
@@ -234,7 +225,7 @@ class N11 implements Merchant
 
     public function updateDeliveryCode()
     {
-        // TODO: Implement updateDeliveryCode() method.
+        // ???
     }
 
     public function createProduct(Product $product)
@@ -244,27 +235,29 @@ class N11 implements Merchant
 
     public function getCategories()
     {
-        // TODO: Implement getCategories() method.
+        return $this->client->category->GetTopLevelCategories([]);
     }
 
-    public function getCategoryAttributes()
+    public function getCategoryAttributes($categoryId)
     {
-        // TODO: Implement getCategoryAttributes() method.
+        return $this->client->category->GetCategoryAttributes([
+            "categoryId" => $categoryId
+        ]);
     }
 
     public function getCargoCompanies()
     {
-        // TODO: Implement getCargoCompanies() method.
+        $this->client->shipmentCompany->GetShipmentCompanies([]);
     }
 
     public function getBrands()
     {
-        // TODO: Implement getBrands() method.
+        // marka yok katalog var
     }
 
     public function getOrders()
     {
-        // TODO: Implement getOrders() method.
+        return $this->client->order->DetailedOrderList([]);
     }
 
     public function approveOrder(MerchantOrder $order)
@@ -292,49 +285,57 @@ class N11 implements Merchant
 
     public function refundedOrders()
     {
-        // TODO: Implement refundedOrders() method.
+        return $this->client->order->DetailedOrderList([
+            "searchData" => [
+                "status" => "Claimed"
+            ]
+        ]);
     }
 
     public function aprroveRefundedOrder(MerchantOrder $order, $id = null)
     {
-        // TODO: Implement aprroveRefundedOrder() method.
+        $this->client->return->ClaimReturnApprove([
+            "claimReturnId" => $id
+        ]);
 
-        $order->merchant_id;
+        // $order->status = "refundApproved" ???
     }
 
     public function getClaims()
     {
-
+        return $this->client->return->ClaimReturnList([]);
     }
 
-    public function declineRefundedOrder(MerchantOrder $order)
+    public function declineRefundedOrder($claimReturnId, $denyReasonId, $denyReasonNote)
     {
-        // TODO: Implement declineRefundedOrder() method.
+        return $this->client->return->ClaimReturnDeny([
+            "claimReturnId" => "",
+            "denyReasonId" => "",
+            "denyReasonNote" => "",
+        ]);
     }
 
     public function getQuestions()
     {
-        // TODO: sayfa sayıları ve boyutunu belirt
-
-        $this->client->product->GetProductQuestionList([
+        return $this->client->product->GetProductQuestionList([
             "currentPage" => 0,
             "pageSize" => 100
         ]);
     }
 
-    public function sendQuestionAnswer(MerchantOrder $question)
+    public function sendQuestionAnswer(MerchantOrder $question, string $answer)
     {
-        //!
-
         $this->client->product->SaveProductAnswer([
-            "productQuestionId" => $question,
-            "productAnswer" => ""
+            "productQuestionId" => $question->merchant_id,
+            "productAnswer" => $answer
         ]);
     }
 
     public function deleteProduct(Product $product)
     {
-        $this->client->product->deleteProductBySellerCode($product->sku);
+        $this->client->product->DeleteProductBySellerCode([
+            "productSellerCode" => $product->sku
+        ]);
     }
 
     public function getProductList()

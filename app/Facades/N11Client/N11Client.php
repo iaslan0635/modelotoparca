@@ -15,6 +15,8 @@ class N11Client
         'order' => 'OrderService',
         'webhook' => 'WebHookService',
         'claimCancel' => 'ClaimCancelService',
+        'return' => 'ReturnService',
+        'shipmentCompany' => 'ShipmentCompanyService',
     ];
 
     private $clients = [];
