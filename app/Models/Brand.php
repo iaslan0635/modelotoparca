@@ -53,4 +53,9 @@ class Brand extends BaseModel
             ? asset("images/brands/$this->name.png")
             : $this->databaseImageUrl();
     }
+
+    public function merchants(): HasMany
+    {
+        return $this->hasMany(MerchantBrandConnect::class);
+    }
 }

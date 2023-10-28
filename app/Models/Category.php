@@ -114,4 +114,9 @@ class Category extends BaseModel
     {
         return $this->belongsToMany(Property::class);
     }
+
+    public function merchants(): HasMany
+    {
+        return $this->hasMany(MerchantCategoryConnect::class);
+    }
 }

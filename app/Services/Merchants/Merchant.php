@@ -10,11 +10,13 @@ interface Merchant
 {
     public function setStock(Product $product, $stock);
 
+    public function setPrice(Product $product, $salePrice, $listPrice);
+
     public function updateProduct(Product $product);
 
     public function updateOrder(MerchantOrder $order);
 
-    public function updateDeliveryCode();
+    public function updateDeliveryCode($id, $code);
 
     public function createProduct(Product $product);
 
