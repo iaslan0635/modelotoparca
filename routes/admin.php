@@ -9,14 +9,6 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
-$temp = function () {
-    $segments = request()->segments();
-    $view = str_replace('.html', '', implode('.', $segments));
-    abort_unless(View::exists($view), 404, 'View not exists');
-
-    return view($view);
-};
-
 Route::view('/', 'admin.index');
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
@@ -56,9 +48,18 @@ Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(fu
     Route::post('toggleIndexing', 'toggleIndexing')->name('toggleIndexing');
 });
 
-Route::fallback($temp);
-
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
+Route::get('/marketplace-orders', [OrderController::class, 'marketplace'])->name('marketplace_orders');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
+
+if (app()->hasDebugModeEnabled()) {
+    Route::fallback(function () {
+        $segments = request()->segments();
+        $view = str_replace('.html', '', implode('.', $segments));
+        abort_unless(View::exists($view), 404, 'View not exists');
+
+        return view($view);
+    });
+}
