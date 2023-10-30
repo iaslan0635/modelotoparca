@@ -102,28 +102,7 @@ class ExcelImport implements ShouldQueue
             $product->save();
 
             if ($isChaged) {
-                ProductSimilar::query()->where('product_id', $product->id)->delete();
-
-                ProductOem::query()->where('type', '=', 'automatic')
-                    ->where('logicalref', $product->id)
-                    ->delete();
-
-                $product->cars()->sync([]);
-                SparetoProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
-
-                if ($this->data['cross_code']) {
-                    $product->similars()->firstOrCreate([
-                        'code' => $this->data['cross_code'],
-                    ]);
-                }
-
-                $oems = explode(',', $this->data['oem_codes']);
-                foreach ($oems as $oem) {
-                    $product->oems()->firstOrCreate([
-                        'oem' => $oem,
-                    ]);
-                }
-
+                self::clearSparetoAssociations($product);
                 self::runBot($product);
             }
         } else {
@@ -263,6 +242,32 @@ class ExcelImport implements ShouldQueue
         }
 
         $product->actualProduct->searchable();
+    }
+
+    public static function clearSparetoAssociations(TigerProduct $product)
+    {
+
+        ProductSimilar::query()->where('product_id', $product->id)->delete();
+
+        ProductOem::query()->where('type', '=', 'automatic')
+            ->where('logicalref', $product->id)
+            ->delete();
+
+        $product->cars()->sync([]);
+        SparetoProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
+
+        if ($product->cross_code) {
+            $product->similars()->firstOrCreate([
+                'code' => $product->cross_code,
+            ]);
+        }
+
+        $oems = explode(',', $product->oem_codes ?? "");
+        foreach ($oems as $oem) {
+            $product->oems()->firstOrCreate([
+                'oem' => $oem,
+            ]);
+        }
     }
 
     private static function getBrand(TigerProduct $product): ?string

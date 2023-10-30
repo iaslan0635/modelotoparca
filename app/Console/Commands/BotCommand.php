@@ -33,6 +33,7 @@ class BotCommand extends Command
             RunSingleBotJob::dispatch($product)->onQueue("low");
         }
         else {
+            ExcelImport::clearSparetoAssociations($product);
             ExcelImport::runBot($product);
         }
     }
