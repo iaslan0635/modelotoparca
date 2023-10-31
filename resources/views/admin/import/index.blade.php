@@ -10,7 +10,7 @@
                     <!--begin::Title-->
                     <h1 class="page-heading">
                         İçe aktar
-                        <span class="d-inline badge badge-primary mx-4">İşlem kuyruğu: {{ \DB::table("jobs")->count() }}</span>
+                        <span class="d-inline badge badge-primary mx-4">İşlem kuyruğu: {{ \DB::table("jobs")->where("queue", "default")->count() }}</span>
                     </h1>
                     <!--end::Title-->
                 </div>
