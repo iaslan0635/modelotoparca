@@ -46,6 +46,7 @@
                     <!--end::Primary button-->
                 </div>
                 <!--end::Actions-->
+                <livewire:admin.product.create-merchant :product="$product" />
             </div>
             <!--end::Toolbar container-->
         </div>
