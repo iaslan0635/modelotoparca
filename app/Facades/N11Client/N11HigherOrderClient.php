@@ -10,7 +10,7 @@ class N11HigherOrderClient
 
     public function __call(string $name, $arguments)
     {
-        dd($arguments);
+        dd($name);
         return $this->client->$name(array_merge(["auth" => $this->auth], $arguments));
     }
 }
