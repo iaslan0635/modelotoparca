@@ -229,7 +229,7 @@ class N11 implements Merchant
         // TODO: Implement updateOrder() method.
     }
 
-    public function updateDeliveryCode()
+    public function updateDeliveryCode($id, $code)
     {
         // ???
     }
