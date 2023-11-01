@@ -3,7 +3,7 @@
     @if(!$product->merchants()->where('merchant', 'n11')->first())
         <!--begin::Primary button-->
         <button wire:click="createN11" class="btn btn-sm fw-bold btn-primary">
-            {{ ucfirst($merchant->merchant) }} oluştur
+            N11 oluştur
         </button>
         <!--end::Primary button-->
     @endif
