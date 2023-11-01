@@ -31,6 +31,8 @@ class ProductController extends Controller
             $products = Product::paginate();
         }
 
+        return $products;
+
         return view('admin.apps.ecommerce.catalog.products', compact('products'));
     }
 
