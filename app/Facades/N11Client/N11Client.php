@@ -35,6 +35,9 @@ class N11Client
         return $this->clients[$clientAlias] ?? ($this->clients[$clientAlias] = $this->createClient($clientAlias));
     }
 
+    /**
+     * @throws \SoapFault
+     */
     private function createClient(string $clientAlias)
     {
         $serviceName = self::SERVICE_ALIASES[$clientAlias];

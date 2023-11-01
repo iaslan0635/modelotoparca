@@ -21,7 +21,7 @@ class UpdateExchangeRateJob
     public static function updateRates()
     {
         // TODO: find alternative to tcmb
-        $xmlStirng = Http::get('https://kur.doviz.day')->body();
+        $xmlStirng = Http::withoutVerifying()->get('https://kur.doviz.day')->body();
 
         $xml = new SimpleXMLElement($xmlStirng);
         $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];

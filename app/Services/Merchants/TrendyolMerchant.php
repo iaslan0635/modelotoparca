@@ -13,17 +13,16 @@ class TrendyolMerchant implements Merchant
 
     public string $key = 'trendyol';
 
-    public string $supplierId = "156561561651";
+    public string $supplierId = "";
 
     protected Client $client;
 
-    public function __construct(
-        protected string $username,
-        protected string $password
-    )
+    public function __construct()
     {
+        $this->supplierId = config("merchants.trendyol.supplierId");
         $this->client = new Client([
             'baseUrl' => 'https://api.trendyol.com/sapigw',
+            "auth" => [config("merchants.trendyol.username"), config("merchants.trendyol.password")]
         ]);
     }
 
@@ -58,7 +57,7 @@ class TrendyolMerchant implements Merchant
                 ]
             ]
         ]);
-        
+
         return json_decode($request->getBody())->batchRequestId;
     }
 
@@ -83,7 +82,7 @@ class TrendyolMerchant implements Merchant
                 [
                     "barcode" => $product->sku,
                     "title" => $product->title,
-                    "productMainId" => "1234BT",
+                    "productMainId" => $product->sku,
                     "brandId" => $product->brand->merchants()
                         ->where('merchant', '=', "trendyol")->first()->merchant_id,
                     "categoryId" => $product->categories[0]->merchants()
@@ -129,7 +128,7 @@ class TrendyolMerchant implements Merchant
                 [
                     "barcode" => $product->sku,
                     "title" => $product->title,
-                    "productMainId" => "1234BT",
+                    "productMainId" => $product->sku,
                     "brandId" => $product->brand->merchants()
                         ->where('merchant', '=', "trendyol")->first()->merchant_id,
                     "categoryId" => $product->categories[0]->merchants()

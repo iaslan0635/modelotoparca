@@ -28,7 +28,7 @@ class ProductController extends Controller
             ['products' => $hits] = Search::query($search);
             $products = $hits->onlyModels();
         } else {
-            $products = Product::paginate();
+            $products = Product::with(['merchants'])->paginate();
         }
 
         return view('admin.apps.ecommerce.catalog.products', compact('products'));
@@ -65,7 +65,7 @@ class ProductController extends Controller
         $cars = $query ? Car::searchQuery(Query::match()->field('name')->query($query))->paginate(10)->onlyModels() : Car::paginate(10);
 
         return [
-            'results' => $cars->map(fn (Car $car) => [
+            'results' => $cars->map(fn(Car $car) => [
                 'id' => $car->id,
                 'text' => $car->name,
             ])->all(),

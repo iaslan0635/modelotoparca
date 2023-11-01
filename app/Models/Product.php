@@ -78,11 +78,11 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        $cars = $this->cars->filter(fn (Car $car) => $car->indexable && $car->body_type !== 'truck' && $car->body_type !== 'urban_bus')->values();
-        $regex = fn ($s) => strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $s));
+        $cars = $this->cars->filter(fn(Car $car) => $car->indexable && $car->body_type !== 'truck' && $car->body_type !== 'urban_bus')->values();
+        $regex = fn($s) => strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $s));
 
-        $similars = collect(explode(',', $this->similar_product_codes))->map(fn ($s) => trim($s));
-        $similars->push(...$this->similarCodes->map(fn (ProductSimilar $ps) => $ps->code));
+        $similars = collect(explode(',', $this->similar_product_codes))->map(fn($s) => trim($s));
+        $similars->push(...$this->similarCodes->map(fn(ProductSimilar $ps) => $ps->code));
 
         return [
             'id' => $this->id,
@@ -102,7 +102,7 @@ class Product extends BaseModel implements CanVisit
 
             'oems' => $this->oems->map->toSearchableArray(),
             'cars' => $cars->map->toSearchableArray(),
-            'similars' => $similars->map(fn ($s) => ['code' => $s, 'code_regex' => $regex($s)]),
+            'similars' => $similars->map(fn($s) => ['code' => $s, 'code_regex' => $regex($s)]),
             'categories' => $this->categories->map->toSearchableArray(),
             'brand' => $this->brand?->toSearchableArray(),
             'price' => $this->price?->price,
@@ -159,7 +159,7 @@ class Product extends BaseModel implements CanVisit
 
     public function fullTitle(): Attribute
     {
-        return Attribute::get(fn () => $this->title.($this->producercode ? ' @'.$this->producercode : ''));
+        return Attribute::get(fn() => $this->title . ($this->producercode ? ' @' . $this->producercode : ''));
     }
 
     public function cars(): BelongsToMany
@@ -171,23 +171,23 @@ class Product extends BaseModel implements CanVisit
     {
         if (Garage::hasChosen()) {
             $chosen = Garage::chosen();
-            static::addGlobalScope('chosen_car', fn (Builder $builder) => $builder->whereRelation('cars', 'id', '=', $chosen));
+            static::addGlobalScope('chosen_car', fn(Builder $builder) => $builder->whereRelation('cars', 'id', '=', $chosen));
         }
     }
 
     /**
-     * @param  Collection<int, Product>  $products
+     * @param Collection<int, Product> $products
      * @return array<Collection>
      */
     public static function alternativesAndSimilars(Collection $products)
     {
-        $idMatcher = fn (Product $p, Product $i) => $p->id === $i->id;
+        $idMatcher = fn(Product $p, Product $i) => $p->id === $i->id;
 
-        $alternatives = $products->map(fn (Product $p) => $p->alternatives()->get())->flatten();
+        $alternatives = $products->map(fn(Product $p) => $p->alternatives()->get())->flatten();
         $alternatives->unique('id');
         $alternatives = Utils::uniqueOn($alternatives, $products, $idMatcher);
 
-        $similars = $products->map(fn (Product $p) => $p->similars()->get())->flatten();
+        $similars = $products->map(fn(Product $p) => $p->similars()->get())->flatten();
         $similars->unique('id');
         $similars = Utils::uniqueOn($similars, $alternatives, $idMatcher);
         $similars = Utils::uniqueOn($similars, $products, $idMatcher);
@@ -208,5 +208,10 @@ class Product extends BaseModel implements CanVisit
     public function sparetoUrls()
     {
         return $this->hasMany(SparetoProduct::class);
+    }
+
+    public function merchants(): HasMany
+    {
+        return $this->hasMany(ProductMerchant::class);
     }
 }

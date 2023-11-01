@@ -205,6 +205,7 @@
 								<th class="pe-0 text-end min-w-70px">Qty</th>
 								<th class="pe-0 text-end min-w-100px">Price</th>
 								<th class="pe-0 text-end min-w-100px">Status</th>
+								<th class="pe-0 text-end min-w-100px">E-ticaret siteleri</th>
 								<th class="pe-0 text-end min-w-70px">Actions</th>
 							</tr>
 							<!--end::Table row-->
@@ -261,6 +262,15 @@
                                     <!--begin::Badges-->
                                     <div class="badge badge-light-success">Published</div>
                                     <!--end::Badges-->
+                                </td>
+                                <!--end::Status=-->
+                                <!--begin::Status=-->
+                                <td class="text-end pe-0">
+                                    @foreach($products->merchants as $merchant)
+                                        <!--begin::Badges-->
+                                        <div class="badge badge-light-success">{{ ucfirst($merchant->merchant) }}</div>
+                                        <!--end::Badges-->
+                                    @endforeach
                                 </td>
                                 <!--end::Status=-->
                                 <!--begin::Action=-->
