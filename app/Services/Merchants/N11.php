@@ -154,45 +154,6 @@ class N11 implements Merchant
     public function updateProduct(Product $product)
     {
         $price = number_format($product->price->price, 2, '.', '');
-        dd([
-            "product" => [
-                'productSellerCode' => $product->sku,
-                'title' => $product->title,
-                'subtitle' => $product->sub_title,
-                'description' => $product->description,
-                'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
-                'price' => $price,
-                'currencyType' => self::CURRENCY[$product->price->currency],
-                'images' => [
-                    'image' =>
-                        $product->images->map(fn(Image $image, int $key) => [
-                            'url' => $image->url,
-                            'order' => $key,
-                        ])->toArray()
-                ],
-                'approvalStatus' => $product->status,
-                'attributes' => [
-                    "attribute" => [
-                        "name" => "Marka",
-                        "value" => $product->brand->name
-                    ]
-                ],
-                'productCondition' => 1, // Yeni (2. el değil)
-                'preparingDay' => 3,
-                'shipmentTemplate' => 'termos',
-                'stockItems' => [
-                    'stockItem' => [
-                        [
-                            'oem' => '',
-                            'quantity' => $product->quantity,
-                            'sellerStockCode' => $product->sku,
-                            'optionPrice' => $price,
-                        ]
-                    ]
-                ],
-                'maxPurchaseQuantity' => $product->quantity,
-            ]
-        ]);
         $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
