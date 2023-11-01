@@ -28,7 +28,7 @@ class ProductController extends Controller
             ['products' => $hits] = Search::query($search);
             $products = $hits->onlyModels();
         } else {
-            $products = Product::with(['merchants'])->paginate();
+            $products = Product::paginate();
         }
 
         return view('admin.apps.ecommerce.catalog.products', compact('products'));
