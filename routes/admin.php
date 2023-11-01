@@ -7,9 +7,15 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Services\Merchants\N11;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'admin.index');
+
+Route::get("n11", function (){
+    $n11 = new N11();
+    return $n11->getCategories();
+});
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
     Route::get('oem', 'push_oem')->name('oem');
