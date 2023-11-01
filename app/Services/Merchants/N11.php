@@ -160,6 +160,7 @@ class N11 implements Merchant
                 'title' => $product->title,
                 'subtitle' => $product->sub_title,
                 'description' => $product->description,
+                'domestic' => 'false',
                 'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
                 'price' => $price,
                 'currencyType' => self::CURRENCY[$product->price->currency],
