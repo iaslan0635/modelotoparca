@@ -266,7 +266,7 @@
                                 <!--end::Status=-->
                                 <!--begin::Status=-->
                                 <td class="text-end pe-0">
-                                    @foreach($products->merchants as $merchant)
+                                    @foreach($product->merchants as $merchant)
                                         <!--begin::Badges-->
                                         <div class="badge badge-light-success">{{ ucfirst($merchant->merchant) }}</div>
                                         <!--end::Badges-->
