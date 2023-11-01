@@ -153,75 +153,85 @@ class N11 implements Merchant
 
     public function updateProduct(Product $product)
     {
-        $price = number_format($product->price->price, 2, '.', '');
-        $this->client->product->SaveProduct(["product" => [
-            'productSellerCode' => $product->sku,
-            'title' => $product->title,
-            'subtitle' => $product->sub_title,
-            'description' => $product->description,
-//                'domestic' => 'false',
-            'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
-//            'specialProductInfoList' => [
-//                'specialProductInfo' => [
-//                    'key' => '?',
-//                    'value' => '?',
-//                ]
-//            ],
-            'price' => $price,
-            'currencyType' => self::CURRENCY[$product->price->currency],
-            'images' => [
-                'image' =>
-                    $product->images->map(fn(Image $image, int $key) => [
-                        'url' => $image->url,
-                        'order' => $key,
-                    ])->toArray()
-            ],
-            'approvalStatus' => $product->status,
-            'attributes' => [
-                "attribute" => [
-                    "name" => "Marka",
-                    "value" => $product->brand->name
-                ]
-            ],
-//                'productionDate' => '',
-//                'expirationDate' => '',
-            'productCondition' => 1, // Yeni (2. el değil)
-            'preparingDay' => 3,
-//            'discount' => [
-//                'startDate' => '',
-//                'endDate' => '',
-//                'type' => '',
-//                'value' => '',
-//            ],
-            'shipmentTemplate' => 'termos',
-            'stockItems' => [
-                'stockItem' => [
-                    [
-//                        'bundle' => 'false',
-//                        'mpn' => '112',
-//                        'gtin' => '0190198066473',
-                        'oem' => '',
-                        'quantity' => $product->quantity,
-//                        'n11CatalogId' => '',
-                        'sellerStockCode' => $product->sku,
-                        'optionPrice' => $price,
-//                        'attributes' => [
-//                            'attribute' => [
-//                                [
-//                                    'name' => 'Sezon',
-//                                    'value' => '2013 Sonbahar-Kış'
-//                                ],
-//                                [
-//                                    'name' => 'Cinsiyet',
-//                                    'value' => 'Erkek',
-//                                ],
-//                            ]
-//                        ]
+        dd([
+            "product" => [
+                'productSellerCode' => $product->sku,
+                'title' => $product->title,
+                'subtitle' => $product->sub_title,
+                'description' => $product->description,
+                'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
+                'price' => $price,
+                'currencyType' => self::CURRENCY[$product->price->currency],
+                'images' => [
+                    'image' =>
+                        $product->images->map(fn(Image $image, int $key) => [
+                            'url' => $image->url,
+                            'order' => $key,
+                        ])->toArray()
+                ],
+                'approvalStatus' => $product->status,
+                'attributes' => [
+                    "attribute" => [
+                        "name" => "Marka",
+                        "value" => $product->brand->name
                     ]
-                ]
-            ],
-            'maxPurchaseQuantity' => $product->quantity,
-        ]]);
+                ],
+                'productCondition' => 1, // Yeni (2. el değil)
+                'preparingDay' => 3,
+                'shipmentTemplate' => 'termos',
+                'stockItems' => [
+                    'stockItem' => [
+                        [
+                            'oem' => '',
+                            'quantity' => $product->quantity,
+                            'sellerStockCode' => $product->sku,
+                            'optionPrice' => $price,
+                        ]
+                    ]
+                ],
+                'maxPurchaseQuantity' => $product->quantity,
+            ]
+        ]);
+        $price = number_format($product->price->price, 2, '.', '');
+        $this->client->product->SaveProduct([
+            "product" => [
+                'productSellerCode' => $product->sku,
+                'title' => $product->title,
+                'subtitle' => $product->sub_title,
+                'description' => $product->description,
+                'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
+                'price' => $price,
+                'currencyType' => self::CURRENCY[$product->price->currency],
+                'images' => [
+                    'image' =>
+                        $product->images->map(fn(Image $image, int $key) => [
+                            'url' => $image->url,
+                            'order' => $key,
+                        ])->toArray()
+                ],
+                'approvalStatus' => $product->status,
+                'attributes' => [
+                    "attribute" => [
+                        "name" => "Marka",
+                        "value" => $product->brand->name
+                    ]
+                ],
+                'productCondition' => 1, // Yeni (2. el değil)
+                'preparingDay' => 3,
+                'shipmentTemplate' => 'termos',
+                'stockItems' => [
+                    'stockItem' => [
+                        [
+                            'oem' => '',
+                            'quantity' => $product->quantity,
+                            'sellerStockCode' => $product->sku,
+                            'optionPrice' => $price,
+                        ]
+                    ]
+                ],
+                'maxPurchaseQuantity' => $product->quantity,
+            ]
+        ]);
     }
 
     public function updateOrder(MerchantOrder $order)
