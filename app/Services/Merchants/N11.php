@@ -153,6 +153,7 @@ class N11 implements Merchant
 
     public function updateProduct(Product $product)
     {
+        $price = number_format($product->price->price, 2, '.', '');
         dd([
             "product" => [
                 'productSellerCode' => $product->sku,
@@ -192,7 +193,6 @@ class N11 implements Merchant
                 'maxPurchaseQuantity' => $product->quantity,
             ]
         ]);
-        $price = number_format($product->price->price, 2, '.', '');
         $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
