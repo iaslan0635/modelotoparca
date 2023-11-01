@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\MerchantOrder;
 use App\Models\MerchantQuestion;
 use App\Models\Product;
+use App\Models\ProductMerchant;
 
 class N11 implements Merchant
 {
@@ -236,6 +237,12 @@ class N11 implements Merchant
     public function createProduct(Product $product)
     {
         $this->updateProduct($product);
+
+        ProductMerchant::create([
+            'merchant' => "n11",
+            'merchant_id' => $product->sku,
+            'product_id' => $product->id
+        ]);
     }
 
     public function getCategories()
