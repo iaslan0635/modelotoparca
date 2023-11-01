@@ -176,7 +176,12 @@ class N11 implements Merchant
                     ])->toArray()
             ],
             'approvalStatus' => $product->status,
-//            'attribute' => [],
+            'attributes' => [
+                "attribute" => [
+                    "name" => "Marka",
+                    "value" => $product->brand->name
+                ]
+            ],
 //                'productionDate' => '',
 //                'expirationDate' => '',
             'productCondition' => 1, // Yeni (2. el değil)

@@ -17,6 +17,7 @@ class N11Client
         'claimCancel' => 'ClaimCancelService',
         'return' => 'ReturnService',
         'shipmentCompany' => 'ShipmentCompanyService',
+        'catalog' => 'CatalogService',
     ];
 
     private $clients = [];
