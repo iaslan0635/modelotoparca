@@ -36,7 +36,7 @@ class Hepsiburada implements Merchant
         ]);
     }
 
-    public function setPrice(Product $product, $salePrice, $listPrice)
+    public function updatePrice(Product $product)
     {
         $this->client->post("https://listing-external.hepsiburada.com/Listings/merchantid/$this->merchantId/price-uploads", [
             [

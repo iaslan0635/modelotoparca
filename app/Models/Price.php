@@ -18,7 +18,7 @@ class Price extends BaseModel
 
     protected function price(): Attribute
     {
-        return Attribute::get(fn (string $value) => TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount));
+        return Attribute::get(fn(string $value) => TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount));
     }
 
     public function tax(): HasOne
@@ -28,11 +28,25 @@ class Price extends BaseModel
 
     protected function formattedPrice(): Attribute
     {
-        return Attribute::get(fn () => number_format($this->price, 2).' ₺');
+        return Attribute::get(fn() => number_format($this->price, 2) . ' ₺');
     }
 
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    protected function realDiscountAmount(): Attribute
+    {
+        return Attribute::get(fn() => match ($this->discount_type) {
+            "percentile" => $this->price * $this->discount_amount,
+            "fixed" => $this->discount_amount,
+            default => throw new \Exception("The discount type ($this->discount_type) of the price record with id $this->id is incorrect."),
+        });
+    }
+
+    protected function discountedPrice(): Attribute
+    {
+        return Attribute::get(fn() => $this->price - $this->real_discount_amount);
     }
 }

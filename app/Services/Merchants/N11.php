@@ -333,7 +333,7 @@ class N11 implements Merchant
         return $this->client->product->getProductList();
     }
 
-    public function setPrice(Product $product, $salePrice, $listPrice)
+    public function updatePrice(Product $product)
     {
         // TODO: Implement setPrice() method.
     }

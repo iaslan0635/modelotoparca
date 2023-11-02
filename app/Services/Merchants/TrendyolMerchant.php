@@ -325,14 +325,14 @@ class TrendyolMerchant implements Merchant
         return json_decode($request->getBody())->batchRequestId;
     }
 
-    public function setPrice(Product $product, $salePrice, $listPrice)
+    public function updatePrice(Product $product)
     {
         $request = $this->client->post("/suppliers/$this->supplierId/products/price-and-inventory", [
             "items" => [
                 [
                     "barcode" => $product->sku,
-                    "salePrice" => $salePrice,
-                    "listPrice" => $listPrice,
+                    "salePrice" => number_format($product->price->price, 2, '.', ''),
+                    "listPrice" => number_format($product->price->discounted_price, 2, '.', ''),
                 ]
             ]
         ]);

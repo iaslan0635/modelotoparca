@@ -10,7 +10,7 @@ interface Merchant
 {
     public function setStock(Product $product, $stock);
 
-    public function setPrice(Product $product, $salePrice, $listPrice);
+    public function updatePrice(Product $product);
 
     public function updateProduct(Product $product);
 
