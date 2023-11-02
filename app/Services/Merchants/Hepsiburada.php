@@ -63,6 +63,7 @@ class Hepsiburada implements Merchant
 
     public function createProduct(Product $product)
     {
+        dd($product->images);
         $price = number_format($product->price->price, 2, ',', '');
 
         $request = $this->client->post("https://mpop.hepsiburada.com/product/api/products/import?version=1", [
