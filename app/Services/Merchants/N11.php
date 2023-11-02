@@ -83,11 +83,21 @@ class N11 implements Merchant
         'eur' => 3,
     ];
 
+    const DISCOUNT_TYPE = [
+        "fixed" => 1,
+        "percentile" => 2,
+    ];
+
     protected N11Client $client;
 
     public function __construct()
     {
         $this->client = app(N11Client::class);
+    }
+
+    private function formatPrice($price)
+    {
+        return number_format($price, 2, '.', '');
     }
 
     public function syncOrders()
@@ -153,7 +163,7 @@ class N11 implements Merchant
 
     public function updateProduct(Product $product)
     {
-        $price = number_format($product->price->price, 2, '.', '');
+        $price = $this->formatPrice($product->price->price);
         $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
