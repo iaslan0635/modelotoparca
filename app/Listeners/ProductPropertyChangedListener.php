@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\ProductChangedEvent;
 use App\Events\ProductPropertyChangedEvent;
 
 class ProductPropertyChangedListener
@@ -19,6 +20,6 @@ class ProductPropertyChangedListener
      */
     public function handle(ProductPropertyChangedEvent $event): void
     {
-        //
+        ProductChangedEvent::dispatch($event->propertyValue->product);
     }
 }

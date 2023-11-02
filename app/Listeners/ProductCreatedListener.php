@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\ProductCreatedEvent;
+use App\Services\MarketPlace;
 
 class ProductCreatedListener
 {
@@ -19,6 +20,8 @@ class ProductCreatedListener
      */
     public function handle(ProductCreatedEvent $event): void
     {
-        //
+        foreach (MarketPlace::merchants() as $merchant) {
+            $merchant->createProduct($event->product);
+        }
     }
 }

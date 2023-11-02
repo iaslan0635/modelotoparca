@@ -15,4 +15,9 @@ class Variant extends BaseModel implements CanVisit
         'updated' => ProductVariantChangedEvent::class,
         'created' => ProductVariantCreatedEvent::class,
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

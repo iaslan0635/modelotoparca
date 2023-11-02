@@ -30,4 +30,9 @@ class Price extends BaseModel
     {
         return Attribute::get(fn () => number_format($this->price, 2).' ₺');
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\ProductChangedEvent;
+use App\Services\MarketPlace;
 
 class ProductChangedListener
 {
@@ -19,6 +20,8 @@ class ProductChangedListener
      */
     public function handle(ProductChangedEvent $event): void
     {
-        //
+        foreach (MarketPlace::merchants() as $merchant) {
+            $merchant->updateProduct($event->product);
+        }
     }
 }

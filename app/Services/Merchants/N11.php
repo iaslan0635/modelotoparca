@@ -224,8 +224,9 @@ class N11 implements Merchant
 
     public function getSubCategories($categoryId)
     {
-        return $this->client->category->GetParentCategory(["categoryId" => $categoryId]);
+        return $this->client->category->GetSubCategories(["categoryId" => $categoryId]);
     }
+
 
     public function getCategoryAttributes($categoryId)
     {

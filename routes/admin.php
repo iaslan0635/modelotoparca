@@ -14,7 +14,8 @@ Route::view('/', 'admin.index');
 
 Route::get("n11", function (){
     $n11 = new \App\Services\Merchants\N11();
-    return $n11->getSubCategories(100035);
+    $product = \App\Models\Product::find(8);
+    return $n11->getSubCategories(1000035);
 });
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {

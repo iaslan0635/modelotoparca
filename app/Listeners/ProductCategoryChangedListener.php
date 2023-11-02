@@ -19,6 +19,6 @@ class ProductCategoryChangedListener
      */
     public function handle(ProductCategoryChangedEvent $event): void
     {
-        //
+        // FIXME: fix ProductCategoryChangedEvent
     }
 }

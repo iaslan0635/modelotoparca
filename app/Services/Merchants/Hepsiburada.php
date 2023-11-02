@@ -64,35 +64,46 @@ class Hepsiburada implements Merchant
     public function createProduct(Product $product)
     {
         $price = number_format($product->price->price, 2, ',', '');
+        $payload = [
+            "categoryId" => $product->categories[0]->merchants()
+                ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
+            "merchant" => $this->merchantId,
+            "attributes" => [
+                "merchantSku" => $product->sku,
+                "VaryantGroupID" => $product->sku,
+                "Barcode" => "1234567891234",
+                "UrunAdi" => $product->title,
+                "UrunAciklamasi" => $product->description,
+                "Marka" => $product->brand->name,
+                "GarantiSuresi" => 24,
+                "kg" => "1",
+                "tax_vat_rate" => "20",
+                "price" => $price,
+                "stock" => $product->quantity,
+                "Image1" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                "Image2" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                "Image3" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                "Video1" => null,
+            ]
+        ];
+
+        $json = json_encode($payload);
+
 
         $request = $this->client->post("https://mpop.hepsiburada.com/product/api/products/import?version=1", [
-            [
-                "categoryId" => $product->categories[0]->merchants()
-                    ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
-                "merchant" => $this->merchantId,
-                "attributes" => [
-                    "merchantSku" => $product->sku,
-                    "VaryantGroupID" => $product->sku,
-                    "Barcode" => "1234567891234",
-                    "UrunAdi" => $product->title,
-                    "UrunAciklamasi" => $product->description,
-                    "Marka" => $product->brand->name,
-                    "GarantiSuresi" => 24,
-                    "kg" => "1",
-                    "tax_vat_rate" => "20",
-                    "price" => $price,
-                    "stock" => $product->quantity,
-                    "Image1" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Image2" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Image3" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Video1" => null,
+            "multipart" => [
+                [
+                    'name' => 'file',
+                    'filename' => 'integrator.json',
+                    'contents' => $json,
                 ]
             ]
         ]);
 
-        dd($request->getBody());
+        $response = json_decode($request->getBody()->getContents(), true);
+        return $response["data"]["trackingId"];
     }
 
     public function getCategories()

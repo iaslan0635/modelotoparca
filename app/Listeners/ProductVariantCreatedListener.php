@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\ProductChangedEvent;
 use App\Events\ProductVariantCreatedEvent;
 
 class ProductVariantCreatedListener
@@ -19,6 +20,6 @@ class ProductVariantCreatedListener
      */
     public function handle(ProductVariantCreatedEvent $event): void
     {
-        //
+        ProductChangedEvent::dispatch($event->variant->product);
     }
 }
