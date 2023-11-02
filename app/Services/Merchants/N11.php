@@ -173,6 +173,12 @@ class N11 implements Merchant
                 'domestic' => 'false',
                 'category' => ['id' => $product->categories[0]->id],
                 'price' => $price,
+                'discount' => [
+                    "discountType" => self::DISCOUNT_TYPE[$product->price->discount_type],
+                    "discountValue" => $product->price->discount_amount,
+                    "discountStartDate" => $product->price->discount_start_at,
+                    "discountEndDate" => $product->price->discount_end_at,
+                ],
                 'currencyType' => self::CURRENCY[$product->price->currency],
                 'images' => [
                     'image' =>
