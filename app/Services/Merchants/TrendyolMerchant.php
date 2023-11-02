@@ -26,6 +26,11 @@ class TrendyolMerchant implements Merchant
         ]);
     }
 
+    private function formatPrice($price)
+    {
+        return number_format($price, 2, '.', '');
+    }
+
     public function getAuthenticationInfo()
     {
         return [
@@ -331,8 +336,8 @@ class TrendyolMerchant implements Merchant
             "items" => [
                 [
                     "barcode" => $product->sku,
-                    "salePrice" => number_format($product->price->price, 2, '.', ''),
-                    "listPrice" => number_format($product->price->discounted_price, 2, '.', ''),
+                    "salePrice" => $this->formatPrice($product->price->price),
+                    "listPrice" => $this->formatPrice($product->price->discounted_price),
                 ]
             ]
         ]);

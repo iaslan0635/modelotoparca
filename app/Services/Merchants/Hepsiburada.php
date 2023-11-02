@@ -25,6 +25,11 @@ class Hepsiburada implements Merchant
         ]);
     }
 
+    private function formatPrice($price)
+    {
+        return number_format($price, 2, '.', '');
+    }
+
     public function setStock(Product $product, $stock)
     {
         $this->client->post("https://listing-external.hepsiburada.com/Listings/merchantid/$this->merchantId/price-uploads", [
@@ -41,7 +46,7 @@ class Hepsiburada implements Merchant
         $this->client->post("https://listing-external.hepsiburada.com/Listings/merchantid/$this->merchantId/price-uploads", [
             [
                 "merchantSku" => $product->sku,
-                "price" => number_format($product->price->price, 2, '.', '')
+                "price" => $this->formatPrice($product->price->price)
             ]
         ]);
     }
@@ -63,7 +68,7 @@ class Hepsiburada implements Merchant
 
     public function createProduct(Product $product)
     {
-        $price = number_format($product->price->price, 2, ',', '');
+        $price = $this->formatPrice($product->price->price);
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
                 ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
