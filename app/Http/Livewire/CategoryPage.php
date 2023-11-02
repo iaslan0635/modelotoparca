@@ -99,4 +99,9 @@ class CategoryPage extends Component
 
         return view('livewire.category-page', compact('category', 'products', 'brands', 'properties'));
     }
+
+    public function deselectProperty($id)
+    {
+        unset($this->property[$id]);
+    }
 }

@@ -314,13 +314,13 @@
                                     <div class="applied-filters">
                                         <form method="GET" id="querySearch">
                                             <ul class="applied-filters__list">
-                                                @if(request()->has('min_price'))
+                                                @if($min_price)
                                                     <input type="hidden" name="min_price" id="min-price" wire:key="max-price-input"
-                                                           value="{{ request()->input('min_price') }}">
+                                                           value="{{ $min_price }}">
                                                     <li class="applied-filters__item" wire:key="max-price">
                                                         <a href="#"
                                                            class="applied-filters__button applied-filters__button--filter">
-                                                            En düşük fiyat: {{ request()->input('min_price') }}
+                                                            En düşük fiyat: {{ $min_price }}
                                                             <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
                                                                 <path
                                                                     d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
@@ -328,13 +328,13 @@
                                                         </a>
                                                     </li>
                                                 @endif
-                                                @if(request()->has('max_price'))
+                                                @if($max_price)
                                                     <input type="hidden" name="max_price" id="max-price" wire:key="min-price-input"
-                                                           value="{{ request()->input('max_price') }}">
+                                                           value="{{ $max_price }}">
                                                     <li class="applied-filters__item" wire:key="min-price">
                                                         <a href="#"
                                                            class="applied-filters__button applied-filters__button--filter">
-                                                            En yüksek fiyat: {{ request()->input('max_price') }}
+                                                            En yüksek fiyat: {{ $max_price }}
                                                             <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
                                                                 <path
                                                                     d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
@@ -342,7 +342,7 @@
                                                         </a>
                                                     </li>
                                                 @endif
-                                                @foreach(request()->input('brands', []) as $brand)
+                                                @foreach(($brandsArray ?? []) as $brand)
                                                     @php if(!$brands->has($brand)) continue; @endphp
                                                     <li class="applied-filters__item" wire:key="brand-{{$brand}}">
                                                         <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand][0]->brand->id }}"
@@ -352,6 +352,20 @@
                                                             Marka: {{ $brands[$brand][0]?->brand?->name }}
                                                             <svg
                                                                 onclick="$(`#brand-{{ $brands[$brand][0]->brand->id }}`).remove() && $('#querySearch').submit()"
+                                                                width="9" height="9">
+                                                                <path
+                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                                @foreach(($this->property ?? []) as  $id => $prop)
+                                                    <li class="applied-filters__item" wire:key="propfilter-{{$prop}}">
+                                                        <a href="#"
+                                                           class="applied-filters__button applied-filters__button--filter">
+                                                            {{ $properties->firstWhere("0.id", $id)[0]->name }}: {{ $prop }}
+                                                            <svg
+                                                                wire:click="deselectProperty({{$id}})"
                                                                 width="9" height="9">
                                                                 <path
                                                                     d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
