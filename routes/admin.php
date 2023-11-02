@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'admin.index');
 
 Route::get("n11", function (){
-    $n11 = new \App\Services\Merchants\Hepsiburada();
-    return $n11->createProduct(\App\Models\Product::first());
+    $n11 = new \App\Services\Merchants\N11();
+    return $n11->getSubCategories(100035);
 });
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
