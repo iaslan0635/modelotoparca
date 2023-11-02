@@ -294,8 +294,7 @@
                                     <div class="view-options__spring"></div>
                                     <div class="view-options__select">
                                         <label for="view-option-sort">Sort:</label>
-                                        <select id="view-option-sort" class="form-control form-control-sm"
-                                                name="sortBy">
+                                        <select id="view-option-sort" class="form-control form-control-sm" wire:model="sortBy">
                                             <option value="price-asc">Yükselen Fiyat</option>
                                             <option value="price-desc">Azalan Fiyat</option>
                                             <option value="title-asc">Yükselen Başlık</option>
@@ -525,32 +524,6 @@
 
 
 @push('scripts')
-    <script>
-        let searchParams = new URLSearchParams(window.location.search);
-
-        //console.log(searchParams)
-
-        /*const categories = document.getElementsByClassName("filter-categories__item");
-
-        for (let category of categories){
-            let href = category.childNodes[3].getAttribute('href');
-            category.childNodes[3].setAttribute('href', `${href}?${searchParams.toString()}`)
-        }*/
-
-        document.getElementById('view-option-sort').addEventListener('change', function (select) {
-            let redirectParams = new URLSearchParams();
-            for (let param of searchParams.entries()) {
-                redirectParams.append(param[0], param[1])
-            }
-            if (redirectParams.has('sortBy')) {
-                redirectParams.set('sortBy', select.target.value)
-            } else {
-                redirectParams.append('sortBy', select.target.value)
-            }
-            window.location.href = `?${redirectParams.toString()}`
-        })
-    </script>
-
     <script>
         // Persist layout selection
         const updateSelection = () => {
