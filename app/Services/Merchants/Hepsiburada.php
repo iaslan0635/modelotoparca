@@ -63,7 +63,6 @@ class Hepsiburada implements Merchant
 
     public function createProduct(Product $product)
     {
-        dd($product->images);
         $price = number_format($product->price->price, 2, ',', '');
 
         $request = $this->client->post("https://mpop.hepsiburada.com/product/api/products/import?version=1", [
@@ -83,11 +82,11 @@ class Hepsiburada implements Merchant
                     "tax_vat_rate" => "20",
                     "price" => $price,
                     "stock" => $product->quantity,
-                    "Image1" => $product->images[0]?->url,
-                    "Image2" => $product->images[1]?->url,
-                    "Image3" => $product->images[2]?->url,
-                    "Image4" => $product->images[3]?->url,
-                    "Image5" => $product->images[4]?->url,
+                    "Image1" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Image2" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Image3" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
                     "Video1" => null,
                 ]
             ]
