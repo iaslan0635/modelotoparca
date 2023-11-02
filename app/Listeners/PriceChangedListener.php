@@ -20,8 +20,7 @@ class PriceChangedListener
      */
     public function handle(PriceChangedEvent $event): void
     {
-        $price = $event->price;
-        $product = $price->product;
+        $product = $event->price->product;
 
         foreach (MarketPlace::merchants() as $merchant) {
             $merchant->updatePrice($product);
