@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use App\Models\Product;
+use App\Services\Merchants\Hepsiburada;
 use App\Services\Merchants\N11;
+use App\Services\Merchants\TrendyolMerchant;
 use Livewire\Component;
 
 class CreateMerchant extends Component
@@ -16,7 +18,16 @@ class CreateMerchant extends Component
 
     public function createN11()
     {
-        $n11 = new N11();
-        $n11->createProduct($this->product);
+        (new N11())->createProduct($this->product);
+    }
+
+    public function createHepsiburada()
+    {
+        (new Hepsiburada())->createProduct($this->product);
+    }
+
+    public function createTrendyol()
+    {
+        (new TrendyolMerchant())->createProduct($this->product);
     }
 }

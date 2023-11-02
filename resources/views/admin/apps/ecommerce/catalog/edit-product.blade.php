@@ -44,9 +44,9 @@
                         Bot ile Yeniden Çek
                     </a>
                     <!--end::Primary button-->
+                    <livewire:admin.product.create-merchant :product="$product" />
                 </div>
                 <!--end::Actions-->
-                <livewire:admin.product.create-merchant :product="$product" />
             </div>
             <!--end::Toolbar container-->
         </div>

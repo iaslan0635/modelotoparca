@@ -1,11 +1,17 @@
-<!--begin::Actions-->
-<div class="d-flex align-items-center gap-2 gap-lg-3">
-    @if(!$product->merchants()->where('merchant', 'n11')->first())
-        <!--begin::Primary button-->
+<div>
+    @if(!$product->merchants()->where('merchant', 'n11')->exists())
         <button wire:dirty.attr="disabled" wire:click="createN11" class="btn btn-sm fw-bold btn-primary">
             N11 oluştur
         </button>
-        <!--end::Primary button-->
+    @endif
+    @if(!$product->merchants()->where('merchant', 'hepsiburada')->exists())
+        <button wire:dirty.attr="disabled" wire:click="createHepsiburada" class="btn btn-sm fw-bold btn-primary">
+            Hepsiburada oluştur
+        </button>
+    @endif
+    @if(!$product->merchants()->where('merchant', 'trendyol')->exists())
+        <button wire:dirty.attr="disabled" wire:click="createTrendyol" class="btn btn-sm fw-bold btn-primary">
+            Trendyol oluştur
+        </button>
     @endif
 </div>
-<!--end::Actions-->
