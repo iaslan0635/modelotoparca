@@ -25,6 +25,12 @@ class CategoryController extends Controller
         return view('admin.apps.ecommerce.catalog.edit-category', compact('category'));
     }
 
+    public function categorySync()
+    {
+        $categories = Category::all();
+        return view('admin.apps.ecommerce.catalog.sync-categories', compact('categories'));
+    }
+
     public function push_image(Category $category, Request $request)
     {
         return $this->storeImage($category, $request);

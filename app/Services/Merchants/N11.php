@@ -161,7 +161,7 @@ class N11 implements Merchant
                 'subtitle' => $product->sub_title,
                 'description' => $product->description,
                 'domestic' => 'false',
-                'category' => $product->categories()->pluck("id")->map(fn($id) => ['id' => $id])->toArray(),
+                'category' => ['id' => $product->categories[0]->id],
                 'price' => $price,
                 'currencyType' => self::CURRENCY[$product->price->currency],
                 'images' => [
@@ -220,6 +220,11 @@ class N11 implements Merchant
     public function getCategories()
     {
         return $this->client->category->GetTopLevelCategories([]);
+    }
+
+    public function getSubCategories($categoryId)
+    {
+        return $this->client->category->GetParentCategory(["categoryId" => $categoryId]);
     }
 
     public function getCategoryAttributes($categoryId)

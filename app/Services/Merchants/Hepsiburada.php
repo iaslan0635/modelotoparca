@@ -65,7 +65,7 @@ class Hepsiburada implements Merchant
     {
         $price = number_format($product->price->price, 2, ',', '');
 
-        $this->client->post("https://mpop.hepsiburada.com/product/api/products/import?version=1", [
+        $request = $this->client->post("https://mpop.hepsiburada.com/product/api/products/import?version=1", [
             [
                 "categoryId" => $product->categories[0]->merchants()
                     ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
@@ -91,6 +91,8 @@ class Hepsiburada implements Merchant
                 ]
             ]
         ]);
+
+        dd($request->getBody());
     }
 
     public function getCategories()

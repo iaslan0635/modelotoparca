@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'admin.index');
 
 Route::get("n11", function (){
-    $n11 = new N11();
-    return $n11->getCategories();
+    $n11 = new \App\Services\Merchants\Hepsiburada();
+    return $n11->createProduct(\App\Models\Product::first());
 });
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
@@ -59,6 +59,7 @@ Route::get('/marketplace-orders', [OrderController::class, 'marketplace'])->name
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
+Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync');
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {
