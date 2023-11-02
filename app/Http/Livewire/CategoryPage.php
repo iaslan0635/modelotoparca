@@ -18,12 +18,14 @@ class CategoryPage extends Component
     public Category $category;
     public $parents, $categoryTree;
     public $property = [];
+    public $pageSize = 12;
 
     public $min_price, $max_price, $sortBy, $brandsArray;
     protected $queryString = [
         'min_price' => ['except' => ''],
         'max_price' => ['except' => ''],
         'sortBy' => ['except' => ''],
+        'pageSize' => ['except' => '12'],
         'property' => ['except' => ''],
         'brandsArray' => ['except' => '', 'as' => 'brands'],
     ];
@@ -92,7 +94,7 @@ class CategoryPage extends Component
         ]);
         $category->loadCount('products');
 
-        $products = $query->paginate(12);
+        $products = $query->paginate($this->pageSize);
 
         $propertyValues = PropertyValue::whereHas("product", fn(Builder $q) => $q->whereIn("id", $productIds))->with("property")->get();
         $properties = $propertyValues->map(fn(PropertyValue $pv) => $pv->property)->unique("id")->map(fn(Property $p) => [$p, $propertyValues->where("property.id", $p->id)]);

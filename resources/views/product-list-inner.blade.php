@@ -296,16 +296,18 @@
                                         <label for="view-option-sort">Sort:</label>
                                         <select id="view-option-sort" class="form-control form-control-sm"
                                                 name="sortBy">
-                                            <option value="price-asc">Fiyat</option>
-                                            <option value="price-desc">Fiyat</option>
-                                            <option value="title-asc">Başlık</option>
-                                            <option value="title-desc">Başlık</option>
+                                            <option value="price-asc">Yükselen Fiyat</option>
+                                            <option value="price-desc">Azalan Fiyat</option>
+                                            <option value="title-asc">Yükselen Başlık</option>
+                                            <option value="title-desc">Azalan Başlık</option>
                                         </select>
                                     </div>
                                     <div class="view-options__select">
                                         <label for="view-option-limit">Show:</label>
-                                        <select id="view-option-limit" class="form-control form-control-sm" name="">
+                                        <select id="view-option-limit" class="form-control form-control-sm" wire:model="pageSize">
                                             <option value="12">12</option>
+                                            <option value="24">24</option>
+                                            <option value="48">48</option>
                                         </select>
                                     </div>
                                 </div>
