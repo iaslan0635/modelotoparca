@@ -69,7 +69,7 @@ HTML;
 
         $added = false;
         foreach ($links as $link) {
-            $connection = SparetoProduct::firstOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
+            $connection = SparetoProduct::updateOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
             if ($connection->is_banned) continue;
             $product = self::getProduct($link);
 
