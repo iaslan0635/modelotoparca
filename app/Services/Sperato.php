@@ -30,7 +30,7 @@ class Sperato
         }
     }
 
-    public static function smash(string $keyword, int $product_id, ?string $brand_filter = null)
+    public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)
     {
         if (strlen(trim($keyword)) == 0) return false;
 
@@ -69,10 +69,8 @@ HTML;
 
         $added = false;
         foreach ($links as $link) {
-            $connection = SparetoProduct::firstOrCreate(['product_id' => $product_id, 'url' => $link]);
-            if ($connection->is_banned) {
-                continue;
-            }
+            $connection = SparetoProduct::firstOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
+            if ($connection->is_banned) continue;
             $product = self::getProduct($link);
 
             Product::query()->where('id', $product_id)->update([

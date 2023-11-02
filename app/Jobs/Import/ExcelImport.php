@@ -230,11 +230,11 @@ class ExcelImport implements ShouldQueue
             if ($field === 'oem_codes') {
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
-                    Sperato::smash($oem, $product->id);
+                    Sperato::smash($oem, $product->id, field: $field);
                 }
             } else {
                 $brand_filter = $field === 'producercode' ? self::getBrand($product) : null;
-                $found = Sperato::smash($product[$field], $product->id, $brand_filter);
+                $found = Sperato::smash($product[$field], $product->id, $brand_filter, $field);
                 if ($found) {
                     break;
                 }

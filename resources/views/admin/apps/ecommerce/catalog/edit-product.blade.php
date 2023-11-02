@@ -282,6 +282,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th>Url</th>
+                                                    <th>Kaynak Alan</th>
                                                     <th>Yasaklı mı?</th>
                                                     <th>İşlemler</th>
                                                 </tr>

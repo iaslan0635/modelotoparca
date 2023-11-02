@@ -4,6 +4,7 @@
             {{$url->url}}
         </a>
     </td>
+    <td>{{ $url->origin_field }}</td>
     <td>
         @if($url->is_banned)
             <span class="badge rounded-pill text-white text-bg-success">Evet</span>
