@@ -76,7 +76,7 @@ class Hepsiburada implements Merchant
             "attributes" => [
                 "merchantSku" => $product->sku,
                 "VaryantGroupID" => $product->sku,
-                "Barcode" => "EFEISHAKSEMIH68",
+                "Barcode" => "",
                 "UrunAdi" => $product->title,
                 "UrunAciklamasi" => $product->description,
                 "Marka" => $product->brand->name,

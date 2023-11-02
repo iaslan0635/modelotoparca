@@ -6,9 +6,9 @@ return [
         "apiPassword" => 'qYKHdp9c1GYe9laI'
     ],
     "trendyol" => [
-        "supplierId" => "",
-        "username" => "",
-        "password" => ""
+        "supplierId" => "611788",
+        "username" => "M0acfthEjfhQWQEIM0VY",
+        "password" => "Qc8MMF65wsCH4ZJ6FKtI"
     ],
     "hepsiburada" => [
         "merchantId" => "b81b18f7-851c-4b13-947f-2324d40a812f",
