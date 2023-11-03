@@ -6,6 +6,7 @@ use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
 use App\Models\Product;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class TrendyolMerchant implements Merchant
 {
@@ -54,35 +55,35 @@ class TrendyolMerchant implements Merchant
 
     public function setStock(Product $product, $stock)
     {
-        $request = $this->client->post("/suppliers/$this->supplierId/products/price-and-inventory", [
+        $request = $this->client->post("suppliers/$this->supplierId/products/price-and-inventory", ["json" => [
             "items" => [
                 [
                     "barcode" => $product->sku,
                     "quantity" => $stock
                 ]
             ]
-        ]);
+        ]]);
 
         return json_decode($request->getBody())->batchRequestId;
     }
 
     public function getOrders()
     {
-        $request = $this->client->get("/suppliers/$this->supplierId/orders");
+        $request = $this->client->get("suppliers/$this->supplierId/orders");
 
         return json_decode($request->getBody());
     }
 
     public function getQuestions()
     {
-        $request = $this->client->get("/suppliers/$this->supplierId/questions/filter");
+        $request = $this->client->get("suppliers/$this->supplierId/questions/filter");
 
         return json_decode($request->getBody());
     }
 
     public function updateProduct(Product $product)
     {
-        $request = $this->client->put("/suppliers/$this->supplierId/v2/products", [
+        $request = $this->client->put("suppliers/$this->supplierId/v2/products", ["json" => [
             "items" => [
                 [
                     "barcode" => $product->sku,
@@ -96,13 +97,11 @@ class TrendyolMerchant implements Merchant
                     "dimensionalWeight" => 0,
                     "description" => $product->description,
                     "vatRate" => 20,
-                    "images" => $product->images->map(fn($image) => [
-                        "url" => $image->url
-                    ]),
+                    "images" => $product->images->map(fn($image) => ["url" => $image->url]),
                     "cargoCompanyId" => 10,
                 ]
             ]
-        ]);
+        ]]);
 
         return json_decode($request->getBody())->batchRequestId;
     }
@@ -114,9 +113,9 @@ class TrendyolMerchant implements Merchant
 
     public function updateDeliveryCode($id, $code): bool
     {
-        $this->client->put("/suppliers/$this->supplierId/$id/update-tracking-number", [
+        $this->client->put("suppliers/$this->supplierId/$id/update-tracking-number", ["json" => [
             "trackingNumber" => $code
-        ]);
+        ]]);
 
         return true;
     }
@@ -128,41 +127,49 @@ class TrendyolMerchant implements Merchant
 
     public function createProduct(Product $product)
     {
-        $request = $this->client->post("/suppliers/$this->supplierId/v2/products", [
-            "items" => [
-                [
-                    "barcode" => $product->sku,
-                    "title" => $product->title,
-                    "productMainId" => $product->sku,
-                    "brandId" => $product->brand->merchants()
-                        ->where('merchant', '=', "trendyol")->first()->merchant_id,
-                    "categoryId" => $product->categories[0]->merchants()
-                        ->where('merchant', '=', "trendyol")->first()->merchant_id,
-                    "stockCode" => $product->sku,
-                    "dimensionalWeight" => 0,
-                    "description" => $product->description,
-                    "vatRate" => 20,
-                    "images" => $product->images->map(fn($image) => [
-                        "url" => $image->url
-                    ]),
-                    "cargoCompanyId" => 10,
-                ]
-            ]
-        ]);
+        try {
+            $request = $this->client->post("suppliers/$this->supplierId/v2/products", ["json" => [
+                "json" => [
+                    "items" => [
+                        [
+                            "barcode" => $product->sku,
+                            "title" => $product->title,
+                            "productMainId" => $product->sku,
+                            "brandId" => 1213465 ?? $product->brand->merchants()->where('merchant', '=', "trendyol")->first()->merchant_id,
+                            "categoryId" => 1239 ?? $product->categories[0]->merchants()->where('merchant', '=', "trendyol")->first()->merchant_id,
+                            "stockCode" => $product->sku,
+                            "dimensionalWeight" => 0,
+                            "quantity" => $product->quantity,
+                            "description" => $product->description,
+                            "vatRate" => 20,
+                            "images" => $product->images->map(fn($image) => ["url" => $image->url]),
+                            "cargoCompanyId" => 4,
+                            "currencyType" => "TRY",
+                            "listPrice" => $product->price->price,
+                            "salePrice" => $product->price->price,
+                            "attributes" => []
+                        ]
+                    ]
+                ],
+                'http_errors' => false
+            ]]);
 
-        return json_decode($request->getBody())->batchRequestId;
+            return json_decode($request->getBody())->batchRequestId;
+        } catch (GuzzleException $exception) {
+            return $exception->getMessage();
+        }
     }
 
     public function getCategories()
     {
-        $request = $this->client->get("/product-categories");
+        $request = $this->client->get("product-categories");
 
         return json_decode($request->getBody());
     }
 
     public function getCategoryAttributes($categoryId)
     {
-        $request = $this->client->get("/product-categories/$categoryId/attributes");
+        $request = $this->client->get("product-categories/$categoryId/attributes");
 
         return json_decode($request->getBody());
     }
@@ -283,9 +290,9 @@ class TrendyolMerchant implements Merchant
 
     public function getBrands()
     {
-        $request = $this->client->get("/brands");
+        $request = $this->client->get("brands");
 
-        return json_decode($request->getBody());
+        return json_decode($request->getBody())->brands;
     }
 
     public function approveOrder(MerchantOrder $order)
@@ -310,29 +317,29 @@ class TrendyolMerchant implements Merchant
 
     public function sendQuestionAnswer(MerchantOrder $question, string $answer): bool
     {
-        $this->client->post("/suppliers/$this->supplierId/questions/$question->merchant_id/answers", [
+        $this->client->post("suppliers/$this->supplierId/questions/$question->merchant_id/answers", ["json" => [
             "text" => $answer
-        ]);
+        ]]);
 
         return true;
     }
 
     public function deleteProduct(Product $product)
     {
-        $request = $this->client->delete("/suppliers/$this->supplierId/v2/products", [
+        $request = $this->client->delete("suppliers/$this->supplierId/v2/products", ["json" => [
             "items" => [
                 [
                     "barcode" => $product->sku
                 ]
             ]
-        ]);
+        ]]);
 
         return json_decode($request->getBody())->batchRequestId;
     }
 
     public function updatePrice(Product $product)
     {
-        $request = $this->client->post("/suppliers/$this->supplierId/products/price-and-inventory", [
+        $request = $this->client->post("suppliers/$this->supplierId/products/price-and-inventory", ["json" => [
             "items" => [
                 [
                     "barcode" => $product->sku,
@@ -340,7 +347,7 @@ class TrendyolMerchant implements Merchant
                     "listPrice" => $this->formatPrice($product->price->discounted_price),
                 ]
             ]
-        ]);
+        ]]);
 
         $body = json_decode($request->getBody());
 
