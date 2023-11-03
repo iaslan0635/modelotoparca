@@ -211,6 +211,8 @@ class ExcelImport implements ShouldQueue
             'price' => $product->price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), 'try'),
         ]);
+
+        $realProduct->searchable();
     }
 
     public static function runBot(TigerProduct $product): void
@@ -241,7 +243,7 @@ class ExcelImport implements ShouldQueue
             }
         }
 
-        $product->actualProduct->searchable();
+        $product->actualProduct?->searchable();
     }
 
     public static function clearSparetoAssociations(TigerProduct $product)
