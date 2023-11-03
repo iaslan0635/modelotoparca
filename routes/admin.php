@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AnalysisController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageController;
@@ -61,6 +62,7 @@ Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
 Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync');
+Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-sync');
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {

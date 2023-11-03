@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->integer('category_id');
             $table->timestamps();
 
-            $table->unique(['merchant', 'merchant_id', 'category_id']);
+            $table->unique(['merchant', 'merchant_id', 'category_id'], "unique_ids");
         });
     }
 
