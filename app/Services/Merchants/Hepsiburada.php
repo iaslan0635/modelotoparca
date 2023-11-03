@@ -32,23 +32,19 @@ class Hepsiburada implements Merchant
 
     public function setStock(Product $product, $stock)
     {
-        $this->client->post("https://listing-external.hepsiburada.com/Listings/merchantid/$this->merchantId/price-uploads", [
-            [
-                "merchantSku" => $product->sku,
-                "availableStock" => $product->quantity,
-                "maximumPurchasableQuantity" => $product->quantity,
-            ]
-        ]);
+        $this->client->post("https://listing-external.hepsiburada.com/Listings/merchantid/$this->merchantId/stock-uploads", ["json" => [
+            "merchantSku" => $product->sku,
+            "availableStock" => $product->quantity,
+            "maximumPurchasableQuantity" => $product->quantity,
+        ]]);
     }
 
     public function updatePrice(Product $product)
     {
-        $this->client->post("https://listing-external.hepsiburada.com/Listings/merchantid/$this->merchantId/price-uploads", [
-            [
-                "merchantSku" => $product->sku,
-                "price" => $this->formatPrice($product->price->price)
-            ]
-        ]);
+        $this->client->post("https://listing-external.hepsiburada.com/Listings/merchantid/$this->merchantId/price-uploads", ["json" => [
+            "merchantSku" => $product->sku,
+            "price" => $this->formatPrice($product->price->price)
+        ]]);
     }
 
     public function updateProduct(Product $product)
