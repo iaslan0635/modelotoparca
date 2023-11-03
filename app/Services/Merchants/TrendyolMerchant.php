@@ -22,7 +22,7 @@ class TrendyolMerchant implements Merchant
     {
         $this->supplierId = config("merchants.trendyol.supplierId");
         $this->client = new Client([
-            'baseUrl' => 'https://api.trendyol.com/sapigw',
+            'base_uri' => 'https://api.trendyol.com/sapigw/',
             "auth" => [config("merchants.trendyol.username"), config("merchants.trendyol.password")]
         ]);
     }
