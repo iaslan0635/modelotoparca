@@ -183,12 +183,10 @@ class Product extends BaseModel implements CanVisit
     {
         $idMatcher = fn(Product $p, Product $i) => $p->id === $i->id;
 
-        $alternatives = $products->map(fn(Product $p) => $p->alternatives()->get())->flatten();
-        $alternatives->unique('id');
+        $alternatives = $products->map(fn(Product $p) => $p->alternatives()->get())->flatten()->unique('id');
         $alternatives = Utils::uniqueOn($alternatives, $products, $idMatcher);
 
-        $similars = $products->map(fn(Product $p) => $p->similars()->get())->flatten();
-        $similars->unique('id');
+        $similars = $products->map(fn(Product $p) => $p->similars()->get())->flatten()->unique('id');
         $similars = Utils::uniqueOn($similars, $products, $idMatcher);
         $similars = Utils::uniqueOn($similars, $alternatives, $idMatcher);
 
