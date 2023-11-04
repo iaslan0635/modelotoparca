@@ -421,11 +421,9 @@
                             </div>
                         </div>
                         @if(filled($alternatives))
-                            1
                             <x-product-list-appendix :products="$alternatives" :highlights="$highlights"/>
                         @endif
                         @if(filled($similars))
-                            2
                             <x-product-list-appendix :products="$similars" :highlights="$highlights"/>
                         @endif
                         <div class="products-view__pagination">
