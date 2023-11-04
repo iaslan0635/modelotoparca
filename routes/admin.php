@@ -63,6 +63,7 @@ Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
 Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync');
 Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-sync');
+Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update');
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {

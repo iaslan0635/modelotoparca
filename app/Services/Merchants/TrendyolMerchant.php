@@ -292,7 +292,7 @@ class TrendyolMerchant implements Merchant
     {
         $request = $this->client->get("brands");
 
-        return json_decode($request->getBody())->brands;
+        return json_decode($request->getBody(), true)["brands"];
     }
 
     public function approveOrder(MerchantOrder $order)
