@@ -17,9 +17,10 @@
                                 $jobQuery = \DB::table("jobs")->where("queue", "default");
                                 $c = fn (int $attempts, bool $running) => $jobQuery->clone()
                                     ->where("attempts", $attempts)
-                                    ->when($running, fn ($q) => $q->whereNotNull("reserved_at"))
-                                    ->when(!$running, fn ($q) => $q->whereNull("reserved_at"))
-                                    ->count();
+                                    ->when($running,
+                                        fn ($q) => $q->whereNotNull("reserved_at"),
+                                        fn ($q) => $q->whereNull("reserved_at")
+                                    )->count();
 
                                 $failed = \DB::table("failed_jobs")->where("queue", "default")->count();
                             @endphp
