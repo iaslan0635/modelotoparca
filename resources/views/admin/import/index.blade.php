@@ -15,14 +15,17 @@
                         <div class="d-inline">
                             @php
                                 $jobQuery = \DB::table("jobs")->where("queue", "default");
-                                $primary = $jobQuery->clone()->where("attempts", 0)->count();
-                                $retry2 = $jobQuery->clone()->where("attempts", 1)->count();
-                                $retry3 = $jobQuery->clone()->where("attempts", 2)->count();
+                                $c = fn (int $attempts, bool $running) => $jobQuery->clone()
+                                    ->where("attempts", $attempts)
+                                    ->when($running, fn ($q) => $q->whereNotNull("reserved_at"))
+                                    ->when(!$running, fn ($q) => $q->whereNull("reserved_at"))
+                                    ->count();
+
                                 $failed = \DB::table("failed_jobs")->where("queue", "default")->count();
                             @endphp
-                            <span class="d-inline badge badge-primary mx-2">İşlem kuyruğu: {{ $primary }}</span>
-                            <span class="d-inline badge badge-warning text-black mx-2">2. Deneme: {{ $retry2 }}</span>
-                            <span class="d-inline badge badge-warning text-black mx-2">3. Deneme: {{ $retry3 }}</span>
+                            <span class="d-inline badge badge-primary mx-2">İşlem kuyruğu | Bekleyen: {{ $c(0, false) }} | Çalışan: {{ $c(1, true) }}</span>
+                            <span class="d-inline badge badge-warning text-black mx-2">2. Deneme | Bekleyen: {{ $c(1, false) }} | Çalışan: {{ $c(2, true) }}</span>
+                            <span class="d-inline badge badge-warning text-black mx-2">3. Deneme | Bekleyen: {{ $c(2, false) }} | Çalışan: {{ $c(3, true) }}</span>
                             <span class="d-inline badge badge-danger mx-2">Başarısız işlemler: {{ $failed }}</span>
                         </div>
                     </div>
