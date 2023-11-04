@@ -19,12 +19,19 @@ class Search extends Component
 
     public function render()
     {
+        $relations = [
+            "alternatives",
+            "similars",
+            "image"
+        ];
+
+
         $categories = [];
         $results = [];
         $suggestions = [];
         //        dd($this->query);
         if (strlen($this->query) >= 3) {
-            $result = Searchable::query($this->query);
+            $result = Searchable::query($this->query, $relations);
             $categories = $result['categories'];
             $results = $result['products'];
             $suggestions = $result['suggestions'];

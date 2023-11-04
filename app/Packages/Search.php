@@ -284,7 +284,7 @@ class Search
         return $filter;
     }
 
-    private static function paginateProducts(BoolQueryBuilder $finalQuery, string|null $sortBy)
+    private static function paginateProducts(BoolQueryBuilder $finalQuery, string|null $sortBy, ?array $relations = null)
     {
         $products = Product::searchQuery($finalQuery)
             ->highlight('title', [
@@ -312,6 +312,8 @@ class Search
             ->highlight('similars.code')
             ->highlight('similars.code_regex');
 
+        if ($relations) $products->load($relations);
+
         if ($sortBy === 'price-asc') {
             $products->sort('price');
         } elseif ($sortBy === 'price-desc') {
@@ -323,9 +325,9 @@ class Search
         return $products->paginate(12);
     }
 
-    private static function results(BoolQueryBuilder $finalQuery, BoolQueryBuilder $finalQueryWithoutBrandFilter, string|null $sortBy, string $term, string $cleanTerm)
+    private static function results(BoolQueryBuilder $finalQuery, BoolQueryBuilder $finalQueryWithoutBrandFilter, string|null $sortBy, string $term, string $cleanTerm, ?array $relations)
     {
-        $products = self::paginateProducts($finalQuery, $sortBy);
+        $products = self::paginateProducts($finalQuery, $sortBy, $relations);
 
         $productsWithCategories = Product::searchQuery($finalQuery)
             ->refineModels(fn (Builder $q) => $q->select(['id']))
@@ -440,7 +442,7 @@ class Search
         return $queries;
     }
 
-    public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null): array
+    public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null, ?array $relations = null): array
     {
         $startTime = microtime(true);
         if (empty($term)) {
@@ -499,7 +501,7 @@ class Search
         $finalQuery = self::finalizeQuery($compoundQuery, $selectCategory);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter, $selectCategory);
 
-        $results = self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm);
+        $results = self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm, $relations);
         Log::debug("EsQuery - Time: " . microtime(true) - $startTime);
         return $results;
     }
