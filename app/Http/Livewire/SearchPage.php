@@ -73,7 +73,6 @@ class SearchPage extends Component
         $searchedOnCode = $this->highlights->some($this->isCodeHighlight(...));
 
         if ($searchedOnCode) {
-            /** @var Collection<int, Product> $pm */
             [$alternatives, $similars] = Product::alternativesAndSimilars($products->models());
         } else {
             $alternatives = null;

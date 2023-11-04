@@ -189,15 +189,10 @@ class Product extends BaseModel implements CanVisit
 
         $similars = $products->map(fn(Product $p) => $p->similars()->get())->flatten();
         $similars->unique('id');
-        $similars = Utils::uniqueOn($similars, $alternatives, $idMatcher);
         $similars = Utils::uniqueOn($similars, $products, $idMatcher);
+        $similars = Utils::uniqueOn($similars, $alternatives, $idMatcher);
 
         return [$alternatives, $similars];
-    }
-
-    public function sparetoConnections()
-    {
-        return $this->hasMany(SparetoConnection::class);
     }
 
     public function propertyValues(): BelongsToMany
