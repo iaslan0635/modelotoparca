@@ -179,4 +179,12 @@ class Hepsiburada implements Merchant
     {
         // TODO: Implement deleteProduct() method.
     }
+
+    public function syncOrders()
+    {
+        $orders = $this->getOrders();
+        foreach ($orders->items as $item) {
+            // TODO
+        }
+    }
 }

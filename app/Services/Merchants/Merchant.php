@@ -45,4 +45,6 @@ interface Merchant
     public function sendQuestionAnswer(MerchantOrder $question, string $answer);
 
     public function deleteProduct(Product $product);
+
+    public function syncOrders();
 }

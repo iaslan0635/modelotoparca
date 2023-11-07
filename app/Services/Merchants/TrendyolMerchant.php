@@ -353,4 +353,11 @@ class TrendyolMerchant implements Merchant
 
         return $body->batchRequestId;
     }
+
+    public function syncOrders()
+    {
+        $orders = $this->getOrders();
+
+        dd($orders);
+    }
 }
