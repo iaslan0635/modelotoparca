@@ -358,6 +358,30 @@ class TrendyolMerchant implements Merchant
     {
         $orders = $this->getOrders();
 
-        dd($orders);
+        foreach ($orders->content as $item) {
+            MerchantOrder::updateOrCreate([
+                "merchant_id" => $item->id,
+                "merchant" => "trendyol",
+            ], [
+                "number" => $item->orderNumber,
+                "client" => [
+                    "id" => $item->customerId,
+                    "name" => $item->customerFirstName,
+                ],
+                "data" => $item,
+                "price" => $item->totalPrice,
+                "date" => $item->orderDate, // FIXME: düzgün date parse yap
+                "status" => $item->status,
+                "delivery_status" => "",
+                "payment_status" => "",
+                "lines" => [],
+                "line_data" => [],
+            ]);
+        }
+    }
+
+    public static function parseOrder(MerchantOrder $order)
+    {
+        return [];
     }
 }

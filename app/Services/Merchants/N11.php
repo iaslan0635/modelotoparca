@@ -105,6 +105,11 @@ class N11 implements Merchant
         $orders = $this->client->order->orderList([
             'searchData' => [
                 'status' => 'Completed',
+                "buyerName" => "",
+                "orderNumber" => "",
+                "recipient" => "",
+                "period" => "",
+                "sortForUpdateDate" => "",
             ],
             'pagingData' => [
                 // Şuanki Sayfa
@@ -115,7 +120,11 @@ class N11 implements Merchant
         ]);
         if ($orders->result->status === "success") {
             foreach ($orders->orderList->order as $order) {
-                $info = $this->client->order->orderDetail($order->id);
+                $info = $this->client->order->orderDetail([
+                    "orderRequest" => [
+                        "id" => $order->id
+                    ]
+                ]);
                 if ($info->result->status === "success") {
                     $price = 0;
 
@@ -123,15 +132,21 @@ class N11 implements Merchant
                         $price += $item->sellerInvoiceAmount;
                     }
 
-                    MerchantOrder::create([
+                    MerchantOrder::updateOrCreate([
                         'merchant' => 'n11',
                         'merchant_id' => $order->id,
+                    ], [
                         'number' => $order->id,
-                        'client' => $info->orderDetail->buyer,
+                        'client' => [
+                            "id" => $info->orderDetail->buyer->id,
+                            "name" => $info->orderDetail->buyer->fullName,
+                        ],
                         'data' => $info->orderDetail,
                         'price' => $price,
                         'date' => self::convertTime($info->orderDetail->createDate),
                         'status' => self::STATUS[$info->orderDetail->status],
+                        'lines' => [],
+                        'line_data' => [],
                     ]);
                 }
             }
@@ -145,14 +160,47 @@ class N11 implements Merchant
         return $dateTimeObj->format('Y-m-d H:i:s');
     }
 
-    public static function getClientOutput($client): array
+    public static function parseOrder(MerchantOrder $order): array
     {
+        $parseItem = fn($item) => [
+            "id" => $item['id'],
+            "productId" => $item['productId'],
+            "status" => $item['status'],
+            "price" => $item['price'],
+            "quantity" => $item['quantity'],
+            "sellerDiscount" => $item['sellerDiscount'],
+            "mallDiscount" => $item['mallDiscount'],
+            "commission" => $item['commission'],
+            "sellerInvoiceAmount" => $item['sellerInvoiceAmount'],
+            "productName" => $item['productName'],
+            "shippingDate" => $item['shippingDate'],
+            "shipmenCompanyCampaignNumber" => $item['shipmenCompanyCampaignNumber'],
+            "cargo" => [
+                "shipmentCompany" => $item['shipmentInfo']['shipmentCompany']['name'],
+                "trackingNumber" => $item['shipmentInfo']['trackingNumber'],
+                "shipmentCode" => $item['shipmentInfo']['shipmentCode'],
+                "campaignNumber" => $item['shipmentInfo']['campaignNumber'],
+                "shipmentMethod" => $item['shipmentInfo']['shipmentMethod'],
+                "campaignNumberStatus" => $item['shipmentInfo']['campaignNumberStatus'],
+            ]
+        ];
+
+        $data = $order->data;
         return [
-            'full_name' => $client['fullName'],
-            'email' => $client['email'],
-            'identity' => $client['tcId'],
-            'tax_office' => $client['taxOffice'],
-            'tax_id' => $client['taxId'],
+            "client" => [
+                'full_name' => $data['buyer']['fullName'],
+                'email' => $data['buyer']['email'],
+                'identity' => $data['buyer']['tcId'],
+                'tax_office' => $data['buyer']['taxOffice'],
+                'tax_id' => $data['buyer']['taxId'],
+            ],
+            "invoiceAddress" => [
+                "address" => $data['billingAddress']['address'],
+                "city" => $data['billingAddress']['city'],
+                "district" => $data['billingAddress']['district'],
+                "fullName" => $data['billingAddress']['fullName'],
+            ],
+            "items" => array_map($parseItem, $data['itemList'])
         ];
     }
 

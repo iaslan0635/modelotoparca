@@ -184,7 +184,29 @@ class Hepsiburada implements Merchant
     {
         $orders = $this->getOrders();
         foreach ($orders->items as $item) {
-            // TODO
+            MerchantOrder::updateOrCreate([
+                "merchant_id" => $item->id,
+                "merchant" => "hepsiburada",
+            ], [
+                "number" => $item->orderNumber,
+                "client" => [
+                    "id" => $item->customerId,
+                    "name" => $item->customerName,
+                ],
+                "data" => $item,
+                "price" => $item->totalPrice->amount,
+                "date" => $item->orderDate, // FIXME: düzgün date parse yap
+                "status" => $item->status,
+                "delivery_status" => "",
+                "payment_status" => "",
+                "lines" => [],
+                "line_data" => [],
+            ]);
         }
+    }
+
+    public static function parseOrder(MerchantOrder $order)
+    {
+        return [];
     }
 }
