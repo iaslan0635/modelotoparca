@@ -3,12 +3,9 @@
     <td>{{ $attribute['required'] ? "Evet":"Hayır" }}</td>
     <td>
         @if($attribute['allowCustom'])
-            <input type="text" name="attribute_{{ $attribute['attribute']['id'] ?? $attribute['attribute']->id }}"
-                   wire:model="value">
+            <input type="text" wire:model="value">
         @else
-            <select name="attribute_{{ $attribute['attribute']?->id ?? $attribute['attribute']['id'] }}"
-                    wire:model="value_id"
-                    id="attribute_{{ $attribute['attribute']?->id ?? $attribute['attribute']['id'] }}"
+            <select wire:model="value_id"
                     class="form-control">
                 @foreach($attribute['attributeValues'] as $value)
                     <option value="{{ $value?->id ?? $value['id'] }}">{{ $value?->name ?? $value['name'] }}</option>
