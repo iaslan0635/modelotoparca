@@ -103,6 +103,9 @@ class TrendyolMerchant implements Merchant
             ]
         ]]);
 
+        $this->setStock($product, $product->quantity);
+        $this->updatePrice($product);
+
         return json_decode($request->getBody())->batchRequestId;
     }
 

@@ -13,7 +13,7 @@ class Hepsiburada implements Merchant
 
     public string $key = 'hepsiburada';
 
-    public string $merchantId = "";
+    public string $merchantId;
 
     protected Client $client;
 
@@ -49,7 +49,49 @@ class Hepsiburada implements Merchant
 
     public function updateProduct(Product $product)
     {
-        // TODO: Implement updateProduct() method.
+        $price = $this->formatPrice($product->price->price);
+        $payload = [
+            "merchantId" => $this->merchantId,
+            "items" => [
+                [
+                    "categoryId" => $product->categories[0]->merchants()
+                        ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
+                    "merchantSku" => $product->sku,
+                    "VaryantGroupID" => $product->sku,
+                    "Barcode" => "",
+                    "UrunAdi" => $product->title,
+                    "UrunAciklamasi" => $product->description,
+                    "Marka" => $product->brand->name,
+                    "GarantiSuresi" => 24,
+                    "kg" => "1",
+                    "tax_vat_rate" => "20",
+                    "price" => $price,
+                    "stock" => $product->quantity,
+                    "Image1" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Image2" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Image3" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
+                    "Video1" => null,
+                ]
+            ]
+        ];
+
+        $json = json_encode($payload);
+
+
+        $request = $this->client->post("https://mpop-sit.hepsiburada.com/ticket-api/api/integrator/import", [
+            "multipart" => [
+                [
+                    'name' => 'file',
+                    'filename' => 'integrator-ticket-upload.json',
+                    'contents' => $json,
+                ]
+            ]
+        ]);
+
+        $response = json_decode($request->getBody()->getContents(), true);
+        return $response["data"]["trackingId"];
     }
 
     public function updateOrder(MerchantOrder $order)
