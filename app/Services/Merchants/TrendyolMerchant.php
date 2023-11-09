@@ -32,22 +32,6 @@ class TrendyolMerchant implements Merchant
         return number_format($price, 2, '.', '');
     }
 
-    public function getAuthenticationInfo()
-    {
-        return [
-            'username' => [
-                'label' => 'Kullanıcı adı',
-                'type' => 'string',
-                'value' => $this->username,
-            ],
-            'password' => [
-                'label' => 'Parola',
-                'type' => 'password',
-                'value' => $this->password,
-            ],
-        ];
-    }
-
     public function setAuthenticationInfo(array $info)
     {
 
