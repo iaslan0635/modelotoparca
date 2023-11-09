@@ -167,7 +167,7 @@ class ExcelImport implements ShouldQueue
 
         $id = $product->id;
         $title = $product->web_name ?? $product->name ?? "BAŞLIKSIZ ÜRÜN";
-        $allWebNames = implode(' ', [$product->name, $product->name2, $product->name3, $product->name4]);
+        $allWebNames = implode(' ', [$product->name, $product->name3, $product->name4]);
 
         $image_appendix = 0;
         if ($product->image1) {
@@ -197,6 +197,7 @@ class ExcelImport implements ShouldQueue
             'fitting_position' => $product->fitting_position,
             'image_appendix' => $image_appendix,
             'abk' => $product->abk,
+            "hidden_searchable" => $product->name2,
         ]);
 
         //        DB::table()

@@ -107,7 +107,7 @@ class Product extends BaseModel implements CanVisit
             'brand' => $this->brand?->toSearchableArray(),
             'price' => $this->price?->price,
 
-            'full_text' => collect([$this->title, $this->sub_title])->merge($cars->map->getRegexedName())->join(' | '),
+            'full_text' => collect([$this->title, $this->sub_title, $this->hidden_searchable])->merge($cars->map->getRegexedName())->join(' | '),
         ];
     }
 
