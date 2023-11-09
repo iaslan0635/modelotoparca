@@ -14,6 +14,6 @@
         @endif
     </td>
     <td>
-        <button wire:click="save" class="btn btn-success btn-sm">Kaydet</button>
+        <button wire:click="save" class="btn btn-success btn-sm btn-block">Kaydet</button>
     </td>
 </tr>
