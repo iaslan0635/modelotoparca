@@ -138,6 +138,44 @@
             <div class="menu-item pt-5">
                 <!--begin:Menu content-->
                 <div class="menu-content">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">Pazaryerleri</span>
+                </div>
+                <!--end:Menu content-->
+            </div>
+            <!--end:Menu item-->
+            <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Gönderilmeyi Bekleyenler</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+            <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Satıştaki Ürünler</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+
+            <!--begin:Menu item-->
+            <div class="menu-item pt-5">
+                <!--begin:Menu content-->
+                <div class="menu-content">
                     <span class="menu-heading fw-bold text-uppercase fs-7">E-Ticaret</span>
                 </div>
                 <!--end:Menu content-->
