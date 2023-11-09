@@ -1,6 +1,5 @@
 while true; do
     if [ "$(git pull)" != "Already up to date." ]; then
-        git pull
         composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
         yarn install --frozen-lockfile
         echo "" | sudo -S service php8.2-fpm reload
