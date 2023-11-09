@@ -28,12 +28,9 @@ class ProductAttributeHepsiburada extends Component
             ->where('merchant_id', '=', $this->attribute['id'])
             ->first();
 
-        if ($sync){
-            if ($sync->merchant_value_id) {
-                $this->value_id = $sync->merchant_value;
-            } else {
-                $this->value = $sync->merchant_value;
-            }
+        if ($sync) {
+            $this->value_id = $sync->merchant_value;
+            $this->value = $sync->merchant_value;
         }
     }
 
