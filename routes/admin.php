@@ -68,6 +68,7 @@ Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('o
 Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync');
 Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-sync');
 Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update');
+Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands'])->name('brand-sync.search');
 
 Route::get('action', function () {
     \App\Services\MarketPlace::syncOrders();

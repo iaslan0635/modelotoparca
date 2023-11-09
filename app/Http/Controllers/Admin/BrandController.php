@@ -13,9 +13,7 @@ class BrandController extends Controller
 {
     public function brandSync()
     {
-        $trendyol = new TrendyolMerchant();
-        $trendyolBrands = TrendyolBrand::all();
-        return view('admin.apps.ecommerce.catalog.sync-brands', ["brands" => Brand::paginate(20), "trendyolBrands" => $trendyolBrands]);
+        return view('admin.apps.ecommerce.catalog.sync-brands', ["brands" => Brand::paginate(20)]);
     }
 
     public function updateBrandConnection(Request $request)
@@ -29,5 +27,11 @@ class BrandController extends Controller
         ], [
             "merchant_id" => $merchantBrandId,
         ]);
+    }
+
+    public function searchTrendyolBrands(Request $request)
+    {
+        $term = $request->input("term");
+        return TrendyolBrand::where("name", "like", "%$term%")->get();
     }
 }

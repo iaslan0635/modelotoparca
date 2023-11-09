@@ -191,14 +191,12 @@
                                                 @php
                                                     $connected_merchant_id = $brand->merchants()->trendyol()->value("merchant_id");
                                                 @endphp
-                                                <select class="form-select brand-select" data-control="select2" data-placeholder="Select an option"
+                                                <select class="form-select brand-select"
                                                         data-brand-id="{{ $brand->id }}">
-                                                    <option></option>
-                                                    @foreach($trendyolBrands as $b)
-                                                        <option value="{{ $b->id }}"
-                                                                @if($b->id == $connected_merchant_id) selected @endif
-                                                        >{{ $b->name }}</option>
-                                                    @endforeach
+                                                        @if($connected_merchant_id)
+                                                            @php $b = \App\Models\TrendyolBrand::find($connected_merchant_id) @endphp
+                                                            <option value="{{ $b?->id }}" selected>{{ $b?->name }}</option>
+                                                        @endif
                                                 </select>
                                                 <div class="spinner-border" role="status" style="visibility: hidden">
                                                     <span class="sr-only">Loading...</span>
@@ -235,11 +233,13 @@
     <script src="assets/js/custom/utilities/modals/create-app.js"></script>
     <script src="assets/js/custom/utilities/modals/users-search.js"></script>
     <script>
-        $(".brand-select").on("select2:select", e => {
+        const selects = $(".brand-select")
+
+        selects.on("select2:select", e => {
             const spinner = $(e.target.parentElement).find(".spinner-border")
             spinner.css("visibility", "visible")
             $.ajax({
-                url: '',
+                url: '{{ route("admin.brand-sync.update") }}',
                 type: 'PUT',
                 data: {
                     brandId: e.target.dataset.brandId,
@@ -249,5 +249,11 @@
                 complete: () => spinner.css("visibility", "hidden")
             })
         })
+
+        selects.select2({
+            ajax: {
+                url: '{{ route("admin.brand-sync.search") }}',
+            }
+        });
     </script>
 @endpush
