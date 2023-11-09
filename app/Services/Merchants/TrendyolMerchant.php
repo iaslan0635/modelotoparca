@@ -129,7 +129,10 @@ class TrendyolMerchant implements Merchant
                 ]
             ]
         ]])->object();
-        dd($response);
+
+        if (!property_exists($response, "batchRequestId"))
+            // hata olduğunda batchRequestId gelmez
+            dd($response);
 
         $this->setStock($product, $product->quantity);
         $this->updatePrice($product);
