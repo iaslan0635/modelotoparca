@@ -23,4 +23,3 @@ class N11HigherOrderClient
         }
     }
 }
-
