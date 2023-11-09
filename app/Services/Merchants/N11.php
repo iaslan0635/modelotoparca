@@ -295,7 +295,11 @@ class N11 implements Merchant
     public function getCategoryAttributes($categoryId)
     {
         return $this->client->category->GetCategoryAttributes([
-            "categoryId" => $categoryId
+            "categoryId" => $categoryId,
+            'pagingData' => [
+                'currentPage' => 0,
+                'pageSize' => 100
+            ]
         ]);
     }
 

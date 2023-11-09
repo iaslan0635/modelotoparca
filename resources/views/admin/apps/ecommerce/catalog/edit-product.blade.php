@@ -287,6 +287,10 @@
                                                     href="#bot-logs">Bot kayıtları</a></li>
                             <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
                                                     href="#trendyol-product-sync">Trendyol Özellik Eşleştirmesi</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#hepsiburada-product-sync">Hepsiburada Özellik Eşleştirmesi</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#n11-product-sync">N11 Özellik Eşleştirmesi</a></li>
                             <!--end:::Tab item-->
                         </ul>
                         <!--end:::Tabs-->
@@ -503,6 +507,46 @@
                                         </div>
                                         <!--end::Card header-->
                                         <livewire:admin.sync-product-category-attribute :product="$product"/>
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="hepsiburada-product-sync" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Hepsiburada Kategori Özellik Eşleştirmesi</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <livewire:admin.sync-product-category-attribute :product="$product" :type="'hepsiburada'"/>
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="n11-product-sync" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>N11 Kategori Özellik Eşleştirmesi</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <livewire:admin.sync-product-category-attribute :product="$product" :type="'n11'"/>
                                     </div>
                                     <!--end::Card-->
                                 </div>
