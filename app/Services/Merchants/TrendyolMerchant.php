@@ -266,10 +266,21 @@ class TrendyolMerchant implements Merchant
         return $this->client()->get("brands", ["page" => $page])->object()->brands;
     }
 
+    public function getAllBrands()
+    {
+        $page = 1;
+        while (true) {
+            $response = $this->client()->get("brands", ["page" => $page])->object();
+            if (!property_exists($response, "brands")) break;
+            yield from $response["brands"];
+            $page++;
+        }
+    }
+
     /** Fetch brands into database */
     public function fetchBrands()
     {
-        foreach ($this->getBrands() as $brand) {
+        foreach ($this->getAllBrands() as $brand) {
             TrendyolBrand::updateOrCreate(
                 ["id" => $brand->id],
                 ["name" => $brand->name]
