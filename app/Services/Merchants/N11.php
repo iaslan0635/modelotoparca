@@ -223,6 +223,7 @@ class N11 implements Merchant
         $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
+                'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                 'title' => $product->title . " " . $product->sub_title,
                 'subtitle' => $product->sub_title,
                 'description' => $product->description,
