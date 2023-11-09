@@ -9,6 +9,7 @@ use App\Models\MerchantOrder;
 use App\Models\MerchantQuestion;
 use App\Models\Product;
 use App\Models\ProductMerchant;
+use Illuminate\Support\Collection;
 
 class N11 implements Merchant
 {
@@ -211,6 +212,8 @@ class N11 implements Merchant
 
     public function updateProduct(Product $product)
     {
+        $images = collect($product->imageUrls())->whenEmpty(fn(Collection $self) => $self->push($product->imageUrl()))->values();
+
         $price = $this->formatPrice($product->price->price_without_tax);
         $this->client->product->SaveProduct([
             "product" => [
@@ -225,10 +228,10 @@ class N11 implements Merchant
                 ],
                 'price' => $price,
                 'discount' => [
-                    "startDate" => $product->price->discount_start_at,
-                    "endDate" => $product->price->discount_end_at,
-                    "type" => self::DISCOUNT_TYPE[$product->price->discount_type],
-                    "value" => $product->price->discount_amount,
+                    "startDate" => "", // $product->price->discount_start_at,
+                    "endDate" => "", // $product->price->discount_end_at,
+                    "type" => "", // self::DISCOUNT_TYPE[$product->price->discount_type],
+                    "value" => "", // $product->price->discount_amount,
                 ],
                 'currencyType' => self::CURRENCY['try'], // Bütün pazaryerlerine TL göndereceğiz
                 'approvalStatus' => $product->status,
@@ -242,18 +245,22 @@ class N11 implements Merchant
                 'preparingDay' => 3,
                 'shipmentTemplate' => 'Merkez Şube11',
                 'images' => [
-                    'image' => [[
-                        'url' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
-                        'order' => 0,
-                    ]]
+                    'image' =>
+                        $images->map(fn(string $image, int $order) => [
+                            'url' => $image,
+                            'order' => $order,
+                        ])->toArray()
+
                 ],
                 'stockItems' => [
                     'stockItem' => [
                         'images' => [
-                            'image' => [[
-                                'url' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
-                                'order' => 0,
-                            ]]
+                            'image' =>
+                                $images->map(fn(string $image, int $order) => [
+                                    'url' => $image,
+                                    'order' => $order,
+                                ])->toArray()
+
                         ],
                         'oem' => '',
                         'quantity' => $product->quantity,

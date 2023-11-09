@@ -51,6 +51,9 @@ class Product extends BaseModel implements CanVisit
         return asset("storage/imported_images/{$this->id}_$suffix.JPG");
     }
 
+    /**
+     * @return Collection<int, string>
+     */
     public function imageUrls(): Collection
     {
         $images = [];
@@ -64,7 +67,10 @@ class Product extends BaseModel implements CanVisit
         return collect($this->databaseImageUrls())->merge($images);
     }
 
-    public function imageUrl()
+    /**
+     * @return Collection<int, string>
+     */
+    public function imageUrl(): Collection
     {
         if ($this->image_appendix & ExcelImport::IMAGE_11) {
             return $this->getImagePath('11');
