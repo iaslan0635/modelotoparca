@@ -47,4 +47,5 @@ interface Merchant
     public function deleteProduct(Product $product);
 
     public function syncOrders();
+    public function parseOrder(MerchantOrder $order);
 }

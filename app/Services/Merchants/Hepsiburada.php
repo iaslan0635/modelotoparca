@@ -254,7 +254,7 @@ class Hepsiburada implements Merchant
         }
     }
 
-    public static function parseOrder(MerchantOrder $order)
+    public function parseOrder(MerchantOrder $order)
     {
         return [];
     }

@@ -19,12 +19,7 @@ class MarketPlace
 
     public static function parseOrder(MerchantOrder $order)
     {
-        return match ($order->merchant) {
-            "n11" => N11::parseOrder($order),
-            "hepsiburada" => Hepsiburada::parseOrder($order),
-            "trendyol" => TrendyolMerchant::parseOrder($order),
-            default => throw new \InvalidArgumentException("$order->merchant geçerli bir pazar yeri değil (n11, hepsiburada, trendyol)"),
-        };
+        return self::createMerchant($order->merchant)->parseOrder($order);
     }
 
     /** @return array<Merchant> */
@@ -36,5 +31,15 @@ class MarketPlace
 //            new Hepsiburada(),
 //            new TrendyolMerchant()
 //        ];
+    }
+
+    public static function createMerchant(string $merchantAlias): Merchant
+    {
+        return match ($merchantAlias) {
+            "n11" => new N11(),
+            "hepsiburada" => new Hepsiburada(),
+            "trendyol" => new TrendyolMerchant(),
+            default => throw new \InvalidArgumentException("$merchantAlias geçerli bir pazar yeri değil (n11, hepsiburada, trendyol)"),
+        };
     }
 }

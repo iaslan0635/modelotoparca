@@ -3,6 +3,7 @@
 namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
+use App\Models\TrendyolBrand;
 use App\Models\MerchantOrder;
 use App\Models\Product;
 use Illuminate\Http\Client\PendingRequest;
@@ -262,7 +263,18 @@ class TrendyolMerchant implements Merchant
 
     public function getBrands()
     {
-        return $this->client()->get("brands")->object()->brands;
+        return $this->client()->get("brands")->object();
+    }
+
+    /** Fetch brands into database */
+    public function fetchBrands()
+    {
+        foreach ($this->getBrands() as $brand) {
+            TrendyolBrand::updateOrCreate(
+                ["id" => $brand->id],
+                ["name" => $brand->name]
+            );
+        }
     }
 
     public function approveOrder(MerchantOrder $order)
@@ -344,7 +356,7 @@ class TrendyolMerchant implements Merchant
         }
     }
 
-    public static function parseOrder(MerchantOrder $order)
+    public function parseOrder(MerchantOrder $order)
     {
         return [];
     }

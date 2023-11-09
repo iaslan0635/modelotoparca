@@ -73,33 +73,6 @@ Route::get('action', function () {
     \App\Services\MarketPlace::syncOrders();
 });
 
-Route::get('category-merchant', function () {
-    $categories = json_decode(\Illuminate\Support\Facades\Storage::get("categories.json"));
-    foreach ($categories as $category) {
-        if (strlen($category->N11) > 0) {
-            \App\Models\MerchantCategoryConnect::create([
-                'merchant' => "n11",
-                'merchant_id' => $category->N11,
-                'category_id' => $category->LOGICALREF
-            ]);
-        }
-        if (strlen($category->hepsiburada) > 0) {
-            \App\Models\MerchantCategoryConnect::create([
-                'merchant' => "hepsiburada",
-                'merchant_id' => $category->hepsiburada,
-                'category_id' => $category->LOGICALREF
-            ]);
-        }
-        if (strlen($category->TRENYOL) > 0) {
-            \App\Models\MerchantCategoryConnect::create([
-                'merchant' => "trendyol",
-                'merchant_id' => $category->TRENYOL,
-                'category_id' => $category->LOGICALREF
-            ]);
-        }
-    }
-});
-
 Route::resource('permisssion', PermissionController::class);
 Route::resource('role', RoleController::class);
 

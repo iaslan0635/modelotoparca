@@ -160,7 +160,7 @@ class N11 implements Merchant
         return $dateTimeObj->format('Y-m-d H:i:s');
     }
 
-    public static function parseOrder(MerchantOrder $order): array
+    public function parseOrder(MerchantOrder $order): array
     {
         $parseItem = fn($item) => [
             "id" => $item['id'],
@@ -227,7 +227,7 @@ class N11 implements Merchant
                 'description' => $product->description,
                 'domestic' => 'false',
                 'category' => [
-                    'id' => 1003061 // Yedek parça
+                    'id' => 1002845
                 ],
                 'price' => $price,
                 'discount' => [
