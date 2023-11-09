@@ -301,9 +301,9 @@ class N11 implements Merchant
         return $this->client->category->GetTopLevelCategories([]);
     }
 
-    public function getSubCategories($categoryId)
+    public function getSubCategories($categoryId, $lastModifiedDate)
     {
-        return $this->client->category->GetSubCategories(["categoryId" => $categoryId]);
+        return $this->client->category->GetSubCategories(["categoryId" => $categoryId, 'lastModifiedDate' => $lastModifiedDate]);
     }
 
 
