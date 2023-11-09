@@ -8,7 +8,7 @@
             <select wire:model="value_id"
                     class="form-control">
                 @foreach($values as $value)
-                    <option value="{{ $value->value }}">{{ $value->value }}</option>
+                    <option value="{{ $value?->value ?? $value['value'] }}">{{ $value?->value ?? $value['value'] }}</option>
                 @endforeach
             </select>
         @endif
