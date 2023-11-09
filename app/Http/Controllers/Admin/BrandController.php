@@ -13,7 +13,7 @@ class BrandController extends Controller
 {
     public function brandSync()
     {
-        return view('admin.apps.ecommerce.catalog.sync-brands', ["brands" => Brand::paginate(20)]);
+        return view('admin.apps.ecommerce.catalog.sync-brands', ["brands" => Brand::orderByDesc("name")->paginate(20)]);
     }
 
     public function updateBrandConnection(Request $request)
