@@ -272,7 +272,7 @@ class TrendyolMerchant implements Merchant
         while (true) {
             $response = $this->client()->get("brands", ["page" => $page])->object();
             if (!property_exists($response, "brands")) break;
-            yield from $response["brands"];
+            yield from $response->brands;
             $page++;
         }
     }
