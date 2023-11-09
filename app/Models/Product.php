@@ -67,10 +67,7 @@ class Product extends BaseModel implements CanVisit
         return collect($this->databaseImageUrls())->merge($images);
     }
 
-    /**
-     * @return Collection<int, string>
-     */
-    public function imageUrl(): Collection
+    public function imageUrl(): string
     {
         if ($this->image_appendix & ExcelImport::IMAGE_11) {
             return $this->getImagePath('11');
