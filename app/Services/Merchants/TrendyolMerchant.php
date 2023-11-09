@@ -93,12 +93,12 @@ class TrendyolMerchant implements Merchant
 
         foreach ($fields as $field) {
             if ($field->merchant_value_id) {
-                $fields[] = [
+                $attributes[] = [
                     'attributeId' => $field->merchant_id,
                     'attributeValueId' => $field->merchant_value_id
                 ];
             } else {
-                $fields[] = [
+                $attributes[] = [
                     'attributeId' => $field->merchant_id,
                     'customAttributeValue' => $field->merchant_value
                 ];
