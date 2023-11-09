@@ -27,12 +27,18 @@ class OrderController extends Controller
     {
         $orders = MerchantOrder::query();
 
-        if ($request->has('merchant')){
+        if ($request->has('merchant')) {
             $orders->where('merchant', '=', $request->input('merchant'));
         }
 
         $orders = $orders->orderByDesc('id')->paginate(10);
         return view('admin.apps.marketplace.orders', compact('orders'));
+    }
+
+    public function marketplaceShow(MerchantOrder $order)
+    {
+        $data = MarketPlace::parseOrder($order);
+        return view('admin.apps.marketplace.order_show', compact('order', 'data'));
     }
 
     public function show(Order $order)

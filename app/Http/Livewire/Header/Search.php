@@ -31,7 +31,7 @@ class Search extends Component
         $suggestions = [];
         //        dd($this->query);
         if (strlen($this->query) >= 3) {
-            $result = Searchable::query($this->query, $relations);
+            $result = Searchable::query($this->query, relations: $relations);
             $categories = $result['categories'];
             $results = $result['products'];
             $suggestions = $result['suggestions'];

@@ -103,6 +103,9 @@ class TrendyolMerchant implements Merchant
             ]
         ]]);
 
+        $this->setStock($product, $product->quantity);
+        $this->updatePrice($product);
+
         return json_decode($request->getBody())->batchRequestId;
     }
 
@@ -352,5 +355,36 @@ class TrendyolMerchant implements Merchant
         $body = json_decode($request->getBody());
 
         return $body->batchRequestId;
+    }
+
+    public function syncOrders()
+    {
+        $orders = $this->getOrders();
+
+        foreach ($orders->content as $item) {
+            MerchantOrder::updateOrCreate([
+                "merchant_id" => $item->id,
+                "merchant" => "trendyol",
+            ], [
+                "number" => $item->orderNumber,
+                "client" => [
+                    "id" => $item->customerId,
+                    "name" => $item->customerFirstName,
+                ],
+                "data" => $item,
+                "price" => $item->totalPrice,
+                "date" => $item->orderDate, // FIXME: düzgün date parse yap
+                "status" => $item->status,
+                "delivery_status" => "",
+                "payment_status" => "",
+                "lines" => [],
+                "line_data" => [],
+            ]);
+        }
+    }
+
+    public static function parseOrder(MerchantOrder $order)
+    {
+        return [];
     }
 }

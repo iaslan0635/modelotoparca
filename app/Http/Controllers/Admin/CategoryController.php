@@ -27,8 +27,7 @@ class CategoryController extends Controller
 
     public function categorySync()
     {
-        $categories = Category::all();
-        return view('admin.apps.ecommerce.catalog.sync-categories', compact('categories'));
+        return view('admin.apps.ecommerce.catalog.sync-categories');
     }
 
     public function push_image(Category $category, Request $request)

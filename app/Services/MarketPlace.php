@@ -10,29 +10,31 @@ use App\Services\Merchants\TrendyolMerchant;
 
 class MarketPlace
 {
-    /*
-     * Siparişleri eşitlemek için lazım.
-     */
-    public static function orders(): void
+    public static function syncOrders(): void
     {
-        (new N11)->syncOrders();
+        foreach (self::merchants() as $merchant) {
+            $merchant->syncOrders();
+        }
     }
 
-    public static function getClientOutput(MerchantOrder $order)
+    public static function parseOrder(MerchantOrder $order)
     {
-        if ($order->merchant === "n11") {
-            return N11::getClientOutput($order->client);
-        }
+        return match ($order->merchant) {
+            "n11" => N11::parseOrder($order),
+            "hepsiburada" => Hepsiburada::parseOrder($order),
+            "trendyol" => TrendyolMerchant::parseOrder($order),
+            default => throw new \InvalidArgumentException("$order->merchant geçerli bir pazar yeri değil (n11, hepsiburada, trendyol)"),
+        };
     }
 
     /** @return array<Merchant> */
     public static function merchants()
     {
-        return [];
-//        [
-//            new N11(),
-//            new Hepsiburada(),
-//            new TrendyolMerchant()
-//        ];
+//        return [];
+        return [
+            new N11(),
+            new Hepsiburada(),
+            new TrendyolMerchant()
+        ];
     }
 }

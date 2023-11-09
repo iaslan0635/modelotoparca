@@ -200,7 +200,7 @@
                     <!--begin::Card body-->
                     <div class="card-body pt-0">
                         <!--begin::Table-->
-                        <livewire:admin.sync-categories :categories="$categories" />
+                        <livewire:admin.sync-categories />
                         <!--end::Table-->
                     </div>
                     <!--end::Card body-->

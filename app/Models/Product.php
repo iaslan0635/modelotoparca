@@ -207,4 +207,9 @@ class Product extends BaseModel implements CanVisit
     {
         return $this->hasMany(ProductMerchant::class);
     }
+
+    public function merchantAttributes(): HasMany
+    {
+        return $this->hasMany(ProductMerchantAttribute::class);
+    }
 }

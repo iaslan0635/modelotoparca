@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'admin.index');
 
-Route::get("n11", function (){
+Route::get("n11", function () {
     $n11 = new \App\Services\Merchants\N11();
     $product = \App\Models\Product::find(8);
     return $n11->getSubCategories(10000035);
@@ -61,11 +61,43 @@ Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(fu
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
 Route::get('/marketplace-orders', [OrderController::class, 'marketplace'])->name('order.marketplace');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
+Route::get('/marketplace-order/{order}', [OrderController::class, 'marketplaceShow'])->name('order.marketplace.show');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
 Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync');
 Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-sync');
 Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update');
+
+Route::get('action', function () {
+    \App\Services\MarketPlace::syncOrders();
+});
+
+Route::get('category-merchant', function () {
+    $categories = json_decode(\Illuminate\Support\Facades\Storage::get("categories.json"));
+    foreach ($categories as $category) {
+        if (strlen($category->N11) > 0) {
+            \App\Models\MerchantCategoryConnect::create([
+                'merchant' => "n11",
+                'merchant_id' => $category->N11,
+                'category_id' => $category->LOGICALREF
+            ]);
+        }
+        if (strlen($category->hepsiburada) > 0) {
+            \App\Models\MerchantCategoryConnect::create([
+                'merchant' => "hepsiburada",
+                'merchant_id' => $category->hepsiburada,
+                'category_id' => $category->LOGICALREF
+            ]);
+        }
+        if (strlen($category->TRENYOL) > 0) {
+            \App\Models\MerchantCategoryConnect::create([
+                'merchant' => "trendyol",
+                'merchant_id' => $category->TRENYOL,
+                'category_id' => $category->LOGICALREF
+            ]);
+        }
+    }
+});
 
 Route::resource('permisssion', PermissionController::class);
 Route::resource('role', RoleController::class);

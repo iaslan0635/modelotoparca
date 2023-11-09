@@ -8,7 +8,8 @@
                 <!--begin::Page title-->
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
-                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Edit Product</h1>
+                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Edit
+                        Product</h1>
                     <!--end::Title-->
                     <!--begin::Breadcrumb-->
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -40,11 +41,12 @@
                 <!--begin::Actions-->
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
                     <!--begin::Primary button-->
-                    <a href="{{ route('admin.products.edit.rerunBot', $product) }}" class="btn btn-sm fw-bold btn-primary">
+                    <a href="{{ route('admin.products.edit.rerunBot', $product) }}"
+                       class="btn btn-sm fw-bold btn-primary">
                         Bot ile Yeniden Çek
                     </a>
                     <!--end::Primary button-->
-                    <livewire:admin.product.create-merchant :product="$product" />
+                    <livewire:admin.product.create-merchant :product="$product"/>
                 </div>
                 <!--end::Actions-->
             </div>
@@ -59,7 +61,8 @@
                 <div class="form d-flex flex-column flex-lg-row">
                     <!--begin::Aside column-->
                     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
-                        <x-admin.image-manager :images="$product->images" :upload_action="route('admin.categories.edit.image', $product)" />
+                        <x-admin.image-manager :images="$product->images"
+                                               :upload_action="route('admin.categories.edit.image', $product)"/>
                         <!--begin::Status-->
                         <div class="card card-flush py-4">
                             <!--begin::Card header-->
@@ -71,7 +74,8 @@
                                 <!--end::Card title-->
                                 <!--begin::Card toolbar-->
                                 <div class="card-toolbar">
-                                    <div class="rounded-circle bg-success w-15px h-15px" id="kt_ecommerce_add_product_status"></div>
+                                    <div class="rounded-circle bg-success w-15px h-15px"
+                                         id="kt_ecommerce_add_product_status"></div>
                                 </div>
                                 <!--begin::Card toolbar-->
                             </div>
@@ -79,7 +83,8 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select2-->
-                                <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option"
+                                <select class="form-select mb-2" data-control="select2" data-hide-search="true"
+                                        data-placeholder="Select an option"
                                         id="kt_ecommerce_add_product_status_select">
                                     <option></option>
                                     <option value="published" selected="selected">Published</option>
@@ -93,8 +98,10 @@
                                 <!--end::Description-->
                                 <!--begin::Datepicker-->
                                 <div class="d-none mt-10">
-                                    <label for="kt_ecommerce_add_product_status_datepicker" class="form-label">Select publishing date and time</label>
-                                    <input class="form-control" id="kt_ecommerce_add_product_status_datepicker" placeholder="Pick date & time"/>
+                                    <label for="kt_ecommerce_add_product_status_datepicker" class="form-label">Select
+                                        publishing date and time</label>
+                                    <input class="form-control" id="kt_ecommerce_add_product_status_datepicker"
+                                           placeholder="Pick date & time"/>
                                 </div>
                                 <!--end::Datepicker-->
                             </div>
@@ -119,7 +126,8 @@
                                 <label class="form-label">Categories</label>
                                 <!--end::Label-->
                                 <!--begin::Select2-->
-                                <select class="form-select mb-2" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" multiple="multiple">
+                                <select class="form-select mb-2" data-control="select2"
+                                        data-placeholder="Select an option" data-allow-clear="true" multiple="multiple">
                                     <option></option>
                                     <option value="Computers">Computers</option>
                                     <option value="Watches">Watches</option>
@@ -138,11 +146,14 @@
                                 <!--end::Description-->
                                 <!--end::Input group-->
                                 <!--begin::Button-->
-                                <a href="admin/apps/ecommerce/catalog/add-category" class="btn btn-light-primary btn-sm mb-10">
+                                <a href="admin/apps/ecommerce/catalog/add-category"
+                                   class="btn btn-light-primary btn-sm mb-10">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
                                     <span class="svg-icon svg-icon-2">
-								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1" transform="rotate(-90 11 18)" fill="currentColor"/>
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+									<rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1"
+                                          transform="rotate(-90 11 18)" fill="currentColor"/>
 									<rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"/>
 								</svg>
 							</span>
@@ -153,7 +164,8 @@
                                 <label class="form-label d-block">Tags</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input id="kt_ecommerce_add_product_tags" name="kt_ecommerce_add_product_tags" class="form-control mb-2" value="new, trending, sale"/>
+                                <input id="kt_ecommerce_add_product_tags" name="kt_ecommerce_add_product_tags"
+                                       class="form-control mb-2" value="new, trending, sale"/>
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <div class="text-muted fs-7">Add tags to a product.</div>
@@ -181,8 +193,10 @@
                                         <span class="badge badge-light-success fs-base">
 									<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
 									<span class="svg-icon svg-icon-5 svg-icon-success ms-n1">
-										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="currentColor"/>
+										<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+											<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1"
+                                                  transform="rotate(90 13 6)" fill="currentColor"/>
 											<path
                                                 d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
                                                 fill="currentColor"/>
@@ -222,10 +236,12 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select store template-->
-                                <label for="kt_ecommerce_add_product_store_template" class="form-label">Select a product template</label>
+                                <label for="kt_ecommerce_add_product_store_template" class="form-label">Select a product
+                                    template</label>
                                 <!--end::Select store template-->
                                 <!--begin::Select2-->
-                                <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option"
+                                <select class="form-select mb-2" data-control="select2" data-hide-search="true"
+                                        data-placeholder="Select an option"
                                         id="kt_ecommerce_add_product_store_template">
                                     <option></option>
                                     <option value="default" selected="selected">Default template</option>
@@ -235,7 +251,9 @@
                                 </select>
                                 <!--end::Select2-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7">Assign a template from your current theme to define how a single product is displayed.</div>
+                                <div class="text-muted fs-7">Assign a template from your current theme to define how a
+                                    single product is displayed.
+                                </div>
                                 <!--end::Description-->
                             </div>
                             <!--end::Card body-->
@@ -248,15 +266,31 @@
                         <!--begin:::Tabs-->
                         <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
                             <!--begin:::Tab item-->
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#spareto_connections">Spareto Eşleşmeleri</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#details">Ürün bilgileri</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#oems">Oem Kodlar</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#cars">Uyumlu Araçlar</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Pazaryerleri Durumu</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Sipariş Geçmişi</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">Yorum Geçmişi</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#todo">N11 Soruları</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#bot-logs">Bot kayıtları</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4 active"
+                                                    data-bs-toggle="tab" href="#spareto_connections">Spareto
+                                    Eşleşmeleri</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#details">Ürün bilgileri</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#oems">Oem Kodlar</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#cars">Uyumlu Araçlar</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#todo">Pazaryerleri Durumu</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#todo">Sipariş Geçmişi</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#todo">Yorum Geçmişi</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#todo">N11 Soruları</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#bot-logs">Bot kayıtları</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#trendyol-product-sync">Trendyol Özellik Eşleştirmesi</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#hepsiburada-product-sync">Hepsiburada Özellik Eşleştirmesi</a></li>
+                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                                    href="#n11-product-sync">N11 Özellik Eşleştirmesi</a></li>
                             <!--end:::Tab item-->
                         </ul>
                         <!--end:::Tabs-->
@@ -289,7 +323,7 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($product->sparetoUrls as $url)
-                                                    <livewire:spareto-connection-ban-panel :url="$url" />
+                                                    <livewire:spareto-connection-ban-panel :url="$url"/>
                                                 @endforeach
                                                 </tbody>
                                             </table>
@@ -341,8 +375,10 @@
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
                                             <form action="{{ route('admin.products.edit.oem', $product) }}">
-                                                <input name="oem" type="text" class="form-control mb-2" placeholder="Oem kodu"/>
-                                                <input name="brand" type="text" class="form-control" placeholder="Marka"/>
+                                                <input name="oem" type="text" class="form-control mb-2"
+                                                       placeholder="Oem kodu"/>
+                                                <input name="brand" type="text" class="form-control"
+                                                       placeholder="Marka"/>
                                                 <button type="submit" class="btn btn-primary mt-4">Bağla</button>
                                             </form>
                                         </div>
@@ -395,7 +431,7 @@
                             <!--end::Tab pane-->
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade" id="cars" role="tabpanel">
-                                <livewire:admin.car-panel :car_brands="$car_brands" :product_id="$product->id" />
+                                <livewire:admin.car-panel :car_brands="$car_brands" :product_id="$product->id"/>
                             </div>
                             <!--end::Tab pane-->
                             <!--begin::Tab pane-->
@@ -442,13 +478,75 @@
                                                 <tbody>
                                                 @foreach($logs as $log)
                                                     <tr>
-                                                        <td><pre>{{ $log->message }}</pre></td>
+                                                        <td>
+                                                            <pre>{{ $log->message }}</pre>
+                                                        </td>
                                                         <td class="text-end">{{ $log->created_at->diffForHumans() }}</td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="trendyol-product-sync" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Trendyol Kategori Özellik Eşleştirmesi</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <livewire:admin.sync-product-category-attribute :product="$product"/>
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="hepsiburada-product-sync" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Hepsiburada Kategori Özellik Eşleştirmesi</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <livewire:admin.sync-product-category-attribute :product="$product" :type="'hepsiburada'"/>
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="n11-product-sync" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>N11 Kategori Özellik Eşleştirmesi</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <!--end::Card header-->
+                                        <livewire:admin.sync-product-category-attribute :product="$product" :type="'n11'"/>
                                     </div>
                                     <!--end::Card-->
                                 </div>

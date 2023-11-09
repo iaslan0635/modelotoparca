@@ -4,20 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('product_merchants', function (Blueprint $table) {
+        Schema::create('product_merchant_attributes', function (Blueprint $table) {
             $table->id();
             $table->string('merchant');
-            $table->integer('product_id');
             $table->integer('merchant_id');
+            $table->integer('product_id');
+            $table->integer('merchant_value_id')->nullable();
+            $table->text('merchant_value')->nullable();
             $table->timestamps();
-
-            $table->unique(['merchant', 'merchant_id', 'product_id']);
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_merchants');
+        Schema::dropIfExists('product_merchant_attributes');
     }
 };

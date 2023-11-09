@@ -48,13 +48,14 @@
                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
                             <span class="svg-icon svg-icon-6 svg-icon-muted me-1">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-                                d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z"
-                                fill="currentColor"/>
-						</svg>
-					</span>
-                            <!--end::Svg Icon-->Filter</a>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z"
+                                        fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->Filter
+                        </a>
                         <!--end::Menu toggle-->
                         <!--begin::Menu 1-->
                         <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true"
@@ -148,7 +149,8 @@
                     <!--end::Secondary button-->
                     <!--begin::Primary button-->
                     <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
-                       data-bs-target="#kt_modal_create_app">Create</a>
+                       data-bs-target="#kt_modal_create_app">Create
+                    </a>
                     <!--end::Primary button-->
                 </div>
                 <!--end::Actions-->
@@ -237,7 +239,7 @@
                                     <!--end::Checkbox-->
                                     <!--begin::Order ID=-->
                                     <td data-kt-ecommerce-order-filter="order_id">
-                                        <a href="{{ route('admin.order.show', $order) }}"
+                                        <a href="{{ route('admin.order.marketplace.show', $order) }}"
                                            class="text-gray-800 text-hover-primary fw-bold">{{ $order->id }}</a>
                                     </td>
                                     <!--end::Order ID=-->
@@ -251,17 +253,17 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin:: Avatar -->
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="#">
+                                                <a href="{{ route('admin.order.marketplace.show', $order) }}">
                                                     <div class="symbol-label fs-3 bg-light-danger text-danger">
-                                                        {{ substr(\App\Services\MarketPlace::getClientOutput($order)['full_name'], 0, 1) }}
+                                                        {{ substr(\App\Services\MarketPlace::parseOrder($order)['full_name'], 0, 1) }}
                                                     </div>
                                                 </a>
                                             </div>
                                             <!--end::Avatar-->
                                             <div class="ms-5">
                                                 <!--begin::Title-->
-                                                <a href="#"
-                                                   class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ \App\Services\MarketPlace::getClientOutput($order)['full_name'] }}</a>
+                                                <a href="{{ route('admin.order.marketplace.show', $order) }}"
+                                                   class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ \App\Services\MarketPlace::parseOrder($order)['full_name'] }}</a>
                                                 <!--end::Title-->
                                             </div>
                                         </div>
@@ -297,13 +299,13 @@
                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">İşlemler
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                             <span class="svg-icon svg-icon-5 m-0">
-										<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-											<path
-                                                d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                fill="currentColor"/>
-										</svg>
-									</span>
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                                                        fill="currentColor"/>
+                                                </svg>
+                                            </span>
                                             <!--end::Svg Icon--></a>
                                         <!--begin::Menu-->
                                         <div
@@ -312,7 +314,8 @@
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a href="{{ route('admin.order.show', $order) }}"
-                                                   class="menu-link px-3">View</a>
+                                                   class="menu-link px-3">View
+                                                </a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -323,7 +326,8 @@
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
                                                 <a href="#" class="menu-link px-3"
-                                                   data-kt-ecommerce-order-filter="delete_row">Delete</a>
+                                                   data-kt-ecommerce-order-filter="delete_row">Delete
+                                                </a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
