@@ -5,6 +5,7 @@ namespace App\Services\Merchants;
 use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
 use App\Models\Product;
+use App\Models\Tracking;
 use GuzzleHttp\Client;
 
 class Hepsiburada implements Merchant
@@ -146,6 +147,11 @@ class Hepsiburada implements Merchant
         ]);
 
         $response = json_decode($request->getBody()->getContents(), true);
+
+        Tracking::create([
+            'merchant' => "hepsiburada",
+            'tracking_id' => $response["data"]["trackingId"]
+        ]);
         return $response["data"]["trackingId"];
     }
 
