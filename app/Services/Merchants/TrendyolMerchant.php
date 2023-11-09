@@ -83,7 +83,12 @@ class TrendyolMerchant implements Merchant
 
     public function updateProduct(Product $product)
     {
-        $request = $this->client->put("suppliers/$this->supplierId/v2/products", ["json" => [
+        return $this->sendProduct($product, "PUT");
+    }
+
+    private function sendProduct(Product $product, string $method)
+    {
+        $response = $this->client->request($method, "suppliers/$this->supplierId/v2/products", ["json" => [
             "items" => [
                 [
                     "barcode" => $product->sku,
@@ -99,6 +104,7 @@ class TrendyolMerchant implements Merchant
                     "vatRate" => 20,
                     "images" => $product->images->map(fn($image) => ["url" => $image->url]),
                     "cargoCompanyId" => 10,
+
                 ]
             ]
         ]]);
@@ -106,7 +112,7 @@ class TrendyolMerchant implements Merchant
         $this->setStock($product, $product->quantity);
         $this->updatePrice($product);
 
-        return json_decode($request->getBody())->batchRequestId;
+        return json_decode($response->getBody())->batchRequestId;
     }
 
     public function updateOrder(MerchantOrder $order)
@@ -130,37 +136,7 @@ class TrendyolMerchant implements Merchant
 
     public function createProduct(Product $product)
     {
-        try {
-            $request = $this->client->post("suppliers/$this->supplierId/v2/products", ["json" => [
-                "json" => [
-                    "items" => [
-                        [
-                            "barcode" => $product->sku,
-                            "title" => $product->title,
-                            "productMainId" => $product->sku,
-                            "brandId" => 1213465 ?? $product->brand->merchants()->where('merchant', '=', "trendyol")->first()->merchant_id,
-                            "categoryId" => 1239 ?? $product->categories[0]->merchants()->where('merchant', '=', "trendyol")->first()->merchant_id,
-                            "stockCode" => $product->sku,
-                            "dimensionalWeight" => 0,
-                            "quantity" => $product->quantity,
-                            "description" => $product->description,
-                            "vatRate" => 20,
-                            "images" => $product->images->map(fn($image) => ["url" => $image->url]),
-                            "cargoCompanyId" => 4,
-                            "currencyType" => "TRY",
-                            "listPrice" => $product->price->price,
-                            "salePrice" => $product->price->price,
-                            "attributes" => []
-                        ]
-                    ]
-                ],
-                'http_errors' => false
-            ]]);
-
-            return json_decode($request->getBody())->batchRequestId;
-        } catch (GuzzleException $exception) {
-            return $exception->getMessage();
-        }
+        return $this->sendProduct($product, "POST");
     }
 
     public function getCategories()
