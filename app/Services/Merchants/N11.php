@@ -227,7 +227,8 @@ class N11 implements Merchant
                 'description' => $product->description,
                 'domestic' => 'false',
                 'category' => [
-                    'id' => 1002845
+                    'id' => $product->categories[0]->merchants()
+                        ->where('merchant', '=', "n11")->valueOrFail("merchant_id")
                 ],
                 'price' => $price,
                 'discount' => [
