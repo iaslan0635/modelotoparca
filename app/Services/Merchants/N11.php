@@ -212,8 +212,10 @@ class N11 implements Merchant
     public function updateProduct(Product $product)
     {
         $images = [
+            'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
             'image' => [
                 'url' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
+                'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                 'order' => 0,
             ]
         ];
