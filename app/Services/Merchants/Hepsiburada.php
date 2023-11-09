@@ -154,8 +154,6 @@ class Hepsiburada implements Merchant
 
         $response = json_decode($request->getBody()->getContents(), true);
 
-        dd($response);
-
         Tracking::create([
             'merchant' => "hepsiburada",
             'tracking_id' => $response["data"]["trackingId"]
