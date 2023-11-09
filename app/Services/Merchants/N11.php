@@ -4,11 +4,13 @@ namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
 use App\Facades\N11Client\N11Client;
+use App\Facades\N11Client\N11ClientException;
 use App\Models\Image;
 use App\Models\MerchantOrder;
 use App\Models\MerchantQuestion;
 use App\Models\Product;
 use App\Models\ProductMerchant;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Collection;
 
 class N11 implements Merchant
@@ -215,7 +217,7 @@ class N11 implements Merchant
         $images = collect($product->imageUrls())->whenEmpty(fn(Collection $self) => $self->push($product->imageUrl()))->values();
 
         $price = $this->formatPrice($product->price->price_without_tax);
-        $this->client->product->SaveProduct([
+        $response = $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
                 'title' => $product->title . " " . $product->sub_title,
@@ -279,7 +281,14 @@ class N11 implements Merchant
                 'productionDate' => "",
                 'expirationDate' => "",
             ]
+        ], [
+            "throw" => false
         ]);
+
+        if (
+            $response->result->status !== "success" &&
+            $response->result->errorCode !== 'SELLER_API.catalog.suggest.failed.alreadySuggested'
+        ) throw new N11ClientException($response);
     }
 
     public function updateOrder(MerchantOrder $order)
@@ -296,11 +305,14 @@ class N11 implements Merchant
     {
         $this->updateProduct($product);
 
-        ProductMerchant::create([
-            'merchant' => "n11",
-            'merchant_id' => $product->sku,
-            'product_id' => $product->id
-        ]);
+        try {
+            ProductMerchant::create([
+                'merchant' => "n11",
+                'merchant_id' => $product->sku,
+                'product_id' => $product->id
+            ]);
+        } catch (UniqueConstraintViolationException) {
+        }
     }
 
     public function getCategories()
