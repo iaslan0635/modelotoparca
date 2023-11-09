@@ -32,6 +32,8 @@ class BrandController extends Controller
     public function searchTrendyolBrands(Request $request)
     {
         $term = $request->input("term");
-        return ["results" => TrendyolBrand::where("name", "like", "%$term%")->get()];
+        return [
+            "results" => TrendyolBrand::where("name", "like", "%$term%")->get(["id", "name as text"])
+        ];
     }
 }
