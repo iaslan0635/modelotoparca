@@ -261,9 +261,9 @@ class TrendyolMerchant implements Merchant
         ];
     }
 
-    public function getBrands()
+    public function getBrands(int $page = 1)
     {
-        return $this->client()->get("brands")->object()->brands;
+        return $this->client()->get("brands", ["page" => $page])->object()->brands;
     }
 
     /** Fetch brands into database */
