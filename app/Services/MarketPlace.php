@@ -30,11 +30,11 @@ class MarketPlace
     /** @return array<Merchant> */
     public static function merchants()
     {
-//        return [];
-        return [
-            new N11(),
-            new Hepsiburada(),
-            new TrendyolMerchant()
-        ];
+        return [];
+//        return [
+//            new N11(),
+//            new Hepsiburada(),
+//            new TrendyolMerchant()
+//        ];
     }
 }

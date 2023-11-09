@@ -20,8 +20,10 @@ class ProductChangedListener
      */
     public function handle(ProductChangedEvent $event): void
     {
-        foreach (MarketPlace::merchants() as $merchant) {
-            $merchant->updateProduct($event->product);
+        if ($event->product->ecommerce) {
+            foreach (MarketPlace::merchants() as $merchant) {
+                $merchant->updateProduct($event->product);
+            }
         }
     }
 }

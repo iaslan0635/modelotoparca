@@ -20,8 +20,10 @@ class ProductCreatedListener
      */
     public function handle(ProductCreatedEvent $event): void
     {
-        foreach (MarketPlace::merchants() as $merchant) {
-            $merchant->createProduct($event->product);
+        if ($event->product->ecommerce) {
+            foreach (MarketPlace::merchants() as $merchant) {
+                $merchant->createProduct($event->product);
+            }
         }
     }
 }
