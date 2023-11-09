@@ -21,10 +21,12 @@ class ProductAttributeTrendyol extends Component
             ->where('merchant_id', '=', $this->attribute['attribute']->id)
             ->first();
 
-        if ($sync->merchant_value_id) {
-            $this->value_id = $sync->merchant_value_id;
-        } else {
-            $this->value = $sync->merchant_value;
+        if ($sync){
+            if ($sync->merchant_value_id) {
+                $this->value_id = $sync->merchant_value_id;
+            } else {
+                $this->value = $sync->merchant_value;
+            }
         }
 
 //        dd($this->value_id);
