@@ -3,6 +3,7 @@
 namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
+use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use App\Models\TrendyolBrand;
 use App\Models\MerchantOrder;
@@ -83,6 +84,26 @@ class TrendyolMerchant implements Merchant
 
     private function sendProduct(Product $product, string $method)
     {
+        $fields = ProductMerchantAttribute::query()
+            ->where('merchant', '=', 'trendyol')
+            ->where('product_id', '=', $product->id)
+            ->get();
+
+        $attributes = [];
+
+        foreach ($fields as $field) {
+            if ($field->merchant_value_id) {
+                $attributes[] = [
+                    'attributeId' => $field->merchant_id,
+                    'attributeValueId' => $field->merchant_value_id
+                ];
+            } else {
+                $attributes[] = [
+                    'attributeId' => $field->merchant_id,
+                    'customAttributeValue' => $field->merchant_value
+                ];
+            }
+        }
         $response = $this->supplierClient()->send($method, "v2/products", ["json" => [
             "items" => [
                 [
@@ -104,6 +125,7 @@ class TrendyolMerchant implements Merchant
                     "salePrice" => $this->formatPrice($product->price->discounted_price_without_tax),
                     "brand" => $product->brand->name, //?
                     "currencyType" => 'TRY', // Bütün pazaryerlerine TL göndereceğiz
+                    "attributes" => $attributes
                 ]
             ]
         ]])->object();

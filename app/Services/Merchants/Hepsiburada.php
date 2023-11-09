@@ -179,7 +179,7 @@ class Hepsiburada implements Merchant
     {
         $page = 0;
         $size = 1000;
-        $request = $this->client->get("https://mpop.hepsiburada.com/product/api/categories/$categoryId/attribute/$attributeId/values?version=4&page=0&size=1000");
+        $request = $this->client->get("https://mpop.hepsiburada.com/product/api/categories/$categoryId/attribute/$attributeId/values?version=4&page=$page&size=1000");
 
         return json_decode($request->getBody());
     }
