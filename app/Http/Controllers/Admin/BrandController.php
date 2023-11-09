@@ -33,7 +33,7 @@ class BrandController extends Controller
     {
         $term = $request->input("term");
         return [
-            "results" => TrendyolBrand::where("name", "like", "%$term%")->get(["id", "name as text"])
+            "results" => TrendyolBrand::whereFullText("name", $term)->get(["id", "name as text"])
         ];
     }
 }
