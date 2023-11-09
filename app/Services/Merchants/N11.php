@@ -211,10 +211,13 @@ class N11 implements Merchant
 
     public function updateProduct(Product $product)
     {
-        $images = $product->images->map(fn(Image $image, int $key) => [
+        $images = [
+            'image' =>
+                $product->images->map(fn(Image $image, int $key) => [
                     'url' => $image->url,
                     'order' => $key,
-                ])->toArray();
+                ])->toArray()
+        ];
         $price = $this->formatPrice($product->price->price_without_tax);
         $this->client->product->SaveProduct([
             "product" => [
@@ -248,15 +251,13 @@ class N11 implements Merchant
                 'images' => $images,
                 'stockItems' => [
                     'stockItem' => [
-                        [
-                            'images' => $images,
-                            'oem' => '',
-                            'quantity' => $product->quantity,
-                            'sellerStockCode' => $product->sku,
-                            'optionPrice' => $price,
-                            'n11CatalogId' => "",
-                            'attributes' => "",
-                        ]
+                        'images' => $images,
+                        'oem' => '',
+                        'quantity' => $product->quantity,
+                        'sellerStockCode' => $product->sku,
+                        'optionPrice' => $price,
+                        'n11CatalogId' => "",
+                        'attributes' => "",
                     ]
                 ],
                 'unitInfo' => "",
