@@ -195,9 +195,9 @@
                                                         data-brand-id="{{ $brand->id }}">
                                                     <option></option>
                                                     @foreach($trendyolBrands as $b)
-                                                        <option value="{{ $b["id"] }}"
-                                                                @if($b["id"] == $connected_merchant_id) selected @endif
-                                                        >{{ $b["name"] }}</option>
+                                                        <option value="{{ $b->id }}"
+                                                                @if($b->id == $connected_merchant_id) selected @endif
+                                                        >{{ $b->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 <div class="spinner-border" role="status" style="visibility: hidden">
