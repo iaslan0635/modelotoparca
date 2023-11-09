@@ -29,8 +29,8 @@ class ProductAttributeHepsiburada extends Component
             ->first();
 
         if ($sync) {
-            $this->value_id = $sync->merchant_value;
             $this->value = $sync->merchant_value;
+            $this->value_id = $sync->merchant_value;
         }
     }
 
