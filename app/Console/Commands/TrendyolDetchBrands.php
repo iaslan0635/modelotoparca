@@ -6,9 +6,9 @@ use App\Services\MarketPlace;
 use App\Services\Merchants\TrendyolMerchant;
 use Illuminate\Console\Command;
 
-class FetchMerchantBrandsCommand extends Command
+class TrendyolDetchBrands extends Command
 {
-    protected $signature = 'fetch:trendyol-brands';
+    protected $signature = 'trendyol:fetch-brands';
 
     protected $description = 'Fetch Trendyol Brands';
 
