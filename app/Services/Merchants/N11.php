@@ -5,6 +5,7 @@ namespace App\Services\Merchants;
 use App\Enums\OrderRejectReasonType;
 use App\Facades\N11Client\N11Client;
 use App\Facades\N11Client\N11ClientException;
+use App\Facades\TTL;
 use App\Models\Image;
 use App\Models\MerchantOrder;
 use App\Models\MerchantQuestion;
@@ -328,13 +329,16 @@ class N11 implements Merchant
 
     public function getCategoryAttributes($categoryId)
     {
-        return $this->client->category->GetCategoryAttributes([
-            "categoryId" => $categoryId,
-            'pagingData' => [
-                'currentPage' => 0,
-                'pageSize' => 100
-            ]
-        ]);
+        return \Cache::remember($categoryId, TTL::WEEK,
+            fn() => $this->client->category->GetCategoryAttributes([
+                "categoryId" => $categoryId,
+                'pagingData' => [
+                    'currentPage' => 0,
+                    'pageSize' => 100
+                ]
+            ])
+        );
+
     }
 
     public function getCargoCompanies()
