@@ -1,10 +1,10 @@
 while true; do
-    if git pull | grep -q -v 'Already up-to-date.'; then
+    git fetch
+    if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+        git pull
         composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
         yarn install --frozen-lockfile
         echo "" | sudo -S service php8.2-fpm reload
-
-        echo "🚀 Application deployed!"
 
         php artisan optimize:clear
         php artisan view:cache
