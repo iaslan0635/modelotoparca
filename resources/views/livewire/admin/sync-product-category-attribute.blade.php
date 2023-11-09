@@ -12,9 +12,19 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($attributes->categoryAttributes as $attribute)
-                <livewire:admin.product-attribute-trendyol :key="$attribute->attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
-            @endforeach
+            @if($type === "trendyol")
+                @foreach($attributes->categoryAttributes as $attribute)
+                    <livewire:admin.product-attribute-trendyol :key="$attribute->attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                @endforeach
+            @elseif($type === "hepsiburada")
+                @foreach($attributes->data->attributes as $attribute)
+                    <livewire:admin.product-attribute-hepsiburada :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                @endforeach
+            @elseif($type === "n11")
+                @foreach($attributes->category->attributeList as $attribute)
+                    <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                @endforeach
+            @endif
             </tbody>
         </table>
     @endif
