@@ -10,6 +10,15 @@ class N11HigherOrderClient
 
     public function __call(string $name, $arguments)
     {
-        return $this->client->$name(array_merge(["auth" => $this->auth], $arguments[0]));
+        $response = $this->client->$name(array_merge(["auth" => $this->auth], $arguments[0]));
+        $this->checkResponse($response);
+        return $response;
+    }
+
+    private function checkResponse($response)
+    {
+        if ($response->result->status !== "success") {
+            throw new \Exception("N11 SOAP response was not succeed\n" . print_r($response, true));
+        }
     }
 }

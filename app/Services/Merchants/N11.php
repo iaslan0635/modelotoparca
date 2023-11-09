@@ -211,6 +211,13 @@ class N11 implements Merchant
 
     public function updateProduct(Product $product)
     {
+        $images = [
+            'image' =>
+                $product->images->map(fn(Image $image, int $key) => [
+                    'url' => $image->url,
+                    'order' => $key,
+                ])->toArray()
+        ];
         $price = $this->formatPrice($product->price->price);
         $this->client->product->SaveProduct([
             "product" => [
@@ -219,22 +226,17 @@ class N11 implements Merchant
                 'subtitle' => $product->sub_title,
                 'description' => $product->description,
                 'domestic' => 'false',
-                'category' => ['id' => $product->categories[0]->id],
+                'category' => [
+                    'id' => 1003061 // Yedek parça
+                ],
                 'price' => $price,
                 'discount' => [
-                    "discountType" => self::DISCOUNT_TYPE[$product->price->discount_type],
-                    "discountValue" => $product->price->discount_amount,
-                    "discountStartDate" => $product->price->discount_start_at,
-                    "discountEndDate" => $product->price->discount_end_at,
+                    "startDate" => $product->price->discount_start_at,
+                    "endDate" => $product->price->discount_end_at,
+                    "type" => self::DISCOUNT_TYPE[$product->price->discount_type],
+                    "value" => $product->price->discount_amount,
                 ],
                 'currencyType' => self::CURRENCY[$product->price->currency],
-                'images' => [
-                    'image' =>
-                        $product->images->map(fn(Image $image, int $key) => [
-                            'url' => $image->url,
-                            'order' => $key,
-                        ])->toArray()
-                ],
                 'approvalStatus' => $product->status,
                 'attributes' => [
                     "attribute" => [
@@ -245,19 +247,32 @@ class N11 implements Merchant
                 'productCondition' => 1, // Yeni (2. el değil)
                 'preparingDay' => 3,
                 'shipmentTemplate' => 'termos',
+                'images' => $images,
                 'stockItems' => [
                     'stockItem' => [
                         [
+                            'images' => $images,
                             'oem' => '',
                             'quantity' => $product->quantity,
                             'sellerStockCode' => $product->sku,
                             'optionPrice' => $price,
+                            'n11CatalogId' => "",
+                            'attributes' => "",
                         ]
                     ]
                 ],
+                'unitInfo' => "",
+                'sellerNote' => "",
                 'maxPurchaseQuantity' => $product->quantity,
+                'groupAttribute' => "",
+                'groupItemCode' => "",
+                'itemName' => "",
+                'productionDate' => "",
+                'expirationDate' => "",
             ]
         ]);
+
+//        $response['status'] !== ''
     }
 
     public function updateOrder(MerchantOrder $order)
