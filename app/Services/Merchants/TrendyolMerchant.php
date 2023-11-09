@@ -28,7 +28,7 @@ class TrendyolMerchant implements Merchant
             config("merchants.trendyol.username"),
             config("merchants.trendyol.password")
         )->baseUrl('https://api.trendyol.com/sapigw/')
-        ->throw();
+            ->throw();
     }
 
     private function supplierClient(): PendingRequest
@@ -37,7 +37,7 @@ class TrendyolMerchant implements Merchant
             config("merchants.trendyol.username"),
             config("merchants.trendyol.password")
         )->baseUrl("https://api.trendyol.com/sapigw/suppliers/$this->supplierId/")
-        ->throw();
+            ->throw();
     }
 
     private function getBatchResponse(Response|string $responseOrBatchId)
