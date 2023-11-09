@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\MerchantBrandConnect;
 use App\Models\TrendyolBrand;
 use Illuminate\Console\Command;
+use Illuminate\Database\UniqueConstraintViolationException;
 
 class TrendyolBrandConnectCommand extends Command
 {
@@ -18,11 +19,14 @@ class TrendyolBrandConnectCommand extends Command
         $this->withProgressBar(Brand::all(), function (Brand $brand) {
             $tb = TrendyolBrand::where("name", $brand->name)->first();
             if ($tb) {
-                MerchantBrandConnect::create([
-                    "merchant" => "trendyol",
-                    "merchant_id" => $tb->id,
-                    "brand_id" => $brand->id,
-                ]);
+                try {
+                    MerchantBrandConnect::create([
+                        "merchant" => "trendyol",
+                        "merchant_id" => $tb->id,
+                        "brand_id" => $brand->id,
+                    ]);
+                } catch (UniqueConstraintViolationException) {
+                }
             }
         });
     }
