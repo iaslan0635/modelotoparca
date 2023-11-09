@@ -262,7 +262,7 @@ class TrendyolMerchant implements Merchant
 
     public function getBrands()
     {
-        return $this->client()->get("brands")->object();
+        return $this->client()->get("brands")->object()->brands;
     }
 
     public function approveOrder(MerchantOrder $order)

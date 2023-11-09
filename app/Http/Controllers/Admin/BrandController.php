@@ -14,7 +14,6 @@ class BrandController extends Controller
     {
         $trendyol = new TrendyolMerchant();
         $trendyolBrands = $trendyol->getBrands();
-
         return view('admin.apps.ecommerce.catalog.sync-brands', ["brands" => Brand::paginate(20), "trendyolBrands" => $trendyolBrands]);
     }
 
