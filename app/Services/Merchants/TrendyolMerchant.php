@@ -51,7 +51,7 @@ class TrendyolMerchant implements Merchant
 
     private function formatPrice($price)
     {
-        return number_format($price, 2, '.', '');
+        return number_format($price, 2, ',', '');
     }
 
     public function setStock(Product $product, $stock)

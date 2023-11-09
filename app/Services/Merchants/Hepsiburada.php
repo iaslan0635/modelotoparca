@@ -5,6 +5,7 @@ namespace App\Services\Merchants;
 use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
 use App\Models\Product;
+use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use GuzzleHttp\Client;
 
@@ -28,7 +29,7 @@ class Hepsiburada implements Merchant
 
     private function formatPrice($price)
     {
-        return number_format($price, 2, '.', '');
+        return number_format($price, 2, ',', '');
     }
 
     public function setStock(Product $product, $stock)
@@ -108,6 +109,10 @@ class Hepsiburada implements Merchant
     public function createProduct(Product $product)
     {
         $price = $this->formatPrice($product->price->price_without_tax);
+        $fields = ProductMerchantAttribute::query()
+            ->where('merchant', '=', 'hepsiburada')
+            ->where('product_id', '=', $product->id)
+            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id, $attr->merchant_value]);
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
                 ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
@@ -115,7 +120,7 @@ class Hepsiburada implements Merchant
             "attributes" => [
                 "merchantSku" => $product->sku,
                 "VaryantGroupID" => $product->sku,
-                "Barcode" => "",
+                "Barcode" => \Str::random(13),
                 "UrunAdi" => $product->title,
                 "UrunAciklamasi" => $product->description,
                 "Marka" => $product->brand->name,
@@ -130,6 +135,7 @@ class Hepsiburada implements Merchant
                 "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
                 "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
                 "Video1" => null,
+                "fields" => $fields
             ]
         ];
 
