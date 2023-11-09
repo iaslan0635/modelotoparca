@@ -50,7 +50,7 @@ class ProductAttributeHepsiburada extends Component
             'merchant_id' => $this->attribute['id'],
             'product_id' => $this->product_id,
         ], [
-            $this->attribute['type'] === "string" ? "merchant_value" : "merchant_value_id" => $this->attribute['type'] === "string" ? $this->value : $this->value_id
+            "merchant_value" => $this->attribute['type'] === "string" ? $this->value : $this->value_id
         ]);
     }
 }
