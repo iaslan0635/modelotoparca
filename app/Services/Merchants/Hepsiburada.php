@@ -171,7 +171,7 @@ class Hepsiburada implements Merchant
 
     public function getCategoryAttributeValues($categoryId, $attributeId)
     {
-        $page = 0;
+        $page = 1;
         $size = 1000;
         $request = $this->client->get("https://mpop.hepsiburada.com/product/api/categories/$categoryId/attribute/$attributeId/values?version=4&page=0&size=1000");
 
