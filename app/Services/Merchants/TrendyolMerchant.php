@@ -129,6 +129,7 @@ class TrendyolMerchant implements Merchant
                 ]
             ]
         ]])->object();
+        dd($response);
 
         $this->setStock($product, $product->quantity);
         $this->updatePrice($product);
