@@ -25,12 +25,11 @@ class MarketPlace
     /** @return array<Merchant> */
     public static function merchants()
     {
-        return [];
-//        return [
-//            new N11(),
+        return [
+            new N11(),
 //            new Hepsiburada(),
-//            new TrendyolMerchant()
-//        ];
+            new TrendyolMerchant()
+        ];
     }
 
     public static function createMerchant(string $merchantAlias): Merchant
