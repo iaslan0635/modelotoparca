@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Services\Merchants\N11;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +66,9 @@ Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('o
 Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync');
 Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-sync');
 Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update');
+
+Route::resource('permisssion', PermissionController::class);
+Route::resource('role', RoleController::class);
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {
