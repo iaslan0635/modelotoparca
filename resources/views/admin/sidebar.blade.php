@@ -206,34 +206,7 @@
                     <!--end:Menu item-->
                 </div>
                 <!--end:Menu sub-->
-                <!--begin:Menu item-->
-                <div class="menu-item">
-                    <!--begin:Menu link-->
-                    <a class="menu-link" href="{{ route("admin.category-sync") }}">
-                    <span class="menu-icon">
-                        <!--begin::Svg Icon-->
-                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                        <!--end::Svg Icon-->
-                    </span>
-                        <span class="menu-title">Kategori Eşitleme</span>
-                    </a>
-                    <!--end:Menu link-->
-                </div>
-                <!--end:Menu item-->
-                <!--begin:Menu item-->
-                <div class="menu-item">
-                    <!--begin:Menu link-->
-                    <a class="menu-link" href="{{ route("admin.brand-sync") }}">
-                    <span class="menu-icon">
-                        <!--begin::Svg Icon-->
-                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                        <!--end::Svg Icon-->
-                    </span>
-                        <span class="menu-title">Marka Eşitleme</span>
-                    </a>
-                    <!--end:Menu link-->
-                </div>
-                <!--end:Menu item-->
+
             </div>
             <!--end:Menu item-->
             <!--begin:Menu item-->
@@ -300,7 +273,34 @@
             </div>
             <!--end:Menu item-->
 
-
+            <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="{{ route("admin.category-sync") }}">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Kategori Eşitleme</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+            <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="{{ route("admin.brand-sync") }}">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Marka Eşitleme</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
 
 
 
