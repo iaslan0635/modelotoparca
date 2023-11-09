@@ -216,7 +216,7 @@ class N11 implements Merchant
                 $product->images->map(fn(Image $image, int $key) => [
                     'url' => $image->url,
                     'order' => $key,
-                ])->toArray()
+                ])->toArray()[0]
         ];
         $price = $this->formatPrice($product->price->price_without_tax);
         $this->client->product->SaveProduct([
