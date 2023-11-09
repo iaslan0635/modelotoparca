@@ -32,11 +32,6 @@ class TrendyolMerchant implements Merchant
         return number_format($price, 2, '.', '');
     }
 
-    public function setAuthenticationInfo(array $info)
-    {
-
-    }
-
     public function setStock(Product $product, $stock)
     {
         $request = $this->client->post("suppliers/$this->supplierId/products/price-and-inventory", ["json" => [
