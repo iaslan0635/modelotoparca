@@ -104,7 +104,6 @@ class TrendyolMerchant implements Merchant
                 ];
             }
         }
-        dd($attributes);
         $response = $this->supplierClient()->send($method, "v2/products", ["json" => [
             "items" => [
                 [
@@ -130,6 +129,7 @@ class TrendyolMerchant implements Merchant
                 ]
             ]
         ]])->object();
+        dd($attributes);
 
         $this->setStock($product, $product->quantity);
         $this->updatePrice($product);
