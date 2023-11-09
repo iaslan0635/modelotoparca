@@ -30,7 +30,7 @@ class ProductAttributeHepsiburada extends Component
 
         if ($sync){
             if ($sync->merchant_value_id) {
-                $this->value_id = $sync->merchant_value_id;
+                $this->value_id = $sync->merchant_value;
             } else {
                 $this->value = $sync->merchant_value;
             }
