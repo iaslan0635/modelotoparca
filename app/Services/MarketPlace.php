@@ -22,7 +22,7 @@ class MarketPlace
         return self::createMerchant($order->merchant)->parseOrder($order);
     }
 
-    /** @return array<Merchant> */
+    /** @return array<int, Merchant> */
     public static function merchants()
     {
         return [
