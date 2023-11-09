@@ -191,7 +191,7 @@
                                                 @php
                                                     $connected_merchant_id = $brand->merchants()->trendyol()->value("merchant_id");
                                                 @endphp
-                                                <select class="form-select brand-select"
+                                                <select class="form-select brand-select" style="min-height: 3rem;"
                                                         data-brand-id="{{ $brand->id }}">
                                                         @if($connected_merchant_id)
                                                             @php $b = \App\Models\TrendyolBrand::find($connected_merchant_id) @endphp
