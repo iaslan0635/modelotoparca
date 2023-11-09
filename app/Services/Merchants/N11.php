@@ -213,7 +213,7 @@ class N11 implements Merchant
     {
         $images = [
             'image' => [
-                'url' => $product->image->url,
+                'url' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                 'order' => 0,
             ]
         ];
