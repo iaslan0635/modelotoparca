@@ -21,9 +21,15 @@
                     <livewire:admin.product-attribute-hepsiburada :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
                 @endforeach
             @elseif($type === "n11")
-                @foreach($attributes->category->attributeList as $attribute)
-                    <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
-                @endforeach
+                @if(is_array($attributes->category->attributeList->attribute))
+                    @foreach($attributes->category->attributeList->attribute as $attribute)
+                        <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                    @endforeach
+                @else
+                    @foreach($attributes->category->attributeList as $attribute)
+                        <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                    @endforeach
+                @endif
             @endif
             </tbody>
         </table>
