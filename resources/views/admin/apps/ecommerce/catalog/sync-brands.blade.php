@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
     <style>
-        .select2 {
+        .select2-selection {
             min-height: 3rem;
         }
     </style>
