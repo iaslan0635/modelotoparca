@@ -11,7 +11,7 @@ class N11HigherOrderClient
     public function __call(string $name, $arguments)
     {
         $response = $this->client->$name(array_merge(["auth" => $this->auth], $arguments[0]));
-        dd($this->client->__getLastRequest());
+        dump($this->client->__getLastRequest());
         $this->checkResponse($response);
         return $response;
     }
