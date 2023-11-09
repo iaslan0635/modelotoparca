@@ -215,7 +215,6 @@ class N11 implements Merchant
         $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
-                'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                 'title' => $product->title . " " . $product->sub_title,
                 'subtitle' => $product->sub_title,
                 'description' => $product->description,
@@ -243,21 +242,16 @@ class N11 implements Merchant
                 'preparingDay' => 3,
                 'shipmentTemplate' => 'Merkez Şube11',
                 'images' => [
-                    'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                     'image' => [[
                         'url' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
-                        'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                         'order' => 0,
                     ]]
                 ],
                 'stockItems' => [
                     'stockItem' => [
-                        'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                         'images' => [
-                            'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                             'image' => [[
                                 'url' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
-                                'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                                 'order' => 0,
                             ]]
                         ],
