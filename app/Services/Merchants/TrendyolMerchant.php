@@ -3,6 +3,7 @@
 namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
+use App\Models\Tracking;
 use App\Models\TrendyolBrand;
 use App\Models\MerchantOrder;
 use App\Models\Product;
@@ -109,6 +110,11 @@ class TrendyolMerchant implements Merchant
 
         $this->setStock($product, $product->quantity);
         $this->updatePrice($product);
+
+        Tracking::create([
+            'merchant' => "trendyol",
+            'tracking_id' => $response->batchRequestId
+        ]);
 
         return $response->batchRequestId;
     }
