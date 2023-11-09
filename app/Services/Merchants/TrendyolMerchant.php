@@ -27,8 +27,8 @@ class TrendyolMerchant implements Merchant
         return Http::withBasicAuth(
             config("merchants.trendyol.username"),
             config("merchants.trendyol.password")
-        )->baseUrl('https://api.trendyol.com/sapigw/')
-            ->throw();
+        )->baseUrl('https://api.trendyol.com/sapigw/');
+//            ->throw();
     }
 
     private function supplierClient(): PendingRequest
@@ -36,8 +36,8 @@ class TrendyolMerchant implements Merchant
         return Http::withBasicAuth(
             config("merchants.trendyol.username"),
             config("merchants.trendyol.password")
-        )->baseUrl("https://api.trendyol.com/sapigw/suppliers/$this->supplierId/")
-            ->throw();
+        )->baseUrl("https://api.trendyol.com/sapigw/suppliers/$this->supplierId/");
+//            ->throw();
     }
 
     private function getBatchResponse(Response|string $responseOrBatchId)
@@ -88,16 +88,20 @@ class TrendyolMerchant implements Merchant
                     "title" => $product->title,
                     "productMainId" => $product->sku,
                     "brandId" => $product->brand->merchants()
-                        ->where('merchant', '=', "trendyol")->first()->merchant_id,
+                        ->where('merchant', '=', "trendyol")->valueOrFail("merchant_id"),
                     "categoryId" => $product->categories[0]->merchants()
-                        ->where('merchant', '=', "trendyol")->first()->merchant_id,
+                        ->where('merchant', '=', "trendyol")->valueOrFail("merchant_id"),
                     "stockCode" => $product->sku,
                     "dimensionalWeight" => 0,
                     "description" => $product->description,
                     "vatRate" => 20,
                     "images" => $product->images->map(fn($image) => ["url" => $image->url]),
                     "cargoCompanyId" => 10,
-
+                    "listPrice" => $this->formatPrice($product->price->price_without_tax),
+                    "quantity" => $product->quantity,
+                    "salePrice" => $this->formatPrice($product->price->discounted_price_without_tax),
+                    "brand" => $product->brand->name, //?
+                    "currencyType" => 'TRY', // Bütün pazaryerlerine TL göndereceğiz
                 ]
             ]
         ]])->object();
@@ -307,8 +311,8 @@ class TrendyolMerchant implements Merchant
             "items" => [
                 [
                     "barcode" => $product->sku,
-                    "salePrice" => $this->formatPrice($product->price->price),
-                    "listPrice" => $this->formatPrice($product->price->discounted_price),
+                    "salePrice" => $this->formatPrice($product->price->price_without_tax),
+                    "listPrice" => $this->formatPrice($product->price->discounted_price_without_tax),
                 ]
             ]
         ])->object()->batchRequestId;

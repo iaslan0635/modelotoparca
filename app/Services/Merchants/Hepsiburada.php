@@ -43,13 +43,13 @@ class Hepsiburada implements Merchant
     {
         $this->client->post("https://listing-external.hepsiburada.com/Listings/merchantid/$this->merchantId/price-uploads", ["json" => [
             "merchantSku" => $product->sku,
-            "price" => $this->formatPrice($product->price->price)
+            "price" => $this->formatPrice($product->price->price_without_tax)
         ]]);
     }
 
     public function updateProduct(Product $product)
     {
-        $price = $this->formatPrice($product->price->price);
+        $price = $this->formatPrice($product->price->price_without_tax);
         $payload = [
             "merchantId" => $this->merchantId,
             "items" => [
@@ -106,7 +106,7 @@ class Hepsiburada implements Merchant
 
     public function createProduct(Product $product)
     {
-        $price = $this->formatPrice($product->price->price);
+        $price = $this->formatPrice($product->price->price_without_tax);
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
                 ->where('merchant', '=', "hepsiburada")->first()->merchant_id,

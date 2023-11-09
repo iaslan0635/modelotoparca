@@ -21,6 +21,11 @@ class Price extends BaseModel
         return Attribute::get(fn(string $value) => TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount));
     }
 
+    protected function priceWithoutTax(): Attribute
+    {
+        return Attribute::get(fn(string $value) => ExchangeRate::convertToTRY($this->currency, $value));
+    }
+
     public function tax(): HasOne
     {
         return $this->hasOne(Tax::class, 'id', 'tax_id');
@@ -48,5 +53,10 @@ class Price extends BaseModel
     protected function discountedPrice(): Attribute
     {
         return Attribute::get(fn() => $this->price - $this->real_discount_amount);
+    }
+
+    protected function discountedPriceWithoutTax(): Attribute
+    {
+        return Attribute::get(fn() => $this->price_without_tax - $this->real_discount_amount);
     }
 }

@@ -218,7 +218,7 @@ class N11 implements Merchant
                     'order' => $key,
                 ])->toArray()
         ];
-        $price = $this->formatPrice($product->price->price);
+        $price = $this->formatPrice($product->price->price_without_tax);
         $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
@@ -236,7 +236,7 @@ class N11 implements Merchant
                     "type" => self::DISCOUNT_TYPE[$product->price->discount_type],
                     "value" => $product->price->discount_amount,
                 ],
-                'currencyType' => self::CURRENCY[$product->price->currency],
+                'currencyType' => self::CURRENCY['try'], // Bütün pazaryerlerine TL göndereceğiz
                 'approvalStatus' => $product->status,
                 'attributes' => [
                     "attribute" => [
