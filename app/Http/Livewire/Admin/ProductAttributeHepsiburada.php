@@ -12,7 +12,7 @@ class ProductAttributeHepsiburada extends Component
     public array $attribute;
     public int $product_id;
     public string $value;
-    public int|string $value_id;
+    public $value_id;
     public array $values = [];
 
     public function render()
