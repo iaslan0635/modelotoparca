@@ -247,7 +247,7 @@ class N11 implements Merchant
                 ],
                 'productCondition' => 1, // Yeni (2. el değil)
                 'preparingDay' => 3,
-                'shipmentTemplate' => 'termos',
+                'shipmentTemplate' => 'Merkez Şube11',
                 'images' => $images,
                 'stockItems' => [
                     'stockItem' => [
@@ -272,8 +272,6 @@ class N11 implements Merchant
                 'expirationDate' => "",
             ]
         ]);
-
-//        $response['status'] !== ''
     }
 
     public function updateOrder(MerchantOrder $order)
