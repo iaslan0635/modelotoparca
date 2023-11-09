@@ -1,5 +1,10 @@
 @extends('admin.layout')
 @section('content')
+    <style>
+        .select2 {
+            min-height: 3rem;
+        }
+    </style>
     <div class="d-flex flex-column flex-column-fluid">
         <!--begin::Toolbar-->
         <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
@@ -191,7 +196,7 @@
                                                 @php
                                                     $connected_merchant_id = $brand->merchants()->trendyol()->value("merchant_id");
                                                 @endphp
-                                                <select class="form-select brand-select" style="min-height: 3rem;"
+                                                <select class="form-select brand-select"
                                                         data-brand-id="{{ $brand->id }}">
                                                         @if($connected_merchant_id)
                                                             @php $b = \App\Models\TrendyolBrand::find($connected_merchant_id) @endphp
