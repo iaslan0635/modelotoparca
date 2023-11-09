@@ -104,6 +104,7 @@ class TrendyolMerchant implements Merchant
                 ];
             }
         }
+        dd("efe");
         $response = $this->supplierClient()->send($method, "v2/products", ["json" => [
             "items" => [
                 [
