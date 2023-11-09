@@ -1,6 +1,5 @@
 while true; do
-    git fetch
-    if [ "$(git rev-parse @\{u\})" != "$(git rev-parse origin/main)" ]; then
+    if [ "$(git fetch)" != "" ]; then
         git pull
         composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
         yarn install --frozen-lockfile
