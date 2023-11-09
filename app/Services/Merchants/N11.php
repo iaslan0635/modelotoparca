@@ -211,7 +211,7 @@ class N11 implements Merchant
 
     public function updateProduct(Product $product)
     {
-        $images = [
+        $images = fn () => [
             'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
             'image' => [
                 'url' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
@@ -250,11 +250,11 @@ class N11 implements Merchant
                 'productCondition' => 1, // Yeni (2. el değil)
                 'preparingDay' => 3,
                 'shipmentTemplate' => 'Merkez Şube11',
-                'images' => $images,
+                'images' => $images(),
                 'stockItems' => [
                     'stockItem' => [
                         'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
-                        'images' => $images,
+                        'images' => $images(),
                         'oem' => '',
                         'quantity' => $product->quantity,
                         'sellerStockCode' => $product->sku,
