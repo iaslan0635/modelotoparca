@@ -27,7 +27,8 @@ class TrendyolMerchant implements Merchant
         return Http::withBasicAuth(
             config("merchants.trendyol.username"),
             config("merchants.trendyol.password")
-        )->baseUrl('https://api.trendyol.com/sapigw/');
+        )->baseUrl('https://api.trendyol.com/sapigw/')
+        ->throw();
     }
 
     private function supplierClient(): PendingRequest
@@ -35,7 +36,8 @@ class TrendyolMerchant implements Merchant
         return Http::withBasicAuth(
             config("merchants.trendyol.username"),
             config("merchants.trendyol.password")
-        )->baseUrl("https://api.trendyol.com/sapigw/suppliers/$this->supplierId/");
+        )->baseUrl("https://api.trendyol.com/sapigw/suppliers/$this->supplierId/")
+        ->throw();
     }
 
     private function getBatchResponse(Response|string $responseOrBatchId)
