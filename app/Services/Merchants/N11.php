@@ -253,6 +253,7 @@ class N11 implements Merchant
                 'images' => $images,
                 'stockItems' => [
                     'stockItem' => [
+                        'imageUrl' => "https://site.modelotoparca.com/storage/imported_images/12_12.JPG",
                         'images' => $images,
                         'oem' => '',
                         'quantity' => $product->quantity,
