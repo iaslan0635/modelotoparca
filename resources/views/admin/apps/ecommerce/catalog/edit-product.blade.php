@@ -40,12 +40,14 @@
                 <!--end::Page title-->
                 <!--begin::Actions-->
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
-                    <!--begin::Primary button-->
+                    <a href="{{ route('product.show', $product) }}"
+                       class="btn btn-sm fw-bold btn-secondary">
+                        Mağaza sayfası
+                    </a>
                     <a href="{{ route('admin.products.edit.rerunBot', $product) }}"
                        class="btn btn-sm fw-bold btn-primary">
                         Bot ile Yeniden Çek
                     </a>
-                    <!--end::Primary button-->
                     <livewire:admin.product.create-merchant :product="$product"/>
                 </div>
                 <!--end::Actions-->
