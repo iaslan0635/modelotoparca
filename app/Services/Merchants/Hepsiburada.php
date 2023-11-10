@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 
 class Hepsiburada implements Merchant
 {
@@ -112,7 +113,7 @@ class Hepsiburada implements Merchant
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'hepsiburada')
             ->where('product_id', '=', $product->id)
-            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id, $attr->merchant_value]);
+            ->get()->mapWithKeys(fn ($attr) => ["attribute-$attr->merchant_id", $attr->merchant_value]);
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
                 ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
@@ -153,6 +154,7 @@ class Hepsiburada implements Merchant
         ]);
 
         $response = json_decode($request->getBody()->getContents(), true);
+        Log::driver("important")->debug(var_export($response, true));
 
         Tracking::create([
             'merchant' => "hepsiburada",
