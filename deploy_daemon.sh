@@ -9,5 +9,5 @@ while true; do
         php artisan optimize
         php artisan migrate --force
     fi
-    sleep 3
+    sleep 30
 done
