@@ -23,11 +23,15 @@
             @elseif($type === "n11")
                 @if(is_array($attributes->category->attributeList->attribute))
                     @foreach($attributes->category->attributeList->attribute as $attribute)
-                        <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                        @if(($attribute?->name ?? $attribute['name']) !== "Marka")
+                            <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                        @endif
                     @endforeach
                 @else
                     @foreach($attributes->category->attributeList as $attribute)
-                        <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                        @if(($attribute?->name ?? $attribute['name']) !== "Marka")
+                            <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                        @endif
                     @endforeach
                 @endif
             @endif
