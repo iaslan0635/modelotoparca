@@ -154,7 +154,6 @@ class Hepsiburada implements Merchant
         ]);
 
         $response = json_decode($request->getBody()->getContents(), true);
-        Log::driver("important")->debug(var_export($response, true));
 
         Tracking::create([
             'merchant' => "hepsiburada",
