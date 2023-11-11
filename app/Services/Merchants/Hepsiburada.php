@@ -113,7 +113,7 @@ class Hepsiburada implements Merchant
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'hepsiburada')
             ->where('product_id', '=', $product->id)
-            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id, $attr->merchant_value]);
+            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id, $attr->merchant_value])->dd();
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
                 ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
