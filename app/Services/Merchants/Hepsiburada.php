@@ -137,7 +137,7 @@ class Hepsiburada implements Merchant
                 "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
                 "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
                 "Video1" => null,
-                "attributes" => $fields
+                ...$fields
             ]
         ];
 
