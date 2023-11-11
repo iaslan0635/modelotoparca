@@ -61,7 +61,7 @@ class Hepsiburada implements Merchant
                         ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
                     "merchantSku" => $product->sku,
                     "VaryantGroupID" => $product->sku,
-                    "Barcode" => "",
+                    "Barcode" => $product->sku,
                     "UrunAdi" => $product->title,
                     "UrunAciklamasi" => $product->description,
                     "Marka" => $product->brand->name,
@@ -122,7 +122,7 @@ class Hepsiburada implements Merchant
             "attributes" => [
                 "merchantSku" => $product->sku,
                 "VaryantGroupID" => $product->sku,
-                "Barcode" => \Str::random(13),
+                "Barcode" => $product->sku,
                 "UrunAdi" => $product->title,
                 "UrunAciklamasi" => $product->description,
                 "Marka" => $product->brand->name,
