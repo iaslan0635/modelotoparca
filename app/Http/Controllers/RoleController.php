@@ -13,9 +13,10 @@ class RoleController extends Controller
         return view("admin.apps.user-management.roles.list", compact('roles'));
     }
 
-    public function show()
+    public function show(Role $role)
     {
-        return view("admin.apps.user-management.roles.view");
+        $users = $role->users()->paginate(5);
+        return view("admin.apps.user-management.roles.view", compact("role", "users"));
     }
 
     public function create()
