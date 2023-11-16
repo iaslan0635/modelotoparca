@@ -61,7 +61,7 @@ class Hepsiburada implements Merchant
                         ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
                     "merchantSku" => $product->sku,
                     "VaryantGroupID" => $product->sku,
-                    "Barcode" => "",
+                    "Barcode" => $product->sku,
                     "UrunAdi" => $product->title,
                     "UrunAciklamasi" => $product->description,
                     "Marka" => $product->brand->name,
@@ -113,7 +113,8 @@ class Hepsiburada implements Merchant
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'hepsiburada')
             ->where('product_id', '=', $product->id)
-            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id, $attr->merchant_value]);
+            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id => $attr->merchant_value]);
+
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
                 ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
@@ -121,7 +122,7 @@ class Hepsiburada implements Merchant
             "attributes" => [
                 "merchantSku" => $product->sku,
                 "VaryantGroupID" => $product->sku,
-                "Barcode" => \Str::random(13),
+                "Barcode" => $product->sku,
                 "UrunAdi" => $product->title,
                 "UrunAciklamasi" => $product->description,
                 "Marka" => $product->brand->name,
@@ -136,7 +137,7 @@ class Hepsiburada implements Merchant
                 "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
                 "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
                 "Video1" => null,
-                "attributes" => $fields
+                ...$fields
             ]
         ];
 
