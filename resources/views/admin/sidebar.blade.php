@@ -21,7 +21,9 @@
                 <a class="menu-link" href="{{ route("admin.products.index") }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
-                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
                         <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title">Ürünler</span>
@@ -35,7 +37,9 @@
                 <a class="menu-link" href="{{ route("admin.categories.index") }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
-                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
                         <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title">Kategoriler</span>
@@ -60,11 +64,11 @@
                         <!--begin::Svg Icon-->
                         <span class="svg-icon svg-icon-2">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z"
-                                  fill="currentColor"/>
-                            <path opacity="0.3"
-                                  d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z"
-                                  fill="currentColor"/>
+                                <path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z"
+                                      fill="currentColor"/>
+                                <path opacity="0.3"
+                                      d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z"
+                                      fill="currentColor"/>
                             </svg>
                         </span>
                         <!--end::Svg Icon-->
@@ -83,9 +87,10 @@
                         <span class="svg-icon svg-icon-2">
                             <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.3"
-                                    d="M21 13V13.5C21 16 19 18 16.5 18H5.6V16H16.5C17.9 16 19 14.9 19 13.5V13C19 12.4 19.4 12 20 12C20.6 12 21 12.4 21 13ZM18.4 6H7.5C5 6 3 8 3 10.5V11C3 11.6 3.4 12 4 12C4.6 12 5 11.6 5 11V10.5C5 9.1 6.1 8 7.5 8H18.4V6Z"
-                                    fill="currentColor"/>
-                                <path d="M21.7 6.29999C22.1 6.69999 22.1 7.30001 21.7 7.70001L18.4 11V3L21.7 6.29999ZM2.3 16.3C1.9 16.7 1.9 17.3 2.3 17.7L5.6 21V13L2.3 16.3Z" fill="currentColor"/>
+                                      d="M21 13V13.5C21 16 19 18 16.5 18H5.6V16H16.5C17.9 16 19 14.9 19 13.5V13C19 12.4 19.4 12 20 12C20.6 12 21 12.4 21 13ZM18.4 6H7.5C5 6 3 8 3 10.5V11C3 11.6 3.4 12 4 12C4.6 12 5 11.6 5 11V10.5C5 9.1 6.1 8 7.5 8H18.4V6Z"
+                                      fill="currentColor"/>
+                                <path d="M21.7 6.29999C22.1 6.69999 22.1 7.30001 21.7 7.70001L18.4 11V3L21.7 6.29999ZM2.3 16.3C1.9 16.7 1.9 17.3 2.3 17.7L5.6 21V13L2.3 16.3Z"
+                                      fill="currentColor"/>
                             </svg>
 
                         </span>
@@ -102,7 +107,9 @@
                 <a class="menu-link" href="{{ route("admin.cars.index") }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
-                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
                         <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title">Araçlar</span>
@@ -125,7 +132,9 @@
                 <a class="menu-link" href="{{ route("admin.import.index") }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
-                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
                         <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title">İçe aktar</span>
@@ -147,24 +156,24 @@
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                 <!--begin:Menu link-->
                 <span class="menu-link">
-											<span class="menu-icon">
-                                                <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
-												<span class="svg-icon svg-icon-2">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
-                                                              fill="currentColor"/>
-														<path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
-                                                              fill="currentColor"/>
-														<path opacity="0.3"
-                                                              d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
-                                                              fill="currentColor"/>
-													</svg>
-												</span>
-                                                <!--end::Svg Icon-->
-											</span>
-											<span class="menu-title">Ürünler</span>
-											<span class="menu-arrow"></span>
-				</span>
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
+                        <span class="svg-icon svg-icon-2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
+                                      fill="currentColor"/>
+                                <path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
+                                      fill="currentColor"/>
+                                <path opacity="0.3"
+                                      d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
+                                      fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Ürünler</span>
+                    <span class="menu-arrow"></span>
+                </span>
                 <!--end:Menu link-->
                 <!--begin:Menu sub-->
                 <div class="menu-sub menu-sub-accordion">
@@ -172,9 +181,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Tüm Ürünler</span>
                         </a>
                         <!--end:Menu link-->
@@ -184,9 +193,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Satıştaki Ürünler</span>
                         </a>
                         <!--end:Menu link-->
@@ -196,9 +205,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Hatalı Ürünler</span>
                         </a>
                         <!--end:Menu link-->
@@ -209,24 +218,25 @@
 
             </div>
             <!--end:Menu item-->
+
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                 <!--begin:Menu link-->
                 <span class="menu-link">
-											<span class="menu-icon">
-                                  <span class="svg-icon svg-icon-2">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path opacity="0.3"
-                                                              d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z"
-                                                              fill="currentColor"></path>
-														<rect x="6" y="12" width="7" height="2" rx="1" fill="currentColor"></rect>
-														<rect x="6" y="7" width="12" height="2" rx="1" fill="currentColor"></rect>
-													</svg>
-												</span>
-											</span>
-											<span class="menu-title">Siparişler</span>
-											<span class="menu-arrow"></span>
-				</span>
+                    <span class="menu-icon">
+                        <span class="svg-icon svg-icon-2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.3"
+                                      d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z"
+                                      fill="currentColor"></path>
+                                <rect x="6" y="12" width="7" height="2" rx="1" fill="currentColor"></rect>
+                                <rect x="6" y="7" width="12" height="2" rx="1" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                    </span>
+                    <span class="menu-title">Siparişler</span>
+                    <span class="menu-arrow"></span>
+                </span>
                 <!--end:Menu link-->
                 <!--begin:Menu sub-->
                 <div class="menu-sub menu-sub-accordion">
@@ -234,9 +244,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Tüm Siparişler</span>
                         </a>
                         <!--end:Menu link-->
@@ -246,9 +256,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Yeni Siparişler</span>
                         </a>
                         <!--end:Menu link-->
@@ -259,9 +269,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Tamamlanan Siparişler</span>
                         </a>
                         <!--end:Menu link-->
@@ -273,13 +283,72 @@
             </div>
             <!--end:Menu item-->
 
+
+            <!--begin:Menu item-->
+            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <!--begin:Menu link-->
+                <span class="menu-link">
+                    <span class="menu-icon">
+                        <span class="svg-icon svg-icon-2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.3"
+                                      d="M20.5543 4.37824L12.1798 2.02473C12.0626 1.99176 11.9376 1.99176 11.8203 2.02473L3.44572 4.37824C3.18118 4.45258 3 4.6807 3 4.93945V13.569C3 14.6914 3.48509 15.8404 4.4417 16.984C5.17231 17.8575 6.18314 18.7345 7.446 19.5909C9.56752 21.0295 11.6566 21.912 11.7445 21.9488C11.8258 21.9829 11.9129 22 12.0001 22C12.0872 22 12.1744 21.983 12.2557 21.9488C12.3435 21.912 14.4326 21.0295 16.5541 19.5909C17.8169 18.7345 18.8277 17.8575 19.5584 16.984C20.515 15.8404 21 14.6914 21 13.569V4.93945C21 4.6807 20.8189 4.45258 20.5543 4.37824Z"
+                                      fill="currentColor"/>
+                                <path
+                                    d="M14.854 11.321C14.7568 11.2282 14.6388 11.1818 14.4998 11.1818H14.3333V10.2272C14.3333 9.61741 14.1041 9.09378 13.6458 8.65628C13.1875 8.21876 12.639 8 12 8C11.361 8 10.8124 8.21876 10.3541 8.65626C9.89574 9.09378 9.66663 9.61739 9.66663 10.2272V11.1818H9.49999C9.36115 11.1818 9.24306 11.2282 9.14583 11.321C9.0486 11.4138 9 11.5265 9 11.6591V14.5227C9 14.6553 9.04862 14.768 9.14583 14.8609C9.24306 14.9536 9.36115 15 9.49999 15H14.5C14.6389 15 14.7569 14.9536 14.8542 14.8609C14.9513 14.768 15 14.6553 15 14.5227V11.6591C15.0001 11.5265 14.9513 11.4138 14.854 11.321ZM13.3333 11.1818H10.6666V10.2272C10.6666 9.87594 10.7969 9.57597 11.0573 9.32743C11.3177 9.07886 11.6319 8.9546 12 8.9546C12.3681 8.9546 12.6823 9.07884 12.9427 9.32743C13.2031 9.57595 13.3333 9.87594 13.3333 10.2272V11.1818Z"
+                                    fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </span>
+                    <span class="menu-title">Erişim Kontrolü</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <!--end:Menu link-->
+                <!--begin:Menu sub-->
+                <div class="menu-sub menu-sub-accordion">
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="{{ route('admin.role.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Roller</span>
+                        </a>
+                        <!--end:Menu link-->
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="{{ route('admin.role.create') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Rol oluştur</span>
+                        </a>
+                        <!--end:Menu link-->
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="{{ route('admin.permisssion.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">İzinler</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                </div>
+                <!--end:Menu sub-->
+            </div>
+            <!--end:Menu item-->
+
+
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
                 <a class="menu-link" href="{{ route("admin.category-sync") }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
-                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
                         <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title">Kategori Eşitleme</span>
@@ -293,7 +362,9 @@
                 <a class="menu-link" href="{{ route("admin.brand-sync") }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
-                        <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
                         <!--end::Svg Icon-->
                     </span>
                     <span class="menu-title">Marka Eşitleme</span>
@@ -301,7 +372,6 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-
 
 
             <!--begin:Menu item-->
@@ -317,24 +387,24 @@
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                 <!--begin:Menu link-->
                 <span class="menu-link">
-											<span class="menu-icon">
-                                                <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
-												<span class="svg-icon svg-icon-2">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
-                                                              fill="currentColor"/>
-														<path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
-                                                              fill="currentColor"/>
-														<path opacity="0.3"
-                                                              d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
-                                                              fill="currentColor"/>
-													</svg>
-												</span>
-                                                <!--end::Svg Icon-->
-											</span>
-											<span class="menu-title">Siparişler</span>
-											<span class="menu-arrow"></span>
-				</span>
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
+                        <span class="svg-icon svg-icon-2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z"
+                                      fill="currentColor"/>
+                                <path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z"
+                                      fill="currentColor"/>
+                                <path opacity="0.3"
+                                      d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z"
+                                      fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Siparişler</span>
+                    <span class="menu-arrow"></span>
+                </span>
                 <!--end:Menu link-->
                 <!--begin:Menu sub-->
                 <div class="menu-sub menu-sub-accordion">
@@ -342,9 +412,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="admin/sales-list">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Tüm Siparişler</span>
                         </a>
                         <!--end:Menu link-->
@@ -354,9 +424,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="admin/sales-list?type=incargo">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Kargoda ki Siparişler</span>
                         </a>
                         <!--end:Menu link-->
@@ -366,9 +436,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="admin/sales-list?type=cancelled">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">İptal Edilenler</span>
                         </a>
                         <!--end:Menu link-->
@@ -378,9 +448,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="{{ route('admin.order.marketplace') }}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Pazaryerleri</span>
                         </a>
                         <!--end:Menu link-->
@@ -390,9 +460,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="admin/sales-list?type=completed">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Tamamlanan Siparişler</span>
                         </a>
                         <!--end:Menu link-->
@@ -407,20 +477,20 @@
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                 <!--begin:Menu link-->
                 <span class="menu-link">
-											<span class="menu-icon">
-                                  <span class="svg-icon svg-icon-2">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path opacity="0.3"
-                                                              d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z"
-                                                              fill="currentColor"></path>
-														<rect x="6" y="12" width="7" height="2" rx="1" fill="currentColor"></rect>
-														<rect x="6" y="7" width="12" height="2" rx="1" fill="currentColor"></rect>
-													</svg>
-												</span>
-											</span>
-											<span class="menu-title">İadeler</span>
-											<span class="menu-arrow"></span>
-				</span>
+                    <span class="menu-icon">
+                        <span class="svg-icon svg-icon-2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.3"
+                                      d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z"
+                                      fill="currentColor"></path>
+                                <rect x="6" y="12" width="7" height="2" rx="1" fill="currentColor"></rect>
+                                <rect x="6" y="7" width="12" height="2" rx="1" fill="currentColor"></rect>
+                            </svg>
+                        </span>
+                    </span>
+                    <span class="menu-title">İadeler</span>
+                    <span class="menu-arrow"></span>
+                </span>
                 <!--end:Menu link-->
                 <!--begin:Menu sub-->
                 <div class="menu-sub menu-sub-accordion">
@@ -428,9 +498,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="admin/sales-list">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">İade Talepleri</span>
                         </a>
                         <!--end:Menu link-->
@@ -440,9 +510,9 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="admin/sales-list">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
                             <span class="menu-title">Tamamlanan İadeler</span>
                         </a>
                         <!--end:Menu link-->
