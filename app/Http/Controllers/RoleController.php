@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -37,5 +38,11 @@ class RoleController extends Controller
         $role->syncPermissions($permissionIds);
 
         return redirect()->route("admin.role.index");
+    }
+
+    public function unassign(Role $role, User $user)
+    {
+        $user->removeRole($role);
+        return back();
     }
 }
