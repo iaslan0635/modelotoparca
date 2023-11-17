@@ -30,6 +30,7 @@ Route::prefix('products/{product}/edit')->name('products.edit.')->controller(Pro
     Route::get('rerunBot', 'rerunBot')->name('rerunBot');
 });
 
+Route::get('products/from-merchant', [ProductController::class, "merchantIndex"])->name("products.merchant-index");
 Route::resource('products', ProductController::class)->only(['index', 'show']);
 
 Route::prefix('categories/{category}/edit')->name('categories.edit.')->controller(CategoryController::class)->group(function () {

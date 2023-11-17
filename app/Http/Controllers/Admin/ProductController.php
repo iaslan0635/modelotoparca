@@ -21,9 +21,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, ?bool $onlyMerchant = false)
     {
-        if ($search = $request->input('search')) {
+        if ($onlyMerchant) {
+            $products = Product::whereHas("merchants")->paginate();
+        } else if ($search = $request->input('search')) {
             /** @var Paginator $hits */
             ['products' => $hits] = Search::query($search);
             $products = $hits->onlyModels();
@@ -31,9 +33,12 @@ class ProductController extends Controller
             $products = Product::paginate();
         }
 
-//        return $products[0]->merchants;
-
         return view('admin.apps.ecommerce.catalog.products', compact('products'));
+    }
+
+    public function merchantIndex(Request $request)
+    {
+        return $this->index($request, true);
     }
 
     public function show(Product $product)
