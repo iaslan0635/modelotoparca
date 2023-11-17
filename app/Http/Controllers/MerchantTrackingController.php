@@ -10,6 +10,6 @@ class MerchantTrackingController extends Controller
     {
         $fails = Tracking::with("product")->paginate(10);
         $merchants = ["trendyol", "hepsiburada"];
-        return view("admin.inhouse.merchant.trackings", compact("merchants", "fails"));
+        return view("admin.inhouse.merchant.failed-trackings", compact("merchants", "fails"));
     }
 }

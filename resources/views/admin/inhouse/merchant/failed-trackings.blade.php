@@ -1,6 +1,6 @@
 @extends("admin.inhouse.layouts.table")
 
-@section("title", "Mağzalara giden ürünler")
+@section("title", "Mağzalara gidemeyen ürünler")
 
 @section("head")
     <th class="min-w-125px">Ürün</th>
