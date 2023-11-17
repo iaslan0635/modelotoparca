@@ -28,7 +28,7 @@
                 </div>
             </td>
             <td>
-                {{ dd(", ", $failedMerchants) }}
+                {{ implode(", ", $failedMerchants ?? []) }}
             </td>
         </tr>
     @endforeach
