@@ -3,9 +3,11 @@
 namespace App\Services;
 
 use App\Models\MerchantOrder;
+use App\Models\Tracking;
 use App\Services\Merchants\Hepsiburada;
 use App\Services\Merchants\Merchant;
 use App\Services\Merchants\N11;
+use App\Services\Merchants\TrackableMerchant;
 use App\Services\Merchants\TrendyolMerchant;
 
 class MarketPlace
@@ -22,13 +24,13 @@ class MarketPlace
         return self::createMerchant($order->merchant)->parseOrder($order);
     }
 
-    /** @return array<int, Merchant> */
+    /** @return array<string, Merchant> */
     public static function merchants()
     {
         return [
-            new N11(),
-//            new Hepsiburada(),
-            new TrendyolMerchant()
+            "n11" => new N11(),
+            "hepsiburada" => new Hepsiburada(),
+            "trendyol" => new TrendyolMerchant()
         ];
     }
 
@@ -40,5 +42,31 @@ class MarketPlace
             "trendyol" => new TrendyolMerchant(),
             default => throw new \InvalidArgumentException("$merchantAlias geçerli bir pazar yeri değil (n11, hepsiburada, trendyol)"),
         };
+    }
+
+    public static function getFailedProducts($perPage = null)
+    {
+        $failedProducts = collect();
+
+        $latestTrackings = Tracking::groupBy("product_id", "tracking_id")->with("product")->latest()->paginate($perPage);
+        foreach ($latestTrackings as $tracking) {
+
+            $failedMerchants = [];
+            foreach (self::merchants() as $mAlias => $merchant) {
+                if (!$merchant instanceof TrackableMerchant) continue;
+                $result = $merchant->getTrackingResult($tracking->tracking_id);
+
+                $result->fill($tracking);
+                $tracking->save();
+
+                if (!$result->success)
+                    $failedMerchants[] = $mAlias;
+            }
+
+            $product = $tracking->product;
+            $failedProducts[] = compact("product", "failedMerchants");
+        }
+
+        return $latestTrackings->setCollection($failedProducts);
     }
 }

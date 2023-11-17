@@ -5,6 +5,7 @@ namespace App\Services\Merchants;
 use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
 use App\Models\Product;
+use App\Models\Tracking;
 
 interface Merchant
 {
@@ -47,5 +48,6 @@ interface Merchant
     public function deleteProduct(Product $product);
 
     public function syncOrders();
+
     public function parseOrder(MerchantOrder $order);
 }

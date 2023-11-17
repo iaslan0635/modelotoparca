@@ -8,9 +8,8 @@ use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Log;
 
-class Hepsiburada implements Merchant
+class Hepsiburada implements Merchant, TrackableMerchant
 {
     public const name = 'Hepsiburada';
 
@@ -113,7 +112,7 @@ class Hepsiburada implements Merchant
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'hepsiburada')
             ->where('product_id', '=', $product->id)
-            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id => $attr->merchant_value]);
+            ->get()->mapWithKeys(fn($attr) => [$attr->merchant_id => $attr->merchant_value]);
 
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
@@ -273,5 +272,25 @@ class Hepsiburada implements Merchant
     public function parseOrder(MerchantOrder $order)
     {
         return [];
+    }
+
+    public function getTrackingResult(string $trackingId): TrackingResult
+    {
+        $request = $this->client->get("https://mpop.hepsiburada.com/product/api/products/status/$trackingId", [
+            "query" => [
+                "version" => 2,
+                "page" => "0",
+                "size" => 1000
+            ]
+        ]);
+
+        $response = json_decode($request->getBody()->getContents(), true);
+
+        return new TrackingResult(
+            merchant: "hepsiburada",
+            trackingId: $trackingId,
+            success: $response["success"],
+            result: $response["data"]
+        );
     }
 }
