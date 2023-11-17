@@ -77,6 +77,7 @@ Route::get('action', function () {
 
 Route::resource('permisssion', PermissionController::class);
 Route::resource('role', RoleController::class);
+Route::get("role/unassign/{role}/{user}", [RoleController::class, "unassign"])->name("role.unassign");
 Route::get('merchant/failed', [MerchantTrackingController::class, "failed"]);
 
 if (app()->hasDebugModeEnabled()) {

@@ -85,7 +85,7 @@
                                     <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                         <th class="min-w-50px">ID</th>
                                         <th class="min-w-150px">Kullanıcı</th>
-                                        <th class="text-end min-w-100px">İşlemler</th>
+                                        <th class="text-end">İşlemler</th>
                                     </tr>
                                     <!--end::Table row-->
                                     </thead>
@@ -94,13 +94,6 @@
                                     <tbody class="fw-semibold text-gray-600">
                                     @foreach($users as $user)
                                         <tr>
-                                            <!--begin::Checkbox-->
-                                            <td>
-                                                <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                    <input class="form-check-input" type="checkbox" value="1"/>
-                                                </div>
-                                            </td>
-                                            <!--end::Checkbox-->
                                             <!--begin::ID-->
                                             <td>{{ $user->id }}</td>
                                             <!--begin::ID-->
@@ -108,14 +101,14 @@
                                             <td class="d-flex align-items-center">
                                                 <!--begin:: Avatar -->
                                                 <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                    <a href="admin/apps/user-management/users/view">
+                                                    <a>
                                                         <div class="symbol-label fs-3 bg-light-danger text-danger">{{ $user->first_name[0] }}</div>
                                                     </a>
                                                 </div>
                                                 <!--end::Avatar-->
                                                 <!--begin::User details-->
                                                 <div class="d-flex flex-column">
-                                                    <a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary mb-1">{{ $user->full_name }}</a>
+                                                    <a class="text-gray-800 text-hover-primary mb-1">{{ $user->full_name }}</a>
                                                     <span>{{ $user->email }}</span>
                                                 </div>
                                                 <!--begin::User details-->
@@ -123,7 +116,7 @@
                                             <!--end::user=-->
                                             <!--begin::Action=-->
                                             <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                <a class="btn btn-sm btn-light btn-active-light-primary cursor-pointer" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                                     İşlemler
                                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                                     <span class="svg-icon svg-icon-5 m-0">
@@ -140,7 +133,7 @@
                                                     data-kt-menu="true">
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a href="" class="menu-link px-3" data-kt-roles-table-filter="delete_row">Sil</a>
+                                                        <a href="{{ route('admin.role.unassign', [$role, $user]) }}" class="menu-link px-3">Kaldır</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                 </div>
