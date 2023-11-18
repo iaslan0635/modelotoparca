@@ -50,7 +50,7 @@
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
-                <a class="menu-link" href="{{ route("products.non-merchant") }}">
+                <a class="menu-link" href="{{ route("admin.products.non-merchant") }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
                         <span class="menu-bullet">
