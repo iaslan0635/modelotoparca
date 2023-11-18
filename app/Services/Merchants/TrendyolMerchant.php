@@ -3,16 +3,16 @@
 namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
+use App\Models\MerchantOrder;
+use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use App\Models\TrendyolBrand;
-use App\Models\MerchantOrder;
-use App\Models\Product;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
-class TrendyolMerchant implements Merchant
+class TrendyolMerchant implements Merchant, TrackableMerchant
 {
     public const name = 'Trendyol';
 
@@ -43,7 +43,7 @@ class TrendyolMerchant implements Merchant
 //            ->throw();
     }
 
-    private function getBatchResponse(Response|string $responseOrBatchId)
+    /*private*/ function getBatchResponse(Response|string $responseOrBatchId)
     {
         $batchId = is_string($responseOrBatchId) ? $responseOrBatchId : $responseOrBatchId->object()->batchRequestId;
 
@@ -402,5 +402,17 @@ class TrendyolMerchant implements Merchant
     public function parseOrder(MerchantOrder $order)
     {
         return [];
+    }
+
+    public function getTrackingResult(string $trackingId): TrackingResult
+    {
+        $response = $this->getBatchResponse($trackingId);
+
+        return new TrackingResult(
+            merchant: "trendyol",
+            trackingId: $trackingId,
+            success: $response->status === "COMPLETED",
+            result: $response->items
+        );
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -13,9 +14,10 @@ class RoleController extends Controller
         return view("admin.apps.user-management.roles.list", compact('roles'));
     }
 
-    public function show()
+    public function show(Role $role)
     {
-        return view("admin.apps.user-management.roles.view");
+        $users = $role->users()->paginate(5);
+        return view("admin.apps.user-management.roles.view", compact("role", "users"));
     }
 
     public function create()
@@ -36,5 +38,11 @@ class RoleController extends Controller
         $role->syncPermissions($permissionIds);
 
         return redirect()->route("admin.role.index");
+    }
+
+    public function unassign(Role $role, User $user)
+    {
+        $user->removeRole($role);
+        return back();
     }
 }

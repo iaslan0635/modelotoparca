@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Services\Merchants\N11;
@@ -29,6 +30,7 @@ Route::prefix('products/{product}/edit')->name('products.edit.')->controller(Pro
     Route::get('rerunBot', 'rerunBot')->name('rerunBot');
 });
 
+Route::get('products/from-merchant', [ProductController::class, "merchantIndex"])->name("products.merchant-index");
 Route::resource('products', ProductController::class)->only(['index', 'show']);
 
 Route::prefix('categories/{category}/edit')->name('categories.edit.')->controller(CategoryController::class)->group(function () {
@@ -76,6 +78,8 @@ Route::get('action', function () {
 
 Route::resource('permisssion', PermissionController::class);
 Route::resource('role', RoleController::class);
+Route::get("role/unassign/{role}/{user}", [RoleController::class, "unassign"])->name("role.unassign");
+Route::get('merchant/failed', [MerchantTrackingController::class, "failed"]);
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {
