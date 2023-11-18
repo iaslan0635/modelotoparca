@@ -47,7 +47,7 @@ class ProductController extends Controller
 
     public function nonMerchantIndex(Request $request)
     {
-        return $this->index($request, true);
+        return $this->index($request, false);
     }
 
     public function show(Product $product)
