@@ -27,8 +27,8 @@ class ProductController extends Controller
         if ($onlyMerchant !== null) {
             $products = Product::when($onlyMerchant,
                 fn (Builder $q) => $q->has("merchants"),
-                fn (Builder $q) => $q->has("merchants", "=", 0),
-            )->paginate();
+                fn (Builder $q) => $q->has("merchants", "=", 0)->where("ecommerce", true),
+            )->paginate();1
         } else if ($search = $request->input('search')) {
             /** @var Paginator $hits */
             ['products' => $hits] = Search::query($search);
