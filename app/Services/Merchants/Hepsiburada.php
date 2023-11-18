@@ -157,7 +157,8 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
         Tracking::create([
             'merchant' => "hepsiburada",
-            'tracking_id' => $response["data"]["trackingId"]
+            'tracking_id' => $response["data"]["trackingId"],
+            'product_id' => $product->id,
         ]);
         return $response["data"]["trackingId"];
     }

@@ -23,7 +23,7 @@ class Price extends BaseModel
 
     protected function priceWithoutTax(): Attribute
     {
-        return Attribute::get(fn() => ExchangeRate::convertToTRY($this->currency, $this->price));
+        return Attribute::get(fn() => ExchangeRate::convertToTRY($this->currency, $this->getRawOriginal('price')));
     }
 
     public function tax(): HasOne
