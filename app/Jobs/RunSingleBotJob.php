@@ -20,7 +20,6 @@ class RunSingleBotJob implements ShouldQueue
 
     public function handle(): void
     {
-        ExcelImport::clearSparetoAssociations($this->product);
         ExcelImport::runBot($this->product);
     }
 }
