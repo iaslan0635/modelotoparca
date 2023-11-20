@@ -71,7 +71,18 @@ HTML;
         foreach ($links as $link) {
             $connection = SparetoProduct::updateOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
             if ($connection->is_banned) continue;
+            $ourProduct = Product::find($product_id);
             $product = self::getProduct($link);
+
+            $hasCommonOemCodes = collect(explode("," ,$ourProduct->oem_codes))
+                ->map(fn (string $oem) => trim($oem))
+                ->some(fn (string $oem) => array_search($oem, $product["oem"]));
+
+            $textualFieldsMatches = collect([$ourProduct->producercode, $ourProduct->producercode2, $ourProduct->abk])
+                ->some(fn (string $str) => str_contains($product["name"], $str));
+
+
+            if (!$hasCommonOemCodes && !$textualFieldsMatches) continue;
 
             Product::query()->where('id', $product_id)->update([
                 'dimensions' => $product['dimension'],
@@ -225,12 +236,15 @@ HTML;
             $vehicles[] = $car;
         });
 
+        $name = $crawler->filter('span[itemprop="name"]')->innerText();
+
         return [
             'dimension' => $dimension,
             'specification' => $specification,
             'oem' => $oem,
             'cross' => $cross,
             'vehicles' => $vehicles,
+            'name' => $name,
         ];
     }
 }
