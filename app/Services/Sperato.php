@@ -76,8 +76,6 @@ HTML;
                 ->filter()->map(fn (string $oem) => trim($oem))
                 ->some(fn (string $oem) => array_search($oem, $product["oem"]["oem"]));
 
-            dd($hasCommonOemCodes, $product["oem"], explode("," ,$ourProduct->oem_codes));
-
             $textualFieldsMatches = collect([$ourProduct->producercode, $ourProduct->producercode2, $ourProduct->abk])
                 ->filter()->some(fn (string $str) => str_contains($product["name"], $str));
 
