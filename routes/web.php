@@ -9,12 +9,14 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Livewire\CategoryPage;
+use App\Jobs\Import\ExcelImport;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('deneme', function (){
-    return \App\Services\Sperato::getProduct("/products/thermotec-intake-hose-air-filter/dcc019tt");
+    $product = \App\Models\TigerProduct::find(51267);
+    ExcelImport::runBot($product);
 });
 
 Route::get('/', function () {
