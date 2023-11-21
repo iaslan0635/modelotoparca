@@ -74,7 +74,7 @@ HTML;
 
             $hasCommonOemCodes = collect(explode("," ,$ourProduct->oem_codes))
                 ->filter()->map(fn (string $oem) => trim($oem))
-                ->some(fn (string $oem) => array_search($oem, $product["oem"]));
+                ->some(fn (string $oem) => array_search($oem, $product["oem"]["oem"]));
 
             dd($hasCommonOemCodes, $product["oem"], explode("," ,$ourProduct->oem_codes));
 
