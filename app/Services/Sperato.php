@@ -72,9 +72,11 @@ HTML;
             $ourProduct = Product::find($product_id);
             $product = self::getProduct($link);
 
+            $oemArray = collect($product["oem"])->map->oem;
+
             $hasCommonOemCodes = collect(explode("," ,$ourProduct->oem_codes))
                 ->filter()->map(fn (string $oem) => trim($oem))
-                ->some(fn (string $oem) => array_search($oem, $product["oem"]["oem"]));
+                ->some(fn (string $oem) => $oemArray->search($oem));
 
             $textualFieldsMatches = collect([$ourProduct->producercode, $ourProduct->producercode2, $ourProduct->abk])
                 ->filter()->some(fn (string $str) => str_contains($product["name"], $str));
