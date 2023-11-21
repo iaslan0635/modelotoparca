@@ -69,8 +69,6 @@ HTML;
 
         $added = false;
         foreach ($links as $link) {
-            $connection = SparetoProduct::updateOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
-            if ($connection->is_banned) continue;
             $ourProduct = Product::find($product_id);
             $product = self::getProduct($link);
 
@@ -83,6 +81,8 @@ HTML;
 
 
             if (!$hasCommonOemCodes && !$textualFieldsMatches) continue;
+            $connection = SparetoProduct::updateOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
+            if ($connection->is_banned) continue;
 
             Product::query()->where('id', $product_id)->update([
                 'dimensions' => $product['dimension'],
