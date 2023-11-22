@@ -22,7 +22,11 @@ class ProductCreatedListener
     {
         if ($event->product->ecommerce) {
             foreach (MarketPlace::merchants() as $merchant) {
-                $merchant->createProduct($event->product);
+                try {
+                    $merchant->createProduct($event->product);
+                } catch (\Throwable $t) {
+                    report($t);
+                }
             }
         }
     }

@@ -20,7 +20,11 @@ class SyncOrdersJob implements ShouldQueue
     public function handle(): void
     {
         foreach (MarketPlace::merchants() as $merchant) {
-            $merchant->syncOrders();
+            try {
+                $merchant->syncOrders();
+            } catch (\Throwable $t) {
+                report($t);
+            }
         }
     }
 }

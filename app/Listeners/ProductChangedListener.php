@@ -22,7 +22,11 @@ class ProductChangedListener
     {
         if ($event->product->ecommerce) {
             foreach (MarketPlace::merchants() as $merchant) {
-                $merchant->updateProduct($event->product);
+                try {
+                    $merchant->updateProduct($event->product);
+                } catch (\Throwable $t) {
+                    report($t);
+                }
             }
         }
     }
