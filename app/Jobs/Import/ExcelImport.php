@@ -102,7 +102,6 @@ class ExcelImport implements ShouldQueue
             $product->save();
 
             if ($isChaged) {
-                self::clearSparetoAssociations($product);
                 self::runBot($product);
             }
         } else {
@@ -218,6 +217,8 @@ class ExcelImport implements ShouldQueue
 
     public static function runBot(TigerProduct $product): void
     {
+        self::clearSparetoAssociations($product);
+
         $search_predence = [
             'abk',
             'producercode',

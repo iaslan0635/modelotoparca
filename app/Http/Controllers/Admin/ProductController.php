@@ -12,6 +12,7 @@ use App\Models\TigerProduct;
 use App\Packages\Search;
 use Elastic\ScoutDriverPlus\Paginator;
 use Elastic\ScoutDriverPlus\Support\Query;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -21,10 +22,13 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, ?bool $onlyMerchant = false)
+    public function index(Request $request, ?bool $onlyMerchant = null)
     {
-        if ($onlyMerchant) {
-            $products = Product::whereHas("merchants")->paginate();
+        if ($onlyMerchant !== null) {
+            $products = Product::when($onlyMerchant,
+                fn (Builder $q) => $q->has("merchants"),
+                fn (Builder $q) => $q->where("ecommerce", true)->has("merchants", "=", 0),
+            )->paginate();
         } else if ($search = $request->input('search')) {
             /** @var Paginator $hits */
             ['products' => $hits] = Search::query($search);
@@ -39,6 +43,11 @@ class ProductController extends Controller
     public function merchantIndex(Request $request)
     {
         return $this->index($request, true);
+    }
+
+    public function nonMerchantIndex(Request $request)
+    {
+        return $this->index($request, false);
     }
 
     public function show(Product $product)

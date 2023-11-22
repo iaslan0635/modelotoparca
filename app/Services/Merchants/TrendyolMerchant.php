@@ -139,7 +139,8 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
 
         Tracking::create([
             'merchant' => "trendyol",
-            'tracking_id' => $response->batchRequestId
+            'tracking_id' => $response->batchRequestId,
+            'product_id' => $product->id,
         ]);
 
         return $response->batchRequestId;

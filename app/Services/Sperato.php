@@ -69,9 +69,22 @@ HTML;
 
         $added = false;
         foreach ($links as $link) {
+            $ourProduct = Product::find($product_id);
+            $product = self::getProduct($link);
+
+            $oemArray = collect($product["oem"])->map->oem;
+
+            $hasCommonOemCodes = collect(explode("," ,$ourProduct->oem_codes))
+                ->filter()->map(fn (string $oem) => trim($oem))
+                ->some(fn (string $oem) => $oemArray->search($oem));
+
+            $textualFieldsMatches = collect([$ourProduct->producercode, $ourProduct->producercode2, $ourProduct->abk])
+                ->filter()->some(fn (string $str) => str_contains($product["name"], $str));
+
+
+            if (!$hasCommonOemCodes && !$textualFieldsMatches) continue;
             $connection = SparetoProduct::updateOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
             if ($connection->is_banned) continue;
-            $product = self::getProduct($link);
 
             Product::query()->where('id', $product_id)->update([
                 'dimensions' => $product['dimension'],
@@ -225,12 +238,15 @@ HTML;
             $vehicles[] = $car;
         });
 
+        $name = $crawler->filter('span[itemprop="name"]')->innerText();
+
         return [
             'dimension' => $dimension,
             'specification' => $specification,
             'oem' => $oem,
             'cross' => $cross,
             'vehicles' => $vehicles,
+            'name' => $name,
         ];
     }
 }
