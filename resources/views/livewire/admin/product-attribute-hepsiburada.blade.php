@@ -9,7 +9,7 @@
                     class="form-control">
                 <option value="">(Seçilmedi)</option>
                 @foreach($values as $value)
-                    <option @if($value == ($value?->value ?? $value['value'])) selected @endif value="{{ $value?->value ?? $value['value'] }}">{{ $value?->value ?? $value['value'] }}</option>
+                    <option value="{{ $value?->value ?? $value['value'] }}">{{ $value?->value ?? $value['value'] }}</option>
                 @endforeach
             </select>
         @endif
