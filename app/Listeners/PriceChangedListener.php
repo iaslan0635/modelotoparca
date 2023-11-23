@@ -23,11 +23,7 @@ class PriceChangedListener
         $product = $event->price->product;
 
         foreach (MarketPlace::merchants() as $merchant) {
-            try {
-                $merchant->updatePrice($product);
-            } catch (\Throwable $t) {
-                report($t);
-            }
+            MarketPlace::errorContext(fn() => $merchant->updatePrice($product));
         }
     }
 }
