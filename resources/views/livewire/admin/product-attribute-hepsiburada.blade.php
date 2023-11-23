@@ -1,14 +1,15 @@
 <tr wire:init="loadData">
     <td>{{ $attribute?->name ?? $attribute['name'] }}</td>
-    <td>{{ $attribute['mandatory'] ? "<b>Evet</b>":"Hayır" }}</td>
+    <td>{!! $attribute['mandatory'] ? "<b>Evet</b>":"Hayır" !!}</td>
     <td>
         @if($attribute['type'] === "string")
             <input type="text" wire:model="value">
         @else
             <select wire:model="value_id"
                     class="form-control">
+                <option value="">(Seçilmedi)</option>
                 @foreach($values as $value)
-                    <option value="{{ $value?->value ?? $value['value'] }}">{{ $value?->value ?? $value['value'] }}</option>
+                    <option @if($value == ($value?->value ?? $value['value'])) selected @endif value="{{ $value?->value ?? $value['value'] }}">{{ $value?->value ?? $value['value'] }}</option>
                 @endforeach
             </select>
         @endif

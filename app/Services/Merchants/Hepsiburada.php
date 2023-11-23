@@ -116,7 +116,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
-                ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
+                ->where('merchant', '=', "hepsiburada")->value('merchant_id'),
             "merchant" => $this->merchantId,
             "attributes" => [
                 "merchantSku" => $product->sku,
