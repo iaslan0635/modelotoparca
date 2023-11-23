@@ -304,7 +304,7 @@
                                             @if($product->ecommerce)
                                                 <div class="badge badge-danger">Henüz e-ticaret sitelerine eklenmemiş</div>
                                             @else
-                                                <div class="badge badge-gray">E-ticarete kapalı</div>
+                                                <div class="badge badge-secondary">E-ticarete kapalı</div>
                                             @endif
                                         @endforelse
                                     </td>
