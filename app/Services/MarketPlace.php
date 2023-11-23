@@ -15,7 +15,11 @@ class MarketPlace
     public static function syncOrders(): void
     {
         foreach (self::merchants() as $merchant) {
-            $merchant->syncOrders();
+            try {
+                $merchant->syncOrders();
+            } catch (\Throwable $t) {
+                report($t);
+            }
         }
     }
 
