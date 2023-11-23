@@ -7,7 +7,7 @@
         @else
             <select wire:model="value_id"
                     class="form-control">
-                <option value="">(Seçilmedi)</option>
+                <option value="0">(Seçilmedi)</option>
                 @foreach($attribute['attributeValues'] as $value)
                     <option value="{{ $value?->id ?? $value['id'] }}">{{ $value?->name ?? $value['name'] }}</option>
                 @endforeach
