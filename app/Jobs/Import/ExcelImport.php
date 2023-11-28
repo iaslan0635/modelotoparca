@@ -17,6 +17,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ExcelImport implements ShouldQueue
@@ -217,6 +218,8 @@ class ExcelImport implements ShouldQueue
 
     public static function runBot(TigerProduct $product): void
     {
+        Log::debug("Running bot for $product->id");
+
         self::clearSparetoAssociations($product);
 
         $search_predence = [
