@@ -54,8 +54,6 @@ class ExcelImport implements ToModel, WithStartRow
         ];
 
         dispatch(new \App\Jobs\Import\ExcelImport($productData));
-
-        return;
     }
 
     public function startRow(): int
