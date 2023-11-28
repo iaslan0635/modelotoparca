@@ -183,7 +183,7 @@ class ExcelImport implements ShouldQueue
             'sub_title' => $allWebNames,
             'description' => $allWebNames,
             'slug' => Str::slug($title) . '-' . $id,
-            'sku' => $product->code,
+            'sku' => $product->code ?? "NOSKU",
             'quantity' => $product->onhand,
             'status' => intval($product->active) === 0,
             'type' => 'simple',
