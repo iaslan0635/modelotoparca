@@ -118,7 +118,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                     "dimensionalWeight" => 0,
                     "description" => $product->description,
                     "vatRate" => 20,
-                    "images" => $product->images->map(fn($image) => ["url" => $image->url]),
+                    "images" => $product->imageUrls()->map(fn($image) => ["url" => $image]),
                     "cargoCompanyId" => 10,
                     "listPrice" => $this->formatPrice($product->price->price_without_tax),
                     "quantity" => $product->quantity,

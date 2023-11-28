@@ -1,5 +1,5 @@
 <tr>
-    <td>{{ $name }}</td>
+    <td>{{ $attribute?->name ?? $attribute['name'] }}</td>
     <td>{!! $attribute['mandatory'] ? "<b>Evet</b>":"Hayır" !!}</td>
     <td>
         @if($attribute['customValue'])

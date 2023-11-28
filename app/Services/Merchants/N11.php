@@ -217,7 +217,7 @@ class N11 implements Merchant
 
     public function updateProduct(Product $product)
     {
-        $images = collect($product->imageUrls())->whenEmpty(fn(Collection $self) => $self->push($product->imageUrl()))->values();
+        $images = $product->imageUrls()->whenEmpty(fn(Collection $self) => $self->push($product->imageUrl()))->values();
 
         $price = $this->formatPrice($product->price->price_without_tax);
         $response = $this->client->product->SaveProduct([

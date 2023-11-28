@@ -9,13 +9,23 @@ use App\Services\Merchants\Merchant;
 use App\Services\Merchants\N11;
 use App\Services\Merchants\TrackableMerchant;
 use App\Services\Merchants\TrendyolMerchant;
+use Illuminate\Support\Facades\Log;
 
 class MarketPlace
 {
+    public static function errorContext(callable $function)
+    {
+        try {
+            $function();
+        } catch (\Throwable $t) {
+            Log::channel("merchants")->error($t->getMessage(), ['exception' => $t]);
+        }
+    }
+
     public static function syncOrders(): void
     {
         foreach (self::merchants() as $merchant) {
-            $merchant->syncOrders();
+            MarketPlace::errorContext(fn() => $merchant->syncOrders());
         }
     }
 

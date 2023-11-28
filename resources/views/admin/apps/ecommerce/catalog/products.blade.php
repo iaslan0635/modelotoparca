@@ -301,8 +301,11 @@
                                                 class="badge badge-light-success">{{ ucfirst($merchant->merchant) }}</div>
                                             <!--end::Badges-->
                                         @empty
-                                            <div class="badge badge-danger">Henüz e-ticaret sitelerine eklenmemiş
-                                            </div>
+                                            @if($product->ecommerce)
+                                                <div class="badge badge-danger">Henüz e-ticaret sitelerine eklenmemiş</div>
+                                            @else
+                                                <div class="badge badge-secondary">E-ticarete kapalı</div>
+                                            @endif
                                         @endforelse
                                     </td>
                                     <!--end::Status=-->

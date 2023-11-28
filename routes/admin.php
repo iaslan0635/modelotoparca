@@ -11,13 +11,14 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Services\MarketPlace;
 use App\Services\Merchants\N11;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'admin.index');
 
 Route::get("n11", function () {
-    $n11 = new \App\Services\Merchants\N11();
+    $n11 = new N11();
 //    $product = \App\Models\Product::find(8);
 //    return $n11->getCategories();
     return $n11->getSubCategories(1002943, "24/06/2023 20:52");
@@ -74,13 +75,13 @@ Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->nam
 Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands'])->name('brand-sync.search');
 
 Route::get('action', function () {
-    \App\Services\MarketPlace::syncOrders();
+    MarketPlace::syncOrders();
 });
 
 Route::resource('permisssion', PermissionController::class);
 Route::resource('role', RoleController::class);
 Route::get("role/unassign/{role}/{user}", [RoleController::class, "unassign"])->name("role.unassign");
-Route::get('merchant/failed', [MerchantTrackingController::class, "failed"]);
+Route::get('merchant/failed', [MerchantTrackingController::class, "failed"])->name("merchant.failed");
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {

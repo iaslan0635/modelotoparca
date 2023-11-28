@@ -114,9 +114,11 @@ class Hepsiburada implements Merchant, TrackableMerchant
             ->where('product_id', '=', $product->id)
             ->get()->mapWithKeys(fn($attr) => [$attr->merchant_id => $attr->merchant_value]);
 
+        $images = $product->imageUrls()->values()->mapWithKeys(fn($image, $k) => ["Image$k" => $image]);
+
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
-                ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
+                ->where('merchant', '=', "hepsiburada")->value('merchant_id'),
             "merchant" => $this->merchantId,
             "attributes" => [
                 "merchantSku" => $product->sku,
@@ -130,12 +132,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
                 "tax_vat_rate" => "20",
                 "price" => $price,
                 "stock" => $product->quantity,
-                "Image1" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                "Image2" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                "Image3" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                "Video1" => null,
+                ...$images,
                 ...$fields
             ]
         ];
