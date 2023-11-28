@@ -7,11 +7,10 @@ use Maatwebsite\Excel\Concerns\WithStartRow;
 
 class ExcelImport implements ToModel, WithStartRow
 {
-    /**
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
     public function model(array $row)
     {
+        if ($row[1] === null) return; // skip if id is null (probably empty row)
+
         $productData = [
             'id' => $row[1],
             'active' => request()->input('type') === 'passive' ? 1 : $row[2],
@@ -56,7 +55,7 @@ class ExcelImport implements ToModel, WithStartRow
 
         dispatch(new \App\Jobs\Import\ExcelImport($productData));
 
-        return null;
+        return;
     }
 
     public function startRow(): int
