@@ -37,7 +37,7 @@
                                 @forelse($tracking->reasons as $reason)
                                     <li>{{ $reason }}</li>
                                 @empty
-                                    <li>[Pazaryeri sebep vermedi]</li>
+                                    <li>[Pazaryeri sebep vermedi] (takip numarası: {{ $tracking->id }})</li>
                                 @endforelse
                             @empty
                                 <li>[Bu ürün ile ilgili takip kaydı bulunmamaktadır]</li>
