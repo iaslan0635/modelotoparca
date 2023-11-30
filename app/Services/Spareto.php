@@ -13,7 +13,7 @@ use App\Models\SparetoProduct;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 
-class Sperato
+class Spareto
 {
     public static function request(string $url)
     {

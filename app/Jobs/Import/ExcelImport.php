@@ -10,7 +10,7 @@ use App\Models\ProductOem;
 use App\Models\ProductSimilar;
 use App\Models\SparetoProduct;
 use App\Models\TigerProduct;
-use App\Services\Sperato;
+use App\Services\Spareto;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -237,11 +237,11 @@ class ExcelImport implements ShouldQueue
             if ($field === 'oem_codes') {
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
-                    Sperato::smash($oem, $product->id, field: $field);
+                    Spareto::smash($oem, $product->id, field: $field);
                 }
             } else {
                 $brand_filter = $field === 'producercode' ? self::getBrand($product) : null;
-                $found = Sperato::smash($product[$field], $product->id, $brand_filter, $field);
+                $found = Spareto::smash($product[$field], $product->id, $brand_filter, $field);
                 if ($found) {
                     break;
                 }
