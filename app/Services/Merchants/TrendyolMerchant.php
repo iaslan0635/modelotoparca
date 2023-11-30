@@ -43,7 +43,8 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
 //            ->throw();
     }
 
-    /*private*/ function getBatchResponse(Response|string $responseOrBatchId)
+    /*private*/
+    function getBatchResponse(Response|string $responseOrBatchId)
     {
         $batchId = is_string($responseOrBatchId) ? $responseOrBatchId : $responseOrBatchId->object()->batchRequestId;
 
@@ -410,10 +411,9 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         $response = $this->getBatchResponse($trackingId);
 
         return new TrackingResult(
-            merchant: "trendyol",
             trackingId: $trackingId,
-            success: $response->status === "COMPLETED",
-            result: $response->items
+            success: property_exists($response, "status") && $response->status === "COMPLETED",
+            result: $response
         );
     }
 }

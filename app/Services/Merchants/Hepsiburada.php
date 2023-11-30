@@ -285,10 +285,9 @@ class Hepsiburada implements Merchant, TrackableMerchant
         $response = json_decode($request->getBody()->getContents(), true);
 
         return new TrackingResult(
-            merchant: "hepsiburada",
             trackingId: $trackingId,
-            success: $response["success"],
-            result: $response["data"]
+            success: array_key_exists("success", $response) && $response["success"],
+            result: $response
         );
     }
 }

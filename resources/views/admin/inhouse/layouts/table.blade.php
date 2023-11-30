@@ -29,11 +29,6 @@
                         <!--end::Card title-->
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar">
-                            <!--begin::Button-->
-                            <a href="{{ route('admin.role.index') }}" class="btn btn-light-primary">
-                                Roller
-                            </a>
-                            <!--end::Button-->
                         </div>
                         <!--end::Card toolbar-->
                     </div>

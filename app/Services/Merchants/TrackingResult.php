@@ -7,7 +7,6 @@ use App\Models\Tracking;
 class TrackingResult
 {
     public function __construct(
-        public string       $merchant,
         public string       $trackingId,
         public bool         $success,
         public object|array $result,
@@ -20,7 +19,7 @@ class TrackingResult
     {
         $trackingModel->fill([
             "success" => $this->success,
-            "result" => $this->result
+            "result" => (array) $this->result
         ]);
     }
 
@@ -29,7 +28,6 @@ class TrackingResult
     {
         $this->fill($trackingModel);
         $trackingModel->fill([
-            "merchant" => $this->merchant,
             "tracking_id" => $this->trackingId,
         ]);
     }

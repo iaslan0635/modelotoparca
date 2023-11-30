@@ -56,27 +56,28 @@ class MarketPlace
 
     public static function getFailedProducts($perPage = null)
     {
-        $failedProducts = collect();
+        function fetchStatus(Tracking $tracking)
+        {
+            $merchant = MarketPlace::createMerchant($tracking->merchant);
+            if (!$merchant instanceof TrackableMerchant) throw new \Exception("Attempted to track non trackable merchant.");
+            $result = $merchant->getTrackingResult($tracking->tracking_id);
 
-        $latestTrackings = Tracking::groupBy("product_id", "tracking_id")->with("product")->latest()->paginate($perPage);
-        foreach ($latestTrackings as $tracking) {
+            $result->fill($tracking);
+            $tracking->save();
 
-            $failedMerchants = [];
-            foreach (self::merchants() as $mAlias => $merchant) {
-                if (!$merchant instanceof TrackableMerchant) continue;
-                $result = $merchant->getTrackingResult($tracking->tracking_id);
-
-                $result->fill($tracking);
-                $tracking->save();
-
-                if (!$result->success)
-                    $failedMerchants[] = $mAlias;
-            }
-
-            $product = $tracking->product;
-            $failedProducts[] = compact("product", "failedMerchants");
+            return $result->success;
         }
 
-        return $latestTrackings->setCollection($failedProducts);
+        $failedProducts = collect();
+
+        $latestTrackings = Tracking::groupBy("product_id", "merchant")->with("product")->latest()->paginate($perPage);
+        foreach ($latestTrackings as $tracking) {
+            if ($tracking->success === false || ($tracking->success === null && fetchStatus($tracking)))
+                $failedProducts[] = ["product" => $tracking->product, "merchant" => $tracking->merchant];
+        }
+
+        return $latestTrackings->setCollection(
+            $failedProducts->groupBy("product.id")->map(fn($entries) => ["product" => $entries[0]["product"], "merchants" => $entries->map->merchant])
+        );
     }
 }

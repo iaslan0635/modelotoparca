@@ -8,7 +8,7 @@ class MerchantTrackingController extends Controller
 {
     public function failed()
     {
-        $fails = Tracking::with("product")->paginate(10);
+        $fails = \App\Services\MarketPlace::getFailedProducts();
         $merchants = ["trendyol", "hepsiburada"];
         return view("admin.inhouse.merchant.failed-trackings", compact("merchants", "fails"));
     }
