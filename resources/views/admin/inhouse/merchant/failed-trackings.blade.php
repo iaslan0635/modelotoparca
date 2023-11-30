@@ -1,6 +1,7 @@
 @extends("admin.inhouse.layouts.card")
 
 @section("title", "Mağzalara gidemeyen ürünler")
+@section("card-title", "$fetchCount yeni takip sonucu ".round($fetchTime/1e9, 2)." saniyede çekildi")
 
 @section("card-content")
     <div class="accordion mb-8" id="kt_accordion">

@@ -11,9 +11,7 @@ class MerchantTrackingController extends Controller
 {
     public function failed()
     {
-        $fails = self::getFailedProducts();
-        $merchants = ["trendyol", "hepsiburada"];
-        return view("admin.inhouse.merchant.failed-trackings", compact("merchants", "fails"));
+        return view("admin.inhouse.merchant.failed-trackings", self::getFailedProducts());
     }
 
     public static function getFailedProducts($perPage = null)
@@ -21,6 +19,9 @@ class MerchantTrackingController extends Controller
         // Resolve all unresolved trackings
         $latestQuery = Tracking::groupBy("product_id", "merchant")->latest();
         $trackings = $latestQuery->clone()->whereNull("success")->get();
+
+        $fetchedTrackingCount = $trackings->count();
+        $fetchStart = hrtime(true);
 
         $promises = $trackings->map(fn($tracking) => MarketPlace::createTrackableMerchant($tracking->merchant)->getTrackingResult($tracking->tracking_id));
 
@@ -42,7 +43,10 @@ class MerchantTrackingController extends Controller
             "trackings" => $entries->groupBy("merchant"),
         ]);
 
-        return $failedTrackings->setCollection($items);
+        return [
+            "fails" => $failedTrackings->setCollection($items),
+            "fetchCount" => $fetchedTrackingCount,
+            "fetchTime" => hrtime(true) - $fetchStart
+        ];
     }
-
 }

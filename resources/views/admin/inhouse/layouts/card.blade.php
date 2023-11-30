@@ -4,7 +4,7 @@
         <!--begin::Card header-->
         <div class="card-header mt-6">
             <!--begin::Card title-->
-            <div class="card-title"></div>
+            <div class="card-title">@yield("card-title")</div>
             <!--end::Card title-->
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
