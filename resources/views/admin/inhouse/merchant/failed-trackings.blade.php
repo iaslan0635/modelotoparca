@@ -33,7 +33,7 @@
                 @foreach($merchants as $mAlias)
                     <x-accordion id-prefix="merchant" :id="$product->id" :title="$mAlias" show>
                         <ul>
-                            @forelse($trackings as $tracking)
+                            @forelse($trackings[$mAlias] as $tracking)
                                 @forelse($tracking->reasons as $reason)
                                     <li>{{ $reason }}</li>
                                 @empty
