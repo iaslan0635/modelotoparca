@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use App\Models\TrendyolBrand;
+use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -406,15 +407,15 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return [];
     }
 
-    public function getTrackingResult(string $trackingId): TrackingResult
+    public function getTrackingResult(string $trackingId): PromiseInterface
     {
-        $response = $this->getBatchResponse($trackingId);
-
-        return new TrackingResult(
+        /** @var PromiseInterface $request */
+        $request = $this->supplierClient()->async()->get("products/batch-requests/$trackingId");
+        return $request->then(fn($response) => new TrackingResult(
             trackingId: $trackingId,
             success: property_exists($response, "status") && $response->status === "COMPLETED",
             result: $response
-        );
+        ));
     }
 
     public function parseTrackingErrors(array $trackingResponse): array

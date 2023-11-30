@@ -19,7 +19,7 @@ class TrackingResult
     {
         $trackingModel->fill([
             "success" => $this->success,
-            "result" => (array) $this->result
+            "result" => (array)$this->result
         ]);
     }
 

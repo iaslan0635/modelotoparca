@@ -8,7 +8,7 @@ use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use GuzzleHttp\Client;
-use Illuminate\Support\Collection;
+use GuzzleHttp\Promise\PromiseInterface;
 
 class Hepsiburada implements Merchant, TrackableMerchant
 {
@@ -273,16 +273,15 @@ class Hepsiburada implements Merchant, TrackableMerchant
         return [];
     }
 
-    public function getTrackingResult(string $trackingId): TrackingResult
+    public function getTrackingResult(string $trackingId): PromiseInterface
     {
-        $request = $this->client->get("https://mpop.hepsiburada.com/product/api/products/status/$trackingId");
-        $response = json_decode($request->getBody()->getContents(), true);
-
-        return new TrackingResult(
-            trackingId: $trackingId,
-            success: array_key_exists("success", $response) && $response["success"],
-            result: $response
-        );
+        return $this->client->getAsync("https://mpop.hepsiburada.com/product/api/products/status/$trackingId")
+            ->then(fn($request) => json_decode($request->getBody()->getContents(), true))
+            ->then(fn($response) => new TrackingResult(
+                trackingId: $trackingId,
+                success: array_key_exists("success", $response) && $response["success"],
+                result: $response
+            ));
     }
 
     public function parseTrackingErrors(array $trackingResponse): array

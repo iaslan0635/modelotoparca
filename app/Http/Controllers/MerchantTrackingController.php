@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tracking;
 use App\Services\MarketPlace;
+use App\Services\Merchants\TrackingResult;
+use GuzzleHttp\Promise;
 
 class MerchantTrackingController extends Controller
 {
@@ -18,12 +20,16 @@ class MerchantTrackingController extends Controller
     {
         // Resolve all unresolved trackings
         $latestQuery = Tracking::groupBy("product_id", "merchant")->latest();
+        $trackings = $latestQuery->clone()->whereNull("result")->get();
 
-        foreach ($latestQuery->clone()->whereNull("result")->cursor() as $tracking) {
-            $merchant = MarketPlace::createTrackableMerchant($tracking->merchant);
-            $result = $merchant->getTrackingResult($tracking->tracking_id);
+        $promises = $trackings->map(fn($tracking) => MarketPlace::createTrackableMerchant($tracking->merchant)->getTrackingResult($tracking->tracking_id));
 
-            $result->fill($tracking);
+        /** @var array<array-key, TrackingResult> $trackingResults */
+        $trackingResults = Promise\Utils::all($promises->all())->wait();
+
+        foreach ($trackingResults as $trackingResult) {
+            $tracking = $trackings->firstWhere("tracking_id", $trackingResult->trackingId);
+            $trackingResult->fill($tracking);
             $tracking->save();
         }
 
