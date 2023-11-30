@@ -275,14 +275,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
     public function getTrackingResult(string $trackingId): TrackingResult
     {
-        $request = $this->client->get("https://mpop.hepsiburada.com/product/api/products/status/$trackingId", [
-            "query" => [
-                "version" => 2,
-                "page" => "0",
-                "size" => 1000
-            ]
-        ]);
-
+        $request = $this->client->get("https://mpop.hepsiburada.com/product/api/products/status/$trackingId");
         $response = json_decode($request->getBody()->getContents(), true);
 
         return new TrackingResult(
