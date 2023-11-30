@@ -15,9 +15,9 @@
         <div class="card-body pt-0">
             <div class="accordion">
                 @foreach($car_brands as $brand => $cars_by_names)
-                    <x-accordion :id="'car-brand-'.$brand" :title="$brand">
+                    <x-accordion id-prefix="car-brand" :id="$brand" :title="$brand">
                         @foreach($cars_by_names as $name => $cars)
-                            <x-accordion :id="'car-'.$name" :title="$name">
+                            <x-accordion id-prefix="car" :id="$name" :title="$name">
                                 <table class="table table-row-dashed fs-6 gy-5 my-0">
                                     <thead>
                                     <tr>

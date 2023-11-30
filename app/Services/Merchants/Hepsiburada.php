@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use GuzzleHttp\Client;
+use Illuminate\Support\Collection;
 
 class Hepsiburada implements Merchant, TrackableMerchant
 {
@@ -289,5 +290,10 @@ class Hepsiburada implements Merchant, TrackableMerchant
             success: array_key_exists("success", $response) && $response["success"],
             result: $response
         );
+    }
+
+    public function parseTrackingErrors(array $trackingResponse): array
+    {
+        return [];
     }
 }

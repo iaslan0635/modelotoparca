@@ -50,7 +50,16 @@ class MarketPlace
             "n11" => new N11(),
             "hepsiburada" => new Hepsiburada(),
             "trendyol" => new TrendyolMerchant(),
-            default => throw new \InvalidArgumentException("$merchantAlias geçerli bir pazar yeri değil (n11, hepsiburada, trendyol)"),
+            default => throw new \InvalidArgumentException("$merchantAlias geçerli bir pazar yeri değil"),
+        };
+    }
+
+    public static function createTrackableMerchant(string $merchantAlias): TrackableMerchant&Merchant
+    {
+        return match ($merchantAlias) {
+            "hepsiburada" => new Hepsiburada(),
+            "trendyol" => new TrendyolMerchant(),
+            default => throw new \InvalidArgumentException("$merchantAlias geçerli bir izlenebilir pazar yeri değil"),
         };
     }
 
@@ -58,8 +67,7 @@ class MarketPlace
     {
         function fetchStatus(Tracking $tracking)
         {
-            $merchant = MarketPlace::createMerchant($tracking->merchant);
-            if (!$merchant instanceof TrackableMerchant) throw new \Exception("Attempted to track non trackable merchant.");
+            $merchant = MarketPlace::createTrackableMerchant($tracking->merchant);
             $result = $merchant->getTrackingResult($tracking->tracking_id);
 
             $result->fill($tracking);
@@ -73,11 +81,15 @@ class MarketPlace
         $latestTrackings = Tracking::groupBy("product_id", "merchant")->with("product")->latest()->paginate($perPage);
         foreach ($latestTrackings as $tracking) {
             if ($tracking->success === false || ($tracking->success === null && fetchStatus($tracking)))
-                $failedProducts[] = ["product" => $tracking->product, "merchant" => $tracking->merchant];
+                $failedProducts[] = ["tracking" => $tracking, "merchant" => $tracking->merchant];
         }
 
         return $latestTrackings->setCollection(
-            $failedProducts->groupBy("product.id")->map(fn($entries) => ["product" => $entries[0]["product"], "merchants" => $entries->map->merchant])
+            $failedProducts->groupBy("tracking.product.id")->map(fn($entries) => [
+                "product" => $entries[0]["tracking"]->product,
+                "merchants" => $entries->map->merchant,
+                "trackings" => $entries->map->tracking,
+            ])
         );
     }
 }
