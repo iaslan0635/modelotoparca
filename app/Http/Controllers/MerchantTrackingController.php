@@ -20,7 +20,7 @@ class MerchantTrackingController extends Controller
     {
         // Resolve all unresolved trackings
         $latestQuery = Tracking::groupBy("product_id", "merchant")->latest();
-        $trackings = $latestQuery->clone()->whereNull("result")->get();
+        $trackings = $latestQuery->clone()->whereNull("success")->get();
 
         $promises = $trackings->map(fn($tracking) => MarketPlace::createTrackableMerchant($tracking->merchant)->getTrackingResult($tracking->tracking_id));
 
@@ -34,7 +34,7 @@ class MerchantTrackingController extends Controller
         }
 
         // Return all failed trackings
-        $failedTrackings = $latestQuery->clone()->where("result", false)->with("product")->paginate($perPage);
+        $failedTrackings = $latestQuery->clone()->where("success", false)->with("product")->paginate($perPage);
 
         $items = $failedTrackings->groupBy("product.id")->map(fn($entries) => [
             "product" => $entries[0]->product,
