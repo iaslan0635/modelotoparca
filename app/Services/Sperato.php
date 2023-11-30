@@ -209,7 +209,7 @@ HTML;
             });
         });
 
-        $crawler->filter('#nav-vehicles > table > tbody')->filter('tr')->each(function (Crawler $vehicle) use (&$vehicles) {
+        $crawler->filter('#nav-vehicles table tbody')->filter('tr')->each(function (Crawler $vehicle) use (&$vehicles) {
             $car = [
                 'short_name' => $vehicle->attr('data-model-short-name'),
             ];
