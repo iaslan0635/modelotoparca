@@ -21,12 +21,13 @@ class MerchantTrackingController extends Controller
         $trackings = $latestQuery->clone()->whereNull("success")->get();
 
         $fetchedTrackingCount = $trackings->count();
-        $fetchStart = hrtime(true);
 
+        $fetchStart = hrtime(true);
         $promises = $trackings->map(fn($tracking) => MarketPlace::createTrackableMerchant($tracking->merchant)->getTrackingResult($tracking->tracking_id));
 
         /** @var array<array-key, TrackingResult> $trackingResults */
         $trackingResults = Promise\Utils::all($promises->all())->wait();
+        $fetchEnd = hrtime(true);
 
         foreach ($trackingResults as $trackingResult) {
             $tracking = $trackings->firstWhere("tracking_id", $trackingResult->trackingId);
@@ -46,7 +47,7 @@ class MerchantTrackingController extends Controller
         return [
             "fails" => $failedTrackings->setCollection($items),
             "fetchCount" => $fetchedTrackingCount,
-            "fetchTime" => hrtime(true) - $fetchStart
+            "fetchTime" => $fetchEnd - $fetchStart
         ];
     }
 }
