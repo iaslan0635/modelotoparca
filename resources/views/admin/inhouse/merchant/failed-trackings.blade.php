@@ -33,11 +33,15 @@
                 @foreach($merchants as $mAlias)
                     <x-accordion id-prefix="merchant" :id="$product->id" :title="$mAlias" show>
                         <ul>
-                            @foreach($trackings as $tracking)
-                                @foreach($tracking->reasons as $reason)
+                            @forelse($trackings as $tracking)
+                                @forelse($tracking->reasons as $reason)
                                     <li>{{ $reason }}</li>
-                                @endforeach
-                            @endforeach
+                                @empty
+                                    <li>[Pazaryeri sebep vermedi]</li>
+                                @endforelse
+                            @empty
+                                <li>[Bu ürün ile ilgili takip kaydı bulunmamaktadır]</li>
+                            @endforelse
                         </ul>
                     </x-accordion>
                 @endforeach

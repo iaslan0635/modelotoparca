@@ -419,7 +419,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
 
     public function parseTrackingErrors(array $trackingResponse): array
     {
-        return collect(@$trackingResponse["errors"])->map(fn($err) => "Karşı tarafın sistemsel hatası ({$err['message']})")->concat(
+        return collect(@$trackingResponse["errors"])->map(fn($err) => "Karşı tarafın hatası ({$err['message']})")->concat(
             collect(@$trackingResponse["items"])->map(fn($item) => $item["failureReasons"])->flatten()->all()
         )->all();
     }

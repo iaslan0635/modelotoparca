@@ -9,6 +9,8 @@ use App\Services\Merchants\Merchant;
 use App\Services\Merchants\N11;
 use App\Services\Merchants\TrackableMerchant;
 use App\Services\Merchants\TrendyolMerchant;
+use Illuminate\Pagination\CursorPaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Log;
 
 class MarketPlace
@@ -54,7 +56,7 @@ class MarketPlace
         };
     }
 
-    public static function createTrackableMerchant(string $merchantAlias): TrackableMerchant&Merchant
+    public static function createTrackableMerchant(string $merchantAlias): TrackableMerchant & Merchant
     {
         return match ($merchantAlias) {
             "hepsiburada" => new Hepsiburada(),
@@ -65,31 +67,26 @@ class MarketPlace
 
     public static function getFailedProducts($perPage = null)
     {
-        function fetchStatus(Tracking $tracking)
-        {
+        // Resolve all unresolved trackings
+        $latestQuery = Tracking::groupBy("product_id", "merchant")->latest();
+
+        foreach ($latestQuery->clone()->whereNull("result")->cursor() as $tracking) {
             $merchant = MarketPlace::createTrackableMerchant($tracking->merchant);
             $result = $merchant->getTrackingResult($tracking->tracking_id);
 
             $result->fill($tracking);
             $tracking->save();
-
-            return $result->success;
         }
 
-        $failedProducts = collect();
+        // Return all failed trackings
+        $failedTrackings = $latestQuery->clone()->where("result", false)->with("product")->paginate($perPage);
 
-        $latestTrackings = Tracking::groupBy("product_id", "merchant")->with("product")->latest()->paginate($perPage);
-        foreach ($latestTrackings as $tracking) {
-            if ($tracking->success === false || ($tracking->success === null && fetchStatus($tracking)))
-                $failedProducts[] = ["tracking" => $tracking, "merchant" => $tracking->merchant];
-        }
+        $items = $failedTrackings->groupBy("product.id")->map(fn($entries) => [
+            "product" => $entries[0]->product,
+            "merchants" => $entries->map->merchant,
+            "trackings" => $entries,
+        ]);
 
-        return $latestTrackings->setCollection(
-            $failedProducts->groupBy("tracking.product.id")->map(fn($entries) => [
-                "product" => $entries[0]["tracking"]->product,
-                "merchants" => $entries->map->merchant,
-                "trackings" => $entries->map->tracking,
-            ])
-        );
+        return $failedTrackings->setCollection($items);
     }
 }
