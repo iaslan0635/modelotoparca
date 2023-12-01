@@ -10,7 +10,7 @@ use Throwable;
 
 class BotCommand extends Command
 {
-    protected $signature = 'bot {--queue} {--filter}';
+    protected $signature = 'bot {--queue} {--filter=}';
 
     public function handle(): void
     {
