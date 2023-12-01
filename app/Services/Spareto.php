@@ -26,7 +26,7 @@ class Spareto
         if ($response->successful()) {
             return $response->body();
         } else {
-            return 'Proxy isteği başarısız '.$response->status();
+            return 'Proxy isteği başarısız ' . $response->status();
         }
     }
 
@@ -74,12 +74,12 @@ HTML;
 
             $oemArray = collect($product["oem"])->map->oem;
 
-            $hasCommonOemCodes = collect(explode("," ,$ourProduct->oem_codes))
-                ->filter()->map(fn (string $oem) => trim($oem))
-                ->some(fn (string $oem) => $oemArray->search($oem));
+            $hasCommonOemCodes = collect(explode(",", $ourProduct->oem_codes))
+                ->filter()->map(fn(string $oem) => trim($oem))
+                ->some(fn(string $oem) => $oemArray->search($oem));
 
             $textualFieldsMatches = collect([$ourProduct->producercode, $ourProduct->producercode2, $ourProduct->abk])
-                ->filter()->some(fn (string $str) => str_contains($product["name"], $str));
+                ->filter()->some(fn(string $str) => str_contains($product["name"], $str));
 
 
             if (!$hasCommonOemCodes && !$textualFieldsMatches) continue;
@@ -106,9 +106,9 @@ HTML;
             }
 
             foreach ($product['vehicles'] as $vehicle) {
-                [$from, $to] = array_map(fn ($v) => $v === '...' ? null : $v, explode(' - ', $vehicle['produced']));
+                [$from, $to] = array_map(fn($v) => $v === '...' ? null : $v, explode(' - ', $vehicle['produced']));
                 $car = Car::where('permalink', $vehicle['permalink'])->first('id');
-                if (! $car) {
+                if (!$car) {
                     $makerSlug = explode('/', $vehicle['permalink'])[0];
                     $maker = Maker::where('permalink', "vehicles/$makerSlug")->first('id');
                     $makerId = $maker ? $maker->id : 0;
@@ -147,7 +147,6 @@ HTML;
         $specification = [];
         $oem = [];
         $cross = [];
-        $vehicles = [];
 
         $dimensions = $crawler->filter('#content > div:nth-child(1) > div.row.mb-5 > div.order-3.order-md-3.col-md-12.col-lg-5.order-lg-2 > div.card.mb-3');
         $specifications = $crawler->filter('#product-properties');
@@ -185,7 +184,7 @@ HTML;
             $oemDivs->each(function (Crawler $divElement) use (&$oem, &$stop) {
                 if ($divElement->nodeName() === 'h3') {
                     $stop = true;
-                } elseif (! $stop) {
+                } elseif (!$stop) {
                     $brand = $divElement->filter('.col-md-2.col-4.pl-4')->text();
                     $divElements = $divElement->filter('.col-md-10.col-8');
                     $divElements->each(function (Crawler $divElement) use ($brand, &$oem, &$cross) {
@@ -209,34 +208,15 @@ HTML;
             });
         });
 
-        $crawler->filter('#nav-vehicles table tbody')->filter('tr')->each(function (Crawler $vehicle) use (&$vehicles) {
-            $car = [
-                'short_name' => $vehicle->attr('data-model-short-name'),
-            ];
-            $vehicle->filter('td')->each(function (Crawler $td, $i) use (&$car) {
-                if ($i === 1) {
-                    $car['permalink'] = str_replace('/t/vehicles/', '', $td->filter('a')->attr('href'));
-                    $car['model'] = $td->text();
-                }
-
-                if ($i === 2) {
-                    $car['produced'] = $td->text();
-                }
-
-                if ($i === 3) {
-                    $car['power'] = $td->text();
-                }
-
-                if ($i === 4) {
-                    $car['hp'] = $td->text();
-                }
-
-                if ($i === 5) {
-                    $car['ccm'] = $td->text();
-                }
-            });
-            $vehicles[] = $car;
-        });
+        $vehicles = $crawler->filter('#nav-vehicles table tbody')->filter('tr[data-model-short-name]')->each(fn(Crawler $vehicle) => [
+            'short_name' => $vehicle->attr('data-model-short-name'),
+            'permalink' => str_replace('/t/vehicles/', '', $vehicle->filter('td')->eq(1)->filter('a')->attr('href')),
+            'model' => $vehicle->filter('td')->eq(1)->text(),
+            'produced' => $vehicle->filter('td')->eq(2)->text(),
+            'power' => $vehicle->filter('td')->eq(3)->text(),
+            'hp' => $vehicle->filter('td')->eq(4)->text(),
+            'ccm' => $vehicle->filter('td')->eq(5)->text(),
+        ]);
 
         $name = $crawler->filter('span[itemprop="name"]')->innerText();
 
