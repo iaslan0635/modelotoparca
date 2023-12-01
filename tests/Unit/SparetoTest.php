@@ -11,7 +11,7 @@ class SparetoTest extends TestCase
     {
         $product = Spareto::getProduct("/products/original-imperium-engine-mounting/25651");
 
-        $realProduct = [
+        $expectedProduct = [
             'dimension' => [],
             'specification' => [
                 'Fitting Position' => 'Front',
@@ -61,6 +61,6 @@ class SparetoTest extends TestCase
             'name' => '25651 - Engine Mounting',
         ];
 
-        $this->assertEquals($product, $realProduct);
+        $this->assertEquals($expectedProduct, $product);
     }
 }

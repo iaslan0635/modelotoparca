@@ -10,6 +10,7 @@ use App\Models\ProductCar;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
 use App\Models\SparetoProduct;
+use App\Packages\Utils;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -42,12 +43,11 @@ class Spareto
 $request
 HTML;
         $crawler = new Crawler($html);
-        $links = [];
 
-        $products = $crawler->filter('#products-js')->filter('.card-col');
+        $productCards = $crawler->filter('#products-js .card-col');
 
         $logSuffix = $brand_filter ? "Marka filtresi: $brand_filter" : '';
-        if ($products->count() <= 0) {
+        if ($productCards->count() <= 0) {
             Log::create([
                 'product_id' => $product_id,
                 'message' => "Ürün bulunamadı, Anahtar Kelime: $keyword | $logSuffix",
@@ -58,16 +58,12 @@ HTML;
 
         Log::create([
             'product_id' => $product_id,
-            'message' => "{$products->count()} Adet ürün çekildi. Anahtar Kelime: $keyword | $logSuffix",
+            'message' => "{$productCards->count()} Adet ürün çekildi. Anahtar Kelime: $keyword | $logSuffix",
         ]);
 
-        $products->each(function (Crawler $cardElement) use (&$links) {
-            if ($cardElement->attr('class') === 'card-col') {
-                $links[] = $cardElement->filter('a')->attr('href');
-            }
-        });
 
         $added = false;
+        $links = $productCards->each(fn(Crawler $cardElement) => $cardElement->filter('a')->attr('href'));
         foreach ($links as $link) {
             $product = self::getProduct($link);
 
@@ -143,37 +139,21 @@ $request
 HTML;
         $crawler = new Crawler($html);
 
-        $dimension = [];
-        $specification = [];
         $oem = [];
         $cross = [];
 
-        $dimensions = $crawler->filter('#content > div:nth-child(1) > div.row.mb-5 > div.order-3.order-md-3.col-md-12.col-lg-5.order-lg-2 > div.card.mb-3');
-        $specifications = $crawler->filter('#product-properties');
-        $table = $dimensions->filter('table');
-        $trElements = $table->filter('tr');
-        $trElements->each(function ($trElement) use (&$dimension) {
-            $tdElements = $trElement->filter('td');
+        $propertyTableMapper = function (Crawler $tr) {
+            $name = $tr->filter('td[itemprop=name]')->text(false) ?: $tr->filter("td")->eq(0)->text();
+            $value = $tr->filter('td[itemprop=value]')->text(false) ?: $tr->filter("td")->eq(1)->text();
 
-            $tdElements->each(function ($tdElement) use (&$trElement, &$dimension) {
-                if ($tdElement->attr('itemprop') === 'name') {
-                    $dimension[strtolower($tdElement->text())] = trim(str_replace($tdElement->text(), '', $trElement->text()));
-                }
-            });
-        });
+            return [$name, $value];
+        };
 
-        $specTable = $specifications->filter('table');
-        $specTrElements = $specTable->filter('tr');
+        $dimensionRows = $crawler->filter('#content > div:nth-child(1) > div.row.mb-5 > div.order-3.order-md-3.col-md-12.col-lg-5.order-lg-2 > div.card.mb-3 table tr');
+        $dimension = Utils::arrayPair($dimensionRows->each($propertyTableMapper));
 
-        $specTrElements->each(function ($trElement) use (&$specification) {
-            $tdElements = $trElement->filter('td');
-
-            $tdElements->each(function ($tdElement, $i) use (&$trElement, &$specification) {
-                if ($i === 0) {
-                    $specification[$tdElement->text()] = trim(str_replace($tdElement->text(), '', $trElement->text()));
-                }
-            });
-        });
+        $specificationRows = $crawler->filter('table#product-properties tr');
+        $specification = Utils::arrayPair($specificationRows->each($propertyTableMapper));
 
         $h3Elements = $crawler->filter('#nav-oe > div > div');
         $stop = false;
