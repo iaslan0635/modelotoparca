@@ -231,9 +231,7 @@ class ExcelImport implements ShouldQueue
         ];
 
         foreach ($search_predence as $field) {
-            if (strlen($product[$field]) === 0) {
-                continue;
-            }
+            if ($product[$field] === null || strlen($product[$field]) === 0) continue;
             if ($field === 'oem_codes') {
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
@@ -242,9 +240,7 @@ class ExcelImport implements ShouldQueue
             } else {
                 $brand_filter = $field === 'producercode' ? self::getBrand($product) : null;
                 $found = Spareto::smash($product[$field], $product->id, $brand_filter, $field);
-                if ($found) {
-                    break;
-                }
+                if ($found) break;
             }
         }
 

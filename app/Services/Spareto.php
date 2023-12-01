@@ -32,7 +32,7 @@ class Spareto
 
     public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)
     {
-        if (strlen(trim($keyword)) == 0) return false;
+        if (strlen($keyword = trim($keyword)) == 0) return false;
 
         $url = "https://spareto.com/products?keywords=$keyword&per_page=48";
         if ($brand_filter) $url .= "&brand=$brand_filter";
@@ -74,15 +74,16 @@ HTML;
 
             $oemArray = collect($product["oem"])->map->oem;
 
+            /*
             $hasCommonOemCodes = collect(explode(",", $ourProduct->oem_codes))
                 ->filter()->map(fn(string $oem) => trim($oem))
                 ->some(fn(string $oem) => $oemArray->search($oem));
-
             $textualFieldsMatches = collect([$ourProduct->producercode, $ourProduct->producercode2, $ourProduct->abk])
                 ->filter()->some(fn(string $str) => str_contains($product["name"], $str));
-
-
             if (!$hasCommonOemCodes && !$textualFieldsMatches) continue;
+            */
+
+
             $connection = SparetoProduct::updateOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
             if ($connection->is_banned) continue;
 
