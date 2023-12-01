@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use GuzzleHttp\Promise\PromiseInterface;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 class Hepsiburada implements Merchant, TrackableMerchant
@@ -25,7 +26,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
         return "https://$service$sit.hepsiburada.com/";
     }
 
-    private function client(string $service)
+    private function client(string $service): PendingRequest
     {
         return Http::withBasicAuth(
             config("merchants.hepsiburada.username"),
@@ -113,7 +114,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
             ->where('product_id', '=', $product->id)
             ->get()->mapWithKeys(fn($attr) => [$attr->merchant_id => $attr->merchant_value]);
 
-        $images = $product->imageUrls()->values()->mapWithKeys(fn($image, $k) => ["Image$k" => $image]);
+        $images = $product->imageUrls()->values()->mapWithKeys(fn($image, $k) => ["Image" . ($k + 1) => $image]);
 
         $payload = [
             "categoryId" => $product->categories[0]->merchants()
