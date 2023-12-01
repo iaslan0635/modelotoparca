@@ -6,7 +6,6 @@ use App\Events\ProductChangedEvent;
 use App\Events\ProductCreatedEvent;
 use App\Facades\Garage;
 use App\Jobs\Import\ExcelImport;
-use App\Packages\Utils;
 use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
@@ -184,14 +183,14 @@ class Product extends BaseModel implements CanVisit
      */
     public static function alternativesAndSimilars(Collection $products)
     {
-        $idMatcher = fn(Product $p, Product $i) => $p->id === $i->id;
+        $idComparer = fn(Product $p, Product $i) => $p->id <=> $i->id;
 
         $alternatives = $products->map(fn(Product $p) => $p->alternatives()->get())->flatten()->unique('id');
-        $alternatives = Utils::uniqueOn($alternatives, $products, $idMatcher);
+        $alternatives = $alternatives->diffUsing($products, $idComparer);
 
         $similars = $products->map(fn(Product $p) => $p->similars()->get())->flatten()->unique('id');
-        $similars = Utils::uniqueOn($similars, $products, $idMatcher);
-        $similars = Utils::uniqueOn($similars, $alternatives, $idMatcher);
+        $similars = $similars->diffUsing($products, $idComparer);
+        $similars = $similars->diffUsing($alternatives, $idComparer);
 
         return [$alternatives, $similars];
     }

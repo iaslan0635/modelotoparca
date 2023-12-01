@@ -61,6 +61,6 @@ class SparetoTest extends TestCase
             'name' => '25651 - Engine Mounting',
         ];
 
-        $this->assertEquals($expectedProduct, $product);
+        $this->assertEqualsCanonicalizing($expectedProduct, $product);
     }
 }

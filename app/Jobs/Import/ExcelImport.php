@@ -238,8 +238,14 @@ class ExcelImport implements ShouldQueue
                     Spareto::smash($oem, $product->id, field: $field);
                 }
             } else {
+                $value = $product[$field];
                 $brand_filter = $field === 'producercode' ? self::getBrand($product) : null;
-                $found = Spareto::smash($product[$field], $product->id, $brand_filter, $field);
+
+                if ($field === "abk" && str_contains($value, "@")) {
+                    [$brand_filter, $value] = explode("@", $value);
+                }
+
+                $found = Spareto::smash($value, $product->id, $brand_filter, $field);
                 if ($found) break;
             }
         }

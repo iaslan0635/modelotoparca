@@ -21,14 +21,13 @@ class Spareto
         $response = Http::withOptions([
             'proxy' => 'socks5://127.0.0.1:9050',
             'connect_timeout' => 60,
-        ])->withoutVerifying()->get($url);
+        ])
+            ->retry(2, 1000)
+            ->withoutVerifying()
+            ->get($url);
 
-        // Yanıtı işleme veya görüntüleme
-        if ($response->successful()) {
-            return $response->body();
-        } else {
-            return 'Proxy isteği başarısız ' . $response->status();
-        }
+        $response->throw();
+        return $response->body();
     }
 
     public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)
@@ -133,15 +132,11 @@ HTML;
 
     public static function getProduct(string $url): array
     {
-        $request = self::request("https://spareto.com$url");
-        $html = <<<HTML
-$request
-HTML;
+        // fetch html content
+        $html = self::request("https://spareto.com$url");
         $crawler = new Crawler($html);
 
-        $oem = [];
-        $cross = [];
-
+        // dimensions & spesifications
         $propertyTableMapper = function (Crawler $tr) {
             $name = $tr->filter('td[itemprop=name]')->text(false) ?: $tr->filter("td")->eq(0)->text();
             $value = $tr->filter('td[itemprop=value]')->text(false) ?: $tr->filter("td")->eq(1)->text();
@@ -155,39 +150,21 @@ HTML;
         $specificationRows = $crawler->filter('table#product-properties tr');
         $specification = Utils::arrayPair($specificationRows->each($propertyTableMapper));
 
-        $h3Elements = $crawler->filter('#nav-oe > div > div');
-        $stop = false;
+        $seperatorH3 = $crawler->filter('#nav-oe h3')->last();
 
-        $h3Elements->each(function (Crawler $h3Element) use (&$oem, &$cross, &$stop) {
-            $oemDivs = $h3Element->filter('h3')->first()->nextAll();
-            $crossDivs = $h3Element->filter('h3')->last()->nextAll();
-            $oemDivs->each(function (Crawler $divElement) use (&$oem, &$stop) {
-                if ($divElement->nodeName() === 'h3') {
-                    $stop = true;
-                } elseif (!$stop) {
-                    $brand = $divElement->filter('.col-md-2.col-4.pl-4')->text();
-                    $divElements = $divElement->filter('.col-md-10.col-8');
-                    $divElements->each(function (Crawler $divElement) use ($brand, &$oem, &$cross) {
-                        $innerElements = $divElement->filter('span, a');
+        // oem codes
+        $oemDivs = $seperatorH3->previousAll()->reduce(fn(Crawler $el) => $el->nodeName() === "div");
+        $oem = Utils::flattenOne($oemDivs->each(function (Crawler $oemDiv) {
+            $brand = $oemDiv->filter('.col-md-2.col-4.pl-4')->text();
+            return $oemDiv->filter(".col-md-10.col-8")->filter('span, a')
+                ->each(fn(Crawler $el) => ['brand' => $brand, 'oem' => $el->text()]);
+        }));
 
-                        $innerElements->each(function (Crawler $innerElement) use ($brand, &$oem, &$cross) {
-                            $oem[] = ['brand' => $brand, 'oem' => $innerElement->text()];
-                        });
-                    });
-                }
-            });
-            $crossDivs->each(function (Crawler $divElement) use (&$cross) {
-                $divElements = $divElement->filter('.col-md-10.col-8');
-                $divElements->each(function (Crawler $divElement) use (&$cross) {
-                    $innerElements = $divElement->filter('span, a');
+        // cross codes
+        $crossDivs = $seperatorH3->nextAll();
+        $cross = $crossDivs->filter('.col-md-10.col-8')->filter('span, a')->each(fn(Crawler $el) => $el->text());
 
-                    $innerElements->each(function (Crawler $innerElement) use (&$cross) {
-                        $cross[] = $innerElement->text();
-                    });
-                });
-            });
-        });
-
+        // vehicles
         $vehicles = $crawler->filter('#nav-vehicles table tbody tr[data-model-short-name]')->each(fn(Crawler $vehicle) => [
             'short_name' => $vehicle->attr('data-model-short-name'),
             'permalink' => str_replace('/t/vehicles/', '', $vehicle->filter('td')->eq(1)->filter('a')->attr('href')),
@@ -198,7 +175,8 @@ HTML;
             'ccm' => $vehicle->filter('td')->eq(5)->text(),
         ]);
 
-        $name = $crawler->filter('span[itemprop="name"]')->innerText();
+        // name
+        $name = $crawler->filter('h1[itemprop=name] span[itemprop=name]')->text();
 
         return [
             'dimension' => $dimension,
