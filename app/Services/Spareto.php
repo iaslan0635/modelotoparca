@@ -136,7 +136,7 @@ HTML;
         $html = self::request("https://spareto.com$url");
         $crawler = new Crawler($html);
 
-        // dimensions & spesifications
+        // dimensions & specifications
         $propertyTableMapper = function (Crawler $tr) {
             $name = $tr->filter('td[itemprop=name]')->text(false) ?: $tr->filter("td")->eq(0)->text();
             $value = $tr->filter('td[itemprop=value]')->text(false) ?: $tr->filter("td")->eq(1)->text();
