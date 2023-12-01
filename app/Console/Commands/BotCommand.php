@@ -20,7 +20,7 @@ class BotCommand extends Command
             "last-50" => TigerProduct::latest()->limit(50),
         };
 
-        $ids = $query->pluck('id');
+        $ids = $query->latest()->pluck('id');
 
         $this->withProgressBar($ids, function (int $id) {
             try {
