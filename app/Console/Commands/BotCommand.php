@@ -16,7 +16,8 @@ class BotCommand extends Command
     {
         $query = match ($this->option("filter")) {
             null => TigerProduct::query(),
-            "non-car" => TigerProduct::doesntHave("cars")
+            "non-car" => TigerProduct::doesntHave("cars"),
+            "last-50" => TigerProduct::latest()->limit(50),
         };
 
         $ids = $query->pluck('id');
