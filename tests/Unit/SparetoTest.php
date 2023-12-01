@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class SparetoTest extends TestCase
 {
-    public function test_that_getProduct_working_properly()
+    public function test_getProduct()
     {
         $product = Spareto::getProduct("/products/original-imperium-engine-mounting/25651");
 
