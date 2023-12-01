@@ -10,11 +10,16 @@ use Throwable;
 
 class BotCommand extends Command
 {
-    protected $signature = 'bot {--queue}';
+    protected $signature = 'bot {--queue} {--filter}';
 
     public function handle(): void
     {
-        $ids = TigerProduct::query()->pluck('id');
+        $query = match ($this->option("filter")) {
+            null => TigerProduct::query(),
+            "non-car" => TigerProduct::whereDoesntHave("cars")
+        };
+
+        $ids = $query->pluck('id');
 
         $this->withProgressBar($ids, function (int $id) {
             try {
@@ -31,8 +36,7 @@ class BotCommand extends Command
         $product = TigerProduct::findOrFail($productId);
         if ($this->option('queue')) {
             RunSingleBotJob::dispatch($product)->onQueue("low");
-        }
-        else {
+        } else {
             ExcelImport::runBot($product);
         }
     }
