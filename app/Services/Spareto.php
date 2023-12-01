@@ -208,7 +208,7 @@ HTML;
             });
         });
 
-        $vehicles = $crawler->filter('#nav-vehicles table tbody')->filter('tr[data-model-short-name]')->each(fn(Crawler $vehicle) => [
+        $vehicles = $crawler->filter('#nav-vehicles table tbody tr[data-model-short-name]')->each(fn(Crawler $vehicle) => [
             'short_name' => $vehicle->attr('data-model-short-name'),
             'permalink' => str_replace('/t/vehicles/', '', $vehicle->filter('td')->eq(1)->filter('a')->attr('href')),
             'model' => $vehicle->filter('td')->eq(1)->text(),
