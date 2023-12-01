@@ -15,11 +15,7 @@ use Illuminate\Support\Facades\Http;
 
 class TrendyolMerchant implements Merchant, TrackableMerchant
 {
-    public const name = 'Trendyol';
-
-    public string $key = 'trendyol';
-
-    public string $supplierId = "";
+    public readonly string $supplierId;
 
     public function __construct()
     {
@@ -31,8 +27,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return Http::withBasicAuth(
             config("merchants.trendyol.username"),
             config("merchants.trendyol.password")
-        )->baseUrl('https://api.trendyol.com/sapigw/');
-//            ->throw();
+        )->baseUrl($this->baseUrl());
     }
 
     private function supplierClient(): PendingRequest
@@ -40,8 +35,12 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return Http::withBasicAuth(
             config("merchants.trendyol.username"),
             config("merchants.trendyol.password")
-        )->baseUrl("https://api.trendyol.com/sapigw/suppliers/$this->supplierId/");
-//            ->throw();
+        )->baseUrl("{$this->baseUrl()}/suppliers/$this->supplierId/");
+    }
+
+    private function baseUrl()
+    {
+        return 'https://api.trendyol.com/sapigw/';
     }
 
     /*private*/
