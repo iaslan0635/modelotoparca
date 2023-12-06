@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Route;
 
 /*
- *
- * HOHOHOHOHOHOHO
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
