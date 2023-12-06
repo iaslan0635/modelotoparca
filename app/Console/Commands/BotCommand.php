@@ -10,7 +10,7 @@ use Throwable;
 
 class BotCommand extends Command
 {
-    protected $signature = 'bot {--queue} {--filter=}';
+    protected $signature = 'bot {--queue=} {--filter=}';
 
     public function handle(): void
     {
@@ -36,7 +36,7 @@ class BotCommand extends Command
     {
         $product = TigerProduct::findOrFail($productId);
         if ($this->option('queue')) {
-            RunSingleBotJob::dispatch($product)->onQueue("low");
+            RunSingleBotJob::dispatch($product)->onQueue($this->option('queue'));
         } else {
             ExcelImport::runBot($product);
         }
