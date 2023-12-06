@@ -34,7 +34,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
         return Http::withBasicAuth(
             $this->creds["username"],
             $this->creds["password"],
-        )->baseUrl($this->baseUrl($service));
+        )->throw()->baseUrl($this->baseUrl($service));
     }
 
     private function formatPrice($price)

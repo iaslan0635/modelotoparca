@@ -29,7 +29,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return Http::withBasicAuth(
             $this->creds["username"],
             $this->creds["password"],
-        )->baseUrl($this->baseUrl());
+        )->throw()->baseUrl($this->baseUrl());
     }
 
     private function supplierClient(): PendingRequest
@@ -154,7 +154,27 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
 
     public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType)
     {
-        // TODO: Implement declineOrder() method.
+        $reasonId = match ($reasonType) {
+            OrderRejectReasonType::OUT_OF_STOCK => 501,
+            OrderRejectReasonType::BROKEN_PRODUCT => 502,
+            OrderRejectReasonType::INCORRECT_PRICE => 503,
+            OrderRejectReasonType::INTEGRATION_ERROR => 504,
+            OrderRejectReasonType::BULK_PURCHASE => 505,
+            OrderRejectReasonType::FORCE_MAJEURE => 506,
+        };
+
+        return $this->client()->put(
+            "/integration/oms/core/sellers/{sellerId}/shipment-packages/{shipmentPackageId}/items/unsupplied",
+            [
+                "lines" => [
+                    [
+                        "lineId" => $order->merchant_id,
+                        "quantity" => 1
+                    ]
+                ],
+                "reasonId" => $reasonId
+            ]
+        );
     }
 
     public function createProduct(Product $product)

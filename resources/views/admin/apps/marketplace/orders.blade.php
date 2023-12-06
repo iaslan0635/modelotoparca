@@ -255,7 +255,7 @@
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <a href="{{ route('admin.order.marketplace.show', $order) }}">
                                                     <div class="symbol-label fs-3 bg-light-danger text-danger">
-                                                        {{ substr(\App\Services\MarketPlace::parseOrder($order)['full_name'], 0, 1) }}
+                                                        {{ substr(\App\Services\MarketPlace::parseOrder($order)['full_name'] ?? "", 0, 1) }}
                                                     </div>
                                                 </a>
                                             </div>
@@ -263,7 +263,7 @@
                                             <div class="ms-5">
                                                 <!--begin::Title-->
                                                 <a href="{{ route('admin.order.marketplace.show', $order) }}"
-                                                   class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ \App\Services\MarketPlace::parseOrder($order)['full_name'] }}</a>
+                                                   class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ \App\Services\MarketPlace::parseOrder($order)['full_name'] ?? "" }}</a>
                                                 <!--end::Title-->
                                             </div>
                                         </div>
