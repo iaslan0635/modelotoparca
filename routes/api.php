@@ -24,3 +24,4 @@ Route::post("/git-webhook", function () {
     set_time_limit(0);
     Process::run(["bash", "deploy.sh"]);
 });
+
