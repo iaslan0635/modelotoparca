@@ -17,12 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'admin.index');
 
-Route::get("n11", function () {
-    $n11 = new N11();
-//    $product = \App\Models\Product::find(8);
-//    return $n11->getCategories();
-    return $n11->getSubCategories(1002943, "24/06/2023 20:52");
-});
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
     Route::get('oem', 'push_oem')->name('oem');
