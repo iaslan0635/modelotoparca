@@ -17,7 +17,7 @@
                     <livewire:admin.product-attribute-trendyol :key="$attribute->attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
                 @endforeach
             @elseif($type === "hepsiburada")
-                @foreach($attributes->data->attributes as $attribute)
+                @foreach(@$attributes->data->attributes ?? [] as $attribute)
                     <livewire:admin.product-attribute-hepsiburada :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
                 @endforeach
             @elseif($type === "n11")

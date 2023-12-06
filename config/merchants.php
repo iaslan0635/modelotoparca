@@ -15,5 +15,17 @@ return [
         "merchantId" => "b81b18f7-851c-4b13-947f-2324d40a812f",
         "username" => "modelotomotiv_dev",
         "password" => "sCEDbtBsjRHP!",
+    ],
+    "test_creds" => [
+        "trendyol" => [
+            "supplierId" => "2738",
+            "username" => "PQD7GASHRLbNJ4lMi6Sq",
+            "password" => "MemvuFNJ7eeNHi5DsRfG"
+        ],
+        "hepsiburada" => [
+            "merchantId" => "b81b18f7-851c-4b13-947f-2324d40a812f",
+            "username" => "modelotomotiv_dev",
+            "password" => "sCEDbtBsjRHP!",
+        ],
     ]
 ];

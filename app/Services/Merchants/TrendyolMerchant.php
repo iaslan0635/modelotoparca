@@ -10,7 +10,6 @@ use App\Models\Tracking;
 use App\Models\TrendyolBrand;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\PendingRequest;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
 class TrendyolMerchant implements Merchant, TrackableMerchant
@@ -24,31 +23,22 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
 
     private function client(): PendingRequest
     {
+        $credsKey = config("merchants.test_mode") ? "merchants" : "merchants.test_creds";
+        $creds = config("$credsKey.trendyol");
         return Http::withBasicAuth(
-            config("merchants.trendyol.username"),
-            config("merchants.trendyol.password")
+            $creds["username"],
+            $creds["password"],
         )->baseUrl($this->baseUrl());
     }
 
     private function supplierClient(): PendingRequest
     {
-        return Http::withBasicAuth(
-            config("merchants.trendyol.username"),
-            config("merchants.trendyol.password")
-        )->baseUrl("{$this->baseUrl()}/suppliers/$this->supplierId/");
+        return $this->client()->baseUrl("{$this->baseUrl()}/suppliers/$this->supplierId/");
     }
 
     private function baseUrl()
     {
-        return 'https://api.trendyol.com/sapigw/';
-    }
-
-    /*private*/
-    function getBatchResponse(Response|string $responseOrBatchId)
-    {
-        $batchId = is_string($responseOrBatchId) ? $responseOrBatchId : $responseOrBatchId->object()->batchRequestId;
-
-        return $this->supplierClient()->get("products/batch-requests/$batchId")->object();
+        return config("merchants.test_mode") ? "https://stageapi.trendyol.com/stagesapigw/" : 'https://api.trendyol.com/sapigw/';
     }
 
     private function formatPrice($price)

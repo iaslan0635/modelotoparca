@@ -28,9 +28,11 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
     private function client(string $service): PendingRequest
     {
+        $credsKey = config("merchants.test_mode") ? "merchants" : "merchants.test_creds";
+        $creds = config("$credsKey.trendyol");
         return Http::withBasicAuth(
-            config("merchants.hepsiburada.username"),
-            config("merchants.hepsiburada.password")
+            $creds["username"],
+            $creds["password"],
         )->baseUrl($this->baseUrl($service));
     }
 
