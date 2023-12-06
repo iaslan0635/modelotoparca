@@ -195,10 +195,10 @@ class Hepsiburada implements Merchant, TrackableMerchant
         // TODO: Implement approveOrder() method.
     }
 
-    public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType)
+    public function declineOrder(string $lineId, string $reason, OrderRejectReasonType $reasonType)
     {
         $this->client("oms-external")->post(
-            "lineitems/merchantid/$this->merchantId/id/$order->merchant_id/cancelbymerchant",
+            "lineitems/merchantid/$this->merchantId/id/$lineId/cancelbymerchant",
             ["reasonId" => 83] // ???
         );
     }
