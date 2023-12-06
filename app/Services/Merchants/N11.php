@@ -367,12 +367,12 @@ class N11 implements Merchant
         ]);
     }
 
-    public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType)
+    public function declineOrder(string $lineId, string $reason, OrderRejectReasonType $reasonType)
     {
         $this->client->order->OrderItemReject([
             "orderItemList" => [
                 "orderItem" => [
-                    "id" => $order->merchant_id
+                    "id" => $lineId
                 ]
             ],
             "rejectReason" => $reason,
