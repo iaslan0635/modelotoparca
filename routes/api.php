@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post("/git-webhook", function () {
     Log::info("ACK");
     set_time_limit(0);
-    Process::run(["bash", "deploy.sh"]);
+    $res = Process::run(["bash", "deploy.sh"]);
+    Log::debug($res->output());
 });
 
