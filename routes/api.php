@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post("/git-webhook", function () {
     Log::info("ACK");
     set_time_limit(0);
-    $res = Process::run(["bash", "deploy.sh"]);
-    Log::debug($res->errorOutput());
-    Log::info($res->successful());
-    Log::debug($res->output());
+    $proc = new \Symfony\Component\Process\Process(["bash", "deploy.sh"], base_path());
+    $proc->run();
+    Log::debug($proc->getOutput());
+    Log::info($proc->getExitCode());
+    Log::debug($proc->getErrorOutput());
 });
 
