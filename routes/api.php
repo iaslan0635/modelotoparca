@@ -25,6 +25,8 @@ Route::post("/git-webhook", function () {
     Log::info("ACK");
     set_time_limit(0);
     $res = Process::run(["bash", "deploy.sh"]);
+    Log::debug($res->errorOutput());
+    Log::info($res->successful());
     Log::debug($res->output());
 });
 
