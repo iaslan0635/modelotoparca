@@ -31,21 +31,4 @@ class TigerProduct extends BaseModel
     {
         return $this->hasOne(Product::class, "id", "id");
     }
-
-    protected static function booted()
-    {
-        self::saved(function (TigerProduct $model) {
-            foreach ($model->getChanges() as $column => $new) {
-                if ($column === 'updated_at' || $column === 'created_at') {
-                    continue;
-                }
-
-                $old = $model->getOriginal($column);
-                Log::create([
-                    'product_id' => $model->id,
-                    'message' => "Değişiklik yapıldı. Kolon: $column\nEski: $old, Yeni: $new",
-                ]);
-            }
-        });
-    }
 }

@@ -100,6 +100,13 @@ class ExcelImport implements ShouldQueue
             ];
 
             $isChaged = $product->isDirty($veriler);
+            foreach ($product->getChanges() as $column => $new)
+                if ($column !== 'updated_at' && $column !== 'created_at')
+                    \App\Models\Log::create([
+                        'product_id' => $product->id,
+                        'message' => "Değişiklik yapıldı. Kolon: $column\nEski: {$product->getOriginal($column)}, Yeni: $new",
+                    ]);
+
             $product->save();
 
             if ($isChaged) {
