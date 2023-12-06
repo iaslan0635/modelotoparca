@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'admin.index');
 
-
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
     Route::get('oem', 'push_oem')->name('oem');
     Route::post('image', 'push_image')->name('image');
