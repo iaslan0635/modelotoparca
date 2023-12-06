@@ -45,24 +45,19 @@ HTML;
 
         $productCards = $crawler->filter('#products-js .card-col');
 
-        $logSuffix = $brand_filter ? "Marka filtresi: $brand_filter" : '';
+        $logSuffix = $brand_filter ? " | Marka filtresi: $brand_filter" : '';
         if ($productCards->count() <= 0) {
             Log::create([
                 'product_id' => $product_id,
-                'message' => "Ürün bulunamadı, Anahtar Kelime: $keyword | $logSuffix",
+                'message' => "Ürün bulunamadı, Anahtar Kelime: $keyword$logSuffix",
             ]);
 
             return false;
         }
 
-        Log::create([
-            'product_id' => $product_id,
-            'message' => "{$productCards->count()} Adet ürün çekildi. Anahtar Kelime: $keyword | $logSuffix",
-        ]);
-
-
         $added = false;
         $links = $productCards->each(fn(Crawler $cardElement) => $cardElement->filter('a')->attr('href'));
+        $successfulProductCount = 0;
         foreach ($links as $link) {
             $product = self::getProduct($link);
 
@@ -78,7 +73,10 @@ HTML;
             */
 
 
-            $connection = SparetoProduct::updateOrCreate(['product_id' => $product_id, 'url' => $link], ['origin_field' => $field]);
+            $connection = SparetoProduct::updateOrCreate(
+                ['product_id' => $product_id, 'url' => $link],
+                ['origin_field' => $field, "keyword" => $keyword]
+            );
             if ($connection->is_banned) continue;
 
             Product::query()->where('id', $product_id)->update([
@@ -125,7 +123,14 @@ HTML;
 
                 $added = true;
             }
+
+            $successfulProductCount++;
         }
+
+        Log::create([
+            'product_id' => $product_id,
+            'message' => "$successfulProductCount Adet ürün çekildi. Anahtar Kelime: $keyword$logSuffix",
+        ]);
 
         return $added;
     }
