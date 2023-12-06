@@ -13,7 +13,7 @@
             </thead>
             <tbody>
             @if($type === "trendyol")
-                @foreach($attributes->categoryAttributes as $attribute)
+                @foreach(@$attributes->categoryAttributes ?? [] as $attribute)
                     <livewire:admin.product-attribute-trendyol :key="$attribute->attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
                 @endforeach
             @elseif($type === "hepsiburada")
