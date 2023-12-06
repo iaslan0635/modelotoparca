@@ -412,8 +412,9 @@
                                                                         <td style="width:100%; display: inline-block; word-break: break-all; font-weight: 700">
                                                                             @foreach(explode(',', $oem->oems) as $item)
                                                                                 <a href="{{ $item ? route('oem.search', ['oem' => $item]) : null }}">
-                                                                                    {{ $item }} {{ !$loop->last ? "," : null }}
+                                                                                    {{ $item }}
                                                                                 </a>
+                                                                                {{ !$loop->last ? "," : null }}
                                                                             @endforeach
                                                                         </td>
                                                                     </tr>
