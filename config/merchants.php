@@ -23,9 +23,9 @@ return [
             "password" => "MemvuFNJ7eeNHi5DsRfG"
         ],
         "hepsiburada" => [
-            "merchantId" => "b81b18f7-851c-4b13-947f-2324d40a812f",
+            "merchantId" => "0280375f-031b-4558-bc09-b87f8feb2809",
             "username" => "modelotomotiv_dev",
-            "password" => "sCEDbtBsjRHP!",
+            "password" => "Hb12345!",
         ],
     ]
 ];

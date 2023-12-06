@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Http;
 class Hepsiburada implements Merchant, TrackableMerchant
 {
     public readonly string $merchantId;
+    private array $creds;
 
     public function __construct()
     {
-        $this->merchantId = config("merchants.hepsiburada.merchantId");
+        $keyPrefix = config("merchants.test_mode") ? ".test_creds" : "";
+        $this->creds = config("merchants$keyPrefix.hepsiburada");
+        $this->merchantId = $this->creds["merchantId"];
     }
 
     private function baseUrl(string $service)
@@ -28,11 +31,9 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
     private function client(string $service): PendingRequest
     {
-        $credsKey = config("merchants.test_mode") ? "merchants" : "merchants.test_creds";
-        $creds = config("$credsKey.trendyol");
         return Http::withBasicAuth(
-            $creds["username"],
-            $creds["password"],
+            $this->creds["username"],
+            $this->creds["password"],
         )->baseUrl($this->baseUrl($service));
     }
 
@@ -196,7 +197,10 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
     public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType)
     {
-        // TODO: Implement declineOrder() method.
+        $this->client("oms-external")->post(
+            "lineitems/merchantid/$this->merchantId/id/$order->merchant_id/cancelbymerchant",
+            ["reasonId" => 83] // ???
+        );
     }
 
     public function refundedOrders()
@@ -273,5 +277,58 @@ class Hepsiburada implements Merchant, TrackableMerchant
     public function parseTrackingErrors(array $trackingResponse): array
     {
         return ["TODO"];
+    }
+
+    public function createTestOrder()
+    {
+        if (!config("merchants.test_mode"))
+            throw new \Exception("Hepsiburada::createTestOrder() requires merchants.test_mode to be true");
+
+        return $this->client("oms-stub-external")->post(
+            "orders/merchantid/$this->merchantId",
+            [
+                'Customer' => [
+                    'CustomerId' => 'dfc8a27f-faae-4cb2-859c-8a7d50ee77be',
+                    'Name' => 'Test User'
+                ],
+                'DeliveryAddress' => [
+                    'AddressDetail' => 'Trump Towers',
+                    'AddressId' => 'e66765b3-d37d-488c-ae15-47051245dc9b',
+                    'AlternatePhoneNumber' => '045321538212',
+                    'City' => 'İstanbul',
+                    'CountryCode' => 'TR',
+                    'District' => 'Kustepe',
+                    'Email' => 'customer@hepsiburada.com.tr',
+                    'Name' => 'Hepsiburada Office',
+                    'PhoneNumber' => '902822613231'
+                ],
+                'LineItems' => [
+                    [
+                        'CargoCompanyId' => 1,
+                        'CustomizedProductValue' => '5',
+                        'DeliveryOptionId' => 1,
+                        'MerchantId' => $this->merchantId,
+                        'Price' => [
+                            'Amount' => 0,
+                            'Currency' => 'TRY'
+                        ],
+                        'Quantity' => 0,
+                        'Sku' => 'string',
+                        'TagList' => [
+                            'string'
+                        ],
+                        'TotalPrice' => [
+                            'Amount' => 0,
+                            'Currency' => 'TRY'
+                        ],
+                        'Vat' => 0,
+                        'isBnplMP' => true
+                    ]
+                ],
+                'OrderDate' => '06/12/2023',
+                'OrderNumber' => '123',
+                'PaymentStatus' => 'AwaitingPayment'
+            ]
+        );
     }
 }

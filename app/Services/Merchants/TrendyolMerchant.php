@@ -15,19 +15,20 @@ use Illuminate\Support\Facades\Http;
 class TrendyolMerchant implements Merchant, TrackableMerchant
 {
     public readonly string $supplierId;
+    private array $creds;
 
     public function __construct()
     {
-        $this->supplierId = config("merchants.trendyol.supplierId");
+        $keyPrefix = config("merchants.test_mode") ? ".test_creds" : "";
+        $this->creds = config("merchants$keyPrefix.trendyol");
+        $this->supplierId = $this->creds["supplierId"];
     }
 
     private function client(): PendingRequest
     {
-        $credsKey = config("merchants.test_mode") ? "merchants" : "merchants.test_creds";
-        $creds = config("$credsKey.trendyol");
         return Http::withBasicAuth(
-            $creds["username"],
-            $creds["password"],
+            $this->creds["username"],
+            $this->creds["password"],
         )->baseUrl($this->baseUrl());
     }
 
@@ -412,5 +413,59 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return collect(@$trackingResponse["errors"])->map(fn($err) => "Karşı tarafın hatası ({$err['message']})")->concat(
             collect(@$trackingResponse["items"])->map(fn($item) => $item["failureReasons"])->flatten()->all()
         )->all();
+    }
+
+    public function createTestOrder()
+    {
+        if (!config("merchants.test_mode"))
+            throw new \Exception("TrendyolMerchant::createTestOrder() requires merchants.test_mode to be true");
+
+        return $this->client()
+            ->withHeader("SellerID", $this->supplierId)
+            ->post("https://stageapi.trendyol.com/integration/oms/core", [
+                'customer' => [
+                    'customerFirstName' => 'string',
+                    'customerLastName' => 'string',
+                ],
+                'invoiceAddress' => [
+                    'addressText' => 'string',
+                    'city' => 'string',
+                    'company' => 'string',
+                    'district' => 'string',
+                    'email' => 'string',
+                    'invoiceFirstName' => 'string',
+                    'invoiceLastName' => 'string',
+                    'latitude' => 'string',
+                    'longitude' => 'string',
+                    'neighborhood' => 'string',
+                    'phone' => 'string',
+                    'postalCode' => 'string',
+                ],
+                'lines' => [
+                    [
+                        'barcode' => 'string',
+                        'quantity' => 0,
+                    ],
+                    [
+                        'barcode' => 'string',
+                        'quantity' => 0,
+                    ],
+                ],
+                'seller' => ['sellerId' => $this->supplierId],
+                'shippingAddress' => [
+                    'addressText' => 'string',
+                    'city' => 'string',
+                    'company' => 'string',
+                    'district' => 'string',
+                    'email' => 'string',
+                    'latitude' => 'string',
+                    'longitude' => 'string',
+                    'neighborhood' => 'string',
+                    'phone' => 'string',
+                    'postalCode' => 'string',
+                    'shippingFirstName' => 'string',
+                    'shippingLastName' => 'string',
+                ],
+            ]);
     }
 }
