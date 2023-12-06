@@ -20,12 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post("/git-webhook", function () {
-    Log::info("ACK");
     set_time_limit(0);
     $proc = new \Symfony\Component\Process\Process(["bash", "deploy.sh"], base_path());
     $proc->run();
-    Log::debug($proc->getOutput());
-    Log::info($proc->getExitCode());
-    Log::debug($proc->getErrorOutput());
 });
 
