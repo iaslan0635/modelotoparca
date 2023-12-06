@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
- *
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
@@ -24,4 +23,3 @@ Route::post("/git-webhook", function () {
     $proc = new \Symfony\Component\Process\Process(["bash", "deploy.sh"], base_path());
     $proc->run();
 });
-
