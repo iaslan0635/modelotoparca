@@ -15,6 +15,12 @@ use App\Services\MarketPlace;
 use App\Services\Merchants\N11;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('semih', function (){
+    $n11 = new \App\Services\Merchants\TrendyolMerchant();
+    return $n11->getCategoryAttributes();
+});
+
 Route::view('/', 'admin.index');
 
 Route::get("n11", function () {

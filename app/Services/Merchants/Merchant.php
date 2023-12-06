@@ -33,7 +33,7 @@ interface Merchant
 
     public function approveOrder(MerchantOrder $order);
 
-    public function declineOrder(MerchantOrder $order, string $reason, OrderRejectReasonType $reasonType);
+    public function declineOrder(string $lineId, string $reason, OrderRejectReasonType $reasonType);
 
     public function refundedOrders();
 

@@ -43,7 +43,7 @@ $request
 HTML;
         $crawler = new Crawler($html);
 
-        $productCards = $crawler->filter('#products-js .card-col');
+        $productCards = $crawler->filter('#products-js .card-col:not(.alt-card)');
 
         $logSuffix = $brand_filter ? " | Marka filtresi: $brand_filter" : '';
         if ($productCards->count() <= 0) {
