@@ -226,8 +226,6 @@ class ExcelImport implements ShouldQueue
 
     public static function runBot(TigerProduct $product): void
     {
-        Log::debug("Running bot for $product->id");
-
         self::clearSparetoAssociations($product);
 
         $search_predence = [
