@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
 use App\Services\MarketPlace;
 use Illuminate\Http\Request;
@@ -24,5 +25,12 @@ class MerchantOrderController extends Controller
     {
         $data = MarketPlace::parseOrder($order);
         return view('admin.apps.marketplace.order_show', compact('order', 'data'));
+    }
+
+    public function declineOrder(MerchantOrder $order, string $lineId, string $reasonType)
+    {
+        $reasonTypeEnum = OrderRejectReasonType::from($reasonType);
+        MarketPlace::declineOrder($order, $lineId, $reasonTypeEnum);
+        return back();
     }
 }

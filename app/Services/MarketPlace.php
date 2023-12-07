@@ -63,8 +63,12 @@ class MarketPlace
         };
     }
 
-    public static function declineOrder(MerchantOrder $merchantOrder, string $lineId, OrderRejectReasonType $reasonType, string $shipmentPackageId, int $quantity)
+    public static function declineOrder(MerchantOrder $merchantOrder, string $lineId, OrderRejectReasonType $reasonType)
     {
-        return self::createMerchant($merchantOrder->merchant)->declineOrder($lineId, $reasonType, $shipmentPackageId, $quantity);
+        $merchant = self::createMerchant($merchantOrder->merchant);
+        $quantity = !$merchant instanceof TrendyolMerchant ? -1
+            : collect($merchant->parseOrder($merchantOrder)["items"])->firstWhere("id", $lineId)["quantity"];
+
+        return $merchant->declineOrder($lineId, $reasonType, $merchantOrder->id, $quantity);
     }
 }

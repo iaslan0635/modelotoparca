@@ -54,13 +54,15 @@
                             <!--begin:::Tab item-->
                             <li class="nav-item">
                                 <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
-                                   href="#kt_ecommerce_sales_order_summary">Order Summary</a>
+                                   href="#kt_ecommerce_sales_order_summary">Order Summary
+                                </a>
                             </li>
                             <!--end:::Tab item-->
                             <!--begin:::Tab item-->
                             <li class="nav-item">
                                 <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#kt_ecommerce_sales_order_history">Order History</a>
+                                   href="#kt_ecommerce_sales_order_history">Order History
+                                </a>
                             </li>
                             <!--end:::Tab item-->
                         </ul>
@@ -358,6 +360,7 @@
                                                     <th class="min-w-175px">Ürün</th>
                                                     <th class="min-w-70px text-end">Adet</th>
                                                     <th class="min-w-100px text-end">Fiyat</th>
+                                                    <th class="min-w-100px text-end">İptal</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="fw-semibold text-gray-600">
@@ -385,7 +388,19 @@
                                                         <td class="text-end">{{ \App\Facades\TaxFacade::formattedPrice($item['price']) }}</td>
                                                         <!--end::Price-->
                                                         <td class="text-end">
-                                                            <a class="btn btn-danger" href="">sil</a>
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    İptal Et
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    @foreach(\App\Enums\OrderRejectReasonType::cases() as $rejectReason)
+                                                                        <li>
+                                                                            <a class="dropdown-item"
+                                                                               href="{{ route('admin.order.marketplace.declineOrder', [$order, $item["id"], $rejectReason->value]) }}">{{$rejectReason->value}}</a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
