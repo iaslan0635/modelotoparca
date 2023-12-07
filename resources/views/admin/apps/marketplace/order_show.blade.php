@@ -384,6 +384,9 @@
                                                         <!--begin::Price-->
                                                         <td class="text-end">{{ \App\Facades\TaxFacade::formattedPrice($item['price']) }}</td>
                                                         <!--end::Price-->
+                                                        <td class="text-end">
+                                                            <a class="btn btn-danger" href="">sil</a>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                                 <!--begin::Grand total-->

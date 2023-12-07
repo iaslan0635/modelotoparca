@@ -2,15 +2,13 @@
 
 namespace App\Services;
 
+use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
-use App\Models\Tracking;
 use App\Services\Merchants\Hepsiburada;
 use App\Services\Merchants\Merchant;
 use App\Services\Merchants\N11;
 use App\Services\Merchants\TrackableMerchant;
 use App\Services\Merchants\TrendyolMerchant;
-use Illuminate\Pagination\CursorPaginator;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Log;
 
 class MarketPlace
@@ -63,5 +61,10 @@ class MarketPlace
             "trendyol" => new TrendyolMerchant(),
             default => throw new \InvalidArgumentException("$merchantAlias geçerli bir izlenebilir pazar yeri değil"),
         };
+    }
+
+    public static function declineOrder(MerchantOrder $merchantOrder, string $lineId, OrderRejectReasonType $reasonType, string $shipmentPackageId, int $quantity)
+    {
+        return self::createMerchant($merchantOrder->merchant)->declineOrder($lineId, $reasonType, $shipmentPackageId, $quantity);
     }
 }

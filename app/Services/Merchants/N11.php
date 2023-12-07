@@ -367,7 +367,7 @@ class N11 implements Merchant
         ]);
     }
 
-    public function declineOrder(string $lineId, string $reason, OrderRejectReasonType $reasonType)
+    public function declineOrder(string $lineId, OrderRejectReasonType $reasonType, string $shipmentPackageId, int $quantity)
     {
         $this->client->order->OrderItemReject([
             "orderItemList" => [
@@ -375,7 +375,7 @@ class N11 implements Merchant
                     "id" => $lineId
                 ]
             ],
-            "rejectReason" => $reason,
+            "rejectReason" => $quantity,
             "rejectReasonType" => $reasonType === OrderRejectReasonType::OUT_OF_STOCK ? "OUT_OF_STOCK" : "OTHER",
             // ternary kullanmamın sebebi eğer OrderRejectReasonType'ye farklı değerler eklenirse onların OTHER olarak gitmesi
         ]);

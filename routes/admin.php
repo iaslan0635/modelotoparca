@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\MerchantOrderController;
 use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -57,9 +58,9 @@ Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(fu
 });
 
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
-Route::get('/marketplace-orders', [OrderController::class, 'marketplace'])->name('order.marketplace');
+Route::get('/marketplace-orders', [MerchantOrderController::class, 'index'])->name('order.marketplace');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
-Route::get('/marketplace-order/{order}', [OrderController::class, 'marketplaceShow'])->name('order.marketplace.show');
+Route::get('/marketplace-order/{order}', [MerchantOrderController::class, 'show'])->name('order.marketplace.show');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
 Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync');

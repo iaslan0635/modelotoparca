@@ -164,9 +164,10 @@ class ExcelImport implements ShouldQueue
             $oems = explode(',', $product->oem_codes);
 
             foreach ($oems as $oem) {
-                $product->oems()->firstOrCreate([
-                    'oem' => $oem,
-                ]);
+                $product->oems()->updateOrCreate(
+                    ['oem' => $oem],
+                    ['type' => "excel"]
+                );
             }
 
             self::runBot($product);

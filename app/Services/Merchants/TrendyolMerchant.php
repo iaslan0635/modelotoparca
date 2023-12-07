@@ -152,7 +152,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return true;
     }
 
-    public function declineOrder(string $lineId, string $reason, OrderRejectReasonType $reasonType)
+    public function declineOrder(string $lineId, OrderRejectReasonType $reasonType, string $shipmentPackageId, int $quantity)
     {
         $reasonId = match ($reasonType) {
             OrderRejectReasonType::OUT_OF_STOCK => 501,
@@ -164,12 +164,12 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         };
 
         return $this->client()->put(
-            "/integration/oms/core/sellers/{sellerId}/shipment-packages/{shipmentPackageId}/items/unsupplied",
+            "/integration/oms/core/sellers/$this->supplierId/shipment-packages/$shipmentPackageId/items/unsupplied",
             [
                 "lines" => [
                     [
-                        "lineId" => 0,
-                        "quantity" => 1
+                        "lineId" => $lineId,
+                        "quantity" => $quantity
                     ]
                 ],
                 "reasonId" => $reasonId
