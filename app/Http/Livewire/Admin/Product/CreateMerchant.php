@@ -18,16 +18,16 @@ class CreateMerchant extends Component
 
     public function createN11()
     {
-        (new N11())->createProduct($this->product);
+        (new N11())->sendProduct($this->product);
     }
 
     public function createHepsiburada()
     {
-        (new Hepsiburada())->createProduct($this->product);
+        (new Hepsiburada())->sendProduct($this->product);
     }
 
     public function createTrendyol()
     {
-        (new TrendyolMerchant())->createProduct($this->product);
+        (new TrendyolMerchant())->sendProduct($this->product);
     }
 }
