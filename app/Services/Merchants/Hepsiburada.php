@@ -67,7 +67,6 @@ class Hepsiburada implements Merchant, TrackableMerchant
                 "merchantSkuList" => $product->sku
             ])->object()->totalCount > 0;
 
-        dd($exists);
         return $exists ? $this->updateProduct($product) : $this->createProduct($product);
     }
 
