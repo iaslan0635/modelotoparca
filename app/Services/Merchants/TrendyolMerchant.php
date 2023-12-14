@@ -96,7 +96,8 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                 ];
             }
         }
-        $response = $this->supplierClient()->send($method, "v2/products", ["json" => [
+
+        $response = dd($this->supplierClient()->send($method, "v2/products", ["json" => [
             "items" => [
                 [
                     "barcode" => $product->sku,
@@ -120,7 +121,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                     "attributes" => $attributes
                 ]
             ]
-        ]])->object();
+        ]])->effectiveUri());
 
         if (!property_exists($response, "batchRequestId"))
             // hata olduğunda batchRequestId gelmez
