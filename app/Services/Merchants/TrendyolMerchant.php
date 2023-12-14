@@ -121,7 +121,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                     "attributes" => $attributes
                 ]
             ]
-        ]]);
+        ]])->object();
 
         if (!property_exists($response, "batchRequestId"))
             // hata olduğunda batchRequestId gelmez
