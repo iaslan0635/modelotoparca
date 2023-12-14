@@ -5,8 +5,7 @@
         @if($attribute['allowCustom'])
             <input type="text" wire:model="value">
         @else
-            <select wire:model="value_id"
-                    class="form-control">
+            <select wire:model="value_id" class="form-select">
                 <option value="0">(Seçilmedi)</option>
                 @foreach($attribute['attributeValues'] as $value)
                     <option value="{{ $value?->id ?? $value['id'] }}">{{ $value?->name ?? $value['name'] }}</option>
