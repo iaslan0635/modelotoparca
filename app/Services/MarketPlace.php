@@ -59,7 +59,7 @@ class MarketPlace
         return match ($merchantAlias) {
             "hepsiburada" => new Hepsiburada(),
             "trendyol" => new TrendyolMerchant(),
-            default => throw new \InvalidArgumentException("$merchantAlias geçerli bir izlenebilir pazar yeri değil"),
+            default => throw new \InvalidArgumentException("$merchantAlias geçerli bir takip edilebilir pazar yeri değil"),
         };
     }
 
@@ -69,6 +69,8 @@ class MarketPlace
         $quantity = !$merchant instanceof TrendyolMerchant ? -1
             : collect($merchant->parseOrder($merchantOrder)["items"])->firstWhere("id", $lineId)["quantity"];
 
-        return $merchant->declineOrder($lineId, $reasonType, $merchantOrder->id, $quantity);
+        $merchant->declineOrder($lineId, $reasonType, $merchantOrder->id, $quantity);
+        $merchantOrder->status = "İptal Edildi";
+        $merchantOrder->save();
     }
 }
