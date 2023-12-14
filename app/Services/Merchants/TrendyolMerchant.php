@@ -34,7 +34,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
 
     private function supplierClient(): PendingRequest
     {
-        return $this->client()->baseUrl("{$this->baseUrl()}/suppliers/$this->supplierId/");
+        return $this->client()->baseUrl("{$this->baseUrl()}suppliers/$this->supplierId/");
     }
 
     private function baseUrl()
