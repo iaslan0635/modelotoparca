@@ -2,6 +2,9 @@
 
 namespace App\Facades\N11Client;
 
+use SoapClient;
+use SoapFault;
+
 class N11Client
 {
     const SERVICE_ALIASES = [
@@ -35,13 +38,11 @@ class N11Client
         return $this->clients[$clientAlias] ?? ($this->clients[$clientAlias] = $this->createClient($clientAlias));
     }
 
-    /**
-     * @throws \SoapFault
-     */
+    /** @throws SoapFault */
     private function createClient(string $clientAlias)
     {
         $serviceName = self::SERVICE_ALIASES[$clientAlias];
-        $soapClient = new \SoapClient("https://api.n11.com/ws/$serviceName.wsdl", [
+        $soapClient = new SoapClient("https://api.n11.com/ws/$serviceName.wsdl", [
             "trace" => 1,
             "exception" => false,
             'cache_wsdl' => WSDL_CACHE_NONE

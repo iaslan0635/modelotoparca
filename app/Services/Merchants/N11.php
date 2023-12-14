@@ -6,15 +6,12 @@ use App\Enums\OrderRejectReasonType;
 use App\Facades\N11Client\N11Client;
 use App\Facades\N11Client\N11ClientException;
 use App\Facades\TTL;
-use App\Models\Image;
 use App\Models\MerchantOrder;
-use App\Models\MerchantQuestion;
 use App\Models\Product;
 use App\Models\ProductMerchant;
-use App\Models\Tracking;
+use App\Models\ProductMerchantAttribute;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Collection;
-use Nette\NotImplementedException;
 
 class N11 implements Merchant
 {
@@ -219,8 +216,17 @@ class N11 implements Merchant
     {
         $images = $product->imageUrls()->whenEmpty(fn(Collection $self) => $self->push($product->imageUrl()))->values();
 
+        $attrs = ProductMerchantAttribute::query()
+            ->where('merchant', '=', 'n11')
+            ->where('product_id', '=', $product->id)
+            ->get()
+            ->map(fn (ProductMerchantAttribute $p) => [
+                "name" => $p->merchant_id,
+                "value" => $p->merchant_value
+            ]);
+
         $price = $this->formatPrice($product->price->price_without_tax);
-        $response = $this->client->product->SaveProduct([
+        $response = /*$this->client->product->SaveProduct*/dd([
             "product" => [
                 'productSellerCode' => $product->sku,
                 'title' => $product->title . " " . $product->sub_title,
@@ -241,10 +247,11 @@ class N11 implements Merchant
                 'currencyType' => self::CURRENCY['try'], // Bütün pazaryerlerine TL göndereceğiz
                 'approvalStatus' => $product->status,
                 'attributes' => [
-                    "attribute" => [
+                    [
                         "name" => "Marka",
                         "value" => $product->brand->name
-                    ]
+                    ],
+                    ...$attrs
                 ],
                 'productCondition' => 1, // Yeni (2. el değil)
                 'preparingDay' => 3,

@@ -37,7 +37,7 @@ class ProductAttributeHepsiburada extends Component
     public function loadData()
     {
         $hb = new Hepsiburada();
-        $this->values = $hb->getCategoryAttributeValues(Product::find($this->product_id)->categories[0]->merchants()->hepsiburada()->first()->merchant_id, $this->attribute['id'])->data;
+        $this->values = $hb->getCategoryAttributeValues(Product::find($this->product_id)->categories[0]->merchants()->hepsiburada()->first()->merchant_id, $this->attribute['id'])->data ?? [];
     }
 
     public function save()

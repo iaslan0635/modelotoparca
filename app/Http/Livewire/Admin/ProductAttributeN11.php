@@ -23,7 +23,7 @@ class ProductAttributeN11 extends Component
         $sync = ProductMerchantAttribute::query()
             ->where('merchant', '=', "n11")
             ->where('product_id', '=', $this->product_id)
-            ->where('merchant_id', '=', $this->attribute['id'])
+            ->where('merchant_id', '=', $this->attribute['name'])
             ->first();
 
         if ($sync) {
@@ -37,7 +37,7 @@ class ProductAttributeN11 extends Component
     {
         Product::find($this->product_id)->merchantAttributes()->updateOrCreate([
             'merchant' => "n11",
-            'merchant_id' => $this->attribute['id'],
+            'merchant_id' => $this->attribute['name'],
             'product_id' => $this->product_id,
         ], [
             "merchant_value" => $this->value

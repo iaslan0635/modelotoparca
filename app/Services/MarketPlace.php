@@ -10,6 +10,8 @@ use App\Services\Merchants\N11;
 use App\Services\Merchants\TrackableMerchant;
 use App\Services\Merchants\TrendyolMerchant;
 use Illuminate\Support\Facades\Log;
+use InvalidArgumentException;
+use Throwable;
 
 class MarketPlace
 {
@@ -17,7 +19,7 @@ class MarketPlace
     {
         try {
             $function();
-        } catch (\Throwable $t) {
+        } catch (Throwable $t) {
             Log::channel("merchants")->error($t->getMessage(), ['exception' => $t]);
         }
     }
@@ -50,7 +52,7 @@ class MarketPlace
             "n11" => new N11(),
             "hepsiburada" => new Hepsiburada(),
             "trendyol" => new TrendyolMerchant(),
-            default => throw new \InvalidArgumentException("$merchantAlias geçerli bir pazar yeri değil"),
+            default => throw new InvalidArgumentException("$merchantAlias geçerli bir pazar yeri değil"),
         };
     }
 
@@ -59,15 +61,15 @@ class MarketPlace
         return match ($merchantAlias) {
             "hepsiburada" => new Hepsiburada(),
             "trendyol" => new TrendyolMerchant(),
-            default => throw new \InvalidArgumentException("$merchantAlias geçerli bir takip edilebilir pazar yeri değil"),
+            default => throw new InvalidArgumentException("$merchantAlias geçerli bir takip edilebilir pazar yeri değil"),
         };
     }
 
     public static function declineOrder(MerchantOrder $merchantOrder, string $lineId, OrderRejectReasonType $reasonType)
     {
         $merchant = self::createMerchant($merchantOrder->merchant);
-        $quantity = !$merchant instanceof TrendyolMerchant ? -1
-            : collect($merchant->parseOrder($merchantOrder)["items"])->firstWhere("id", $lineId)["quantity"];
+        $quantity = !$merchant instanceof TrendyolMerchant ? -1 :
+            collect($merchant->parseOrder($merchantOrder)["items"])->firstWhere("id", $lineId)["quantity"];
 
         $merchant->declineOrder($lineId, $reasonType, $merchantOrder->id, $quantity);
         $merchantOrder->status = "İptal Edildi";
