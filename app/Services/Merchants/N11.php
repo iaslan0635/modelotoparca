@@ -226,7 +226,7 @@ class N11 implements Merchant
             ]);
 
         $price = $this->formatPrice($product->price->price_without_tax);
-        $response = /*$this->client->product->SaveProduct*/dd([
+        $response = $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
                 'title' => $product->title . " " . $product->sub_title,
