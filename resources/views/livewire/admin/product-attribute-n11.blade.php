@@ -6,6 +6,7 @@
             <input type="text" wire:model="value">
         @else
             <select wire:model="value" class="form-select">
+                <option disabled>Seçiniz</option>
                 @foreach(data_get($attribute['valueList'], "value") as $value)
                     <option value="{{ data_get($value, "name") }}">{{ data_get($value, "name") }}</option>
                 @endforeach
