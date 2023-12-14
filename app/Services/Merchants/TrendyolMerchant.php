@@ -29,7 +29,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return Http::withBasicAuth(
             $this->creds["username"],
             $this->creds["password"],
-        )/*->throw()*/->baseUrl($this->baseUrl());
+        )->throw()->baseUrl($this->baseUrl());
     }
 
     private function supplierClient(): PendingRequest
@@ -97,7 +97,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
             }
         }
 
-        $response = dd($this->supplierClient()->send($method, "v2/products", ["json" => [
+        $response = $this->supplierClient()->send($method, "v2/products", ["json" => [
             "items" => [
                 [
                     "barcode" => $product->sku,
@@ -121,7 +121,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                     "attributes" => $attributes
                 ]
             ]
-        ]])->effectiveUri());
+        ]]);
 
         if (!property_exists($response, "batchRequestId"))
             // hata olduğunda batchRequestId gelmez
