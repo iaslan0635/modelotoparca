@@ -15,6 +15,9 @@
         @endif
     </td>
     <td>
-        <button wire:click="save" class="btn btn-success btn-sm">Kaydet</button>
+        <button wire:click="save" class="btn btn-success btn-sm">
+            Kaydet
+            <span wire:loading><i class="fas fa-spinner fa-spin"></i></span>
+        </button>
     </td>
 </tr>
