@@ -15,6 +15,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
 {
     public readonly string $merchantId;
     private array $creds;
+
     public function __construct()
 
     {
@@ -61,11 +62,14 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
     public function sendProduct(Product $product)
     {
-        $exists = $this->client("listing-external")->get("listings/merchantid/$this->merchantId", [
-                "offset" => 0,
-                "limit" => 1,
-                "merchantSkuList" => $product->sku
-            ])->object()->totalCount > 0;
+        $exists = rescue(
+            fn() => $this->client("listing-external")->get("listings/merchantid/$this->merchantId", [
+                    "offset" => 0,
+                    "limit" => 1,
+                    "merchantSkuList" => $product->sku
+                ])->object()->totalCount > 0,
+            false
+        );
 
         return $exists ? $this->updateProduct($product) : $this->createProduct($product);
     }
