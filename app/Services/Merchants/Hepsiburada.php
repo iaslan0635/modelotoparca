@@ -179,7 +179,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
         return $this->client("mpop")->get("product/api/categories/$categoryId/attributes?version=1")->object();
     }
 
-    public function getCategoryAttributeValues($categoryId, $attributeId)
+    public function getCategoryAttributeValues(int $categoryId, int $attributeId)
     {
         $page = 0;
         $size = 1000;
