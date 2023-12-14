@@ -9,4 +9,4 @@ php artisan view:cache
 php artisan optimize
 php artisan migrate --force
 
-echo "" | sudo -S service php8.2-fpm reload
+nohup bash -c "echo '' | sudo -S service php8.2-fpm reload"
