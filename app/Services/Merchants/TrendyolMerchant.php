@@ -29,7 +29,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return Http::withBasicAuth(
             $this->creds["username"],
             $this->creds["password"],
-        )->throw()->baseUrl($this->baseUrl());
+        )/*->throw()*/->baseUrl($this->baseUrl());
     }
 
     private function supplierClient(): PendingRequest
