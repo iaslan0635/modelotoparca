@@ -13,13 +13,11 @@ interface Merchant
 
     public function updatePrice(Product $product);
 
-    public function updateProduct(Product $product);
+    public function sendProduct(Product $product);
 
     public function updateOrder(MerchantOrder $order);
 
     public function updateDeliveryCode($id, $code);
-
-    public function createProduct(Product $product);
 
     public function getCategories();
 

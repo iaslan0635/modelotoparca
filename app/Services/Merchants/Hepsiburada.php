@@ -15,8 +15,8 @@ class Hepsiburada implements Merchant, TrackableMerchant
 {
     public readonly string $merchantId;
     private array $creds;
-
     public function __construct()
+
     {
         $keyPrefix = config("merchants.test_mode") ? ".test_creds" : "";
         $this->creds = config("merchants$keyPrefix.hepsiburada");
@@ -59,7 +59,17 @@ class Hepsiburada implements Merchant, TrackableMerchant
         ]);
     }
 
-    public function updateProduct(Product $product)
+    public function sendProduct(Product $product)
+    {
+        $exists = $this->client("listing-external")->post("Listings/merchantid/{{$this->merchantId}}", [
+                "limit" => 1,
+                "merchantSkuList" => $product->sku
+            ])->object()->totalCount > 0;
+
+        return $exists ? $this->updateProduct($product) : $this->createProduct($product);
+    }
+
+    private function updateProduct(Product $product)
     {
         $price = $this->formatPrice($product->price->price_without_tax);
         $payload = [
@@ -109,7 +119,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
         // TODO: Implement updateDeliveryCode() method.
     }
 
-    public function createProduct(Product $product)
+    private function createProduct(Product $product)
     {
         $price = $this->formatPrice($product->price->price_without_tax);
         $fields = ProductMerchantAttribute::query()

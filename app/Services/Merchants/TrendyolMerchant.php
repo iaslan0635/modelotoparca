@@ -69,12 +69,16 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return $this->supplierClient()->get("questions/filter")->object();
     }
 
-    public function updateProduct(Product $product)
+    public function sendProduct(Product $product)
     {
-        return $this->sendProduct($product, "PUT");
+        $exists = $this->supplierClient()->get("products", ["barcode" => $product->sku])
+                ->object()->totalElements > 0;
+        $method = $exists ? "PUT" : "POST";
+
+        return $this->_sendProduct($product, $method);
     }
 
-    private function sendProduct(Product $product, string $method)
+    private function _sendProduct(Product $product, string $method)
     {
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'trendyol')

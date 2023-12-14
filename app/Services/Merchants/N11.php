@@ -212,7 +212,7 @@ class N11 implements Merchant
         $this->client->stock->UpdateStockByStockIdRequest($id, $stock);
     }
 
-    public function updateProduct(Product $product)
+    public function sendProduct(Product $product)
     {
         $images = $product->imageUrls()->whenEmpty(fn(Collection $self) => $self->push($product->imageUrl()))->values();
 
@@ -220,7 +220,7 @@ class N11 implements Merchant
             ->where('merchant', '=', 'n11')
             ->where('product_id', '=', $product->id)
             ->get()
-            ->map(fn (ProductMerchantAttribute $p) => [
+            ->map(fn(ProductMerchantAttribute $p) => [
                 "name" => $p->merchant_id,
                 "value" => $p->merchant_value
             ]);
@@ -299,6 +299,15 @@ class N11 implements Merchant
             $response->result->status !== "success" &&
             $response->result->errorCode !== 'SELLER_API.catalog.suggest.failed.alreadySuggested'
         ) throw new N11ClientException($response);
+
+        try {
+            ProductMerchant::create([
+                'merchant' => "n11",
+                'merchant_id' => $product->sku,
+                'product_id' => $product->id
+            ]);
+        } catch (UniqueConstraintViolationException) {
+        }
     }
 
     public function updateOrder(MerchantOrder $order)
@@ -309,20 +318,6 @@ class N11 implements Merchant
     public function updateDeliveryCode($id, $code)
     {
         // ???
-    }
-
-    public function createProduct(Product $product)
-    {
-        $this->updateProduct($product);
-
-        try {
-            ProductMerchant::create([
-                'merchant' => "n11",
-                'merchant_id' => $product->sku,
-                'product_id' => $product->id
-            ]);
-        } catch (UniqueConstraintViolationException) {
-        }
     }
 
     public function getCategories()
