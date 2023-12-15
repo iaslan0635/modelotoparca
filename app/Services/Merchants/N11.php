@@ -98,8 +98,9 @@ class N11 implements Merchant
         $this->client = app(N11Client::class);
     }
 
-    private function formatPrice($price)
+    private function preparePriceToSend($price)
     {
+        $price *= 1 + merchant_setting("n11", "comission");
         return number_format($price, 2, '.', '');
     }
 
@@ -225,7 +226,7 @@ class N11 implements Merchant
                 "value" => $p->merchant_value
             ]);
 
-        $price = $this->formatPrice($product->price->price_without_tax);
+        $price = $this->preparePriceToSend($product->price->price_without_tax);
         $response = $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,

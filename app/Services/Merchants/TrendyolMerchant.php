@@ -42,8 +42,9 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
         return config("merchants.test_mode") ? "https://stageapi.trendyol.com/stagesapigw/" : 'https://api.trendyol.com/sapigw/';
     }
 
-    private function formatPrice($price)
+    private function preparePriceToSend($price)
     {
+        $price *= 1 + merchant_setting("trendyol", "comission");
         return number_format($price, 2, '.', '');
     }
 
@@ -117,9 +118,9 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                     "vatRate" => 20,
                     "images" => $product->imageUrls()->map(fn($image) => ["url" => $image]),
                     "cargoCompanyId" => 10,
-                    "listPrice" => $this->formatPrice($product->price->price_without_tax),
+                    "listPrice" => $this->preparePriceToSend($product->price->price_without_tax),
                     "quantity" => $product->quantity,
-                    "salePrice" => $this->formatPrice($product->price->discounted_price_without_tax),
+                    "salePrice" => $this->preparePriceToSend($product->price->discounted_price_without_tax),
                     "brand" => $product->brand->name, //?
                     "currencyType" => 'TRY', // Bütün pazaryerlerine TL göndereceğiz
                     "attributes" => $attributes
@@ -384,8 +385,8 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
             "items" => [
                 [
                     "barcode" => $product->sku,
-                    "salePrice" => $this->formatPrice($product->price->price_without_tax),
-                    "listPrice" => $this->formatPrice($product->price->discounted_price_without_tax),
+                    "salePrice" => $this->preparePriceToSend($product->price->price_without_tax),
+                    "listPrice" => $this->preparePriceToSend($product->price->discounted_price_without_tax),
                 ]
             ]
         ])->object()->batchRequestId;

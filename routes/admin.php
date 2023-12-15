@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\MerchantOrderController;
+use App\Http\Controllers\MerchantSettingController;
 use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -78,6 +79,8 @@ Route::resource('permisssion', PermissionController::class);
 Route::resource('role', RoleController::class);
 Route::get("role/unassign/{role}/{user}", [RoleController::class, "unassign"])->name("role.unassign");
 Route::get('merchant/failed', [MerchantTrackingController::class, "failed"])->name("merchant.failed");
+
+Route::resource('merchant-setting', MerchantSettingController::class)->only(["index", "store"]);
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {

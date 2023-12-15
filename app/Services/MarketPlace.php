@@ -15,6 +15,8 @@ use Throwable;
 
 class MarketPlace
 {
+    public const MERCHANTS = ["n11", "hepsiburada", "trendyol"];
+
     public static function errorContext(callable $function)
     {
         try {

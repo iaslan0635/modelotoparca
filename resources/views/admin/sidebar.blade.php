@@ -500,6 +500,18 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="{{ route("admin.merchant-setting.index") }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Entegrasyon ayarları</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
 
                 </div>
                 <!--end:Menu sub-->
