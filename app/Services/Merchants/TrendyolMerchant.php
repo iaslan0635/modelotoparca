@@ -118,9 +118,9 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                     "vatRate" => 20,
                     "images" => $product->imageUrls()->map(fn($image) => ["url" => $image]),
                     "cargoCompanyId" => 10,
-                    "listPrice" => $this->preparePriceToSend($product->price->price_without_tax),
+                    "listPrice" => $this->preparePriceToSend($product->price->price),
                     "quantity" => $product->quantity,
-                    "salePrice" => $this->preparePriceToSend($product->price->discounted_price_without_tax),
+                    "salePrice" => $this->preparePriceToSend($product->price->discounted_price),
                     "brand" => $product->brand->name, //?
                     "currencyType" => 'TRY', // Bütün pazaryerlerine TL göndereceğiz
                     "attributes" => $attributes
@@ -385,8 +385,8 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
             "items" => [
                 [
                     "barcode" => $product->sku,
-                    "salePrice" => $this->preparePriceToSend($product->price->price_without_tax),
-                    "listPrice" => $this->preparePriceToSend($product->price->discounted_price_without_tax),
+                    "salePrice" => $this->preparePriceToSend($product->price->price),
+                    "listPrice" => $this->preparePriceToSend($product->price->discounted_price),
                 ]
             ]
         ])->object()->batchRequestId;

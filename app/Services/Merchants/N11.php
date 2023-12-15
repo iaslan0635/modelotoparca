@@ -226,7 +226,7 @@ class N11 implements Merchant
                 "value" => $p->merchant_value
             ]);
 
-        $price = $this->preparePriceToSend($product->price->price_without_tax);
+        $price = $this->preparePriceToSend($product->price->price);
         $response = $this->client->product->SaveProduct([
             "product" => [
                 'productSellerCode' => $product->sku,
