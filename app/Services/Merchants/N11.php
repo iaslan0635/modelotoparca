@@ -100,7 +100,7 @@ class N11 implements Merchant
 
     private function preparePriceToSend($price)
     {
-        $price *= 1 + merchant_setting("n11", "comission", 0);
+        $price *= (100 + merchant_setting("n11", "comission", 0)) / 100;
         return number_format($price, 2, '.', '');
     }
 
