@@ -44,7 +44,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
 
     private function preparePriceToSend($price)
     {
-        $price *= 1 + merchant_setting("trendyol", "comission");
+        $price *= 1 + merchant_setting("trendyol", "comission", 0);
         return number_format($price, 2, '.', '');
     }
 

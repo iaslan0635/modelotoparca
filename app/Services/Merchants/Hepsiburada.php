@@ -40,7 +40,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
     private function preparePriceToSend($price)
     {
-        $price *= 1 + merchant_setting("hepsiburada", "comission");
+        $price *= 1 + merchant_setting("hepsiburada", "comission", 0);
         return number_format($price, 2, ',', '');
     }
 
