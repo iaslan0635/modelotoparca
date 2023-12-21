@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Import;
 
+use App\Facades\TaxFacade;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Price;
@@ -216,8 +217,12 @@ class ExcelImport implements ShouldQueue
             $realProduct->categories()->sync($categories);
         }
 
+        // INCVAT: 0 => KDV hariç, 1 => KDV dahil
+
+        $price = $product->incvat == 0 ? $product->price : TaxFacade::reverseCalculate($product->price, 20);
+
         Price::updateOrCreate(['product_id' => $id], [
-            'price' => $product->price,
+            'price' => $price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), 'try'),
         ]);
 

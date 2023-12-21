@@ -446,6 +446,6 @@ class N11 implements Merchant
 
     public function updatePrice(Product $product)
     {
-        // TODO: Implement setPrice() method.
+        // TODO: Implement updatePrice() method.
     }
 }
