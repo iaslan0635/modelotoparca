@@ -18,7 +18,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ExcelImport implements ShouldQueue
@@ -219,7 +218,7 @@ class ExcelImport implements ShouldQueue
 
         // INCVAT: 0 => KDV hariç, 1 => KDV dahil
 
-        $price = $product->incvat == 0 ? $product->price : TaxFacade::reverseCalculate($product->price, 20);
+        $price = $product->incvat == 1 ? TaxFacade::reverseCalculate($product->price, 20) : $product->price;
 
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $price,
