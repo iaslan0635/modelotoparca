@@ -20,7 +20,7 @@ class Price extends BaseModel
     {
         return Attribute::get(
             fn(?string $value) => $value === null ? null :
-                TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount)
+                TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount ?? 20)
         );
     }
 
