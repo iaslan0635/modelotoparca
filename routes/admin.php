@@ -71,10 +71,6 @@ Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-syn
 Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update');
 Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands'])->name('brand-sync.search');
 
-Route::get('action', function () {
-    MarketPlace::syncOrders();
-});
-
 Route::resource('permisssion', PermissionController::class);
 Route::resource('role', RoleController::class);
 Route::get("role/unassign/{role}/{user}", [RoleController::class, "unassign"])->name("role.unassign");
