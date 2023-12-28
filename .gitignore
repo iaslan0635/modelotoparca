@@ -38,3 +38,5 @@ storage/*.key
 /app/Console/Commands/LocalTestCommand.php
 
 /public/demo?
+
+/data
