@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\Services\Spareto;
+use App\Services\Bots\Spareto;
 use Tests\TestCase;
 
 class SparetoTest extends TestCase

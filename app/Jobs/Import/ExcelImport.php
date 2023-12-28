@@ -11,7 +11,7 @@ use App\Models\ProductOem;
 use App\Models\ProductSimilar;
 use App\Models\SparetoProduct;
 use App\Models\TigerProduct;
-use App\Services\Spareto;
+use App\Services\Bots\Spareto;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
