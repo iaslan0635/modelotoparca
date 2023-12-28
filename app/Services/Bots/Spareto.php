@@ -121,9 +121,9 @@ HTML;
                     'car_id' => $car->id,
                 ]);
 
-                $added = true;
             }
 
+            $added = true;
             $successfulProductCount++;
         }
 
