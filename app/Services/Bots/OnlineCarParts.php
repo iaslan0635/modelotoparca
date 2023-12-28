@@ -140,7 +140,7 @@ class OnlineCarParts
         return array_combine(array_column($array, 0), array_column($array, 1));
     }
 
-    public function findBrandIdFromSearchPage(string $searchPageUrl, string $brand)
+    public static function findBrandIdFromSearchPage(string $searchPageUrl, string $brand)
     {
         $crawler = new Crawler(self::request($searchPageUrl));
         $foundBrandEls = $crawler->filter(".brand-slider__item")->reduce(fn(Crawler $el) => $el->filter("img")->attr("alt") === $brand);
