@@ -23,12 +23,16 @@ class OnlineCarParts
     public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)
     {
         $url = "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($keyword);
-        if ($brand_filter !== null) $url .= "&brand%5B%5D=" . self::findBrandIdFromSearchPage($url, $brand_filter);
+        if ($brand_filter !== null) {
+            $brandId = self::findBrandIdFromSearchPage($url, $brand_filter);
+            if ($brandId !== null) $url .= "&brand%5B%5D=" . $brandId;
+            else return false;
+        }
 
         $crawler = new Crawler(self::request($url));
         // TODO: pagination
 
-        $links = $crawler->filter(".product-card__title-link")->each(fn(Crawler $el) => $el->attr("href"));
+        $links = $crawler->filter(".product-card__title-link")->each(fn(Crawler $el) => $el->attr("href") ?? $el->attr("data-link"));
 
         $logSuffix = $brand_filter ? " | Marka filtresi: $brand_filter" : '';
         if (count($links) === 0) {
@@ -92,7 +96,6 @@ class OnlineCarParts
     public static function getProduct(string $url)
     {
         $crawler = new Crawler(self::request($url));
-        // TODO: fetch TECDOC EQUIVALENTS
 
         $oems = $crawler->filter(".product-oem__link")->each(function (Crawler $el) {
             $text = $el->innerText(); // "AUDI / SKODA / VW - OE-N 012 412 1" || "FORD - OE-1833857"
@@ -115,6 +118,9 @@ class OnlineCarParts
             $crawler->filter(".product-analogs__wrapper li")
                 ->each(fn(Crawler $el) => [$el->filter("span")->innerText(), $el->innerText()])
         );
+
+        // TODO: image
+        // TODO: brand
 
         return compact("oems", "specs", "vehicles", "tecdoc");
     }
@@ -140,11 +146,18 @@ class OnlineCarParts
         return array_combine(array_column($array, 0), array_column($array, 1));
     }
 
-    public static function findBrandIdFromSearchPage(string $searchPageUrl, string $brand)
+    public static function findBrandIdFromSearchPage(string $searchPageUrl, string $brand): ?string
     {
+        $commonizedBrand = self::commonizeString($brand);
         $crawler = new Crawler(self::request($searchPageUrl));
-        $foundBrandEls = $crawler->filter(".brand-slider__item")->reduce(fn(Crawler $el) => $el->filter("img")->attr("alt") === $brand);
-        if ($foundBrandEls->count() < 1) throw new \Exception("Brand not found");
+        $foundBrandEls = $crawler->filter(".brand-slider__item")
+            ->reduce(fn(Crawler $el) => self::commonizeString($el->filter("img")->attr("alt")) === $commonizedBrand);
+        if ($foundBrandEls->count() < 1) return false;
         return $foundBrandEls->eq(0)->filter("input")->attr("value");
+    }
+
+    public static function commonizeString(string $string): string
+    {
+        return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $string));
     }
 }

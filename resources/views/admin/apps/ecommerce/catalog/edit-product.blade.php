@@ -494,66 +494,68 @@
                                 </div>
                             </div>
                             <!--end::Tab pane-->
-                            <!--begin::Tab pane-->
-                            <div class="tab-pane fade" id="trendyol-product-sync" role="tabpanel">
-                                <div class="d-flex flex-column gap-7 gap-lg-10">
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
-                                                <h2>Trendyol Kategori Özellik Eşleştirmesi</h2>
+                            @env("production")
+                                <!--begin::Tab pane-->
+                                <div class="tab-pane fade" id="trendyol-product-sync" role="tabpanel">
+                                    <div class="d-flex flex-column gap-7 gap-lg-10">
+                                        <!--begin::Card-->
+                                        <div class="card card-flush py-4">
+                                            <!--begin::Card header-->
+                                            <div class="card-header">
+                                                <!--begin::Card title-->
+                                                <div class="card-title">
+                                                    <h2>Trendyol Kategori Özellik Eşleştirmesi</h2>
+                                                </div>
+                                                <!--end::Card title-->
                                             </div>
-                                            <!--end::Card title-->
+                                            <!--end::Card header-->
+                                            <livewire:admin.sync-product-category-attribute :product="$product"/>
                                         </div>
-                                        <!--end::Card header-->
-                                        <livewire:admin.sync-product-category-attribute :product="$product"/>
+                                        <!--end::Card-->
                                     </div>
-                                    <!--end::Card-->
                                 </div>
-                            </div>
-                            <!--end::Tab pane-->
-                            <!--begin::Tab pane-->
-                            <div class="tab-pane fade" id="hepsiburada-product-sync" role="tabpanel">
-                                <div class="d-flex flex-column gap-7 gap-lg-10">
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
-                                                <h2>Hepsiburada Kategori Özellik Eşleştirmesi</h2>
+                                <!--end::Tab pane-->
+                                <!--begin::Tab pane-->
+                                <div class="tab-pane fade" id="hepsiburada-product-sync" role="tabpanel">
+                                    <div class="d-flex flex-column gap-7 gap-lg-10">
+                                        <!--begin::Card-->
+                                        <div class="card card-flush py-4">
+                                            <!--begin::Card header-->
+                                            <div class="card-header">
+                                                <!--begin::Card title-->
+                                                <div class="card-title">
+                                                    <h2>Hepsiburada Kategori Özellik Eşleştirmesi</h2>
+                                                </div>
+                                                <!--end::Card title-->
                                             </div>
-                                            <!--end::Card title-->
+                                            <!--end::Card header-->
+                                            <livewire:admin.sync-product-category-attribute :product="$product" :type="'hepsiburada'"/>
                                         </div>
-                                        <!--end::Card header-->
-                                        <livewire:admin.sync-product-category-attribute :product="$product" :type="'hepsiburada'"/>
+                                        <!--end::Card-->
                                     </div>
-                                    <!--end::Card-->
                                 </div>
-                            </div>
-                            <!--end::Tab pane-->
-                            <!--begin::Tab pane-->
-                            <div class="tab-pane fade" id="n11-product-sync" role="tabpanel">
-                                <div class="d-flex flex-column gap-7 gap-lg-10">
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
-                                                <h2>N11 Kategori Özellik Eşleştirmesi</h2>
+                                <!--end::Tab pane-->
+                                <!--begin::Tab pane-->
+                                <div class="tab-pane fade" id="n11-product-sync" role="tabpanel">
+                                    <div class="d-flex flex-column gap-7 gap-lg-10">
+                                        <!--begin::Card-->
+                                        <div class="card card-flush py-4">
+                                            <!--begin::Card header-->
+                                            <div class="card-header">
+                                                <!--begin::Card title-->
+                                                <div class="card-title">
+                                                    <h2>N11 Kategori Özellik Eşleştirmesi</h2>
+                                                </div>
+                                                <!--end::Card title-->
                                             </div>
-                                            <!--end::Card title-->
+                                            <!--end::Card header-->
+                                            <livewire:admin.sync-product-category-attribute :product="$product" :type="'n11'"/>
                                         </div>
-                                        <!--end::Card header-->
-                                        <livewire:admin.sync-product-category-attribute :product="$product" :type="'n11'"/>
+                                        <!--end::Card-->
                                     </div>
-                                    <!--end::Card-->
                                 </div>
-                            </div>
-                            <!--end::Tab pane-->
+                                <!--end::Tab pane-->
+                            @endenv
                         </div>
                         <!--end::Tab content-->
                     </div>
