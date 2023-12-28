@@ -2,7 +2,9 @@
 
 namespace App\Services\Bots;
 
+use App\Models\BotProduct;
 use App\Models\Car;
+use App\Models\Log;
 use App\Models\Maker;
 use App\Models\Product;
 use App\Models\ProductCar;
@@ -21,15 +23,31 @@ class OnlineCarParts
     public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)
     {
         $url = "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($keyword);
-        // TODO: brand filter
+        if ($brand_filter !== null) $url .= "&brand%5B%5D=" . self::findBrandIdFromSearchPage($url, $brand_filter);
 
         $crawler = new Crawler(self::request($url));
         // TODO: pagination
 
         $links = $crawler->filter(".product-card__title-link")->each(fn(Crawler $el) => $el->attr("href"));
-//        dd($links);
 
+        $logSuffix = $brand_filter ? " | Marka filtresi: $brand_filter" : '';
+        if (count($links) === 0) {
+            Log::create([
+                'product_id' => $product_id,
+                'message' => "Ürün bulunamadı, Anahtar Kelime: $keyword$logSuffix",
+            ]);
+
+            return false;
+        }
+
+        $successfulProductCount = 0;
         foreach ($links as $link) {
+            $connection = BotProduct::updateOrCreate(
+                ['product_id' => $product_id, 'url' => $link],
+                ['origin_field' => $field, "keyword" => $keyword]
+            );
+            if ($connection->is_banned) continue;
+
             [
                 "oems" => $oems,
                 "specs" => $specs,
@@ -39,7 +57,7 @@ class OnlineCarParts
 
             foreach ($oems as $oem) {
                 foreach ($oem["brands"] as $brand) {
-                    ProductOem::firstOrCreate([
+                    ProductOem::insertOrIgnore([
                         "logicalref" => $product_id,
                         "oem" => $oem["code"],
                         "brand" => $brand,
@@ -47,19 +65,28 @@ class OnlineCarParts
                 }
             }
 
-            Product::findOrFail($product_id)->update([
+            Product::where("id", $product_id)->update([
                 'specifications' => $specs,
+                'tecdoc' => $tecdoc,
             ]);
 
             foreach ($vehicles as $vehicleId) {
-                ProductCar::firstOrCreate([
+                ProductCar::insertOrIgnore([
                     'logicalref' => $product_id,
                     'car_id' => $vehicleId,
                 ]);
             }
 
-            // TODO: tecdoc
+
+            $successfulProductCount++;
         }
+
+        Log::create([
+            'product_id' => $product_id,
+            'message' => "$successfulProductCount Adet ürün çekildi. Anahtar Kelime: $keyword$logSuffix",
+        ]);
+
+        return $successfulProductCount > 0;
     }
 
     public static function getProduct(string $url)
@@ -111,5 +138,13 @@ class OnlineCarParts
     public static function fromEntries(array $array)
     {
         return array_combine(array_column($array, 0), array_column($array, 1));
+    }
+
+    public function findBrandIdFromSearchPage(string $searchPageUrl, string $brand)
+    {
+        $crawler = new Crawler(self::request($searchPageUrl));
+        $foundBrandEls = $crawler->filter(".brand-slider__item")->reduce(fn(Crawler $el) => $el->filter("img")->attr("alt") === $brand);
+        if ($foundBrandEls->count() < 1) throw new \Exception("Brand not found");
+        return $foundBrandEls->eq(0)->filter("input")->attr("value");
     }
 }
