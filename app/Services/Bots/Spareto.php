@@ -9,7 +9,7 @@ use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
-use App\Models\SparetoProduct;
+use App\Models\BotProduct;
 use App\Packages\Utils;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
@@ -73,7 +73,7 @@ HTML;
             */
 
 
-            $connection = SparetoProduct::updateOrCreate(
+            $connection = BotProduct::updateOrCreate(
                 ['product_id' => $product_id, 'url' => $link],
                 ['origin_field' => $field, "keyword" => $keyword]
             );

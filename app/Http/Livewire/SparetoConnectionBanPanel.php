@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\SparetoProduct;
+use App\Models\BotProduct;
 use Livewire\Component;
 
 class SparetoConnectionBanPanel extends Component
 {
-    public SparetoProduct $url;
+    public BotProduct $url;
 
     public function render()
     {

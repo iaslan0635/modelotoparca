@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class SparetoProduct extends BaseModel
+class BotProduct extends BaseModel
 {
     protected $casts = [
         'is_banned' => 'boolean',

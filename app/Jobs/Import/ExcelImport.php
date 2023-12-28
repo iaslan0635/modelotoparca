@@ -9,7 +9,7 @@ use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
-use App\Models\SparetoProduct;
+use App\Models\BotProduct;
 use App\Models\TigerProduct;
 use App\Services\Bots\Spareto;
 use Illuminate\Bus\Queueable;
@@ -273,7 +273,7 @@ class ExcelImport implements ShouldQueue
             ->delete();
 
         $product->cars()->sync([]);
-        SparetoProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
+        BotProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
 
         if ($product->cross_code) {
             $product->similars()->firstOrCreate([

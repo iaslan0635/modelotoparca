@@ -202,7 +202,7 @@ class Product extends BaseModel implements CanVisit
 
     public function sparetoUrls()
     {
-        return $this->hasMany(SparetoProduct::class);
+        return $this->hasMany(BotProduct::class);
     }
 
     public function merchants(): HasMany
