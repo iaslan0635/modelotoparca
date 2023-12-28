@@ -1,0 +1,9 @@
+{
+  "name": "onlinecarparts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "PRIVATE",
+  "dependencies": {
+    "playwright": "^1.40.1"
+  }
+}
