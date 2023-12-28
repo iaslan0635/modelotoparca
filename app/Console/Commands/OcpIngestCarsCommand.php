@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Car;
 use App\Models\Maker;
 use Closure;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -18,7 +19,7 @@ class OcpIngestCarsCommand extends Command
 
     protected $outputSecitons = [];
 
-    public function handle(): int
+    public function handle()
     {
         $path = $this->argument("path");
         $files = collect(scandir($path))
@@ -41,14 +42,12 @@ class OcpIngestCarsCommand extends Command
         $fullPermalink = self::pop($car, "permalink");
 
         $re = '/https:\/\/www\.onlinecarparts\.co\.uk\/car-brands\/spare-parts-([\w-]+)\/([\w-]+)\/\d+\.html/';
-        if (!preg_match($re, $fullPermalink, $matches)) {
-            $this->error("Permalink incorrect. permalink: $fullPermalink");
-            return 1;
-        }
+        if (!preg_match($re, $fullPermalink, $matches))
+            throw new Exception("Permalink incorrect. permalink: $fullPermalink");
 
         [, $makerLink, $carLink] = $matches;
 
-        $maker = Maker::firstOrCreate(
+        Maker::firstOrCreate(
             ["id" => $car["maker_id"]],
             ["name" => $makerName, "permalink" => $makerLink]
         );
@@ -58,7 +57,7 @@ class OcpIngestCarsCommand extends Command
             "permalink" => $carLink,
         ], [
             ...$toInsert,
-            "maker_id" => $maker->id,
+            "maker_id" => $car["maker_id"],
         ]);
     }
 
