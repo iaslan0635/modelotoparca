@@ -422,7 +422,6 @@
                                             <div class="card-body">
                                                 <div class="container">
                                                     <div class="row">
-
                                                         @if (count($oems)>0)
                                                             <table
                                                                 class="analogs-table">
