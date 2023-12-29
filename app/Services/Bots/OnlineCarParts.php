@@ -60,28 +60,30 @@ class OnlineCarParts
                 "tecdoc" => $tecdoc,
             ] = self::getProduct($link);
 
+
+            $oemsToInsert = [];
             foreach ($oems as $oem) {
                 foreach ($oem["brands"] as $brand) {
-                    ProductOem::insertOrIgnore([
+                    $oemsToInsert[] = [
                         "logicalref" => $product_id,
                         "oem" => $oem["code"],
                         "brand" => $brand,
-                    ]);
+                    ];
                 }
             }
+            ProductOem::insertOrIgnore($oemsToInsert);
 
             Product::where("id", $product_id)->update([
                 'specifications' => $specs,
                 'tecdoc' => $tecdoc,
             ]);
 
-            foreach ($vehicles as $vehicleId) {
-                ProductCar::insertOrIgnore([
+            ProductCar::insertOrIgnore(
+                array_map(fn($vehicleId) => [
                     'logicalref' => $product_id,
                     'car_id' => $vehicleId,
-                ]);
-            }
-
+                ], $vehicles)
+            );
 
             $successfulProductCount++;
         }
