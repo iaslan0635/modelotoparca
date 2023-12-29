@@ -31,7 +31,7 @@ Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');
 Route::view('brands', 'brands')->name('brands-list');
 
-Route::get('araba/{permalink}', [CarController::class, 'show'])->name('car.search')->where('permalink', '.*');
+Route::get('cars/{permalink}', [CarController::class, 'show'])->name('car.search')->where('permalink', '.*');
 Route::get('oem/{oem}', [OemController::class, 'show'])->name('oem.search')->where('oem', '.*');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
