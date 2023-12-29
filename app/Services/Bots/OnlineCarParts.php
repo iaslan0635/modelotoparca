@@ -20,7 +20,10 @@ class OnlineCarParts
 
     public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)
     {
-        $url = "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($keyword);
+        $url = $field === "oem"
+            ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($keyword) . ".html"
+            : "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($keyword);
+
         if ($brand_filter !== null) {
             $brandId = self::findBrandIdFromSearchPage($url, $brand_filter);
             if ($brandId !== null) $url .= "&brand%5B%5D=" . $brandId;
