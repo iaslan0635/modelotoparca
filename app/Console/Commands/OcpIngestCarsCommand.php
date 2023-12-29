@@ -38,14 +38,14 @@ class OcpIngestCarsCommand extends Command
     function insertCar(array $car)
     {
         $makerName = self::pop($car, "maker_name");
-
         $fullPermalink = self::pop($car, "permalink");
+        $id = self::pop($car, "id");
 
-        $re = '/https:\/\/www\.onlinecarparts\.co\.uk\/car-brands\/spare-parts-([\w-]+)\/([\w-]+)\/\d+\.html/';
+        $re = '/https:\/\/www\.onlinecarparts\.co\.uk\/car-brands\/spare-parts-(([\w-]+)\/[\w-]+)\/\d+\.html/';
         if (!preg_match($re, $fullPermalink, $matches))
             throw new Exception("Permalink incorrect. permalink: $fullPermalink");
 
-        [, $makerLink, $carLink] = $matches;
+        [, $carLink, $makerLink] = $matches;
 
         Maker::firstOrCreate(
             ["id" => $car["maker_id"]],
@@ -54,8 +54,9 @@ class OcpIngestCarsCommand extends Command
 
         $toInsert = Arr::mapWithKeys($car, fn($v, $k) => [Str::snake($k) => $v]);
         Car::updateOrCreate([
-            "permalink" => $carLink,
+            "id" => $id
         ], [
+            "permalink" => "$id/$carLink",
             ...$toInsert,
             "maker_id" => $car["maker_id"],
         ]);
