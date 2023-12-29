@@ -3,9 +3,7 @@
 namespace App\Services\Bots;
 
 use App\Models\BotProduct;
-use App\Models\Car;
 use App\Models\Log;
-use App\Models\Maker;
 use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
