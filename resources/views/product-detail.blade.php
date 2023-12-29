@@ -3,7 +3,7 @@
     <x-breadcrumb :parts="[
             ['name' => 'Ürünler'],
             ['name' => \Str::limit($product->title, 20)]
-        ]" />
+        ]"/>
     <div class="block-split">
         <div class="container">
             <div class="block-split__row row no-gutters">
@@ -69,7 +69,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="product__rating-label"><a href="">3.5 on 7 reviews</a></div>
+                                        <div class="product__rating-label">
+                                            <a href="">3.5 on 7 reviews</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +81,9 @@
                                     <div class="product__features-title">Key Features:</div>
                                     <ul>
                                         @foreach(($product->specifications ?? []) as $key => $spec)
-                                            <li>{{ $key }}: <span>{{ $spec }}</span></li>
+                                            <li>{{ $key }}:
+                                                <span>{{ $spec }}</span>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -112,7 +116,9 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Marka</th>
-                                                    <td><a href="">{{ $product->brand?->name }}</a></td>
+                                                    <td>
+                                                        <a href="">{{ $product->brand?->name }}</a>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <th>Cross code</th>
@@ -139,14 +145,22 @@
                                         </div>
                                         <div class="product__share-links share-links">
                                             <ul class="share-links__list">
-                                                <li class="share-links__item share-links__item--type--like"><a href="">Facebook</a>
+                                                <li class="share-links__item share-links__item--type--like">
+                                                    <a href="">Facebook</a>
                                                 </li>
-                                                <li class="share-links__item share-links__item--type--tweet"><a href="">Tweetter</a>
+                                                <li class="share-links__item share-links__item--type--tweet">
+                                                    <a href="">Tweetter</a>
                                                 </li>
-                                                <li class="share-links__item share-links__item--type--pin"><a href="">Pin
-                                                        It</a></li>
-                                                <li class="share-links__item share-links__item--type--counter"><a
-                                                        href="">Paylaş</a></li>
+                                                <li class="share-links__item share-links__item--type--pin">
+                                                    <a href="">Pin
+                                                        It
+                                                    </a>
+                                                </li>
+                                                <li class="share-links__item share-links__item--type--counter">
+                                                    <a
+                                                        href="">Paylaş
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -155,15 +169,28 @@
                             </div>
                             <div class="product__tabs product-tabs product-tabs--layout--full">
                                 <ul class="product-tabs__list">
-                                    <li class="product-tabs__item product-tabs__item--active"><a
-                                            href="#product-tab-cars">Uyumlu Araçlar</a></li>
-                                    <li class="product-tabs__item"><a href="#product-tab-oem-codes">Oem Kodlar</a></li>
-                                    <li class="product-tabs__item"><a href="#product-same-products">Eşdeğer Ürünler</a>
+                                    <li class="product-tabs__item product-tabs__item--active">
+                                        <a
+                                            href="#product-tab-cars">Uyumlu Araçlar
+                                        </a>
                                     </li>
-                                    <li class="product-tabs__item"><a href="#product-alternative-products">Alternatif
-                                            Ürünler</a></li>
-                                    <li class="product-tabs__item"><a href="#product-tab-reviews">Değerlendirmeler
-                                            <span class="product-tabs__item-counter">0</span></a>
+                                    <li class="product-tabs__item">
+                                        <a href="#product-tab-oem-codes">Oem Kodlar</a>
+                                    </li>
+                                    <li class="product-tabs__item">
+                                        <a href="#product-same-products">Eşdeğer Ürünler</a>
+                                    </li>
+                                    <li class="product-tabs__item">
+                                        <a href="#product-alternative-products">Alternatif
+                                            Ürünler
+                                        </a>
+                                    </li>
+                                    <li class="product-tabs__item">
+                                        <a href="#product-tab-reviews">Değerlendirmeler
+                                            <span class="product-tabs__item-counter">0</span>
+                                        </a>
+                                    <li class="product-tabs__item">
+                                        <a href="#tecdoc-equivalents">TecDoc Eşdeğerleri</a>
                                     </li>
                                 </ul>
                                 <div class="product-tabs__content">
@@ -215,44 +242,50 @@
                                                             <li class="page-item disabled">
                                                                 <a class="page-link page-link--with-arrow" href=""
                                                                    aria-label="Previous">
-                                                                            <span
-                                                                                class="page-link__arrow page-link__arrow--left"
-                                                                                aria-hidden="true"><svg width="7"
-                                                                                                        height="11">
-                                                                                    <path
-                                                                                        d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z"/>
-                                                                                </svg>
-                                                                            </span>
+                                                                    <span
+                                                                        class="page-link__arrow page-link__arrow--left"
+                                                                        aria-hidden="true">
+                                                                        <svg width="7"
+                                                                             height="11">
+                                                                            <path
+                                                                                d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z"/>
+                                                                        </svg>
+                                                                    </span>
                                                                 </a>
                                                             </li>
-                                                            <li class="page-item"><a class="page-link" href="#">1</a>
+                                                            <li class="page-item">
+                                                                <a class="page-link" href="#">1</a>
                                                             </li>
                                                             <li class="page-item active" aria-current="page">
-                                                                        <span class="page-link">
-                                                                            2
-                                                                            <span class="sr-only">(current)</span>
-                                                                        </span>
+                                                                <span class="page-link">
+                                                                    2
+                                                                    <span class="sr-only">(current)</span>
+                                                                </span>
                                                             </li>
-                                                            <li class="page-item"><a class="page-link" href="#">3</a>
+                                                            <li class="page-item">
+                                                                <a class="page-link" href="#">3</a>
                                                             </li>
-                                                            <li class="page-item"><a class="page-link" href="#">4</a>
+                                                            <li class="page-item">
+                                                                <a class="page-link" href="#">4</a>
                                                             </li>
                                                             <li class="page-item page-item--dots">
                                                                 <div class="pagination__dots"></div>
                                                             </li>
-                                                            <li class="page-item"><a class="page-link" href="#">9</a>
+                                                            <li class="page-item">
+                                                                <a class="page-link" href="#">9</a>
                                                             </li>
                                                             <li class="page-item">
                                                                 <a class="page-link page-link--with-arrow" href=""
                                                                    aria-label="Next">
-                                                                            <span
-                                                                                class="page-link__arrow page-link__arrow--right"
-                                                                                aria-hidden="true"><svg width="7"
-                                                                                                        height="11">
-                                                                                    <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
+                                                                    <span
+                                                                        class="page-link__arrow page-link__arrow--right"
+                                                                        aria-hidden="true">
+                                                                        <svg width="7"
+                                                                             height="11">
+                                                                            <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
 	C-0.1,9.8-0.1,10.4,0.3,10.7z"/>
-                                                                                </svg>
-                                                                            </span>
+                                                                        </svg>
+                                                                    </span>
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -516,7 +549,8 @@
                                                                 <div class="product-card__features">
                                                                     <ul>
                                                                         @foreach(($cross->specifications ?? []) as $key => $spec)
-                                                                            <li>{{ $key }}: <span>{{ $spec }}</span>
+                                                                            <li>{{ $key }}:
+                                                                                <span>{{ $spec }}</span>
                                                                             </li>
                                                                         @endforeach
                                                                     </ul>
@@ -654,7 +688,8 @@
                                                                 <div class="product-card__features">
                                                                     <ul>
                                                                         @foreach(($cross->specifications ?? []) as $key => $spec)
-                                                                            <li>{{ $key }}: <span>{{ $spec }}</span>
+                                                                            <li>{{ $key }}:
+                                                                                <span>{{ $spec }}</span>
                                                                             </li>
                                                                         @endforeach
                                                                     </ul>
@@ -703,6 +738,23 @@
                                                 @endforeach
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="product-tabs__pane" id="tecdoc-equivalents">
+                                        @if(count($product->tecdoc ?? []))
+                                            <div class="product__features">
+                                                <ul>
+                                                    @foreach(($product->tecdoc ?? []) as $key => $spec)
+                                                        <li>{{ $key }}:
+                                                            <span>{{ $spec }}</span>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @else
+                                            Tecdoc eşdeğeri yok
+                                        @endif
+                                        <div class="block-space block-space--layout--divider-nl"></div>
                                     </div>
                                 </div>
                             </div>
