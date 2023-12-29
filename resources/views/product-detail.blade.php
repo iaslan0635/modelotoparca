@@ -186,11 +186,12 @@
                                         </a>
                                     </li>
                                     <li class="product-tabs__item">
+                                        <a href="#tecdoc-equivalents">TecDoc</a>
+                                    </li>
+                                    <li class="product-tabs__item">
                                         <a href="#product-tab-reviews">Değerlendirmeler
                                             <span class="product-tabs__item-counter">0</span>
                                         </a>
-                                    <li class="product-tabs__item">
-                                        <a href="#tecdoc-equivalents">TecDoc Eşdeğerleri</a>
                                     </li>
                                 </ul>
                                 <div class="product-tabs__content">
