@@ -320,8 +320,6 @@ class Search
             $products->sort('price', 'desc');
         }
 
-        Log::debug(json_encode($finalQuery->buildQuery()));
-
         return $products->paginate(12);
     }
 
@@ -502,7 +500,6 @@ class Search
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter, $selectCategory);
 
         $results = self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm, $relations);
-        Log::debug("EsQuery - Time: " . microtime(true) - $startTime);
         return $results;
     }
 
