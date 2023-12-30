@@ -7,15 +7,21 @@ use App\Models\Log;
 use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
-use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 
 class OnlineCarParts
 {
     public static function request(string $url): string
     {
-        return Http::get("https://scrape.wmaster.net/" . urlencode($url))
-            ->throw()->body();
+        $curlHandle = curl_init();
+        curl_setopt($curlHandle, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_3);
+        curl_setopt($curlHandle, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; Android 12; sdk_gphone64_x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Mobile Safari/537.36');
+        curl_setopt($curlHandle, CURLOPT_URL, $url);
+        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curlHandle);
+        if (curl_errno($curlHandle)) throw new \Exception(curl_error($curlHandle));
+        curl_close($curlHandle);
+        return $response;
     }
 
     public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)

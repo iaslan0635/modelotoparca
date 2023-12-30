@@ -32,7 +32,8 @@
         "spatie/laravel-permission": "^6.0",
         "symfony/css-selector": "^6.2",
         "symfony/dom-crawler": "^6.2",
-        "tarfin-labs/netgsm": "^4.5"
+        "tarfin-labs/netgsm": "^4.5",
+        "ext-curl": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
