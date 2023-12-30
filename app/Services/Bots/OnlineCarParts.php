@@ -7,6 +7,7 @@ use App\Models\Log;
 use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -106,9 +107,11 @@ class OnlineCarParts
         }
         ProductOem::insertOrIgnore($oemsToInsert);
 
-        Product::where("id", $product_id)->update([
+        $product = Product::find($product_id, ['id', 'tecdoc', 'specifications']);
+        $originalTecdoc = Arr::mapWithKeys($product->tecdoc, fn($v, $k) => [trim($k, ": \t\n\r\0\x0B") => $v]);
+        $product->update([
             'specifications' => $specs,
-            'tecdoc' => $tecdoc,
+            'tecdoc' => array_merge($originalTecdoc, $tecdoc),
         ]);
 
         ProductCar::insertOrIgnore(
@@ -144,7 +147,7 @@ class OnlineCarParts
 
         $tecdoc = self::fromEntries(
             $crawler->filter(".product-analogs__wrapper li")
-                ->each(fn(Crawler $el) => [$el->filter("span")->innerText(), $el->innerText()])
+                ->each(fn(Crawler $el) => [trim($el->filter("span")->innerText(), ": \t\n\r\0\x0B"), $el->innerText()])
         );
 
         // TODO: image
