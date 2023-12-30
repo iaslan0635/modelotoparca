@@ -20,6 +20,7 @@ class OnlineCarParts
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curlHandle);
         if (curl_errno($curlHandle)) throw new \Exception(curl_error($curlHandle));
+        if (str_contains($response, '<title>Just a moment...</title>')) throw new \Exception("Response blocked by cloudflare.");
         curl_close($curlHandle);
         return $response;
     }
