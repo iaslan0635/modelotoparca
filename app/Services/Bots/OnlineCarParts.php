@@ -19,8 +19,14 @@ class OnlineCarParts
         curl_setopt($curlHandle, CURLOPT_URL, $url);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curlHandle);
+
         if (curl_errno($curlHandle)) throw new \Exception(curl_error($curlHandle));
         if (str_contains($response, '<title>Just a moment...</title>')) throw new \Exception("Response blocked by cloudflare.");
+
+        $httpStatusCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
+        if (!($httpStatusCode >= 200 && $httpStatusCode < 300))
+            throw new \Exception("Http request failed with status code $httpStatusCode");
+
         curl_close($curlHandle);
         return $response;
     }
