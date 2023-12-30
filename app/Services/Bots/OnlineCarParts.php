@@ -7,6 +7,7 @@ use App\Models\Log;
 use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler;
 
 class OnlineCarParts
@@ -31,7 +32,7 @@ class OnlineCarParts
         return $response;
     }
 
-    public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)
+    public static function smash(string $keyword, int $product_id, string $field, ?string $brand_filter = null)
     {
         $url = $field === "oem"
             ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($keyword) . ".html"
@@ -60,45 +61,13 @@ class OnlineCarParts
 
         $successfulProductCount = 0;
         foreach ($links as $link) {
-            $connection = BotProduct::updateOrCreate(
-                ['product_id' => $product_id, 'url' => $link],
-                ['origin_field' => $field, "keyword" => $keyword]
-            );
-            if ($connection->is_banned) continue;
-
-            [
-                "oems" => $oems,
-                "specs" => $specs,
-                "vehicles" => $vehicles,
-                "tecdoc" => $tecdoc,
-            ] = self::getProduct($link);
-
-
-            $oemsToInsert = [];
-            foreach ($oems as $oem) {
-                foreach ($oem["brands"] as $brand) {
-                    $oemsToInsert[] = [
-                        "logicalref" => $product_id,
-                        "oem" => $oem["code"],
-                        "brand" => $brand,
-                    ];
-                }
-            }
-            ProductOem::insertOrIgnore($oemsToInsert);
-
-            Product::where("id", $product_id)->update([
-                'specifications' => $specs,
-                'tecdoc' => $tecdoc,
-            ]);
-
-            ProductCar::insertOrIgnore(
-                array_map(fn($vehicleId) => [
-                    'logicalref' => $product_id,
-                    'car_id' => $vehicleId,
-                ], $vehicles)
-            );
-
-            $successfulProductCount++;
+            if (DB::transaction(fn() => self::scrapePage(
+                link: $link,
+                keyword: $keyword,
+                product_id: $product_id,
+                field: $field
+            )))
+                $successfulProductCount++;
         }
 
         Log::create([
@@ -107,6 +76,49 @@ class OnlineCarParts
         ]);
 
         return $successfulProductCount > 0;
+    }
+
+    public static function scrapePage(string $link, string $keyword, int $product_id, string $field): bool
+    {
+        $connection = BotProduct::updateOrCreate(
+            ['product_id' => $product_id, 'url' => $link],
+            ['origin_field' => $field, "keyword" => $keyword]
+        );
+        if ($connection->is_banned) return false;
+
+        [
+            "oems" => $oems,
+            "specs" => $specs,
+            "vehicles" => $vehicles,
+            "tecdoc" => $tecdoc,
+        ] = self::getProduct($link);
+
+
+        $oemsToInsert = [];
+        foreach ($oems as $oem) {
+            foreach ($oem["brands"] as $brand) {
+                $oemsToInsert[] = [
+                    "logicalref" => $product_id,
+                    "oem" => $oem["code"],
+                    "brand" => $brand,
+                ];
+            }
+        }
+        ProductOem::insertOrIgnore($oemsToInsert);
+
+        Product::where("id", $product_id)->update([
+            'specifications' => $specs,
+            'tecdoc' => $tecdoc,
+        ]);
+
+        ProductCar::insertOrIgnore(
+            array_map(fn($vehicleId) => [
+                'logicalref' => $product_id,
+                'car_id' => $vehicleId,
+            ], $vehicles)
+        );
+
+        return true;
     }
 
     public static function getProduct(string $url)

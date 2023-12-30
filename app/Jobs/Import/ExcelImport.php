@@ -3,16 +3,15 @@
 namespace App\Jobs\Import;
 
 use App\Facades\TaxFacade;
+use App\Models\BotProduct;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
-use App\Models\BotProduct;
 use App\Models\TigerProduct;
 use App\Services\Bots\OnlineCarParts;
-use App\Services\Bots\Spareto;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -246,7 +245,7 @@ class ExcelImport implements ShouldQueue
             if ($field === 'oem_codes') {
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
-                    OnlineCarParts::smash($oem, $product->id, field: $field);
+                    OnlineCarParts::smash($oem, $product->id, $field);
                 }
             } else {
                 $value = $product[$field];
@@ -256,7 +255,7 @@ class ExcelImport implements ShouldQueue
                     [$brand_filter, $value] = explode("@", $value);
                 }
 
-                $found = OnlineCarParts::smash($value, $product->id, $brand_filter, $field);
+                $found = OnlineCarParts::smash($value, $product->id, $field, $brand_filter);
                 if ($found) break;
             }
         }
