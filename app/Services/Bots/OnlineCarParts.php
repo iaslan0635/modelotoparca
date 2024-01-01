@@ -81,11 +81,13 @@ class OnlineCarParts
         if ($connection->is_banned) return false;
 
         $ocpp = self::getProduct($link);
-        $this->saveOcpProductToDatabase($ocpp);
         DB::connection('bigdata')->transaction(
             fn() => $this->saveOcpProductToBigData($ocpp)
         );
-        $connection->save();
+        DB::transaction(function () use ($ocpp, $connection) {
+            $this->saveOcpProductToDatabase($ocpp);
+            $connection->save();
+        });
         return true;
     }
 
