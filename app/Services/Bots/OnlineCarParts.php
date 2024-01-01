@@ -116,12 +116,14 @@ class OnlineCarParts
                 ->each(fn(Crawler $el) => [trim($el->filter("span")->innerText(), ": \t\n\r\0\x0B"), $el->innerText()])
         );
 
-        $title = $crawler->filter(".product__title")->innerText();
         $subtitle = $crawler->filter(".product__subtitle")->innerText();
 
-        $brand = Utils::regex('/Manufacturer: (\w+)/', $crawler->filter(".product__artkl")->innerText(), 1);
-
-        // TODO: image
+        $metadata = json_decode(
+            $crawler
+                ->filter('script[type="application/ld+json"]')
+                ->reduce(fn(Crawler $el) => json_decode($el->text())->{'@type'} === 'Product')
+                ->text()
+        );
 
         return new OcpProduct(
             articleId: $articleId,
@@ -129,9 +131,14 @@ class OnlineCarParts
             specs: $specs,
             vehicles: $vehicles,
             tecdoc: $tecdoc,
-            title: $title,
+            title: $metadata->name,
             subtitle: $subtitle,
-            brand: $brand,
+            brand: $metadata->brand->name,
+            images: $metadata->image,
+            category: $metadata->category,
+            mpn: $metadata->mpn,
+            sku: $metadata->sku,
+            gtin13: $metadata->gtin13,
         );
     }
 
@@ -179,7 +186,7 @@ class OnlineCarParts
         }
         ProductOem::insertOrIgnore($oemsToInsert);
 
-        $product = Product::find($this->product_id, ['id', 'tecdoc', 'specifications']);
+        $product = Product::findOrFail($this->product_id, ['id', 'tecdoc', 'specifications']);
         $originalTecdoc = Arr::mapWithKeys($product->tecdoc, fn($v, $k) => [trim($k, ": \t\n\r\0\x0B") => $v]);
         $product->update([
             'specifications' => $ocpp->specs,
@@ -201,11 +208,16 @@ class OnlineCarParts
         $db->table("products")->updateOrInsert(
             ['id' => $ocpp->articleId],
             [
-                'specifications' => json_encode($ocpp->specs),
-                'tecdoc' => json_encode($ocpp->tecdoc),
                 'title' => $ocpp->title,
                 'subtitle' => $ocpp->subtitle,
                 'brand' => $ocpp->brand,
+                'specifications' => json_encode($ocpp->specs),
+                'tecdoc' => json_encode($ocpp->tecdoc),
+                'images' => json_encode($ocpp->images),
+                'category' => $ocpp->category,
+                'mpn' => $ocpp->mpn,
+                'sku' => $ocpp->sku,
+                'gtin13' => $ocpp->gtin13,
             ]
         );
 

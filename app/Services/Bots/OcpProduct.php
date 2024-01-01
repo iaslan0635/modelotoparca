@@ -13,6 +13,11 @@ class OcpProduct
         public readonly string $title,
         public readonly string $subtitle,
         public readonly string $brand,
+        public readonly array  $images,
+        public readonly string $category,
+        public readonly string $mpn,
+        public readonly string $sku,
+        public readonly string $gtin13,
     )
     {
     }

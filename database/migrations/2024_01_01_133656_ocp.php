@@ -53,9 +53,4 @@ return new class extends Migration {
             $table->foreign("car_id")->references("id")->on("cars")->cascadeOnDelete();
         });
     }
-
-    public function down(): void
-    {
-        Schema::dropDatabaseIfExists($this->bigdataDbName);
-    }
 };

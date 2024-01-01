@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\Import\ExcelImport;
 use App\Jobs\RunSingleBotJob;
 use App\Models\TigerProduct;
 use Illuminate\Console\Command;
@@ -10,7 +9,7 @@ use Throwable;
 
 class BotCommand extends Command
 {
-    protected $signature = 'bot {--queue=} {--filter=}';
+    protected $signature = 'bot {--queue=} {--filter=} {--failsafe}';
 
     public function handle(): void
     {
@@ -26,6 +25,8 @@ class BotCommand extends Command
             try {
                 $this->handleProduct($id);
             } catch (Throwable $throwable) {
+                if ($this->option('failsafe')) throw $throwable;
+
                 $this->info("Exception on $id");
                 report($throwable);
             }
@@ -35,10 +36,11 @@ class BotCommand extends Command
     public function handleProduct(int $productId)
     {
         $product = TigerProduct::findOrFail($productId);
+        $job = new RunSingleBotJob($product);
         if ($this->option('queue')) {
-            RunSingleBotJob::dispatch($product)->onQueue($this->option('queue'));
+            dispatch($job->onQueue($this->option('queue')));
         } else {
-            ExcelImport::runBot($product);
+            dispatch_sync($job);
         }
     }
 }
