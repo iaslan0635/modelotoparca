@@ -191,7 +191,7 @@ class OnlineCarParts
         ProductOem::insertOrIgnore($oemsToInsert);
 
         $product = Product::findOrFail($this->product_id, ['id', 'tecdoc', 'specifications']);
-        $originalTecdoc = Arr::mapWithKeys($product->tecdoc, fn($v, $k) => [trim($k, ": \t\n\r\0\x0B") => $v]);
+        $originalTecdoc = Arr::mapWithKeys($product->tecdoc ?? [], fn($v, $k) => [trim($k, ": \t\n\r\0\x0B") => $v]);
         $product->update([
             'specifications' => $ocpp->specs,
             'tecdoc' => array_merge($originalTecdoc, $ocpp->tecdoc),
