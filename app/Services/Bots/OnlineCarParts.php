@@ -7,12 +7,15 @@ use App\Models\Log;
 use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
+use App\Packages\Utils;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler;
 
 class OnlineCarParts
 {
+    private string $logSuffix;
+
     public static function request(string $url): string
     {
         $curlHandle = curl_init();
@@ -33,14 +36,24 @@ class OnlineCarParts
         return $response;
     }
 
-    public static function smash(string $keyword, int $product_id, string $field, ?string $brand_filter = null)
+    public function __construct(
+        public string  $keyword,
+        public int     $product_id,
+        public string  $field,
+        public ?string $brand_filter = null
+    )
     {
-        $url = $field === "oem"
-            ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($keyword) . ".html"
-            : "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($keyword);
+        $this->logSuffix = $this->brand_filter ? " | Marka filtresi: $brand_filter" : '';
+    }
 
-        if ($brand_filter !== null) {
-            $brandId = self::findBrandIdFromSearchPage($url, $brand_filter);
+    public function searchProducts()
+    {
+        $url = $this->field === "oem"
+            ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($this->keyword) . ".html"
+            : "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($this->keyword);
+
+        if ($this->brand_filter !== null) {
+            $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
             if ($brandId !== null) $url .= "&brand%5B%5D=" . $brandId;
             else return false;
         }
@@ -48,13 +61,18 @@ class OnlineCarParts
         $crawler = new Crawler(self::request($url));
         // TODO: pagination
 
-        $links = $crawler->filter(".product-card__title-link")->each(fn(Crawler $el) => $el->attr("href") ?? $el->attr("data-link"));
+        return $crawler
+            ->filter(".product-card:not([data-recommended-products]) .product-card__title-link")
+            ->each(fn(Crawler $el) => $el->attr("href") ?? $el->attr("data-link"));
+    }
 
-        $logSuffix = $brand_filter ? " | Marka filtresi: $brand_filter" : '';
+    public function smash(): bool
+    {
+        $links = $this->searchProducts();
         if (count($links) === 0) {
             Log::create([
-                'product_id' => $product_id,
-                'message' => "Ürün bulunamadı, Anahtar Kelime: $keyword$logSuffix",
+                'product_id' => $this->product_id,
+                'message' => "Ürün bulunamadı, Anahtar Kelime: $this->keyword$this->logSuffix",
             ]);
 
             return false;
@@ -62,28 +80,23 @@ class OnlineCarParts
 
         $successfulProductCount = 0;
         foreach ($links as $link) {
-            if (DB::transaction(fn() => self::scrapePage(
-                link: $link,
-                keyword: $keyword,
-                product_id: $product_id,
-                field: $field
-            )))
+            if (DB::transaction(fn() => self::scrapePage($link)))
                 $successfulProductCount++;
         }
 
         Log::create([
-            'product_id' => $product_id,
-            'message' => "$successfulProductCount Adet ürün çekildi. Anahtar Kelime: $keyword$logSuffix",
+            'product_id' => $this->product_id,
+            'message' => "$successfulProductCount Adet ürün çekildi. Anahtar Kelime: $this->keyword$this->logSuffix",
         ]);
 
         return $successfulProductCount > 0;
     }
 
-    public static function scrapePage(string $link, string $keyword, int $product_id, string $field): bool
+    public function scrapePage(string $link): bool
     {
         $connection = BotProduct::updateOrCreate(
-            ['product_id' => $product_id, 'url' => $link],
-            ['origin_field' => $field, "keyword" => $keyword]
+            ['product_id' => $this->product_id, 'url' => $link],
+            ['origin_field' => $this->field, "keyword" => $this->keyword]
         );
         if ($connection->is_banned) return false;
 
@@ -99,7 +112,7 @@ class OnlineCarParts
         foreach ($oems as $oem) {
             foreach ($oem["brands"] as $brand) {
                 $oemsToInsert[] = [
-                    "logicalref" => $product_id,
+                    "logicalref" => $this->product_id,
                     "oem" => $oem["code"],
                     "brand" => $brand,
                 ];
@@ -107,7 +120,7 @@ class OnlineCarParts
         }
         ProductOem::insertOrIgnore($oemsToInsert);
 
-        $product = Product::find($product_id, ['id', 'tecdoc', 'specifications']);
+        $product = Product::find($this->product_id, ['id', 'tecdoc', 'specifications']);
         $originalTecdoc = Arr::mapWithKeys($product->tecdoc, fn($v, $k) => [trim($k, ": \t\n\r\0\x0B") => $v]);
         $product->update([
             'specifications' => $specs,
@@ -116,7 +129,7 @@ class OnlineCarParts
 
         ProductCar::insertOrIgnore(
             array_map(fn($vehicleId) => [
-                'logicalref' => $product_id,
+                'logicalref' => $this->product_id,
                 'car_id' => $vehicleId,
             ], $vehicles)
         );
@@ -135,25 +148,28 @@ class OnlineCarParts
             return compact("brands", "code");
         });
 
-        $specs = self::fromEntries($crawler->filter("table.product__table tr")->each(function (Crawler $row) {
+        $specs = Utils::fromEntries($crawler->filter("table.product__table tr")->each(function (Crawler $row) {
             [$key, $value] = $row->filter("td")->each(fn(Crawler $col) => $col->innerText());
             return [$key, $value];
         }));
 
         $makerIds = $crawler->filter(".compatibility__maker-title")->each(fn(Crawler $el) => $el->attr("data-maker-id"));
-        preg_match('/-(\d+)\.html/', $url, $matches);
-        $articleId = $matches[1];
+        $articleId = Utils::regex('/-(\d+)\.html/', $url, 1);
         $vehicles = self::getVehicleIds($articleId, $makerIds);
 
-        $tecdoc = self::fromEntries(
+        $tecdoc = Utils::fromEntries(
             $crawler->filter(".product-analogs__wrapper li")
                 ->each(fn(Crawler $el) => [trim($el->filter("span")->innerText(), ": \t\n\r\0\x0B"), $el->innerText()])
         );
 
-        // TODO: image
-        // TODO: brand
+        $name = $crawler->filter(".product__title")->innerText();
+        $subTtile = $crawler->filter(".product__subtitle")->innerText();
 
-        return compact("oems", "specs", "vehicles", "tecdoc");
+        $brand = Utils::regex('/Manufacturer: (\w+)/', $crawler->filter(".product__artkl")->innerText(), 1);
+
+        // TODO: image
+
+        return compact("oems", "specs", "vehicles", "tecdoc", "name", "subTtile", "brand");
     }
 
     public static function getVehicleIds(string|int $articleId, array $makerIds)
@@ -169,12 +185,6 @@ class OnlineCarParts
         }
 
         return $vehicleIds;
-    }
-
-    /** Object.fromEntries() */
-    public static function fromEntries(array $array)
-    {
-        return array_combine(array_column($array, 0), array_column($array, 1));
     }
 
     public static function findBrandIdFromSearchPage(string $searchPageUrl, string $brand): ?string

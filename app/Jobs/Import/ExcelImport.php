@@ -245,7 +245,11 @@ class ExcelImport implements ShouldQueue
             if ($field === 'oem_codes') {
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
-                    OnlineCarParts::smash($oem, $product->id, $field);
+                    (new OnlineCarParts(
+                        keyword: $oem,
+                        product_id: $product->id,
+                        field: $field,
+                    ))->smash();
                 }
             } else {
                 $value = $product[$field];
@@ -255,7 +259,12 @@ class ExcelImport implements ShouldQueue
                     [$brand_filter, $value] = explode("@", $value);
                 }
 
-                $found = OnlineCarParts::smash($value, $product->id, $field, $brand_filter);
+                $found = (new OnlineCarParts(
+                    keyword: $value,
+                    product_id: $product->id,
+                    field: $field,
+                    brand_filter: $brand_filter,
+                ))->smash();
                 if ($found) break;
             }
         }
