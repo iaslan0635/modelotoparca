@@ -137,7 +137,7 @@ class OnlineCarParts
             subtitle: $subtitle,
             brand: $metadata->brand->name,
             images: Arr::wrap($metadata->image), // $metadata->image is sometimes string, sometimes array of strings
-            category: $metadata->category,
+            category: $metadata->category ?? "NO CATEGORY",
             mpn: $metadata->mpn,
             sku: $metadata->sku,
             gtin13: $metadata->gtin13,
