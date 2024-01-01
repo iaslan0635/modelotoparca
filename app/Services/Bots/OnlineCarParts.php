@@ -230,6 +230,7 @@ class OnlineCarParts
                 'mpn' => $ocpp->mpn,
                 'sku' => $ocpp->sku,
                 'gtin13' => $ocpp->gtin13,
+                'url' => $ocpp->url,
             ]
         );
 
