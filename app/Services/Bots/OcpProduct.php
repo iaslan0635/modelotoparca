@@ -5,6 +5,7 @@ namespace App\Services\Bots;
 class OcpProduct
 {
     public function __construct(
+        public readonly string $url,
         public readonly string $articleId,
         public readonly array  $oems,
         public readonly array  $specs,

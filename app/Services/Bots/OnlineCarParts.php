@@ -130,6 +130,7 @@ class OnlineCarParts
         );
 
         return new OcpProduct(
+            url: $url,
             articleId: $articleId,
             oems: $oems,
             specs: $specs,
