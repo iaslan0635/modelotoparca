@@ -126,7 +126,7 @@ class OnlineCarParts
             vehicles: $vehicles,
             tecdoc: $tecdoc,
             title: $title,
-            subTitle: $subtitle,
+            subtitle: $subtitle,
             brand: $brand,
         );
     }
