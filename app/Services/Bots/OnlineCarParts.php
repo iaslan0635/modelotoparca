@@ -199,8 +199,8 @@ class OnlineCarParts
         $db->table("products")->updateOrInsert(
             ['id' => $ocpp->articleId],
             [
-                'specifications' => $ocpp->specs,
-                'tecdoc' => $ocpp->tecdoc,
+                'specifications' => json_encode($ocpp->specs),
+                'tecdoc' => json_encode($ocpp->tecdoc),
                 'title' => $ocpp->title,
                 'subtitle' => $ocpp->subtitle,
                 'brand' => $ocpp->brand,
