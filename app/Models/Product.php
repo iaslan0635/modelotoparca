@@ -37,6 +37,7 @@ class Product extends BaseModel implements CanVisit
         'specifications' => 'array',
         'dimensions' => 'array',
         'tecdoc' => 'array',
+        'bot_meta' => 'array',
     ];
 
     protected $searchableAs = 'products_index';

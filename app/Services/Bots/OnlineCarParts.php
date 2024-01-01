@@ -16,26 +16,6 @@ class OnlineCarParts
 {
     private string $logSuffix;
 
-    public static function request(string $url): string
-    {
-        $curlHandle = curl_init();
-        curl_setopt($curlHandle, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_3);
-        curl_setopt($curlHandle, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; Android 12; sdk_gphone64_x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Mobile Safari/537.36');
-        curl_setopt($curlHandle, CURLOPT_URL, $url);
-        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($curlHandle);
-
-        if (curl_errno($curlHandle)) throw new \Exception(curl_error($curlHandle));
-        if (str_contains($response, '<title>Just a moment...</title>')) throw new \Exception("Response blocked by cloudflare.");
-
-        $httpStatusCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
-        if (!($httpStatusCode >= 200 && $httpStatusCode < 300))
-            throw new \Exception("Http request failed with status code $httpStatusCode");
-
-        curl_close($curlHandle);
-        return $response;
-    }
-
     public function __construct(
         public string  $keyword,
         public int     $product_id,
@@ -58,7 +38,7 @@ class OnlineCarParts
             else return false;
         }
 
-        $crawler = new Crawler(self::request($url));
+        $crawler = new Crawler(OcpClient::request($url));
         // TODO: pagination
 
         return $crawler
@@ -100,46 +80,16 @@ class OnlineCarParts
         );
         if ($connection->is_banned) return false;
 
-        [
-            "oems" => $oems,
-            "specs" => $specs,
-            "vehicles" => $vehicles,
-            "tecdoc" => $tecdoc,
-        ] = self::getProduct($link);
-
-
-        $oemsToInsert = [];
-        foreach ($oems as $oem) {
-            foreach ($oem["brands"] as $brand) {
-                $oemsToInsert[] = [
-                    "logicalref" => $this->product_id,
-                    "oem" => $oem["code"],
-                    "brand" => $brand,
-                ];
-            }
-        }
-        ProductOem::insertOrIgnore($oemsToInsert);
-
-        $product = Product::find($this->product_id, ['id', 'tecdoc', 'specifications']);
-        $originalTecdoc = Arr::mapWithKeys($product->tecdoc, fn($v, $k) => [trim($k, ": \t\n\r\0\x0B") => $v]);
-        $product->update([
-            'specifications' => $specs,
-            'tecdoc' => array_merge($originalTecdoc, $tecdoc),
-        ]);
-
-        ProductCar::insertOrIgnore(
-            array_map(fn($vehicleId) => [
-                'logicalref' => $this->product_id,
-                'car_id' => $vehicleId,
-            ], $vehicles)
-        );
+        $ocpp = self::getProduct($link);
+        $this->saveOcpProductToDatabase($ocpp);
+        $this->saveOcpProductToBigData($ocpp);
 
         return true;
     }
 
-    public static function getProduct(string $url)
+    public static function getProduct(string $url): OcpProduct
     {
-        $crawler = new Crawler(self::request($url));
+        $crawler = new Crawler(OcpClient::request($url));
 
         $oems = $crawler->filter(".product-oem__link")->each(function (Crawler $el) {
             $text = $el->innerText(); // "AUDI / SKODA / VW - OE-N 012 412 1" || "FORD - OE-1833857"
@@ -162,24 +112,33 @@ class OnlineCarParts
                 ->each(fn(Crawler $el) => [trim($el->filter("span")->innerText(), ": \t\n\r\0\x0B"), $el->innerText()])
         );
 
-        $name = $crawler->filter(".product__title")->innerText();
-        $subTtile = $crawler->filter(".product__subtitle")->innerText();
+        $title = $crawler->filter(".product__title")->innerText();
+        $subtitle = $crawler->filter(".product__subtitle")->innerText();
 
         $brand = Utils::regex('/Manufacturer: (\w+)/', $crawler->filter(".product__artkl")->innerText(), 1);
 
         // TODO: image
 
-        return compact("oems", "specs", "vehicles", "tecdoc", "name", "subTtile", "brand");
+        return new OcpProduct(
+            articleId: $articleId,
+            oems: $oems,
+            specs: $specs,
+            vehicles: $vehicles,
+            tecdoc: $tecdoc,
+            title: $title,
+            subTitle: $subtitle,
+            brand: $brand,
+        );
     }
 
     public static function getVehicleIds(string|int $articleId, array $makerIds)
     {
         $vehicleIds = [];
         foreach ($makerIds as $makerId) {
-            $crawler = new Crawler(self::request("https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$articleId&makerId=$makerId"));
+            $crawler = new Crawler(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$articleId&makerId=$makerId"));
             $modelIds = $crawler->filter("[data-model-id]")->each(fn(Crawler $el) => $el->attr("data-model-id"));
             foreach ($modelIds as $modelId) {
-                $vehicles = json_decode(self::request("https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$articleId&makerId=$makerId&modelId=$modelId"))->vehicles;
+                $vehicles = json_decode(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$articleId&makerId=$makerId&modelId=$modelId"))->vehicles;
                 array_push($vehicleIds, ...collect($vehicles)->pluck("id"));
             }
         }
@@ -190,7 +149,7 @@ class OnlineCarParts
     public static function findBrandIdFromSearchPage(string $searchPageUrl, string $brand): ?string
     {
         $commonizedBrand = self::commonizeString($brand);
-        $crawler = new Crawler(self::request($searchPageUrl));
+        $crawler = new Crawler(OcpClient::request($searchPageUrl));
         $foundBrandEls = $crawler->filter(".brand-slider__item")
             ->reduce(fn(Crawler $el) => self::commonizeString($el->filter("img")->attr("alt")) === $commonizedBrand);
         if ($foundBrandEls->count() < 1) return false;
@@ -200,5 +159,69 @@ class OnlineCarParts
     public static function commonizeString(string $string): string
     {
         return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $string));
+    }
+
+    private function saveOcpProductToDatabase(OcpProduct $ocpp): void
+    {
+        $oemsToInsert = [];
+        foreach ($ocpp->oems as $oem) {
+            foreach ($oem["brands"] as $brand) {
+                $oemsToInsert[] = [
+                    "logicalref" => $this->product_id,
+                    "oem" => $oem["code"],
+                    "brand" => $brand,
+                ];
+            }
+        }
+        ProductOem::insertOrIgnore($oemsToInsert);
+
+        $product = Product::find($this->product_id, ['id', 'tecdoc', 'specifications']);
+        $originalTecdoc = Arr::mapWithKeys($product->tecdoc, fn($v, $k) => [trim($k, ": \t\n\r\0\x0B") => $v]);
+        $product->update([
+            'specifications' => $ocpp->specs,
+            'tecdoc' => array_merge($originalTecdoc, $ocpp->tecdoc),
+        ]);
+
+        ProductCar::insertOrIgnore(
+            array_map(fn($vehicleId) => [
+                'logicalref' => $this->product_id,
+                'car_id' => $vehicleId,
+            ], $ocpp->vehicles)
+        );
+    }
+
+    private function saveOcpProductToBigData(OcpProduct $ocpp): void
+    {
+        $db = DB::connection('bigdata');
+
+        $db->table("products")->updateOrInsert(
+            ['id' => $ocpp->articleId],
+            [
+                'specifications' => $ocpp->specs,
+                'tecdoc' => $ocpp->tecdoc,
+                'title' => $ocpp->title,
+                'subtitle' => $ocpp->subtitle,
+                'brand' => $ocpp->brand,
+            ]
+        );
+
+        $oemsToInsert = [];
+        foreach ($ocpp->oems as $oem) {
+            foreach ($oem["brands"] as $brand) {
+                $oemsToInsert[] = [
+                    "product_id" => $ocpp->articleId,
+                    "oem" => $oem["code"],
+                    "brand" => $brand,
+                ];
+            }
+        }
+        $db->table("product_oems")->insertOrIgnore($oemsToInsert);
+
+        $db->table("product_cars")->insertOrIgnore(
+            array_map(fn($vehicleId) => [
+                'product_id' => $this->product_id,
+                'car_id' => $vehicleId,
+            ], $ocpp->vehicles)
+        );
     }
 }
