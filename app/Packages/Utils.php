@@ -42,6 +42,6 @@ class Utils
 
     public static function regex(string $pattern, string $subject, int $group, mixed $default = null)
     {
-        return preg_match($pattern, $subject, $matches) !== false ? $matches[$group] : $default;
+        return preg_match($pattern, $subject, $matches) ? $matches[$group] : $default;
     }
 }

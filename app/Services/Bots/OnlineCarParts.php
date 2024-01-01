@@ -109,6 +109,8 @@ class OnlineCarParts
 
         $makerIds = $crawler->filter(".compatibility__maker-title")->each(fn(Crawler $el) => $el->attr("data-maker-id"));
         $articleId = Utils::regex('/-(\d+)\.html/', $url, 1);
+        if ($articleId === null) throw new \Exception("Article ID not found in URL: $url");
+
         $vehicles = self::getVehicleIds($articleId, $makerIds);
 
         $tecdoc = Utils::fromEntries(
