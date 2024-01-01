@@ -60,7 +60,7 @@ class OnlineCarParts
 
         $successfulProductCount = 0;
         foreach ($links as $link) {
-            if (DB::transaction(fn() => self::scrapePage($link)))
+            if (self::scrapePage($link))
                 $successfulProductCount++;
         }
 
@@ -74,7 +74,7 @@ class OnlineCarParts
 
     public function scrapePage(string $link): bool
     {
-        $connection = BotProduct::updateOrCreate(
+        $connection = BotProduct::firstOrNew(
             ['product_id' => $this->product_id, 'url' => $link],
             ['origin_field' => $this->field, "keyword" => $this->keyword]
         );
@@ -82,8 +82,10 @@ class OnlineCarParts
 
         $ocpp = self::getProduct($link);
         $this->saveOcpProductToDatabase($ocpp);
-        $this->saveOcpProductToBigData($ocpp);
-
+        DB::connection('bigdata')->transaction(
+            fn() => $this->saveOcpProductToBigData($ocpp)
+        );
+        $connection->save();
         return true;
     }
 
