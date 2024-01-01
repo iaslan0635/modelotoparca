@@ -185,7 +185,7 @@ class OnlineCarParts
         return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $string));
     }
 
-    private function saveOcpProductToDatabase(OcpProduct $ocpp): void
+    public function saveOcpProductToDatabase(OcpProduct $ocpp): void
     {
         $oemsToInsert = [];
         foreach ($ocpp->oems as $oem) {
@@ -213,7 +213,7 @@ class OnlineCarParts
         );
     }
 
-    private function saveOcpProductToBigData(OcpProduct $ocpp): void
+    public static function saveOcpProductToBigData(OcpProduct $ocpp): void
     {
         $db = DB::connection('bigdata');
 
@@ -248,7 +248,7 @@ class OnlineCarParts
 
         $db->table("product_cars")->insertOrIgnore(
             array_map(fn($vehicleId) => [
-                'product_id' => $this->product_id,
+                'product_id' => $ocpp->articleId,
                 'car_id' => $vehicleId,
             ], $ocpp->vehicles)
         );
