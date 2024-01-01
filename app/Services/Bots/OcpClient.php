@@ -21,7 +21,7 @@ class OcpClient
 
         $httpStatusCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
         if (!($httpStatusCode >= 200 && $httpStatusCode < 300))
-            throw new \Exception("Http request failed with status code $httpStatusCode");
+            throw new \Exception("Http request failed with status code $httpStatusCode\nResponse: $response");
 
         curl_close($curlHandle);
         return $response;

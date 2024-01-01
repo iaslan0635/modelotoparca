@@ -41,9 +41,11 @@ class OnlineCarParts
         $crawler = new Crawler(OcpClient::request($url));
         // TODO: pagination
 
-        return $crawler
+        $links = $crawler
             ->filter(".product-card:not([data-recommended-products]) .product-card__title-link")
             ->each(fn(Crawler $el) => $el->attr("href") ?? $el->attr("data-link"));
+
+        return array_filter($links, fn(string $link) => !str_contains($link, '/tyres-shop/'));
     }
 
     public function smash(): bool
