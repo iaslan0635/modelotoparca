@@ -14,22 +14,23 @@ class OcpClient
         curl_setopt($curlHandle, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; Android 12; sdk_gphone64_x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Mobile Safari/537.36');
         curl_setopt($curlHandle, CURLOPT_URL, $url);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlHandle, CURLOPT_HEADER, true);
 
         $response = curl_exec($curlHandle);
-        $httpStatusCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
-        $headers = curl_getinfo($curlHandle, CURLINFO_HEADER_OUT);
-
         curl_close($curlHandle);
 
+        list($headers, $body) = explode("\r\n\r\n", $response, 2);
+        $httpStatusCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
+
         if (curl_errno($curlHandle)) throw new \Exception(curl_error($curlHandle));
-        if (str_contains($response, '<title>Just a moment...</title>')) throw new \Exception("Response blocked by cloudflare.");
+        if (str_contains($body, '<title>Just a moment...</title>')) throw new \Exception("Response blocked by cloudflare.");
 
         if (400 > $httpStatusCode && $httpStatusCode >= 300)
             return self::request($headers['Location']);
         if (!(200 <= $httpStatusCode && $httpStatusCode < 300))
-            throw new \Exception("Http request failed with status code $httpStatusCode.\nUrl:$url\nResponse: $response");
+            throw new \Exception("Http request failed with status code $httpStatusCode.\nUrl:$url\nResponse: $body");
 
-        return $response;
+        return $body;
     }
 
     public static function request(string $url): string
