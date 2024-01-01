@@ -34,8 +34,8 @@ class OnlineCarParts
 
         if ($this->brand_filter !== null) {
             $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
-            if ($brandId !== null) $url .= "&brand%5B%5D=" . $brandId;
-            else return false;
+            if ($brandId !== null) $url .= "&brand[]=" . $brandId;
+            else return [];
         }
 
         $crawler = new Crawler(OcpClient::request($url));
@@ -176,7 +176,7 @@ class OnlineCarParts
         $crawler = new Crawler(OcpClient::request($searchPageUrl));
         $foundBrandEls = $crawler->filter(".brand-slider__item")
             ->reduce(fn(Crawler $el) => self::commonizeString($el->filter("img")->attr("alt")) === $commonizedBrand);
-        if ($foundBrandEls->count() < 1) return false;
+        if ($foundBrandEls->count() < 1) return null;
         return $foundBrandEls->eq(0)->filter("input")->attr("value");
     }
 

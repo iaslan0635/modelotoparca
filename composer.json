@@ -38,6 +38,7 @@
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.8",
+    "brianium/paratest": "^7.3",
     "fakerphp/faker": "^1.9.1",
     "laracasts/generators": "^2.0",
     "laravel/pint": "^1.9",

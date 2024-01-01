@@ -3,25 +3,35 @@
 namespace Bots;
 
 use App\Services\Bots\OnlineCarParts;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use Tests\TestCase;
 
 class OnlineCarPartsTest extends TestCase
 {
+    public static function searchProductsFiltersBrandsProvider()
+    {
+        return [
+            ["SKF", true],
+            ["ABA", false],
+            ["TOPRAN", true],
+            ["ADIDAS", false],
+        ];
+    }
 
     /** Tests that OnlineCarParts::searchProducts() filters brands */
-    public function testSearchProductsFiltersBrands()
+    #[DataProvider('searchProductsFiltersBrandsProvider')]
+    public function testSearchProductsFiltersBrands(string $brand, bool $shouldFind)
     {
         $bot = new OnlineCarParts(
-            keyword: "Brake Disc",
+            keyword: "YP203294",
             product_id: 0,
             field: "producercode",
-            brand_filter: "RIDEX"
+            brand_filter: $brand
         );
 
         $links = $bot->searchProducts();
-        $resultBrands = array_map(fn($link) => $bot->getProduct($link)["brand"], $links);
+        $resultBrands = array_map(fn($link) => $bot->getProduct($link)->brand, $links);
 
-        // Assert that all brands are RIDEX
-        $this->assertEquals(["RIDEX"], array_unique($resultBrands));
+        $this->assertEquals($shouldFind ? [$brand] : [], array_unique($resultBrands));
     }
 }
