@@ -93,6 +93,11 @@ class OnlineCarParts
         return true;
     }
 
+    public static function normalizeColumnName(string $string): string
+    {
+        return trim($string, ": \t\n\r\0\x0B");
+    }
+
     public static function getProduct(string $url): OcpProduct
     {
         $crawler = new Crawler(OcpClient::request($url));
@@ -106,7 +111,7 @@ class OnlineCarParts
 
         $specs = Utils::fromEntries($crawler->filter("table.product__table tr")->each(function (Crawler $row) {
             [$key, $value] = $row->filter("td")->each(fn(Crawler $col) => $col->innerText());
-            return [$key, $value];
+            return [self::normalizeColumnName($key), $value];
         }));
 
         $makerIds = $crawler->filter(".compatibility__maker-title")->each(fn(Crawler $el) => $el->attr("data-maker-id"));
@@ -117,7 +122,10 @@ class OnlineCarParts
 
         $tecdoc = Utils::fromEntries(
             $crawler->filter(".product-analogs__wrapper li")
-                ->each(fn(Crawler $el) => [trim($el->filter("span")->innerText(), ": \t\n\r\0\x0B"), $el->innerText()])
+                ->each(fn(Crawler $el) => [
+                    self::normalizeColumnName($el->filter("span")->innerText()),
+                    $el->innerText()
+                ])
         );
 
         $subtitle = $crawler->filter(".product__subtitle")->innerText();
@@ -192,10 +200,9 @@ class OnlineCarParts
         ProductOem::insertOrIgnore($oemsToInsert);
 
         $product = Product::findOrFail($this->product_id, ['id', 'tecdoc', 'specifications']);
-        $originalTecdoc = Arr::mapWithKeys($product->tecdoc ?? [], fn($v, $k) => [trim($k, ": \t\n\r\0\x0B") => $v]);
         $product->update([
             'specifications' => $ocpp->specs,
-            'tecdoc' => array_merge($originalTecdoc, $ocpp->tecdoc),
+            'tecdoc' => array_merge($product->tecdoc ?? [], $ocpp->tecdoc),
         ]);
 
         ProductCar::insertOrIgnore(
