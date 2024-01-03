@@ -26,7 +26,7 @@ class OnlineCarParts
         $this->logSuffix = $this->brand_filter ? " | Marka filtresi: $brand_filter" : '';
     }
 
-    public function searchProducts()
+    public function searchProducts(?callable $filterArticleId)
     {
         $url = $this->field === "oem"
             ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($this->keyword) . ".html"
@@ -41,10 +41,13 @@ class OnlineCarParts
         $crawler = new Crawler(OcpClient::request($url));
         // TODO: pagination
 
-        $links = $crawler
-            ->filter(".product-card:not([data-recommended-products]) .product-card__title-link")
-            ->each(fn(Crawler $el) => $el->attr("href") ?? $el->attr("data-link"));
+        $productEls = $crawler
+            ->filter(".product-card:not([data-recommended-products]) .product-card__title-link");
 
+        if ($filterArticleId !== null)
+            $productEls = $productEls->reduce(fn(Crawler $el) => self::commonizeString($el->filter(".product-card__artkl span")->innerText()) === self::commonizeString($filterArticleId));
+
+        $links = $productEls->each(fn(Crawler $el) => $el->attr("href") ?? $el->attr("data-link"));
         return array_filter($links, fn(string $link) => !str_contains($link, '/tyres-shop/'));
     }
 
