@@ -6,6 +6,7 @@ class OcpProduct
 {
     public function __construct(
         public readonly string $url,
+        public readonly string $id,
         public readonly string $articleId,
         public readonly array  $oems,
         public readonly array  $specs,

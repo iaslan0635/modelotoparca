@@ -34,4 +34,28 @@ class OnlineCarPartsTest extends TestCase
 
         $this->assertEquals($shouldFind ? [$brand] : [], array_unique($resultBrands));
     }
+
+    public static function searchProductsFiltersArticleIdProvider()
+    {
+        return [
+            ["MH10026", true],
+            ["Brake Disc", false],
+            ["06-00400", false],
+        ];
+    }
+
+    #[DataProvider('searchProductsFiltersArticleIdProvider')]
+    public function testSearchProductsFiltersArticleId(string $code, bool $shouldFind)
+    {
+        $bot = new OnlineCarParts(
+            keyword: $code,
+            product_id: 0,
+            field: "producercode",
+        );
+
+        $links = $bot->searchProducts();
+        $resultArticleIds = array_map(fn($link) => $bot->getProduct($link)->articleId, $links);
+
+        $this->assertEquals($shouldFind ? [$code] : [], array_unique($resultArticleIds));
+    }
 }

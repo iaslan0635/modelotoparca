@@ -26,7 +26,7 @@ class OnlineCarParts
         $this->logSuffix = $this->brand_filter ? " | Marka filtresi: $brand_filter" : '';
     }
 
-    public function searchProducts(?callable $filterArticleId = null)
+    public function searchProducts()
     {
         $url = $this->field === "oem"
             ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($this->keyword) . ".html"
@@ -42,14 +42,14 @@ class OnlineCarParts
         // TODO: pagination
 
         $productEls = $crawler
-            ->filter(".product-card:not([data-recommended-products]) .product-card__title-link");
+            ->filter(".product-card:not([data-recommended-products])");
 
-        if ($filterArticleId !== null)
+        if ($this->field === "producercode")
             $productEls = $productEls->reduce(
-                fn(Crawler $el) => self::commonizeString($el->filter(".product-card__artkl span")->innerText()) === self::commonizeString($filterArticleId)
+                fn(Crawler $el) => self::commonizeString($el->filter(".product-card__artkl span")->innerText()) === self::commonizeString($this->keyword)
             );
 
-        $links = $productEls->each(fn(Crawler $el) => $el->attr("href") ?? $el->attr("data-link"));
+        $links = $productEls->each(fn(Crawler $el) => $el->filter(".product-card__title-link")->attr("href") ?? $el->attr("data-link"));
         return array_filter($links, fn(string $link) => !str_contains($link, '/tyres-shop/'));
     }
 
@@ -120,10 +120,14 @@ class OnlineCarParts
         }));
 
         $makerIds = $crawler->filter(".compatibility__maker-title")->each(fn(Crawler $el) => $el->attr("data-maker-id"));
-        $articleId = Utils::regex('/-(\d+)\.html/', $url, 1);
-        if ($articleId === null) throw new \Exception("Article ID not found in URL: $url");
+        $ocpProductId = Utils::regex('/-(\d+)\.html/', $url, 1);
+        if ($ocpProductId === null) throw new \Exception("ID not found in URL: $url");
 
-        $vehicles = self::getVehicleIds($articleId, $makerIds);
+        $_artkl = $crawler->filter(".product__artkl")->innerText();
+        $articleId = Utils::regex("/Article №: ([^ ]+)/", $_artkl, 1);
+        if ($articleId === null) throw new \Exception("Article ID not found in artkl: $_artkl");
+
+        $vehicles = self::getVehicleIds($ocpProductId, $makerIds);
 
         $tecdoc = Utils::fromEntries(
             $crawler->filter(".product-analogs__wrapper li")
@@ -144,6 +148,7 @@ class OnlineCarParts
 
         return new OcpProduct(
             url: $url,
+            id: $ocpProductId,
             articleId: $articleId,
             oems: $oems,
             specs: $specs,
@@ -160,14 +165,14 @@ class OnlineCarParts
         );
     }
 
-    public static function getVehicleIds(string|int $articleId, array $makerIds)
+    public static function getVehicleIds(string|int $ocpProductId, array $makerIds)
     {
         $vehicleIds = [];
         foreach ($makerIds as $makerId) {
-            $crawler = new Crawler(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$articleId&makerId=$makerId"));
+            $crawler = new Crawler(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$ocpProductId&makerId=$makerId"));
             $modelIds = $crawler->filter("[data-model-id]")->each(fn(Crawler $el) => $el->attr("data-model-id"));
             foreach ($modelIds as $modelId) {
-                $vehicles = json_decode(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$articleId&makerId=$makerId&modelId=$modelId"))->vehicles;
+                $vehicles = json_decode(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$ocpProductId&makerId=$makerId&modelId=$modelId"))->vehicles;
                 array_push($vehicleIds, ...collect($vehicles)->pluck("id"));
             }
         }
@@ -223,7 +228,7 @@ class OnlineCarParts
         $db = DB::connection('bigdata');
 
         $db->table("products")->updateOrInsert(
-            ['id' => $ocpp->articleId],
+            ['id' => $ocpp->id],
             [
                 'title' => $ocpp->title,
                 'subtitle' => $ocpp->subtitle,
@@ -243,7 +248,7 @@ class OnlineCarParts
         foreach ($ocpp->oems as $oem) {
             foreach ($oem["brands"] as $brand) {
                 $oemsToInsert[] = [
-                    "product_id" => $ocpp->articleId,
+                    "product_id" => $ocpp->id,
                     "oem" => $oem["code"],
                     "brand" => $brand,
                 ];
@@ -253,7 +258,7 @@ class OnlineCarParts
 
         $db->table("product_cars")->insertOrIgnore(
             array_map(fn($vehicleId) => [
-                'product_id' => $ocpp->articleId,
+                'product_id' => $ocpp->id,
                 'car_id' => $vehicleId,
             ], $ocpp->vehicles)
         );
