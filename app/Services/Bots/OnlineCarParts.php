@@ -41,15 +41,17 @@ class OnlineCarParts
         $crawler = new Crawler(OcpClient::request($url));
         // TODO: pagination
 
-        $productEls = $crawler
-            ->filter(".product-card:not([data-recommended-products])");
+        $productEls = $crawler->filter(".product-card:not([data-recommended-products])");
 
-        if ($this->field === "producercode")
+        if ($this->field === "producercode") {
+            $commonizedKeyword = self::commonizeString($this->keyword);
             $productEls = $productEls->reduce(
-                fn(Crawler $el) => self::commonizeString($el->filter(".product-card__artkl span")->innerText()) === self::commonizeString($this->keyword)
+                fn(Crawler $el) => self::commonizeString($el->filter(".product-card__artkl span")->innerText()) === $commonizedKeyword
             );
+        }
 
         $links = $productEls->each(fn(Crawler $el) => $el->filter(".product-card__title-link")->attr("href") ?? $el->attr("data-link"));
+        $links = array_filter($links); // remove nulls
         return array_filter($links, fn(string $link) => !str_contains($link, '/tyres-shop/'));
     }
 
