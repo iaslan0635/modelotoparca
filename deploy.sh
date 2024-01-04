@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 git pull
-composer install --no-interaction --prefer-dist --optimize-autoloader # --no-dev
+
+# no need to run composer install in every deployment
+# composer install --no-interaction --prefer-dist --optimize-autoloader # --no-dev
+
 yarn install --frozen-lockfile
 
 php artisan optimize:clear
