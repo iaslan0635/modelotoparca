@@ -114,12 +114,12 @@ class OnlineCarParts
     {
         $crawler = new Crawler(OcpClient::request($url));
 
-        $oems = $crawler->filter(".product-oem__link")->each(function (Crawler $el) {
+        $oems = array_merge(...$crawler->filter(".product-oem__link")->each(function (Crawler $el) {
             $text = $el->innerText(); // "AUDI / SKODA / VW - OE-N 012 412 1" || "FORD - OE-1833857"
             [$brandsStr, $code] = explode(" - OE-", $text);
             $brands = explode(" / ", $brandsStr);
-            return compact("brands", "code");
-        });
+            return array_map(fn(string $brand) => ["brand" => $brand, "oem" => $code], $brands);
+        }));
 
         $specs = Utils::fromEntries($crawler->filter("table.product__table tr")->each(function (Crawler $row) {
             [$key, $value] = $row->filter("td")->each(fn(Crawler $col) => $col->innerText());
@@ -204,17 +204,7 @@ class OnlineCarParts
 
     public function saveOcpProductToDatabase(OcpProduct $ocpp): void
     {
-        $oemsToInsert = [];
-        foreach ($ocpp->oems as $oem) {
-            foreach ($oem["brands"] as $brand) {
-                $oemsToInsert[] = [
-                    "logicalref" => $this->product_id,
-                    "oem" => $oem["code"],
-                    "brand" => $brand,
-                ];
-            }
-        }
-        ProductOem::insertOrIgnore($oemsToInsert);
+        ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['logicalref' => $this->product_id]), $ocpp->oems));
 
         $product = Product::findOrFail($this->product_id, ['id', 'tecdoc', 'specifications']);
         $product->update([
@@ -251,17 +241,7 @@ class OnlineCarParts
             ]
         );
 
-        $oemsToInsert = [];
-        foreach ($ocpp->oems as $oem) {
-            foreach ($oem["brands"] as $brand) {
-                $oemsToInsert[] = [
-                    "product_id" => $ocpp->id,
-                    "oem" => $oem["code"],
-                    "brand" => $brand,
-                ];
-            }
-        }
-        $db->table("product_oems")->insertOrIgnore($oemsToInsert);
+        $db->table("product_oems")->insertOrIgnore(array_map(fn($oem) => array_merge($oem, ["product_id" => $ocpp->id]), $ocpp->oems));
 
         $db->table("product_cars")->insertOrIgnore(
             array_map(fn($vehicleId) => [
