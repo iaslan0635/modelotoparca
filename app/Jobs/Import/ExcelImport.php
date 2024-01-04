@@ -253,7 +253,7 @@ class ExcelImport implements ShouldQueue
                 }
             } else {
                 $value = $product[$field];
-                $brand_filter = $field === 'producercode' ? self::getBrand($product) : null;
+                $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
 
                 if ($field === "abk" && str_contains($value, "@")) {
                     [$brand_filter, $value] = explode("@", $value);
