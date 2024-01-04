@@ -43,7 +43,12 @@ class OnlineCarParts
 
         $productEls = $crawler->filter(".product-card:not([data-recommended-products])");
 
-        if ($this->field === "producercode") {
+        if (
+            $this->field === "producercode" ||
+            $this->field === "producercode2" ||
+            $this->field === "cross_code" ||
+            $this->field === "abk"
+        ) {
             $commonizedKeyword = self::commonizeString($this->keyword);
             $productEls = $productEls->reduce(
                 fn(Crawler $el) => self::commonizeString($el->filter(".product-card__artkl span")->innerText()) === $commonizedKeyword
