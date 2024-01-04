@@ -72,16 +72,11 @@ class CarSearch extends Component
                 ->sort(fn ($x) => $x->power)->values()
                 ->map(fn ($x) => [
                     'id' => $x->id,
-                    'name' => "$x->power Kw / {$this->kwToHp($x->power)} Hp / $x->capacity cc",
+                    'name' => "$x->power Kw / $x->power_hp Hp / $x->capacity cc",
                 ])->toArray();
         }
 
         return view("livewire.car-search.$this->variant-variant");
-    }
-
-    private function kwToHp(string $kw)
-    {
-        return round(intval($kw) * 1.361);
     }
 
     public function model($get = ['*'])

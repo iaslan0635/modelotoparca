@@ -57,8 +57,8 @@ class SelectCar extends Component
             'cars' => Car::where('name', $this->chosen['names']['constraint'])->get()
                 ->map(fn (Car $c) => [
                     'constraint' => $c->id,
-                    'name' => "$c->power Kw",
-                    'title' => "$c->name / $c->power Kw",
+                    'name' => "$c->power_kw Kw",
+                    'title' => "$c->name / $c->power_kw Kw",
                 ]),
             'categories' => Category::root()->with('image')->get(['id', 'name', 'slug'])
                 ->map(fn (Category $c) => [
