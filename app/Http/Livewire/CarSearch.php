@@ -69,7 +69,7 @@ class CarSearch extends Component
 
         if ($this->spesificCar !== null) {
             $this->engines ??= $this->model(['power', 'capacity', 'id'])
-                ->sort(fn ($x) => $x->power)->values()
+                ->sort(fn ($x) => $x->power_kw)->values()
                 ->map(fn ($x) => [
                     'id' => $x->id,
                     'name' => "$x->power Kw / $x->power_hp Hp / $x->capacity cc",

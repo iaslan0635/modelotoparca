@@ -398,7 +398,7 @@
                                                                                                 }}
                                                                                     </td>
                                                                                     <td class="analogs-table__column">{{ $car->capacity }}</td>
-                                                                                    <td class="analogs-table__column">{{ $car->power }}</td>
+                                                                                    <td class="analogs-table__column">{{ $car->power_kw }} Kw</td>
                                                                                 </tr>
                                                                             @endforeach
                                                                             </tbody>

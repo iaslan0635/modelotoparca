@@ -14,7 +14,7 @@
                         <div class="vehicles-list__item">
                             <div class="vehicles-list__item-info">
                                 <div class="vehicles-list__item-name">{{ $car->name }}</div>
-                                <div class="vehicles-list__item-details">{{ $car->short_name }} - Power : {{ $car->power }} / {{ ($car->power)*1.361 }} HP -
+                                <div class="vehicles-list__item-details">{{ $car->short_name }} - Power : {{ $car->power_kw }} Kw / {{ $car->power_hp }} HP -
                                     Capacity: {{ $car->capacity }} - From/To : {{ $car->from_year }}/{{ $car->to_year }}</div>
                             </div>
                             <button onclick="window.location.href = '/garage/deselect'" type="button" class="vehicles-list__item-remove">
