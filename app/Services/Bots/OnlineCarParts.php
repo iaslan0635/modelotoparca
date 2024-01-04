@@ -51,7 +51,10 @@ class OnlineCarParts
         ) {
             $commonizedKeyword = self::commonizeString($this->keyword);
             $productEls = $productEls->reduce(
-                fn(Crawler $el) => self::commonizeString($el->filter(".product-card__artkl span")->innerText()) === $commonizedKeyword
+                function (Crawler $el) use ($commonizedKeyword) {
+                    $artklEl = $el->filter(".product-card__artkl span");
+                    return $artklEl->count() != 0 && self::commonizeString($artklEl->innerText()) === $commonizedKeyword;
+                }
             );
         }
 
