@@ -58,7 +58,10 @@ class OnlineCarParts
             );
         }
 
-        $links = $productEls->each(fn(Crawler $el) => $el->filter(".product-card__title-link")->attr("href") ?? $el->attr("data-link"));
+        $links = $productEls->each(function (Crawler $el) {
+            $linkEl = $el->filter(".product-card__title-link");
+            return $linkEl->attr("href") ?? $linkEl->attr("data-link");
+        });
         $links = array_filter($links); // remove nulls
         return array_filter($links, fn(string $link) => !str_contains($link, '/tyres-shop/'));
     }

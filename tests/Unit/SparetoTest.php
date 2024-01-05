@@ -7,6 +7,11 @@ use Tests\TestCase;
 
 class SparetoTest extends TestCase
 {
+    public function setUp(): void
+    {
+        $this->markTestSkipped("Spareto is deprecated");
+    }
+
     public function test_getProduct()
     {
         $product = Spareto::getProduct("/products/original-imperium-engine-mounting/25651");

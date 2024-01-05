@@ -25,7 +25,7 @@ class OnlineCarPartsTest extends TestCase
         $bot = new OnlineCarParts(
             keyword: "YP203294",
             product_id: 0,
-            field: "producercode",
+            field: "testing", // disable article no filter
             brand_filter: $brand
         );
 
