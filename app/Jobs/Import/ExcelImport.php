@@ -108,10 +108,6 @@ class ExcelImport implements ShouldQueue
                     ]);
 
             $product->save();
-
-            if ($isChaged) {
-                self::runBot($product);
-            }
         } else {
             $product = TigerProduct::create([
                 'id' => $this->data['id'],
@@ -170,7 +166,7 @@ class ExcelImport implements ShouldQueue
                 );
             }
 
-            self::runBot($product);
+            $isChaged = true;
         }
 
         $id = $product->id;
@@ -208,7 +204,9 @@ class ExcelImport implements ShouldQueue
             "hidden_searchable" => $product->name2,
         ]);
 
-        //        DB::table()
+        if ($isChaged) {
+            self::runBot($product);
+        }
 
         $mainCategory = Category::find($product->dominantref, ['name']);
         if ($mainCategory) {
