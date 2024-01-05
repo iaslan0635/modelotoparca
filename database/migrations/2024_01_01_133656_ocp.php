@@ -16,7 +16,13 @@ return new class extends Migration {
     public function up(): void
     {
         $primaryDbName = config("database.connections.mysql.database");
-        DB::statement("CREATE DATABASE IF NOT EXISTS $this->bigdataDbName");
+
+        if (app()->runningUnitTests()) {
+            DB::statement("DROP DATABASE IF EXISTS $this->bigdataDbName");
+            DB::statement("CREATE DATABASE $this->bigdataDbName");
+        } else {
+            DB::statement("CREATE DATABASE IF NOT EXISTS $this->bigdataDbName");
+        }
 
         DB::connection("bigdata")->statement("CREATE TABLE cars LIKE $primaryDbName.cars");
         DB::connection("bigdata")->statement("INSERT INTO cars SELECT * FROM $primaryDbName.cars");
