@@ -15,7 +15,7 @@
         <!--begin::Input group=-->
         <div class="fv-row mb-8">
             <!--begin::Email-->
-            <input type="text" placeholder="Email" name="email" class="form-control bg-transparent"/>
+            <input type="text" placeholder="E-Posta" name="email" class="form-control bg-transparent"/>
             <!--end::Email-->
         </div>
         <!--begin::Actions-->
