@@ -239,7 +239,6 @@ class ExcelImport implements ShouldQueue
         ];
 
         foreach ($search_predence as $field) {
-            if ($product[$field] === null || strlen($product[$field]) === 0) continue;
             if ($field === 'oem_codes') {
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
@@ -249,22 +248,24 @@ class ExcelImport implements ShouldQueue
                         field: $field,
                     ))->smash();
                 }
-            } else {
-                $value = $product[$field];
-                $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
-
-                if ($field === "abk" && str_contains($value, "@")) {
-                    [$brand_filter, $value] = explode("@", $value);
-                }
-
-                $found = (new OnlineCarParts(
-                    keyword: $value,
-                    product_id: $product->id,
-                    field: $field,
-                    brand_filter: $brand_filter,
-                ))->smash();
-                if ($found) break;
+                continue;
             }
+            if ($product[$field] === null || strlen($product[$field]) === 0) continue;
+
+            $value = $product[$field];
+            $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
+
+            if ($field === "abk" && str_contains($value, "@")) {
+                [$brand_filter, $value] = explode("@", $value);
+            }
+
+            $found = (new OnlineCarParts(
+                keyword: $value,
+                product_id: $product->id,
+                field: $field,
+                brand_filter: $brand_filter,
+            ))->smash();
+            if ($found) break;
         }
 
         $product->actualProduct?->searchable();

@@ -28,7 +28,7 @@ class OnlineCarParts
 
     public function searchProducts()
     {
-        $url = $this->field === "oem"
+        $url = $this->field === "oem_codes"
             ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($this->keyword) . ".html"
             : "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($this->keyword);
 
