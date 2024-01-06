@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Jobs\RunSingleBotJob;
 use App\Models\TigerProduct;
 use Illuminate\Console\Command;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Contracts\Database\Query\Builder;
 use Throwable;
 
 class BotCommand extends Command
