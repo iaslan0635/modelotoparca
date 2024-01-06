@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Jobs\RunSingleBotJob;
 use App\Models\TigerProduct;
 use Illuminate\Console\Command;
+use Illuminate\Database\Query\Builder;
 use Throwable;
 
 class BotCommand extends Command
@@ -19,26 +20,31 @@ class BotCommand extends Command
             "last-50" => TigerProduct::latest()->limit(50),
         };
 
+        self::runBotsForQuery($this, $query, $this->option("queue"), $this->option("failsafe"));
+    }
+
+    public static function runBotsForQuery(Command $commandContext, Builder $query, ?string $queue = "default", bool $failsafe = false)
+    {
         $ids = $query->latest()->pluck('id');
 
-        $this->withProgressBar($ids, function (int $id) {
+        $commandContext->withProgressBar($ids, function (int $id) use ($failsafe, $commandContext, $queue) {
             try {
-                $this->handleProduct($id);
+                self::handleProduct($id, $queue);
             } catch (Throwable $throwable) {
-                if ($this->option('failsafe')) throw $throwable;
+                if ($failsafe) throw $throwable;
 
-                $this->info("Exception on $id");
+                $commandContext->info("Exception on $id");
                 report($throwable);
             }
         });
     }
 
-    public function handleProduct(int $productId)
+    public static function handleProduct(int $productId, ?string $queue)
     {
         $product = TigerProduct::findOrFail($productId);
         $job = new RunSingleBotJob($product);
-        if ($this->option('queue')) {
-            dispatch($job->onQueue($this->option('queue')));
+        if ($queue) {
+            dispatch($job->onQueue($queue));
         } else {
             dispatch_sync($job);
         }
