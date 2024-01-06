@@ -13,7 +13,6 @@ use App\Http\Controllers\MerchantSettingController;
 use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
-use App\Services\MarketPlace;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'admin.index');
@@ -87,3 +86,11 @@ if (app()->hasDebugModeEnabled()) {
         return view($view);
     });
 }
+
+Route::controller(\App\Http\Controllers\Admin\AuthController::class)
+    ->name("auth.")
+    ->group(function () {
+        Route::get('login', 'login')->name('login')->withoutMiddleware(['auth']);
+        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['auth']);
+        Route::get('logout', 'logout')->name('logout');
+    });
