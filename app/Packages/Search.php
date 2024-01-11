@@ -499,8 +499,7 @@ class Search
         $finalQuery = self::finalizeQuery($compoundQuery, $selectCategory);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter, $selectCategory);
 
-        $results = self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm, $relations);
-        return $results;
+        return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm, $relations);
     }
 
     protected static function log(string $query): void
