@@ -193,6 +193,7 @@
                         <!--end::Card title-->
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                            <span class="text-gray-700 fw-bold fs-7 text-uppercase">Toplam {{ $products->total() }} adet</span>
                             <div class="w-100 mw-150px">
                                 <!--begin::Select2-->
                                 <select class="form-select form-select-solid" data-control="select2"
@@ -206,9 +207,6 @@
                                 </select>
                                 <!--end::Select2-->
                             </div>
-                            <!--begin::Add product-->
-                            <a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Product</a>
-                            <!--end::Add product-->
                         </div>
                         <!--end::Card toolbar-->
                     </div>
