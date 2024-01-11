@@ -1,6 +1,6 @@
 <tr>
     <td>
-        <a href="{{'https://spareto.com'.$url->url}}" target="_blank">
+        <a href="{{$url->url}}" target="_blank">
             {{$url->url}}
         </a>
     </td>

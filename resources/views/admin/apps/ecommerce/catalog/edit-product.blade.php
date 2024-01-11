@@ -307,7 +307,7 @@
                                         <div class="card-header">
                                             <!--begin::Card title-->
                                             <div class="card-title">
-                                                <h2>Spareto Ürün Eşleşmeleri ({{ count($product->sparetoUrls) }})</h2>
+                                                <h2>Bot Ürün Eşleşmeleri ({{ count($product->bots) }})</h2>
                                             </div>
                                             <!--end::Card title-->
                                         </div>
@@ -324,7 +324,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($product->sparetoUrls as $url)
+                                                @foreach($product->bots as $url)
                                                     <livewire:spareto-connection-ban-panel :url="$url"/>
                                                 @endforeach
                                                 </tbody>
