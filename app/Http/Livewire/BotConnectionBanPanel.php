@@ -5,13 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\BotProduct;
 use Livewire\Component;
 
-class SparetoConnectionBanPanel extends Component
+class BotConnectionBanPanel extends Component
 {
     public BotProduct $url;
 
     public function render()
     {
-        return view('livewire.spareto-connection-ban-panel');
+        return view('livewire.bot-connection-ban-panel');
     }
 
     public function ban()
