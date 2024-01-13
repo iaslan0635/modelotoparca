@@ -194,16 +194,27 @@
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                             <span class="text-gray-700 fw-bold fs-7 text-uppercase">Toplam {{ $products->total() }} adet</span>
-                            <div class="w-100 mw-150px">
+                            <div class="w-100 mw-250px">
                                 <!--begin::Select2-->
-                                <select class="form-select form-select-solid" data-control="select2"
-                                        data-hide-search="true" data-placeholder="Status"
-                                        data-kt-ecommerce-product-filter="status">
-                                    <option></option>
-                                    <option value="all">All</option>
-                                    <option value="published">Published</option>
-                                    <option value="scheduled">Scheduled</option>
-                                    <option value="inactive">Inactive</option>
+                                <select class="form-select form-select-solid" id="brand-filter-select"
+                                        data-hide-search="true" data-placeholder="Marka">
+                                    <option value="all">Tüm markalar</option>
+                                    @foreach(\App\Models\Brand::get(["id", "name"]) as $brand)
+                                        <option @if(request()->input("brand") == $brand->id) selected @endif value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                    @endforeach
+                                </select>
+                                <!--end::Select2-->
+                            </div>
+                            <div class="w-100 mw-250px">
+                                <!--begin::Select2-->
+                                <select class="form-select form-select-solid" id="status-filter-select"
+                                        data-hide-search="true" data-placeholder="Filtrele">
+                                    <option value="all">Tüm ürünler</option>
+                                    @php $selected = fn ($value) => $value == request()->input("filter") ? 'selected' : '' @endphp
+                                    <option {{ $selected('merchant') }} value="merchant">Pazaryerinde olan</option>
+                                    <option {{ $selected('non-merchant') }} value="non-merchant">Pazaryerinde olmayan</option>
+                                    <option {{ $selected('bot') }} value="bot">Bot ile çekilen</option>
+                                    <option {{ $selected('non-bot') }} value="non-bot">Bot ile çekilmeyen</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>
@@ -241,7 +252,7 @@
                             <tbody class="fw-semibold text-gray-600">
                             @foreach($products as $product)
                                 @php $link = route("admin.products.show", $product) @endphp
-                                <!--begin::Table row-->
+                                    <!--begin::Table row-->
                                 <tr>
                                     <!--begin::Checkbox-->
                                     <td>
@@ -367,4 +378,19 @@
     <script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
     <script src="assets/js/custom/utilities/modals/create-app.js"></script>
     <script src="assets/js/custom/utilities/modals/users-search.js"></script>
+
+    <script>
+        $(() => {
+                const navigate = param => event => {
+                    const dataId = event.params.data.id
+                    const url = new URL(window.location.href)
+                    url.searchParams.set(param, dataId)
+                    window.location.href = url.toString()
+                }
+
+                $("#status-filter-select").select2({minimumResultsForSearch: -1}).on("select2:select", navigate("filter"))
+                $("#brand-filter-select").select2().on("select2:select", navigate("brand"))
+            }
+        )
+    </script>
 @endpush

@@ -12,8 +12,8 @@ use App\Models\TigerProduct;
 use App\Packages\Search;
 use Elastic\ScoutDriverPlus\Paginator;
 use Elastic\ScoutDriverPlus\Support\Query;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ProductController extends Controller
 {
@@ -22,10 +22,25 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, Builder $query = null)
+    public function index(Request $request)
     {
+        $filterName = $request->input("filter");
+        $query = match ($filterName) {
+            null, 'all' => Product::query(),
+            'merchant' => Product::has("merchants"),
+            'non-merchant' => Product::where("ecommerce", true)->has("merchants", "=", 0),
+            'bot' => Product::has("bots"),
+            'non-bot' => Product::doesntHave("bots"),
+            default => throw new HttpException(400, "Bilinmeyen filtre: $filterName"),
+        };
+
+        $brand = $request->input("brand");
+        if ($brand !== null && $brand !== 'all') {
+            $query = $query->where("brand_id", $brand);
+        }
+
         if ($query !== null) {
-            $products = $query->paginate();
+            $products = $query->with(["merchants", "price"])->paginate();
         } else if ($search = $request->input('search')) {
             /** @var Paginator $hits */
             ['products' => $hits] = Search::query($search);
@@ -35,26 +50,6 @@ class ProductController extends Controller
         }
 
         return view('admin.apps.ecommerce.catalog.products', compact('products'));
-    }
-
-    public function merchantIndex(Request $request)
-    {
-        return $this->index($request, Product::has("merchants"));
-    }
-
-    public function nonMerchantIndex(Request $request)
-    {
-        return $this->index($request, Product::where("ecommerce", true)->has("merchants", "=", 0));
-    }
-
-    public function botIndex(Request $request)
-    {
-        return $this->index($request, Product::has("bots"));
-    }
-
-    public function nonBotIndex(Request $request)
-    {
-        return $this->index($request, Product::doesntHave("bots"));
     }
 
     public function show(Product $product)

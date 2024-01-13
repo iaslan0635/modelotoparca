@@ -323,8 +323,9 @@ class Search
         return $products->paginate(12);
     }
 
-    private static function results(BoolQueryBuilder $finalQuery, BoolQueryBuilder $finalQueryWithoutBrandFilter, string|null $sortBy, string $term, string $cleanTerm, ?array $relations)
+    private static function results(BoolQueryBuilder $finalQuery, BoolQueryBuilder $finalQueryWithoutBrandFilter, string|null $sortBy, string $term, string $cleanTerm, ?array $relations, ?QueryBuilderInterface $filterQuery = null)
     {
+        if ($filterQuery !== null) $finalQuery->filter($filterQuery);
         $products = self::paginateProducts($finalQuery, $sortBy, $relations);
 
         $productsWithCategories = Product::searchQuery($finalQuery)
@@ -440,7 +441,7 @@ class Search
         return $queries;
     }
 
-    public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null, ?array $relations = null): array
+    public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null, ?array $relations = null, ?QueryBuilderInterface $filterQuery = null): array
     {
         $startTime = microtime(true);
         if (empty($term)) {
@@ -499,7 +500,7 @@ class Search
         $finalQuery = self::finalizeQuery($compoundQuery, $selectCategory);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter, $selectCategory);
 
-        return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm, $relations);
+        return self::results($finalQuery, $compoundQueryWithoutBrandFilter, $sortBy, $term, $cleanTerm, $relations, $filterQuery);
     }
 
     protected static function log(string $query): void
