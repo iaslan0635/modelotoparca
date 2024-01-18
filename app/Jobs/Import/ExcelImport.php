@@ -6,6 +6,7 @@ use App\Facades\TaxFacade;
 use App\Models\BotProduct;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Log;
 use App\Models\Price;
 use App\Models\Product;
 use App\Models\ProductOem;
@@ -97,12 +98,13 @@ class ExcelImport implements ShouldQueue
                 'producercode2',
                 'cross_code',
                 'oem_codes',
+                'markref',
             ];
 
             $isChaged = $product->isDirty($veriler);
             foreach ($product->getChanges() as $column => $new)
                 if ($column !== 'updated_at' && $column !== 'created_at')
-                    \App\Models\Log::create([
+                    Log::create([
                         'product_id' => $product->id,
                         'message' => "Değişiklik yapıldı. Kolon: $column\nEski: {$product->getOriginal($column)}, Yeni: $new",
                     ]);
