@@ -13,12 +13,20 @@ use App\Models\TigerProduct;
 use App\Packages\Search;
 use Elastic\ScoutDriverPlus\Paginator;
 use Elastic\ScoutDriverPlus\Support\Query;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ProductController extends Controller
 {
     use ManagesImages;
+
+    const OPTIONS = [
+        'merchant' => 'Pazaryerinde olan',
+        'non-merchant' => 'Pazaryerinde olmayan',
+        'bot' => 'Bot ile çekilen',
+        'non-bot' => 'Bot ile çekilmeyen',
+    ];
 
     /**
      * Display a listing of the resource.
@@ -30,16 +38,18 @@ class ProductController extends Controller
             ['products' => $hits] = Search::query($search);
             $products = $hits->onlyModels();
             $usingSearch = true;
+            $filterConstraintsToShow = array_keys(self::OPTIONS);
         } else {
-            $filterName = $request->input("filter");
-            $query = match ($filterName) {
-                null, 'all' => Product::query(),
+            $filterConstraints = [
                 'merchant' => Product::has("merchants"),
                 'non-merchant' => Product::where("ecommerce", true)->has("merchants", "=", 0),
                 'bot' => Product::has("bots"),
                 'non-bot' => Product::doesntHave("bots"),
-                default => throw new HttpException(400, "Bilinmeyen filtre: $filterName"),
-            };
+            ];
+
+            $filterName = $request->input("filter");
+            /** @var Builder $query */
+            $query = $filterConstraints[$filterName] ?? Product::query();
 
             $brand = $request->input("brand");
             if ($brand !== null && $brand !== 'all') {
@@ -47,12 +57,16 @@ class ProductController extends Controller
             }
 
             $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
-            $products = $query->with(["merchants", "price"])->paginate();
+            $products = $query->clone()->with(["merchants", "price"])->paginate();
             $usingSearch = false;
+
+            $filterConstraintsToShow = collect($filterConstraints)
+                ->filter(fn($q) => $query->clone()->whereExists($q)->exists())
+                ->mapWithKeys(fn($_, $key) => [$key => self::OPTIONS[$key]])->all();
         }
 
         $brands ??= Brand::get(["id", "name"]);
-        return view('admin.apps.ecommerce.catalog.products', compact('products', 'brands', 'usingSearch'));
+        return view('admin.apps.ecommerce.catalog.products', compact('products', 'brands', 'usingSearch', 'filterConstraintsToShow'));
     }
 
     public function show(Product $product)
