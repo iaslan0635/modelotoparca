@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="tr">
 	<!--begin::Head-->
 	<head><base href="/"/>
 		<title>Admin Kontrol Paneli | ModelOtomotiv</title>

@@ -194,30 +194,34 @@
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
                             <span class="text-gray-700 fw-bold fs-7 text-uppercase">Toplam {{ $products->total() }} adet</span>
-                            <div class="w-100 mw-250px">
-                                <!--begin::Select2-->
-                                <select class="form-select form-select-solid" id="brand-filter-select"
-                                        data-hide-search="true" data-placeholder="Marka">
-                                    <option value="all">Tüm markalar</option>
-                                    @foreach(\App\Models\Brand::get(["id", "name"]) as $brand)
-                                        <option @if(request()->input("brand") == $brand->id) selected @endif value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                    @endforeach
-                                </select>
-                                <!--end::Select2-->
-                            </div>
-                            <div class="w-100 mw-250px">
-                                <!--begin::Select2-->
-                                <select class="form-select form-select-solid" id="status-filter-select"
-                                        data-hide-search="true" data-placeholder="Filtrele">
-                                    <option value="all">Tüm ürünler</option>
-                                    @php $selected = fn ($value) => $value == request()->input("filter") ? 'selected' : '' @endphp
-                                    <option {{ $selected('merchant') }} value="merchant">Pazaryerinde olan</option>
-                                    <option {{ $selected('non-merchant') }} value="non-merchant">Pazaryerinde olmayan</option>
-                                    <option {{ $selected('bot') }} value="bot">Bot ile çekilen</option>
-                                    <option {{ $selected('non-bot') }} value="non-bot">Bot ile çekilmeyen</option>
-                                </select>
-                                <!--end::Select2-->
-                            </div>
+                            @if($usingSearch)
+                                <span style="color: rgb(185 28 28);" class="fw-bold fs-7 text-uppercase">Arama yapılırken filtreler yok sayılıyor</span>
+                            @else
+                                <div class="w-100 mw-250px">
+                                    <!--begin::Select2-->
+                                    <select class="form-select form-select-solid" id="brand-filter-select"
+                                            data-hide-search="true" data-placeholder="Marka">
+                                        <option value="all">Tüm markalar</option>
+                                        @foreach($brands as $brand)
+                                            <option @if(request()->input("brand") == $brand->id) selected @endif value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <!--end::Select2-->
+                                </div>
+                                <div class="w-100 mw-250px">
+                                    <!--begin::Select2-->
+                                    <select class="form-select form-select-solid" id="status-filter-select"
+                                            data-hide-search="true" data-placeholder="Filtrele">
+                                        <option value="all">Tüm ürünler</option>
+                                        @php $selected = fn ($value) => $value == request()->input("filter") ? 'selected' : '' @endphp
+                                        <option {{ $selected('merchant') }} value="merchant">Pazaryerinde olan</option>
+                                        <option {{ $selected('non-merchant') }} value="non-merchant">Pazaryerinde olmayan</option>
+                                        <option {{ $selected('bot') }} value="bot">Bot ile çekilen</option>
+                                        <option {{ $selected('non-bot') }} value="non-bot">Bot ile çekilmeyen</option>
+                                    </select>
+                                    <!--end::Select2-->
+                                </div>
+                            @endif
                         </div>
                         <!--end::Card toolbar-->
                     </div>

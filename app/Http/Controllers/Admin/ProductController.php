@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController as CustomerProductController;
 use App\Jobs\RunSingleBotJob;
+use App\Models\Brand;
 use App\Models\Car;
 use App\Models\Log;
 use App\Models\Product;
@@ -24,32 +25,34 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $filterName = $request->input("filter");
-        $query = match ($filterName) {
-            null, 'all' => Product::query(),
-            'merchant' => Product::has("merchants"),
-            'non-merchant' => Product::where("ecommerce", true)->has("merchants", "=", 0),
-            'bot' => Product::has("bots"),
-            'non-bot' => Product::doesntHave("bots"),
-            default => throw new HttpException(400, "Bilinmeyen filtre: $filterName"),
-        };
-
-        $brand = $request->input("brand");
-        if ($brand !== null && $brand !== 'all') {
-            $query = $query->where("brand_id", $brand);
-        }
-
-        if ($query !== null) {
-            $products = $query->with(["merchants", "price"])->paginate();
-        } else if ($search = $request->input('search')) {
+        if ($search = $request->input('search')) {
             /** @var Paginator $hits */
             ['products' => $hits] = Search::query($search);
             $products = $hits->onlyModels();
+            $usingSearch = true;
         } else {
-            $products = Product::paginate();
+            $filterName = $request->input("filter");
+            $query = match ($filterName) {
+                null, 'all' => Product::query(),
+                'merchant' => Product::has("merchants"),
+                'non-merchant' => Product::where("ecommerce", true)->has("merchants", "=", 0),
+                'bot' => Product::has("bots"),
+                'non-bot' => Product::doesntHave("bots"),
+                default => throw new HttpException(400, "Bilinmeyen filtre: $filterName"),
+            };
+
+            $brand = $request->input("brand");
+            if ($brand !== null && $brand !== 'all') {
+                $query = $query->where("brand_id", $brand);
+            }
+
+            $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
+            $products = $query->with(["merchants", "price"])->paginate();
+            $usingSearch = false;
         }
 
-        return view('admin.apps.ecommerce.catalog.products', compact('products'));
+        $brands ??= Brand::get(["id", "name"]);
+        return view('admin.apps.ecommerce.catalog.products', compact('products', 'brands', 'usingSearch'));
     }
 
     public function show(Product $product)
