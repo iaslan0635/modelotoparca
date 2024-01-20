@@ -72,7 +72,7 @@ class CarSearch extends Component
                 ->sort(fn ($x) => $x->power_hp)->values()
                 ->map(fn ($x) => [
                     'id' => $x->id,
-                    'name' => "$x->power_kw Kw / $x->power_hp Hp / $x->capacity cc",
+                    'name' => "$x->power_hp Hp / $x->power_kw Kw / $x->capacity cc",
                 ])->toArray();
         }
 
