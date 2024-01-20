@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cache;
 
 class OcpClient
 {
+    /** @throws OcpClientException */
     public static function requestWithoutCache(string $url): string
     {
         $curlHandle = curl_init();
@@ -24,11 +25,12 @@ class OcpClient
         if (str_contains($response, '<title>Just a moment...</title>')) throw new \Exception("Response blocked by cloudflare.");
 
         if (!(200 <= $httpStatusCode && $httpStatusCode < 300))
-            throw new \Exception("Http request failed with status code $httpStatusCode.\nUrl:$url\nResponse: $response");
+            throw new OcpClientException($httpStatusCode, $url, $response);
 
         return $response;
     }
 
+    /** @throws OcpClientException */
     public static function request(string $url): string
     {
         $cache = Cache::driver("file");

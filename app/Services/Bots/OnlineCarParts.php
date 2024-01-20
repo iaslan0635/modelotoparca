@@ -14,8 +14,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class OnlineCarParts
 {
-    private string $logSuffix;
-
     public function __construct(
         public string  $keyword,
         public int     $product_id,
@@ -23,22 +21,30 @@ class OnlineCarParts
         public ?string $brand_filter = null
     )
     {
-        $this->logSuffix = $this->brand_filter ? " | Marka filtresi: $brand_filter" : '';
     }
 
-    public function searchProducts()
+    public function searchProducts(): array
     {
         $url = $this->field === "oem_codes"
             ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($this->keyword) . ".html"
             : "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($this->keyword);
 
-        if ($this->brand_filter !== null) {
-            $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
-            if ($brandId !== null) $url .= "&brand[]=" . $brandId;
-            else return [];
-        }
+        try {
+            if ($this->brand_filter !== null) {
+                $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
+                if ($brandId !== null) $url .= "&brand[]=" . $brandId;
+                else return [];
+            }
 
-        $crawler = new Crawler(OcpClient::request($url));
+            $crawler = new Crawler(OcpClient::request($url));
+        } catch (OcpClientException $e) {
+            if ($this->field === "oem_codes" && $e->statusCode === 404) {
+                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor | Aranan sayfa: $e->url");
+                return [];
+            } else {
+                throw $e;
+            }
+        }
         // TODO: pagination
 
         $productEls = $crawler->filter(".product-card:not([data-recommended-products])");
@@ -70,10 +76,7 @@ class OnlineCarParts
     {
         $links = $this->searchProducts();
         if (count($links) === 0) {
-            Log::create([
-                'product_id' => $this->product_id,
-                'message' => "Ürün bulunamadı, Anahtar Kelime: $this->keyword$this->logSuffix",
-            ]);
+            $this->log("Ürün bulunamadı.");
 
             return false;
         }
@@ -84,10 +87,7 @@ class OnlineCarParts
                 $successfulProductCount++;
         }
 
-        Log::create([
-            'product_id' => $this->product_id,
-            'message' => "$successfulProductCount Adet ürün çekildi. Anahtar Kelime: $this->keyword$this->logSuffix",
-        ]);
+        $this->log("$successfulProductCount Adet ürün çekildi.");
 
         return $successfulProductCount > 0;
     }
@@ -178,7 +178,7 @@ class OnlineCarParts
         );
     }
 
-    public static function getVehicleIds(string|int $ocpProductId, array $makerIds)
+    public static function getVehicleIds(string|int $ocpProductId, array $makerIds): array
     {
         $vehicleIds = [];
         foreach ($makerIds as $makerId) {
@@ -255,5 +255,13 @@ class OnlineCarParts
                 'car_id' => $vehicleId,
             ], $ocpp->vehicles)
         );
+    }
+
+    private function log(string $message): void
+    {
+        Log::create([
+            'product_id' => $this->product_id,
+            'message' => "$message | Anahtar Kelime: $this->keyword" . ($this->brand_filter !== null ? " | Marka filtresi: $this->brand_filter" : ""),
+        ]);
     }
 }

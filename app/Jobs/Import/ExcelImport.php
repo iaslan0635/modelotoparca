@@ -244,17 +244,21 @@ class ExcelImport implements ShouldQueue
             if ($field === 'oem_codes') {
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
+                    $trimmed = trim($oem);
+                    if (strlen($trimmed) === 0) continue;
                     (new OnlineCarParts(
-                        keyword: $oem,
+                        keyword: $trimmed,
                         product_id: $product->id,
                         field: $field,
                     ))->smash();
                 }
                 continue;
             }
-            if ($product[$field] === null || strlen($product[$field]) === 0) continue;
 
-            $value = $product[$field];
+            if ($product[$field] === null) continue;
+            $value = trim($product[$field]);
+            if (strlen($value) === 0) continue;
+
             $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
 
             if ($field === "abk" && str_contains($value, "@")) {
