@@ -15,10 +15,7 @@ class FancyCommand extends Command
         $bar = new ProgressBar($section, count($iterable));
         $bar->start();
 
-        foreach ($iterable as $value) {
-            yield $value;
-            $bar->advance();
-        }
+        yield from $bar->iterate($iterable);
 
         if ($transistent)
             $section->clear();
