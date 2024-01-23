@@ -8,8 +8,6 @@ use App\Models\PropertyValue;
 
 class FilterImporter extends Importer
 {
-    const LOGICALREF_COLUMN = 'H';
-
     public static function getUsedTables(): array
     {
         return ['property_values', 'product_property_value'];
@@ -23,7 +21,7 @@ class FilterImporter extends Importer
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
             $this->status($i);
             $getCell = $this->makeCellGetter($i);
-            $id = $getCell(static::LOGICALREF_COLUMN);
+            $id = $getCell('H');
 
             /** @var Property $property */
             foreach ($properties as $property) {

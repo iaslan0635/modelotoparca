@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\Import\ImportAlternativeJob;
+use App\Jobs\Import\ImportBrandsJob;
 use App\Jobs\Import\ImportFilterJob;
 use App\Jobs\Import\OuterExcelImportJob;
 
@@ -35,6 +36,11 @@ class ImportController extends Controller
     public function ITEMSUBS()
     {
         ImportAlternativeJob::dispatch($this->storeFile());
+    }
+
+    public function TODO()
+    {
+        ImportBrandsJob::dispatch($this->storeFile());
     }
 
     public function FILTER_OIL()
