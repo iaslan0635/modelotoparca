@@ -12,7 +12,7 @@ class ImportController extends Controller
 {
     public function index()
     {
-        return view('admin.import.index', ['routes' => ['ITEMS_WEB', 'ITEMS_WEB__APPEND', 'ITEMSUBS', 'ITMCLSAS', 'FILTER_OIL']]);
+        return view('admin.import.index', ['routes' => ['ITEMS_WEB', 'ITEMS_WEB__APPEND', 'ITEMSUBS', 'ITMCLSAS', 'FILTER_OIL', 'MARKALAR']]);
     }
 
     protected function storeFile(): string
@@ -38,7 +38,7 @@ class ImportController extends Controller
         ImportAlternativeJob::dispatch($this->storeFile());
     }
 
-    public function TODO()
+    public function MARKALAR()
     {
         ImportBrandsJob::dispatch($this->storeFile());
     }
