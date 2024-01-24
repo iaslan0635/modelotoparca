@@ -40,6 +40,7 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::post('ITEMSUBS', 'ITEMSUBS')->name('ITEMSUBS');
     Route::post('ITMCLSAS', 'ITMCLSAS')->name('ITMCLSAS');
     Route::post('FILTER_OIL', 'FILTER_OIL')->name('FILTER_OIL');
+    Route::post('MARKALAR', 'MARKALAR')->name('MARKALAR');
     Route::get('sparetobot_bot', 'sparetobot_bot')->name('sparetobot_bot');
     Route::get('sparetobot_connect', 'sparetobot_connect')->name('sparetobot_connect');
 });
