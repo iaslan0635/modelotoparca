@@ -32,8 +32,11 @@ class OnlineCarParts
         try {
             if ($this->brand_filter !== null) {
                 $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
-                if ($brandId !== null) $url .= "&brand[]=" . $brandId;
-                else return [];
+                if ($brandId === null) {
+                    $this->log("Marka arama sayfasında bulunamadı.");
+                    return [];
+                }
+                $url .= "&brand[]=" . $brandId;
             }
 
             $crawler = new Crawler(OcpClient::request($url));
