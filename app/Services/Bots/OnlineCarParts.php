@@ -261,7 +261,8 @@ class OnlineCarParts
     {
         Log::create([
             'product_id' => $this->product_id,
-            'message' => "$message | Anahtar Kelime: $this->keyword | Alan: $this->field" . ($this->brand_filter !== null ? " | Marka filtresi: $this->brand_filter" : ""),
+            'message' => "$message | Anahtar Kelime: $this->keyword | Alan: $this->field" .
+                ($this->brand_filter !== null ? " | Marka filtresi: $this->brand_filter" : ""),
         ]);
     }
 }
