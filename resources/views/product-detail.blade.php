@@ -382,10 +382,10 @@
                                                                                     Kapasite
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
-                                                                                    Motor
+                                                                                    Güç
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
-                                                                                    Güç
+                                                                                    Motor
                                                                                 </th>
                                                                             </tr>
                                                                             </thead>
@@ -401,8 +401,8 @@
                                                                                                 }}
                                                                                     </td>
                                                                                     <td class="analogs-table__column">{{ $car->capacity }}  </td>
-                                                                                    <td class="analogs-table__column"> {{$car->engine}} </td>
                                                                                     <td class="analogs-table__column">{{ $car->power_kw }} Kw</td>
+                                                                                    <td class="analogs-table__column"> {{$car->engine_code}} </td>
                                                                                 </tr>
                                                                             @endforeach
                                                                             </tbody>
