@@ -11492,7 +11492,7 @@ select.form-control::-ms-expand {
 @media (min-width: 768px) {
     .analogs-table {
         width: 100%;
-        font-size: 15px;
+        font-size: 13px;
     }
     .analogs-table th,
     .analogs-table td {
