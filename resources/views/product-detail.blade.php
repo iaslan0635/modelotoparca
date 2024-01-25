@@ -395,10 +395,9 @@
                                                                                 <tr>
                                                                                     <td class="analogs-table__column">{{ $car->name }}</td>
                                                                                     <td class="analogs-table__column">
-{{--                                                                                        {{ $car->produced_from ?? "0000-00-00" }}--}}
-                                                                                        {{ $car->produced_from ?? "00-00-0000" }}
+                                                                                        {{ $car->produced_from ?? "0000-00-00" }}
                                                                                         - {{
-                                                                                                    $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d"))
+                                                                                                    $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("d-m-Y"))
                                                                                                 }}
                                                                                     </td>
 {{--                                                                                    <td class="analogs-table__column">{{ $car->engine }} </td>--}}
