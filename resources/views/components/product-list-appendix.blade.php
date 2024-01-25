@@ -70,6 +70,7 @@
                                     </ul>
                                 @endif
                                 <ul>
+                                    tttt
                                     @foreach(($product->specifications ?? []) as $key => $spec)
                                         <li>{{ "{$key} : {$spec}" }}</li>
                                     @endforeach
