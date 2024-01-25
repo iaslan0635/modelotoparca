@@ -447,13 +447,12 @@
                                                     </div>
 
                                                     <div class="product-card__features">
-                                                        @if($product->name == 'Motor yagı')
+
                                                             <ul>
                                                                 {{$product->sku}}
                                                             </ul>
-                                                        @endif
+
                                                         <ul>
-                                                            tttt
                                                             @foreach(($product->specifications ?? []) as $key => $spec)
                                                                 <li wire:key="spec-{{$key}}" >{{ "{$key} : {$spec}" }}</li>
                                                             @endforeach
