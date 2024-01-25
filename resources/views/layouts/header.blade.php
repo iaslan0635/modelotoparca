@@ -1,5 +1,5 @@
 <header class="site__header">
-    <div class="header" style="background: #e10713">
+    <div class="header" style="background: #20548e">
         <div class="header__megamenu-area megamenu-area"></div>
         <div class="header__topbar-classic-bg"></div>
         <div class="header__topbar-classic">
