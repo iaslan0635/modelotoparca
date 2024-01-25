@@ -382,6 +382,9 @@
                                                                                     Kapasite
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
+                                                                                    Motor
+                                                                                </th>
+                                                                                <th class="analogs-table__column analogs-table__column--name">
                                                                                     Güç
                                                                                 </th>
                                                                             </tr>
@@ -397,7 +400,8 @@
                                                                                                     $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d"))
                                                                                                 }}
                                                                                     </td>
-                                                                                    <td class="analogs-table__column">{{ $car->capacity }}   {{$car->engine}}</td>
+                                                                                    <td class="analogs-table__column">{{ $car->capacity }}  </td>
+                                                                                    <td class="analogs-table__column"> {{$car->engine}} </td>
                                                                                     <td class="analogs-table__column">{{ $car->power_kw }} Kw</td>
                                                                                 </tr>
                                                                             @endforeach
