@@ -391,7 +391,8 @@
                                                                             </thead>
                                                                             <tbody>
 
-                                                                            @foreach($cars as $car)
+                                                                            @foreach($cars as $car2)
+                                                                                @foreach($car2->name as $car )
                                                                                 <tr>
                                                                                     <td class="analogs-table__column">{{ $car->name }}</td>
                                                                                     <td class="analogs-table__column">
@@ -405,6 +406,7 @@
                                                                                     <td class="analogs-table__column">{{ $car->capacity }} cc </td>
                                                                                     <td class="analogs-table__column"> {{$car->engine_code}} </td>
                                                                                 </tr>
+                                                                                @endforeach
                                                                             @endforeach
                                                                             </tbody>
                                                                         </table>
