@@ -139,7 +139,7 @@
                                                             @foreach(explode(',', $oem->oems) as $item)
                                                                 <a href="{{ $item ? route('oem.search', ['oem' => $item]) : null }}">
                                                                     {{ $item }}
-                                                                </a>{{ !$loop->last ? "," : null }}
+                                                                </a>{{ !$loop->last ? " " : null }}
                                                             @endforeach
                                                 @endforeach
                                             </div>
