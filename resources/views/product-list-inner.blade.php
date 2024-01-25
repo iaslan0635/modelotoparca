@@ -453,6 +453,7 @@
                                                             </ul>
                                                         @endif
                                                         <ul>
+                                                            tttt
                                                             @foreach(($product->specifications ?? []) as $key => $spec)
                                                                 <li wire:key="spec-{{$key}}" >{{ "{$key} : {$spec}" }}</li>
                                                             @endforeach
