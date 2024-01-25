@@ -400,9 +400,9 @@
                                                                                                     $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d"))
                                                                                                 }}
                                                                                     </td>
-                                                                                    <td class="analogs-table__column">{{ $car->engine }} </td>
+{{--                                                                                    <td class="analogs-table__column">{{ $car->engine }} </td>--}}
+                                                                                    <td class="analogs-table__column">{{$car->type}} / {{ $car->power_kw }} Kw / {{ $car->power_hp }} Hp </td>
                                                                                     <td class="analogs-table__column">{{ $car->capacity }} cc </td>
-{{--                                                                                    <td class="analogs-table__column">{{ $car->power_kw }} Kw / {{ $car->power_hp }} Hp </td>--}}
                                                                                     <td class="analogs-table__column"> {{$car->engine_code}} </td>
                                                                                 </tr>
                                                                             @endforeach
