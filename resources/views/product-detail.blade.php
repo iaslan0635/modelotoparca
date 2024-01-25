@@ -376,7 +376,7 @@
                                                                                     Model
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
-                                                                                    Yıl
+                                                                                    Üretim Yılı
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
                                                                                     Kapasite
@@ -400,7 +400,7 @@
                                                                                                     $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d"))
                                                                                                 }}
                                                                                     </td>
-                                                                                    <td class="analogs-table__column">{{ $car->capacity }}  </td>
+                                                                                    <td class="analogs-table__column">{{ $car->capacity }} cc </td>
                                                                                     <td class="analogs-table__column">{{ $car->power_kw }} Kw / {{ $car->power_hp }} Hp </td>
                                                                                     <td class="analogs-table__column"> {{$car->engine_code}} </td>
                                                                                 </tr>
