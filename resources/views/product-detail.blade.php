@@ -397,7 +397,7 @@
                                                                                                     $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d"))
                                                                                                 }}
                                                                                     </td>
-                                                                                    <td class="analogs-table__column">{{ $car->capacity }}   {{$car->enigine}}</td>
+                                                                                    <td class="analogs-table__column">{{ $car->capacity }}   {{$car->engine}}</td>
                                                                                     <td class="analogs-table__column">{{ $car->power_kw }} Kw</td>
                                                                                 </tr>
                                                                             @endforeach
