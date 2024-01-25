@@ -135,12 +135,13 @@
                                     <div class="product__tags-and-share-links">
                                         <div class="product__tags tags tags--sm">
                                             <div class="tags__list">
-                                                <a href="">Brake Kit</a>
-                                                <a href="">Brandix</a>
-                                                <a href="">Filter</a>
-                                                <a href="">Bumper</a>
-                                                <a href="">Transmission</a>
-                                                <a href="">Hood</a>
+                                                @foreach($oems as $oem)
+                                                            @foreach(explode(',', $oem->oems) as $item)
+                                                                <a href="{{ $item ? route('oem.search', ['oem' => $item]) : null }}">
+                                                                    {{ $item }}
+                                                                </a>{{ !$loop->last ? "," : null }}
+                                                            @endforeach
+                                                @endforeach
                                             </div>
                                         </div>
                                         <div class="product__share-links share-links">
