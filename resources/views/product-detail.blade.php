@@ -662,7 +662,7 @@
                                                                     <div>
                                                                         <div class="product-card__badges">
                                                                             <div
-                                                                                class="tag-badge tag-badge--sale">{{ $cross->brand->name }}</div>
+                                                                                class="tag-badge tag-badge--sale">{{ $cross->brand?->name }}</div>
                                                                         </div>
                                                                         <a href="{{ route('product.show', $cross) }}">{{ $cross->fullTitle }}</a>
                                                                     </div>
