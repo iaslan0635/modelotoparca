@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AnalysisController;
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -90,10 +91,10 @@ if (app()->hasDebugModeEnabled()) {
     });
 }
 
-Route::controller(\App\Http\Controllers\Admin\AuthController::class)
+Route::controller(AuthController::class)
     ->name("auth.")
     ->group(function () {
-        Route::get('login', 'login')->name('login')->withoutMiddleware(['auth']);
-        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['auth']);
+        Route::get('login', 'login')->name('login')->withoutMiddleware(['admin']);
+        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['admin']);
         Route::get('logout', 'logout')->name('logout');
     });
