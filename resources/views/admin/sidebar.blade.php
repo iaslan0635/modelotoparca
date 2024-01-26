@@ -134,6 +134,22 @@
             </div>
             <!--end:Menu item-->
             <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="{{ route("admin.brands.index") }}">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Markalar</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+            <!--begin:Menu item-->
             <div class="menu-item pt-5">
                 <!--begin:Menu content-->
                 <div class="menu-content">

@@ -55,6 +55,10 @@ Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(fu
     Route::post('toggleIndexing', 'toggleIndexing')->name('toggleIndexing');
 });
 
+Route::controller(BrandController::class)->prefix('brands')->name('brands.')->group(function () {
+    Route::get('', 'index')->name('index');
+});
+
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');

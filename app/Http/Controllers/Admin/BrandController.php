@@ -36,4 +36,11 @@ class BrandController extends Controller
             "results" => TrendyolBrand::whereFullText("name", $term)->get(["id", "name as text"])
         ];
     }
+
+    public function index()
+    {
+        return view('admin.pages.brands', [
+            'brands' => Brand::paginate(),
+        ]);
+    }
 }
