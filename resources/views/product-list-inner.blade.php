@@ -447,6 +447,11 @@
                                                     </div>
 
                                                     <div class="product-card__features">
+
+                                                            <ul>
+                                                                {{$product->sku}}
+                                                            </ul>
+
                                                         <ul>
                                                             @foreach(($product->specifications ?? []) as $key => $spec)
                                                                 <li wire:key="spec-{{$key}}" >{{ "{$key} : {$spec}" }}</li>

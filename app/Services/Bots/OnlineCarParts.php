@@ -15,12 +15,28 @@ use Symfony\Component\DomCrawler\Crawler;
 class OnlineCarParts
 {
     public function __construct(
-        public string  $keyword,
-        public int     $product_id,
-        public string  $field,
-        public ?string $brand_filter = null
+        public readonly string  $keyword,
+        public readonly int     $product_id,
+        public readonly string  $field,
+        public readonly ?string $brand_filter = null,
+        public readonly bool    $regexed = false,
     )
     {
+    }
+
+    public function smash(): bool
+    {
+        if ($this->scrape()) return true;
+        if ($this->regexed) return false;
+
+        $regexedBot = new OnlineCarParts(
+            keyword: self::commonizeString($this->keyword),
+            product_id: $this->product_id,
+            field: $this->field,
+            brand_filter: $this->brand_filter,
+            regexed: true,
+        );
+        return $regexedBot->scrape();
     }
 
     public function searchProducts(): array
@@ -32,8 +48,11 @@ class OnlineCarParts
         try {
             if ($this->brand_filter !== null) {
                 $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
-                if ($brandId !== null) $url .= "&brand[]=" . $brandId;
-                else return [];
+                if ($brandId === null) {
+                    $this->log("Marka arama sayfasında bulunamadı.");
+                    return [];
+                }
+                $url .= "&brand[]=" . $brandId;
             }
 
             $crawler = new Crawler(OcpClient::request($url));
@@ -72,7 +91,7 @@ class OnlineCarParts
         return array_filter($links, fn(string $link) => !str_contains($link, '/tyres-shop/'));
     }
 
-    public function smash(): bool
+    public function scrape(): bool
     {
         $links = $this->searchProducts();
         if (count($links) === 0) {
@@ -261,7 +280,11 @@ class OnlineCarParts
     {
         Log::create([
             'product_id' => $this->product_id,
-            'message' => "$message | Anahtar Kelime: $this->keyword" . ($this->brand_filter !== null ? " | Marka filtresi: $this->brand_filter" : ""),
+            'message' => $message
+                . " | Anahtar Kelime: $this->keyword"
+                . " | Alan: $this->field"
+                . " | Sembolsüz: " . ($this->regexed ? "Evet" : "Hayır") .
+                ($this->brand_filter !== null ? " | Marka filtresi: $this->brand_filter" : ""),
         ]);
     }
 }

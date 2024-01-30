@@ -1,6 +1,7 @@
 @extends("admin.authentication.layout")
 @section("form")
     <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="post">
+        @csrf
         <!--begin::Heading-->
         <div class="text-center mb-11">
             <!--begin::Title-->

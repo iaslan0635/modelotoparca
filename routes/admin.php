@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AnalysisController;
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -40,6 +41,7 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::post('ITEMSUBS', 'ITEMSUBS')->name('ITEMSUBS');
     Route::post('ITMCLSAS', 'ITMCLSAS')->name('ITMCLSAS');
     Route::post('FILTER_OIL', 'FILTER_OIL')->name('FILTER_OIL');
+    Route::post('MARKALAR', 'MARKALAR')->name('MARKALAR');
     Route::get('sparetobot_bot', 'sparetobot_bot')->name('sparetobot_bot');
     Route::get('sparetobot_connect', 'sparetobot_connect')->name('sparetobot_connect');
 });
@@ -52,6 +54,10 @@ Route::controller(AnalysisController::class)->prefix('analysis')->name('analysis
 Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(function () {
     Route::get('', 'index')->name('index');
     Route::post('toggleIndexing', 'toggleIndexing')->name('toggleIndexing');
+});
+
+Route::controller(BrandController::class)->prefix('brands')->name('brands.')->group(function () {
+    Route::get('', 'index')->name('index');
 });
 
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
@@ -85,10 +91,10 @@ if (app()->hasDebugModeEnabled()) {
     });
 }
 
-Route::controller(\App\Http\Controllers\Admin\AuthController::class)
+Route::controller(AuthController::class)
     ->name("auth.")
     ->group(function () {
-        Route::get('login', 'login')->name('login')->withoutMiddleware(['auth']);
-        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['auth']);
+        Route::get('login', 'login')->name('login')->withoutMiddleware(['admin']);
+        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['admin']);
         Route::get('logout', 'logout')->name('logout');
     });

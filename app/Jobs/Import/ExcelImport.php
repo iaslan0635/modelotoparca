@@ -305,6 +305,8 @@ class ExcelImport implements ShouldQueue
 
     private static function getBrand(TigerProduct $product): ?string
     {
-        return Brand::find($product->markref, ["name"])?->name;
+        $brand = Brand::find($product->markref, ["name", "botname"]);
+        if (!$brand) return null;
+        return $brand->botname ?? $brand->name;
     }
 }

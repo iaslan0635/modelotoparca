@@ -135,12 +135,13 @@
                                     <div class="product__tags-and-share-links">
                                         <div class="product__tags tags tags--sm">
                                             <div class="tags__list">
-                                                <a href="">Brake Kit</a>
-                                                <a href="">Brandix</a>
-                                                <a href="">Filter</a>
-                                                <a href="">Bumper</a>
-                                                <a href="">Transmission</a>
-                                                <a href="">Hood</a>
+                                                @foreach($oems as $oem)
+                                                            @foreach(explode(',', $oem->oems) as $item)
+                                                                <a href="{{ $item ? route('oem.search', ['oem' => $item]) : null }}">
+                                                                    {{ $item }}
+                                                                </a>{{ !$loop->last ? " " : null }}
+                                                            @endforeach
+                                                @endforeach
                                             </div>
                                         </div>
                                         <div class="product__share-links share-links">
@@ -376,13 +377,16 @@
                                                                                     Model
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
-                                                                                    Yıl
+                                                                                    Üretim Yılı
+                                                                                </th>
+                                                                                <th class="analogs-table__column analogs-table__column--name">
+                                                                                    Güç
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
                                                                                     Kapasite
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
-                                                                                    Güç
+                                                                                    Motor
                                                                                 </th>
                                                                             </tr>
                                                                             </thead>
@@ -394,11 +398,13 @@
                                                                                     <td class="analogs-table__column">
                                                                                         {{ $car->produced_from ?? "0000-00-00" }}
                                                                                         - {{
-                                                                                                    $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("Y-m-d"))
+                                                                                                    $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("d-m-Y"))
                                                                                                 }}
                                                                                     </td>
-                                                                                    <td class="analogs-table__column">{{ $car->capacity }}</td>
-                                                                                    <td class="analogs-table__column">{{ $car->power_kw }} Kw</td>
+{{--                                                                                    <td class="analogs-table__column">{{ $car->engine }} </td>--}}
+                                                                                    <td class="analogs-table__column">{{$car->type}} / {{ $car->power_kw }} Kw / {{ $car->power_hp }} Hp </td>
+                                                                                    <td class="analogs-table__column">{{ $car->capacity }} cc </td>
+                                                                                    <td class="analogs-table__column"> {{$car->engine_code}} </td>
                                                                                 </tr>
                                                                             @endforeach
                                                                             </tbody>
@@ -662,7 +668,7 @@
                                                                     <div>
                                                                         <div class="product-card__badges">
                                                                             <div
-                                                                                class="tag-badge tag-badge--sale">{{ $cross->brand->name }}</div>
+                                                                                class="tag-badge tag-badge--sale">{{ $cross->brand?->name }}</div>
                                                                         </div>
                                                                         <a href="{{ route('product.show', $cross) }}">{{ $cross->fullTitle }}</a>
                                                                     </div>

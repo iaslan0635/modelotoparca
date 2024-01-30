@@ -6,6 +6,7 @@ use App\Events\UserRegisteredEvent;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -41,7 +42,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        \Auth::logout();
+        Auth::logout();
 
         return redirect()->route('login-view');
     }
