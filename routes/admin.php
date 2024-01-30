@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\MerchantOrderController;
 use App\Http\Controllers\MerchantSettingController;
 use App\Http\Controllers\MerchantTrackingController;
@@ -98,3 +99,5 @@ Route::controller(AuthController::class)
         Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['admin']);
         Route::get('logout', 'logout')->name('logout');
     });
+
+Route::resource("user", UserController::class);
