@@ -54,7 +54,8 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
             "items" => [
                 [
                     "barcode" => $product->sku,
-                    "quantity" => $stock
+                    "quantity" => $stock,
+                    "price" => $line->totalPrice,
                 ]
             ]
         ])->object()->batchRequestId;
@@ -412,7 +413,10 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                 "status" => $item->status,
                 "delivery_status" => "",
                 "payment_status" => "",
-                "lines" => [],
+                "lines" => array_map(fn ($line) => [
+                    "sku" => $line->merchantSku,
+                    "quantity" => $line->quantity,
+                ], $item->lines),
                 "line_data" => [],
             ]);
         }

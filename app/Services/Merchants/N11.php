@@ -149,7 +149,11 @@ class N11 implements Merchant
                         'price' => $price,
                         'date' => self::convertTime($info->orderDetail->createDate),
                         'status' => self::STATUS[$info->orderDetail->status],
-                        'lines' => [],
+                        'lines' => array_map(fn($line) => [
+                            "sku" => $line->productSellerCode,
+                            "quantity" => $line->quantity,
+                            "price" => $line->price,
+                        ], $info->itemList),
                         'line_data' => [],
                     ]);
                 }
@@ -208,9 +212,9 @@ class N11 implements Merchant
         ];
     }
 
-    public function setStock($id, $stock)
+    public function setStock(Product $product, $stock)
     {
-        $this->client->stock->UpdateStockByStockIdRequest($id, $stock);
+        $this->client->stock->UpdateStockByStockIdRequest($product->id, $stock);
     }
 
     public function sendProduct(Product $product)

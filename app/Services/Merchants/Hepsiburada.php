@@ -251,6 +251,7 @@ class Hepsiburada implements Merchant, TrackableMerchant
     {
         $orders = $this->getOrders();
         foreach ($orders->items as $item) {
+            $detail = $this->getOrderDetail($item->orderNumber);
             MerchantOrder::updateOrCreate([
                 "merchant_id" => $item->id,
                 "merchant" => "hepsiburada",
@@ -266,10 +267,19 @@ class Hepsiburada implements Merchant, TrackableMerchant
                 "status" => $item->status,
                 "delivery_status" => "",
                 "payment_status" => "",
-                "lines" => [],
+                "lines" => array_map(fn($line) => [
+                    "sku" => $line->barcode,
+                    "quantity" => $line->quantity,
+                    "price" => $line->totalPrice,
+                ], $detail->items),
                 "line_data" => [],
             ]);
         }
+    }
+
+    public function getOrderDetail($orderNumber)
+    {
+        return $this->client("oms-external")->get("orders/merchantid/$this->merchantId/orderNumber/$orderNumber")->object();
     }
 
     public function parseOrder(MerchantOrder $order)
