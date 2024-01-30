@@ -29,7 +29,7 @@
                             </li>
                             <li class="order-success__meta-item">
                                 <span class="order-success__meta-title">Oluşturulma Tarihi:</span>
-                                <span class="order-success__meta-value">{{ $order->created_at->format("d M Y H:i:s") }}</span>
+                                <span class="order-success__meta-value">{{ $order->created_at->formatLocalized("d M Y H:i") }}</span>
                             </li>
                             <li class="order-success__meta-item">
                                 <span class="order-success__meta-title">Toplam Tutar:</span>

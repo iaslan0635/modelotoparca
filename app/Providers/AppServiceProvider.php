@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Facades\N11Client\N11Client;
+use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.force_https')) {
             URL::forceScheme('https');
         }
+        setlocale(LC_TIME, $this->app->getLocale());
+        Carbon::setLocale(config('app.locale'));
         Schema::defaultStringLength(255);
         Paginator::useBootstrapFour();
     }
