@@ -36,10 +36,14 @@ class AuthController extends Controller
         ]);
 
         if (\Auth::attempt($credentials)) {
-            return redirect()->intended('/admin');
-        } else {
-            return redirect()->back()->withInput()->withErrors(['email' => 'Geçersiz giriş bilgileri']);
+            if (\Auth::user()->type === 'admin') {
+                return redirect()->intended('/admin');
+            } else {
+                \Auth::logout();
+            }
         }
+
+        return redirect()->back()->withInput()->withErrors(['email' => 'Geçersiz giriş bilgileri']);
     }
 
     public function logout()
