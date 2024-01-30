@@ -95,4 +95,9 @@ class User extends Authenticatable
     {
         return '5050000000'; // ???
     }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('type', 'admin');
+    }
 }

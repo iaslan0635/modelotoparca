@@ -2,6 +2,7 @@
 
 namespace App\Services\Bots;
 
+use App\Models\BotImage;
 use App\Models\BotProduct;
 use App\Models\Log;
 use App\Models\Product;
@@ -242,6 +243,14 @@ class OnlineCarParts
                 'logicalref' => $this->product_id,
                 'car_id' => $vehicleId,
             ], $ocpp->vehicles)
+        );
+
+        BotImage::insertOrIgnore(
+            array_map(fn($image) => [
+                'product_id' => $this->product_id,
+                'url' => $image,
+                'bot_page_url' => $ocpp->url,
+            ], $ocpp->images)
         );
     }
 

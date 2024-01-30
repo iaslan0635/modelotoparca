@@ -101,7 +101,8 @@
                                 <!--begin::Datepicker-->
                                 <div class="d-none mt-10">
                                     <label for="kt_ecommerce_add_product_status_datepicker" class="form-label">Select
-                                        publishing date and time</label>
+                                        publishing date and time
+                                    </label>
                                     <input class="form-control" id="kt_ecommerce_add_product_status_datepicker"
                                            placeholder="Pick date & time"/>
                                 </div>
@@ -152,14 +153,15 @@
                                    class="btn btn-light-primary btn-sm mb-10">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr087.svg-->
                                     <span class="svg-icon svg-icon-2">
-								<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-									<rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1"
-                                          transform="rotate(-90 11 18)" fill="currentColor"/>
-									<rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"/>
-								</svg>
-							</span>
-                                    <!--end::Svg Icon-->Create new category</a>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1"
+                                                  transform="rotate(-90 11 18)" fill="currentColor"/>
+                                            <rect x="6" y="11" width="12" height="2" rx="1" fill="currentColor"/>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->Create new category
+                                </a>
                                 <!--end::Button-->
                                 <!--begin::Input group-->
                                 <!--begin::Label-->
@@ -193,18 +195,19 @@
                                         <!--end::Amount-->
                                         <!--begin::Badge-->
                                         <span class="badge badge-light-success fs-base">
-									<!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
-									<span class="svg-icon svg-icon-5 svg-icon-success ms-n1">
-										<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-											<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1"
-                                                  transform="rotate(90 13 6)" fill="currentColor"/>
-											<path
-                                                d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
-                                                fill="currentColor"/>
-										</svg>
-									</span>
-                                            <!--end::Svg Icon-->2.6%</span>
+                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+                                            <span class="svg-icon svg-icon-5 svg-icon-success ms-n1">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1"
+                                                          transform="rotate(90 13 6)" fill="currentColor"/>
+                                                    <path
+                                                        d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
+                                                        fill="currentColor"/>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->2.6%
+                                        </span>
                                         <!--end::Badge-->
                                     </div>
                                     <!--end::Info-->
@@ -239,7 +242,8 @@
                             <div class="card-body pt-0">
                                 <!--begin::Select store template-->
                                 <label for="kt_ecommerce_add_product_store_template" class="form-label">Select a product
-                                    template</label>
+                                    template
+                                </label>
                                 <!--end::Select store template-->
                                 <!--begin::Select2-->
                                 <select class="form-select mb-2" data-control="select2" data-hide-search="true"
@@ -268,30 +272,71 @@
                         <!--begin:::Tabs-->
                         <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
                             <!--begin:::Tab item-->
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4 active"
-                                                    data-bs-toggle="tab" href="#bot_connections">Bot Eşleşmeleri</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#details">Ürün bilgileri</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#oems">Oem Kodlar</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#cars">Uyumlu Araçlar</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#todo">Pazaryerleri Durumu</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#todo">Sipariş Geçmişi</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#todo">Yorum Geçmişi</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#todo">N11 Soruları</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#bot-logs">Bot kayıtları</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#trendyol-product-sync">Trendyol Özellik Eşleştirmesi</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#hepsiburada-product-sync">Hepsiburada Özellik Eşleştirmesi</a></li>
-                            <li class="nav-item"><a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                                    href="#n11-product-sync">N11 Özellik Eşleştirmesi</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4 active"
+                                   data-bs-toggle="tab" href="#bot_connections">Bot Eşleşmeleri
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#details">Ürün bilgileri
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#oems">Oem Kodlar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#cars">Uyumlu Araçlar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#todo">Pazaryerleri Durumu
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#todo">Sipariş Geçmişi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#todo">Yorum Geçmişi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#todo">N11 Soruları
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#bot-logs">Bot kayıtları
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#bot-images">Bot resimleri
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#trendyol-product-sync">Trendyol Özellik Eşleştirmesi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#hepsiburada-product-sync">Hepsiburada Özellik Eşleştirmesi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                   href="#n11-product-sync">N11 Özellik Eşleştirmesi
+                                </a>
+                            </li>
                             <!--end:::Tab item-->
                         </ul>
                         <!--end:::Tabs-->
@@ -491,6 +536,11 @@
                                     </div>
                                     <!--end::Card-->
                                 </div>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="bot-images" role="tabpanel">
+                                <livewire:admin.bot-image-manager :product="$product"/>
                             </div>
                             <!--end::Tab pane-->
                             @env("production")
