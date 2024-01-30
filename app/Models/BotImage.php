@@ -7,6 +7,8 @@ use App\Services\Bots\OcpClient;
 
 class BotImage extends BaseModel
 {
+    public $timestamps = false;
+
     public function downloadImage()
     {
         $image = OcpClient::requestWithoutCache($this->url);
