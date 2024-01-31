@@ -14,12 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+/*
 Route::post("/git-webhook", function () {
     set_time_limit(0);
     $proc = new \Symfony\Component\Process\Process(["bash", "deploy.sh"], base_path());
     $proc->run();
 });
+*/
