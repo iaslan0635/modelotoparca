@@ -98,6 +98,7 @@ Route::controller(AuthController::class)
         Route::get('login', 'login')->name('login')->withoutMiddleware(['admin']);
         Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['admin']);
         Route::get('logout', 'logout')->name('logout');
+        Route::post('register', 'register')->name('register');
     });
 
 Route::resource("user", UserController::class);

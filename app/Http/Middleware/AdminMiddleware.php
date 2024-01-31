@@ -17,7 +17,7 @@ class AdminMiddleware
 
         throw new AuthenticationException(
             "Admin sayfasına erişim yetkiniz yok.",
-            ['admin'],
+            ['web'],
             route('admin.auth.login')
         );
     }

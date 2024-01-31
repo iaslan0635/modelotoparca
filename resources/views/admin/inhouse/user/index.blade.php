@@ -5,6 +5,7 @@
         <div class="card-header border-0 pt-6">
             <!--begin::Card title-->
             <div class="card-title">
+                {{--
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -20,6 +21,7 @@
                     <input type="text" data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search user"/>
                 </div>
                 <!--end::Search-->
+                --}}
             </div>
             <!--begin::Card title-->
             <!--begin::Card toolbar-->
@@ -35,7 +37,7 @@
                                 <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"/>
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->Add User
+                        <!--end::Svg Icon-->Kullanıcı Ekle
                     </button>
                     <!--end::Add user-->
                 </div>
@@ -60,59 +62,61 @@
                                 <!--begin::Modal title-->
                                 <h2 class="fw-bold">Kullanıcı Ekle</h2>
                                 <!--end::Modal title-->
-                                <!--begin::Close-->
-                                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-users-modal-action="close">
-                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                                    <span class="svg-icon svg-icon-1">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor"/>
-                                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor"/>
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                </div>
-                                <!--end::Close-->
                             </div>
                             <!--end::Modal header-->
                             <!--begin::Modal body-->
                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
-                                <form id="kt_modal_add_user_form" class="form" action="#">
+                                <form id="kt_modal_add_user_form" class="form" action="{{ route('admin.auth.register') }}" method="post">
+                                    @csrf
                                     <!--begin::Scroll-->
                                     <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true"
                                          data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
                                          data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
-                                        <!--begin::Input group-->
                                         <div class="fv-row mb-7">
-                                            <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2">Full Name</label>
-                                            <!--end::Label-->
-                                            <!--begin::Input-->
-                                            <input type="text" name="user_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" value="Emma Smith"/>
-                                            <!--end::Input-->
+                                            <label class="required fw-semibold fs-6 mb-2" for="signup-name">Adınız</label>
+                                            <input id="signup-name" type="text" name="first_name" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                   placeholder="Adınız">
                                         </div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
                                         <div class="fv-row mb-7">
-                                            <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2">Email</label>
-                                            <!--end::Label-->
-                                            <!--begin::Input-->
-                                            <input class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com"
-                                                type="email" name="user_email" value="smith@kpmg.com"/>
-                                            <!--end::Input-->
+                                            <label class="required fw-semibold fs-6 mb-2" for="signup-last-name">Soyadınız</label>
+                                            <input id="signup-last-name" type="text" name="last_name" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                   placeholder="Soyadınız">
                                         </div>
-                                        <!--end::Input group-->
+                                        <div class="fv-row mb-7">
+                                            <label class="required fw-semibold fs-6 mb-2" for="signup-gender">Cinsiyetiniz</label>
+                                            <select name="gender" id="signup-gender" class="form-control form-control-solid mb-3 mb-lg-0">
+                                                <option value="male">Erkek</option>
+                                                <option value="female">Kadın</option>
+                                            </select>
+                                        </div>
+                                        <div class="fv-row mb-7">
+                                            <label class="required fw-semibold fs-6 mb-2" for="signup-date-of-birth">Doğum Tarihiniz</label>
+                                            <input id="signup-date-of-birth" type="date" name="date_of_birth"
+                                                   class="form-control form-control-solid mb-3 mb-lg-0">
+                                        </div>
+                                        <div class="fv-row mb-7">
+                                            <label class="required fw-semibold fs-6 mb-2" for="signup-email">E-Posta Adresi</label>
+                                            <input id="signup-email" type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                   placeholder="email@email.com">
+                                        </div>
+                                        <div class="fv-row mb-7">
+                                            <label class="required fw-semibold fs-6 mb-2" for="signup-password">Şifre</label>
+                                            <input id="signup-password" type="password" name="password" class="form-control form-control-solid mb-3 mb-lg-0"
+                                                   placeholder="Şifre Yazınız">
+                                        </div>
+                                        <div class="fv-row mb-7">
+                                            <label class="required fw-semibold fs-6 mb-2" for="signup-confirm">Şifre Tekrarı</label>
+                                            <input id="signup-confirm" type="password" name="password_confirmation"
+                                                   class="form-control form-control-solid mb-3 mb-lg-0"
+                                                   placeholder="Şifre Tekrarı">
+                                        </div>
                                     </div>
                                     <!--end::Scroll-->
                                     <!--begin::Actions-->
                                     <div class="text-center pt-15">
-                                        <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Discard</button>
-                                        <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
-                                            <span class="indicator-label">Submit</span>
-                                            <span class="indicator-progress">Please wait...
-                                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                            </span>
+                                        <button type="submit" class="btn btn-primary">
+                                            Ekle
                                         </button>
                                     </div>
                                     <!--end::Actions-->
@@ -165,13 +169,13 @@
                         <!--begin::User=-->
                         <td class="d-flex align-items-center">
                             <!--begin:: Avatar -->
-{{--                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">--}}
-{{--                                <a href="/admin/apps/user-management/users/view">--}}
-{{--                                    <div class="symbol-label">--}}
-{{--                                        <img src="assets/media/avatars/300-6.jpg" alt="{{ $user->full_name }}" class="w-100"/>--}}
-{{--                                    </div>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">--}}
+                            {{--                                <a href="/admin/apps/user-management/users/view">--}}
+                            {{--                                    <div class="symbol-label">--}}
+                            {{--                                        <img src="assets/media/avatars/300-6.jpg" alt="{{ $user->full_name }}" class="w-100"/>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </a>--}}
+                            {{--                            </div>--}}
                             <!--end::Avatar-->
                             <!--begin::User details-->
                             <div class="d-flex flex-column">
