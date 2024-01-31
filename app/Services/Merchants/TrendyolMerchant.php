@@ -342,7 +342,14 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
 
     public function approveOrder(MerchantOrder $order)
     {
-        // TODO: Implement approveOrder() method.
+        return $this->supplierClient()->put("shipment-packages/$order->merchant_id", [
+            "lines" => array_map(fn($line) => [
+                "lineId" => $line->sku,
+                "quantity" => $line->quantity,
+            ], $order->lines),
+            "params" => [],
+            "status" => "Picking"
+        ]);
     }
 
     public function refundedOrders()

@@ -98,7 +98,7 @@ class N11 implements Merchant
         $this->client = app(N11Client::class);
     }
 
-    private function preparePriceToSend($price)
+    private function preparePriceToSend(float|int $price)
     {
         $price *= (100 + merchant_setting("n11", "comission", 0)) / 100;
         return number_format($price, 2, '.', '');
@@ -450,6 +450,9 @@ class N11 implements Merchant
 
     public function updatePrice(Product $product)
     {
-        // TODO: Implement updatePrice() method.
+        return $this->client->product->UpdateProductPriceBySellerCode([
+            "productSellerCode" => $product->sku,
+            "price" => $this->preparePriceToSend($product->price->price)
+        ]);
     }
 }
