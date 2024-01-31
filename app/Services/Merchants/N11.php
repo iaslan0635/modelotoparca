@@ -455,4 +455,11 @@ class N11 implements Merchant
             "price" => $this->preparePriceToSend($product->price->price)
         ]);
     }
+
+    public function productExists(Product $product): bool
+    {
+        return $this->client->product->GetProductBySellerCode([
+            "sellerCode" => $product->sku
+        ], ["throw" => false])->result->status === "success";
+    }
 }

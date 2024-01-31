@@ -420,7 +420,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                 "status" => $item->status,
                 "delivery_status" => "",
                 "payment_status" => "",
-                "lines" => array_map(fn ($line) => [
+                "lines" => array_map(fn($line) => [
                     "sku" => $line->merchantSku,
                     "quantity" => $line->quantity,
                 ], $item->lines),
@@ -504,5 +504,11 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                     'shippingLastName' => 'string',
                 ],
             ]);
+    }
+
+    public function productExists(Product $product): bool
+    {
+        return $this->supplierClient()->get("products", ["barcode" => $product->sku])
+                ->object()->totalElements > 0;
     }
 }

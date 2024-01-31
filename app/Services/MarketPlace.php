@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
+use App\Models\Product;
 use App\Services\Merchants\Hepsiburada;
 use App\Services\Merchants\Merchant;
 use App\Services\Merchants\N11;
@@ -76,5 +77,10 @@ class MarketPlace
         $merchant->declineOrder($lineId, $reasonType, $merchantOrder->id, $quantity);
         $merchantOrder->status = "İptal Edildi";
         $merchantOrder->save();
+    }
+
+    public static function getProductExistence(Product $product)
+    {
+        return array_map(fn(Merchant $merchant) => $merchant->productExists($product), self::merchants());
     }
 }

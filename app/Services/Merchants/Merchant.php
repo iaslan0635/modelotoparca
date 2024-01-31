@@ -48,4 +48,6 @@ interface Merchant
     public function syncOrders();
 
     public function parseOrder(MerchantOrder $order);
+
+    public function productExists(Product $product): bool;
 }
