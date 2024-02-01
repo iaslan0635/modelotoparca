@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -23,7 +23,7 @@ class AuthController extends Controller
         $data['password'] = Hash::make($registerRequest->input('password'));
         $user = User::create($data);
 
-        \Auth::login($user);
+        Auth::login($user);
         UserRegisteredEvent::dispatch($user);
 
         return redirect()->back();
@@ -36,11 +36,11 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (\Auth::attempt($credentials)) {
-            if (\Auth::user()->type === 'admin') {
+        if (Auth::attempt($credentials, true)) {
+            if (Auth::user()->type === 'admin') {
                 return redirect()->intended('/admin');
             } else {
-                \Auth::logout();
+                Auth::logout();
             }
         }
 
@@ -49,8 +49,8 @@ class AuthController extends Controller
 
     public function logout()
     {
-        \Auth::logout();
+        Auth::logout();
 
-        return redirect("/");
+        return redirect("/admin/login");
     }
 }
