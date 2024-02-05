@@ -12,13 +12,13 @@
             <img src="{{ $brand->imageUrl() }}" style="height: 4rem" onerror="this.src = '/images/products/defaults/product-1.jpg'"/>
         </td>
         <td>
-            {{ $col("name") }}
+            {!! $col("name") !!}
         </td>
         <td>
-            {{ $col("slug") }}
+            {!! $col("slug") !!}
         </td>
         <td>
-            {{ $col("botname") }}
+            {!! $col("botname") !!}
         </td>
         <td class="text-end">
             <div style="display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap">
