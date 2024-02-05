@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\OrderController;
@@ -17,7 +18,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'admin.index');
+Route::get('/', DashboardController::class);
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
     Route::get('oem', 'push_oem')->name('oem');

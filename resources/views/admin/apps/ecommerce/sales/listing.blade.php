@@ -254,13 +254,13 @@
                                             <!--begin:: Avatar -->
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <a href="admin/apps/user-management/users/view">
-                                                    <div class="symbol-label fs-3 bg-light-danger text-danger">{{ $order->user->first_name[0] }}</div>
+                                                    <div class="symbol-label fs-3 bg-light-danger text-danger">{{ $order->user?->first_name[0] }}</div>
                                                 </a>
                                             </div>
                                             <!--end::Avatar-->
                                             <div class="ms-5">
                                                 <!--begin::Title-->
-                                                <a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ $order->user->first_name }} {{ $order->user->last_name }}</a>
+                                                <a href="admin/apps/user-management/users/view" class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ $order->user?->first_name }} {{ $order->user?->last_name }}</a>
                                                 <!--end::Title-->
                                             </div>
                                         </div>
