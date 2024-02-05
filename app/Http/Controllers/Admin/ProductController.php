@@ -58,6 +58,7 @@ class ProductController extends Controller
 
             $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
             $products = $query->clone()->with(["merchants", "price"])->paginate();
+            $products->appends($request->except('page'));
             $usingSearch = false;
 
             $filterConstraintsToShow = collect($filterConstraints)
