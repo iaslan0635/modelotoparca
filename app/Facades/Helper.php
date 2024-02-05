@@ -2,6 +2,7 @@
 
 namespace App\Facades;
 
+use App\Enums\HepsiburadaProductStatus;
 use App\Enums\N11ProductStatus;
 
 class Helper
@@ -20,5 +21,20 @@ class Helper
             ];
         }
         return collect($data)->filter(fn ($item) => $item->id === $status)->first();
+    }
+
+    public static function getHepsiburadaStatuses($status)
+    {
+        $values = HepsiburadaProductStatus::cases();
+        $data = [];
+
+        foreach ($values as $value){
+            [$text, $turkish] = explode('|', $value->value);
+            $data[] = (object)[
+                'text' => $text,
+                'turkish' => $turkish
+            ];
+        }
+        return collect($data)->filter(fn ($item) => $item->text === $status)->first();
     }
 }

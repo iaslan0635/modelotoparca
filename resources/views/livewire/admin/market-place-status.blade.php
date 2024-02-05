@@ -24,11 +24,7 @@
                     <tr>
                         <td class="text-capitalize">{{ $marketPlace }}</td>
                         <td>
-                            @if ($status)
-                                <span class="badge badge-success">Var</span>
-                            @else
-                                <span class="badge badge-danger">Yok</span>
-                            @endif
+                            {{ $marketPlace }}
                         </td>
                     </tr>
                 @endforeach

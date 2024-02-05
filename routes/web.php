@@ -15,8 +15,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('deneme', function (){
-    return \App\Facades\Helper::getN11EnumStatuses(1)->turkish;
-    $product = \App\Models\TigerProduct::find(51267);
+    return \App\Facades\Helper::getHepsiburadaStatuses("MATCHED");
     ExcelImport::runBot($product);
 });
 

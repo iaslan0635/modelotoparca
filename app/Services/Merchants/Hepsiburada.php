@@ -2,7 +2,9 @@
 
 namespace App\Services\Merchants;
 
+use App\Enums\HepsiburadaProductStatus;
 use App\Enums\OrderRejectReasonType;
+use App\Facades\Helper;
 use App\Models\MerchantOrder;
 use App\Models\MerchantQuestion;
 use App\Models\Product;
@@ -382,10 +384,11 @@ class Hepsiburada implements TrackableMerchant
 
     public function productExists(Product $product): mixed
     {
-        return $this->client("mpop")->get("product/api/products/all-products-of-merchant/$this->merchantId", [
-                "offset" => 0,
-                "limit" => 1,
-                "barcode" => $product->sku
-            ])->object();
+        $status = $this->client("mpop")->get("product/api/products/all-products-of-merchant/$this->merchantId", [
+            "offset" => 0,
+            "limit" => 1,
+            "barcode" => $product->sku
+        ])->object()->data[0]->status;
+        return Helper::getHepsiburadaStatuses($status)->turkish;
     }
 }
