@@ -174,22 +174,22 @@
                     <div class="timer">
                         <div class="timer__part">
                             <div class="timer__part-value timer__part-value--days">02</div>
-                            <div class="timer__part-label">Days</div>
+                            <div class="timer__part-label">Gün</div>
                         </div>
                         <div class="timer__dots"></div>
                         <div class="timer__part">
                             <div class="timer__part-value timer__part-value--hours">23</div>
-                            <div class="timer__part-label">Hrs</div>
+                            <div class="timer__part-label">Saat</div>
                         </div>
                         <div class="timer__dots"></div>
                         <div class="timer__part">
                             <div class="timer__part-value timer__part-value--minutes">07</div>
-                            <div class="timer__part-label">Mins</div>
+                            <div class="timer__part-label">Dak.</div>
                         </div>
                         <div class="timer__dots"></div>
                         <div class="timer__part">
                             <div class="timer__part-value timer__part-value--seconds">54</div>
-                            <div class="timer__part-label">Secs</div>
+                            <div class="timer__part-label">San.</div>
                         </div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="block-sale__link"><a href="">View All Available Offers</a></div>
+                    <div class="block-sale__link"><a href="">Online Yedek Parça</a></div>
                     <div class="arrow block-sale__arrow block-sale__arrow--next arrow--next">
                         <button class="arrow__button" type="button">
                             <svg width="7" height="11">
@@ -238,21 +238,79 @@
         </div>
     </div>
     <div class="block-space block-space--layout--divider-nl"></div>
+    <div class="block block-products-carousel" data-layout="grid-4-sidebar">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header__body">
+                    <h2 class="section-header__title">Markalar</h2>
+                    <div class="section-header__spring">
+                    </div>
+                    <div class="section-header__arrows">
+                        <div class="arrow section-header__arrow section-header__arrow--prev arrow--prev">
+                            <button class="arrow__button" type="button"><svg width="7" height="11">
+                                    <path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z">
+
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="arrow section-header__arrow section-header__arrow--next arrow--next">
+                            <button class="arrow__button" type="button">
+                                <svg width="7" height="11">
+                                    <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="section-header__divider">
+                    </div>
+                </div>
+            </div>
+            <div class="block-products-carousel__carousel">
+                <div class="block-products-carousel__carousel-loader">
+
+                </div>
+                <div class="owl-carousel owl-loaded owl-drag">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage"
+                             style="transform: translate3d(-2915px, 0px, 0px); transition: all 0.5s ease 0s; width: 5300px;">
+                            <div class="owl-item cloned" style="width: 200px; margin-right: 20px;">
+                                <div class="block-products-carousel__column">
+                                    <div class="block-products-carousel__cell">
+                                        <div class="product-card product-card--layout--grid">
+                                            <div>
+                                                <a href="https://www.onlinecarparts.co.uk/manufacturer/bosch.html" class="brand-slider__item" style="width: 100%; display: inline-block;" tabindex="0">
+                                                    <img alt="BOSCH original car parts internet store" title="BOSCH" src="https://cdn.autoteiledirekt.de/brands/thumbs/30.png?m=2">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div></div></div></div></div>
+    <div class="block-space block-space--layout--divider-nl"></div>
     <div class="block block-posts-carousel block-posts-carousel--layout--list" data-layout="list">
         <div class="container">
             <div class="section-header">
                 <div class="section-header__body">
-                    <h2 class="section-header__title">Latest News</h2>
+                    <h2 class="section-header__title">Faydalı Bilgiler</h2>
                     <div class="section-header__spring"></div>
                     <ul class="section-header__links">
                         <li class="section-header__links-item">
-                            <a href="" class="section-header__links-link">Special Offers</a>
+                            <a href="" class="section-header__links-link">Bilgiler</a>
                         </li>
                         <li class="section-header__links-item">
-                            <a href="" class="section-header__links-link">New Arrivals</a>
-                        </li>
-                        <li class="section-header__links-item">
-                            <a href="" class="section-header__links-link">Reviews</a>
+                            <a href="" class="section-header__links-link">Araç Haberleri</a>
                         </li>
                     </ul>
                     <div class="section-header__arrows">
@@ -524,8 +582,8 @@
                         </svg>
                     </div>
                     <div class="block-features__item-info">
-                        <div class="block-features__item-title">Free Shipping</div>
-                        <div class="block-features__item-subtitle">For orders from $50</div>
+                        <div class="block-features__item-title">Ücretsiz Kargo</div>
+                        <div class="block-features__item-subtitle">750Tl üzeri siparişlerde</div>
                     </div>
                 </li>
                 <li class="block-features__item">
@@ -579,8 +637,8 @@
                         </svg>
                     </div>
                     <div class="block-features__item-info">
-                        <div class="block-features__item-title">Support 24/7</div>
-                        <div class="block-features__item-subtitle">Call us anytime</div>
+                        <div class="block-features__item-title">7/24 Destek</div>
+                        <div class="block-features__item-subtitle">Ücretsiz Destek</div>
                     </div>
                 </li>
                 <li class="block-features__item">
@@ -614,8 +672,8 @@
                         </svg>
                     </div>
                     <div class="block-features__item-info">
-                        <div class="block-features__item-title">100% Safety</div>
-                        <div class="block-features__item-subtitle">Only secure payments</div>
+                            <div class="block-features__item-title">Kolay İade</div>
+                        <div class="block-features__item-subtitle">14 Gün içerisinde iade</div>
                     </div>
                 </li>
                 <li class="block-features__item">
@@ -642,8 +700,8 @@
                         </svg>
                     </div>
                     <div class="block-features__item-info">
-                        <div class="block-features__item-title">Hot Offers</div>
-                        <div class="block-features__item-subtitle">Discounts up to 90%</div>
+                        <div class="block-features__item-title">100% Uyumlu Parçalar</div>
+{{--                        <div class="block-features__item-subtitle">Ürünlerde uyumlu araç listesi</div>--}}
                     </div>
                 </li>
             </ul>
