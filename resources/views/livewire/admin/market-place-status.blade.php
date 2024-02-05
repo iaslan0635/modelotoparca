@@ -24,7 +24,11 @@
                     <tr>
                         <td class="text-capitalize">{{ $marketPlace }}</td>
                         <td>
-                            {{ $status }}
+                            @if($marketPlace === "trendyol")
+                                <strong>{{ $status ? "Mevcut":"Mevcut Değil" }}</strong>
+                            @else
+                                <strong>{{ $status }}</strong>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
