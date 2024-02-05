@@ -9,7 +9,7 @@
         <!--begin::Table row-->
     <tr>
         <td>
-            <img src="{{ $brand->imageUrl() }}" style="height: 4rem"/>
+            <img src="{{ $brand->imageUrl() }}" style="height: 4rem" onerror="this.src = '/images/products/defaults/product-1.jpg'"/>
         </td>
         <td>
             {{ $col("name") }}
