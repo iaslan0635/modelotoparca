@@ -15,7 +15,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('deneme', function (){
-    return \App\Facades\Helper::getHepsiburadaStatuses("MATCHED");
+    return \App\Models\Brand::all();
     ExcelImport::runBot($product);
 });
 
