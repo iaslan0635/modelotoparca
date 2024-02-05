@@ -14,11 +14,6 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
-Route::get('deneme', function (){
-    return \App\Models\Brand::all();
-    ExcelImport::runBot($product);
-});
-
 Route::get('/', function () {
     $categories = Category::root()->limit(15)->orderBy('order')->get(['slug', 'name', 'id']);
     $featured_products = Product::query()->limit(20)->with('price:id,price,currency,product_id')->get(['id', 'slug', 'sku', 'title', 'image_appendix']);
