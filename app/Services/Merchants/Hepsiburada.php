@@ -389,7 +389,7 @@ class Hepsiburada implements TrackableMerchant
             "limit" => 1,
             "barcode" => $product->sku
         ])->object();
-        dd($status);
-        return Helper::getHepsiburadaStatuses($status)->turkish;
+        if (!$status->success) return "Ürün Bulunamadı!";
+        return Helper::getHepsiburadaStatuses($status->data[0]->status)->turkish;
     }
 }
