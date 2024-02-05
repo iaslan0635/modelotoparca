@@ -4,10 +4,12 @@ namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
+use App\Models\MerchantQuestion;
 use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
 use App\Models\TrendyolBrand;
+use Carbon\Carbon;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
@@ -514,6 +516,30 @@ class TrendyolMerchant implements TrackableMerchant
 
     public function syncQuestions()
     {
-        // TODO: Implement syncQuestions() method.
+        $questions = $this->getQuestions();
+        foreach ($questions->content as $question) {
+            MerchantQuestion::updateOrCreate([
+                "merchant" => "trendyol",
+                "merchant_id" => $question->id,
+            ], [
+                "customer_fullname" => $question->userName,
+                "date" => Carbon::createFromTimestampMs($question->creationDate),
+                "conversation" => [
+                    [
+                        'id' => $question->id,
+                        'creationDate' => Carbon::createFromTimestampMs($question->creationDate),
+                        'text' => $question->text,
+                        'from' => "customer"
+                    ],
+                    [
+                        'id' => $question->answer->id,
+                        'creationDate' => Carbon::createFromTimestampMs($question->answer->creationDate),
+                        'text' => $question->answer->text,
+                        "from" => "merchant"
+                    ]
+                ],
+                "data" => $question
+            ]);
+        }
     }
 }

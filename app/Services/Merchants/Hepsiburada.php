@@ -256,7 +256,7 @@ class Hepsiburada implements TrackableMerchant
                 "customer_fullname" => $question->customerId,
                 "date" => $question->createdAt,
                 "conversation" => $question->conversations,
-                "data" => "{}"
+                "data" => $question
             ]);
         }
     }
