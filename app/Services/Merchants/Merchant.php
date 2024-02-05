@@ -50,5 +50,5 @@ interface Merchant
 
     public function parseOrder(MerchantOrder $order);
 
-    public function productExists(Product $product): bool;
+    public function productExists(Product $product): mixed;
 }

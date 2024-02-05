@@ -380,12 +380,12 @@ class Hepsiburada implements TrackableMerchant
         );
     }
 
-    public function productExists(Product $product): bool
+    public function productExists(Product $product): mixed
     {
-        return $this->client("listing-external")->get("listings/merchantid/$this->merchantId", [
+        return $this->client("mpop")->get("product/api/products/all-products-of-merchant/$this->merchantId", [
                 "offset" => 0,
                 "limit" => 1,
                 "barcode" => $product->sku
-            ])->object()->totalCount > 0;
+            ])->object();
     }
 }

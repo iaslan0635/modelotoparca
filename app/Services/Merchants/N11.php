@@ -3,6 +3,7 @@
 namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
+use App\Facades\Helper;
 use App\Facades\N11Client\N11Client;
 use App\Facades\N11Client\N11ClientException;
 use App\Facades\TTL;
@@ -456,11 +457,11 @@ class N11 implements Merchant
         ]);
     }
 
-    public function productExists(Product $product): bool
+    public function productExists(Product $product): string
     {
-        return $this->client->product->GetProductBySellerCode([
+        return Helper::getN11EnumStatuses($this->client->product->GetProductBySellerCode([
             "sellerCode" => $product->sku
-        ], ["throw" => false])->result->status === "success";
+        ], ["throw" => false])->product->saleStatus)->turkish;
     }
 
     public function syncQuestions()
