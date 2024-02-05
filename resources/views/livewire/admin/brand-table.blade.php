@@ -9,13 +9,18 @@
         <!--begin::Table row-->
     <tr>
         <td>
-            {!! $col("name") !!}
+            <div class="symbol symbol-50px">
+                <img src="{{ $brand->imageUrl() }}" alt=""/>
+            </div>
         </td>
         <td>
-            {!! $col("slug") !!}
+            {{ $col("name") }}
         </td>
         <td>
-            {!! $col("botname") !!}
+            {{ $col("slug") }}
+        </td>
+        <td>
+            {{ $col("botname") }}
         </td>
         <td class="text-end">
             <div style="display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap">
