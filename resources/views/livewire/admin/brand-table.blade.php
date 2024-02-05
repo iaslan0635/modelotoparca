@@ -9,9 +9,7 @@
         <!--begin::Table row-->
     <tr>
         <td>
-            <div class="symbol symbol-50px">
-                <img src="{{ $brand->imageUrl() }}" alt=""/>
-            </div>
+            <img src="{{ $brand->imageUrl() }}" style="height: 4rem"/>
         </td>
         <td>
             {{ $col("name") }}
