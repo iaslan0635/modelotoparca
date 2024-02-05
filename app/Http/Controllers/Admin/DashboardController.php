@@ -27,7 +27,7 @@ class DashboardController extends Controller
             $result[$merchant] = ProductMerchant::with("product")
                 ->where("merchant", $merchant)
                 ->latest("updated_at")
-                ->limit(5)
+                ->limit(4)
                 ->get(["id", "product_id"])
                 ->pluck("product");
         }
