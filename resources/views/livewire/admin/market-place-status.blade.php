@@ -24,7 +24,7 @@
                     <tr>
                         <td class="text-capitalize">{{ $marketPlace }}</td>
                         <td>
-                            {{ $marketPlace }}
+                            {{ $status }}
                         </td>
                     </tr>
                 @endforeach
