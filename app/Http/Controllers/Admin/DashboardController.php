@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\MerchantOrder;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\ProductMerchant;
 use App\Services\MarketPlace;
 
@@ -16,6 +17,7 @@ class DashboardController extends Controller
             "productsFromMerchants" => $this->productsFromMerchants(),
             "orders" => $this->orders(),
             "merchantOrders" => $this->merchantOrders(),
+            "productStats" => $this->productStats(),
         ]);
     }
 
@@ -43,5 +45,16 @@ class DashboardController extends Controller
     private function merchantOrders()
     {
         return MerchantOrder::latest()->limit(7)->get();
+    }
+
+    private function productStats()
+    {
+        $total = Product::count();
+        $active = Product::where("status", 1)->count();
+        return [
+            "total" => $total,
+            "active" => $active,
+            "activePercent" => $total ? round(($active / $total) * 100) : 0,
+        ];
     }
 }
