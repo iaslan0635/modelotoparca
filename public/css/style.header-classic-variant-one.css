@@ -1384,7 +1384,8 @@
 }
 
 .indicator__title {
-  color: #999;
+  color: white;
+  /*color: #999;*/
 }
 
 .indicator__value {
