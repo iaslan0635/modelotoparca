@@ -318,10 +318,9 @@
                                         <!--begin::Table head-->
                                         <thead>
                                         <tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
-                                            <th class="p-0 pb-3 min-w-150px text-start">AUTHOR</th>
-                                            <th class="p-0 pb-3 min-w-100px text-end pe-13">CONV.</th>
-                                            <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-                                            <th class="p-0 pb-3 w-50px text-end">VIEW</th>
+                                            <th class="p-0 pb-3 min-w-150px text-start">ürün</th>
+                                            <th class="p-0 pb-3 min-w-100px text-end pe-13">fiyat</th>
+                                            <th class="p-0 pb-3 w-50px text-end">görüntüle</th>
                                         </tr>
                                         </thead>
                                         <!--end::Table head-->
@@ -345,10 +344,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">78.34%</span>
-                                                </td>
-                                                <td class="text-end pe-0">
-                                                    <div id="kt_table_widget_16_chart_1_1" class="h-50px mt-n8 pe-7" data-kt-chart-color="success"></div>
+                                                    <span class="text-gray-600 fw-bold fs-6">{{ $product->price->formattedPrice }}</span>
                                                 </td>
                                                 <td class="text-end">
                                                     <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">

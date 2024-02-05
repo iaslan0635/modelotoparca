@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $result = [];
 
         foreach (MarketPlace::MERCHANTS as $merchant) {
-            $result[$merchant] = ProductMerchant::with("product")
+            $result[$merchant] = ProductMerchant::with("product", "product.price")
                 ->where("merchant", $merchant)
                 ->latest("updated_at")
                 ->limit(4)
