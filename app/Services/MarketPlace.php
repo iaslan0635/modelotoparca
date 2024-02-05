@@ -34,6 +34,13 @@ class MarketPlace
         }
     }
 
+    public static function syncQuestions(): void
+    {
+        foreach (self::merchants() as $merchant) {
+            MarketPlace::errorContext(fn() => $merchant->syncQuestions());
+        }
+    }
+
     public static function parseOrder(MerchantOrder $order)
     {
         return self::createMerchant($order->merchant)->parseOrder($order);
@@ -59,7 +66,7 @@ class MarketPlace
         };
     }
 
-    public static function createTrackableMerchant(string $merchantAlias): TrackableMerchant & Merchant
+    public static function createTrackableMerchant(string $merchantAlias): TrackableMerchant
     {
         return match ($merchantAlias) {
             "hepsiburada" => new Hepsiburada(),

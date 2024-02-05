@@ -462,4 +462,9 @@ class N11 implements Merchant
             "sellerCode" => $product->sku
         ], ["throw" => false])->result->status === "success";
     }
+
+    public function syncQuestions()
+    {
+        // TODO: Implement syncQuestions() method.
+    }
 }

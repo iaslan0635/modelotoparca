@@ -12,7 +12,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
-class TrendyolMerchant implements Merchant, TrackableMerchant
+class TrendyolMerchant implements TrackableMerchant
 {
     public readonly string $supplierId;
     private array $creds;
@@ -55,7 +55,7 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
                 [
                     "barcode" => $product->sku,
                     "quantity" => $stock,
-                    "price" => $line->totalPrice,
+//                    "price" => $line->totalPrice,
                 ]
             ]
         ])->object()->batchRequestId;
@@ -510,5 +510,10 @@ class TrendyolMerchant implements Merchant, TrackableMerchant
     {
         return $this->supplierClient()->get("products", ["barcode" => $product->sku])
                 ->object()->totalElements > 0;
+    }
+
+    public function syncQuestions()
+    {
+        // TODO: Implement syncQuestions() method.
     }
 }

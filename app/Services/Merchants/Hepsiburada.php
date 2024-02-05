@@ -11,7 +11,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
-class Hepsiburada implements Merchant, TrackableMerchant
+class Hepsiburada implements TrackableMerchant
 {
     public readonly string $merchantId;
     private array $creds;
@@ -234,7 +234,30 @@ class Hepsiburada implements Merchant, TrackableMerchant
 
     public function getQuestions()
     {
-        // TODO: Implement getQuestions() method.
+        return $this->client("api-asktoseller-merchant")
+            ->withHeader("merchantId", $this->merchantId)
+            ->get("/api/v1.0/issues", [
+                "desc" => "true",
+                "page" => "1",
+                "size" => "100",
+                "status" => "1"
+            ])->object();
+    }
+
+    public function syncQuestions()
+    {
+        $questions = $this->getQuestions();
+        foreach ($questions->data as $question) {
+            MerchantOrder::updateOrCreate([
+                "merchant" => "hepsiburada",
+                "merchant_id" => $question->id,
+            ], [
+                "customer_fullname" => $question->customerId,
+                "date" => $question->createdAt,
+                "conversation" => $question->conversations,
+                "data" => "{}"
+            ]);
+        }
     }
 
     public function sendQuestionAnswer(MerchantOrder $question, string $answer)

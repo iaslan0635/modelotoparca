@@ -40,6 +40,7 @@ interface Merchant
     public function declineRefundedOrder($claimReturnId, $denyReasonId, $denyReasonNote); // ???
 
     public function getQuestions();
+    public function syncQuestions();
 
     public function sendQuestionAnswer(MerchantOrder $question, string $answer);
 

@@ -261,7 +261,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#todo">N11 Soruları
+                                   href="#todo">Mağaza Soruları
                                 </a>
                             </li>
                             <li class="nav-item">
