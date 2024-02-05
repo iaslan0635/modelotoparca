@@ -86,7 +86,7 @@ class MarketPlace
         $merchantOrder->save();
     }
 
-    public static function getProductExistence(Product $product)
+    public static function getProductExistence(Product $product): array
     {
         return array_map(fn(Merchant $merchant) => $merchant->productExists($product), self::merchants());
     }

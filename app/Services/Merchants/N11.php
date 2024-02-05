@@ -459,9 +459,10 @@ class N11 implements Merchant
 
     public function productExists(Product $product): string
     {
-        return Helper::getN11EnumStatuses($this->client->product->GetProductBySellerCode([
+        $status = $this->client->product->GetProductBySellerCode([
             "sellerCode" => $product->sku
-        ], ["throw" => false])->product->saleStatus)->turkish;
+        ], ["throw" => false])->product->saleStatus;
+        return Helper::getN11EnumStatuses($status)->turkish;
     }
 
     public function syncQuestions()
