@@ -388,7 +388,8 @@ class Hepsiburada implements TrackableMerchant
             "offset" => 0,
             "limit" => 1,
             "barcode" => $product->sku
-        ])->object()->data[0]->status;
+        ])->object();
+        dd($status);
         return Helper::getHepsiburadaStatuses($status)->turkish;
     }
 }
