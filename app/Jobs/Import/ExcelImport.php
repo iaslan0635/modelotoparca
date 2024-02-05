@@ -230,7 +230,7 @@ class ExcelImport implements ShouldQueue
 
     public static function runBot(TigerProduct $product): void
     {
-        self::clearSparetoAssociations($product);
+        self::clearBotAssociations($product);
 
         $search_predence = [
             'abk',
@@ -277,9 +277,8 @@ class ExcelImport implements ShouldQueue
         $product->actualProduct?->searchable();
     }
 
-    public static function clearSparetoAssociations(TigerProduct $product)
+    public static function clearBotAssociations(TigerProduct $product)
     {
-
         ProductSimilar::query()->where('product_id', $product->id)->delete();
 
         ProductOem::query()->where('type', '=', 'automatic')
@@ -301,6 +300,11 @@ class ExcelImport implements ShouldQueue
                 'oem' => $oem,
             ]);
         }
+
+        $product->actualProduct->update([
+            "tecdoc" => null,
+            "specifications" => null,
+        ]);
     }
 
     private static function getBrand(TigerProduct $product): ?string
