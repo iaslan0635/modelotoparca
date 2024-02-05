@@ -461,7 +461,7 @@ class N11 implements Merchant
     {
         $status = $this->client->product->GetProductBySellerCode([
             "sellerCode" => $product->sku
-        ], ["throw" => false])->product->saleStatus;
+        ])->product->saleStatus;
         return Helper::getN11EnumStatuses($status)->turkish;
     }
 
