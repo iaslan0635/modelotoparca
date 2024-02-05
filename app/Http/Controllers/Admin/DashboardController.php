@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\MerchantOrder;
 use App\Models\Order;
-use App\Models\Product;
+use App\Models\ProductMerchant;
 use App\Services\MarketPlace;
 
 class DashboardController extends Controller
@@ -24,11 +24,12 @@ class DashboardController extends Controller
         $result = [];
 
         foreach (MarketPlace::MERCHANTS as $merchant) {
-            $result[$merchant] = Product::whereHas("merchants", function ($query) use ($merchant) {
-                $query->where("merchant", $merchant)
-                    ->latest("updated_at")
-                    ->limit(5);
-            })->get();
+            $result[$merchant] = ProductMerchant::with("product")
+                ->where("merchant", $merchant)
+                ->latest("updated_at")
+                ->limit(5)
+                ->get(["id", "product_id"])
+                ->pluck("product");
         }
 
         return $result;
