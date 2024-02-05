@@ -4,6 +4,7 @@ namespace App\Services\Merchants;
 
 use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
+use App\Models\MerchantQuestion;
 use App\Models\Product;
 use App\Models\ProductMerchantAttribute;
 use App\Models\Tracking;
@@ -248,7 +249,7 @@ class Hepsiburada implements TrackableMerchant
     {
         $questions = $this->getQuestions();
         foreach ($questions->data as $question) {
-            MerchantOrder::updateOrCreate([
+            MerchantQuestion::updateOrCreate([
                 "merchant" => "hepsiburada",
                 "merchant_id" => $question->id,
             ], [
