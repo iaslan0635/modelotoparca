@@ -16,16 +16,16 @@ class SyncProductCategoryAttribute extends Component
     {
         if ($this->type === "trendyol"){
             $merchant = new TrendyolMerchant();
-            $merchant_id = $this->product->categories[0]->merchants()->trendyol()->first()->merchant_id;
+            $merchant_id = @$this->product->categories[0]->merchants()->trendyol()->first()->merchant_id;
         }elseif ($this->type === "hepsiburada"){
             $merchant = new Hepsiburada();
-            $merchant_id = $this->product->categories[0]->merchants()->hepsiburada()->first()->merchant_id;
+            $merchant_id = @$this->product->categories[0]->merchants()->hepsiburada()->first()->merchant_id;
         }elseif ($this->type === "n11"){
             $merchant = new N11();
-            $merchant_id = $this->product->categories[0]->merchants()->n11()->first()->merchant_id;
+            $merchant_id = @$this->product->categories[0]->merchants()->n11()->first()->merchant_id;
         }
-        return view('livewire.admin.sync-product-category-attribute', [
+        return $merchant_id ? view('livewire.admin.sync-product-category-attribute', [
             'attributes' => $merchant->getCategoryAttributes($merchant_id)
-        ]);
+        ]) : "<p>Kategori sayfası alınamadı</p>";
     }
 }
