@@ -50,9 +50,12 @@ class Brand extends BaseModel
     // We didn't use the HasImage trait because images are stored according to brand name
     public function imageUrl()
     {
-        return file_exists(public_path("images/brands/$this->name.png"))
-            ? asset("images/brands/$this->name.png")
-            : $this->databaseImageUrl();
+        if (file_exists(public_path("images/brands/$this->name.png")))
+            return asset("images/brands/$this->name.png");
+        if (file_exists(public_path("images/brands/$this->botname.png")))
+            return asset("images/brands/$this->botname.png");
+
+        return $this->databaseImageUrl();
     }
 
     public function merchants(): HasMany
