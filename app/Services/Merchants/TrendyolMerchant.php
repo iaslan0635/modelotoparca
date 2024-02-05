@@ -510,8 +510,10 @@ class TrendyolMerchant implements TrackableMerchant
 
     public function productExists(Product $product): bool
     {
-        $status = $this->supplierClient()->get("products", ["barcode" => "DFB3534"])
+        $status = $this->supplierClient()->get("products", ["barcode" => $product->sku])
                 ->object();
+
+        dd($status);
 
         if (count($status->content) === 0) return false;
 
