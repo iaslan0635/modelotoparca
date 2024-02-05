@@ -513,9 +513,7 @@ class TrendyolMerchant implements TrackableMerchant
         $status = $this->supplierClient()->get("products", ["barcode" => $product->sku])
                 ->object();
 
-        dd($status);
-
-        if (count($status->content) === 0) return false;
+        if ($status->totalElements === 0) return false;
 
         return $status->content[0]->onsale;
     }
