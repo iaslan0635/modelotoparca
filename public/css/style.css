@@ -1020,6 +1020,7 @@ h6 {
     border-color: #e52727;
     background: #e52727;
     color: #fff;
+    border-radius:25px;
 }
 
 .btn-primary.focus, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus {
@@ -1715,7 +1716,7 @@ h6 {
 // .form-control
 */
 .form-control {
-    border-radius: 2px;
+    border-radius: 16px;
     border-width: 1px;
     border-style: solid;
     background-clip: border-box;
@@ -1735,9 +1736,9 @@ h6 {
     box-shadow .15s ease-in-out,
     background .15s ease-in-out,
     -webkit-box-shadow .15s ease-in-out;
-    color: #262626;
-    background-color: #ebebeb;
-    border-color: #ebebeb;
+    color: #6c757d;
+    background-color: #ffffff;
+    border-color: #4a7bb4;
     height: 36px;
     padding: calc(15px / 2) 10px;
     font-size: 16px;
@@ -1791,14 +1792,14 @@ h6 {
 }
 
 .form-control:hover {
-    border-color: #d9d9d9;
+    border-color: #20548e;
 }
 
 .form-control:focus {
     -webkit-box-shadow: none;
     box-shadow: none;
     background-color: #fff;
-    border-color: #d9d9d9;
+    border-color: #20548e;
 }
 
 .form-control:disabled {
@@ -1858,11 +1859,11 @@ h6 {
 }
 
 .was-validated .form-control:valid::-ms-input-placeholder, .form-control.is-valid::-ms-input-placeholder {
-    color: #6c757d;
+    color: #20548e;
 }
 
 .was-validated .form-control:valid::placeholder, .form-control.is-valid::placeholder {
-    color: #6c757d;
+    color: #20548e;
 }
 
 .was-validated .form-control:valid:hover, .form-control.is-valid:hover {
@@ -1881,23 +1882,23 @@ h6 {
 }
 
 .was-validated .form-control:invalid::-webkit-input-placeholder, .form-control.is-invalid::-webkit-input-placeholder {
-    color: #6c757d;
+    color: #20548e;
 }
 
 .was-validated .form-control:invalid::-moz-placeholder, .form-control.is-invalid::-moz-placeholder {
-    color: #6c757d;
+    color: #20548e;
 }
 
 .was-validated .form-control:invalid:-ms-input-placeholder, .form-control.is-invalid:-ms-input-placeholder {
-    color: #6c757d;
+    color: #20548e;
 }
 
 .was-validated .form-control:invalid::-ms-input-placeholder, .form-control.is-invalid::-ms-input-placeholder {
-    color: #6c757d;
+    color: #20548e;
 }
 
 .was-validated .form-control:invalid::placeholder, .form-control.is-invalid::placeholder {
-    color: #6c757d;
+    color: #20548e;
 }
 
 .was-validated .form-control:invalid:hover, .form-control.is-invalid:hover {
@@ -1917,10 +1918,10 @@ h6 {
 }
 
 .form-control-sm {
-    height: 30px;
+    height: 35px;
     padding: calc(11px / 2) 8px;
     font-size: 14px;
-    line-height: 17px;
+    line-height: 15px;
 }
 
 select.form-control {
