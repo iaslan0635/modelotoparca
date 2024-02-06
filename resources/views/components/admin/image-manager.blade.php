@@ -38,7 +38,7 @@
         @endforeach
 
         <!--begin::Input group-->
-        <div class="fv-row mb-2">
+        <div class="fv-row mb-2 mx-auto" style="width: min-content">
             <!--begin::Dropzone-->
             <div class="dropzone image">
                 <!--begin::Message-->
