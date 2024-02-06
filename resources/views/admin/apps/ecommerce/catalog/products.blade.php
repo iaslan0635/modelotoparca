@@ -231,13 +231,15 @@
                                                value="1"/>
                                     </div>
                                 </th>
-                                <th class="pe-0 min-w-200px">Product</th>
+                                <th class="pe-0 text-start">id</th>
+                                <th class="pe-0 text-start">Marka</th>
+                                <th class="pe-0 min-w-200px">Ürün</th>
                                 <th class="pe-0 text-end min-w-100px">SKU</th>
-                                <th class="pe-0 text-end min-w-70px">Qty</th>
-                                <th class="pe-0 text-end min-w-100px">Price</th>
-                                <th class="pe-0 text-end min-w-100px">Status</th>
-                                <th class="pe-0 text-end min-w-100px">E-ticaret siteleri</th>
-                                <th class="pe-0 text-end min-w-70px">Actions</th>
+                                <th class="pe-0 text-end min-w-70px">Miktar</th>
+                                <th class="pe-0 text-end min-w-100px">Fiyat</th>
+                                <th class="pe-0 text-end min-w-100px">Durum</th>
+                                <th class="pe-0 text-end min-w-100px">Pazaryerleri</th>
+                                <th class="pe-0 text-end min-w-70px">İşlem</th>
                             </tr>
                             <!--end::Table row-->
                             </thead>
@@ -255,6 +257,16 @@
                                         </div>
                                     </td>
                                     <!--end::Checkbox-->
+                                    <!--begin::logicref=-->
+                                    <td>
+                                        <span class="fw-bold">{{ $product->id }}</span>
+                                    </td>
+                                    <!--end::logicref=-->
+                                    <!--begin::brand=-->
+                                    <td class="text-start pe-0">
+                                        <span class="fw-bold">{{ $product->brand?->name}}</span>
+                                    </td>
+                                    <!--end::brand=-->
                                     <!--begin::Category=-->
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -292,7 +304,7 @@
                                     <!--begin::Status=-->
                                     <td class="text-end pe-0" data-order="Published">
                                         <!--begin::Badges-->
-                                        <div class="badge badge-light-success">Published</div>
+                                        <div class="badge badge-light-success">Yayında</div>
                                         <!--end::Badges-->
                                     </td>
                                     <!--end::Status=-->
@@ -315,7 +327,7 @@
                                     <!--begin::Action=-->
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                           data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                           data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">İşlem
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                             <span class="svg-icon svg-icon-5 m-0">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -332,14 +344,7 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ $link }}" class="menu-link px-3">Edit</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3"
-                                                   data-kt-ecommerce-product-filter="delete_row">Delete
-                                                </a>
+                                                <a href="{{ $link }}" class="menu-link px-3">Düzenle</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>

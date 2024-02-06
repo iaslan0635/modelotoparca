@@ -8,14 +8,14 @@
                 <!--begin::Page title-->
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
-                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Edit
-                        Product</h1>
+                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
+                        Ürün Düzenle</h1>
                     <!--end::Title-->
                     <!--begin::Breadcrumb-->
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                         <!--begin::Item-->
                         <li class="breadcrumb-item text-muted">
-                            <a href="admin/index" class="text-muted text-hover-primary">Home</a>
+                            <a href="admin/index" class="text-muted text-hover-primary">Kontrol Paneli</a>
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
@@ -24,7 +24,9 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">eCommerce</li>
+                        <li class="breadcrumb-item text-muted">
+                            <a href="{{ url()->previous() }}">Ürünler</a>
+                            </li>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <li class="breadcrumb-item">
@@ -32,7 +34,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">Catalog</li>
+                        <li class="breadcrumb-item text-muted">{{$product->sku}} / {{$product->title}}</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
