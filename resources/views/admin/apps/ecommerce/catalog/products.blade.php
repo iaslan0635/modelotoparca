@@ -384,6 +384,7 @@
                     const dataId = event.params.data.id
                     const url = new URL(window.location.href)
                     url.searchParams.set(param, dataId)
+                    url.searchParams.delete("page")
                     window.location.href = url.toString()
                 }
 
