@@ -283,7 +283,7 @@
                                     <!--end::Category=-->
                                     <!--begin::SKU=-->
                                     <td class="text-end pe-0">
-                                        <span class="fw-bold">{{ $product->$brand }}</span>
+                                        <span class="fw-bold">{{ $product->$brands }}</span>
                                     </td>
                                     <!--end::SKU=-->    <!--begin::SKU=-->
                                     <td class="text-end pe-0">
