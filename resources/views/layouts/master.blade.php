@@ -8,9 +8,10 @@
     <title>Model Oto Parca | modelotoparca</title>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
     <!-- css -->
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/photoswipe.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/default-skin/default-skin.css') }}">
