@@ -15,7 +15,7 @@
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                         <!--begin::Item-->
                         <li class="breadcrumb-item text-muted">
-                            <a href="admin/index" class="text-muted text-hover-primary">Home</a>
+                            <a href="admin/index" class="text-muted text-hover-primary">Kontrol Paneli</a>
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
@@ -24,7 +24,9 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">eCommerce</li>
+                        <li class="breadcrumb-item text-muted">
+                            <a href="{{ route("admin.products.index") }}">Ürünler</a>
+                            </li>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <li class="breadcrumb-item">
@@ -32,7 +34,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">Catalog</li>
+                        <li class="breadcrumb-item text-muted">{{$product->name}}</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
