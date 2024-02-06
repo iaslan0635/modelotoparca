@@ -327,7 +327,7 @@
                                     <!--begin::Action=-->
                                     <td class="text-end">
                                         <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                           data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                           data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">İşlem
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
                                             <span class="svg-icon svg-icon-5 m-0">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -344,14 +344,7 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-3">
-                                                <a href="{{ $link }}" class="menu-link px-3">Edit</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3"
-                                                   data-kt-ecommerce-product-filter="delete_row">Delete
-                                                </a>
+                                                <a href="{{ $link }}" class="menu-link px-3">Düzenle</a>
                                             </div>
                                             <!--end::Menu item-->
                                         </div>
