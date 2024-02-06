@@ -263,7 +263,7 @@
                                     </td>
                                     <!--end::logicref=-->
                                     <!--begin::brand=-->
-                                    <td class="text-end pe-0">
+                                    <td class="text-start pe-0">
                                         <span class="fw-bold">{{ $product->brand?->name}}</span>
                                     </td>
                                     <!--end::brand=-->
