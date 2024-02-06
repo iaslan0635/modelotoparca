@@ -7,6 +7,7 @@ use App\Models\MerchantOrder;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductMerchant;
+use App\Models\User;
 use App\Services\MarketPlace;
 
 class DashboardController extends Controller
@@ -18,6 +19,7 @@ class DashboardController extends Controller
             "orders" => $this->orders(),
             "merchantOrders" => $this->merchantOrders(),
             "productStats" => $this->productStats(),
+            "latestUser" => $this->latestUser(),
         ]);
     }
 
@@ -56,5 +58,9 @@ class DashboardController extends Controller
             "active" => $active,
             "activePercent" => $total ? round(($active / $total) * 100) : 0,
         ];
+    }
+    private function latestUser()
+    {
+        return User::latest()->take(8)->get();
     }
 }
