@@ -90,7 +90,7 @@ class MarketPlace
     {
         return array_map(
             fn(Merchant $merchant) => rescue(
-                $merchant->productExists($product),
+                fn () => $merchant->productExists($product),
                 fn() => "Hata",
                 report: false
             ),
