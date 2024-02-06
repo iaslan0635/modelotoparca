@@ -152,9 +152,9 @@
 
 @font-face {
     font-family: "Levenim MT", "sans-serif";
-    src: url("fonts/levenim-mt-2.woff2") format("woff2"),
-    url("fonts/levenim-mt-2.woff") format("woff"),
-    url("fonts/levenim-mt-2.ttf") format("truetype");
+    src: url("https://site.modelotoparca.com/fonts/levenim-mt-2.woff2") format("woff2"),
+    url("https://site.modelotoparca.com/fonts/levenim-mt-2.woff") format("woff"),
+    url("https://site.modelotoparca.com/fonts/levenim-mt-2.ttf") format("truetype");
 }
 
 
