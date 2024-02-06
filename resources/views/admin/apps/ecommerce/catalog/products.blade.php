@@ -231,9 +231,9 @@
                                                value="1"/>
                                     </div>
                                 </th>
-                                <th class="pe-0 min-w-200px">id</th>
+                                <th class="pe-0 text-start">id</th>
+                                <th class="pe-0 text-start">Marka</th>
                                 <th class="pe-0 min-w-200px">Ürün</th>
-                                <th class="pe-0 min-w-200px">Marka</th>
                                 <th class="pe-0 text-end min-w-100px">SKU</th>
                                 <th class="pe-0 text-end min-w-70px">Miktar</th>
                                 <th class="pe-0 text-end min-w-100px">Fiyat</th>
@@ -258,10 +258,15 @@
                                     </td>
                                     <!--end::Checkbox-->
                                     <!--begin::logicref=-->
-                                    <td class="text-end pe-0">
+                                    <td>
                                         <span class="fw-bold">{{ $product->id }}</span>
                                     </td>
                                     <!--end::logicref=-->
+                                    <!--begin::brand=-->
+                                    <td class="text-end pe-0">
+                                        <span class="fw-bold">{{ $product->brand?->name}}</span>
+                                    </td>
+                                    <!--end::brand=-->
                                     <!--begin::Category=-->
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -283,10 +288,6 @@
                                     <!--end::Category=-->
                                     <!--begin::SKU=-->
                                     <td class="text-end pe-0">
-                                        <span class="fw-bold">{{ $product->$brand?->$products() }}</span>
-                                    </td>
-                                    <!--end::SKU=-->    <!--begin::SKU=-->
-                                    <td class="text-end pe-0">
                                         <span class="fw-bold">{{ $product->producercode }}</span>
                                     </td>
                                     <!--end::SKU=-->
@@ -303,7 +304,7 @@
                                     <!--begin::Status=-->
                                     <td class="text-end pe-0" data-order="Published">
                                         <!--begin::Badges-->
-                                        <div class="badge badge-light-success">Published</div>
+                                        <div class="badge badge-light-success">Yayında</div>
                                         <!--end::Badges-->
                                     </td>
                                     <!--end::Status=-->
