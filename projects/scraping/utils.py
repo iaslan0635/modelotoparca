@@ -1,5 +1,8 @@
 from pathlib import Path, PurePath
 import re
+from typing import cast
+import bs4
+import ocp_client
 
 
 def normalize_fname(name: str):
@@ -10,3 +13,15 @@ def mkpath(directory: str | PurePath):
     path = Path(directory)
     path.mkdir(parents=True, exist_ok=True)
     return path
+
+
+def soup(url: str):
+    html = ocp_client.get(url)
+    return bs4.BeautifulSoup(html, "html.parser")
+
+
+def get_link(el: bs4.Tag) -> str:
+    if el.has_attr("href"):
+        return cast(str, el["href"])
+
+    return cast(str, el["data-link"])
