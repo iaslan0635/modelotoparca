@@ -20880,8 +20880,3 @@ select.form-control::-ms-expand {
     color: #20548e !important;
 
 }
-
-::-webkit-scrollbar {
-    width: 8px;
-    height: 12px;
-}
