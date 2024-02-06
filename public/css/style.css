@@ -4976,6 +4976,11 @@ select.form-control::-ms-expand {
     transition: height 0.2s, opacity 0.2s, visibility 0s 0.2s;
 }
 
+.filter__body categories {
+    max-height: 280px;
+    overflow: auto;
+}
+
 .filter__container {
     padding: 10px 1.5rem 16px;
 }
