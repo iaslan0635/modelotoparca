@@ -150,14 +150,6 @@
 // animations
 */
 
-@font-face {
-    font-family: "Levenim MT", "sans-serif";
-    src: url("https://site.modelotoparca.com/fonts/levenim-mt-2.woff2") format("woff2"),
-    url("https://site.modelotoparca.com/fonts/levenim-mt-2.woff") format("woff"),
-    url("https://site.modelotoparca.com/fonts/levenim-mt-2.ttf") format("truetype");
-}
-
-
 @-webkit-keyframes loader-animation {
     from {
         -webkit-transform: rotateZ(0deg);
@@ -191,8 +183,7 @@ body {
     height: 100%;
     background: #fafafa;
     color: #262626;
-    font-family: "Levenim MT", "sans-serif";
-    /*font-family: "Calibri", "sans-serif";*/
+    font-family: "Calibri", "sans-serif";
     /*font-family: "Roboto", "sans-serif";*/
     font-size: 16px;
     font-weight: 400;
