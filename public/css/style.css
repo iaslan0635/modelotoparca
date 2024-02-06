@@ -20882,7 +20882,7 @@ select.form-control::-ms-expand {
 }
 
 ::-webkit-scrollbar {
-    width: 12px; /* Dikey kaydırma çubuğunun genişliği */
-    height: 12px; /* Yatay kaydırma çubuğunun yüksekliği */
-    background-color: #20548d; /* Kaydırma çubuğu arka plan rengi */
+    width: 8px;
+    height: 12px;
+    color: #20548d;
 }
