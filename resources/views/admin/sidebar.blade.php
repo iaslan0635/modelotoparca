@@ -59,7 +59,7 @@
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
-                <a class="menu-link" href="admin/index">
+                <a class="menu-link" href="admin">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
                         <span class="menu-bullet">
