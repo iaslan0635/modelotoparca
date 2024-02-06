@@ -88,6 +88,13 @@ class MarketPlace
 
     public static function getProductExistence(Product $product): array
     {
-        return array_map(fn(Merchant $merchant) => $merchant->productExists($product), self::merchants());
+        return array_map(
+            fn(Merchant $merchant) => rescue(
+                $merchant->productExists($product),
+                fn() => "Hata",
+                report: false
+            ),
+            self::merchants()
+        );
     }
 }
