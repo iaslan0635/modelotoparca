@@ -1474,7 +1474,7 @@
 .main-menu__link {
   display: block;
   padding: 5px 11px;
-  border-radius: 2px;
+  border-radius: 25px;
   color: inherit;
   white-space: nowrap;
   font-size: 15px;
