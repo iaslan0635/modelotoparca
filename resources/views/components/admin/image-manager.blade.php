@@ -8,18 +8,18 @@
 <div class="card card-flush py-4">
     <!--begin::Card body-->
     <div class="card-body text-center">
-        @php
-            $imageUrls = collect($images)->map(fn (\App\Models\Image $image) => $image->url)->union($readonly_images);
-            $imagesByUrl = collect($images)->mapWithKeys(fn (\App\Models\Image $image) => [$image->url => $image]);
-        @endphp
-        @foreach($imageUrls as $imageUrl)
+        @foreach(collect($readonly_images)->merge($images) as $image)
+            @php
+                $isModel = $image instanceof \App\Models\Image;
+                $imageUrl = $isModel ? $image->url : $image;
+            @endphp
             <!--begin::Image input-->
             <div class="image-input image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
                 <!--begin::Preview existing avatar-->
                 <div class="image-input-wrapper w-150px h-150px" style="background-image: url({{$imageUrl}})"></div>
                 <!--end::Preview existing avatar-->
 
-                @if($image = $imagesByUrl->get($imageUrl))
+                @if($isModel)
                     <!--begin::Remove-->
                     <form action="{{ route('admin.delete-image') }}" method="post">
                         @csrf

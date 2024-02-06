@@ -63,7 +63,7 @@
                 <div class="form d-flex flex-column flex-lg-row">
                     <!--begin::Aside column-->
                     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
-                        <x-admin.image-manager :images="$product->images" :readonly_images="$product->imageUrl()"
+                        <x-admin.image-manager :images="$product->images" :readonly_images="$product->imageUrls()"
                                                :upload_action="route('admin.categories.edit.image', $product)"/>
                         <livewire:admin.market-place-status :product="$product"/>
                     </div>
