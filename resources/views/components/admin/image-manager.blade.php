@@ -1,30 +1,38 @@
 @props([
     'images',
-    'upload_action'
+    'upload_action',
+    'readonly_images',
 ])
 
 <!--begin::Thumbnail settings-->
 <div class="card card-flush py-4">
     <!--begin::Card body-->
     <div class="card-body text-center">
-        @foreach($images as $image)
+        @php
+            $imageUrls = collect($images)->map(fn (\App\Models\Image $image) => $image->url)->union($readonly_images);
+            $imagesByUrl = collect($images)->mapWithKeys(fn (\App\Models\Image $image) => [$image->url => $image]);
+        @endphp
+        @foreach($imageUrls as $imageUrl)
             <!--begin::Image input-->
             <div class="image-input image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
                 <!--begin::Preview existing avatar-->
-                <div class="image-input-wrapper w-150px h-150px" style="background-image: url({{$image}})"></div>
+                <div class="image-input-wrapper w-150px h-150px" style="background-image: url({{$imageUrl}})"></div>
                 <!--end::Preview existing avatar-->
-                <!--begin::Remove-->
-                <form action="{{ route('admin.delete-image') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="image_id" value="{{ $image->id }}">
-                    <button
-                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                        style="position: absolute; right: 0; top: 0;transform:translate(50%,-50%);"
-                        data-bs-toggle="tooltip" title="Resimi kaldır" type="submit">
-                        <i class="bi bi-x fs-2"></i>
-                    </button>
-                </form>
-                <!--end::Remove-->
+
+                @if($image = $imagesByUrl->get($imageUrl))
+                    <!--begin::Remove-->
+                    <form action="{{ route('admin.delete-image') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="image_id" value="{{ $image->id }}">
+                        <button
+                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                            style="position: absolute; right: 0; top: 0;transform:translate(50%,-50%);"
+                            data-bs-toggle="tooltip" title="Resimi kaldır" type="submit">
+                            <i class="bi bi-x fs-2"></i>
+                        </button>
+                    </form>
+                    <!--end::Remove-->
+                @endif
             </div>
             <!--end::Image input-->
         @endforeach
