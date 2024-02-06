@@ -1,8 +1,10 @@
 from pathlib import Path, PurePath
 import re
-from typing import cast
+from typing import Iterable, TypeVar, cast
 import bs4
 import ocp_client
+
+T = TypeVar("T")
 
 
 def normalize_fname(name: str):
@@ -25,3 +27,7 @@ def get_link(el: bs4.Tag) -> str:
         return cast(str, el["href"])
 
     return cast(str, el["data-link"])
+
+
+def flatten(l: Iterable[Iterable[T]]) -> list[T]:
+    return [item for sublist in l for item in sublist]

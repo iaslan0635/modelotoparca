@@ -10,6 +10,8 @@ pandas = "*"
 pyarrow = "*"
 rich = "*"
 ipywidgets = "*"
+sqlalchemy = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
