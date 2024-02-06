@@ -6,7 +6,7 @@
 <!--begin::Thumbnail settings-->
 <div class="card card-flush py-4">
     <!--begin::Card body-->
-    <div class="card-body text-center pt-0">
+    <div class="card-body text-center">
         @foreach($images as $image)
             <!--begin::Image input-->
             <div class="image-input image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">

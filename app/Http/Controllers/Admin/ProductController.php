@@ -26,6 +26,7 @@ class ProductController extends Controller
         'non-merchant' => 'Pazaryerinde olmayan',
         'bot' => 'Bot ile çekilen',
         'non-bot' => 'Bot ile çekilmeyen',
+        'non-image' => 'Resmi olmayan',
     ];
 
     /**
@@ -45,6 +46,7 @@ class ProductController extends Controller
                 'non-merchant' => Product::where("ecommerce", true)->has("merchants", "=", 0),
                 'bot' => Product::has("bots"),
                 'non-bot' => Product::doesntHave("bots"),
+                'non-image' => Product::doesntHave("images"),
             ];
 
             $filterName = $request->input("filter");
