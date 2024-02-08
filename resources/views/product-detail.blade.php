@@ -397,8 +397,8 @@
 
                                                                             @foreach($cars as $car)
                                                                                 <tr>
-                                                                                    <td class="analogs-table__column" style="height: 2rem">
-                                                                                        <img src="{{ $car->imageUrl() }}">
+                                                                                    <td class="analogs-table__column">
+                                                                                        <img src="{{ $car->imageUrl() }}" style="height: 2rem">
                                                                                     </td>
                                                                                     <td class="analogs-table__column">{{ $car->name }}</td>
                                                                                     <td class="analogs-table__column">
