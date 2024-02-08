@@ -96,10 +96,9 @@ if (app()->hasDebugModeEnabled()) {
 Route::controller(AuthController::class)
     ->name("auth.")
     ->group(function () {
-        Route::get('login', 'login')->name('login')->withoutMiddleware(['admin']);
-        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['admin']);
+        Route::get('login', 'login')->name('login')->withoutMiddleware(['auth:admin']);
+        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['auth:admin']);
         Route::get('logout', 'logout')->name('logout');
-        Route::post('register', 'register')->name('register');
     });
 
 Route::resource("user", UserController::class);
