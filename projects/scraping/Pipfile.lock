@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "abb20ab964e24cefdb8f1efbaa13d4470c994aae238aea1791fcd72d8663e803"
+            "sha256": "dcdf48b91126c070c3a7862f42047cb0b846f89ce636430216bc4deb08bac02b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -162,12 +162,12 @@
         },
         "ipykernel": {
             "hashes": [
-                "sha256:1547352b32da95a2761011a8dac2af930c26a0703dfa07690d16b7d74dac0ba1",
-                "sha256:e5dfba210fc9da74a5dae8fa6c41f816e11bd18d10381b2517d9a0d57cc987c4"
+                "sha256:3bade28004e3ff624ed57974948116670604ac5f676d12339693f3142176d3f0",
+                "sha256:50384f5c577a260a1d53f1f59a828c7266d321c9b7d00d345693783f66616055"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==6.29.1"
+            "version": "==6.29.2"
         },
         "ipython": {
             "hashes": [
@@ -241,6 +241,22 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==0.1.2"
+        },
+        "mysqlclient": {
+            "hashes": [
+                "sha256:2fa388cf076d3fee010d7094ca979fc8236988159c762becfea4d42cd56e6580",
+                "sha256:5a5451b3eea2a2a3316b2b432c89f25b1a28b986aa924a04aca659ad454e9a5f",
+                "sha256:7d74de2fa08dc7483b5ec82e130fde6d965f53c9ac6bf678f6d6c362c952b8b6",
+                "sha256:8b34574bceb548ac94a31c8cc1f67d454f414e5dee240dd29ad0e09405756638",
+                "sha256:90164463c0bda46ebe9f8ca2b7ec502ff915ab1c23af54bdf60997fc4c59e47c",
+                "sha256:a47d266820fb8da26582cddc98ded1546edc7a0def556b0ca8de4a1a7dd8505c",
+                "sha256:c37a7f641fa2e0582bf6808851dc4b82736b61ccb39e1607e59dce797db3f6c5",
+                "sha256:c79740385d9df70606e87dade197c5fce5c0d22c0e5c40cd048cfa693daa0e7b",
+                "sha256:ee51656e36fc5a92920b807ee8b9e373e3b0e267c89cdc95d73b1dbe46863631"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==2.2.3"
         },
         "nest-asyncio": {
             "hashes": [
