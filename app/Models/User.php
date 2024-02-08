@@ -32,7 +32,6 @@ class User extends Authenticatable
         'password',
         'date_of_birth',
         'gender',
-        'type',
     ];
 
     /**
@@ -94,10 +93,5 @@ class User extends Authenticatable
     public function routeNotificationForNetgsm()
     {
         return '5050000000'; // ???
-    }
-
-    public function scopeAdmin($query)
-    {
-        return $query->where('type', 'admin');
     }
 }
