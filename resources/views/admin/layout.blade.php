@@ -411,7 +411,6 @@
 							<!--end::Menu wrapper-->
 							<!--begin::Navbar-->
 							<div class="app-navbar flex-shrink-0">
-
 								<!--begin::Activities-->
 								<div class="app-navbar-item ms-1 ms-lg-3">
 									<!--begin::Drawer toggle-->
@@ -1237,6 +1236,7 @@
 								</div>
 								<!--end::Header menu toggle-->
 							</div>
+                            </div>
 							<!--end::Navbar-->
 						</div>
 						<!--end::Header wrapper-->
