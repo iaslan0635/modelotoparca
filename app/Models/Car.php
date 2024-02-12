@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasImages;
 use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Car extends BaseModel
 {
-    use Searchable;
+    use Searchable, HasImages;
 
     public $timestamps = false;
 

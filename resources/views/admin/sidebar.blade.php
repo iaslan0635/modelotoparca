@@ -577,6 +577,54 @@
             </div>
             <!--end:Menu item-->
             <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="{{ route("admin.user.index") }}">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Sayfalar</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+            <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="{{ route("admin.user.index") }}">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Yorumlar</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+            <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="{{ route("admin.user.index") }}">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">Kullanıcılar</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+            <!--begin:Menu item-->
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                 <!--begin:Menu link-->
                 <span class="menu-link">
@@ -605,7 +653,8 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Roller</span>
+                            {{-- permission calculation will be used instead of roles --}}
+                            <span class="menu-title" style="text-decoration: line-through;">Roller</span>
                         </a>
                         <!--end:Menu link-->
                         <!--begin:Menu link-->
@@ -613,11 +662,12 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            <span class="menu-title">Rol oluştur</span>
+                            {{-- permission calculation will be used instead of roles --}}
+                            <span class="menu-title" style="text-decoration: line-through;">Rol oluştur</span>
                         </a>
                         <!--end:Menu link-->
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="{{ route('admin.permisssion.index') }}">
+                        <a class="menu-link" href="{{ route('admin.permission.index') }}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -630,22 +680,8 @@
                 <!--end:Menu sub-->
             </div>
             <!--end:Menu item-->
-            <!--begin:Menu item-->
-            <div class="menu-item">
-                <!--begin:Menu link-->
-                <a class="menu-link" href="{{-- route("admin.users.index") --}}">
-                    <span class="menu-icon">
-                        <!--begin::Svg Icon-->
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </span>
-                    <span class="menu-title">Kullanıcılar</span>
-                </a>
-                <!--end:Menu link-->
-            </div>
-            <!--end:Menu item-->
+
+
         </div>
         <!--end::Menu-->
     </div>

@@ -76,7 +76,7 @@ Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-syn
 Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update');
 Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands'])->name('brand-sync.search');
 
-Route::resource('permisssion', PermissionController::class);
+Route::resource('permission', PermissionController::class, ["parameters" => ["permission" => "employee"]]);
 Route::resource('role', RoleController::class);
 Route::get("role/unassign/{role}/{user}", [RoleController::class, "unassign"])->name("role.unassign");
 Route::get('merchant/failed', [MerchantTrackingController::class, "failed"])->name("merchant.failed");
@@ -96,10 +96,9 @@ if (app()->hasDebugModeEnabled()) {
 Route::controller(AuthController::class)
     ->name("auth.")
     ->group(function () {
-        Route::get('login', 'login')->name('login')->withoutMiddleware(['admin']);
-        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['admin']);
+        Route::get('login', 'login')->name('login')->withoutMiddleware(['auth:admin']);
+        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['auth:admin']);
         Route::get('logout', 'logout')->name('logout');
-        Route::post('register', 'register')->name('register');
     });
 
 Route::resource("user", UserController::class);

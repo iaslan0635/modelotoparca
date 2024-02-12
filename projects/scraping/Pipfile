@@ -12,6 +12,7 @@ rich = "*"
 ipywidgets = "*"
 sqlalchemy = "*"
 python-dotenv = "*"
+mysqlclient = "*"
 
 [dev-packages]
 

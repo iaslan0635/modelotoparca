@@ -374,6 +374,9 @@
                                                                             <thead>
                                                                             <tr>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
+
+                                                                                </th>
+                                                                                <th class="analogs-table__column analogs-table__column--name">
                                                                                     Model
                                                                                 </th>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
@@ -394,6 +397,9 @@
 
                                                                             @foreach($cars as $car)
                                                                                 <tr>
+                                                                                    <td class="analogs-table__column">
+                                                                                        <img src="{{ $car->imageUrl() }}" style="height: 2rem">
+                                                                                    </td>
                                                                                     <td class="analogs-table__column">{{ $car->name }}</td>
                                                                                     <td class="analogs-table__column">
                                                                                         {{ $car->produced_from ?? "0000-00-00" }}
