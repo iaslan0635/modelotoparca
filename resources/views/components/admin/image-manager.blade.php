@@ -8,7 +8,7 @@
 <div class="card card-flush py-4">
     <!--begin::Card body-->
     <div class="card-body text-center">
-        @foreach(collect($readonly_images)->merge($images) as $image)
+        @foreach(collect($readonly_images ?? [])->merge($images) as $image)
             @php
                 $isModel = $image instanceof \App\Models\Image;
                 $imageUrl = $isModel ? $image->url : $image;
