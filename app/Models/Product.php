@@ -221,5 +221,4 @@ class Product extends BaseModel implements CanVisit
     {
         return $this->hasMany(BotImage::class);
     }
-
 }
