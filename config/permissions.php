@@ -1,10 +1,19 @@
 <?php
 
 return [
-    'Ürünler' => [
-        'Listele',
-        'Ekle',
-        'Düzenle',
-        'Sil'
+    [
+        'name' => 'Ürünler',
+        'children' => [
+            ['name' => 'Listele'],
+            ['name' => 'Ekle'],
+            ['name' => 'Düzenle'],
+            ['name' => 'Sil'],
+            ['name' => 'Stok',
+                'children' => [
+                    ['name' => 'Görüntüle'],
+                    ['name' => 'Düzenle'],
+                ]
+            ],
+        ]
     ]
 ];
