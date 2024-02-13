@@ -11,8 +11,8 @@ use App\Models\Log;
 use App\Models\Product;
 use App\Models\TigerProduct;
 use App\Packages\Search;
+use Closure;
 use Elastic\ScoutDriverPlus\Paginator;
-use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -21,52 +21,85 @@ class ProductController extends Controller
 {
     use ManagesImages;
 
-    const OPTIONS = [
+    const FILTER_OPTIONS = [
         'merchant' => 'Pazaryerinde olan',
         'non-merchant' => 'Pazaryerinde olmayan',
+        'merchant-mark' => 'Pazaryerlerine açık olan',
+        'non-merchant-mark' => 'Pazaryerlerine kapalı olan',
         'bot' => 'Bot ile çekilen',
         'non-bot' => 'Bot ile çekilmeyen',
-//        'non-image' => 'Resmi olmayan', // WIP
     ];
+    const FIELDS_TO_SEARCH = [
+        'sku',
+        'part_number',
+        'producercode',
+        'cross_code',
+        'oem_codes',
+        'producercode2',
+        'abk',
+        'similar_product_codes',
+    ];
+
+    private function getFilterConstraints()
+    {
+        return [
+            'merchant' => fn(Builder $query) => $query->whereHas("merchants"),
+            'non-merchant' => fn(Builder $query) => $query->where("ecommerce", true)->has("merchants", "=", 0),
+            'merchant-mark' => fn(Builder $query) => $query->where("ecommerce", true),
+            'non-merchant-mark' => fn(Builder $query) => $query->where("ecommerce", false),
+            'bot' => fn(Builder $query) => $query->whereHas("bots"),
+            'non-bot' => fn(Builder $query) => $query->whereDoesntHave("bots"),
+        ];
+    }
+
+    private function filterQuery(Builder $query, ?array $filterOptions, ?array $brands, ?string $search)
+    {
+        if ($filterOptions) {
+            foreach ($filterOptions as $filterOption) {
+                $filterConstraints = $this->getFilterConstraints();
+                abort_unless(array_key_exists($filterOption, $filterConstraints), 400, "Geçersiz filtre");
+                $queryFn = $filterConstraints[$filterOption];
+                $queryFn($query);
+            }
+        }
+
+        if ($search) {
+            $query->where(function (Builder $query) use ($search) {
+                foreach (self::FIELDS_TO_SEARCH as $field) {
+                    $query->orWhere($field, 'like', "%$search%");
+                }
+            });
+        }
+
+        if ($brands) {
+            $query = $query->whereIn("brand_id", $brands);
+        }
+
+        return $query;
+    }
 
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        if ($search = $request->input('search')) {
-            /** @var Paginator $hits */
-            ['products' => $hits] = Search::query($search);
-            $products = $hits->onlyModels();
-            $usingSearch = true;
-            $filterConstraintsToShow = array_keys(self::OPTIONS);
-        } else {
-            $filterConstraints = [
-                'merchant' => Product::has("merchants"),
-                'non-merchant' => Product::where("ecommerce", true)->has("merchants", "=", 0),
-                'bot' => Product::has("bots"),
-                'non-bot' => Product::doesntHave("bots"),
-//                'non-image' => Product::doesntHave("images"),
-            ];
+        $query = $this->filterQuery(
+            Product::query(),
+            $request->input('filters'),
+            $request->input('brands'),
+            $request->input('search')
+        );
 
-            $filterName = $request->input("filter");
-            /** @var Builder $query */
-            $query = $filterConstraints[$filterName] ?? Product::query();
+        $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
+        $products = $query->clone()->with(["merchants", "price"])->paginate();
+        $products->appends($request->except('page'));
+        $usingSearch = false;
 
-            $brand = $request->input("brand");
-            if ($brand !== null && $brand !== 'all') {
-                $query = $query->where("brand_id", $brand);
-            }
+        $filterConstraintsToShow = collect($this->getFilterConstraints())
+            ->filter(fn(Closure $qFn) => $qFn($query->clone())->exists())
+            ->mapWithKeys(fn($_, $key) => [$key => self::FILTER_OPTIONS[$key]])
+            ->all();
 
-            $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
-            $products = $query->clone()->with(["merchants", "price"])->paginate();
-            $products->appends($request->except('page'));
-            $usingSearch = false;
-
-            $filterConstraintsToShow = collect($filterConstraints)
-                ->filter(fn($q) => $query->clone()->whereExists($q)->exists())
-                ->mapWithKeys(fn($_, $key) => [$key => self::OPTIONS[$key]])->all();
-        }
 
         $brands ??= Brand::get(["id", "name"]);
         return view('admin.apps.ecommerce.catalog.products', compact('products', 'brands', 'usingSearch', 'filterConstraintsToShow'));
