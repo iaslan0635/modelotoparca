@@ -2,9 +2,6 @@
 
 namespace App\Packages\Permissions;
 
-use App\Models\Employee;
-use App\Models\PermissionTree;
-
 /** Represents a permission tree */
 final class Tree extends Node
 {
