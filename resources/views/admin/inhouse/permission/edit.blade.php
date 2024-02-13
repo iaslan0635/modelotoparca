@@ -11,7 +11,7 @@
             width: fit-content;
         }
 
-        .permission-checkbox-container .permission-opitons {
+        .permission-opitons {
             z-index: 10;
             display: none;
             position: absolute;
