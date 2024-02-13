@@ -21,6 +21,10 @@
             gap: .5rem;
             flex-wrap: nowrap;
             width: max-content;
+
+            border: 1px solid;
+            border-color: var(--kt-dark);
+            background-color: var(--bs-body-bg);
         }
 
         .permission-checkbox-container:hover .permission-opitons {
@@ -54,12 +58,6 @@
         :is(.permission-opitons, .permission-checkbox.indeterminate).ghost-deny {
             border-color: var(--kt-danger);
             background-color: var(--kt-danger-light);
-        }
-
-        .permission-opitons {
-            border: 1px solid;
-            border-color: var(--kt-dark);
-            background-color: var(--bs-body-bg);
         }
 
         li {
