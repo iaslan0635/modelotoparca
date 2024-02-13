@@ -2,17 +2,31 @@
 
 namespace App\Packages\Permissions;
 
-use Illuminate\Support\Arr;
 use Spatie\Permission\Models\Permission;
 
-class PermissionSynchronizer
+final class PermissionSynchronizer
 {
-    public static function sync()
+    private static function convertArray(array $array, string $currentKey = ''): array
     {
-        $permissions = Arr::dot(config("permissions"));
-        foreach ($permissions as $permission) {
-            $exists = Permission::where("name", $permission)->exists();
-            if (!$exists) {
+        $result = [];
+        foreach ($array as $element) {
+            $newKey = $currentKey . ($currentKey ? '.' : '') . $element['name'];
+            $result = isset($element['children']) ?
+                array_merge($result, self::convertArray($element['children'], $newKey)) :
+                array_merge($result, [$newKey]);
+        }
+        return $result;
+    }
+
+    public static function getPermissions(): array
+    {
+        return self::convertArray(config("permissions"));
+    }
+
+    public static function sync(): void
+    {
+        foreach (self::getPermissions() as $permission) {
+            if (!Permission::where("name", $permission)->exists()) {
                 Permission::create(["name" => $permission, "guard_name" => "admin"]);
             }
         }

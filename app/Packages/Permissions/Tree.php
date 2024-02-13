@@ -5,34 +5,32 @@ namespace App\Packages\Permissions;
 use App\Models\Employee;
 use App\Models\PermissionTree;
 
-/**
- *  Represents a permission tree
- */
-class Tree
+/** Represents a permission tree */
+final class Tree extends Node
 {
-    public Node $root;
-
-    public function __construct(Node $root)
+    protected function __construct()
     {
-        $this->root = $root;
+        parent::__construct(null, "root");
     }
 
     public static function fromConfig(): self
     {
         $permissions = config("permissions");
-        return new Tree(Node::fromArray($permissions));
+        $tree = new Tree();
+        $children = array_map(fn($arr) => Node::fromArray($arr, $tree), $permissions);
+        $tree->setChildren($children);
+        return $tree;
     }
 
-    public static function fromEmployee(Employee|int $employeeOrId): self
+    public static function fromDesignations(array $designations): self
     {
-        $employeeId = $employeeOrId instanceof Employee ? $employeeOrId->id : $employeeOrId;
-
-        $serialized = PermissionTree::where("employee_id", $employeeId)->value("tree");
-
-        if ($serialized === null) {
-            return Tree::fromConfig();
+        $tree = self::fromConfig();
+        foreach ($designations as $path => $designation) {
+            $node = $tree->get($path);
+            if ($node !== null) {
+                $node->designation = $designation;
+            }
         }
-
-        return unserialize($serialized); // TODO: Use json
+        return $tree;
     }
 }
