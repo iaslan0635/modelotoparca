@@ -2,6 +2,8 @@
 
 namespace App\Packages\Permissions;
 
+use Illuminate\Support\Arr;
+
 /** Represents a permission tree */
 final class Tree extends Node
 {
@@ -29,5 +31,10 @@ final class Tree extends Node
             }
         }
         return $tree;
+    }
+
+    public function resolvePermissionNames()
+    {
+        return Arr::pluck($this->getPermittedLeafs(), "fqn");
     }
 }

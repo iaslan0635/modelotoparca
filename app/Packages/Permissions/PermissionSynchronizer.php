@@ -3,6 +3,7 @@
 namespace App\Packages\Permissions;
 
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 
 final class PermissionSynchronizer
 {
@@ -25,6 +26,7 @@ final class PermissionSynchronizer
 
     public static function sync(): void
     {
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
         foreach (self::getPermissions() as $permission) {
             if (!Permission::where("name", $permission)->exists()) {
                 Permission::create(["name" => $permission, "guard_name" => "admin"]);

@@ -1,5 +1,5 @@
 @extends('admin.inhouse.layouts.card')
-@section('card-title', 'İzin Düzenle')
+@section('card-title', "$employee->full_name adlı kullanıcının izinlerini düzenle")
 @section('card-content')
     <livewire:admin.permission-editor :employee="$employee"/>
 @endsection
@@ -58,7 +58,7 @@
 
         .permission-opitons {
             border: 1px solid;
-            border-color: var(--bs-body-color);
+            border-color: var(--kt-dark);
             background-color: var(--bs-body-bg);
         }
 

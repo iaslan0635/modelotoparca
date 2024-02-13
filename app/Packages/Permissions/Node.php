@@ -116,4 +116,20 @@ class Node
 
         return $this->parent?->getState();
     }
+
+    public function getPermittedLeafs(): array
+    {
+        $permittedLeafs = [];
+        foreach ($this->children as $child) {
+            if ($child->isLeaf()) {
+                if ($child->getState() === true) {
+                    $permittedLeafs[] = $child;
+                }
+            } else {
+                $permittedLeafs = array_merge($permittedLeafs, $child->getPermittedLeafs());
+            }
+        }
+
+        return $permittedLeafs;
+    }
 }

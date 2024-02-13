@@ -4,8 +4,11 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Employee;
 use App\Models\PermissionTree;
+use App\Packages\Permissions\PermissionSynchronizer;
 use App\Packages\Permissions\Tree;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Spatie\Permission\Models\Permission;
 
 class PermissionEditor extends Component
 {
@@ -56,10 +59,22 @@ class PermissionEditor extends Component
 
     public function save()
     {
-        PermissionTree::updateOrCreate(
-            ["employee_id" => $this->employee->id],
-            ["tree" => $this->designations]
-        );
+        DB::transaction(function () {
+            PermissionTree::updateOrCreate(
+                ["employee_id" => $this->employee->id],
+                ["tree" => $this->designations]
+            );
+
+            $permissionNames = $this->tree->resolvePermissionNames();
+            $permissionIds = Permission::whereIn("name", $permissionNames)->pluck("id");
+
+            if (count($permissionNames) !== count($permissionIds)) {
+                PermissionSynchronizer::sync();
+                $permissionIds = Permission::whereIn("name", $permissionNames)->pluck("id");
+            }
+
+            $this->employee->permissions()->sync($permissionIds);
+        });
 
         $this->isDirty = false;
     }
