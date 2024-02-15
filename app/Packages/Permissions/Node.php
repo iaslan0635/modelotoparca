@@ -25,6 +25,7 @@ class Node
     protected function __construct(
         public readonly ?Node  $parent,
         public readonly string $fqn,
+        public readonly ?Node  $inheritor = null,
     )
     {
         $this->name = Arr::last(explode(".", $fqn));
@@ -38,6 +39,11 @@ class Node
     public function getChildren(): array
     {
         return $this->children;
+    }
+
+    public function getChild(string $name): ?Node
+    {
+        return $this->children[$name] ?? null;
     }
 
     /**
@@ -57,12 +63,23 @@ class Node
      * @param Node|null $parent The parent of the Node
      * @return Node The created Node
      */
-    public static function fromArray(array $data, ?Node $parent = null): self
+    public static function fromArray(array $data, ?Node $parent = null, ?Node $inheritor = null): self
     {
         $name = ($parent !== null && $parent->fqn !== "root" ? $parent->fqn . "." : "") . $data["name"];
-        $node = new Node($parent, $name);
-        $node->setChildren(array_map(fn($arr) => Node::fromArray($arr, $node), $data["children"] ?? []));
+        $node = new Node($parent, $name, $inheritor);
+        $children = self::getChildrenFromArray($data["children"] ?? [], $node, $inheritor);
+        $node->setChildren($children);
         return $node;
+    }
+
+    protected static function getChildrenFromArray(array $childrenData, ?Node $parent = null, ?Node $inheritor = null)
+    {
+        $makeNode = function ($arr) use ($parent, $inheritor) {
+            $nodeName = $arr["name"];
+            return Node::fromArray($arr, $parent, $inheritor?->getChild($nodeName));
+        };
+
+        return array_map($makeNode, $childrenData);
     }
 
     /**
@@ -114,7 +131,17 @@ class Node
     {
         if ($this->designation !== null) return $this->designation;
 
-        return $this->parent?->getState();
+        $node = $this;
+        while ($node !== null && $node->designation === null) {
+            $node = $node->parent;
+        }
+
+        $parentDesignation = $node?->designation; // closest designated parent node
+        if ($parentDesignation === null) {
+            return $this->inheritor?->getState(); // inherit from role tree
+        }
+
+        return $parentDesignation;
     }
 
     public function getPermittedLeafs(): array

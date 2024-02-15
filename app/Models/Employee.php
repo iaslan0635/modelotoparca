@@ -11,12 +11,17 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Employee extends Authenticatable
 {
-    use SoftDeletes, Notifiable, HasPermissions;
+    use SoftDeletes, Notifiable, HasPermissions, HasRoles;
 
     protected $guarded = [];
 
     public function fullName(): Attribute
     {
-        return Attribute::get(fn () => "$this->first_name $this->last_name");
+        return Attribute::get(fn() => "$this->first_name $this->last_name");
+    }
+
+    public function permissionTree()
+    {
+        return $this->morphOne(PermissionTree::class, 'model');
     }
 }

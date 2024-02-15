@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Employee;
 use App\Models\PermissionTree;
+use App\Models\Role;
 use App\Packages\Permissions\PermissionSynchronizer;
 use App\Packages\Permissions\Tree;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,7 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionEditor extends Component
 {
-    public Employee $employee;
+    public Employee|Role $model;
     public array $designations;
     private Tree $tree;
 
@@ -20,13 +21,21 @@ class PermissionEditor extends Component
 
     public function booted()
     {
-        $this->tree = Tree::fromDesignations($this->designations);
+        $model = $this->model;
+        if ($model instanceof Employee) {
+            $role = $model->roles()->first();
+            if ($role !== null) {
+                $roleTree = Tree::fromDesignations($role->permissionTree()->value("tree"));
+            }
+        }
+
+        $this->tree = Tree::fromDesignations($this->designations, $roleTree ?? null);
     }
 
-    public function mount(Employee $employee)
+    public function mount(Employee|Role $model)
     {
-        $this->employee = $employee;
-        $this->designations = PermissionTree::where("employee_id", $employee->id)->value("tree") ?? [];
+        $this->model = $model;
+        $this->designations = $model->permissionTree()->value("tree") ?? [];
     }
 
     public function render()
@@ -60,20 +69,21 @@ class PermissionEditor extends Component
     public function save()
     {
         DB::transaction(function () {
-            PermissionTree::updateOrCreate(
-                ["employee_id" => $this->employee->id],
-                ["tree" => $this->designations]
-            );
+            $modelTree = new PermissionTree(["tree" => $this->designations]);
+            $modelTree->model()->associate($modelTree);
+            $modelTree->save();
 
-            $permissionNames = $this->tree->resolvePermissionNames();
-            $permissionIds = Permission::whereIn("name", $permissionNames)->pluck("id");
-
-            if (count($permissionNames) !== count($permissionIds)) {
-                PermissionSynchronizer::sync();
+            if ($this->model instanceof Employee) {
+                $permissionNames = $this->tree->resolvePermissionNames();
                 $permissionIds = Permission::whereIn("name", $permissionNames)->pluck("id");
-            }
 
-            $this->employee->permissions()->sync($permissionIds);
+                if (count($permissionNames) !== count($permissionIds)) {
+                    PermissionSynchronizer::sync();
+                    $permissionIds = Permission::whereIn("name", $permissionNames)->pluck("id");
+                }
+
+                $this->model->permissions()->sync($permissionIds);
+            }
         });
 
         $this->isDirty = false;

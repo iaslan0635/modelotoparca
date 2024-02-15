@@ -10,4 +10,9 @@ class PermissionTree extends BaseModel
     ];
 
     public $timestamps = false;
+
+    public function model()
+    {
+        return $this->morphTo("model");
+    }
 }
