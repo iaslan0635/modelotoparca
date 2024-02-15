@@ -42,7 +42,7 @@
                                 <div class="card-body pt-1">
                                     <!--begin::Users-->
                                     <div class="fw-bold text-gray-600 mb-5">Bu role sahip toplam kullanıcı sayısı: {{
-                                        \App\Models\User::query()->whereRelation("roles", "id", $role->id)->count()
+                                        \App\Models\Employee::query()->whereRelation("roles", "id", $role->id)->count()
                                     }}</div>
                                     <!--end::Users-->
                                     <!--begin::Permissions-->
@@ -63,7 +63,7 @@
                                         Görüntüle
                                     </a>
                                     <a href="{{ route('admin.role.edit', $role) }}" class="btn btn-light btn-active-light-primary my-1">
-                                        Düzenle
+                                        İzinleri Düzenle
                                     </a>
                                 </div>
                                 <!--end::Card footer-->

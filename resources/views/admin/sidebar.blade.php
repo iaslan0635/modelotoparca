@@ -653,17 +653,7 @@
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
-                            {{-- permission calculation will be used instead of roles --}}
-                            <span class="menu-title" style="text-decoration: line-through;">Roller</span>
-                        </a>
-                        <!--end:Menu link-->
-                        <!--begin:Menu link-->
-                        <a class="menu-link" href="{{ route('admin.role.create') }}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            {{-- permission calculation will be used instead of roles --}}
-                            <span class="menu-title" style="text-decoration: line-through;">Rol oluştur</span>
+                            <span class="menu-title">Roller</span>
                         </a>
                         <!--end:Menu link-->
                         <!--begin:Menu link-->

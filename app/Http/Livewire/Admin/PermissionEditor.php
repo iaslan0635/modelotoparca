@@ -69,9 +69,7 @@ class PermissionEditor extends Component
     public function save()
     {
         DB::transaction(function () {
-            $modelTree = new PermissionTree(["tree" => $this->designations]);
-            $modelTree->model()->associate($modelTree);
-            $modelTree->save();
+            $this->model->permissionTree()->updateOrCreate([], ["tree" => $this->designations]);
 
             if ($this->model instanceof Employee) {
                 $permissionNames = $this->tree->resolvePermissionNames();
