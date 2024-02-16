@@ -24,4 +24,9 @@ class Employee extends Authenticatable
     {
         return $this->morphOne(PermissionTree::class, 'model');
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

@@ -1,6 +1,6 @@
 @extends("admin.inhouse.layouts.kt")
 @section("kt-content")
-    <div class="card card-flush mx-auto" style="width: max-content">
+    <div class="card card-flush">
         <!--begin::Card header-->
         <div class="card-header mt-6">
             <!--begin::Card title-->

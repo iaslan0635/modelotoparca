@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\MerchantProductController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MerchantOrderController;
 use App\Http\Controllers\MerchantSettingController;
 use App\Http\Controllers\MerchantTrackingController;
@@ -106,3 +107,4 @@ Route::controller(AuthController::class)
     });
 
 Route::resource("user", UserController::class);
+Route::resource("employee", EmployeeController::class);

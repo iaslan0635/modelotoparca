@@ -23,7 +23,7 @@ class PermissionEditor extends Component
     {
         $model = $this->model;
         if ($model instanceof Employee) {
-            $role = $model->roles()->first();
+            $role = $model->role()->first();
             if ($role !== null) {
                 $roleTree = Tree::fromDesignations($role->permissionTree()->value("tree"));
             }
