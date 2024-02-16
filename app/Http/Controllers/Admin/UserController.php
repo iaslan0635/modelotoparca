@@ -21,21 +21,47 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'confirmed'],
+        ]);
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
+
+        return redirect()->route("admin.user.index");
     }
 
-    public function show(User $employee)
+    public function show(User $user)
     {
+        return view('admin.inhouse.user.show', compact('user'));
     }
 
-    public function edit(User $employee)
+    public function edit(User $user)
     {
+        return view('admin.inhouse.user.create', compact('user'));
     }
 
-    public function update(Request $request, User $employee)
+    public function update(Request $request, User $user)
     {
+        $data = $request->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['sometimes', 'confirmed'],
+        ]);
+
+        if (array_key_exists('password', $data)) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
+        $user->update($data);
+
+        return redirect()->route("admin.user.index");
     }
 
-    public function destroy(User $employee)
+    public function destroy(User $user)
     {
     }
 }

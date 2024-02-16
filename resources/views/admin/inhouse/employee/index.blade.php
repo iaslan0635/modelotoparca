@@ -103,7 +103,7 @@
                                  data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('admin.employee.show', $employee) }}" class="menu-link px-3">Göster</a>
+                                    <a href="{{ route('admin.employee.edit', $employee) }}" class="menu-link px-3">Düzenle</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->

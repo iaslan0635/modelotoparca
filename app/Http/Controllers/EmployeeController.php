@@ -26,7 +26,7 @@ class EmployeeController extends Controller
             'email' => ['required', 'email', 'unique:employees,email'],
             'password' => ['required', 'confirmed'],
         ]);
-        $data['password'] = Hash::make($request->input('password'));
+        $data['password'] = Hash::make($data['password']);
         Employee::create($data);
 
         return redirect()->route("admin.user.index");
@@ -44,6 +44,20 @@ class EmployeeController extends Controller
 
     public function update(Request $request, Employee $employee)
     {
+        $data = $request->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'email' => ['required', 'email', 'unique:employees,email'],
+            'password' => ['sometimes', 'confirmed'],
+        ]);
+
+        if (array_key_exists('password', $data)) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
+        $employee->update($data);
+
+        return redirect()->route("admin.user.index");
     }
 
     public function destroy(Employee $employee)
