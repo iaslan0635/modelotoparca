@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
+use App\Http\Controllers\Admin\MerchantProductController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
@@ -66,6 +67,9 @@ Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
+
+Route::get('/marketplace-products', [MerchantProductController::class, 'index'])->name('marketplace-products.index');
+Route::get('/marketplace-products', [MerchantProductController::class, 'onSaleIndex'])->name('marketplace-products.on-sale');
 
 Route::get('/marketplace-orders', [MerchantOrderController::class, 'index'])->name('order.marketplace');
 Route::get('/marketplace-order/{order}', [MerchantOrderController::class, 'show'])->name('order.marketplace.show');

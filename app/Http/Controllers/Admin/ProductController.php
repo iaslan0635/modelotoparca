@@ -10,12 +10,9 @@ use App\Models\Car;
 use App\Models\Log;
 use App\Models\Product;
 use App\Models\TigerProduct;
-use App\Packages\Search;
 use Closure;
-use Elastic\ScoutDriverPlus\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ProductController extends Controller
 {
@@ -40,7 +37,7 @@ class ProductController extends Controller
         'similar_product_codes',
     ];
 
-    private function getFilterConstraints()
+    private static function getFilterConstraints()
     {
         return [
             'merchant' => fn(Builder $query) => $query->whereHas("merchants"),
@@ -52,11 +49,11 @@ class ProductController extends Controller
         ];
     }
 
-    private function filterQuery(Builder $query, ?array $filterOptions, ?array $brands, ?string $search)
+    private static function filterQuery(Builder $query, ?array $filterOptions, ?array $brands, ?string $search)
     {
         if ($filterOptions) {
             foreach ($filterOptions as $filterOption) {
-                $filterConstraints = $this->getFilterConstraints();
+                $filterConstraints = self::getFilterConstraints();
                 abort_unless(array_key_exists($filterOption, $filterConstraints), 400, "Geçersiz filtre");
                 $queryFn = $filterConstraints[$filterOption];
                 $queryFn($query);
@@ -78,13 +75,11 @@ class ProductController extends Controller
         return $query;
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request)
+    public static function tableResponse(?Builder $productQuery = null)
     {
-        $query = $this->filterQuery(
-            Product::query(),
+        $request = \request();
+        $query = self::filterQuery(
+            $productQuery ?? Product::query(),
             $request->input('filters'),
             $request->input('brands'),
             $request->input('search')
@@ -95,7 +90,7 @@ class ProductController extends Controller
         $products->appends($request->except('page'));
         $usingSearch = false;
 
-        $filterConstraintsToShow = collect($this->getFilterConstraints())
+        $filterConstraintsToShow = collect(self::getFilterConstraints())
             ->filter(fn(Closure $qFn) => $qFn($query->clone())->exists())
             ->mapWithKeys(fn($_, $key) => [$key => self::FILTER_OPTIONS[$key]])
             ->all();
@@ -103,6 +98,11 @@ class ProductController extends Controller
 
         $brands ??= Brand::get(["id", "name"]);
         return view('admin.apps.ecommerce.catalog.products', compact('products', 'brands', 'usingSearch', 'filterConstraintsToShow'));
+    }
+
+    public function index()
+    {
+        return self::tableResponse();
     }
 
     public function show(Product $product)
