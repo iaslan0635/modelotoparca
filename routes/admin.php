@@ -69,7 +69,7 @@ Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
 
 Route::get('/marketplace-products', [MerchantProductController::class, 'index'])->name('marketplace-products.index');
-Route::get('/marketplace-products', [MerchantProductController::class, 'onSaleIndex'])->name('marketplace-products.on-sale');
+Route::get('/marketplace-products/on-sale', [MerchantProductController::class, 'onSaleIndex'])->name('marketplace-products.on-sale');
 
 Route::get('/marketplace-orders', [MerchantOrderController::class, 'index'])->name('order.marketplace');
 Route::get('/marketplace-order/{order}', [MerchantOrderController::class, 'show'])->name('order.marketplace.show');
