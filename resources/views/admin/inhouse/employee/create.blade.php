@@ -1,9 +1,11 @@
 @extends("admin.inhouse.layouts.card")
-@section("card-title", isset($employee) ? "$employee->full_name adlı kullanıcıyı düzenle" : "Yeni kullanıcı ekle")
-@php $passwordRequired = isset($employee) ? "" : "required" @endphp
+@php $editing = isset($employee) @endphp
+@section("card-title", $editing ? "$employee->full_name adlı kullanıcıyı düzenle" : "Yeni kullanıcı ekle")
+@php $passwordRequired = $editing ? "" : "required" @endphp
 @section("card-content")
-    <form class="form" action="{{ isset($employee) ? route("admin.employee.update", $employee) : route('admin.user.store') }}" method="post">
+    <form class="form" action="{{ $editing ? route("admin.employee.update", $employee) : route('admin.user.store') }}" method="post">
         @csrf
+        @if($editing) @method('PUT') @endif
         <div class="fv-row mb-7">
             <label class="required fw-semibold fs-6 mb-2" for="signup-name">Adı</label>
             <input id="signup-name" type="text" name="first_name" value="{{ old("first_name") ?? @$employee->first_name }}"
@@ -47,7 +49,7 @@
         <!--begin::Actions-->
         <div class="text-center pt-15">
             <button type="submit" class="btn btn-primary">
-                Ekle
+                Kaydet
             </button>
         </div>
         <!--end::Actions-->

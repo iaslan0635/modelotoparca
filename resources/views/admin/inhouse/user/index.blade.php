@@ -103,7 +103,7 @@
                                  data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="admin/apps/user-management/users/view" class="menu-link px-3">Edit</a>
+                                    <a href="{{ route('admin.user.edit', $user) }}" class="menu-link px-3">Edit</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->

@@ -57,7 +57,7 @@
                             <!--begin::Details item-->
                             <div class="fw-bold mt-5">Email</div>
                             <div class="text-gray-600">
-                                <a href="#" class="text-gray-600 text-hover-primary">{{ $employee->email }}</a>
+                                <a href="mailto:{{ $employee->email }}" class="text-gray-600 text-hover-primary">{{ $employee->email }}</a>
                             </div>
                             <!--begin::Details item-->
                         </div>
