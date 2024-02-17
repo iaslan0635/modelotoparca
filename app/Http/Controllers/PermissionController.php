@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use Spatie\Permission\Models\Permission;
 
+/** @deprecated */
 class PermissionController extends Controller
 {
     public function index()
