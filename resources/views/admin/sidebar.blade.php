@@ -619,7 +619,7 @@
                         </span>
                         <!--end::Svg Icon-->
                     </span>
-                    <span class="menu-title">Kullanıcılar</span>
+                    <span class="menu-title">Müşteriler</span>
                 </a>
                 <!--end:Menu link-->
             </div>

@@ -1,6 +1,6 @@
 @extends("admin.inhouse.layouts.card")
 @php $editing = isset($user) @endphp
-@section("card-title", $editing ? "$user->full_name adlı kullanıcıyı düzenle" : "Yeni kullanıcı ekle")
+@section("card-title", $editing ? "$user->full_name adlı müşteriyi düzenle" : "Yeni müşteri ekle")
 @php $passwordRequired = $editing ? "" : "required" @endphp
 @section("card-content")
     <form class="form" action="{{ $editing ? route("admin.user.update", $user) : route('admin.user.store') }}" method="post">
