@@ -1251,7 +1251,7 @@
 						<!--begin::Logo-->
 						<div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
 							<!--begin::Logo image-->
-							<a href="admin/index">
+							<a href="admin">
 								<img alt="Logo" src="https://site.modelotoparca.com/storage/imported_images/dark-logo.png" class="h-30px app-sidebar-logo-default" />
 								<img alt="Logo" src="assets/media/logos/default-small.svg" class="h-20px app-sidebar-logo-minimize" />
 							</a>

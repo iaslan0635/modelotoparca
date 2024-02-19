@@ -48,28 +48,34 @@
         <!--begin::Menu-->
         <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
             <!--begin:Menu item-->
-            <div class="menu-item pt-5">
-                <!--begin:Menu content-->
-                <div class="menu-content">
-                    <span class="menu-heading fw-bold text-uppercase fs-7">Stok</span>
-                </div>
-                <!--end:Menu content-->
-            </div>
-            <!--end:Menu item-->
-            <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
                 <a class="menu-link" href="{{ route('admin.dashboard') }}">
-                    <span class="menu-icon">
-                        <!--begin::Svg Icon-->
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </span>
+											<span class="menu-icon">
+												<!--begin::Svg Icon | path: icons/duotune/abstract/abs014.svg-->
+													<span class="svg-icon svg-icon-1 svg-icon-danger">
+																		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
+																			<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor" />
+																			<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor" />
+																			<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor" />
+																		</svg>
+													</span>
+                                                <!--end::Svg Icon-->
+											</span>
                     <span class="menu-title">Yönetim Paneli</span>
                 </a>
                 <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+
+            <!--begin:Menu item-->
+            <div class="menu-item pt-5">
+                <!--begin:Menu content-->
+                <div class="menu-content">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">Stok Yönetimi</span>
+                </div>
+                <!--end:Menu content-->
             </div>
             <!--end:Menu item-->
             <!--begin:Menu item-->
@@ -120,6 +126,33 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
+
+            <!--begin:Menu item-->
+            <div class="menu-item pt-5">
+                <!--begin:Menu content-->
+                <div class="menu-content">
+                    <span class="menu-heading fw-bold text-uppercase fs-7">EXCEL İŞLEMLERİ</span>
+                </div>
+                <!--end:Menu content-->
+            </div>
+            <!--end:Menu item-->
+            <!--begin:Menu item-->
+            <div class="menu-item">
+                <!--begin:Menu link-->
+                <a class="menu-link" href="{{ route("admin.import.index") }}">
+                    <span class="menu-icon">
+                        <!--begin::Svg Icon-->
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </span>
+                    <span class="menu-title">İçe aktar</span>
+                </a>
+                <!--end:Menu link-->
+            </div>
+            <!--end:Menu item-->
+
             <!--begin:Menu item-->
             <div class="menu-item pt-5">
                 <!--begin:Menu content-->
@@ -206,31 +239,7 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-            <!--begin:Menu item-->
-            <div class="menu-item pt-5">
-                <!--begin:Menu content-->
-                <div class="menu-content">
-                    <span class="menu-heading fw-bold text-uppercase fs-7">Excel</span>
-                </div>
-                <!--end:Menu content-->
-            </div>
-            <!--end:Menu item-->
-            <!--begin:Menu item-->
-            <div class="menu-item">
-                <!--begin:Menu link-->
-                <a class="menu-link" href="{{ route("admin.import.index") }}">
-                    <span class="menu-icon">
-                        <!--begin::Svg Icon-->
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </span>
-                    <span class="menu-title">İçe aktar</span>
-                </a>
-                <!--end:Menu link-->
-            </div>
-            <!--end:Menu item-->
+
 
             <!--begin:Menu item-->
             <div class="menu-item pt-5">
