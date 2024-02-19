@@ -59,7 +59,7 @@
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
-                <a class="menu-link" href="{{ route('dashboard') }}">
+                <a class="menu-link" href="{{ route('admin.dashboard') }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon-->
                         <span class="menu-bullet">

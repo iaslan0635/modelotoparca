@@ -20,7 +20,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', DashboardController::class);
+Route::get('/', DashboardController::class)->name("dashboard");
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
     Route::get('oem', 'push_oem')->name('oem');
@@ -64,8 +64,8 @@ Route::controller(BrandController::class)->prefix('brands')->name('brands.')->gr
     Route::get('', 'index')->name('index');
 });
 
-Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
-Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
+    Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
+   Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
 
