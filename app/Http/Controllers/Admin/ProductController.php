@@ -13,6 +13,7 @@ use App\Models\TigerProduct;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ProductController extends Controller
 {
@@ -80,8 +81,8 @@ class ProductController extends Controller
         $request = \request();
         $query = self::filterQuery(
             $productQuery ?? Product::query(),
-            $request->input('filters'),
-            $request->input('brands'),
+            Arr::wrap($request->input('filters')),
+            Arr::wrap($request->input('brands')),
             $request->input('search')
         );
 
