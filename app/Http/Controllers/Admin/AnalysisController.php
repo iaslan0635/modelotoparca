@@ -10,7 +10,7 @@ class AnalysisController extends Controller
     public function search()
     {
         return view('admin.pages.search-analysis', [
-            'searches' => Search::orderByDesc('id', 'desc')->paginate(),
+            'searches' => Search::orderBy('id', 'desc')->paginate(),
         ]);
     }
 
