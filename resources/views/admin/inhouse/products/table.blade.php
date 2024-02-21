@@ -36,7 +36,7 @@
                             data-hide-search="true" data-placeholder="Marka" name="brands">
                         <option value="all">Tüm markalar</option>
                         @foreach($brands as $brand)
-                            <option @if($chosenBrands && array_search($brand->id, $chosenBrands)) selected @endif value="{{ $brand->id }}">
+                            <option @if($chosenBrands && in_array($brand->id, $chosenBrands)) selected @endif value="{{ $brand->id }}">
                                 {{ $brand->name }}
                             </option>
                         @endforeach
@@ -48,7 +48,7 @@
                     <select class="form-select form-select-solid" id="status-filter-select" multiple
                             data-hide-search="true" data-placeholder="Ürün Filtresi" name="filters">
                         <option value="all">Tüm ürünler</option>
-                        @php $selected = fn ($value) =>  array_search($value, \Arr::wrap(request()->input("filter"))) @endphp
+                        @php $selected = fn ($value) => in_array($value, \Arr::wrap(request()->input("filter"))) ? "selected" : "" @endphp
                         @foreach($filterConstraintsToShow as $key => $value)
                             <option {{ $selected($key) }} value="{{ $key }}">{{ $value }}</option>
                         @endforeach
