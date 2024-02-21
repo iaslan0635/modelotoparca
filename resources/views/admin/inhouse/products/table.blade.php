@@ -39,6 +39,7 @@
                                 data-hide-search="true" data-placeholder="Marka" name="brands">
                             <option value="all">Tüm markalar</option>
                             @foreach($brands as $brand)
+                                @if($brand->id == 0) @continue @endif
                                 <option @if(request()->input("brand") == $brand->id) selected @endif value="{{ $brand->id }}">
                                     {{ $brand->name }}
                                 </option>
