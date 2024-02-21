@@ -86,7 +86,7 @@ class ProductController extends Controller
             $request->input('search')
         );
 
-        $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
+        $brands = Brand::where("id", "!=", 0)->whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
         $products = $query->clone()->with(["merchants", "price"])->paginate();
         $products->appends($request->except('page'));
         $usingSearch = false;
