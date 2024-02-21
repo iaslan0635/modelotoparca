@@ -97,7 +97,7 @@ class ProductController extends Controller
             ->all();
 
 
-        $brands ??= Brand::get(["id", "name"]);
+        $brands ??= Brand::whereNot("id", 0)->get(["id", "name"]);
         return view('admin.apps.ecommerce.catalog.products', compact('products', 'brands', 'usingSearch', 'filterConstraintsToShow'));
     }
 

@@ -39,7 +39,9 @@
                                 data-hide-search="true" data-placeholder="Marka" name="brands">
                             <option value="all">Tüm markalar</option>
                             @foreach($brands as $brand)
-                                <option @if(request()->input("brand") == $brand->id) selected @endif value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                <option @if(request()->input("brand") == $brand->id) selected @endif value="{{ $brand->id }}">
+                                    {{ $brand->name }}
+                                </option>
                             @endforeach
                         </select>
                         <!--end::Select2-->
