@@ -36,7 +36,7 @@
                     <div class="w-100 mw-250px">
                         <!--begin::Select2-->
                         <select class="form-select form-select-solid" id="brand-filter-select" multiple
-                                data-hide-search="true" data-placeholder="Marka">
+                                data-hide-search="true" data-placeholder="Marka" name="brands">
                             <option value="all">Tüm markalar</option>
                             @foreach($brands as $brand)
                                 <option @if(request()->input("brand") == $brand->id) selected @endif value="{{ $brand->id }}">{{ $brand->name }}</option>
