@@ -90,7 +90,7 @@
                                 <div class="w-100 mw-250px">
                                     <!--begin::Select2-->
                                     <select class="form-select form-select-solid" id="status-filter-select" multiple
-                                            data-hide-search="true" data-placeholder="Ürün Filtresi">
+                                            data-hide-search="true" data-placeholder="Ürün Filtresi" name="filters">
                                         <option value="all">Tüm ürünler</option>
                                         @php $selected = fn ($value) => $value == request()->input("filter") ? 'selected' : '' @endphp
                                         @foreach($filterConstraintsToShow as $key => $value)
