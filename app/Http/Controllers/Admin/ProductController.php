@@ -86,7 +86,18 @@ class ProductController extends Controller
             $request->input('search')
         );
 
-        $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
+        $hasAnyFiltersApplied =
+            filled($request->input('filters')) ||
+            (
+                $request->input('brands') != "all" &&
+                $request->input('brands') != 0 &&
+                filled($request->input('brands'))
+            ) ||
+            filled($request->input('search'));
+
+        if ($hasAnyFiltersApplied)
+            $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
+
         $products = $query->clone()->with(["merchants", "price"])->paginate();
         $products->appends($request->except('page'));
         $usingSearch = false;
