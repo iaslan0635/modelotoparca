@@ -98,7 +98,7 @@ class ProductController extends Controller
 
 
         $brands ??= Brand::whereNot("id", 0)->get(["id", "name"]);
-        return view('admin.apps.ecommerce.catalog.products', compact('products', 'brands', 'usingSearch', 'filterConstraintsToShow'));
+        return view('admin.inhouse.products.table', compact('products', 'brands', 'usingSearch', 'filterConstraintsToShow'));
     }
 
     public function index()
