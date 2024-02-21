@@ -30,36 +30,34 @@
             <!--end::Card title-->
             <!--begin::Card toolbar-->
             <form class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                @if($usingSearch)
-                    <span style="color: rgb(185,28,28);" class="fw-bold fs-7 text-uppercase">Arama yapılırken filtreler yok sayılıyor</span>
-                @else
-                    <div class="w-100 mw-250px">
-                        <!--begin::Select2-->
-                        <select class="form-select form-select-solid" id="brand-filter-select" multiple
-                                data-hide-search="true" data-placeholder="Marka" name="brands">
-                            <option value="all">Tüm markalar</option>
-                            @foreach($brands as $brand)
-                                @if($brand->id == 0) @continue @endif
-                                <option @if(request()->input("brand") == $brand->id) selected @endif value="{{ $brand->id }}">
-                                    {{ $brand->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <!--end::Select2-->
-                    </div>
-                    <div class="w-100 mw-250px">
-                        <!--begin::Select2-->
-                        <select class="form-select form-select-solid" id="status-filter-select" multiple
-                                data-hide-search="true" data-placeholder="Ürün Filtresi" name="filters">
-                            <option value="all">Tüm ürünler</option>
-                            @php $selected = fn ($value) => $value == request()->input("filter") ? 'selected' : '' @endphp
-                            @foreach($filterConstraintsToShow as $key => $value)
-                                <option {{ $selected($key) }} value="{{ $key }}">{{ $value }}</option>
-                            @endforeach
-                        </select>
-                        <!--end::Select2-->
-                    </div>
-                @endif
+                <div class="w-100 mw-250px">
+                    <!--begin::Select2-->
+                    <select class="form-select form-select-solid" id="brand-filter-select" multiple
+                            data-hide-search="true" data-placeholder="Marka" name="brands">
+                        <option value="all">Tüm markalar</option>
+                        @foreach($brands as $brand)
+                            @if($brand->id == 0)
+                                @continue
+                            @endif
+                            <option @if($chosenBrands && array_search($brand->id, $chosenBrands)) selected @endif value="{{ $brand->id }}">
+                                {{ $brand->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <!--end::Select2-->
+                </div>
+                <div class="w-100 mw-250px">
+                    <!--begin::Select2-->
+                    <select class="form-select form-select-solid" id="status-filter-select" multiple
+                            data-hide-search="true" data-placeholder="Ürün Filtresi" name="filters">
+                        <option value="all">Tüm ürünler</option>
+                        @php $selected = fn ($value) => $value == request()->input("filter") ? 'selected' : '' @endphp
+                        @foreach($filterConstraintsToShow as $key => $value)
+                            <option {{ $selected($key) }} value="{{ $key }}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                    <!--end::Select2-->
+                </div>
                 <button class="btn btn-primary">Filtrele</button>
             </form>
             <!--end::Card toolbar-->

@@ -86,13 +86,14 @@ class ProductController extends Controller
             $request->input('search')
         );
 
+        $hasAnyBrandsChosen =
+            $request->input('brands') != "all" &&
+            $request->input('brands') != 0 &&
+            filled($request->input('brands'));
+
         $hasAnyFiltersApplied =
+            $hasAnyBrandsChosen ||
             filled($request->input('filters')) ||
-            (
-                $request->input('brands') != "all" &&
-                $request->input('brands') != 0 &&
-                filled($request->input('brands'))
-            ) ||
             filled($request->input('search'));
 
         if ($hasAnyFiltersApplied)
@@ -100,7 +101,6 @@ class ProductController extends Controller
 
         $products = $query->clone()->with(["merchants", "price"])->paginate();
         $products->appends($request->except('page'));
-        $usingSearch = false;
 
         $filterConstraintsToShow = collect(self::getFilterConstraints())
             ->filter(fn(Closure $qFn) => $qFn($query->clone())->exists())
@@ -109,7 +109,8 @@ class ProductController extends Controller
 
 
         $brands ??= Brand::get(["id", "name"]);
-        return view('admin.inhouse.products.table', compact('products', 'brands', 'usingSearch', 'filterConstraintsToShow'));
+        $chosenBrands = $hasAnyBrandsChosen ? Arr::wrap($request->input('brands')) : false;
+        return view('admin.inhouse.products.table', compact('products', 'brands', 'filterConstraintsToShow', 'chosenBrands'));
     }
 
     public function index()
