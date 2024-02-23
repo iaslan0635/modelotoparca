@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exporters\ProductExporter;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController as CustomerProductController;
 use App\Jobs\RunSingleBotJob;
@@ -37,6 +38,21 @@ class ProductController extends Controller
         'abk',
         'similar_product_codes',
     ];
+
+    /**
+     * @param Builder|null $productQuery
+     * @param mixed $request
+     * @return Builder
+     */
+    private static function getFilterQueryFromRequest(Request $request, ?Builder $productQuery = null): Builder
+    {
+        return self::filterQuery(
+            $productQuery ?? Product::query(),
+            Arr::wrap($request->input('filters')),
+            Arr::wrap($request->input('brands')),
+            $request->input('search')
+        );
+    }
 
     private static function getFilterConstraints()
     {
@@ -79,12 +95,7 @@ class ProductController extends Controller
     public static function tableResponse(?Builder $productQuery = null)
     {
         $request = \request();
-        $query = self::filterQuery(
-            $productQuery ?? Product::query(),
-            Arr::wrap($request->input('filters')),
-            Arr::wrap($request->input('brands')),
-            $request->input('search')
-        );
+        $query = self::getFilterQueryFromRequest($request, $productQuery);
 
         $hasAnyBrandsChosen =
             $request->input('brands') != "all" &&
@@ -117,6 +128,16 @@ class ProductController extends Controller
     public function index()
     {
         return self::tableResponse();
+    }
+
+    public function exportToExcel(Request $request)
+    {
+        $query = self::getFilterQueryFromRequest($request);
+
+        $productIds = $query->pluck("id");
+        $tigerProducts = TigerProduct::whereIn("id", $productIds)->cursor();
+        $xlsx = ProductExporter::export($tigerProducts);
+        return response()->streamDownload(fn() => $xlsx->save("php://output"), "WEB_EXPORT.xlsx");
     }
 
     public function show(Product $product)

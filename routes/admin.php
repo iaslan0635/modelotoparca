@@ -29,6 +29,7 @@ Route::prefix('products/{product}/edit')->name('products.edit.')->controller(Pro
     Route::get('rerunBot', 'rerunBot')->name('rerunBot');
 });
 
+Route::get('products/export', [ProductController::class, "exportToExcel"])->name('products.export');
 Route::resource('products', ProductController::class)->only(['index', 'show']);
 
 Route::prefix('categories/{category}/edit')->name('categories.edit.')->controller(CategoryController::class)->group(function () {
@@ -64,8 +65,8 @@ Route::controller(BrandController::class)->prefix('brands')->name('brands.')->gr
     Route::get('', 'index')->name('index');
 });
 
-    Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
-   Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
+Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
+Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update');
 

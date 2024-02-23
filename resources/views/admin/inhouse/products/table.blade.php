@@ -4,7 +4,7 @@
         <!--begin::Card header-->
         <div class="card-header align-items-center py-5 gap-2 gap-md-5">
             <!--begin::Card title-->
-            <div class="card-title">
+            <div class="card-title flex-row-fluid justify-content-start gap-6">
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
@@ -25,11 +25,12 @@
                                value="{{ \request()->input("search") }}"/>
                     </form>
                 </div>
+                <a class="btn btn-primary" href="{{ route('admin.products.export', \request()->input()) }}">{{$products->total()}} adet ürünü dışa aktar</a>
                 <!--end::Search-->
             </div>
             <!--end::Card title-->
             <!--begin::Card toolbar-->
-            <form class="card-toolbar flex-row-fluid justify-content-end gap-5">
+            <form class="card-toolbar flex-row-fluid justify-content-end gap-6">
                 <div class="w-100 mw-250px">
                     <!--begin::Select2-->
                     <select class="form-select form-select-solid" id="brand-filter-select" multiple
