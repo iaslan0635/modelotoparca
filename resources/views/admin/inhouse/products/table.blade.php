@@ -49,7 +49,7 @@
                             data-hide-search="true" data-placeholder="Ürün Filtresi" name="filters">
                         <option value="all">Tüm ürünler</option>
                         @foreach($filterConstraintsToShow as $key => $value)
-                            <option @if(in_array($value, $chosenFilters)) selected @endif value="{{ $key }}">{{ $value }}</option>
+                            <option @if(in_array($key, $chosenFilters)) selected @endif value="{{ $key }}">{{ $value }}</option>
                         @endforeach
                     </select>
                     <!--end::Select2-->
