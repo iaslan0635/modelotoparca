@@ -7,8 +7,8 @@
         @else
             <select wire:model="value" class="form-select">
                 <option disabled>Seçiniz</option>
-                @foreach(data_get($attribute['valueList'], "value") as $value)
-                    <option value="{{ data_get($value, "name") }}">{{ data_get($value, "name") }}</option>
+                @foreach(get_item($attribute['valueList'], "value") as $value)
+                    <option value="{{ get_item($value, "name") }}">{{ get_item($value, "name") }}</option>
                 @endforeach
             </select>
         @endif
