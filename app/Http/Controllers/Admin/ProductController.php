@@ -110,7 +110,8 @@ class ProductController extends Controller
 
         $brands ??= Brand::get(["id", "name"]);
         $chosenBrands = $hasAnyBrandsChosen ? Arr::wrap($request->input('brands')) : false;
-        return view('admin.inhouse.products.table', compact('products', 'brands', 'filterConstraintsToShow', 'chosenBrands'));
+        $chosenFilters = \Arr::wrap(request()->input("filters"));
+        return view('admin.inhouse.products.table', compact('products', 'brands', 'filterConstraintsToShow', 'chosenBrands', 'chosenFilters'));
     }
 
     public function index()

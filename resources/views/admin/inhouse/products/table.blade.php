@@ -48,9 +48,8 @@
                     <select class="form-select form-select-solid" id="status-filter-select" multiple
                             data-hide-search="true" data-placeholder="Ürün Filtresi" name="filters">
                         <option value="all">Tüm ürünler</option>
-                        @php $selected = fn ($value) => in_array($value, \Arr::wrap(request()->input("filter"))) ? "selected" : "" @endphp
                         @foreach($filterConstraintsToShow as $key => $value)
-                            <option {{ $selected($key) }} value="{{ $key }}">{{ $value }}</option>
+                            <option @if(in_array($value, $chosenFilters)) selected @endif value="{{ $key }}">{{ $value }}</option>
                         @endforeach
                     </select>
                     <!--end::Select2-->
