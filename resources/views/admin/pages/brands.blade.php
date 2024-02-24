@@ -176,7 +176,7 @@
                         <!--end::Card title-->
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                            <h2>{{count($brands)}} Marka Bulundu</h2>
+                            <h2>{{$brands->total()}} Marka Bulundu</h2>
 {{--                            <div class="w-100 mw-150px">--}}
 {{--                                <!--begin::Select2-->--}}
 {{--                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Status"--}}
