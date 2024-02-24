@@ -90,6 +90,8 @@
                 <!--end:Menu content-->
             </div>
             <!--end:Menu item-->
+
+            @can("Ürünler.Listele")
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -106,6 +108,8 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
+            @endcan
+
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->

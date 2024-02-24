@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\User;
+use App\Models\Employee;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
@@ -13,12 +13,12 @@ class AddUserRole extends Component
 
     public function render()
     {
-        $users = $this->searchText ? User::where(\DB::raw('CONCAT(first_name, " ", last_name)'), "like", "%$this->searchText%")->withoutRole($this->role)->get() : [];
+        $users = $this->searchText ? Employee::withoutRole($this->role)->where(\DB::raw('CONCAT(first_name, " ", last_name)'), "like", "%$this->searchText%")->get() : [];
         return view('livewire.admin.add-user-role', compact("users"));
     }
 
     public function addUser(int $userId)
     {
-        User::find($userId)->assignRole($this->role);
+        Employee::find($userId)->assignRole($this->role);
     }
 }

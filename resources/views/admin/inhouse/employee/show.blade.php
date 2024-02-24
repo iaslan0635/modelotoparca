@@ -94,14 +94,14 @@
             <!--begin:::Tabs-->
             <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-8">
                 <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_user_view_overview_tab">Genel Bakış</a>
+                    <a class="nav-link active text-active-primary pb-4" data-bs-toggle="tab" href="#kt_user_view_overview_tab">Genel Bakış</a>
                 </li>
             </ul>
             <!--end:::Tabs-->
             <!--begin:::Tab content-->
             <div class="tab-content" id="myTabContent">
                 <!--begin:::Tab pane-->
-                <div class="tab-pane fade" id="kt_user_view_overview_tab" role="tabpanel">
+                <div class="tab-pane fade active show" id="kt_user_view_overview_tab" role="tabpanel">
                     <div class="card pt-4 mb-6 mb-xl-9">
                         <!--begin::Card header-->
                         <div class="card-header border-0">
