@@ -22,7 +22,7 @@
                         <!--begin::Position-->
                         <div class="mb-9">
                             <!--begin::Badge-->
-                            <div class="badge badge-lg badge-light-primary d-inline">{{ $employee->role?->name ?? "(Atanan rol yok)" }}</div>
+                            <div class="badge badge-lg badge-light-primary d-inline">{{ $employee->roles()->first()?->name ?? "(Atanan rol yok)" }}</div>
                             <!--begin::Badge-->
                         </div>
                         <!--end::Position-->

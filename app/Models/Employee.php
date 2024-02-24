@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -23,10 +24,5 @@ class Employee extends Authenticatable
     public function permissionTree()
     {
         return $this->morphOne(PermissionTree::class, 'model');
-    }
-
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
     }
 }
