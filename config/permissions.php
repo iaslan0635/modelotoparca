@@ -6,7 +6,16 @@ return [
         'children' => [
             ['name' => 'Listele'],
             ['name' => 'Ekle'],
-            ['name' => 'Düzenle'],
+            ['name' => 'Düzenle',
+                'children' => [
+                    ['name' => 'BotResimleri'],
+                    ['name' => 'Stok'],
+                    ['name' => 'UyumluAraçEkle'],
+                    ['name' => 'BotİleYenidenÇek'],
+                    ['name' => 'HepsiburadaOluştur'],
+                    ['name' => 'TrendyolOluştur'],
+                    ['name' => 'N11Oluştur'],
+                ]],
             ['name' => 'Sil'],
             ['name' => 'Stok',
                 'children' => [
