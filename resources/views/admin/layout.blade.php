@@ -880,7 +880,7 @@
                                         <div class="menu-item px-5">
                                             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="menu-link px-5">Çıkış Yap</a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+                                            <form id="logout-form" action="{{ route('admin.auth.logout') }}" method="GET" style="display: none;">
                                                 @csrf
                                             </form>
                                         </div>
