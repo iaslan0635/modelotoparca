@@ -29,5 +29,14 @@ return [
         ['name' => 'Düzenle'],
         ['name' => 'Sil'],
     ]
+    ],
+    [
+    'name' => 'Markalar',
+    'children' => [
+        ['name' => 'Listele'],
+        ['name' => 'Ekle'],
+        ['name' => 'Düzenle'],
+        ['name' => 'Sil'],
+    ]
 ]
 ];
