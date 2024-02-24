@@ -7,7 +7,6 @@ return [
             ['name' => 'Arama'],
             ['name' => 'Filtrele'],
             ['name' => 'Listele'],
-//            ['name' => 'Ekle'],
             ['name' => 'Düzenle',
                 'children' => [
                     ['name' => 'BotResimleri'],
