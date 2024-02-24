@@ -338,7 +338,7 @@
                                             @endauth
                                         </div>
                                     </div>
-                                    <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-cars">
+                                    <div class="product-tabs__pane" id="product-tab-cars">
 
                                         <div class="compatible-cars row mt-2">
                                             @foreach($car_brands as $brand => $cars_by_names)
@@ -474,7 +474,7 @@
 
 
                                     </div>
-                                    <div class="product-tabs__pane" id="product-same-products">
+                                    <div class="product-tabs__pane product-tabs__pane--active" id="product-same-products">
                                         <div class="products-view__list products-list products-list--grid--4"
                                              data-layout="table" data-with-features="false">
                                             <div class="products-list__head">
