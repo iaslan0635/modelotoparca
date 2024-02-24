@@ -28,8 +28,16 @@ return [
                 ['name' => 'UyumluAraçEkle'],
                 ['name' => 'BotİleYenidenÇek'],
                 ['name' => 'HepsiburadaOluştur'],
-                ['name' => 'TrendyolOluştur'],
-                ['name' => 'N11Oluştur'],
+                ['name' => 'TrendyolOluştur',
+                    'children' => [
+                        ['name' => 'Düzenle'],
+
+                    ]],
+                ['name' => 'N11Oluştur',
+                    'children' => [
+                        ['name' => 'Düzenle'],
+
+                    ]],
 
                 ],
             ],
