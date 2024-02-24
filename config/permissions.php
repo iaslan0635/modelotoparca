@@ -15,5 +15,14 @@ return [
                 ]
             ],
         ]
+    ],
+    [
+    'name' => 'Kategoriler',
+    'children' => [
+        ['name' => 'Listele'],
+        ['name' => 'Ekle'],
+        ['name' => 'Düzenle'],
+        ['name' => 'Sil'],
     ]
+]
 ];
