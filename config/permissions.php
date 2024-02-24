@@ -6,6 +6,12 @@ return [
         'children' => [
             ['name' => 'Listele',
                 'children' => [
+                    ['name' => 'BotEşleşmeleri',
+                        'children' => [
+                            ['name' => 'Düzenle'],
+
+                        ],
+                    ],
                     ['name' => 'BotResimleri',
                         'children' => [
                             ['name' => 'Düzenle'],
@@ -13,7 +19,7 @@ return [
                         ],
                     ],
 
-                    ['name' => 'Stok'],
+               ['name' => 'Stok'],
                 ['name' => 'UyumluAraçEkle'],
                 ['name' => 'BotİleYenidenÇek'],
                 ['name' => 'HepsiburadaOluştur'],
