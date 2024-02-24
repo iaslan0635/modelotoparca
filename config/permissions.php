@@ -6,7 +6,12 @@ return [
         'children' => [
             ['name' => 'Listele'],
             ['name' => 'Ekle'],
-            ['name' => 'Düzenle'],
+            ['name' => 'Düzenle',
+                'children' => [
+                    ['name' => 'Resim'],
+                    ['name' => 'Stok'],
+                ]],
+
             ['name' => 'Sil'],
             ['name' => 'Stok',
                 'children' => [
