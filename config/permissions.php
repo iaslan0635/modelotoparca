@@ -4,11 +4,14 @@ return [
     [
         'name' => 'Ürünler',
         'children' => [
-            ['name' => 'Listele'],
+            ['name' => 'Listele',
+                'children' => [
+                    ['name' => 'BotResimleri'],
+                    ]
+            ],
             ['name' => 'Ekle'],
             ['name' => 'Düzenle',
                 'children' => [
-                    ['name' => 'BotResimleri'],
                     ['name' => 'Stok'],
                     ['name' => 'UyumluAraçEkle'],
                     ['name' => 'BotİleYenidenÇek'],
