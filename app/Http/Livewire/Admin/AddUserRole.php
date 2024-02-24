@@ -13,7 +13,7 @@ class AddUserRole extends Component
 
     public function render()
     {
-        $users = $this->searchText ? User::where(\DB::raw('CONCAT(first_name, " ", last_name)'), "like", "%$this->searchText%")->withoutRole($this->role)->get() : [];
+        $users = $this->searchText ? User::where(\DB::raw('CONCAT(first_name, " ", last_name)'), "like", "%$this->searchText%")->get() : [];
         return view('livewire.admin.add-user-role', compact("users"));
     }
 
