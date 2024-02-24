@@ -17,15 +17,15 @@ return [
                     ['name' => 'Hepsiburada Oluştur'],
                     ['name' => 'Trendyol Oluştur'],
                     ['name' => 'N11 Oluştur'],
-                ]],
-
+                ]
+            ],
             ['name' => 'Sil'],
             ['name' => 'Stok',
                 'children' => [
                     ['name' => 'Görüntüle'],
                     ['name' => 'Düzenle'],
                 ]
-            ],
+            ]
 
         ]
     ],
@@ -46,5 +46,5 @@ return [
         ['name' => 'Düzenle'],
         ['name' => 'Sil'],
     ]
-]
+    ]
 ];
