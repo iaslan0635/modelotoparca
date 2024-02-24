@@ -171,15 +171,15 @@
                             <div class="product__tabs product-tabs product-tabs--layout--full">
                                 <ul class="product-tabs__list">
                                     <li class="product-tabs__item product-tabs__item--active">
+                                        <a href="#product-same-products">Eşdeğer Ürünler</a>
+                                    </li>
+                                    <li class="product-tabs__item">
                                         <a
                                             href="#product-tab-cars">Uyumlu Araçlar
                                         </a>
                                     </li>
                                     <li class="product-tabs__item">
                                         <a href="#product-tab-oem-codes">Oem Kodlar</a>
-                                    </li>
-                                    <li class="product-tabs__item">
-                                        <a href="#product-same-products">Eşdeğer Ürünler</a>
                                     </li>
                                     <li class="product-tabs__item">
                                         <a href="#product-alternative-products">Alternatif
