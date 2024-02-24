@@ -12,6 +12,7 @@ return [
 
                         ],
                     ],
+                    ['name' => 'Ürün Bilgileri'],
                     ['name' => 'BotResimleri',
                         'children' => [
                             ['name' => 'Düzenle'],
