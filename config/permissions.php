@@ -6,8 +6,11 @@ return [
         'children' => [
             ['name' => 'Listele',
                 'children' => [
-                    ['name' => 'BotResimleri'],
-                    ]
+                    ['name' => 'BotResimleri',
+                        'children' => [
+                            ['name' => 'Düzenle'],
+                        ],
+                    ] ],
             ],
             ['name' => 'Ekle'],
             ['name' => 'Düzenle',
