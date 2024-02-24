@@ -63,5 +63,21 @@ return [
         ['name' => 'Düzenle'],
         ['name' => 'Sil'],
     ]
+],
+    [
+    'name' => 'Excel İşlemleri',
+    'children' => [
+        ['name' => 'İçe Aktar',
+            'children' => [
+                ['name' => 'ITEM WEB'],
+                ['name' => 'ITEM WEB EKLEME MOD'],
+                ['name' => 'ITEM SUBS'],
+                ['name' => 'ITEMCLSAS'],
+                ['name' => 'FILTER_OIL'],
+                ['name' => 'MARKALAR'],
+            ]
+            ],
+    ]
 ]
+
 ];
