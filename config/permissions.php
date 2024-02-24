@@ -9,18 +9,23 @@ return [
                     ['name' => 'BotResimleri',
                         'children' => [
                             ['name' => 'Düzenle'],
+
                         ],
-                    ] ],
+                    ],
+
+                    ['name' => 'Stok'],
+                ['name' => 'UyumluAraçEkle'],
+                ['name' => 'BotİleYenidenÇek'],
+                ['name' => 'HepsiburadaOluştur'],
+                ['name' => 'TrendyolOluştur'],
+                ['name' => 'N11Oluştur'],
+
+                ],
             ],
             ['name' => 'Ekle'],
             ['name' => 'Düzenle',
                 'children' => [
-                    ['name' => 'Stok'],
-                    ['name' => 'UyumluAraçEkle'],
-                    ['name' => 'BotİleYenidenÇek'],
-                    ['name' => 'HepsiburadaOluştur'],
-                    ['name' => 'TrendyolOluştur'],
-                    ['name' => 'N11Oluştur'],
+                    ['name' => 'Test'],
                 ]],
             ['name' => 'Sil'],
             ['name' => 'Stok',
