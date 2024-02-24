@@ -8,13 +8,13 @@
                 <!--begin::Page title-->
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
-                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Araçlar</h1>
+                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Ürün Marka Listeleri</h1>
                     <!--end::Title-->
                     <!--begin::Breadcrumb-->
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                         <!--begin::Item-->
                         <li class="breadcrumb-item text-muted">
-                            <a href="admin/index" class="text-muted text-hover-primary">Home</a>
+                            <a href="admin/index" class="text-muted text-hover-primary">Kontrol Paneli</a>
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
@@ -23,7 +23,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">eCommerce</li>
+                        <li class="breadcrumb-item text-muted">Ürünler</li>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <li class="breadcrumb-item">
@@ -31,7 +31,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">Catalog</li>
+                        <li class="breadcrumb-item text-muted">Markalar</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -167,7 +167,7 @@
 							</span>
                                 <!--end::Svg Icon-->
                                 <form>
-                                    <input type="text" name="search" class="form-control form-control-solid w-250px ps-14" placeholder="Ürün Ara"
+                                    <input type="text" name="search" class="form-control form-control-solid w-250px ps-14" placeholder="Marka Ara"
                                            value="{{ \request()->input("search") }}"/>
                                 </form>
                             </div>
@@ -176,21 +176,22 @@
                         <!--end::Card title-->
                         <!--begin::Card toolbar-->
                         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                            <div class="w-100 mw-150px">
-                                <!--begin::Select2-->
-                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Status"
-                                        data-kt-ecommerce-product-filter="status">
-                                    <option></option>
-                                    <option value="all">All</option>
-                                    <option value="published">Published</option>
-                                    <option value="scheduled">Scheduled</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                                <!--end::Select2-->
-                            </div>
-                            <!--begin::Add product-->
-                            <a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Product</a>
-                            <!--end::Add product-->
+                            <h2>{{$brands->total()}} Marka Bulundu</h2>
+{{--                            <div class="w-100 mw-150px">--}}
+{{--                                <!--begin::Select2-->--}}
+{{--                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Status"--}}
+{{--                                        data-kt-ecommerce-product-filter="status">--}}
+{{--                                    <option></option>--}}
+{{--                                    <option value="all">All</option>--}}
+{{--                                    <option value="published">Published</option>--}}
+{{--                                    <option value="scheduled">Scheduled</option>--}}
+{{--                                    <option value="inactive">Inactive</option>--}}
+{{--                                </select>--}}
+{{--                                <!--end::Select2-->--}}
+{{--                            </div>--}}
+{{--                            <!--begin::Add product-->--}}
+{{--                            <a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Product</a>--}}
+{{--                            <!--end::Add product-->--}}
                         </div>
                         <!--end::Card toolbar-->
                     </div>
