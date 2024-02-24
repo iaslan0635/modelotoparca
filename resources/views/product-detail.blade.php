@@ -174,7 +174,11 @@
                                     <li class="product-tabs__item product-tabs__item--active">
                                         <a href="#product-same-products">Eşdeğer Ürünler</a>
                                     </li>
-
+                                    <li class="product-tabs__item">
+                                        <a href="#product-alternative-products">Alternatif
+                                            Ürünler
+                                        </a>
+                                    </li>
                                     <li class="product-tabs__item">
                                         <a
                                             href="#product-tab-cars">Uyumlu Araçlar
@@ -183,11 +187,7 @@
                                     <li class="product-tabs__item">
                                         <a href="#product-tab-oem-codes">Oem Kodlar</a>
                                     </li>
-                                    <li class="product-tabs__item">
-                                        <a href="#product-alternative-products">Alternatif
-                                            Ürünler
-                                        </a>
-                                    </li>
+
                                     <li class="product-tabs__item">
                                         <a href="#tecdoc-equivalents">TecDoc</a>
                                     </li>
