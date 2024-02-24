@@ -16,8 +16,7 @@ return [
                     ['name' => 'HepsiburadaOluştur'],
                     ['name' => 'TrendyolOluştur'],
                     ['name' => 'N11Oluştur'],
-                ]
-            ],
+                ]],
             ['name' => 'Sil'],
             ['name' => 'Stok',
                 'children' => [
@@ -25,25 +24,20 @@ return [
                     ['name' => 'Düzenle'],
                 ]
             ]
-
         ]
     ],
-    [
-    'name' => 'Kategoriler',
+    ['name' => 'Kategoriler',
     'children' => [
         ['name' => 'Listele'],
         ['name' => 'Ekle'],
         ['name' => 'Düzenle'],
         ['name' => 'Sil'],
-    ]
-    ],
-    [
-    'name' => 'Markalar',
+    ]],
+    ['name' => 'Markalar',
     'children' => [
         ['name' => 'Listele'],
         ['name' => 'Ekle'],
         ['name' => 'Düzenle'],
         ['name' => 'Sil'],
-    ]
-    ]
+    ]]
 ];
