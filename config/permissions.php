@@ -16,14 +16,15 @@ return [
                     ['name' => 'HepsiburadaOluştur'],
                     ['name' => 'TrendyolOluştur'],
                     ['name' => 'N11Oluştur'],
-                ]],
+                ]
+            ],
             ['name' => 'Sil'],
             ['name' => 'Stok',
                 'children' => [
                     ['name' => 'Görüntüle'],
                     ['name' => 'Düzenle'],
                 ]
-            ]
+            ],
         ]
     ],
     ['name' => 'Kategoriler',
