@@ -13,7 +13,16 @@ class SynchronizePermissionsCommand extends Command
 
     public function handle(): void
     {
-        PermissionSynchronizer::sync();
+        $addedPermissions = PermissionSynchronizer::sync();
+        if (empty($addedPermissions)) {
+            $this->warn('No new permissions added.');
+            return;
+        }
+
+        foreach ($addedPermissions as $permission) {
+            $this->info("added $permission->name");
+        }
+
         $this->info('Permissions synchronized.');
     }
 }

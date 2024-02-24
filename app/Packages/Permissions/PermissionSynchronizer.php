@@ -24,13 +24,17 @@ final class PermissionSynchronizer
         return self::convertArray(config("permissions"));
     }
 
-    public static function sync(): void
+    /** @return array<Permission> added permissions */
+    public static function sync(): array
     {
+        $addedPermissions = [];
         app(PermissionRegistrar::class)->forgetCachedPermissions();
         foreach (self::getPermissions() as $permission) {
             if (!Permission::where("name", $permission)->exists()) {
-                Permission::create(["name" => $permission, "guard_name" => "admin"]);
+                $addedPermissions[] = Permission::create(["name" => $permission, "guard_name" => "admin"]);
             }
         }
+
+        return $addedPermissions;
     }
 }
