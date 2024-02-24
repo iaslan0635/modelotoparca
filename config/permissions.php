@@ -11,11 +11,11 @@ return [
                 'children' => [
                     ['name' => 'BotResimleri'],
                     ['name' => 'Stok'],
-                    ['name' => 'Uyumlu Araç Ekle'],
-                    ['name' => 'Bot İle Yeniden Çek'],
-                    ['name' => 'Hepsiburada Oluştur'],
-                    ['name' => 'Trendyol Oluştur'],
-                    ['name' => 'N11 Oluştur'],
+                    ['name' => 'UyumluAraçEkle'],
+                    ['name' => 'BotİleYenidenÇek'],
+                    ['name' => 'HepsiburadaOluştur'],
+                    ['name' => 'TrendyolOluştur'],
+                    ['name' => 'N11Oluştur'],
                 ]
             ],
             ['name' => 'Sil'],
