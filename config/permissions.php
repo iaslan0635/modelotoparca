@@ -13,7 +13,10 @@ return [
                         ],
                     ],
                     ['name' => 'Ürün Bilgileri'],
-                    ['name' => 'Oem Kodlar'],
+                    ['name' => 'Oem Kodlar', 'children' => [
+                        ['name' => 'Ekle'],
+
+                    ]],
                     ['name' => 'BotResimleri',
                         'children' => [
                             ['name' => 'Düzenle'],
