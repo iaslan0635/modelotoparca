@@ -46,4 +46,10 @@ class RoleController extends Controller
         $user->removeRole($role);
         return back();
     }
+
+    public function delete(Role $role) // TODO: use destroy method
+    {
+        $role->delete();
+        return back();
+    }
 }

@@ -83,7 +83,8 @@ Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->nam
 Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands'])->name('brand-sync.search');
 
 Route::resource('permission', PermissionController::class, ["parameters" => ["permission" => "employee"]]);
-Route::resource('role', RoleController::class);
+Route::get('role/{role}/delete', [RoleController::class, "delete"])->name("role.delete");
+Route::resource('role', RoleController::class)->except("destroy");
 Route::get("role/unassign/{role}/{user}", [RoleController::class, "unassign"])->name("role.unassign");
 Route::get('merchant/failed', [MerchantTrackingController::class, "failed"])->name("merchant.failed");
 
