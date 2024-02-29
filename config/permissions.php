@@ -151,7 +151,7 @@ return [
         ],
     ],
     [
-        'name' => 'Excel İşlemleri',
+        'name' => 'Aktarma İşlemleri',
         'children' => [
             [
                 'name' => 'İçe Aktar',
