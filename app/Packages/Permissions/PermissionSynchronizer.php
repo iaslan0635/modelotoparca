@@ -7,6 +7,28 @@ use Spatie\Permission\PermissionRegistrar;
 
 final class PermissionSynchronizer
 {
+    /** @return array<Permission> added permissions */
+    public static function sync(): array
+    {
+        $addedPermissions = [];
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+        foreach (self::getPermissions() as $permission) {
+            if (!Permission::where("name", $permission)->exists()) {
+                $addedPermissions[] = Permission::create([
+                    "name"       => $permission,
+                    "guard_name" => "admin"
+                ]);
+            }
+        }
+
+        return $addedPermissions;
+    }
+
+    public static function getPermissions(): array
+    {
+        return self::convertArray(config("permissions"));
+    }
+
     private static function convertArray(array $array, string $currentKey = ''): array
     {
         $result = [];
@@ -19,22 +41,11 @@ final class PermissionSynchronizer
         return $result;
     }
 
-    public static function getPermissions(): array
+    /** Obtain permissions that are present in the configuration but not in the database. */
+    public static function diff()
     {
-        return self::convertArray(config("permissions"));
-    }
-
-    /** @return array<Permission> added permissions */
-    public static function sync(): array
-    {
-        $addedPermissions = [];
-        app(PermissionRegistrar::class)->forgetCachedPermissions();
-        foreach (self::getPermissions() as $permission) {
-            if (!Permission::where("name", $permission)->exists()) {
-                $addedPermissions[] = Permission::create(["name" => $permission, "guard_name" => "admin"]);
-            }
-        }
-
-        return $addedPermissions;
+        $permissions = self::getPermissions();
+        $dbPermissions = Permission::pluck("name")->toArray();
+        return array_diff($dbPermissions, $permissions);
     }
 }
