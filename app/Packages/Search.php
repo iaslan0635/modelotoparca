@@ -14,7 +14,6 @@ use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 
 class Search
 {
@@ -154,7 +153,7 @@ class Search
 
         $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->execute();
 
-        return $suggestionOems->models()->pluck('oem')->unique()->map(fn (string $s) => "<strong>$s</strong>")->all();
+        return $suggestionOems->models()->pluck('oem')->unique()->map(fn(string $s) => "<strong>$s</strong>")->all();
     }
 
     private static function suggestionsCrossCode(string $term)
@@ -175,14 +174,14 @@ class Search
         foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()['cross_code'])) {
                 foreach ($highlight->raw()['cross_code'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
             }
             if (isset($highlight->raw()['cross_code_regex'])) {
                 foreach ($highlight->raw()['cross_code_regex'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
@@ -210,14 +209,14 @@ class Search
         foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()['producercode'])) {
                 foreach ($highlight->raw()['producercode'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
             }
             if (isset($highlight->raw()['producercode_regex'])) {
                 foreach ($highlight->raw()['producercode_regex'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
@@ -245,14 +244,14 @@ class Search
         foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()['producercode2'])) {
                 foreach ($highlight->raw()['producercode2'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
             }
             if (isset($highlight->raw()['producercode2_regex'])) {
                 foreach ($highlight->raw()['producercode2_regex'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
@@ -329,33 +328,33 @@ class Search
         $products = self::paginateProducts($finalQuery, $sortBy, $relations);
 
         $productsWithCategories = Product::searchQuery($finalQuery)
-            ->refineModels(fn (Builder $q) => $q->select(['id']))
+            ->refineModels(fn(Builder $q) => $q->select(['id']))
             ->load(['categories'])->size(100)->execute()->models();
 
         $productsWithBrand = Product::searchQuery($finalQueryWithoutBrandFilter)
-            ->refineModels(fn (Builder $q) => $q->select(['id', 'brand_id']))
+            ->refineModels(fn(Builder $q) => $q->select(['id', 'brand_id']))
             ->load(['brand'])->size(1000)->execute()->models();
 
         $categories =
             $productsWithCategories
-            ->map(fn (Product $product) => $product->categories)->flatten()
-            //collect([\App\Models\Category::find(79548)])
-            ->groupBy('name')
-            ->map(fn (Collection $cats) => [
-                'category' => $cats[0],
-                'count' => $cats->count(),
-            ]);
+                ->map(fn(Product $product) => $product->categories)->flatten()
+                //collect([\App\Models\Category::find(79548)])
+                ->groupBy('name')
+                ->map(fn(Collection $cats) => [
+                    'category' => $cats[0],
+                    'count' => $cats->count(),
+                ]);
 
         $brands = $productsWithBrand
-            ->map(fn (Product $product) => $product->brand)
-            ->filter(fn (Brand|null $brand) => $brand !== null)
+            ->map(fn(Product $product) => $product->brand)
+            ->filter(fn(Brand|null $brand) => $brand !== null)
             ->groupBy('id')
-            ->map(fn (Collection $brandCollection) => [
+            ->map(fn(Collection $brandCollection) => [
                 'brand' => $brandCollection[0],
                 'count' => $brandCollection->count(),
             ]);
 
-        $highlights = $products->getCollection()->mapWithKeys(fn (Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
+        $highlights = $products->getCollection()->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
 
         self::log($term);
 
@@ -425,17 +424,21 @@ class Search
             );
     }
 
-    private static function termWiseQueryCombination(array $termPairs, array $queryFnPairs)
+    private static function termWiseQueryCombination(
+        string $term,
+        string $cleanTerm,
+        string $replacedTerm,
+        string $cleanReplacedTerm,
+        array  $queryFnPairs
+    )
     {
         $queries = [];
-        [$terms, $regexTerms] = $termPairs;
         foreach ($queryFnPairs as [$queryFn, $regexQueryFn]) {
-            foreach ($terms as $term) {
-                $queries[] = $queryFn($term);
-            }
-            foreach ($regexTerms as $regexTerm) {
-                $queries[] = $queryFn($regexTerm);
-            }
+            $queries[] = $queryFn($term);
+            $queries[] = $queryFn($replacedTerm);
+
+            $queries[] = $regexQueryFn($cleanTerm);
+            $queries[] = $regexQueryFn($cleanReplacedTerm);
         }
 
         return $queries;
@@ -460,11 +463,8 @@ class Search
         $cleanReplacedTerm = SearchReplacement::replace($cleanTerm);
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
 
-        $termWiseQueryCombinations = self::termWiseQueryCombination(
-            [
-                [$term, $cleanTerm],
-                [$replacedTerm, $cleanReplacedTerm],
-            ],
+        $queryCombinations = self::termWiseQueryCombination(
+            $term, $cleanTerm, $replacedTerm, $cleanReplacedTerm,
             [
                 [self::oemQuery(...), self::oemRegexQuery(...)],
                 [self::similarQuery(...), self::similarRegexQuery(...)],
@@ -475,14 +475,14 @@ class Search
             ]
         );
 
-        $foundCodes = self::combineQueries(...$termWiseQueryCombinations);
+        $foundCodes = self::combineQueries(...$queryCombinations);
         $finalFoundCodes = self::finalizeQuery($foundCodes, $selectCategory);
 
         $ifCodes = self::paginateProducts($finalFoundCodes, $sortBy)->total();
 
         if ($ifCodes > 0) {
-            $compoundQuery = self::combineQueries(...$termWiseQueryCombinations);
-            $compoundQueryWithoutBrandFilter = self::combineQueries(...$termWiseQueryCombinations);
+            $compoundQuery = self::combineQueries(...$queryCombinations);
+            $compoundQueryWithoutBrandFilter = self::combineQueries(...$queryCombinations);
         } else {
             $nonCodeQueries = [
                 self::carQuery($term),
