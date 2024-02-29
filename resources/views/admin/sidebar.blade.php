@@ -330,6 +330,7 @@
             <!--end:Menu item-->
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                @can("Pazaryerleri.Ürünler")
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">
@@ -351,6 +352,7 @@
                     <span class="menu-arrow"></span>
                 </span>
                 <!--end:Menu link-->
+                @endcan
                 <!--begin:Menu sub-->
                 <div class="menu-sub menu-sub-accordion">
                     <!--begin:Menu item-->
