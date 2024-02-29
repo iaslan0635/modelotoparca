@@ -1,4 +1,4 @@
-<x-product-list :products="$products">
+<x-product-list :products="$products" :filtered-properties="$this->property">
     <x-slot:breadcrumb>
         <x-breadcrumb :parts="[
             ['name' => 'Kategoriler', 'link' => route('category.index')],

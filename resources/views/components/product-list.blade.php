@@ -8,6 +8,7 @@
     'properties',
     'min_price',
     'max_price',
+    'filteredProperties',
 ])
 
 <div class="site__body">
@@ -364,7 +365,7 @@
                                                         </a>
                                                     </li>
                                                 @endforeach
-                                                @foreach(($this->property ?? []) as  $id => $prop)
+                                                @foreach(($filteredProperties ?? []) as  $id => $prop)
                                                     <li class="applied-filters__item" wire:key="propfilter-{{$prop}}">
                                                         <a href="#"
                                                            class="applied-filters__button applied-filters__button--filter">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OemController;
@@ -9,7 +10,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Livewire\CategoryPage;
-use App\Jobs\Import\ExcelImport;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +34,8 @@ Route::prefix('p/{product:slug}')->group(function () {
     Route::get('quickview', [ProductController::class, 'quickview'])->name('quickview');
     Route::get('/', [ProductController::class, 'show'])->name('product.show');
 });
+
+Route::get('b/{brand:slug}', [BrandController::class, "show"])->name('brand.show');
 
 Route::view('cart', 'cart')->name('cart');
 Route::view('checkout', 'checkout')->name('checkout');

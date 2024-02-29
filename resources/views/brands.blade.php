@@ -10,7 +10,7 @@
             <ul class="block-brands__list">
                 @foreach(\App\Models\Brand::all() as $brand)
                     <li class="block-brands__item">
-                        <a href="" class="block-brands__item-link">
+                        <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link">
                             <img src="images/brands/{{$brand->name}}.png" alt="">
                             <span class="block-brands__item-name">{{$brand->name}}</span>
                         </a>

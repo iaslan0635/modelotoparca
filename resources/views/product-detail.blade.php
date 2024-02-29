@@ -114,12 +114,14 @@
                                                     <th>Üretici Kodu</th>
                                                     <td>{{ $product->producercode }}</td>
                                                 </tr>
-                                                <tr>
-                                                    <th>Marka</th>
-                                                    <td>
-                                                        <a href="">{{ $product->brand?->name }}</a>
-                                                    </td>
-                                                </tr>
+                                                @if($product->brand !== null)
+                                                    <tr>
+                                                        <th>Marka</th>
+                                                        <td>
+                                                            <a href="{{ route('brand.show', $product->brand) }}">{{ $product->brand->name }}</a>
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                                 <tr>
                                                     <th>Cross code</th>
                                                     <td>{{ $product->cross_code }}</td>
@@ -132,9 +134,12 @@
                                                     <th>Ek bilgi</th>
                                                     <td>
                                                         <h6>
-                                                            <span class="badge @if($tiger->stock_on_51) badge-success @else badge-danger @endif">S51</span>
-                                                            <span class="badge @if($tiger->stock_on_38) badge-success @else badge-danger @endif">S38</span>
-                                                            <span class="badge @if($tiger->stock_on_01) badge-success @else badge-danger @endif">S01</span>
+                                                            <span
+                                                                class="badge @if($tiger->stock_on_51) badge-success @else badge-danger @endif">S51</span>
+                                                            <span
+                                                                class="badge @if($tiger->stock_on_38) badge-success @else badge-danger @endif">S38</span>
+                                                            <span
+                                                                class="badge @if($tiger->stock_on_01) badge-success @else badge-danger @endif">S01</span>
                                                         </h6>
                                                     </td>
                                                 </tr>
@@ -414,8 +419,9 @@
                                                                             @foreach($cars as $car)
                                                                                 <tr>
                                                                                     <td class="analogs-table__column">
-                                                                                        <img src="{{ $car->imageUrl() }}"
-                                                                                             style="height: 2rem">
+                                                                                        <img
+                                                                                            src="{{ $car->imageUrl() }}"
+                                                                                            style="height: 2rem">
                                                                                     </td>
                                                                                     <td class="analogs-table__column">{{ $car->name }}</td>
                                                                                     <td class="analogs-table__column">
