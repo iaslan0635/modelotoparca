@@ -91,6 +91,10 @@ class ExcelImport implements ShouldQueue
                 'oem_codes' => $this->data['oem_codes'],
                 'producercode2' => $this->data['producercode2'],
                 'abk' => $this->data['abk'],
+                'raf_no' => $this->data['raf_no'],
+                'stock_on_51' => $this->data['stock_on_51'],
+                'stock_on_38' => $this->data['stock_on_38'],
+                'stock_on_01' => $this->data['stock_on_01'],
             ]);
             $veriler = [
                 'abk',
