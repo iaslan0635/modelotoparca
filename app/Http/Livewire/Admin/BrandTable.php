@@ -3,12 +3,12 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Brand;
-use App\Models\Car;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class BrandTable extends Component
 {
-    public array $brands;
+    public Collection $brands;
 
     public array|null $editingModel = null;
 
