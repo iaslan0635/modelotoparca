@@ -167,10 +167,15 @@
                                     </div>
                                 </div>
                                 @include('partials.ucretsiz-kargo-dikey')
-                                <div class="product__shop-features shop-features">
+                                <div class="product__shop-features shop-features internal-card">
                                     <ul class="shop-features__list">
-                                        <li class="shop-features__item">
-
+                                        <li class="shop-features__item" style="justify-content: center; display: flex;">
+                                            {{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}
+                                        </li>
+                                        <li class="shop-features__item" style="justify-content: space-evenly; display: flex;">
+                                            <h4><span class="badge @if($tiger->stock_on_51) badge-success @else badge-danger @endif">S51</span></h4>
+                                            <h4><span class="badge @if($tiger->stock_on_38) badge-success @else badge-danger @endif">S38</span></h4>
+                                            <h4><span class="badge @if($tiger->stock_on_01) badge-success @else badge-danger @endif">S01</span></h4>
                                         </li>
                                     </ul>
                                 </div>
@@ -818,4 +823,16 @@
             })
         }
     </script>
+@endpush
+@push('styles')
+    <style>
+        .internal-card{
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .internal-card:hover {
+            opacity: 1;
+        }
+    </style>
 @endpush
