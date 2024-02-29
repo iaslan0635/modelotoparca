@@ -2,60 +2,60 @@
 
 return [
     [
-        'name' => 'StokYönetimi',
+        'name' => 'Stok Yönetimi',
         'children' => [
             ['name' => 'Ürünler',
                 'children' => [
-                    ['name' => 'ÜrünArama'],
-                    ['name' => 'ÜrünDışarıAktar'],
+                    ['name' => 'Ürün Arama'],
+                    ['name' => 'Ürün Dışarı Aktar'],
                     ['name' => 'Filtrele',
                         'children' => [
                             ['name' => 'Marka'],
                             ['name' => 'Durum'],
                         ]],
-                    ['name' => 'DetayGörüntüle',
+                    ['name' => 'Detay Görüntüle',
                         'children' => [
-                            ['name' => 'BotİleYenidenÇek'],
-                            ['name' => 'HepsiburadaOluştur'],
-                            ['name' => 'TrendyolOluştur'],
-                            ['name' => 'N11Oluştur'],
-                            ['name' => 'BotEşleşmeleri',
+                            ['name' => 'Bot ile Yeniden Çek'],
+                            ['name' => 'Hepsiburada Oluştur'],
+                            ['name' => 'Trendyol Oluştur'],
+                            ['name' => 'N11 Oluştur'],
+                            ['name' => 'Bot Eşleşmeleri',
                                 'children' => [
-                                    ['name' => 'İşlemYap'],
+                                    ['name' => 'İşlem Yap'],
                                 ],
                             ],
-                            ['name' => 'ÜrünBilgileri'],
+                            ['name' => 'Ürün Bilgileri'],
                             ['name' => 'Oem Kodlar',
                                 'children' => [
                                     ['name' => 'Ekle'],
                                 ],],
-                            ['name' => 'UyumluAraçlar',
+                            ['name' => 'Uyumlu Araçlar',
                                 'children' => [
-                                    ['name' => 'İşlemYap'],
+                                    ['name' => 'İşlem Yap'],
                                 ],
                             ],
-                            ['name' => 'SiparişGeçmişi'],
-                            ['name' => 'YorumGeçmişi'],
-                            ['name' => 'MağazaSoruları'],
-                            ['name' => 'BotKayıtları'],
-                            ['name' => 'BotResimleri',
+                            ['name' => 'Sipariş Geçmişi'],
+                            ['name' => 'Yorum Geçmişi'],
+                            ['name' => 'Mağaza Soruları'],
+                            ['name' => 'Bot Kayıtları'],
+                            ['name' => 'Bot Resimleri',
                                 'children' => [
-                                    ['name' => 'İşlemYap'],
+                                    ['name' => 'İşlem Yap'],
                                 ],
                             ],
-                            ['name' => 'TrendyolÖzellikEşleştirme',
+                            ['name' => 'Trendyol Özellik Eşleştirme',
                                 'children' => [
-                                    ['name' => 'İşlemYap'],
+                                    ['name' => 'İşlem Yap'],
                                 ]
                             ],
-                            ['name' => 'HepsiburadaÖzellikEşleştirme',
+                            ['name' => 'Hepsiburada Özellik Eşleştirme',
                                 'children' => [
-                                    ['name' => 'İşlemYap'],
+                                    ['name' => 'İşlem Yap'],
                                 ]
                             ],
-                            ['name' => 'N11ÖzellikEşleştirme',
+                            ['name' => 'N11 Özellik Eşleştirme',
                                 'children' => [
-                                    ['name' => 'İşlemYap'],
+                                    ['name' => 'İşlem Yap'],
                                 ]
                             ],
                         ],
@@ -64,36 +64,36 @@ return [
             [
                 'name' => 'Kategoriler',
                 'children' => [
-                    ['name' => 'KategoriAra'],
-                    ['name' => 'KategoriEkle'],
-                    ['name' => 'KategoriDüzenle',
+                    ['name' => 'Kategori Ara'],
+                    ['name' => 'Kategori Ekle'],
+                    ['name' => 'Kategori Düzenle',
                         'children' => [
-                            ['name' => 'İsimGuncelle'],
-                            ['name' => 'AçıklamaGuncelle'],
-                            ['name' => 'ResimGuncelle'],
+                            ['name' => 'İsim Guncelle'],
+                            ['name' => 'Açıklama Guncelle'],
+                            ['name' => 'Resim Guncelle'],
                         ]],
                     ['name' => 'Sil'],
                 ]
             ],
             ['name' => 'Markalar',
                 'children' => [
-                    ['name' => 'MarkaAra'],
+                    ['name' => 'Marka Ara'],
                     ['name' => 'Düzenle',
                         'children' => [
-                            ['name' => 'İsimGuncelle'],
-                            ['name' => 'AçıklamaGuncelle'],
-                            ['name' => 'ResimGuncelle'],
+                            ['name' => 'İsim Guncelle'],
+                            ['name' => 'Açıklama Guncelle'],
+                            ['name' => 'Resim Guncelle'],
                         ]],
                 ]],
         ]
     ],
     [
-        'name' => 'Kullanıcıİşlemleri',
+        'name' => 'Kullanıcı İşlemleri',
         'children' => [
             ['name' => 'Kullanıcılar',
                 'children' => [
-                    ['name' => 'KullanıcıEkle'],
-                    ['name' => 'KullanıcıDüzenle',
+                    ['name' => 'Kullanıcı Ekle'],
+                    ['name' => 'Kullanıcı Düzenle',
                         'children' => [
                             ['name' => 'Ad'],
                             ['name' => 'Soyad'],
@@ -104,8 +104,8 @@ return [
             ],
             ['name' => 'Yöneticiler',
                 'children' => [
-                    ['name' => 'YöneticiEkle'],
-                    ['name' => 'YöneticiDüzenle',
+                    ['name' => 'Yönetici Ekle'],
+                    ['name' => 'Yönetici Düzenle',
                         'children' => [
                             ['name' => 'Ad'],
                             ['name' => 'Soyad'],
@@ -117,15 +117,15 @@ return [
 
             ['name' => 'Roller',
                 'children' => [
-                    ['name' => 'İzinleriGörüntüle'],
-                    ['name' => 'İzinleriDüzenle'],
-                    ['name' => 'RolSil'],
+                    ['name' => 'İzinleri Görüntüle'],
+                    ['name' => 'İzinleri Düzenle'],
+                    ['name' => 'Rol Sil'],
                 ]
             ],
         ],
     ],
     [
-        'name' => 'Excelİşlemleri',
+        'name' => 'Excel İşlemleri',
         'children' => [
             ['name' => 'İçe Aktar',
                 'children' => [
@@ -142,18 +142,18 @@ return [
     [
         'name' => 'Analizler',
         'children' => [
-            ['name' => 'Aramaİstatistikleri'],
-            ['name' => 'AramaDüzeltmleri',
+            ['name' => 'Arama İstatistikleri'],
+            ['name' => 'Arama Düzeltmleri',
                 'children' => [
-                    ['name' => 'DüzetlmeEkle'],
-                    ['name' => 'DüzetlmeSil'],
+                    ['name' => 'Düzetlme Ekle'],
+                    ['name' => 'Düzetlme Sil'],
                 ]
             ],
             ['name' => 'Araçlar',
                 'children' => [
-                    ['name' => 'AraçAra'],
-                    ['name' => 'AraçDüzenle'],
-                    ['name' => 'AktifPasifYap'],
+                    ['name' => 'Araç Ara'],
+                    ['name' => 'Araç Düzenle'],
+                    ['name' => 'Aktif Pasif Yap'],
                 ]
             ],
         ],
@@ -164,66 +164,66 @@ return [
         'children' => [
             ['name' => 'Ürünler',
                 'children' => [
-                    ['name' => 'TümÜrünler'],
-                    ['name' => 'SatıştakiÜrünler'],
-                    ['name' => 'HatalıÜrünler'],
+                    ['name' => 'Tüm Ürünler'],
+                    ['name' => 'Satıştaki Ürünler'],
+                    ['name' => 'Hatalı Ürünler'],
                 ]
             ],
             ['name' => 'Siparişler',
                 'children' => [
-                    ['name' => 'TümSiparişler'],
-                    ['name' => 'YeniSiparişler'],
-                    ['name' => 'TamamlananSiparişler'],
+                    ['name' => 'Tüm Siparişler'],
+                    ['name' => 'Yeni Siparişler'],
+                    ['name' => 'Tamamlanan Siparişler'],
                 ]
             ],
-            ['name' => 'KategoriEşitleme'],
-            ['name' => 'MarkaEşitleme'],
-            ['name' => 'EntegrasyonAyarları'],
+            ['name' => 'Kategori Eşitleme'],
+            ['name' => 'Marka Eşitleme'],
+            ['name' => 'Entegrasyon Ayarları'],
         ],
     ],
     [
-        'name' => 'EticaretYönetimi',
+        'name' => 'Eticaret Yönetimi',
         'children' => [
             ['name' => 'Siparişler',
                 'children' => [
-                    ['name' => 'SiparişSorgula'],
-                    ['name' => 'TümSiparişler'],
-                    ['name' => 'KargodakiSiparişler'],
-                    ['name' => 'İptalEdilenler'],
-                    ['name' => 'TamamlananSiparişler'],
+                    ['name' => 'Sipariş Sorgula'],
+                    ['name' => 'Tüm Siparişler'],
+                    ['name' => 'Kargodaki Siparişler'],
+                    ['name' => 'İptal Edilenler'],
+                    ['name' => 'Tamamlanan Siparişler'],
                     ['name' => 'Pazaryerleri'],
                 ]
             ],
-            ['name' => 'İadeİşlemleri',
+            ['name' => 'İade İşlemleri',
                 'children' => [
-                    ['name' => 'İadeSorgula'],
-                    ['name' => 'İadeTalepleri',
+                    ['name' => 'İade Sorgula'],
+                    ['name' => 'İade Talepleri',
                         'children' => [
-                            ['name' => 'İşlemYap'],
+                            ['name' => 'İşlem Yap'],
                         ]],
-                    ['name' => 'Tamamlananİadeler'],
+                    ['name' => 'Tamamlanan İadeler'],
                 ]
             ],
         ],
     ],
     [
-        'name' => 'SiteYönetimi',
+        'name' => 'Site Yönetimi',
         'children' => [
-            ['name' => 'GenelAyarlar',
+            ['name' => 'Genel Ayarlar',
                 'children' => [
-                    ['name' => 'AyarDüzenle'],
+                    ['name' => 'Ayar Düzenle'],
                 ]
             ],
             ['name' => 'Sayfalar',
                 'children' => [
-                    ['name' => 'SayfaDüzenle'],
-                    ['name' => 'YeniSayfaEkle'],
+                    ['name' => 'Sayfa Düzenle'],
+                    ['name' => 'Yeni Sayfa Ekle'],
                 ]
             ],
             ['name' => 'Yorumlar',
                 'children' => [
-                    ['name' => 'YorumDüzenle'],
-                    ['name' => 'YorumOnayla'],
+                    ['name' => 'Yorum Düzenle'],
+                    ['name' => 'Yorum Onayla'],
                 ]],
         ],
     ],
