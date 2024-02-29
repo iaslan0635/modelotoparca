@@ -2,120 +2,145 @@
 
 return [
     [
-        'name' => 'Stok Yönetimi',
+        'name'     => 'Stok Yönetimi',
         'children' => [
-            ['name' => 'Ürünler',
+            [
+                'name'     => 'Ürünler',
                 'children' => [
                     ['name' => 'Ürün Arama'],
                     ['name' => 'Ürün Dışarı Aktar'],
-                    ['name' => 'Filtrele',
+                    [
+                        'name'     => 'Filtrele',
                         'children' => [
                             ['name' => 'Marka'],
                             ['name' => 'Durum'],
-                        ]],
-                    ['name' => 'Detay Görüntüle',
+                        ]
+                    ],
+                    [
+                        'name'     => 'Detay Görüntüle',
                         'children' => [
                             ['name' => 'Bot ile Yeniden Çek'],
                             ['name' => 'Hepsiburada Oluştur'],
                             ['name' => 'Trendyol Oluştur'],
                             ['name' => 'N11 Oluştur'],
-                            ['name' => 'Bot Eşleşmeleri',
+                            [
+                                'name'     => 'Bot Eşleşmeleri',
                                 'children' => [
                                     ['name' => 'İşlem Yap'],
-                                ],
+                                ]
                             ],
                             ['name' => 'Ürün Bilgileri'],
-                            ['name' => 'Oem Kodlar',
+                            [
+                                'name'     => 'Oem Kodlar',
                                 'children' => [
                                     ['name' => 'Ekle'],
-                                ],],
-                            ['name' => 'Uyumlu Araçlar',
+                                ]
+                            ],
+                            [
+                                'name'     => 'Uyumlu Araçlar',
                                 'children' => [
                                     ['name' => 'İşlem Yap'],
-                                ],
+                                ]
                             ],
                             ['name' => 'Sipariş Geçmişi'],
                             ['name' => 'Yorum Geçmişi'],
                             ['name' => 'Mağaza Soruları'],
                             ['name' => 'Bot Kayıtları'],
-                            ['name' => 'Bot Resimleri',
-                                'children' => [
-                                    ['name' => 'İşlem Yap'],
-                                ],
-                            ],
-                            ['name' => 'Trendyol Özellik Eşleştirme',
+                            [
+                                'name'     => 'Bot Resimleri',
                                 'children' => [
                                     ['name' => 'İşlem Yap'],
                                 ]
                             ],
-                            ['name' => 'Hepsiburada Özellik Eşleştirme',
+                            [
+                                'name'     => 'Trendyol Özellik Eşleştirme',
                                 'children' => [
                                     ['name' => 'İşlem Yap'],
                                 ]
                             ],
-                            ['name' => 'N11 Özellik Eşleştirme',
+                            [
+                                'name'     => 'Hepsiburada Özellik Eşleştirme',
+                                'children' => [
+                                    ['name' => 'İşlem Yap'],
+                                ]
+                            ],
+                            [
+                                'name'     => 'N11 Özellik Eşleştirme',
                                 'children' => [
                                     ['name' => 'İşlem Yap'],
                                 ]
                             ],
                         ],
                     ],
-                ]],
+                ]
+            ],
             [
-                'name' => 'Kategoriler',
+                'name'     => 'Kategoriler',
                 'children' => [
                     ['name' => 'Kategori Ara'],
                     ['name' => 'Kategori Ekle'],
-                    ['name' => 'Kategori Düzenle',
+                    [
+                        'name'     => 'Kategori Düzenle',
                         'children' => [
                             ['name' => 'İsim Guncelle'],
                             ['name' => 'Açıklama Guncelle'],
                             ['name' => 'Resim Guncelle'],
-                        ]],
+                        ]
+                    ],
                     ['name' => 'Sil'],
                 ]
             ],
-            ['name' => 'Markalar',
+            [
+                'name'     => 'Markalar',
                 'children' => [
                     ['name' => 'Marka Ara'],
-                    ['name' => 'Düzenle',
+                    [
+                        'name'     => 'Düzenle',
                         'children' => [
                             ['name' => 'İsim Guncelle'],
                             ['name' => 'Açıklama Guncelle'],
                             ['name' => 'Resim Guncelle'],
-                        ]],
-                ]],
+                        ]
+                    ],
+                ]
+            ],
         ]
     ],
     [
-        'name' => 'Kullanıcı İşlemleri',
+        'name'     => 'Kullanıcı İşlemleri',
         'children' => [
-            ['name' => 'Kullanıcılar',
+            [
+                'name'     => 'Kullanıcılar',
                 'children' => [
                     ['name' => 'Kullanıcı Ekle'],
-                    ['name' => 'Kullanıcı Düzenle',
+                    [
+                        'name'     => 'Kullanıcı Düzenle',
                         'children' => [
                             ['name' => 'Ad'],
                             ['name' => 'Soyad'],
                             ['name' => 'Eposta'],
                             ['name' => 'Şifre'],
-                        ]],
+                        ]
+                    ],
                 ]
             ],
-            ['name' => 'Yöneticiler',
+            [
+                'name'     => 'Yöneticiler',
                 'children' => [
                     ['name' => 'Yönetici Ekle'],
-                    ['name' => 'Yönetici Düzenle',
+                    [
+                        'name'     => 'Yönetici Düzenle',
                         'children' => [
                             ['name' => 'Ad'],
                             ['name' => 'Soyad'],
                             ['name' => 'Eposta'],
                             ['name' => 'Şifre'],
-                        ]],
+                        ]
+                    ],
                 ]
             ],
-
-            ['name' => 'Roller',
+            [
+                'name'     => 'Roller',
                 'children' => [
                     ['name' => 'İzinleri Görüntüle'],
                     ['name' => 'İzinleri Düzenle'],
@@ -125,9 +150,10 @@ return [
         ],
     ],
     [
-        'name' => 'Excel İşlemleri',
+        'name'     => 'Excel İşlemleri',
         'children' => [
-            ['name' => 'İçe Aktar',
+            [
+                'name'     => 'İçe Aktar',
                 'children' => [
                     ['name' => 'ITEM WEB'],
                     ['name' => 'ITEM WEB EKLEME MOD'],
@@ -140,16 +166,18 @@ return [
         ]
     ],
     [
-        'name' => 'Analizler',
+        'name'     => 'Analizler',
         'children' => [
             ['name' => 'Arama İstatistikleri'],
-            ['name' => 'Arama Düzeltmleri',
+            [
+                'name'     => 'Arama Düzeltmleri',
                 'children' => [
                     ['name' => 'Düzetlme Ekle'],
                     ['name' => 'Düzetlme Sil'],
                 ]
             ],
-            ['name' => 'Araçlar',
+            [
+                'name'     => 'Araçlar',
                 'children' => [
                     ['name' => 'Araç Ara'],
                     ['name' => 'Araç Düzenle'],
@@ -158,18 +186,19 @@ return [
             ],
         ],
     ],
-
     [
-        'name' => 'Pazaryerleri',
+        'name'     => 'Pazaryerleri',
         'children' => [
-            ['name' => 'Ürünler',
+            [
+                'name'     => 'Ürünler',
                 'children' => [
                     ['name' => 'Tüm Ürünler'],
                     ['name' => 'Satıştaki Ürünler'],
                     ['name' => 'Hatalı Ürünler'],
                 ]
             ],
-            ['name' => 'Siparişler',
+            [
+                'name'     => 'Siparişler',
                 'children' => [
                     ['name' => 'Tüm Siparişler'],
                     ['name' => 'Yeni Siparişler'],
@@ -182,9 +211,10 @@ return [
         ],
     ],
     [
-        'name' => 'Eticaret Yönetimi',
+        'name'     => 'Eticaret Yönetimi',
         'children' => [
-            ['name' => 'Siparişler',
+            [
+                'name'     => 'Siparişler',
                 'children' => [
                     ['name' => 'Sipariş Sorgula'],
                     ['name' => 'Tüm Siparişler'],
@@ -194,37 +224,44 @@ return [
                     ['name' => 'Pazaryerleri'],
                 ]
             ],
-            ['name' => 'İade İşlemleri',
+            [
+                'name'     => 'İade İşlemleri',
                 'children' => [
                     ['name' => 'İade Sorgula'],
-                    ['name' => 'İade Talepleri',
+                    [
+                        'name'     => 'İade Talepleri',
                         'children' => [
                             ['name' => 'İşlem Yap'],
-                        ]],
+                        ]
+                    ],
                     ['name' => 'Tamamlanan İadeler'],
                 ]
             ],
         ],
     ],
     [
-        'name' => 'Site Yönetimi',
+        'name'     => 'Site Yönetimi',
         'children' => [
-            ['name' => 'Genel Ayarlar',
+            [
+                'name'     => 'Genel Ayarlar',
                 'children' => [
                     ['name' => 'Ayar Düzenle'],
                 ]
             ],
-            ['name' => 'Sayfalar',
+            [
+                'name'     => 'Sayfalar',
                 'children' => [
                     ['name' => 'Sayfa Düzenle'],
                     ['name' => 'Yeni Sayfa Ekle'],
                 ]
             ],
-            ['name' => 'Yorumlar',
+            [
+                'name'     => 'Yorumlar',
                 'children' => [
                     ['name' => 'Yorum Düzenle'],
                     ['name' => 'Yorum Onayla'],
-                ]],
+                ]
+            ],
         ],
     ],
 ];
