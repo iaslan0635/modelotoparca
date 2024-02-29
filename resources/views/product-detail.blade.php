@@ -167,6 +167,13 @@
                                     </div>
                                 </div>
                                 @include('partials.ucretsiz-kargo-dikey')
+                                <div class="product__shop-features shop-features">
+                                    <ul class="shop-features__list">
+                                        <li class="shop-features__item">
+
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="product__tabs product-tabs product-tabs--layout--full">
                                 <ul class="product-tabs__list">
