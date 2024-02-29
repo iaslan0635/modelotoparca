@@ -110,7 +110,7 @@ class Node
         if (is_string($fqn)) $fqn = explode(".", $fqn);
         if (count($fqn) === 0) return $this;
 
-        return $this->children[$fqn[0]]?->get(array_slice($fqn, 1));
+        return @$this->children[$fqn[0]]?->get(array_slice($fqn, 1));
     }
 
     /**

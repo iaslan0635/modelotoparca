@@ -42,7 +42,7 @@ class PermissionEditor extends Component
 
     public function render()
     {
-        return view('livewire.admin.permission-editor', ["tree" => $this->tree]);
+        return view('livewire.admin.permission-editor', ["rootPermissions" => $this->tree->getChildren()]);
     }
 
     private function setPermissionDesignation(string $permissionName, ?bool $designation)
