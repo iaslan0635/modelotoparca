@@ -68,7 +68,7 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-
+            @can("Stok Yönetimi")
             <!--begin:Menu item-->
             <div class="menu-item pt-5">
                 <!--begin:Menu content-->
@@ -90,8 +90,8 @@
                 <!--end:Menu content-->
             </div>
             <!--end:Menu item-->
-
-{{--            @can("Ürünler.Listele")--}}
+            @endcan
+            @can("Stok Yönetimi.Ürünler.Listele")
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -108,8 +108,8 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-{{--            @endcan--}}
-
+            @endcan
+            @can("Stok Yönetimi.Kategoriler")
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -126,6 +126,8 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
+            @endcan
+            @can("Stok Yönetimi.Markalar")
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -142,7 +144,7 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-
+            @endcan
 
             <!--begin:Menu item-->
             <div class="menu-item pt-5">

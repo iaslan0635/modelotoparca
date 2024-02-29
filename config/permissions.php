@@ -7,6 +7,7 @@ return [
             [
                 'name' => 'Ürünler',
                 'children' => [
+                    ['name' => 'Listele'],
                     ['name' => 'Ara'],
                     ['name' => 'Dışarı Aktar'],
                     [
