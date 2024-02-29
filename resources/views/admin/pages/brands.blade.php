@@ -214,7 +214,7 @@
                             </thead>
                             <!--end::Table head-->
                             <!--begin::Table body-->
-                            <livewire:admin.brand-table :brands="$brands->items()" />
+                            <livewire:admin.brand-table :brands="$brands->getCollection()" />
                             <!--end::Table body-->
                         </table>
                         <!--end::Table-->

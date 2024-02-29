@@ -47,6 +47,10 @@ class ExcelImport implements ToModel, WithStartRow
         37 => 'onhand',
         38 => 'condition',
         39 => 'abk',
+        40 => 'raf_no',
+        41 => 'stock_on_51',
+        42 => 'stock_on_38',
+        43 => 'stock_on_01',
     ];
 
     public function model(array $row)

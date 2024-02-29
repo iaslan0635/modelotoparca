@@ -52,6 +52,10 @@ class ProductExporter
         "ONHAND",
         "CONDITION",
         "ABK",
+        "RafNo",
+        "S51",
+        "S38",
+        "S01",
     ];
 
     public static function export($tigerProducts)
