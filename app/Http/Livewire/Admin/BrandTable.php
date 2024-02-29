@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class BrandTable extends Component
 {
+    /** @var Collection<array-key, Brand> */
     public Collection $brands;
 
     public array|null $editingModel = null;
@@ -29,7 +30,7 @@ class BrandTable extends Component
 
     public function enterEditing($index)
     {
-        $this->editingModel = array_intersect_key($this->brands[$index], array_flip(self::EDITABLE_FIELDS));
+        $this->editingModel = $this->brands[$index]->only(array_flip(self::EDITABLE_FIELDS));
         $this->editingIndex = $index;
     }
 
