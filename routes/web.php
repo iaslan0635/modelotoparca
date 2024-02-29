@@ -22,7 +22,6 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::view('search', 'search')->name('search');
-Route::view('product-list', 'product-list')->name('product-list');
 Route::view('models-list', 'models-list')->name('models-list');
 Route::view('brands', 'brands')->name('brands-list');
 
