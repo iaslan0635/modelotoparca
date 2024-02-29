@@ -30,7 +30,7 @@ class BrandTable extends Component
 
     public function enterEditing($index)
     {
-        $this->editingModel = $this->brands[$index]->only(array_flip(self::EDITABLE_FIELDS));
+        $this->editingModel = $this->brands[$index]->only(self::EDITABLE_FIELDS);
         $this->editingIndex = $index;
     }
 
