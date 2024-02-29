@@ -2,68 +2,78 @@
 
 return [
     [
-        'name' => 'Ürünler',
+        'name' => 'StokYönetimi',
         'children' => [
-            ['name' => 'Listele',
+            ['name' => 'Ürünler',
                 'children' => [
-                    ['name' => 'BotEşleşmeleri',
+                    ['name' => 'ÜrünArama'],
+                    ['name' => 'ÜrünDışarıAktar'],
+                    ['name' => 'Filtrele',
                         'children' => [
-                            ['name' => 'Düzenle'],
-
+                            ['name' => 'Marka'],
+                            ['name' => 'Durum'],
+                        ]],
+                    ['name' => 'DetayGörüntüle',
+                        'children' => [
+                            ['name' => 'BotİleYenidenÇek'],
+                            ['name' => 'HepsiburadaOluştur'],
+                            ['name' => 'TrendyolOluştur'],
+                            ['name' => 'N11Oluştur'],
+                            ['name' => 'BotEşleşmeleri',
+                                'children' => [
+                                    ['name' => 'İşlemYap'],
+                                ],
+                            ],
+                            ['name' => 'ÜrünBilgileri'],
+                            ['name' => 'Oem Kodlar',
+                                'children' => [
+                                ['name' => 'Ekle'],
+                            ],],
+                            ['name' => 'UyumluAraçlar',
+                                'children' => [
+                                    ['name' => 'İşlemYap'],
+                                ],
+                            ],
+                            ['name' => 'SiparişGeçmişi'],
+                            ['name' => 'YorumGeçmişi'],
+                            ['name' => 'MağazaSoruları'],
+                            ['name' => 'BotKayıtları'],
+                            ['name' => 'BotResimleri',
+                                'children' => [
+                                    ['name' => 'İşlemYap'],
+                                ],
+                            ],
+                            ['name' => 'TrendyolÖzellikEşleştirme',
+                                'children' => [
+                                    ['name' => 'İşlemYap'],
+                                ]
+                            ],
+                            ['name' => 'HepsiburadaÖzellikEşleştirme',
+                                'children' => [
+                                    ['name' => 'İşlemYap'],
+                                ]
+                            ],
+                            ['name' => 'N11ÖzellikEşleştirme',
+                                'children' => [
+                                    ['name' => 'İşlemYap'],
+                                ]
+                            ],
                         ],
                     ],
-                    ['name' => 'Ürün Bilgileri'],
-                    ['name' => 'Oem Kodlar', 'children' => [
-                        ['name' => 'Ekle'],
-
-                    ]],
-                    ['name' => 'BotResimleri',
-                        'children' => [
-                            ['name' => 'Düzenle'],
-
-                        ],
-                    ],
-
-               ['name' => 'Stok'],
-                ['name' => 'UyumluAraçEkle'],
-                ['name' => 'BotİleYenidenÇek'],
-                ['name' => 'HepsiburadaOluştur'],
-                ['name' => 'TrendyolOluştur',
-                    'children' => [
-                        ['name' => 'Düzenle'],
-
-                    ]],
-                ['name' => 'N11Oluştur',
-                    'children' => [
-                        ['name' => 'Düzenle'],
-
-                    ]],
-
-                ],
-            ],
-            ['name' => 'Ekle'],
-            ['name' => 'Düzenle',
+                ] ],
+            [
+                'name' => 'Kategoriler',
                 'children' => [
-                    ['name' => 'Test'],
-                ]],
-            ['name' => 'Sil'],
-            ['name' => 'Stok',
-                'children' => [
-                    ['name' => 'Görüntüle'],
+                    ['name' => 'Listele'],
+                    ['name' => 'Ekle'],
                     ['name' => 'Düzenle'],
+                    ['name' => 'Sil'],
                 ]
             ],
+            ['name' => 'Markalar'],
         ]
     ],
-    [
-    'name' => 'Kategoriler',
-    'children' => [
-        ['name' => 'Listele'],
-        ['name' => 'Ekle'],
-        ['name' => 'Düzenle'],
-        ['name' => 'Sil'],
-    ]
-],
+
     [
     'name' => 'Excel İşlemleri',
     'children' => [
