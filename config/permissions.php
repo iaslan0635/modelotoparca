@@ -218,13 +218,13 @@ return [
                 'children' => [
                     ['name' => 'SayfaDüzenle'],
                     ['name' => 'YeniSayfaEkle'],
-                    ['name' => 'Yorumlar',
-                        'children' => [
-                            ['name' => 'YorumDüzenle'],
-                            ['name' => 'YorumOnayla'],
-                        ]],
                 ]
             ],
+            ['name' => 'Yorumlar',
+                'children' => [
+                    ['name' => 'YorumDüzenle'],
+                    ['name' => 'YorumOnayla'],
+                ]],
         ],
     ],
 ];
