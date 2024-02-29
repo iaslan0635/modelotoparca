@@ -7,8 +7,8 @@ return [
             [
                 'name' => 'Ürünler',
                 'children' => [
-                    ['name' => 'Ürün Arama'],
-                    ['name' => 'Ürün Dışarı Aktar'],
+                    ['name' => 'Ara'],
+                    ['name' => 'Dışarı Aktar'],
                     [
                         'name' => 'Filtrele',
                         'children' => [
@@ -29,7 +29,7 @@ return [
                                     ['name' => 'İşlem Yap'],
                                 ],
                             ],
-                            ['name' => 'Ürün Bilgileri'],
+                            ['name' => 'Bilgileri'],
                             [
                                 'name' => 'Oem Kodlar',
                                 'children' => [
@@ -77,14 +77,14 @@ return [
             [
                 'name' => 'Kategoriler',
                 'children' => [
-                    ['name' => 'Kategori Ara'],
-                    ['name' => 'Kategori Ekle'],
+                    ['name' => 'Ara'],
+                    ['name' => 'Ekle'],
                     [
-                        'name' => 'Kategori Düzenle',
+                        'name' => 'Düzenle',
                         'children' => [
-                            ['name' => 'İsim Guncelle'],
-                            ['name' => 'Açıklama Guncelle'],
-                            ['name' => 'Resim Guncelle'],
+                            ['name' => 'İsim'],
+                            ['name' => 'Açıklama'],
+                            ['name' => 'Resim'],
                         ],
                     ],
                     ['name' => 'Sil'],
@@ -93,13 +93,13 @@ return [
             [
                 'name' => 'Markalar',
                 'children' => [
-                    ['name' => 'Marka Ara'],
+                    ['name' => 'Ara'],
                     [
                         'name' => 'Düzenle',
                         'children' => [
-                            ['name' => 'İsim Guncelle'],
-                            ['name' => 'Açıklama Guncelle'],
-                            ['name' => 'Resim Guncelle'],
+                            ['name' => 'İsim'],
+                            ['name' => 'Açıklama'],
+                            ['name' => 'Resim'],
                         ],
                     ],
                 ],
@@ -112,9 +112,9 @@ return [
             [
                 'name' => 'Kullanıcılar',
                 'children' => [
-                    ['name' => 'Kullanıcı Ekle'],
+                    ['name' => 'Ekle'],
                     [
-                        'name' => 'Kullanıcı Düzenle',
+                        'name' => 'Düzenle',
                         'children' => [
                             ['name' => 'Ad'],
                             ['name' => 'Soyad'],
@@ -127,9 +127,9 @@ return [
             [
                 'name' => 'Yöneticiler',
                 'children' => [
-                    ['name' => 'Yönetici Ekle'],
+                    ['name' => 'Ekle'],
                     [
-                        'name' => 'Yönetici Düzenle',
+                        'name' => 'Düzenle',
                         'children' => [
                             ['name' => 'Ad'],
                             ['name' => 'Soyad'],
@@ -144,7 +144,7 @@ return [
                 'children' => [
                     ['name' => 'İzinleri Görüntüle'],
                     ['name' => 'İzinleri Düzenle'],
-                    ['name' => 'Rol Sil'],
+                    ['name' => 'Sil'],
                 ],
             ],
         ],
@@ -155,9 +155,9 @@ return [
             [
                 'name' => 'İçe Aktar',
                 'children' => [
-                    ['name' => 'ITEM WEB'],
-                    ['name' => 'ITEM WEB EKLEME MOD'],
-                    ['name' => 'ITEM SUBS'],
+                    ['name' => 'ITEMS WEB'],
+                    ['name' => 'ITEMS WEB EK'],
+                    ['name' => 'ITEMS SUBS'],
                     ['name' => 'ITEMCLSAS'],
                     ['name' => 'FILTER_OIL'],
                     ['name' => 'MARKALAR'],
@@ -172,15 +172,15 @@ return [
             [
                 'name' => 'Arama Düzeltmleri',
                 'children' => [
-                    ['name' => 'Düzetlme Ekle'],
-                    ['name' => 'Düzetlme Sil'],
+                    ['name' => 'Ekle'],
+                    ['name' => 'Sil'],
                 ],
             ],
             [
                 'name' => 'Araçlar',
                 'children' => [
-                    ['name' => 'Araç Ara'],
-                    ['name' => 'Araç Düzenle'],
+                    ['name' => 'Ara'],
+                    ['name' => 'Düzenle'],
                     ['name' => 'Aktif Pasif Yap'],
                 ],
             ],
@@ -245,21 +245,21 @@ return [
             [
                 'name' => 'Genel Ayarlar',
                 'children' => [
-                    ['name' => 'Ayar Düzenle'],
+                    ['name' => 'Düzenle'],
                 ],
             ],
             [
                 'name' => 'Sayfalar',
                 'children' => [
-                    ['name' => 'Sayfa Düzenle'],
-                    ['name' => 'Yeni Sayfa Ekle'],
+                    ['name' => 'Düzenle'],
+                    ['name' => 'Ekle'],
                 ],
             ],
             [
                 'name' => 'Yorumlar',
                 'children' => [
-                    ['name' => 'Yorum Düzenle'],
-                    ['name' => 'Yorum Onayla'],
+                    ['name' => 'Düzenle'],
+                    ['name' => 'Onayla'],
                 ],
             ],
         ],
