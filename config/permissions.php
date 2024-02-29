@@ -27,8 +27,8 @@ return [
                             ['name' => 'ÜrünBilgileri'],
                             ['name' => 'Oem Kodlar',
                                 'children' => [
-                                ['name' => 'Ekle'],
-                            ],],
+                                    ['name' => 'Ekle'],
+                                ],],
                             ['name' => 'UyumluAraçlar',
                                 'children' => [
                                     ['name' => 'İşlemYap'],
@@ -60,34 +60,171 @@ return [
                             ],
                         ],
                     ],
-                ] ],
+                ]],
             [
                 'name' => 'Kategoriler',
                 'children' => [
-                    ['name' => 'Listele'],
-                    ['name' => 'Ekle'],
-                    ['name' => 'Düzenle'],
+                    ['name' => 'KategoriAra'],
+                    ['name' => 'KategoriEkle'],
+                    ['name' => 'KategoriDüzenle',
+                        'children' => [
+                            ['name' => 'İsimGuncelle'],
+                            ['name' => 'AçıklamaGuncelle'],
+                            ['name' => 'ResimGuncelle'],
+                        ]],
                     ['name' => 'Sil'],
                 ]
             ],
-            ['name' => 'Markalar'],
+            ['name' => 'Markalar',
+                'children' => [
+                    ['name' => 'MarkaAra'],
+                    ['name' => 'Düzenle',
+                        'children' => [
+                            ['name' => 'İsimGuncelle'],
+                            ['name' => 'AçıklamaGuncelle'],
+                            ['name' => 'ResimGuncelle'],
+                        ]],
+                ]],
         ]
+    ],
+    [
+        'name' => 'Kullanıcıİşlemleri',
+        'children' => [
+            ['name' => 'Kullanıcılar',
+                'children' => [
+                    ['name' => 'KullanıcıEkle'],
+                    ['name' => 'KullanıcıDüzenle',
+                        'children' => [
+                            ['name' => 'Ad'],
+                            ['name' => 'Soyad'],
+                            ['name' => 'Eposta'],
+                            ['name' => 'Şifre'],
+                        ]],
+                ]
+            ],
+            ['name' => 'Yöneticiler',
+                'children' => [
+                    ['name' => 'YöneticiEkle'],
+                    ['name' => 'YöneticiDüzenle',
+                        'children' => [
+                            ['name' => 'Ad'],
+                            ['name' => 'Soyad'],
+                            ['name' => 'Eposta'],
+                            ['name' => 'Şifre'],
+                        ]],
+                ]
+            ],
+
+            ['name' => 'Roller',
+                'children' => [
+                    ['name' => 'İzinleriGörüntüle'],
+                    ['name' => 'İzinleriDüzenle'],
+                    ['name' => 'RolSil'],
+                ]
+            ],
+        ],
+    ],
+    [
+        'name' => 'Excelİşlemleri',
+        'children' => [
+            ['name' => 'İçe Aktar',
+                'children' => [
+                    ['name' => 'ITEM WEB'],
+                    ['name' => 'ITEM WEB EKLEME MOD'],
+                    ['name' => 'ITEM SUBS'],
+                    ['name' => 'ITEMCLSAS'],
+                    ['name' => 'FILTER_OIL'],
+                    ['name' => 'MARKALAR'],
+                ]
+            ],
+        ]
+    ],
+    [
+        'name' => 'Analizler',
+        'children' => [
+            ['name' => 'Aramaİstatistikleri'],
+            ['name' => 'AramaDüzeltmleri',
+                'children' => [
+                    ['name' => 'DüzetlmeEkle'],
+                    ['name' => 'DüzetlmeSil'],
+                ]
+            ],
+            ['name' => 'Araçlar',
+                'children' => [
+                    ['name' => 'AraçAra'],
+                    ['name' => 'AraçDüzenle'],
+                    ['name' => 'AktifPasifYap'],
+                ]
+            ],
+        ],
     ],
 
     [
-    'name' => 'Excel İşlemleri',
-    'children' => [
-        ['name' => 'İçe Aktar',
-            'children' => [
-                ['name' => 'ITEM WEB'],
-                ['name' => 'ITEM WEB EKLEME MOD'],
-                ['name' => 'ITEM SUBS'],
-                ['name' => 'ITEMCLSAS'],
-                ['name' => 'FILTER_OIL'],
-                ['name' => 'MARKALAR'],
-            ]
+        'name' => 'Pazaryerleri',
+        'children' => [
+            ['name' => 'Ürünler',
+                'children' => [
+                    ['name' => 'TümÜrünler'],
+                    ['name' => 'SatıştakiÜrünler'],
+                    ['name' => 'HatalıÜrünler'],
+                ]
             ],
-    ]
-]
-
+            ['name' => 'Siparişler',
+                'children' => [
+                    ['name' => 'TümSiparişler'],
+                    ['name' => 'YeniSiparişler'],
+                    ['name' => 'TamamlananSiparişler'],
+                ]
+            ],
+            ['name' => 'KategoriEşitleme'],
+            ['name' => 'MarkaEşitleme'],
+            ['name' => 'EntegrasyonAyarları'],
+        ],
+    ],
+    [
+        'name' => 'EticaretYönetimi',
+        'children' => [
+            ['name' => 'Siparişler',
+                'children' => [
+                    ['name' => 'SiparişSorgula'],
+                    ['name' => 'TümSiparişler'],
+                    ['name' => 'KargodakiSiparişler'],
+                    ['name' => 'İptalEdilenler'],
+                    ['name' => 'TamamlananSiparişler'],
+                    ['name' => 'Pazaryerleri'],
+                ]
+            ],
+            ['name' => 'İadeİşlemleri',
+                'children' => [
+                    ['name' => 'İadeSorgula'],
+                    ['name' => 'İadeTalepleri',
+                        'children' => [
+                            ['name' => 'İşlemYap'],
+                        ]],
+                    ['name' => 'Tamamlananİadeler'],
+                ]
+            ],
+        ],
+    ],
+    [
+        'name' => 'SiteYönetimi',
+        'children' => [
+            ['name' => 'GenelAyarlar',
+                'children' => [
+                    ['name' => 'AyarDüzenle'],
+                ]
+            ],
+            ['name' => 'Sayfalar',
+                'children' => [
+                    ['name' => 'SayfaDüzenle'],
+                    ['name' => 'YeniSayfaEkle'],
+                    ['name' => 'Yorumlar',
+                        'children' => [
+                            ['name' => 'YorumDüzenle'],
+                            ['name' => 'YorumOnayla'],
+                        ]],
+                ]
+            ],
+        ],
+    ],
 ];
