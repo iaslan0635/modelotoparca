@@ -124,6 +124,20 @@
                                                     <th>Cross code</th>
                                                     <td>{{ $product->cross_code }}</td>
                                                 </tr>
+                                                <tr>
+                                                    <th>Ek bilgi</th>
+                                                    <td>{{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Ek bilgi</th>
+                                                    <td>
+                                                        <h6>
+                                                            <span class="badge @if($tiger->stock_on_51) badge-success @else badge-danger @endif">S51</span>
+                                                            <span class="badge @if($tiger->stock_on_38) badge-success @else badge-danger @endif">S38</span>
+                                                            <span class="badge @if($tiger->stock_on_01) badge-success @else badge-danger @endif">S01</span>
+                                                        </h6>
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </div>
                                     </div>
@@ -136,11 +150,11 @@
                                         <div class="product__tags tags tags--sm">
                                             <div class="tags__list">
                                                 @foreach($oems as $oem)
-                                                            @foreach(explode(',', $oem->oems) as $item)
-                                                                <a href="{{ $item ? route('oem.search', ['oem' => $item]) : null }}">
-                                                                    {{ $item }}
-                                                                </a>{{ !$loop->last ? " " : null }}
-                                                            @endforeach
+                                                    @foreach(explode(',', $oem->oems) as $item)
+                                                        <a href="{{ $item ? route('oem.search', ['oem' => $item]) : null }}">
+                                                            {{ $item }}
+                                                        </a>{{ !$loop->last ? " " : null }}
+                                                    @endforeach
                                                 @endforeach
                                             </div>
                                         </div>
@@ -167,18 +181,6 @@
                                     </div>
                                 </div>
                                 @include('partials.ucretsiz-kargo-dikey')
-                                <div class="product__shop-features shop-features internal-card">
-                                    <ul class="shop-features__list">
-                                        <li class="shop-features__item" style="justify-content: center; display: flex;">
-                                            {{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}
-                                        </li>
-                                        <li class="shop-features__item" style="justify-content: space-evenly; display: flex;">
-                                            <h4><span class="badge @if($tiger->stock_on_51) badge-success @else badge-danger @endif">S51</span></h4>
-                                            <h4><span class="badge @if($tiger->stock_on_38) badge-success @else badge-danger @endif">S38</span></h4>
-                                            <h4><span class="badge @if($tiger->stock_on_01) badge-success @else badge-danger @endif">S01</span></h4>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="product__tabs product-tabs product-tabs--layout--full">
                                 <ul class="product-tabs__list">
@@ -412,7 +414,8 @@
                                                                             @foreach($cars as $car)
                                                                                 <tr>
                                                                                     <td class="analogs-table__column">
-                                                                                        <img src="{{ $car->imageUrl() }}" style="height: 2rem">
+                                                                                        <img src="{{ $car->imageUrl() }}"
+                                                                                             style="height: 2rem">
                                                                                     </td>
                                                                                     <td class="analogs-table__column">{{ $car->name }}</td>
                                                                                     <td class="analogs-table__column">
@@ -421,9 +424,14 @@
                                                                                                     $car->produced_to ?? $cachedNow ?? ($cachedNow = now()->format("d-m-Y"))
                                                                                                 }}
                                                                                     </td>
-{{--                                                                                    <td class="analogs-table__column">{{ $car->engine }} </td>--}}
-                                                                                    <td class="analogs-table__column">{{$car->type}} / {{ $car->power_kw }} Kw / {{ $car->power_hp }} Hp </td>
-                                                                                    <td class="analogs-table__column">{{ $car->capacity }} cc </td>
+                                                                                    {{--                                                                                    <td class="analogs-table__column">{{ $car->engine }} </td>--}}
+                                                                                    <td class="analogs-table__column">{{$car->type}}
+                                                                                        / {{ $car->power_kw }} Kw
+                                                                                        / {{ $car->power_hp }} Hp
+                                                                                    </td>
+                                                                                    <td class="analogs-table__column">{{ $car->capacity }}
+                                                                                        cc
+                                                                                    </td>
                                                                                     <td class="analogs-table__column"> {{$car->engine_code}} </td>
                                                                                 </tr>
                                                                             @endforeach
@@ -488,7 +496,8 @@
 
 
                                     </div>
-                                    <div class="product-tabs__pane product-tabs__pane--active" id="product-same-products">
+                                    <div class="product-tabs__pane product-tabs__pane--active"
+                                         id="product-same-products">
                                         <div class="products-view__list products-list products-list--grid--4"
                                              data-layout="table" data-with-features="false">
                                             <div class="products-list__head">
@@ -826,7 +835,7 @@
 @endpush
 @push('styles')
     <style>
-        .internal-card{
+        .internal-card {
             opacity: 0;
             transition: opacity 0.5s;
         }
