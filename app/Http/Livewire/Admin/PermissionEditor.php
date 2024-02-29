@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Employee;
-use App\Models\PermissionTree;
 use App\Models\Role;
 use App\Packages\Permissions\PermissionSynchronizer;
 use App\Packages\Permissions\Tree;
@@ -25,7 +24,10 @@ class PermissionEditor extends Component
         if ($model instanceof Employee) {
             $role = $model->roles()->first();
             if ($role !== null) {
-                $roleTree = Tree::fromDesignations($role->permissionTree()->value("tree"));
+                $roleDesignations = $role->permissionTree()->value("tree");
+                if ($roleDesignations !== null) {
+                    $roleTree = Tree::fromDesignations($roleDesignations);
+                }
             }
         }
 

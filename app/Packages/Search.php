@@ -444,6 +444,11 @@ class Search
         return $queries;
     }
 
+    private static function cleanTerm(string $term)
+    {
+        return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $term));
+    }
+
     public static function query(string|null $term, $sortBy = null, int|null $selectCategory = null, ?array $relations = null, ?QueryBuilderInterface $filterQuery = null): array
     {
         $startTime = microtime(true);
@@ -457,10 +462,10 @@ class Search
             ];
         }
 
-        $cleanTerm = strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $term));
+        $cleanTerm = self::cleanTerm($term);
 
         $replacedTerm = SearchReplacement::replace($term);
-        $cleanReplacedTerm = SearchReplacement::replace($cleanTerm);
+        $cleanReplacedTerm = self::cleanTerm(SearchReplacement::replace($cleanTerm));
         $term = str_replace(['ö', 'ç', 'ş', 'ü', 'ğ', 'İ', 'ı', 'Ö', 'Ç', 'Ş', 'Ü', 'Ğ'], ['o', 'c', 's', 'u', 'g', 'I', 'i', 'O', 'C', 'S', 'U', 'G'], trim($term));
 
         $queryCombinations = self::termWiseQueryCombination(
