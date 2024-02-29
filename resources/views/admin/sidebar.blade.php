@@ -91,7 +91,7 @@
             </div>
             <!--end:Menu item-->
 
-            @can("Stok Yönetimi.Ürünler.Listele")
+{{--            @can("Stok Yönetimi.Ürünler.Listele")--}}
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -108,8 +108,8 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-            @endcan
-            @can("Stok Yönetimi.Kategoriler")
+{{--            @endcan--}}
+{{--            @can("Stok Yönetimi.Kategoriler")--}}
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -126,8 +126,8 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-            @endcan
-            @can("Stok Yönetimi.Markalar")
+{{--            @endcan--}}
+{{--            @can("Stok Yönetimi.Markalar")--}}
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -144,7 +144,7 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-            @endcan
+{{--            @endcan--}}
 
             <!--begin:Menu item-->
             <div class="menu-item pt-5">
@@ -330,7 +330,7 @@
             <!--end:Menu item-->
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                @can("Pazaryerleri.Ürünler")
+{{--                @can("Pazaryerleri.Ürünler")--}}
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">
@@ -352,7 +352,8 @@
                     <span class="menu-arrow"></span>
                 </span>
                 <!--end:Menu link-->
-                @endcan
+{{--                @endcan--}}
+{{--                @can("Pazaryerleri.Ürünler")--}}
                 <!--begin:Menu sub-->
                 <div class="menu-sub menu-sub-accordion">
                     <!--begin:Menu item-->
@@ -367,6 +368,7 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
+{{--                @endcan--}}
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
