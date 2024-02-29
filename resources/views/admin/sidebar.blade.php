@@ -227,7 +227,7 @@
 												</span>
                         <!--end::Svg Icon-->
                     </span>
-                    <span class="menu-heading fw-bold text-uppercase fs-7">EXCEL İŞLEMLERİ</span>
+                    <span class="menu-heading fw-bold text-uppercase fs-7">AKTARMA İŞLEMLERİ</span>
                 </div>
                 <!--end:Menu content-->
             </div>
