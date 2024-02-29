@@ -170,15 +170,8 @@
                             </div>
                             <div class="product__tabs product-tabs product-tabs--layout--full">
                                 <ul class="product-tabs__list">
+
                                     <li class="product-tabs__item product-tabs__item--active">
-                                        <a
-                                            href="#product-tab-cars">Uyumlu Araçlar
-                                        </a>
-                                    </li>
-                                    <li class="product-tabs__item">
-                                        <a href="#product-tab-oem-codes">Oem Kodlar</a>
-                                    </li>
-                                    <li class="product-tabs__item">
                                         <a href="#product-same-products">Eşdeğer Ürünler</a>
                                     </li>
                                     <li class="product-tabs__item">
@@ -186,6 +179,15 @@
                                             Ürünler
                                         </a>
                                     </li>
+                                    <li class="product-tabs__item">
+                                        <a
+                                            href="#product-tab-cars">Uyumlu Araçlar
+                                        </a>
+                                    </li>
+                                    <li class="product-tabs__item">
+                                        <a href="#product-tab-oem-codes">Oem Kodlar</a>
+                                    </li>
+
                                     <li class="product-tabs__item">
                                         <a href="#tecdoc-equivalents">TecDoc</a>
                                     </li>
@@ -338,7 +340,7 @@
                                             @endauth
                                         </div>
                                     </div>
-                                    <div class="product-tabs__pane product-tabs__pane--active" id="product-tab-cars">
+                                    <div class="product-tabs__pane" id="product-tab-cars">
 
                                         <div class="compatible-cars row mt-2">
                                             @foreach($car_brands as $brand => $cars_by_names)
@@ -474,7 +476,7 @@
 
 
                                     </div>
-                                    <div class="product-tabs__pane" id="product-same-products">
+                                    <div class="product-tabs__pane product-tabs__pane--active" id="product-same-products">
                                         <div class="products-view__list products-list products-list--grid--4"
                                              data-layout="table" data-with-features="false">
                                             <div class="products-list__head">

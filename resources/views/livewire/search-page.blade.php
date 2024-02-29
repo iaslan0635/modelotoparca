@@ -172,7 +172,7 @@
                                     <div class="layout-switcher__list">
                                         <button type="button" data-layout-id="1" class="layout-switcher__button"
                                                 data-layout="grid"
-                                                data-with-features="false">
+                                                data-with-features="true">
                                             <svg width="16" height="16">
                                                 <path d="M15.2,16H9.8C9.4,16,9,15.6,9,15.2V9.8C9,9.4,9.4,9,9.8,9h5.4C15.6,9,16,9.4,16,9.8v5.4C16,15.6,15.6,16,15.2,16z M15.2,7
 	H9.8C9.4,7,9,6.6,9,6.2V0.8C9,0.4,9.4,0,9.8,0h5.4C15.6,0,16,0.4,16,0.8v5.4C16,6.6,15.6,7,15.2,7z M6.2,16H0.8
@@ -182,7 +182,7 @@
                                         </button>
                                         <button type="button" data-layout-id="2" class="layout-switcher__button"
                                                 data-layout="grid"
-                                                data-with-features="true">
+                                                data-with-features="false">
                                             <svg width="16" height="16">
                                                 <path d="M16,0.8v14.4c0,0.4-0.4,0.8-0.8,0.8H9.8C9.4,16,9,15.6,9,15.2V0.8C9,0.4,9.4,0,9.8,0l5.4,0C15.6,0,16,0.4,16,0.8z M7,0.8
 	v14.4C7,15.6,6.6,16,6.2,16H0.8C0.4,16,0,15.6,0,15.2L0,0.8C0,0.4,0.4,0,0.8,0l5.4,0C6.6,0,7,0.4,7,0.8z"/>

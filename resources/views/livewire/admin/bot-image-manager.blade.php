@@ -7,7 +7,10 @@
 {{--                        {{ $image->bot_page_url }}--}}
 {{--                    </a>--}}
 {{--                </div>--}}
+
+
                 <div class="card-toolbar gap-4">
+                    @can("Ürünler.Düzenle.BotResimleri")
                     <a title="Sayfaya git" href="{{ $image->bot_page_url }}" target="_blank" class="btn btn-sm p-1 btn-info" wire:click="decline({{$image->id}})">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
@@ -16,6 +19,7 @@
                             <rect x="11" y="7" width="2" height="2" rx="1" fill="currentColor"/>
                         </svg>
                     </a>
+
                     <button title="Reddet" class="btn btn-sm p-1 btn-danger" wire:click="decline({{$image->id}})">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
@@ -23,6 +27,7 @@
                             <rect x="8.41422" y="7" width="12" height="2" rx="1" transform="rotate(45 8.41422 7)" fill="currentColor"/>
                         </svg>
                     </button>
+                    @endcan
                     <button title="Kabul et" class="btn btn-sm p-1 btn-success" wire:click="accept({{$image->id}})">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
@@ -30,6 +35,7 @@
                         </svg>
                     </button>
                 </div>
+
             </div>
             <div class="card-body mx-auto">
                 <img src="{{ $image->url }}" style="max-width: 100%"/>

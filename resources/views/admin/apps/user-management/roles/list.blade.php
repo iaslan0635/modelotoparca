@@ -65,6 +65,9 @@
                                     <a href="{{ route('admin.role.edit', $role) }}" class="btn btn-light btn-active-light-primary my-1">
                                         İzinleri Düzenle
                                     </a>
+                                    <a href="{{ route('admin.role.delete', $role) }}" class="btn btn-danger my-1 btn-sm">
+                                        Sil
+                                    </a>
                                 </div>
                                 <!--end::Card footer-->
                             </div>
