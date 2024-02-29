@@ -68,7 +68,7 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-            @can("Stok Yönetimi")
+
             <!--begin:Menu item-->
             <div class="menu-item pt-5">
                 <!--begin:Menu content-->
@@ -90,7 +90,7 @@
                 <!--end:Menu content-->
             </div>
             <!--end:Menu item-->
-            @endcan
+
             @can("Stok Yönetimi.Ürünler.Listele")
             <!--begin:Menu item-->
             <div class="menu-item">
