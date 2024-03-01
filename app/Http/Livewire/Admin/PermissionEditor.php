@@ -9,6 +9,7 @@ use App\Packages\Permissions\Tree;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\PermissionRegistrar;
 
 class PermissionEditor extends Component
 {
@@ -83,6 +84,7 @@ class PermissionEditor extends Component
                 }
 
                 $this->model->permissions()->sync($permissionIds);
+                app(PermissionRegistrar::class)->forgetCachedPermissions();
             }
         });
 
