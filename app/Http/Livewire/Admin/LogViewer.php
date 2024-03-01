@@ -14,7 +14,7 @@ class LogViewer extends Component
     public function mount(int $productId)
     {
         $this->productId = $productId;
-        $this->logs = Log::where("product_id", $productId)->get();
+        $this->refresh();
     }
 
     public function render()
@@ -24,6 +24,6 @@ class LogViewer extends Component
 
     public function refresh()
     {
-        $this->logs = Log::where("product_id", $this->productId)->get();
+        $this->logs = Log::where("product_id", $this->productId)->orderByDesc('created_at')->get();
     }
 }

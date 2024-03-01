@@ -143,7 +143,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('admin.apps.ecommerce.catalog.edit-product',
-            [...CustomerProductController::getViewData($product), 'logs' => Log::where('product_id', $product->id)->orderByDesc('created_at')->get()]
+            CustomerProductController::getViewData($product)
         );
     }
 
