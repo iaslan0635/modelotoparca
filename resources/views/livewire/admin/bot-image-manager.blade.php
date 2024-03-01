@@ -10,7 +10,7 @@
 
 
                 <div class="card-toolbar gap-4">
-                    @can("Ürünler.Düzenle.BotResimleri")
+                    @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Bot Resimleri.İşlem Yap")
                     <a title="Sayfaya git" href="{{ $image->bot_page_url }}" target="_blank" class="btn btn-sm p-1 btn-info" wire:click="decline({{$image->id}})">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor"/>
