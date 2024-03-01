@@ -288,7 +288,7 @@ class ExcelImport implements ShouldQueue
             if ($found) {
                 Log::create([
                     'product_id' => $product->id,
-                    'message' => "Ürün bulundu, bot sonlandırılıyor. Kolon: $field, Değer: $value, Marka filtresi: " . ($brand_filter ?? '(Yok)'),
+                    'message' => "Ürün bulundu, bot sonlandırılıyor. Kolon: $field | Değer: $value | Marka filtresi: " . ($brand_filter ?? '(Yok)'),
                 ]);
                 break;
             }

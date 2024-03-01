@@ -42,8 +42,18 @@ class OnlineCarParts
 
     public function searchProducts(): array
     {
+        $links = [];
+        $searchPages = $this->getSearchPages();
+        foreach ($searchPages as $searchPage) {
+            array_push($links, ...$this->scrapeSearchPage($searchPage));
+        }
+        return $links;
+    }
+
+    public function getSearchPages(): array
+    {
         $url = $this->field === "oem_codes"
-            ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($this->keyword) . ".html"
+            ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($this->keyword) . ".html?"
             : "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($this->keyword);
 
         try {
@@ -59,30 +69,45 @@ class OnlineCarParts
             $crawler = new Crawler(OcpClient::request($url));
         } catch (OcpClientException $e) {
             if ($this->field === "oem_codes" && $e->statusCode === 404) {
-                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor | Aranan sayfa: $e->url");
+                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor. | Aranan sayfa: $e->url");
                 return [];
             } else {
                 throw $e;
             }
         }
-        // TODO: pagination
 
-        $productEls = $crawler->filter(".product-card:not([data-recommended-products])");
-
-        if (
-            $this->field === "producercode" ||
-            $this->field === "producercode2" ||
-            $this->field === "cross_code" ||
-            $this->field === "abk"
-        ) {
-            $commonizedKeyword = self::commonizeString($this->keyword);
-            $productEls = $productEls->reduce(
-                function (Crawler $el) use ($commonizedKeyword) {
-                    $artklEl = $el->filter(".product-card__artkl span");
-                    return $artklEl->count() != 0 && self::commonizeString($artklEl->innerText()) === $commonizedKeyword;
-                }
-            );
+        $pages = $crawler->filter(".listing-pagination__item[data-pagination-page]");
+        if ($pages->count()) {
+            $pageCount = (int)$pages->last()->text();
+            $this->log("Arama sonucu $pageCount sayfadan oluşuyor.");
+            $searchPages = [$crawler];
+            for ($i = 2; $i <= $pageCount; $i++) {
+                $searchPages[] = new Crawler(OcpClient::request("$url&page=$i"));
+            }
+            return $searchPages;
         }
+
+        return [$crawler];
+    }
+
+    public function scrapeSearchPage(Crawler $searchPage)
+    {
+        $productEls = $searchPage->filter(".product-card:not([data-recommended-products])");
+
+//        if (
+//            $this->field === "producercode" ||
+//            $this->field === "producercode2" ||
+//            $this->field === "cross_code" ||
+//            $this->field === "abk"
+//        ) {
+//            $commonizedKeyword = self::commonizeString($this->keyword);
+//            $productEls = $productEls->reduce(
+//                function (Crawler $el) use ($commonizedKeyword) {
+//                    $artklEl = $el->filter(".product-card__artkl span");
+//                    return $artklEl->count() != 0 && self::commonizeString($artklEl->innerText()) === $commonizedKeyword;
+//                }
+//            );
+//        }
 
         $links = $productEls->each(function (Crawler $el) {
             $linkEl = $el->filter(".product-card__title-link");

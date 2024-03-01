@@ -14,6 +14,7 @@ use App\Packages\Utils;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 
+/** @deprecated */
 class Spareto
 {
     public static function request(string $url)
