@@ -147,7 +147,7 @@
                 <x-sidebar.item href="admin/sales-list">Tamamlanan İadeler</x-sidebar.item>
             </x-sidebar.menu>
 <<<<<<< HEAD
-            @can("Pazaryerleri.Ürünler.Kategori Eşitleme")
+            @can("Pazaryerleri.Kategori Eşitleme")
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
