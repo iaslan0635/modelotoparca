@@ -300,39 +300,7 @@
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade" id="bot-logs" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
-                                                <h2>Kayıtlar</h2>
-                                            </div>
-                                            <!--end::Card title-->
-                                        </div>
-                                        <!--end::Card header-->
-                                        <div class="card-body pt-0">
-                                            <table class="table table-responsive table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th>Mesaj</th>
-                                                    <th class="text-end">Tarih</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($logs as $log)
-                                                    <tr>
-                                                        <td>
-                                                            <pre>{{ $log->message }}</pre>
-                                                        </td>
-                                                        <td class="text-end">{{ $log->created_at->diffForHumans() }}</td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!--end::Card-->
+                                    <livewire:admin.log-viewer :productId="$product->id"/>
                                 </div>
                             </div>
                             <!--end::Tab pane-->
