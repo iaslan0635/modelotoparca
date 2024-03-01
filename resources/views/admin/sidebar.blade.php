@@ -106,7 +106,7 @@
 
                     @can("Pazaryerleri.Ürünler.Tüm Ürünler")
                         <x-sidebar.item :href="route('admin.marketplace-products.index')">Tüm Ürünler</x-sidebar.item>
-
+                    @endcan
                     @can("Pazaryerleri.Ürünler.Satıştaki Ürünler")
                         <x-sidebar.item :href="route('admin.marketplace-products.on-sale')">Satıştaki Ürünler
                         </x-sidebar.item>
@@ -124,10 +124,10 @@
                 <x-sidebar.item href="">Tamamlanan Siparişler</x-sidebar.item>
             </x-sidebar.menu>
 
-            @can("Pazaryerleri.Kategori Eşitleme")
+            @can("Pazaryerleri.Ürünler.Tüm Ürünler")
             <x-sidebar.item :href="route('admin.category-sync')">Kategori Eşitleme</x-sidebar.item>
             @endcan
-            @can("Pazaryerleri.Marka Eşitleme")
+            @can("Pazaryerleri.Ürünler.Tüm Ürünler")
             <x-sidebar.item :href="route('admin.brand-sync')">Marka Eşitleme</x-sidebar.item>
             @endcan
 
