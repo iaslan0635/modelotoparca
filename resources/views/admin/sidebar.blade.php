@@ -234,7 +234,7 @@
                 </div>
                 <!--end:Menu item-->
             </x-sidebar.menu>
-
+            @can("Pazaryerleri.Ürünler.Kategori Eşitleme")
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -251,6 +251,8 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
+            @endcan
+            @can("Pazaryerleri.Marka Eşitleme")
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -267,7 +269,7 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-
+            @endcan
 
             <!--begin:Menu item-->
             <div class="menu-item pt-5">
