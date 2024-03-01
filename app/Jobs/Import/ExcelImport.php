@@ -25,17 +25,14 @@ class ExcelImport implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $data;
-
     const CURRENCY_MAP = [
         160 => 'try',
         1 => 'usd',
         20 => 'eur',
     ];
-
     const IMAGE_11 = 0b10;
-
     const IMAGE_12 = 0b01;
+    public $data;
 
     /**
      * Create a new job instance.
@@ -259,9 +256,22 @@ class ExcelImport implements ShouldQueue
                 continue;
             }
 
-            if ($product[$field] === null) continue;
+            if ($product[$field] === null) {
+                Log::create([
+                    'product_id' => $product->id,
+                    'message' => "Boş (null) değer atlandı. Kolon: $field",
+                ]);
+                continue;
+            }
+
             $value = trim($product[$field]);
-            if (strlen($value) === 0) continue;
+            if (strlen($value) === 0) {
+                Log::create([
+                    'product_id' => $product->id,
+                    'message' => "Boş değer atlandı. Kolon: $field",
+                ]);
+                continue;
+            }
 
             $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
 
@@ -275,7 +285,13 @@ class ExcelImport implements ShouldQueue
                 field: $field,
                 brand_filter: $brand_filter,
             ))->smash();
-            if ($found) break;
+            if ($found) {
+                Log::create([
+                    'product_id' => $product->id,
+                    'message' => "Ürün bulundu, bot sonlandırılıyor. Kolon: $field, Değer: $value, Marka filtresi: " . ($brand_filter ?? '(Yok)'),
+                ]);
+                break;
+            }
         }
 
         $product->actualProduct?->searchable();
