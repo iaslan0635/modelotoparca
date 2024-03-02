@@ -20,11 +20,10 @@ class Search extends Component
     public function render()
     {
         $relations = [
-            "alternatives",
-            "similars",
-            "image"
+            'alternatives',
+            'similars',
+            'image',
         ];
-
 
         $categories = [];
         $results = [];

@@ -10,9 +10,13 @@ use Livewire\Component;
 class ProductAttributeHepsiburada extends Component
 {
     public array $attribute;
+
     public int $product_id;
+
     public string $value;
+
     public $value_id;
+
     public array $values = [];
 
     public function render()
@@ -23,7 +27,7 @@ class ProductAttributeHepsiburada extends Component
     public function mount()
     {
         $sync = ProductMerchantAttribute::query()
-            ->where('merchant', '=', "hepsiburada")
+            ->where('merchant', '=', 'hepsiburada')
             ->where('product_id', '=', $this->product_id)
             ->where('merchant_id', '=', $this->attribute['id'])
             ->first();
@@ -43,11 +47,11 @@ class ProductAttributeHepsiburada extends Component
     public function save()
     {
         Product::find($this->product_id)->merchantAttributes()->updateOrCreate([
-            'merchant' => "hepsiburada",
+            'merchant' => 'hepsiburada',
             'merchant_id' => $this->attribute['id'],
             'product_id' => $this->product_id,
         ], [
-            "merchant_value" => $this->attribute['type'] === "string" ? $this->value : $this->value_id
+            'merchant_value' => $this->attribute['type'] === 'string' ? $this->value : $this->value_id,
         ]);
     }
 }

@@ -9,6 +9,7 @@ use Livewire\Component;
 class MarketPlaceStatus extends Component
 {
     public Product $product;
+
     public ?array $statuses = null;
 
     public function render()

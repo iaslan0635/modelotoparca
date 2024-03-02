@@ -10,7 +10,9 @@ use Livewire\Component;
 class PermissionEditor extends Component
 {
     public Employee|Role $model;
+
     public array $designations;
+
     private Tree $tree;
 
     public bool $isDirty = false;
@@ -24,12 +26,12 @@ class PermissionEditor extends Component
     public function mount(Employee|Role $model)
     {
         $this->model = $model;
-        $this->designations = $model->permissionTree()->value("tree") ?? [];
+        $this->designations = $model->permissionTree()->value('tree') ?? [];
     }
 
     public function render()
     {
-        return view('livewire.admin.permission-editor', ["rootPermissions" => $this->tree->getChildren()]);
+        return view('livewire.admin.permission-editor', ['rootPermissions' => $this->tree->getChildren()]);
     }
 
     private function setPermissionDesignation(string $permissionName, ?bool $designation)

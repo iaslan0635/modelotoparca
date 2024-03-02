@@ -10,7 +10,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        return view('admin.inhouse.employee.index', ["employees" => Employee::paginate()]);
+        return view('admin.inhouse.employee.index', ['employees' => Employee::paginate()]);
     }
 
     public function create()
@@ -29,7 +29,7 @@ class EmployeeController extends Controller
         $data['password'] = Hash::make($data['password']);
         Employee::create($data);
 
-        return redirect()->route("admin.user.index");
+        return redirect()->route('admin.user.index');
     }
 
     public function show(Employee $employee)
@@ -57,7 +57,7 @@ class EmployeeController extends Controller
 
         $employee->update($data);
 
-        return redirect()->route("admin.user.index");
+        return redirect()->route('admin.user.index');
     }
 
     public function destroy(Employee $employee)

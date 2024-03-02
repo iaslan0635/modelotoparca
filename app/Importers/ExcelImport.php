@@ -55,7 +55,9 @@ class ExcelImport implements ToModel, WithStartRow
 
     public function model(array $row)
     {
-        if ($row[1] === null) return; // skip if id is null (probably empty row)
+        if ($row[1] === null) {
+            return;
+        } // skip if id is null (probably empty row)
 
         $productData = [];
         foreach (self::PRODUCT_DATA_MAPPING as $index => $key) {

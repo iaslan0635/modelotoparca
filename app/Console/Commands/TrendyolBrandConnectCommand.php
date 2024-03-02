@@ -17,13 +17,13 @@ class TrendyolBrandConnectCommand extends Command
     public function handle(): void
     {
         $this->withProgressBar(Brand::all(), function (Brand $brand) {
-            $tb = TrendyolBrand::where("name", $brand->name)->first();
+            $tb = TrendyolBrand::where('name', $brand->name)->first();
             if ($tb) {
                 try {
                     MerchantBrandConnect::create([
-                        "merchant" => "trendyol",
-                        "merchant_id" => $tb->id,
-                        "brand_id" => $brand->id,
+                        'merchant' => 'trendyol',
+                        'merchant_id' => $tb->id,
+                        'brand_id' => $brand->id,
                     ]);
                 } catch (UniqueConstraintViolationException) {
                 }

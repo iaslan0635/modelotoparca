@@ -30,7 +30,7 @@ class N11 implements Merchant
         11 => 'COMPAY',
         12 => 'YKBPAY',
         13 => 'FIBABANK',
-        14 => 'Other'
+        14 => 'Other',
     ];
 
     const STATUS = [
@@ -38,7 +38,7 @@ class N11 implements Merchant
         2 => 'İşlemde',
         3 => 'İptal Edilmiş',
         4 => 'Geçersiz',
-        5 => 'Tamamlandı'
+        5 => 'Tamamlandı',
     ];
 
     const ITEM_STATUS = [
@@ -58,27 +58,27 @@ class N11 implements Merchant
         14 => 'Kargo Yapılması Gecikmiş',
         15 => 'Kabul Edilmiş Ama Zamanında Kargoya Verilmemiş',
         16 => 'Teslim Edilmiş İade',
-        17 => 'Tamamlandıktan Sonra İade'
+        17 => 'Tamamlandıktan Sonra İade',
     ];
 
     const SERVICE_ITEM_TYPE = [
-        1 => "Ürün Sipariş Kalemi",
-        2 => "Servis Sipariş Kalemi",
-        3 => "Gsm Sipariş Kalemi",
-        4 => "Gezi Sipariş Kalemi"
+        1 => 'Ürün Sipariş Kalemi',
+        2 => 'Servis Sipariş Kalemi',
+        3 => 'Gsm Sipariş Kalemi',
+        4 => 'Gezi Sipariş Kalemi',
     ];
 
     const INVOICE_TYPE = [
-        1 => "Bireysel",
-        2 => "Kurumsal"
+        1 => 'Bireysel',
+        2 => 'Kurumsal',
     ];
 
     const DELIVERY_FEE_TYPE = [
-        1 => "N11 Öder",
-        2 => "Alıcı Öder",
-        3 => "Mağaza Öder",
-        4 => "Şartlı Kargo (Alıcı Öder)",
-        5 => "Şartlı Kargo Ücretsiz (Satıcı Öder)",
+        1 => 'N11 Öder',
+        2 => 'Alıcı Öder',
+        3 => 'Mağaza Öder',
+        4 => 'Şartlı Kargo (Alıcı Öder)',
+        5 => 'Şartlı Kargo Ücretsiz (Satıcı Öder)',
     ];
 
     const CURRENCY = [
@@ -88,8 +88,8 @@ class N11 implements Merchant
     ];
 
     const DISCOUNT_TYPE = [
-        "fixed" => 1,
-        "percentile" => 2,
+        'fixed' => 1,
+        'percentile' => 2,
     ];
 
     protected N11Client $client;
@@ -101,7 +101,8 @@ class N11 implements Merchant
 
     private function preparePriceToSend(float|int $price)
     {
-        $price *= (100 + merchant_setting("n11", "comission", 0)) / 100;
+        $price *= (100 + merchant_setting('n11', 'comission', 0)) / 100;
+
         return number_format($price, 2, '.', '');
     }
 
@@ -110,27 +111,27 @@ class N11 implements Merchant
         $orders = $this->client->order->orderList([
             'searchData' => [
                 'status' => 'Completed',
-                "buyerName" => "",
-                "orderNumber" => "",
-                "recipient" => "",
-                "period" => "",
-                "sortForUpdateDate" => "",
+                'buyerName' => '',
+                'orderNumber' => '',
+                'recipient' => '',
+                'period' => '',
+                'sortForUpdateDate' => '',
             ],
             'pagingData' => [
                 // Şuanki Sayfa
                 'currentPage' => 0,
                 // Gösterilecek nesne
-                'pageSize' => 20
-            ]
+                'pageSize' => 20,
+            ],
         ]);
-        if ($orders->result->status === "success") {
+        if ($orders->result->status === 'success') {
             foreach ($orders->orderList->order as $order) {
                 $info = $this->client->order->orderDetail([
-                    "orderRequest" => [
-                        "id" => $order->id
-                    ]
+                    'orderRequest' => [
+                        'id' => $order->id,
+                    ],
                 ]);
-                if ($info->result->status === "success") {
+                if ($info->result->status === 'success') {
                     $price = 0;
 
                     foreach ($info->orderDetail->itemList as $item) {
@@ -143,17 +144,17 @@ class N11 implements Merchant
                     ], [
                         'number' => $order->id,
                         'client' => [
-                            "id" => $info->orderDetail->buyer->id,
-                            "name" => $info->orderDetail->buyer->fullName,
+                            'id' => $info->orderDetail->buyer->id,
+                            'name' => $info->orderDetail->buyer->fullName,
                         ],
                         'data' => $info->orderDetail,
                         'price' => $price,
                         'date' => self::convertTime($info->orderDetail->createDate),
                         'status' => self::STATUS[$info->orderDetail->status],
-                        'lines' => array_map(fn($line) => [
-                            "sku" => $line->productSellerCode,
-                            "quantity" => $line->quantity,
-                            "price" => $line->price,
+                        'lines' => array_map(fn ($line) => [
+                            'sku' => $line->productSellerCode,
+                            'quantity' => $line->quantity,
+                            'price' => $line->price,
                         ], $info->itemList),
                         'line_data' => [],
                     ]);
@@ -164,52 +165,54 @@ class N11 implements Merchant
 
     public static function convertTime($date): string
     {
-        $format = "d/m/Y H:i";
+        $format = 'd/m/Y H:i';
         $dateTimeObj = \DateTime::createFromFormat($format, $date);
+
         return $dateTimeObj->format('Y-m-d H:i:s');
     }
 
     public function parseOrder(MerchantOrder $order): array
     {
-        $parseItem = fn($item) => [
-            "id" => $item['id'],
-            "productId" => $item['productId'],
-            "status" => $item['status'],
-            "price" => $item['price'],
-            "quantity" => $item['quantity'],
-            "sellerDiscount" => $item['sellerDiscount'],
-            "mallDiscount" => $item['mallDiscount'],
-            "commission" => $item['commission'],
-            "sellerInvoiceAmount" => $item['sellerInvoiceAmount'],
-            "productName" => $item['productName'],
-            "shippingDate" => $item['shippingDate'],
-            "shipmenCompanyCampaignNumber" => $item['shipmenCompanyCampaignNumber'],
-            "cargo" => [
-                "shipmentCompany" => $item['shipmentInfo']['shipmentCompany']['name'],
-                "trackingNumber" => $item['shipmentInfo']['trackingNumber'],
-                "shipmentCode" => $item['shipmentInfo']['shipmentCode'],
-                "campaignNumber" => $item['shipmentInfo']['campaignNumber'],
-                "shipmentMethod" => $item['shipmentInfo']['shipmentMethod'],
-                "campaignNumberStatus" => $item['shipmentInfo']['campaignNumberStatus'],
-            ]
+        $parseItem = fn ($item) => [
+            'id' => $item['id'],
+            'productId' => $item['productId'],
+            'status' => $item['status'],
+            'price' => $item['price'],
+            'quantity' => $item['quantity'],
+            'sellerDiscount' => $item['sellerDiscount'],
+            'mallDiscount' => $item['mallDiscount'],
+            'commission' => $item['commission'],
+            'sellerInvoiceAmount' => $item['sellerInvoiceAmount'],
+            'productName' => $item['productName'],
+            'shippingDate' => $item['shippingDate'],
+            'shipmenCompanyCampaignNumber' => $item['shipmenCompanyCampaignNumber'],
+            'cargo' => [
+                'shipmentCompany' => $item['shipmentInfo']['shipmentCompany']['name'],
+                'trackingNumber' => $item['shipmentInfo']['trackingNumber'],
+                'shipmentCode' => $item['shipmentInfo']['shipmentCode'],
+                'campaignNumber' => $item['shipmentInfo']['campaignNumber'],
+                'shipmentMethod' => $item['shipmentInfo']['shipmentMethod'],
+                'campaignNumberStatus' => $item['shipmentInfo']['campaignNumberStatus'],
+            ],
         ];
 
         $data = $order->data;
+
         return [
-            "client" => [
+            'client' => [
                 'full_name' => $data['buyer']['fullName'],
                 'email' => $data['buyer']['email'],
                 'identity' => $data['buyer']['tcId'],
                 'tax_office' => $data['buyer']['taxOffice'],
                 'tax_id' => $data['buyer']['taxId'],
             ],
-            "invoiceAddress" => [
-                "address" => $data['billingAddress']['address'],
-                "city" => $data['billingAddress']['city'],
-                "district" => $data['billingAddress']['district'],
-                "fullName" => $data['billingAddress']['fullName'],
+            'invoiceAddress' => [
+                'address' => $data['billingAddress']['address'],
+                'city' => $data['billingAddress']['city'],
+                'district' => $data['billingAddress']['district'],
+                'fullName' => $data['billingAddress']['fullName'],
             ],
-            "items" => array_map($parseItem, $data['itemList'])
+            'items' => array_map($parseItem, $data['itemList']),
         ];
     }
 
@@ -220,97 +223,97 @@ class N11 implements Merchant
 
     public function sendProduct(Product $product)
     {
-        $images = $product->imageUrls()->whenEmpty(fn(Collection $self) => $self->push($product->imageUrl()))->values();
+        $images = $product->imageUrls()->whenEmpty(fn (Collection $self) => $self->push($product->imageUrl()))->values();
 
         $attrs = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'n11')
             ->where('product_id', '=', $product->id)
             ->get()
-            ->map(fn(ProductMerchantAttribute $p) => [
-                "name" => $p->merchant_id,
-                "value" => $p->merchant_value
+            ->map(fn (ProductMerchantAttribute $p) => [
+                'name' => $p->merchant_id,
+                'value' => $p->merchant_value,
             ]);
 
         $price = $this->preparePriceToSend($product->price->price);
         $response = $this->client->product->SaveProduct([
-            "product" => [
+            'product' => [
                 'productSellerCode' => $product->sku,
-                'title' => $product->title . " " . $product->sub_title,
+                'title' => $product->title.' '.$product->sub_title,
                 'subtitle' => $product->sub_title,
                 'description' => $product->description,
                 'domestic' => 'false',
                 'category' => [
                     'id' => $product->categories[0]->merchants()
-                        ->where('merchant', '=', "n11")->valueOrFail("merchant_id")
+                        ->where('merchant', '=', 'n11')->valueOrFail('merchant_id'),
                 ],
                 'price' => $price,
                 'discount' => [
-                    "startDate" => "", // $product->price->discount_start_at,
-                    "endDate" => "", // $product->price->discount_end_at,
-                    "type" => "", // self::DISCOUNT_TYPE[$product->price->discount_type],
-                    "value" => "", // $product->price->discount_amount,
+                    'startDate' => '', // $product->price->discount_start_at,
+                    'endDate' => '', // $product->price->discount_end_at,
+                    'type' => '', // self::DISCOUNT_TYPE[$product->price->discount_type],
+                    'value' => '', // $product->price->discount_amount,
                 ],
                 'currencyType' => self::CURRENCY['try'], // Bütün pazaryerlerine TL göndereceğiz
                 'approvalStatus' => $product->status,
                 'attributes' => [
                     [
-                        "name" => "Marka",
-                        "value" => $product->brand->name
+                        'name' => 'Marka',
+                        'value' => $product->brand->name,
                     ],
-                    ...$attrs
+                    ...$attrs,
                 ],
                 'productCondition' => 1, // Yeni (2. el değil)
                 'preparingDay' => 3,
                 'shipmentTemplate' => 'Merkez Şube11',
                 'images' => [
-                    'image' =>
-                        $images->map(fn(string $image, int $order) => [
-                            'url' => $image,
-                            'order' => $order,
-                        ])->toArray()
+                    'image' => $images->map(fn (string $image, int $order) => [
+                        'url' => $image,
+                        'order' => $order,
+                    ])->toArray(),
 
                 ],
                 'stockItems' => [
                     'stockItem' => [
                         'images' => [
-                            'image' =>
-                                $images->map(fn(string $image, int $order) => [
-                                    'url' => $image,
-                                    'order' => $order,
-                                ])->toArray()
+                            'image' => $images->map(fn (string $image, int $order) => [
+                                'url' => $image,
+                                'order' => $order,
+                            ])->toArray(),
 
                         ],
                         'oem' => '',
                         'quantity' => $product->quantity,
                         'sellerStockCode' => $product->sku,
                         'optionPrice' => $price,
-                        'n11CatalogId' => "",
-                        'attributes' => "",
-                    ]
+                        'n11CatalogId' => '',
+                        'attributes' => '',
+                    ],
                 ],
-                'unitInfo' => "",
-                'sellerNote' => "",
+                'unitInfo' => '',
+                'sellerNote' => '',
                 'maxPurchaseQuantity' => $product->quantity,
-                'groupAttribute' => "",
-                'groupItemCode' => "",
-                'itemName' => "",
-                'productionDate' => "",
-                'expirationDate' => "",
-            ]
+                'groupAttribute' => '',
+                'groupItemCode' => '',
+                'itemName' => '',
+                'productionDate' => '',
+                'expirationDate' => '',
+            ],
         ], [
-            "throw" => false
+            'throw' => false,
         ]);
 
         if (
-            $response->result->status !== "success" &&
+            $response->result->status !== 'success' &&
             $response->result->errorCode !== 'SELLER_API.catalog.suggest.failed.alreadySuggested'
-        ) throw new N11ClientException($response);
+        ) {
+            throw new N11ClientException($response);
+        }
 
         try {
             ProductMerchant::create([
-                'merchant' => "n11",
+                'merchant' => 'n11',
                 'merchant_id' => $product->sku,
-                'product_id' => $product->id
+                'product_id' => $product->id,
             ]);
         } catch (UniqueConstraintViolationException) {
         }
@@ -333,19 +336,18 @@ class N11 implements Merchant
 
     public function getSubCategories($categoryId, $lastModifiedDate)
     {
-        return $this->client->category->GetSubCategories(["categoryId" => $categoryId, 'lastModifiedDate' => $lastModifiedDate]);
+        return $this->client->category->GetSubCategories(['categoryId' => $categoryId, 'lastModifiedDate' => $lastModifiedDate]);
     }
-
 
     public function getCategoryAttributes($categoryId)
     {
         return \Cache::remember($categoryId, TTL::WEEK,
-            fn() => $this->client->category->GetCategoryAttributes([
-                "categoryId" => $categoryId,
+            fn () => $this->client->category->GetCategoryAttributes([
+                'categoryId' => $categoryId,
                 'pagingData' => [
                     'currentPage' => 0,
-                    'pageSize' => 100
-                ]
+                    'pageSize' => 100,
+                ],
             ])
         );
 
@@ -369,22 +371,22 @@ class N11 implements Merchant
     public function approveOrder(MerchantOrder $order)
     {
         $this->client->order->OrderItemAccept([
-            "orderItem" => [
-                "id" => $order->merchant_id
-            ]
+            'orderItem' => [
+                'id' => $order->merchant_id,
+            ],
         ]);
     }
 
     public function declineOrder(string $lineId, OrderRejectReasonType $reasonType, string $shipmentPackageId, int $quantity)
     {
         $this->client->order->OrderItemReject([
-            "orderItemList" => [
-                "orderItem" => [
-                    "id" => $lineId
-                ]
+            'orderItemList' => [
+                'orderItem' => [
+                    'id' => $lineId,
+                ],
             ],
-            "rejectReason" => $quantity,
-            "rejectReasonType" => $reasonType === OrderRejectReasonType::OUT_OF_STOCK ? "OUT_OF_STOCK" : "OTHER",
+            'rejectReason' => $quantity,
+            'rejectReasonType' => $reasonType === OrderRejectReasonType::OUT_OF_STOCK ? 'OUT_OF_STOCK' : 'OTHER',
             // ternary kullanmamın sebebi eğer OrderRejectReasonType'ye farklı değerler eklenirse onların OTHER olarak gitmesi
         ]);
     }
@@ -392,16 +394,16 @@ class N11 implements Merchant
     public function refundedOrders()
     {
         return $this->client->order->DetailedOrderList([
-            "searchData" => [
-                "status" => "Claimed"
-            ]
+            'searchData' => [
+                'status' => 'Claimed',
+            ],
         ]);
     }
 
     public function aprroveRefundedOrder(MerchantOrder $order, $id = null)
     {
         $this->client->return->ClaimReturnApprove([
-            "claimReturnId" => $id
+            'claimReturnId' => $id,
         ]);
 
         // $order->status = "refundApproved" ???
@@ -415,32 +417,32 @@ class N11 implements Merchant
     public function declineRefundedOrder($claimReturnId, $denyReasonId, $denyReasonNote)
     {
         return $this->client->return->ClaimReturnDeny([
-            "claimReturnId" => "",
-            "denyReasonId" => "",
-            "denyReasonNote" => "",
+            'claimReturnId' => '',
+            'denyReasonId' => '',
+            'denyReasonNote' => '',
         ]);
     }
 
     public function getQuestions()
     {
         return $this->client->product->GetProductQuestionList([
-            "currentPage" => 0,
-            "pageSize" => 100
+            'currentPage' => 0,
+            'pageSize' => 100,
         ]);
     }
 
     public function sendQuestionAnswer(MerchantOrder $question, string $answer)
     {
         $this->client->product->SaveProductAnswer([
-            "productQuestionId" => $question->merchant_id,
-            "productAnswer" => $answer
+            'productQuestionId' => $question->merchant_id,
+            'productAnswer' => $answer,
         ]);
     }
 
     public function deleteProduct(Product $product)
     {
         $this->client->product->DeleteProductBySellerCode([
-            "productSellerCode" => $product->sku
+            'productSellerCode' => $product->sku,
         ]);
     }
 
@@ -452,8 +454,8 @@ class N11 implements Merchant
     public function updatePrice(Product $product)
     {
         return $this->client->product->UpdateProductPriceBySellerCode([
-            "productSellerCode" => $product->sku,
-            "price" => $this->preparePriceToSend($product->price->price)
+            'productSellerCode' => $product->sku,
+            'price' => $this->preparePriceToSend($product->price->price),
         ]);
     }
 
@@ -461,11 +463,12 @@ class N11 implements Merchant
     {
         try {
             $status = $this->client->product->GetProductBySellerCode([
-                "sellerCode" => $product->sku
+                'sellerCode' => $product->sku,
             ])->product->saleStatus;
+
             return Helper::getN11EnumStatuses($status)->turkish;
-        }catch (N11ClientException $exception){
-            return "N11 bağlanamadı!";
+        } catch (N11ClientException $exception) {
+            return 'N11 bağlanamadı!';
         }
     }
 

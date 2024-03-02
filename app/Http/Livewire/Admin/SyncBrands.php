@@ -11,6 +11,7 @@ use Livewire\WithPagination;
 class SyncBrands extends Component
 {
     use WithPagination;
+
     protected $paginationTheme = 'bootstrap';
 
     public array $trendyolBrands;
@@ -23,15 +24,15 @@ class SyncBrands extends Component
 
     public function render()
     {
-        return view('livewire.admin.sync-brands', ["brands" => Brand::paginate(20)]);
+        return view('livewire.admin.sync-brands', ['brands' => Brand::paginate(20)]);
     }
 
     public function updateBrand($brandId, $merchantBrandId)
     {
         MerchantBrandConnect::updateOrCreate([
-            "merchant" => "trendyol",
-            "merchant_id" => $merchantBrandId,
-            "brand_id" => $brandId
+            'merchant' => 'trendyol',
+            'merchant_id' => $merchantBrandId,
+            'brand_id' => $brandId,
         ]);
     }
 }

@@ -17,7 +17,7 @@ class BotImageManager extends Component
 
     public function getImages()
     {
-        return $this->product->botImages()->where('rejected', false)->whereNull("image_id")->get();
+        return $this->product->botImages()->where('rejected', false)->whereNull('image_id')->get();
     }
 
     public function decline(int $id)

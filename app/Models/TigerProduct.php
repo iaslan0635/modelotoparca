@@ -29,6 +29,6 @@ class TigerProduct extends BaseModel
 
     public function actualProduct()
     {
-        return $this->hasOne(Product::class, "id", "id");
+        return $this->hasOne(Product::class, 'id', 'id');
     }
 }

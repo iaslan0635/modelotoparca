@@ -21,11 +21,16 @@ class OcpClient
         $httpStatusCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
         curl_close($curlHandle);
 
-        if (curl_errno($curlHandle)) throw new \Exception(curl_error($curlHandle));
-        if (str_contains($response, '<title>Just a moment...</title>')) throw new \Exception("Response blocked by cloudflare.");
+        if (curl_errno($curlHandle)) {
+            throw new \Exception(curl_error($curlHandle));
+        }
+        if (str_contains($response, '<title>Just a moment...</title>')) {
+            throw new \Exception('Response blocked by cloudflare.');
+        }
 
-        if (!(200 <= $httpStatusCode && $httpStatusCode < 300))
+        if (! ($httpStatusCode >= 200 && $httpStatusCode < 300)) {
             throw new OcpClientException($httpStatusCode, $url, $response);
+        }
 
         return $response;
     }
@@ -33,12 +38,15 @@ class OcpClient
     /** @throws OcpClientException */
     public static function request(string $url): string
     {
-        $cache = Cache::driver("file");
+        $cache = Cache::driver('file');
         $cached = $cache->get($url);
-        if ($cached !== null) return $cached;
+        if ($cached !== null) {
+            return $cached;
+        }
 
         $response = self::requestWithoutCache($url);
         $cache->set($url, $response, TTL::MONTH * 3);
+
         return $response;
     }
 }

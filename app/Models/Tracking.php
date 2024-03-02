@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Tracking extends BaseModel
 {
     protected $casts = [
-        "success" => "boolean",
-        "result" => "json",
+        'success' => 'boolean',
+        'result' => 'json',
     ];
 
     public function product(): HasOne
@@ -20,6 +20,6 @@ class Tracking extends BaseModel
 
     public function reasons(): Attribute
     {
-        return Attribute::get(fn() => MarketPlace::createTrackableMerchant($this->merchant)->parseTrackingErrors($this->result));
+        return Attribute::get(fn () => MarketPlace::createTrackableMerchant($this->merchant)->parseTrackingErrors($this->result));
     }
 }

@@ -9,13 +9,15 @@ class MerchantProductController extends Controller
 {
     public function index()
     {
-        $query = Product::whereHas("merchants");
+        $query = Product::whereHas('merchants');
+
         return ProductController::tableResponse($query);
     }
 
     public function onSaleIndex()
     {
-        $query = Product::whereHas("merchants")->where("ecommerce", true);
+        $query = Product::whereHas('merchants')->where('ecommerce', true);
+
         return ProductController::tableResponse($query);
     }
 }

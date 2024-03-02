@@ -20,7 +20,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', DashboardController::class)->name("dashboard");
+Route::get('/', DashboardController::class)->name('dashboard');
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
     Route::get('oem', 'push_oem')->name('oem');
@@ -29,7 +29,7 @@ Route::prefix('products/{product}/edit')->name('products.edit.')->controller(Pro
     Route::get('rerunBot', 'rerunBot')->name('rerunBot');
 });
 
-Route::get('products/export', [ProductController::class, "exportToExcel"])->name('products.export');
+Route::get('products/export', [ProductController::class, 'exportToExcel'])->name('products.export');
 Route::resource('products', ProductController::class)->only(['index', 'show']);
 
 Route::prefix('categories/{category}/edit')->name('categories.edit.')->controller(CategoryController::class)->group(function () {
@@ -82,13 +82,13 @@ Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-syn
 Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update');
 Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands'])->name('brand-sync.search');
 
-Route::resource('permission', PermissionController::class, ["parameters" => ["permission" => "employee"]]);
-Route::get('role/{role}/delete', [RoleController::class, "delete"])->name("role.delete");
-Route::resource('role', RoleController::class)->except("destroy");
-Route::get("role/unassign/{role}/{user}", [RoleController::class, "unassign"])->name("role.unassign");
-Route::get('merchant/failed', [MerchantTrackingController::class, "failed"])->name("merchant.failed");
+Route::resource('permission', PermissionController::class, ['parameters' => ['permission' => 'employee']]);
+Route::get('role/{role}/delete', [RoleController::class, 'delete'])->name('role.delete');
+Route::resource('role', RoleController::class)->except('destroy');
+Route::get('role/unassign/{role}/{user}', [RoleController::class, 'unassign'])->name('role.unassign');
+Route::get('merchant/failed', [MerchantTrackingController::class, 'failed'])->name('merchant.failed');
 
-Route::resource('merchant-setting', MerchantSettingController::class)->only(["index", "store"]);
+Route::resource('merchant-setting', MerchantSettingController::class)->only(['index', 'store']);
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {
@@ -101,12 +101,12 @@ if (app()->hasDebugModeEnabled()) {
 }
 
 Route::controller(AuthController::class)
-    ->name("auth.")
+    ->name('auth.')
     ->group(function () {
         Route::get('login', 'login')->name('login')->withoutMiddleware(['auth:admin']);
         Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['auth:admin']);
         Route::get('logout', 'logout')->name('logout');
     });
 
-Route::resource("user", UserController::class);
-Route::resource("employee", EmployeeController::class);
+Route::resource('user', UserController::class);
+Route::resource('employee', EmployeeController::class);

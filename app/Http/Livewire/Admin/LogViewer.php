@@ -9,6 +9,7 @@ use Livewire\Component;
 class LogViewer extends Component
 {
     public int $productId;
+
     public Collection $logs;
 
     public function mount(int $productId)
@@ -24,6 +25,6 @@ class LogViewer extends Component
 
     public function refresh()
     {
-        $this->logs = Log::where("product_id", $this->productId)->orderByDesc('created_at')->get();
+        $this->logs = Log::where('product_id', $this->productId)->orderByDesc('created_at')->get();
     }
 }

@@ -5,7 +5,6 @@ namespace App\Services\Merchants;
 use App\Enums\OrderRejectReasonType;
 use App\Models\MerchantOrder;
 use App\Models\Product;
-use App\Models\Tracking;
 
 interface Merchant
 {
@@ -40,6 +39,7 @@ interface Merchant
     public function declineRefundedOrder($claimReturnId, $denyReasonId, $denyReasonNote); // ???
 
     public function getQuestions();
+
     public function syncQuestions();
 
     public function sendQuestionAnswer(MerchantOrder $question, string $answer);

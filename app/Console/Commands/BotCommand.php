@@ -14,16 +14,16 @@ class BotCommand extends Command
 
     public function handle(): void
     {
-        $query = match ($this->option("filter")) {
+        $query = match ($this->option('filter')) {
             null => TigerProduct::query(),
-            "non-car" => TigerProduct::doesntHave("cars"),
-            "last-50" => TigerProduct::latest()->limit(50),
+            'non-car' => TigerProduct::doesntHave('cars'),
+            'last-50' => TigerProduct::latest()->limit(50),
         };
 
-        self::runBotsForQuery($this, $query, $this->option("queue"), $this->option("failsafe"));
+        self::runBotsForQuery($this, $query, $this->option('queue'), $this->option('failsafe'));
     }
 
-    public static function runBotsForQuery(Command $commandContext, Builder $query, ?string $queue = "default", bool $failsafe = false)
+    public static function runBotsForQuery(Command $commandContext, Builder $query, ?string $queue = 'default', bool $failsafe = false)
     {
         $ids = $query->latest()->pluck('id');
 
@@ -31,7 +31,9 @@ class BotCommand extends Command
             try {
                 self::handleProduct($id, $queue);
             } catch (Throwable $throwable) {
-                if ($failsafe) throw $throwable;
+                if ($failsafe) {
+                    throw $throwable;
+                }
 
                 $commandContext->info("Exception on $id");
                 report($throwable);

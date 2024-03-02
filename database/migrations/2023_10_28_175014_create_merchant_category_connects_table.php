@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -12,12 +13,12 @@ return new class extends Migration {
     {
         Schema::create('merchant_category_connects', function (Blueprint $table) {
             $table->id();
-            $table->string('merchant')->default("n11");
+            $table->string('merchant')->default('n11');
             $table->integer('merchant_id');
             $table->integer('category_id');
             $table->timestamps();
 
-            $table->unique(['merchant', 'merchant_id', 'category_id'], "unique_ids");
+            $table->unique(['merchant', 'merchant_id', 'category_id'], 'unique_ids');
         });
     }
 

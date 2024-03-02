@@ -13,9 +13,9 @@ class OcpCurlCommand extends Command
 
     public function handle()
     {
-        $url = $this->argument("url");
+        $url = $this->argument('url');
         $response = OcpClient::request($url);
-        if ($outFile = $this->option("output")) {
+        if ($outFile = $this->option('output')) {
             file_put_contents($outFile, $response);
         } else {
             fwrite(STDOUT, $response);

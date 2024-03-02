@@ -8,16 +8,16 @@ class MerchantCategoryConnect extends BaseModel
 {
     public function scopeN11(Builder $query)
     {
-        return $query->where('merchant', '=', "n11");
+        return $query->where('merchant', '=', 'n11');
     }
 
     public function scopeTrendyol(Builder $query)
     {
-        return $query->where('merchant', '=', "trendyol");
+        return $query->where('merchant', '=', 'trendyol');
     }
 
     public function scopeHepsiburada(Builder $query)
     {
-        return $query->where('merchant', '=', "hepsiburada");
+        return $query->where('merchant', '=', 'hepsiburada');
     }
 }

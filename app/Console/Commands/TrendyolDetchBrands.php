@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Services\MarketPlace;
 use App\Services\Merchants\TrendyolMerchant;
 use Illuminate\Console\Command;
 

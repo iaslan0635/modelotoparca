@@ -35,7 +35,7 @@ Route::prefix('p/{product:slug}')->group(function () {
     Route::get('/', [ProductController::class, 'show'])->name('product.show');
 });
 
-Route::get('b/{brand:slug}', [BrandController::class, "show"])->name('brand.show');
+Route::get('b/{brand:slug}', [BrandController::class, 'show'])->name('brand.show');
 
 Route::view('cart', 'cart')->name('cart');
 Route::view('checkout', 'checkout')->name('checkout');
@@ -84,5 +84,6 @@ Route::get('/connections', function () {
 
 Route::get('/garage/deselect', function () {
     \App\Facades\Garage::deselect();
-    return redirect("/");
+
+    return redirect('/');
 });

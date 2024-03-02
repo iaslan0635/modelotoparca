@@ -12,6 +12,7 @@ use Livewire\WithPagination;
 class SyncCategories extends Component
 {
     use WithPagination;
+
     protected $paginationTheme = 'bootstrap';
 
     public function render()
@@ -24,7 +25,7 @@ class SyncCategories extends Component
             'categories' => Category::paginate(10),
             'n11Categories' => $n11->getCategories()->categoryList->category,
             'hepsiCategories' => $hepsiburada->getCategories()->data,
-            'trendyolCategories' => $trendyol->getCategories()->categories
+            'trendyolCategories' => $trendyol->getCategories()->categories,
         ]);
     }
 }

@@ -28,15 +28,20 @@ class Spareto
             ->get($url);
 
         $response->throw();
+
         return $response->body();
     }
 
-    public static function smash(string $keyword, int $product_id, ?string $brand_filter = null, string $field = null)
+    public static function smash(string $keyword, int $product_id, string $brand_filter = null, string $field = null)
     {
-        if (strlen($keyword = trim($keyword)) == 0) return false;
+        if (strlen($keyword = trim($keyword)) == 0) {
+            return false;
+        }
 
         $url = "https://spareto.com/products?keywords=$keyword&per_page=48";
-        if ($brand_filter) $url .= "&brand=$brand_filter";
+        if ($brand_filter) {
+            $url .= "&brand=$brand_filter";
+        }
 
         $request = self::request($url);
         $html = <<<HTML
@@ -57,7 +62,7 @@ HTML;
         }
 
         $added = false;
-        $links = $productCards->each(fn(Crawler $cardElement) => $cardElement->filter('a')->attr('href'));
+        $links = $productCards->each(fn (Crawler $cardElement) => $cardElement->filter('a')->attr('href'));
         $successfulProductCount = 0;
         foreach ($links as $link) {
             $product = self::getProduct($link);
@@ -73,12 +78,13 @@ HTML;
             if (!$hasCommonOemCodes && !$textualFieldsMatches) continue;
             */
 
-
             $connection = BotProduct::updateOrCreate(
                 ['product_id' => $product_id, 'url' => $link],
-                ['origin_field' => $field, "keyword" => $keyword]
+                ['origin_field' => $field, 'keyword' => $keyword]
             );
-            if ($connection->is_banned) continue;
+            if ($connection->is_banned) {
+                continue;
+            }
 
             Product::query()->where('id', $product_id)->update([
                 'dimensions' => $product['dimension'],
@@ -100,9 +106,9 @@ HTML;
             }
 
             foreach ($product['vehicles'] as $vehicle) {
-                [$from, $to] = array_map(fn($v) => $v === '...' ? null : $v, explode(' - ', $vehicle['produced']));
+                [$from, $to] = array_map(fn ($v) => $v === '...' ? null : $v, explode(' - ', $vehicle['produced']));
                 $car = Car::where('permalink', $vehicle['permalink'])->first('id');
-                if (!$car) {
+                if (! $car) {
                     $makerSlug = explode('/', $vehicle['permalink'])[0];
                     $maker = Maker::where('permalink', "vehicles/$makerSlug")->first('id');
                     $makerId = $maker ? $maker->id : 0;
@@ -144,8 +150,8 @@ HTML;
 
         // dimensions & specifications
         $propertyTableMapper = function (Crawler $tr) {
-            $name = $tr->filter('td[itemprop=name]')->text(false) ?: $tr->filter("td")->eq(0)->text();
-            $value = $tr->filter('td[itemprop=value]')->text(false) ?: $tr->filter("td")->eq(1)->text();
+            $name = $tr->filter('td[itemprop=name]')->text(false) ?: $tr->filter('td')->eq(0)->text();
+            $value = $tr->filter('td[itemprop=value]')->text(false) ?: $tr->filter('td')->eq(1)->text();
 
             return [$name, $value];
         };
@@ -159,19 +165,20 @@ HTML;
         $seperatorH3 = $crawler->filter('#nav-oe h3')->last();
 
         // oem codes
-        $oemDivs = $seperatorH3->previousAll()->reduce(fn(Crawler $el) => $el->nodeName() === "div");
+        $oemDivs = $seperatorH3->previousAll()->reduce(fn (Crawler $el) => $el->nodeName() === 'div');
         $oem = Utils::flattenOne($oemDivs->each(function (Crawler $oemDiv) {
             $brand = $oemDiv->filter('.col-md-2.col-4.pl-4')->text();
-            return $oemDiv->filter(".col-md-10.col-8")->filter('span, a')
-                ->each(fn(Crawler $el) => ['brand' => $brand, 'oem' => $el->text()]);
+
+            return $oemDiv->filter('.col-md-10.col-8')->filter('span, a')
+                ->each(fn (Crawler $el) => ['brand' => $brand, 'oem' => $el->text()]);
         }));
 
         // cross codes
         $crossDivs = $seperatorH3->nextAll();
-        $cross = $crossDivs->filter('.col-md-10.col-8')->filter('span, a')->each(fn(Crawler $el) => $el->text());
+        $cross = $crossDivs->filter('.col-md-10.col-8')->filter('span, a')->each(fn (Crawler $el) => $el->text());
 
         // vehicles
-        $vehicles = $crawler->filter('#nav-vehicles table tbody tr[data-model-short-name]')->each(fn(Crawler $vehicle) => [
+        $vehicles = $crawler->filter('#nav-vehicles table tbody tr[data-model-short-name]')->each(fn (Crawler $vehicle) => [
             'short_name' => $vehicle->attr('data-model-short-name'),
             'permalink' => str_replace('/t/vehicles/', '', $vehicle->filter('td')->eq(1)->filter('a')->attr('href')),
             'model' => $vehicle->filter('td')->eq(1)->text(),

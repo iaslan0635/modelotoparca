@@ -16,6 +16,7 @@ class SynchronizePermissionsCommand extends Command
         $addedPermissions = PermissionSynchronizer::sync();
         if (empty($addedPermissions)) {
             $this->warn('No new permissions added.');
+
             return;
         }
 

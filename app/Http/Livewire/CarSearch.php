@@ -44,14 +44,14 @@ class CarSearch extends Component
 
         $len = count(self::HIERARCHY);
         for ($i = $index + 1; $i < $len; $i++) {
-            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i] . 's'} = null;
+            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i].'s'} = null;
         }
     }
 
     public function render()
     {
         $this->makers ??= $this->maker(['id', 'name'])
-            ->filter(fn($m) => $m->name)->sort(fn($m) => $m->name)->values()->toArray();
+            ->filter(fn ($m) => $m->name)->sort(fn ($m) => $m->name)->values()->toArray();
 
         if ($this->maker !== null) {
             $this->cars ??= $this->model('short_name')->pluck('short_name')->filter()->sort()->values()->toArray();
@@ -59,7 +59,7 @@ class CarSearch extends Component
 
         if ($this->car !== null) {
             $this->years ??= $this->model(['from_year', 'to_year'])
-                ->map(fn($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
+                ->map(fn ($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
                 ->flatten()->unique()->filter()->sort()->values()->toArray();
         }
 
@@ -70,7 +70,7 @@ class CarSearch extends Component
         if ($this->spesificCar !== null) {
             $this->engines ??= $this->model(['id', 'engine'])
                 ->sortBy('engine')->values()
-                ->map(fn(Car $x) => [
+                ->map(fn (Car $x) => [
                     'id' => $x->id,
                     'name' => $x->engine,
                 ])->toArray();
@@ -84,7 +84,7 @@ class CarSearch extends Component
         $builder = Car::query()->distinct();
 
         if ($this->year !== null) {
-            $builder->whereNested(fn($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
+            $builder->whereNested(fn ($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
         }
 
         if ($this->car !== null) {
@@ -112,6 +112,7 @@ class CarSearch extends Component
         if ($this->year !== null) {
             $builder->whereRaw('? BETWEEN from_year AND to_year', [$this->year]);
         }
+
         /*
                 if ($this->cat_id !== null) {
                     $supported_cars = Category::query()->where("id", $this->cat_id)->valueOrFail("supported_cars");

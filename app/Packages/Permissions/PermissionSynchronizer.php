@@ -13,10 +13,10 @@ final class PermissionSynchronizer
         $addedPermissions = [];
         app(PermissionRegistrar::class)->forgetCachedPermissions();
         foreach (self::getPermissions() as $permission) {
-            if (!Permission::where("name", $permission)->exists()) {
+            if (! Permission::where('name', $permission)->exists()) {
                 $addedPermissions[] = Permission::create([
-                    "name"       => $permission,
-                    "guard_name" => "admin"
+                    'name' => $permission,
+                    'guard_name' => 'admin',
                 ]);
             }
         }
@@ -26,18 +26,19 @@ final class PermissionSynchronizer
 
     public static function getPermissions(): array
     {
-        return self::convertArray(config("permissions"));
+        return self::convertArray(config('permissions'));
     }
 
     private static function convertArray(array $array, string $currentKey = ''): array
     {
         $result = [];
         foreach ($array as $element) {
-            $newKey = $currentKey . ($currentKey ? '.' : '') . $element['name'];
+            $newKey = $currentKey.($currentKey ? '.' : '').$element['name'];
             $result = isset($element['children']) ?
                 array_merge($result, self::convertArray($element['children'], $newKey)) :
                 array_merge($result, [$newKey]);
         }
+
         return $result;
     }
 
@@ -45,7 +46,8 @@ final class PermissionSynchronizer
     public static function diff()
     {
         $permissions = self::getPermissions();
-        $dbPermissions = Permission::pluck("name")->toArray();
+        $dbPermissions = Permission::pluck('name')->toArray();
+
         return array_diff($dbPermissions, $permissions);
     }
 }

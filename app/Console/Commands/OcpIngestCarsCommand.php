@@ -21,51 +21,53 @@ class OcpIngestCarsCommand extends Command
 
     public function handle()
     {
-        $path = $this->argument("path");
+        $path = $this->argument('path');
         $files = collect(scandir($path))
-            ->reject(fn($f) => $f == '.' || $f == '..')
-            ->map(fn($f) => $path . DIRECTORY_SEPARATOR . $f);
+            ->reject(fn ($f) => $f == '.' || $f == '..')
+            ->map(fn ($f) => $path.DIRECTORY_SEPARATOR.$f);
 
         $this->_withProgressBar($files, self::processFile(...), 1);
     }
 
-    function processFile(string $file)
+    public function processFile(string $file)
     {
         $json = json_decode(file_get_contents($file), true);
         $this->_withProgressBar($json, self::insertCar(...), 2);
     }
 
-    function insertCar(array $car)
+    public function insertCar(array $car)
     {
-        $makerName = self::pop($car, "maker_name");
-        $fullPermalink = self::pop($car, "permalink");
-        $id = self::pop($car, "id");
+        $makerName = self::pop($car, 'maker_name');
+        $fullPermalink = self::pop($car, 'permalink');
+        $id = self::pop($car, 'id');
 
         $re = '/https:\/\/www\.onlinecarparts\.co\.uk\/car-brands\/spare-parts-(([\w-]+)\/[\w-]+)\/\d+\.html/';
-        if (!preg_match($re, $fullPermalink, $matches))
+        if (! preg_match($re, $fullPermalink, $matches)) {
             throw new Exception("Permalink incorrect. permalink: $fullPermalink");
+        }
 
         [, $carLink, $makerLink] = $matches;
 
         Maker::firstOrCreate(
-            ["id" => $car["maker_id"]],
-            ["name" => $makerName, "permalink" => $makerLink]
+            ['id' => $car['maker_id']],
+            ['name' => $makerName, 'permalink' => $makerLink]
         );
 
-        $toInsert = Arr::mapWithKeys($car, fn($v, $k) => [Str::snake($k) => $v]);
+        $toInsert = Arr::mapWithKeys($car, fn ($v, $k) => [Str::snake($k) => $v]);
         Car::updateOrCreate([
-            "id" => $id
+            'id' => $id,
         ], [
-            "permalink" => "$id/$carLink",
+            'permalink' => "$id/$carLink",
             ...$toInsert,
-            "maker_id" => $car["maker_id"],
+            'maker_id' => $car['maker_id'],
         ]);
     }
 
-    function pop(array &$array, string $key)
+    public function pop(array &$array, string $key)
     {
         $value = $array[$key];
         unset($array[$key]);
+
         return $value;
     }
 
@@ -95,4 +97,3 @@ class OcpIngestCarsCommand extends Command
         }
     }
 }
-

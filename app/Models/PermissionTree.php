@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-
 class PermissionTree extends BaseModel
 {
     protected $casts = [
-        "tree" => "array",
+        'tree' => 'array',
     ];
 
     public $timestamps = false;
 
     public function model()
     {
-        return $this->morphTo("model");
+        return $this->morphTo('model');
     }
 }

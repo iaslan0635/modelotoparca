@@ -42,11 +42,11 @@ class CarPanel extends Component
         $maker = $car->maker?->name ?? '[Marka Yok]';
         $short_name = $car->short_name;
 
-        if (!array_key_exists($maker, $this->car_brands)) {
+        if (! array_key_exists($maker, $this->car_brands)) {
             $this->car_brands[$maker] = [];
         }
 
-        if (!array_key_exists($short_name, $this->car_brands[$maker])) {
+        if (! array_key_exists($short_name, $this->car_brands[$maker])) {
             $this->car_brands[$maker][$short_name] = [];
         }
 

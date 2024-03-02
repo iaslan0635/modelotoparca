@@ -11,14 +11,17 @@ class N11HigherOrderClient
     public function __call(string $name, $arguments)
     {
         $options = collect(count($arguments) > 1 ? $arguments[1] : []);
-        $response = $this->client->$name(array_merge(["auth" => $this->auth], $arguments[0]));
-        if ($options->get("throw", true)) $this->checkResponse($response);
+        $response = $this->client->$name(array_merge(['auth' => $this->auth], $arguments[0]));
+        if ($options->get('throw', true)) {
+            $this->checkResponse($response);
+        }
+
         return $response;
     }
 
     private function checkResponse($response)
     {
-        if ($response->result->status !== "success") {
+        if ($response->result->status !== 'success') {
             throw new N11ClientException($response);
         }
     }

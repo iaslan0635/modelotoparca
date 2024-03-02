@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(N11Client::class, fn () => new N11Client(config("merchants.n11.apiKey"), config("merchants.n11.apiPassword")));
+        $this->app->singleton(N11Client::class, fn () => new N11Client(config('merchants.n11.apiKey'), config('merchants.n11.apiPassword')));
     }
 
     /**

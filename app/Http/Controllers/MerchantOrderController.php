@@ -18,12 +18,14 @@ class MerchantOrderController extends Controller
         }
 
         $orders = $orders->orderByDesc('id')->paginate(10);
+
         return view('admin.apps.marketplace.orders', compact('orders'));
     }
 
     public function show(MerchantOrder $order)
     {
         $data = MarketPlace::parseOrder($order);
+
         return view('admin.apps.marketplace.order_show', compact('order', 'data'));
     }
 
@@ -31,6 +33,7 @@ class MerchantOrderController extends Controller
     {
         $reasonTypeEnum = OrderRejectReasonType::from($reasonType);
         MarketPlace::declineOrder($order, $lineId, $reasonTypeEnum);
+
         return back();
     }
 }

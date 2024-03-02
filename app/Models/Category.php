@@ -66,7 +66,7 @@ class Category extends BaseModel
         return $this->belongsToMany(Product::class, 'product_categories');
     }
 
-    protected function deepProducts(?int $carId = null)
+    protected function deepProducts(int $carId = null)
     {
         $query = Product::query()->join('product_categories', 'products.id', '=', 'product_categories.product_id')->whereIn('product_categories.category_id', $this->tree['childs']);
         if ($carId) {
@@ -80,9 +80,10 @@ class Category extends BaseModel
     {
         if (Garage::hasChosen()) {
             $carId = Garage::chosen();
-            return Attribute::get(fn() => Cache::remember("deep_product_count_{$this->id}_with_car_$carId", TTL::DAY, fn() => $this->deepProducts($carId)->count()));
+
+            return Attribute::get(fn () => Cache::remember("deep_product_count_{$this->id}_with_car_$carId", TTL::DAY, fn () => $this->deepProducts($carId)->count()));
         } else {
-            return Attribute::get(fn() => Cache::remember("deep_product_count_{$this->id}", TTL::DAY, fn() => $this->deepProducts()->count()));
+            return Attribute::get(fn () => Cache::remember("deep_product_count_{$this->id}", TTL::DAY, fn () => $this->deepProducts()->count()));
         }
     }
 

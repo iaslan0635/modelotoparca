@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use App\Services\Bots\OcpClient;
 
 class BotImage extends BaseModel
@@ -13,7 +12,8 @@ class BotImage extends BaseModel
     {
         $image = OcpClient::requestWithoutCache($this->url);
         $path = "product_images/extras/{$this->id}.png";
-        \Storage::disk("public")->put($path, $image);
+        \Storage::disk('public')->put($path, $image);
+
         return $path;
     }
 }

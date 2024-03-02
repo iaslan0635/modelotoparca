@@ -30,8 +30,11 @@ class ExcelImport implements ShouldQueue
         1 => 'usd',
         20 => 'eur',
     ];
+
     const IMAGE_11 = 0b10;
+
     const IMAGE_12 = 0b01;
+
     public $data;
 
     /**
@@ -103,12 +106,14 @@ class ExcelImport implements ShouldQueue
             ];
 
             $isChaged = $product->isDirty($veriler);
-            foreach ($product->getChanges() as $column => $new)
-                if ($column !== 'updated_at' && $column !== 'created_at')
+            foreach ($product->getChanges() as $column => $new) {
+                if ($column !== 'updated_at' && $column !== 'created_at') {
                     Log::create([
                         'product_id' => $product->id,
                         'message' => "Değişiklik yapıldı. Kolon: $column\nEski: {$product->getOriginal($column)}, Yeni: $new",
                     ]);
+                }
+            }
 
             $product->save();
         } else {
@@ -165,7 +170,7 @@ class ExcelImport implements ShouldQueue
             foreach ($oems as $oem) {
                 $product->oems()->updateOrCreate(
                     ['oem' => $oem],
-                    ['type' => "excel"]
+                    ['type' => 'excel']
                 );
             }
 
@@ -173,7 +178,7 @@ class ExcelImport implements ShouldQueue
         }
 
         $id = $product->id;
-        $title = $product->web_name ?? $product->name ?? "BAŞLIKSIZ ÜRÜN";
+        $title = $product->web_name ?? $product->name ?? 'BAŞLIKSIZ ÜRÜN';
         $allWebNames = implode(' ', [$product->name, $product->name3, $product->name4]);
 
         $image_appendix = 0;
@@ -189,7 +194,7 @@ class ExcelImport implements ShouldQueue
             'title' => $title,
             'sub_title' => $allWebNames,
             'description' => $allWebNames,
-            'slug' => Str::slug($title) . '-' . $id,
+            'slug' => Str::slug($title).'-'.$id,
             'sku' => $product->code,
             'quantity' => $product->onhand,
             'status' => intval($product->active) === 0,
@@ -204,7 +209,7 @@ class ExcelImport implements ShouldQueue
             'fitting_position' => $product->fitting_position,
             'image_appendix' => $image_appendix,
             'abk' => $product->abk,
-            "hidden_searchable" => $product->name2,
+            'hidden_searchable' => $product->name2,
         ]);
 
         if ($isChaged) {
@@ -246,13 +251,16 @@ class ExcelImport implements ShouldQueue
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
                     $trimmed = trim($oem);
-                    if (strlen($trimmed) === 0) continue;
+                    if (strlen($trimmed) === 0) {
+                        continue;
+                    }
                     (new OnlineCarParts(
                         keyword: $trimmed,
                         product_id: $product->id,
                         field: $field,
                     ))->smash();
                 }
+
                 continue;
             }
 
@@ -261,6 +269,7 @@ class ExcelImport implements ShouldQueue
                     'product_id' => $product->id,
                     'message' => "Boş (null) değer atlandı. Kolon: $field",
                 ]);
+
                 continue;
             }
 
@@ -270,13 +279,14 @@ class ExcelImport implements ShouldQueue
                     'product_id' => $product->id,
                     'message' => "Boş değer atlandı. Kolon: $field",
                 ]);
+
                 continue;
             }
 
             $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
 
-            if ($field === "abk" && str_contains($value, "@")) {
-                [$brand_filter, $value] = explode("@", $value);
+            if ($field === 'abk' && str_contains($value, '@')) {
+                [$brand_filter, $value] = explode('@', $value);
             }
 
             $found = (new OnlineCarParts(
@@ -288,7 +298,7 @@ class ExcelImport implements ShouldQueue
             if ($found) {
                 Log::create([
                     'product_id' => $product->id,
-                    'message' => "Ürün bulundu, bot sonlandırılıyor. Kolon: $field | Değer: $value | Marka filtresi: " . ($brand_filter ?? '(Yok)'),
+                    'message' => "Ürün bulundu, bot sonlandırılıyor. Kolon: $field | Değer: $value | Marka filtresi: ".($brand_filter ?? '(Yok)'),
                 ]);
                 break;
             }
@@ -314,7 +324,7 @@ class ExcelImport implements ShouldQueue
             ]);
         }
 
-        $oems = explode(',', $product->oem_codes ?? "");
+        $oems = explode(',', $product->oem_codes ?? '');
         foreach ($oems as $oem) {
             $product->oems()->firstOrCreate([
                 'oem' => $oem,
@@ -322,15 +332,18 @@ class ExcelImport implements ShouldQueue
         }
 
         $product->actualProduct->update([
-            "tecdoc" => null,
-            "specifications" => null,
+            'tecdoc' => null,
+            'specifications' => null,
         ]);
     }
 
     private static function getBrand(TigerProduct $product): ?string
     {
-        $brand = Brand::find($product->markref, ["name", "botname"]);
-        if (!$brand) return null;
+        $brand = Brand::find($product->markref, ['name', 'botname']);
+        if (! $brand) {
+            return null;
+        }
+
         return $brand->botname ?? $brand->name;
     }
 }

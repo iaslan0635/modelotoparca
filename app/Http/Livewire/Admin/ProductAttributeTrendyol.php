@@ -9,19 +9,22 @@ use Livewire\Component;
 class ProductAttributeTrendyol extends Component
 {
     public array $attribute;
+
     public int $product_id;
+
     public string $value;
+
     public int $value_id;
 
     public function mount()
     {
         $sync = ProductMerchantAttribute::query()
-            ->where('merchant', '=', "trendyol")
+            ->where('merchant', '=', 'trendyol')
             ->where('product_id', '=', $this->product_id)
             ->where('merchant_id', '=', $this->attribute['attribute']->id)
             ->first();
 
-        if ($sync){
+        if ($sync) {
             if ($sync->merchant_value_id) {
                 $this->value_id = $sync->merchant_value_id;
             } else {
@@ -29,7 +32,7 @@ class ProductAttributeTrendyol extends Component
             }
         }
 
-//        dd($this->value_id);
+        //        dd($this->value_id);
     }
 
     public function render()
@@ -40,11 +43,11 @@ class ProductAttributeTrendyol extends Component
     public function save()
     {
         Product::find($this->product_id)->merchantAttributes()->updateOrCreate([
-            'merchant' => "trendyol",
+            'merchant' => 'trendyol',
             'merchant_id' => $this->attribute['attribute']['id'],
             'product_id' => $this->product_id,
         ], [
-            $this->attribute['allowCustom'] ? "merchant_value" : "merchant_value_id" => $this->attribute['allowCustom'] ? $this->value : $this->value_id
+            $this->attribute['allowCustom'] ? 'merchant_value' : 'merchant_value_id' => $this->attribute['allowCustom'] ? $this->value : $this->value_id,
         ]);
     }
 }

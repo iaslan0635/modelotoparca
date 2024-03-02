@@ -10,9 +10,9 @@ class Garage extends Component
 {
     use ForwardsCalls;
 
-    public array|null $cars;
+    public ?array $cars;
 
-    public int|null $chosen;
+    public ?int $chosen;
 
     protected $listeners = ['chooseCar', 'reloadData', 'forwardCallToGarage'];
 

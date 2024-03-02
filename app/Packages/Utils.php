@@ -7,7 +7,7 @@ class Utils
     /**
      * Convert a nested array of pairs to an associative array.
      *
-     * @param array $array The input array containing pairs. ["A", "B"], ["C", "D"]]
+     * @param  array  $array The input array containing pairs. ["A", "B"], ["C", "D"]]
      * @return array The associative array. ["A" => "B", "C" => "D"]
      */
     public static function arrayPair(array $array): array
@@ -21,7 +21,7 @@ class Utils
     /**
      * Flatten an array by one level.
      *
-     * @param array $array The array to be flattened.
+     * @param  array  $array The array to be flattened.
      * @return array The flattened array.
      */
     public static function flattenOne(array $array)
@@ -32,7 +32,8 @@ class Utils
     /** PHP equivalent of Object.fromEntries()
      * @template TKey of array-key
      * @template TValue
-     * @param array<array-key, array{TKey, TValue}> $array
+     *
+     * @param  array<array-key, array{TKey, TValue}>  $array
      * @return array<TKey, TValue>
      */
     public static function fromEntries(array $array)

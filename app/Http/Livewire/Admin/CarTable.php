@@ -9,9 +9,9 @@ class CarTable extends Component
 {
     public array $cars;
 
-    public array|null $editingModel = null;
+    public ?array $editingModel = null;
 
-    public int|null $editingIndex = null;
+    public ?int $editingIndex = null;
 
     const EDITABLE_FIELDS = [
         'id',

@@ -27,7 +27,6 @@ class BrandTable extends Component
         return view('livewire.admin.brand-table');
     }
 
-
     public function enterEditing($index)
     {
         $this->editingModel = $this->brands[$index]->only(self::EDITABLE_FIELDS);

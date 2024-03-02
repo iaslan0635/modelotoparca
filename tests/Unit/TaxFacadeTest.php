@@ -17,13 +17,13 @@ class TaxFacadeTest extends TestCase
         ];
     }
 
-    #[DataProvider("taxProvider")]
+    #[DataProvider('taxProvider')]
     public function testCalculate(int $price, int $taxRate, float $priceWithTaxRate)
     {
         $this->assertEquals($priceWithTaxRate, TaxFacade::calculate($price, $taxRate));
     }
 
-    #[DataProvider("taxProvider")]
+    #[DataProvider('taxProvider')]
     public function testReverseCalculate(int $price, int $taxRate, float $priceWithTaxRate)
     {
         $this->assertEquals($price, TaxFacade::reverseCalculate($priceWithTaxRate, $taxRate));

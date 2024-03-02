@@ -2,7 +2,6 @@
 
 namespace App\Services\Merchants;
 
-use App\Enums\HepsiburadaProductStatus;
 use App\Enums\OrderRejectReasonType;
 use App\Facades\Helper;
 use App\Models\MerchantOrder;
@@ -17,61 +16,63 @@ use Illuminate\Support\Facades\Http;
 class Hepsiburada implements TrackableMerchant
 {
     public readonly string $merchantId;
+
     private array $creds;
 
     public function __construct()
-
     {
-        $keyPrefix = config("merchants.test_mode") ? ".test_creds" : "";
+        $keyPrefix = config('merchants.test_mode') ? '.test_creds' : '';
         $this->creds = config("merchants$keyPrefix.hepsiburada");
-        $this->merchantId = $this->creds["merchantId"];
+        $this->merchantId = $this->creds['merchantId'];
     }
 
     private function baseUrl(string $service)
     {
-        $sit = config("merchants.test_mode") ? "-sit" : "";
+        $sit = config('merchants.test_mode') ? '-sit' : '';
+
         return "https://$service$sit.hepsiburada.com/";
     }
 
     private function client(string $service): PendingRequest
     {
         return Http::withBasicAuth(
-            $this->creds["username"],
-            $this->creds["password"],
+            $this->creds['username'],
+            $this->creds['password'],
         )->throw()->baseUrl($this->baseUrl($service));
     }
 
     private function preparePriceToSend($price)
     {
-        $price *= (100 + merchant_setting("hepsiburada", "comission", 0)) / 100;
+        $price *= (100 + merchant_setting('hepsiburada', 'comission', 0)) / 100;
+
         return number_format($price, 2, ',', '');
     }
 
     public function setStock(Product $product, $stock)
     {
-        $this->client("listing-external")->post("Listings/merchantid/$this->merchantId/stock-uploads", [
-            "merchantSku" => $product->sku,
-            "availableStock" => $product->quantity,
-            "maximumPurchasableQuantity" => $product->quantity,
+        $this->client('listing-external')->post("Listings/merchantid/$this->merchantId/stock-uploads", [
+            'merchantSku' => $product->sku,
+            'availableStock' => $product->quantity,
+            'maximumPurchasableQuantity' => $product->quantity,
         ]);
     }
 
     public function updatePrice(Product $product)
     {
-        $this->client("listing-external")->post("Listings/merchantid/$this->merchantId/price-uploads", [
-            "merchantSku" => $product->sku,
-            "price" => $this->preparePriceToSend($product->price->price)
+        $this->client('listing-external')->post("Listings/merchantid/$this->merchantId/price-uploads", [
+            'merchantSku' => $product->sku,
+            'price' => $this->preparePriceToSend($product->price->price),
         ]);
     }
 
     public function sendProduct(Product $product)
     {
         $exists = rescue(
-            fn() => $this->client("listing-external")->get("listings/merchantid/$this->merchantId", [
-                    "offset" => 0,
-                    "limit" => 1,
-                    "merchantSkuList" => $product->sku
-                ])->object()->totalCount > 0,
+            fn () => $this->client('listing-external')->get("listings/merchantid/$this->merchantId", [
+                'offset' => 0,
+                'limit' => 1,
+                'merchantSkuList' => $product->sku,
+            ])->object()->totalCount > 0,
             false
         );
 
@@ -82,38 +83,37 @@ class Hepsiburada implements TrackableMerchant
     {
         $price = $this->preparePriceToSend($product->price->price);
         $payload = [
-            "merchantId" => $this->merchantId,
-            "items" => [
+            'merchantId' => $this->merchantId,
+            'items' => [
                 [
-                    "categoryId" => $product->categories[0]->merchants()
-                        ->where('merchant', '=', "hepsiburada")->first()->merchant_id,
-                    "merchantSku" => $product->sku,
-                    "VaryantGroupID" => $product->sku,
-                    "Barcode" => $product->sku,
-                    "UrunAdi" => $product->title,
-                    "UrunAciklamasi" => $product->description,
-                    "Marka" => $product->brand->name,
-                    "GarantiSuresi" => 24,
-                    "kg" => "1",
-                    "tax_vat_rate" => "20",
-                    "price" => $price,
-                    "stock" => $product->quantity,
-                    "Image1" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Image2" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Image3" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Image4" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Image5" => "https://site.modelotoparca.com/images/products/defaults/product-1.jpg",
-                    "Video1" => null,
-                ]
-            ]
+                    'categoryId' => $product->categories[0]->merchants()
+                        ->where('merchant', '=', 'hepsiburada')->first()->merchant_id,
+                    'merchantSku' => $product->sku,
+                    'VaryantGroupID' => $product->sku,
+                    'Barcode' => $product->sku,
+                    'UrunAdi' => $product->title,
+                    'UrunAciklamasi' => $product->description,
+                    'Marka' => $product->brand->name,
+                    'GarantiSuresi' => 24,
+                    'kg' => '1',
+                    'tax_vat_rate' => '20',
+                    'price' => $price,
+                    'stock' => $product->quantity,
+                    'Image1' => 'https://site.modelotoparca.com/images/products/defaults/product-1.jpg',
+                    'Image2' => 'https://site.modelotoparca.com/images/products/defaults/product-1.jpg',
+                    'Image3' => 'https://site.modelotoparca.com/images/products/defaults/product-1.jpg',
+                    'Image4' => 'https://site.modelotoparca.com/images/products/defaults/product-1.jpg',
+                    'Image5' => 'https://site.modelotoparca.com/images/products/defaults/product-1.jpg',
+                    'Video1' => null,
+                ],
+            ],
         ];
 
         $json = json_encode($payload);
 
-
-        $response = $this->client("mpop")
-            ->attach("file", $json, 'integrator-ticket-upload.json')
-            ->post("ticket-api/api/integrator/import")->object();
+        $response = $this->client('mpop')
+            ->attach('file', $json, 'integrator-ticket-upload.json')
+            ->post('ticket-api/api/integrator/import')->object();
 
         return $response->data->trackingId;
     }
@@ -134,42 +134,41 @@ class Hepsiburada implements TrackableMerchant
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'hepsiburada')
             ->where('product_id', '=', $product->id)
-            ->get()->mapWithKeys(fn($attr) => [$attr->merchant_id => $attr->merchant_value]);
+            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id => $attr->merchant_value]);
 
-        $images = $product->imageUrls()->values()->mapWithKeys(fn($image, $k) => ["Image" . ($k + 1) => $image]);
+        $images = $product->imageUrls()->values()->mapWithKeys(fn ($image, $k) => ['Image'.($k + 1) => $image]);
 
         $payload = [
-            "categoryId" => $product->categories[0]->merchants()
-                ->where('merchant', '=', "hepsiburada")->value('merchant_id'),
-            "merchant" => $this->merchantId,
-            "attributes" => [
-                "merchantSku" => $product->sku,
-                "VaryantGroupID" => $product->sku,
-                "Barcode" => $product->sku,
-                "UrunAdi" => $product->title,
-                "UrunAciklamasi" => $product->description,
-                "Marka" => $product->brand->name,
-                "GarantiSuresi" => 24,
-                "kg" => "1",
-                "tax_vat_rate" => "20",
-                "price" => $price,
-                "stock" => $product->quantity,
+            'categoryId' => $product->categories[0]->merchants()
+                ->where('merchant', '=', 'hepsiburada')->value('merchant_id'),
+            'merchant' => $this->merchantId,
+            'attributes' => [
+                'merchantSku' => $product->sku,
+                'VaryantGroupID' => $product->sku,
+                'Barcode' => $product->sku,
+                'UrunAdi' => $product->title,
+                'UrunAciklamasi' => $product->description,
+                'Marka' => $product->brand->name,
+                'GarantiSuresi' => 24,
+                'kg' => '1',
+                'tax_vat_rate' => '20',
+                'price' => $price,
+                'stock' => $product->quantity,
                 ...$images,
-                ...$fields
-            ]
+                ...$fields,
+            ],
         ];
 
         $json = json_encode($payload);
 
-
-        $response = $this->client("mpop")
-            ->attach("file", $json, 'integrator.json')
-            ->post("product/api/products/import?version=1")
+        $response = $this->client('mpop')
+            ->attach('file', $json, 'integrator.json')
+            ->post('product/api/products/import?version=1')
             ->object();
 
         $trackingId = $response->data->trackingId;
         Tracking::create([
-            'merchant' => "hepsiburada",
+            'merchant' => 'hepsiburada',
             'tracking_id' => $trackingId,
             'product_id' => $product->id,
         ]);
@@ -179,22 +178,22 @@ class Hepsiburada implements TrackableMerchant
 
     public function getCategories()
     {
-        return $this->client("mpop")->get("product/api/categories/get-all-categories?leaf=true&status=ACTIVE&available=true&version=1&page=0&size=2000")->object();
+        return $this->client('mpop')->get('product/api/categories/get-all-categories?leaf=true&status=ACTIVE&available=true&version=1&page=0&size=2000')->object();
     }
 
     public function getCategoryAttributes($categoryId)
     {
-        return $this->client("mpop")->get("product/api/categories/$categoryId/attributes?version=1")->object();
+        return $this->client('mpop')->get("product/api/categories/$categoryId/attributes?version=1")->object();
     }
 
     public function getCategoryAttributeValues(int $categoryId, $attributeId)
     {
-        return $this->client("mpop")->get("product/api/categories/$categoryId/attribute/$attributeId/values?version=5&page=0&size=1000")->object();
+        return $this->client('mpop')->get("product/api/categories/$categoryId/attribute/$attributeId/values?version=5&page=0&size=1000")->object();
     }
 
     public function getCargoCompanies()
     {
-        return $this->client("shipping-external")->get("cargoFirms/$this->merchantId")->object();
+        return $this->client('shipping-external')->get("cargoFirms/$this->merchantId")->object();
     }
 
     public function getBrands()
@@ -204,7 +203,7 @@ class Hepsiburada implements TrackableMerchant
 
     public function getOrders()
     {
-        return $this->client("oms-external")->get("orders/merchantid/$this->merchantId")->object();
+        return $this->client('oms-external')->get("orders/merchantid/$this->merchantId")->object();
     }
 
     public function approveOrder(MerchantOrder $order)
@@ -214,9 +213,9 @@ class Hepsiburada implements TrackableMerchant
 
     public function declineOrder(string $lineId, OrderRejectReasonType $reasonType, string $shipmentPackageId, int $quantity)
     {
-        $this->client("oms-external")->post(
+        $this->client('oms-external')->post(
             "lineitems/merchantid/$this->merchantId/id/$lineId/cancelbymerchant",
-            ["reasonId" => 83] // Başka bulamadım :(
+            ['reasonId' => 83] // Başka bulamadım :(
         );
     }
 
@@ -237,13 +236,13 @@ class Hepsiburada implements TrackableMerchant
 
     public function getQuestions()
     {
-        return $this->client("api-asktoseller-merchant")
-            ->withHeader("merchantId", $this->merchantId)
-            ->get("/api/v1.0/issues", [
-                "desc" => "true",
-                "page" => "1",
-                "size" => "100",
-                "status" => "1"
+        return $this->client('api-asktoseller-merchant')
+            ->withHeader('merchantId', $this->merchantId)
+            ->get('/api/v1.0/issues', [
+                'desc' => 'true',
+                'page' => '1',
+                'size' => '100',
+                'status' => '1',
             ])->object();
     }
 
@@ -252,13 +251,13 @@ class Hepsiburada implements TrackableMerchant
         $questions = $this->getQuestions();
         foreach ($questions->data as $question) {
             MerchantQuestion::updateOrCreate([
-                "merchant" => "hepsiburada",
-                "merchant_id" => $question->id,
+                'merchant' => 'hepsiburada',
+                'merchant_id' => $question->id,
             ], [
-                "customer_fullname" => $question->customerId,
-                "date" => $question->createdAt,
-                "conversation" => $question->conversations,
-                "data" => $question
+                'customer_fullname' => $question->customerId,
+                'date' => $question->createdAt,
+                'conversation' => $question->conversations,
+                'data' => $question,
             ]);
         }
     }
@@ -279,33 +278,33 @@ class Hepsiburada implements TrackableMerchant
         foreach ($orders->items as $item) {
             $detail = $this->getOrderDetail($item->orderNumber);
             MerchantOrder::updateOrCreate([
-                "merchant_id" => $item->id,
-                "merchant" => "hepsiburada",
+                'merchant_id' => $item->id,
+                'merchant' => 'hepsiburada',
             ], [
-                "number" => $item->orderNumber,
-                "client" => [
-                    "id" => $item->customerId,
-                    "name" => $item->customerName,
+                'number' => $item->orderNumber,
+                'client' => [
+                    'id' => $item->customerId,
+                    'name' => $item->customerName,
                 ],
-                "data" => $item,
-                "price" => $item->totalPrice->amount,
-                "date" => $item->orderDate, // FIXME: düzgün date parse yap
-                "status" => $item->status,
-                "delivery_status" => "",
-                "payment_status" => "",
-                "lines" => array_map(fn($line) => [
-                    "sku" => $line->barcode,
-                    "quantity" => $line->quantity,
-                    "price" => $line->totalPrice,
+                'data' => $item,
+                'price' => $item->totalPrice->amount,
+                'date' => $item->orderDate, // FIXME: düzgün date parse yap
+                'status' => $item->status,
+                'delivery_status' => '',
+                'payment_status' => '',
+                'lines' => array_map(fn ($line) => [
+                    'sku' => $line->barcode,
+                    'quantity' => $line->quantity,
+                    'price' => $line->totalPrice,
                 ], $detail->items),
-                "line_data" => [],
+                'line_data' => [],
             ]);
         }
     }
 
     public function getOrderDetail($orderNumber)
     {
-        return $this->client("oms-external")->get("orders/merchantid/$this->merchantId/orderNumber/$orderNumber")->object();
+        return $this->client('oms-external')->get("orders/merchantid/$this->merchantId/orderNumber/$orderNumber")->object();
     }
 
     public function parseOrder(MerchantOrder $order)
@@ -315,31 +314,32 @@ class Hepsiburada implements TrackableMerchant
 
     public function getTrackingResult(string $trackingId): PromiseInterface
     {
-        return $this->client("mpop")->async()->get("product/api/products/status/$trackingId")
-            ->then(fn($request) => json_decode($request->getBody()->getContents(), true))
-            ->then(fn($response) => new TrackingResult(
+        return $this->client('mpop')->async()->get("product/api/products/status/$trackingId")
+            ->then(fn ($request) => json_decode($request->getBody()->getContents(), true))
+            ->then(fn ($response) => new TrackingResult(
                 trackingId: $trackingId,
-                success: array_key_exists("success", $response) && $response["success"],
+                success: array_key_exists('success', $response) && $response['success'],
                 result: $response
             ));
     }
 
     public function parseTrackingErrors(array $trackingResponse): array
     {
-        return ["TODO"];
+        return ['TODO'];
     }
 
     public function createTestOrder()
     {
-        if (!config("merchants.test_mode"))
-            throw new \Exception("Hepsiburada::createTestOrder() requires merchants.test_mode to be true");
+        if (! config('merchants.test_mode')) {
+            throw new \Exception('Hepsiburada::createTestOrder() requires merchants.test_mode to be true');
+        }
 
-        return $this->client("oms-stub-external")->post(
+        return $this->client('oms-stub-external')->post(
             "orders/merchantid/$this->merchantId",
             [
                 'Customer' => [
                     'CustomerId' => 'dfc8a27f-faae-4cb2-859c-8a7d50ee77be',
-                    'Name' => 'Test User'
+                    'Name' => 'Test User',
                 ],
                 'DeliveryAddress' => [
                     'AddressDetail' => 'Trump Towers',
@@ -350,7 +350,7 @@ class Hepsiburada implements TrackableMerchant
                     'District' => 'Kustepe',
                     'Email' => 'customer@hepsiburada.com.tr',
                     'Name' => 'Hepsiburada Office',
-                    'PhoneNumber' => '902822613231'
+                    'PhoneNumber' => '902822613231',
                 ],
                 'LineItems' => [
                     [
@@ -360,36 +360,39 @@ class Hepsiburada implements TrackableMerchant
                         'MerchantId' => $this->merchantId,
                         'Price' => [
                             'Amount' => 0,
-                            'Currency' => 'TRY'
+                            'Currency' => 'TRY',
                         ],
                         'Quantity' => 0,
                         'Sku' => 'string',
                         'TagList' => [
-                            'string'
+                            'string',
                         ],
                         'TotalPrice' => [
                             'Amount' => 0,
-                            'Currency' => 'TRY'
+                            'Currency' => 'TRY',
                         ],
                         'Vat' => 0,
-                        'isBnplMP' => true
-                    ]
+                        'isBnplMP' => true,
+                    ],
                 ],
                 'OrderDate' => '06/12/2023',
                 'OrderNumber' => '123',
-                'PaymentStatus' => 'AwaitingPayment'
+                'PaymentStatus' => 'AwaitingPayment',
             ]
         );
     }
 
     public function productExists(Product $product): mixed
     {
-        $status = $this->client("mpop")->get("product/api/products/all-products-of-merchant/$this->merchantId", [
-            "offset" => 0,
-            "limit" => 1,
-            "barcode" => $product->sku
+        $status = $this->client('mpop')->get("product/api/products/all-products-of-merchant/$this->merchantId", [
+            'offset' => 0,
+            'limit' => 1,
+            'barcode' => $product->sku,
         ])->object();
-        if (!$status->success) return "Ürün Bulunamadı!";
+        if (! $status->success) {
+            return 'Ürün Bulunamadı!';
+        }
+
         return Helper::getHepsiburadaStatuses($status->data[0]->status)->turkish;
     }
 }

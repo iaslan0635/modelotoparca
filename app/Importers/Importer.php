@@ -16,7 +16,7 @@ abstract class Importer
     /** @return string[] */
     abstract public static function getUsedTables(): array;
 
-    public function __construct(string $file, ?callable $statusHook = null)
+    public function __construct(string $file, callable $statusHook = null)
     {
         $spreadsheet = (new Xlsx())->load($file);
         $this->sheet = $spreadsheet->getActiveSheet();

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class SubSearch
 {
-    public static function query(Request $request, callable|null $filterCallback = null)
+    public static function query(Request $request, callable $filterCallback = null)
     {
         $minPrice = $request->input('min_price', 0);
         $maxPrice = $request->input('max_price', 999999);

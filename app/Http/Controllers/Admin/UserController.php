@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('admin.inhouse.user.index', ["users" => User::paginate()]);
+        return view('admin.inhouse.user.index', ['users' => User::paginate()]);
     }
 
     public function create()
@@ -30,7 +30,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         User::create($data);
 
-        return redirect()->route("admin.user.index");
+        return redirect()->route('admin.user.index');
     }
 
     public function show(User $user)
@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route("admin.user.index");
+        return redirect()->route('admin.user.index');
     }
 
     public function destroy(User $user)

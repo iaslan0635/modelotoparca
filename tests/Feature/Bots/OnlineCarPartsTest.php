@@ -11,10 +11,10 @@ class OnlineCarPartsTest extends TestCase
     public static function searchProductsFiltersBrandsProvider()
     {
         return [
-            ["SKF", true],
-            ["ABA", false],
-            ["TOPRAN", true],
-            ["ADIDAS", false],
+            ['SKF', true],
+            ['ABA', false],
+            ['TOPRAN', true],
+            ['ADIDAS', false],
         ];
     }
 
@@ -23,14 +23,14 @@ class OnlineCarPartsTest extends TestCase
     public function testSearchProductsFiltersBrands(string $brand, bool $shouldFind)
     {
         $bot = new OnlineCarParts(
-            keyword: "YP203294",
+            keyword: 'YP203294',
             product_id: 0,
-            field: "testing", // disable article no filter
+            field: 'testing', // disable article no filter
             brand_filter: $brand
         );
 
         $links = $bot->searchProducts();
-        $resultBrands = array_map(fn($link) => $bot->getProduct($link)->brand, $links);
+        $resultBrands = array_map(fn ($link) => $bot->getProduct($link)->brand, $links);
 
         $this->assertEquals($shouldFind ? [$brand] : [], array_unique($resultBrands));
     }
@@ -38,9 +38,9 @@ class OnlineCarPartsTest extends TestCase
     public static function searchProductsFiltersArticleIdProvider()
     {
         return [
-            ["MH10026", true],
-            ["Brake Disc", false],
-            ["06-00400", false],
+            ['MH10026', true],
+            ['Brake Disc', false],
+            ['06-00400', false],
         ];
     }
 
@@ -50,11 +50,11 @@ class OnlineCarPartsTest extends TestCase
         $bot = new OnlineCarParts(
             keyword: $code,
             product_id: 0,
-            field: "producercode",
+            field: 'producercode',
         );
 
         $links = $bot->searchProducts();
-        $resultArticleIds = array_map(fn($link) => $bot->getProduct($link)->articleId, $links);
+        $resultArticleIds = array_map(fn ($link) => $bot->getProduct($link)->articleId, $links);
 
         $this->assertEquals($shouldFind ? [$code] : [], array_unique($resultArticleIds));
     }

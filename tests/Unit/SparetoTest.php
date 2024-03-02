@@ -9,12 +9,12 @@ class SparetoTest extends TestCase
 {
     public function setUp(): void
     {
-        $this->markTestSkipped("Spareto is deprecated");
+        $this->markTestSkipped('Spareto is deprecated');
     }
 
     public function test_getProduct()
     {
-        $product = Spareto::getProduct("/products/original-imperium-engine-mounting/25651");
+        $product = Spareto::getProduct('/products/original-imperium-engine-mounting/25651');
 
         $expectedProduct = [
             'dimension' => [],
@@ -41,7 +41,7 @@ class SparetoTest extends TestCase
                 '36347', '05679', '214 030 0036', '214 030 0085', 'F8-6630',
                 'F8-8242', 'R59779', '2706153', '2706751', 'T405679',
                 '00219484', 'TED46865', '364785', '31501', '31509',
-                '395532', '395548'
+                '395532', '395548',
             ],
             'vehicles' => [
                 [

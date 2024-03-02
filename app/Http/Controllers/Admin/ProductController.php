@@ -8,7 +8,6 @@ use App\Http\Controllers\ProductController as CustomerProductController;
 use App\Jobs\RunSingleBotJob;
 use App\Models\Brand;
 use App\Models\Car;
-use App\Models\Log;
 use App\Models\Product;
 use App\Models\TigerProduct;
 use Closure;
@@ -28,6 +27,7 @@ class ProductController extends Controller
         'bot' => 'Bot ile çekilen',
         'non-bot' => 'Bot ile çekilmeyen',
     ];
+
     const FIELDS_TO_SEARCH = [
         'sku',
         'part_number',
@@ -40,11 +40,9 @@ class ProductController extends Controller
     ];
 
     /**
-     * @param Builder|null $productQuery
-     * @param mixed $request
-     * @return Builder
+     * @param  mixed  $request
      */
-    private static function getFilterQueryFromRequest(Request $request, ?Builder $productQuery = null): Builder
+    private static function getFilterQueryFromRequest(Request $request, Builder $productQuery = null): Builder
     {
         return self::filterQuery(
             $productQuery ?? Product::query(),
@@ -57,12 +55,12 @@ class ProductController extends Controller
     private static function getFilterConstraints()
     {
         return [
-            'merchant' => fn(Builder $query) => $query->whereHas("merchants"),
-            'non-merchant' => fn(Builder $query) => $query->where("ecommerce", true)->has("merchants", "=", 0),
-            'merchant-mark' => fn(Builder $query) => $query->where("ecommerce", true),
-            'non-merchant-mark' => fn(Builder $query) => $query->where("ecommerce", false),
-            'bot' => fn(Builder $query) => $query->whereHas("bots"),
-            'non-bot' => fn(Builder $query) => $query->whereDoesntHave("bots"),
+            'merchant' => fn (Builder $query) => $query->whereHas('merchants'),
+            'non-merchant' => fn (Builder $query) => $query->where('ecommerce', true)->has('merchants', '=', 0),
+            'merchant-mark' => fn (Builder $query) => $query->where('ecommerce', true),
+            'non-merchant-mark' => fn (Builder $query) => $query->where('ecommerce', false),
+            'bot' => fn (Builder $query) => $query->whereHas('bots'),
+            'non-bot' => fn (Builder $query) => $query->whereDoesntHave('bots'),
         ];
     }
 
@@ -71,7 +69,7 @@ class ProductController extends Controller
         if ($filterOptions) {
             foreach ($filterOptions as $filterOption) {
                 $filterConstraints = self::getFilterConstraints();
-                abort_unless(array_key_exists($filterOption, $filterConstraints), 400, "Geçersiz filtre");
+                abort_unless(array_key_exists($filterOption, $filterConstraints), 400, 'Geçersiz filtre');
                 $queryFn = $filterConstraints[$filterOption];
                 $queryFn($query);
             }
@@ -86,19 +84,19 @@ class ProductController extends Controller
         }
 
         if ($brands) {
-            $query = $query->whereIn("brand_id", $brands);
+            $query = $query->whereIn('brand_id', $brands);
         }
 
         return $query;
     }
 
-    public static function tableResponse(?Builder $productQuery = null)
+    public static function tableResponse(Builder $productQuery = null)
     {
         $request = \request();
         $query = self::getFilterQueryFromRequest($request, $productQuery);
 
         $hasAnyBrandsChosen =
-            $request->input('brands') != "all" &&
+            $request->input('brands') != 'all' &&
             $request->input('brands') != 0 &&
             filled($request->input('brands'));
 
@@ -107,21 +105,22 @@ class ProductController extends Controller
             filled($request->input('filters')) ||
             filled($request->input('search'));
 
-        if ($hasAnyFiltersApplied)
-            $brands = Brand::whereIn("id", $query->clone()->select("brand_id"))->get(["id", "name"]);
+        if ($hasAnyFiltersApplied) {
+            $brands = Brand::whereIn('id', $query->clone()->select('brand_id'))->get(['id', 'name']);
+        }
 
-        $products = $query->clone()->with(["merchants", "price"])->paginate();
+        $products = $query->clone()->with(['merchants', 'price'])->paginate();
         $products->appends($request->except('page'));
 
         $filterConstraintsToShow = collect(self::getFilterConstraints())
-            ->filter(fn(Closure $qFn) => $qFn($query->clone())->exists())
-            ->mapWithKeys(fn($_, $key) => [$key => self::FILTER_OPTIONS[$key]])
+            ->filter(fn (Closure $qFn) => $qFn($query->clone())->exists())
+            ->mapWithKeys(fn ($_, $key) => [$key => self::FILTER_OPTIONS[$key]])
             ->all();
 
-
-        $brands ??= Brand::get(["id", "name"]);
+        $brands ??= Brand::get(['id', 'name']);
         $chosenBrands = $hasAnyBrandsChosen ? Arr::wrap($request->input('brands')) : false;
-        $chosenFilters = \Arr::wrap(request()->input("filters"));
+        $chosenFilters = \Arr::wrap(request()->input('filters'));
+
         return view('admin.inhouse.products.table', compact('products', 'brands', 'filterConstraintsToShow', 'chosenBrands', 'chosenFilters'));
     }
 
@@ -134,10 +133,11 @@ class ProductController extends Controller
     {
         $query = self::getFilterQueryFromRequest($request);
 
-        $productIds = $query->pluck("id");
-        $tigerProducts = TigerProduct::whereIn("id", $productIds)->cursor();
+        $productIds = $query->pluck('id');
+        $tigerProducts = TigerProduct::whereIn('id', $productIds)->cursor();
         $xlsx = ProductExporter::export($tigerProducts);
-        return response()->streamDownload(fn() => $xlsx->save("php://output"), "WEB_EXPORT.xlsx");
+
+        return response()->streamDownload(fn () => $xlsx->save('php://output'), 'WEB_EXPORT.xlsx');
     }
 
     public function show(Product $product)
@@ -171,7 +171,7 @@ class ProductController extends Controller
         $cars = $query ? Car::searchQuery(Query::match()->field('name')->query($query))->paginate(10)->onlyModels() : Car::paginate(10);
 
         return [
-            'results' => $cars->map(fn(Car $car) => [
+            'results' => $cars->map(fn (Car $car) => [
                 'id' => $car->id,
                 'text' => $car->name,
             ])->all(),

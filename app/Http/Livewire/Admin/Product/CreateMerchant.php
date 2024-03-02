@@ -11,6 +11,7 @@ use Livewire\Component;
 class CreateMerchant extends Component
 {
     public Product $product;
+
     public function render()
     {
         return view('livewire.admin.product.create-merchant');

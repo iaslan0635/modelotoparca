@@ -8,7 +8,7 @@ use Symfony\Component\Console\Output\ConsoleSectionOutput;
 
 class FancyCommand extends Command
 {
-    function iterate($iterable, bool $transistent = true)
+    public function iterate($iterable, bool $transistent = true)
     {
         /** @var ConsoleSectionOutput $section */
         $section = $this->output->getOutput()->section();
@@ -17,7 +17,8 @@ class FancyCommand extends Command
 
         yield from $bar->iterate($iterable);
 
-        if ($transistent)
+        if ($transistent) {
             $section->clear();
+        }
     }
 }

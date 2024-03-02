@@ -17,20 +17,21 @@ use Illuminate\Support\Facades\Http;
 class TrendyolMerchant implements TrackableMerchant
 {
     public readonly string $supplierId;
+
     private array $creds;
 
     public function __construct()
     {
-        $keyPrefix = config("merchants.test_mode") ? ".test_creds" : "";
+        $keyPrefix = config('merchants.test_mode') ? '.test_creds' : '';
         $this->creds = config("merchants$keyPrefix.trendyol");
-        $this->supplierId = $this->creds["supplierId"];
+        $this->supplierId = $this->creds['supplierId'];
     }
 
     private function client(): PendingRequest
     {
         return Http::withBasicAuth(
-            $this->creds["username"],
-            $this->creds["password"],
+            $this->creds['username'],
+            $this->creds['password'],
         )->throw()->baseUrl($this->baseUrl());
     }
 
@@ -41,43 +42,44 @@ class TrendyolMerchant implements TrackableMerchant
 
     private function baseUrl()
     {
-        return config("merchants.test_mode") ? "https://stageapi.trendyol.com/stagesapigw/" : 'https://api.trendyol.com/sapigw/';
+        return config('merchants.test_mode') ? 'https://stageapi.trendyol.com/stagesapigw/' : 'https://api.trendyol.com/sapigw/';
     }
 
     private function preparePriceToSend($price)
     {
-        $price *= (100 + merchant_setting("trendyol", "comission", 0)) / 100;
+        $price *= (100 + merchant_setting('trendyol', 'comission', 0)) / 100;
+
         return number_format($price, 2, '.', '');
     }
 
     public function setStock(Product $product, $stock)
     {
-        return $this->supplierClient()->post("products/price-and-inventory", [
-            "items" => [
+        return $this->supplierClient()->post('products/price-and-inventory', [
+            'items' => [
                 [
-                    "barcode" => $product->sku,
-                    "quantity" => $stock,
-//                    "price" => $line->totalPrice,
-                ]
-            ]
+                    'barcode' => $product->sku,
+                    'quantity' => $stock,
+                    //                    "price" => $line->totalPrice,
+                ],
+            ],
         ])->object()->batchRequestId;
     }
 
     public function getOrders()
     {
-        return $this->supplierClient()->get("orders")->object();
+        return $this->supplierClient()->get('orders')->object();
     }
 
     public function getQuestions()
     {
-        return $this->supplierClient()->get("questions/filter")->object();
+        return $this->supplierClient()->get('questions/filter')->object();
     }
 
     public function sendProduct(Product $product)
     {
-        $exists = $this->supplierClient()->get("products", ["barcode" => $product->sku])
-                ->object()->totalElements > 0;
-        $method = $exists ? "PUT" : "POST";
+        $exists = $this->supplierClient()->get('products', ['barcode' => $product->sku])
+            ->object()->totalElements > 0;
+        $method = $exists ? 'PUT' : 'POST';
 
         return $this->_sendProduct($product, $method);
     }
@@ -95,51 +97,52 @@ class TrendyolMerchant implements TrackableMerchant
             if ($field->merchant_value_id) {
                 $attributes[] = [
                     'attributeId' => $field->merchant_id,
-                    'attributeValueId' => $field->merchant_value_id
+                    'attributeValueId' => $field->merchant_value_id,
                 ];
             } else {
                 $attributes[] = [
                     'attributeId' => $field->merchant_id,
-                    'customAttributeValue' => $field->merchant_value
+                    'customAttributeValue' => $field->merchant_value,
                 ];
             }
         }
 
-        $response = $this->supplierClient()->send($method, "v2/products", ["json" => [
-            "items" => [
+        $response = $this->supplierClient()->send($method, 'v2/products', ['json' => [
+            'items' => [
                 [
-                    "barcode" => $product->sku,
-                    "title" => $product->title,
-                    "productMainId" => $product->sku,
-                    "brandId" => $product->brand->merchants()
-                        ->where('merchant', '=', "trendyol")->valueOrFail("merchant_id"),
-                    "categoryId" => $product->categories[0]->merchants()
-                        ->where('merchant', '=', "trendyol")->valueOrFail("merchant_id"),
-                    "stockCode" => $product->sku,
-                    "dimensionalWeight" => 0,
-                    "description" => $product->description,
-                    "vatRate" => 20,
-                    "images" => $product->imageUrls()->map(fn($image) => ["url" => $image]),
-                    "cargoCompanyId" => 10,
-                    "listPrice" => $this->preparePriceToSend($product->price->price),
-                    "quantity" => $product->quantity,
-                    "salePrice" => $this->preparePriceToSend($product->price->discounted_price),
-                    "brand" => $product->brand->name, //?
-                    "currencyType" => 'TRY', // Bütün pazaryerlerine TL göndereceğiz
-                    "attributes" => $attributes
-                ]
-            ]
+                    'barcode' => $product->sku,
+                    'title' => $product->title,
+                    'productMainId' => $product->sku,
+                    'brandId' => $product->brand->merchants()
+                        ->where('merchant', '=', 'trendyol')->valueOrFail('merchant_id'),
+                    'categoryId' => $product->categories[0]->merchants()
+                        ->where('merchant', '=', 'trendyol')->valueOrFail('merchant_id'),
+                    'stockCode' => $product->sku,
+                    'dimensionalWeight' => 0,
+                    'description' => $product->description,
+                    'vatRate' => 20,
+                    'images' => $product->imageUrls()->map(fn ($image) => ['url' => $image]),
+                    'cargoCompanyId' => 10,
+                    'listPrice' => $this->preparePriceToSend($product->price->price),
+                    'quantity' => $product->quantity,
+                    'salePrice' => $this->preparePriceToSend($product->price->discounted_price),
+                    'brand' => $product->brand->name, //?
+                    'currencyType' => 'TRY', // Bütün pazaryerlerine TL göndereceğiz
+                    'attributes' => $attributes,
+                ],
+            ],
         ]])->object();
 
-        if (!property_exists($response, "batchRequestId"))
+        if (! property_exists($response, 'batchRequestId')) {
             // hata olduğunda batchRequestId gelmez
             dd($response);
+        }
 
         $this->setStock($product, $product->quantity);
         $this->updatePrice($product);
 
         Tracking::create([
-            'merchant' => "trendyol",
+            'merchant' => 'trendyol',
             'tracking_id' => $response->batchRequestId,
             'product_id' => $product->id,
         ]);
@@ -155,7 +158,7 @@ class TrendyolMerchant implements TrackableMerchant
     public function updateDeliveryCode($id, $code): bool
     {
         $this->supplierClient()->put("$id/update-tracking-number", [
-            "trackingNumber" => $code
+            'trackingNumber' => $code,
         ]);
 
         return true;
@@ -175,25 +178,25 @@ class TrendyolMerchant implements TrackableMerchant
         return $this->client()->put(
             "/integration/oms/core/sellers/$this->supplierId/shipment-packages/$shipmentPackageId/items/unsupplied",
             [
-                "lines" => [
+                'lines' => [
                     [
-                        "lineId" => $lineId,
-                        "quantity" => $quantity
-                    ]
+                        'lineId' => $lineId,
+                        'quantity' => $quantity,
+                    ],
                 ],
-                "reasonId" => $reasonId
+                'reasonId' => $reasonId,
             ]
         );
     }
 
     public function createProduct(Product $product)
     {
-        return $this->sendProduct($product, "POST");
+        return $this->sendProduct($product, 'POST');
     }
 
     public function getCategories()
     {
-        return $this->client()->get("product-categories")->object();
+        return $this->client()->get('product-categories')->object();
     }
 
     public function getCategoryAttributes($categoryId)
@@ -208,124 +211,126 @@ class TrendyolMerchant implements TrackableMerchant
                 'Id' => 42,
                 'Code' => 'DHLMP',
                 'Name' => 'DHL Marketplace',
-                'Tax Number' => '951-241-77-13'
+                'Tax Number' => '951-241-77-13',
             ],
             [
                 'Id' => 38,
                 'Code' => 'SENDEOMP',
                 'Name' => 'Sendeo Marketplace',
-                'Tax Number' => '2910804196'
+                'Tax Number' => '2910804196',
             ],
             [
                 'Id' => 36,
                 'Code' => 'NETMP',
                 'Name' => 'NetKargo Lojistik Marketplace',
-                'Tax Number' => '6930094440'
+                'Tax Number' => '6930094440',
             ],
             [
                 'Id' => 34,
                 'Code' => 'MARSMP',
                 'Name' => 'Mars Lojistik Marketplace',
-                'Tax Number' => '6120538808'
+                'Tax Number' => '6120538808',
             ],
             [
                 'Id' => 39,
                 'Code' => 'BIRGUNDEMP',
                 'Name' => 'Bir Günde Kargo Marketplace',
-                'Tax Number' => '1770545653'
+                'Tax Number' => '1770545653',
             ],
             [
                 'Id' => 35,
                 'Code' => 'OCTOMP',
                 'Name' => 'Octovan Lojistik Marketplace',
-                'Tax Number' => '6330506845'
+                'Tax Number' => '6330506845',
             ],
             [
                 'Id' => 30,
                 'Code' => 'BORMP',
                 'Name' => 'Borusan Lojistik Marketplace',
-                'Tax Number' => '1800038254'
+                'Tax Number' => '1800038254',
             ],
             [
                 'Id' => 12,
                 'Code' => 'UPSMP',
                 'Name' => 'UPS Kargo Marketplace',
-                'Tax Number' => '9170014856'
+                'Tax Number' => '9170014856',
             ],
             [
                 'Id' => 13,
                 'Code' => 'AGTMP',
                 'Name' => 'AGT Marketplace',
-                'Tax Number' => '6090414309'
+                'Tax Number' => '6090414309',
             ],
             [
                 'Id' => 14,
                 'Code' => 'CAIMP',
                 'Name' => 'Cainiao Marketplace',
-                'Tax Number' => '0'
+                'Tax Number' => '0',
             ],
             [
                 'Id' => 10,
                 'Code' => 'MNGMP',
                 'Name' => 'MNG Kargo Marketplace',
-                'Tax Number' => '6080712084'
+                'Tax Number' => '6080712084',
             ],
             [
                 'Id' => 19,
                 'Code' => 'PTTMP',
                 'Name' => 'PTT Kargo Marketplace',
-                'Tax Number' => '7320068060'
+                'Tax Number' => '7320068060',
             ],
             [
                 'Id' => 9,
                 'Code' => 'SURATMP',
                 'Name' => 'Sürat Kargo Marketplace',
-                'Tax Number' => '7870233582'
+                'Tax Number' => '7870233582',
             ],
             [
                 'Id' => 17,
                 'Code' => 'TEXMP',
                 'Name' => 'Trendyol Express Marketplace',
-                'Tax Number' => '8590921777'
+                'Tax Number' => '8590921777',
             ],
             [
                 'Id' => 6,
                 'Code' => 'HOROZMP',
                 'Name' => 'Horoz Kargo Marketplace',
-                'Tax Number' => '4630097122'
+                'Tax Number' => '4630097122',
             ],
             [
                 'Id' => 20,
                 'Code' => 'CEVAMP',
                 'Name' => 'CEVA Marketplace',
-                'Tax Number' => '8450298557'
+                'Tax Number' => '8450298557',
             ],
             [
                 'Id' => 4,
                 'Code' => 'YKMP',
                 'Name' => 'Yurtiçi Kargo Marketplace',
-                'Tax Number' => '3130557669'
+                'Tax Number' => '3130557669',
             ],
             [
                 'Id' => 7,
                 'Code' => 'ARASMP',
                 'Name' => 'Aras Kargo Marketplace',
-                'Tax Number' => '720039666'
-            ]
+                'Tax Number' => '720039666',
+            ],
         ];
     }
 
     public function getBrands(int $page = 1)
     {
-        return $this->client()->get("brands", ["page" => $page])->object()->brands;
+        return $this->client()->get('brands', ['page' => $page])->object()->brands;
     }
 
     public function getAllBrands()
     {
         $page = 1;
         while (true) {
-            $response = $this->client()->get("brands", ["page" => $page])->object();
-            if (!property_exists($response, "brands")) break;
+            $response = $this->client()->get('brands', ['page' => $page])->object();
+            if (! property_exists($response, 'brands')) {
+                break;
+            }
             yield from $response->brands;
             $page++;
         }
@@ -336,8 +341,8 @@ class TrendyolMerchant implements TrackableMerchant
     {
         foreach ($this->getAllBrands() as $brand) {
             TrendyolBrand::updateOrCreate(
-                ["id" => $brand->id],
-                ["name" => $brand->name]
+                ['id' => $brand->id],
+                ['name' => $brand->name]
             );
         }
     }
@@ -345,12 +350,12 @@ class TrendyolMerchant implements TrackableMerchant
     public function approveOrder(MerchantOrder $order)
     {
         return $this->supplierClient()->put("shipment-packages/$order->merchant_id", [
-            "lines" => array_map(fn($line) => [
-                "lineId" => $line->sku,
-                "quantity" => $line->quantity,
+            'lines' => array_map(fn ($line) => [
+                'lineId' => $line->sku,
+                'quantity' => $line->quantity,
             ], $order->lines),
-            "params" => [],
-            "status" => "Picking"
+            'params' => [],
+            'status' => 'Picking',
         ]);
     }
 
@@ -372,7 +377,7 @@ class TrendyolMerchant implements TrackableMerchant
     public function sendQuestionAnswer(MerchantOrder $question, string $answer): bool
     {
         $this->supplierClient()->post("questions/$question->merchant_id/answers", [
-            "text" => $answer
+            'text' => $answer,
         ]);
 
         return true;
@@ -380,25 +385,25 @@ class TrendyolMerchant implements TrackableMerchant
 
     public function deleteProduct(Product $product)
     {
-        return $this->supplierClient()->delete("v2/products", [
-            "items" => [
+        return $this->supplierClient()->delete('v2/products', [
+            'items' => [
                 [
-                    "barcode" => $product->sku
-                ]
-            ]
+                    'barcode' => $product->sku,
+                ],
+            ],
         ])->object()->batchRequestId;
     }
 
     public function updatePrice(Product $product)
     {
-        return $this->supplierClient()->post("products/price-and-inventory", [
-            "items" => [
+        return $this->supplierClient()->post('products/price-and-inventory', [
+            'items' => [
                 [
-                    "barcode" => $product->sku,
-                    "salePrice" => $this->preparePriceToSend($product->price->price),
-                    "listPrice" => $this->preparePriceToSend($product->price->discounted_price),
-                ]
-            ]
+                    'barcode' => $product->sku,
+                    'salePrice' => $this->preparePriceToSend($product->price->price),
+                    'listPrice' => $this->preparePriceToSend($product->price->discounted_price),
+                ],
+            ],
         ])->object()->batchRequestId;
     }
 
@@ -408,25 +413,25 @@ class TrendyolMerchant implements TrackableMerchant
 
         foreach ($orders->content as $item) {
             MerchantOrder::updateOrCreate([
-                "merchant_id" => $item->id,
-                "merchant" => "trendyol",
+                'merchant_id' => $item->id,
+                'merchant' => 'trendyol',
             ], [
-                "number" => $item->orderNumber,
-                "client" => [
-                    "id" => $item->customerId,
-                    "name" => $item->customerFirstName,
+                'number' => $item->orderNumber,
+                'client' => [
+                    'id' => $item->customerId,
+                    'name' => $item->customerFirstName,
                 ],
-                "data" => $item,
-                "price" => $item->totalPrice,
-                "date" => $item->orderDate, // FIXME: düzgün date parse yap
-                "status" => $item->status,
-                "delivery_status" => "",
-                "payment_status" => "",
-                "lines" => array_map(fn($line) => [
-                    "sku" => $line->merchantSku,
-                    "quantity" => $line->quantity,
+                'data' => $item,
+                'price' => $item->totalPrice,
+                'date' => $item->orderDate, // FIXME: düzgün date parse yap
+                'status' => $item->status,
+                'delivery_status' => '',
+                'payment_status' => '',
+                'lines' => array_map(fn ($line) => [
+                    'sku' => $line->merchantSku,
+                    'quantity' => $line->quantity,
                 ], $item->lines),
-                "line_data" => [],
+                'line_data' => [],
             ]);
         }
     }
@@ -440,28 +445,30 @@ class TrendyolMerchant implements TrackableMerchant
     {
         /** @var PromiseInterface $request */
         $request = $this->supplierClient()->async()->get("products/batch-requests/$trackingId");
-        return $request->then(fn($response) => new TrackingResult(
+
+        return $request->then(fn ($response) => new TrackingResult(
             trackingId: $trackingId,
-            success: property_exists($response, "status") && $response->status === "COMPLETED",
+            success: property_exists($response, 'status') && $response->status === 'COMPLETED',
             result: $response
         ));
     }
 
     public function parseTrackingErrors(array $trackingResponse): array
     {
-        return collect(@$trackingResponse["errors"])->map(fn($err) => "Karşı tarafın hatası ({$err['message']})")->concat(
-            collect(@$trackingResponse["items"])->map(fn($item) => $item["failureReasons"])->flatten()->all()
+        return collect(@$trackingResponse['errors'])->map(fn ($err) => "Karşı tarafın hatası ({$err['message']})")->concat(
+            collect(@$trackingResponse['items'])->map(fn ($item) => $item['failureReasons'])->flatten()->all()
         )->all();
     }
 
     public function createTestOrder()
     {
-        if (!config("merchants.test_mode"))
-            throw new \Exception("TrendyolMerchant::createTestOrder() requires merchants.test_mode to be true");
+        if (! config('merchants.test_mode')) {
+            throw new \Exception('TrendyolMerchant::createTestOrder() requires merchants.test_mode to be true');
+        }
 
         return $this->client()
-            ->withHeader("SellerID", $this->supplierId)
-            ->post("https://stageapi.trendyol.com/integration/oms/core", [
+            ->withHeader('SellerID', $this->supplierId)
+            ->post('https://stageapi.trendyol.com/integration/oms/core', [
                 'customer' => [
                     'customerFirstName' => 'string',
                     'customerLastName' => 'string',
@@ -510,10 +517,12 @@ class TrendyolMerchant implements TrackableMerchant
 
     public function productExists(Product $product): bool
     {
-        $status = $this->supplierClient()->get("products", ["barcode" => $product->sku])
-                ->object();
+        $status = $this->supplierClient()->get('products', ['barcode' => $product->sku])
+            ->object();
 
-        if ($status->totalElements === 0) return false;
+        if ($status->totalElements === 0) {
+            return false;
+        }
 
         return $status->content[0]->onsale;
     }
@@ -523,26 +532,26 @@ class TrendyolMerchant implements TrackableMerchant
         $questions = $this->getQuestions();
         foreach ($questions->content as $question) {
             MerchantQuestion::updateOrCreate([
-                "merchant" => "trendyol",
-                "merchant_id" => $question->id,
+                'merchant' => 'trendyol',
+                'merchant_id' => $question->id,
             ], [
-                "customer_fullname" => $question->userName,
-                "date" => Carbon::createFromTimestampMs($question->creationDate),
-                "conversation" => [
+                'customer_fullname' => $question->userName,
+                'date' => Carbon::createFromTimestampMs($question->creationDate),
+                'conversation' => [
                     [
                         'id' => $question->id,
                         'creationDate' => Carbon::createFromTimestampMs($question->creationDate),
                         'text' => $question->text,
-                        'from' => "customer"
+                        'from' => 'customer',
                     ],
                     [
                         'id' => $question->answer->id,
                         'creationDate' => Carbon::createFromTimestampMs($question->answer->creationDate),
                         'text' => $question->answer->text,
-                        "from" => "merchant"
-                    ]
+                        'from' => 'merchant',
+                    ],
                 ],
-                "data" => $question
+                'data' => $question,
             ]);
         }
     }

@@ -16,19 +16,22 @@ use Symfony\Component\DomCrawler\Crawler;
 class OnlineCarParts
 {
     public function __construct(
-        public readonly string  $keyword,
-        public readonly int     $product_id,
-        public readonly string  $field,
+        public readonly string $keyword,
+        public readonly int $product_id,
+        public readonly string $field,
         public readonly ?string $brand_filter = null,
-        public readonly bool    $regexed = false,
-    )
-    {
+        public readonly bool $regexed = false,
+    ) {
     }
 
     public function smash(): bool
     {
-        if ($this->scrape()) return true;
-        if ($this->regexed) return false;
+        if ($this->scrape()) {
+            return true;
+        }
+        if ($this->regexed) {
+            return false;
+        }
 
         $regexedBot = new OnlineCarParts(
             keyword: self::commonizeString($this->keyword),
@@ -37,6 +40,7 @@ class OnlineCarParts
             brand_filter: $this->brand_filter,
             regexed: true,
         );
+
         return $regexedBot->scrape();
     }
 
@@ -47,43 +51,47 @@ class OnlineCarParts
         foreach ($searchPages as $searchPage) {
             array_push($links, ...$this->scrapeSearchPage($searchPage));
         }
+
         return $links;
     }
 
     public function getSearchPages(): array
     {
-        $url = $this->field === "oem_codes"
-            ? "https://www.onlinecarparts.co.uk/oenumber/" . self::commonizeString($this->keyword) . ".html?"
-            : "https://www.onlinecarparts.co.uk/spares-search.html?keyword=" . urlencode($this->keyword);
+        $url = $this->field === 'oem_codes'
+            ? 'https://www.onlinecarparts.co.uk/oenumber/'.self::commonizeString($this->keyword).'.html?'
+            : 'https://www.onlinecarparts.co.uk/spares-search.html?keyword='.urlencode($this->keyword);
 
         try {
             if ($this->brand_filter !== null) {
                 $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
                 if ($brandId === null) {
-                    $this->log("Marka arama sayfasında bulunamadı.");
+                    $this->log('Marka arama sayfasında bulunamadı.');
+
                     return [];
                 }
-                $url .= "&brand[]=" . $brandId;
+                $url .= '&brand[]='.$brandId;
             }
 
             $crawler = new Crawler(OcpClient::request($url));
         } catch (OcpClientException $e) {
-            if ($this->field === "oem_codes" && $e->statusCode === 404) {
+            if ($this->field === 'oem_codes' && $e->statusCode === 404) {
                 $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor. | Aranan sayfa: $e->url");
+
                 return [];
             } else {
                 throw $e;
             }
         }
 
-        $pages = $crawler->filter(".listing-pagination__item[data-pagination-page]");
+        $pages = $crawler->filter('.listing-pagination__item[data-pagination-page]');
         if ($pages->count()) {
-            $pageCount = (int)$pages->last()->text();
+            $pageCount = (int) $pages->last()->text();
             $this->log("Arama sonucu $pageCount sayfadan oluşuyor.");
             $searchPages = [$crawler];
             for ($i = 2; $i <= $pageCount; $i++) {
                 $searchPages[] = new Crawler(OcpClient::request("$url&page=$i"));
             }
+
             return $searchPages;
         }
 
@@ -92,44 +100,47 @@ class OnlineCarParts
 
     public function scrapeSearchPage(Crawler $searchPage)
     {
-        $productEls = $searchPage->filter(".product-card:not([data-recommended-products])");
+        $productEls = $searchPage->filter('.product-card:not([data-recommended-products])');
 
-//        if (
-//            $this->field === "producercode" ||
-//            $this->field === "producercode2" ||
-//            $this->field === "cross_code" ||
-//            $this->field === "abk"
-//        ) {
-//            $commonizedKeyword = self::commonizeString($this->keyword);
-//            $productEls = $productEls->reduce(
-//                function (Crawler $el) use ($commonizedKeyword) {
-//                    $artklEl = $el->filter(".product-card__artkl span");
-//                    return $artklEl->count() != 0 && self::commonizeString($artklEl->innerText()) === $commonizedKeyword;
-//                }
-//            );
-//        }
+        //        if (
+        //            $this->field === "producercode" ||
+        //            $this->field === "producercode2" ||
+        //            $this->field === "cross_code" ||
+        //            $this->field === "abk"
+        //        ) {
+        //            $commonizedKeyword = self::commonizeString($this->keyword);
+        //            $productEls = $productEls->reduce(
+        //                function (Crawler $el) use ($commonizedKeyword) {
+        //                    $artklEl = $el->filter(".product-card__artkl span");
+        //                    return $artklEl->count() != 0 && self::commonizeString($artklEl->innerText()) === $commonizedKeyword;
+        //                }
+        //            );
+        //        }
 
         $links = $productEls->each(function (Crawler $el) {
-            $linkEl = $el->filter(".product-card__title-link");
-            return $linkEl->attr("href") ?? $linkEl->attr("data-link");
+            $linkEl = $el->filter('.product-card__title-link');
+
+            return $linkEl->attr('href') ?? $linkEl->attr('data-link');
         });
         $links = array_filter($links); // remove nulls
-        return array_filter($links, fn(string $link) => !str_contains($link, '/tyres-shop/'));
+
+        return array_filter($links, fn (string $link) => ! str_contains($link, '/tyres-shop/'));
     }
 
     public function scrape(): bool
     {
         $links = $this->searchProducts();
         if (count($links) === 0) {
-            $this->log("Ürün bulunamadı.");
+            $this->log('Ürün bulunamadı.');
 
             return false;
         }
 
         $successfulProductCount = 0;
         foreach ($links as $link) {
-            if (self::scrapePage($link))
+            if (self::scrapePage($link)) {
                 $successfulProductCount++;
+            }
         }
 
         $this->log("$successfulProductCount Adet ürün çekildi.");
@@ -141,18 +152,21 @@ class OnlineCarParts
     {
         $connection = BotProduct::firstOrNew(
             ['product_id' => $this->product_id, 'url' => $link],
-            ['origin_field' => $this->field, "keyword" => $this->keyword]
+            ['origin_field' => $this->field, 'keyword' => $this->keyword]
         );
-        if ($connection->is_banned) return false;
+        if ($connection->is_banned) {
+            return false;
+        }
 
         $ocpp = self::getProduct($link);
         DB::connection('bigdata')->transaction(
-            fn() => $this->saveOcpProductToBigData($ocpp)
+            fn () => $this->saveOcpProductToBigData($ocpp)
         );
         DB::transaction(function () use ($ocpp, $connection) {
             $this->saveOcpProductToDatabase($ocpp);
             $connection->save();
         });
+
         return true;
     }
 
@@ -165,42 +179,48 @@ class OnlineCarParts
     {
         $crawler = new Crawler(OcpClient::request($url));
 
-        $oems = array_merge(...$crawler->filter(".product-oem__link")->each(function (Crawler $el) {
+        $oems = array_merge(...$crawler->filter('.product-oem__link')->each(function (Crawler $el) {
             $text = $el->innerText(); // "AUDI / SKODA / VW - OE-N 012 412 1" || "FORD - OE-1833857"
-            [$brandsStr, $code] = explode(" - OE-", $text);
-            $brands = explode(" / ", $brandsStr);
-            return array_map(fn(string $brand) => ["brand" => $brand, "oem" => $code], $brands);
+            [$brandsStr, $code] = explode(' - OE-', $text);
+            $brands = explode(' / ', $brandsStr);
+
+            return array_map(fn (string $brand) => ['brand' => $brand, 'oem' => $code], $brands);
         }));
 
-        $specs = Utils::fromEntries($crawler->filter("table.product__table tr")->each(function (Crawler $row) {
-            [$key, $value] = $row->filter("td")->each(fn(Crawler $col) => $col->innerText());
+        $specs = Utils::fromEntries($crawler->filter('table.product__table tr')->each(function (Crawler $row) {
+            [$key, $value] = $row->filter('td')->each(fn (Crawler $col) => $col->innerText());
+
             return [self::normalizeColumnName($key), $value];
         }));
 
-        $makerIds = $crawler->filter(".compatibility__maker-title")->each(fn(Crawler $el) => $el->attr("data-maker-id"));
+        $makerIds = $crawler->filter('.compatibility__maker-title')->each(fn (Crawler $el) => $el->attr('data-maker-id'));
         $ocpProductId = Utils::regex('/-(\d+)\.html/', $url, 1);
-        if ($ocpProductId === null) throw new \Exception("ID not found in URL: $url");
+        if ($ocpProductId === null) {
+            throw new \Exception("ID not found in URL: $url");
+        }
 
-        $_artkl = $crawler->filter(".product__artkl")->innerText();
-        $articleId = Utils::regex("/Article №: ([^ ]+)/", $_artkl, 1);
-        if ($articleId === null) throw new \Exception("Article ID not found in artkl: $_artkl");
+        $_artkl = $crawler->filter('.product__artkl')->innerText();
+        $articleId = Utils::regex('/Article №: ([^ ]+)/', $_artkl, 1);
+        if ($articleId === null) {
+            throw new \Exception("Article ID not found in artkl: $_artkl");
+        }
 
         $vehicles = self::getVehicleIds($ocpProductId, $makerIds);
 
         $tecdoc = Utils::fromEntries(
-            $crawler->filter(".product-analogs__wrapper li")
-                ->each(fn(Crawler $el) => [
-                    self::normalizeColumnName($el->filter("span")->innerText()),
-                    $el->innerText()
+            $crawler->filter('.product-analogs__wrapper li')
+                ->each(fn (Crawler $el) => [
+                    self::normalizeColumnName($el->filter('span')->innerText()),
+                    $el->innerText(),
                 ])
         );
 
-        $subtitle = $crawler->filter(".product__subtitle")->innerText();
+        $subtitle = $crawler->filter('.product__subtitle')->innerText();
 
         $metadata = json_decode(
             $crawler
                 ->filter('script[type="application/ld+json"]')
-                ->reduce(fn(Crawler $el) => json_decode($el->text())->{'@type'} === 'Product')
+                ->reduce(fn (Crawler $el) => json_decode($el->text())->{'@type'} === 'Product')
                 ->text()
         );
 
@@ -216,7 +236,7 @@ class OnlineCarParts
             subtitle: $subtitle,
             brand: $metadata->brand->name,
             images: Arr::wrap($metadata->image), // $metadata->image is sometimes string, sometimes array of strings
-            category: $metadata->category ?? "NO CATEGORY",
+            category: $metadata->category ?? 'NO CATEGORY',
             mpn: $metadata->mpn,
             sku: $metadata->sku,
             gtin13: $metadata->gtin13,
@@ -228,10 +248,10 @@ class OnlineCarParts
         $vehicleIds = [];
         foreach ($makerIds as $makerId) {
             $crawler = new Crawler(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$ocpProductId&makerId=$makerId"));
-            $modelIds = $crawler->filter("[data-model-id]")->each(fn(Crawler $el) => $el->attr("data-model-id"));
+            $modelIds = $crawler->filter('[data-model-id]')->each(fn (Crawler $el) => $el->attr('data-model-id'));
             foreach ($modelIds as $modelId) {
                 $vehicles = json_decode(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$ocpProductId&makerId=$makerId&modelId=$modelId"))->vehicles;
-                array_push($vehicleIds, ...collect($vehicles)->pluck("id"));
+                array_push($vehicleIds, ...collect($vehicles)->pluck('id'));
             }
         }
 
@@ -242,10 +262,13 @@ class OnlineCarParts
     {
         $commonizedBrand = self::commonizeString($brand);
         $crawler = new Crawler(OcpClient::request($searchPageUrl));
-        $foundBrandEls = $crawler->filter(".brand-slider__item")
-            ->reduce(fn(Crawler $el) => self::commonizeString($el->filter("img")->attr("alt")) === $commonizedBrand);
-        if ($foundBrandEls->count() < 1) return null;
-        return $foundBrandEls->eq(0)->filter("input")->attr("value");
+        $foundBrandEls = $crawler->filter('.brand-slider__item')
+            ->reduce(fn (Crawler $el) => self::commonizeString($el->filter('img')->attr('alt')) === $commonizedBrand);
+        if ($foundBrandEls->count() < 1) {
+            return null;
+        }
+
+        return $foundBrandEls->eq(0)->filter('input')->attr('value');
     }
 
     public static function commonizeString(string $string): string
@@ -255,7 +278,7 @@ class OnlineCarParts
 
     public function saveOcpProductToDatabase(OcpProduct $ocpp): void
     {
-        ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['logicalref' => $this->product_id]), $ocpp->oems));
+        ProductOem::insertOrIgnore(array_map(fn ($oem) => array_merge($oem, ['logicalref' => $this->product_id]), $ocpp->oems));
 
         $product = Product::findOrFail($this->product_id, ['id', 'tecdoc', 'specifications']);
         $product->update([
@@ -264,14 +287,14 @@ class OnlineCarParts
         ]);
 
         ProductCar::insertOrIgnore(
-            array_map(fn($vehicleId) => [
+            array_map(fn ($vehicleId) => [
                 'logicalref' => $this->product_id,
                 'car_id' => $vehicleId,
             ], $ocpp->vehicles)
         );
 
         BotImage::insertOrIgnore(
-            array_map(fn($image) => [
+            array_map(fn ($image) => [
                 'product_id' => $this->product_id,
                 'url' => $image,
                 'bot_page_url' => $ocpp->url,
@@ -283,7 +306,7 @@ class OnlineCarParts
     {
         $db = DB::connection('bigdata');
 
-        $db->table("products")->updateOrInsert(
+        $db->table('products')->updateOrInsert(
             ['id' => $ocpp->id],
             [
                 'title' => $ocpp->title,
@@ -300,10 +323,10 @@ class OnlineCarParts
             ]
         );
 
-        $db->table("product_oems")->insertOrIgnore(array_map(fn($oem) => array_merge($oem, ["product_id" => $ocpp->id]), $ocpp->oems));
+        $db->table('product_oems')->insertOrIgnore(array_map(fn ($oem) => array_merge($oem, ['product_id' => $ocpp->id]), $ocpp->oems));
 
-        $db->table("product_cars")->insertOrIgnore(
-            array_map(fn($vehicleId) => [
+        $db->table('product_cars')->insertOrIgnore(
+            array_map(fn ($vehicleId) => [
                 'product_id' => $ocpp->id,
                 'car_id' => $vehicleId,
             ], $ocpp->vehicles)
@@ -315,10 +338,10 @@ class OnlineCarParts
         Log::create([
             'product_id' => $this->product_id,
             'message' => $message
-                . " | Anahtar Kelime: $this->keyword"
-                . " | Alan: $this->field"
-                . " | Sembolsüz: " . ($this->regexed ? "Evet" : "Hayır") .
-                ($this->brand_filter !== null ? " | Marka filtresi: $this->brand_filter" : ""),
+                ." | Anahtar Kelime: $this->keyword"
+                ." | Alan: $this->field"
+                .' | Sembolsüz: '.($this->regexed ? 'Evet' : 'Hayır').
+                ($this->brand_filter !== null ? " | Marka filtresi: $this->brand_filter" : ''),
         ]);
     }
 }

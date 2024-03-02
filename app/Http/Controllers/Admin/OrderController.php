@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\MerchantOrder;
 use App\Models\Order;
-use App\Services\MarketPlace;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller

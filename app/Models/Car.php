@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Car extends BaseModel
 {
-    use Searchable, HasImages;
+    use HasImages, Searchable;
 
     public $timestamps = false;
 

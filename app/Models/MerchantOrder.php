@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\MerchantOrderCreatedEvent;
+
 class MerchantOrder extends BaseModel
 {
     protected $casts = [

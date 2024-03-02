@@ -16,11 +16,23 @@ use Livewire\Component;
 class CategoryPage extends Component
 {
     public Category $category;
-    public $parents, $categoryTree;
+
+    public $parents;
+
+    public $categoryTree;
+
     public $property = [];
+
     public $pageSize = 12;
 
-    public $min_price, $max_price, $sortBy, $brandsArray;
+    public $min_price;
+
+    public $max_price;
+
+    public $sortBy;
+
+    public $brandsArray;
+
     protected $queryString = [
         'min_price' => ['except' => ''],
         'max_price' => ['except' => ''],
@@ -73,7 +85,7 @@ class CategoryPage extends Component
             });
         }
 
-        $query->whereRelation('categories', fn(Builder $q) => $q->whereIn('id', $this->categoryTree['childs']));
+        $query->whereRelation('categories', fn (Builder $q) => $q->whereIn('id', $this->categoryTree['childs']));
 
         $brands = $query->get()->groupBy('brand_id');
 
@@ -81,7 +93,7 @@ class CategoryPage extends Component
             $query->whereIn('brand_id', $this->brandsArray);
         }
 
-        $productIds = $query->pluck("id");
+        $productIds = $query->pluck('id');
 
         $category->load([
             'children' => function (HasMany $b) use ($productIds) {
@@ -96,8 +108,8 @@ class CategoryPage extends Component
 
         $products = $query->paginate($this->pageSize);
 
-        $propertyValues = PropertyValue::whereHas("product", fn(Builder $q) => $q->whereIn("id", $productIds))->with("property")->get();
-        $properties = $propertyValues->map(fn(PropertyValue $pv) => $pv->property)->unique("id")->map(fn(Property $p) => [$p, $propertyValues->where("property.id", $p->id)]);
+        $propertyValues = PropertyValue::whereHas('product', fn (Builder $q) => $q->whereIn('id', $productIds))->with('property')->get();
+        $properties = $propertyValues->map(fn (PropertyValue $pv) => $pv->property)->unique('id')->map(fn (Property $p) => [$p, $propertyValues->where('property.id', $p->id)]);
 
         return view('livewire.category-page', compact('category', 'products', 'brands', 'properties'));
     }

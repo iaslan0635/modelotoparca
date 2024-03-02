@@ -10,12 +10,12 @@ class PermissionController extends Controller
 {
     public function index()
     {
-//        $employees = Employee::with("permissions")->get();
-//        return view("admin.inhouse.permission.index", compact("employees"));
+        //        $employees = Employee::with("permissions")->get();
+        //        return view("admin.inhouse.permission.index", compact("employees"));
     }
 
     public function edit()
     {
-//        return view("admin.inhouse.permission.edit", compact("employee"));
+        //        return view("admin.inhouse.permission.edit", compact("employee"));
     }
 }

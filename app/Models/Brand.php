@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Brand extends BaseModel
 {
-    use Searchable;
     use HasImages {
         imageUrl as protected databaseImageUrl;
     }
+    use Searchable;
 
     protected $guarded = [];
 
@@ -50,10 +50,12 @@ class Brand extends BaseModel
     // We didn't use the HasImage trait because images are stored according to brand name
     public function imageUrl()
     {
-        if (file_exists(public_path("images/brands/$this->name.png")))
+        if (file_exists(public_path("images/brands/$this->name.png"))) {
             return asset("images/brands/$this->name.png");
-        if (file_exists(public_path("images/brands/$this->botname.png")))
+        }
+        if (file_exists(public_path("images/brands/$this->botname.png"))) {
             return asset("images/brands/$this->botname.png");
+        }
 
         return $this->databaseImageUrl();
     }

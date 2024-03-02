@@ -16,28 +16,28 @@ use Throwable;
 
 class MarketPlace
 {
-    public const MERCHANTS = ["n11", "hepsiburada", "trendyol"];
+    public const MERCHANTS = ['n11', 'hepsiburada', 'trendyol'];
 
     public static function errorContext(callable $function)
     {
         try {
             $function();
         } catch (Throwable $t) {
-            Log::channel("merchants")->error($t->getMessage(), ['exception' => $t]);
+            Log::channel('merchants')->error($t->getMessage(), ['exception' => $t]);
         }
     }
 
     public static function syncOrders(): void
     {
         foreach (self::merchants() as $merchant) {
-            MarketPlace::errorContext(fn() => $merchant->syncOrders());
+            MarketPlace::errorContext(fn () => $merchant->syncOrders());
         }
     }
 
     public static function syncQuestions(): void
     {
         foreach (self::merchants() as $merchant) {
-            MarketPlace::errorContext(fn() => $merchant->syncQuestions());
+            MarketPlace::errorContext(fn () => $merchant->syncQuestions());
         }
     }
 
@@ -50,18 +50,18 @@ class MarketPlace
     public static function merchants()
     {
         return [
-            "n11" => new N11(),
-            "hepsiburada" => new Hepsiburada(),
-            "trendyol" => new TrendyolMerchant()
+            'n11' => new N11(),
+            'hepsiburada' => new Hepsiburada(),
+            'trendyol' => new TrendyolMerchant(),
         ];
     }
 
     public static function createMerchant(string $merchantAlias): Merchant
     {
         return match ($merchantAlias) {
-            "n11" => new N11(),
-            "hepsiburada" => new Hepsiburada(),
-            "trendyol" => new TrendyolMerchant(),
+            'n11' => new N11(),
+            'hepsiburada' => new Hepsiburada(),
+            'trendyol' => new TrendyolMerchant(),
             default => throw new InvalidArgumentException("$merchantAlias geçerli bir pazar yeri değil"),
         };
     }
@@ -69,8 +69,8 @@ class MarketPlace
     public static function createTrackableMerchant(string $merchantAlias): TrackableMerchant
     {
         return match ($merchantAlias) {
-            "hepsiburada" => new Hepsiburada(),
-            "trendyol" => new TrendyolMerchant(),
+            'hepsiburada' => new Hepsiburada(),
+            'trendyol' => new TrendyolMerchant(),
             default => throw new InvalidArgumentException("$merchantAlias geçerli bir takip edilebilir pazar yeri değil"),
         };
     }
@@ -78,20 +78,20 @@ class MarketPlace
     public static function declineOrder(MerchantOrder $merchantOrder, string $lineId, OrderRejectReasonType $reasonType)
     {
         $merchant = self::createMerchant($merchantOrder->merchant);
-        $quantity = !$merchant instanceof TrendyolMerchant ? -1 :
-            collect($merchant->parseOrder($merchantOrder)["items"])->firstWhere("id", $lineId)["quantity"];
+        $quantity = ! $merchant instanceof TrendyolMerchant ? -1 :
+            collect($merchant->parseOrder($merchantOrder)['items'])->firstWhere('id', $lineId)['quantity'];
 
         $merchant->declineOrder($lineId, $reasonType, $merchantOrder->id, $quantity);
-        $merchantOrder->status = "İptal Edildi";
+        $merchantOrder->status = 'İptal Edildi';
         $merchantOrder->save();
     }
 
     public static function getProductExistence(Product $product): array
     {
         return array_map(
-            fn(Merchant $merchant) => rescue(
+            fn (Merchant $merchant) => rescue(
                 fn () => $merchant->productExists($product),
-                fn() => "Hata",
+                fn () => 'Hata',
                 report: false
             ),
             self::merchants()

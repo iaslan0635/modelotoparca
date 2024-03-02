@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use App\Packages\Search as Searchable;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
 

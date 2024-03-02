@@ -6,7 +6,7 @@ use App\Models\Car;
 
 class Garage
 {
-    private static null|Car $chosen_cache;
+    private static ?Car $chosen_cache;
 
     public static function add(Car $car): void
     {
@@ -41,12 +41,12 @@ class Garage
         session()->put('garage_cars', collect($cars)->filter(fn ($car) => $car['id'] !== $id)->all());
     }
 
-    public static function chosen(): int|null
+    public static function chosen(): ?int
     {
         return session('garage_chosen');
     }
 
-    public static function findChosen(): Car|null
+    public static function findChosen(): ?Car
     {
         return self::$chosen_cache ?? (self::$chosen_cache = Car::find(self::chosen()));
     }

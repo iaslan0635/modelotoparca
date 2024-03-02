@@ -14,12 +14,12 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        return view("admin.inhouse.dashboard", [
-            "productsFromMerchants" => $this->productsFromMerchants(),
-            "orders" => $this->orders(),
-            "merchantOrders" => $this->merchantOrders(),
-            "productStats" => $this->productStats(),
-            "latestUser" => $this->latestUser(),
+        return view('admin.inhouse.dashboard', [
+            'productsFromMerchants' => $this->productsFromMerchants(),
+            'orders' => $this->orders(),
+            'merchantOrders' => $this->merchantOrders(),
+            'productStats' => $this->productStats(),
+            'latestUser' => $this->latestUser(),
         ]);
     }
 
@@ -28,12 +28,12 @@ class DashboardController extends Controller
         $result = [];
 
         foreach (MarketPlace::MERCHANTS as $merchant) {
-            $result[$merchant] = ProductMerchant::with("product", "product.price")
-                ->where("merchant", $merchant)
-                ->latest("updated_at")
+            $result[$merchant] = ProductMerchant::with('product', 'product.price')
+                ->where('merchant', $merchant)
+                ->latest('updated_at')
                 ->limit(4)
-                ->get(["id", "product_id"])
-                ->pluck("product");
+                ->get(['id', 'product_id'])
+                ->pluck('product');
         }
 
         return $result;
@@ -41,7 +41,7 @@ class DashboardController extends Controller
 
     private function orders()
     {
-        return Order::with(["user", "items"])->latest()->limit(7)->get();
+        return Order::with(['user', 'items'])->latest()->limit(7)->get();
     }
 
     private function merchantOrders()
@@ -52,13 +52,15 @@ class DashboardController extends Controller
     private function productStats()
     {
         $total = Product::count();
-        $active = Product::where("status", 1)->count();
+        $active = Product::where('status', 1)->count();
+
         return [
-            "total" => $total,
-            "active" => $active,
-            "activePercent" => $total ? round(($active / $total) * 100) : 0,
+            'total' => $total,
+            'active' => $active,
+            'activePercent' => $total ? round(($active / $total) * 100) : 0,
         ];
     }
+
     private function latestUser()
     {
         return User::latest()->take(8)->get();

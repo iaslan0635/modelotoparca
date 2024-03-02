@@ -16,7 +16,7 @@ final class CreateProductsIndex implements MigrationInterface
     {
         Index::create('products_index', function (Mapping $mapping, Settings $settings) {
             $settings->index([
-                "mapping.nested_objects.limit" => "9000000000000000000"
+                'mapping.nested_objects.limit' => '9000000000000000000',
             ]);
 
             $mapping->integer('id');

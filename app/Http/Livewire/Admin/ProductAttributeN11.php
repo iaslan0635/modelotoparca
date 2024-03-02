@@ -9,8 +9,11 @@ use Livewire\Component;
 class ProductAttributeN11 extends Component
 {
     public array $attribute;
+
     public int $product_id;
+
     public string $value;
+
     public int $value_id;
 
     public function render()
@@ -21,7 +24,7 @@ class ProductAttributeN11 extends Component
     public function mount()
     {
         $sync = ProductMerchantAttribute::query()
-            ->where('merchant', '=', "n11")
+            ->where('merchant', '=', 'n11')
             ->where('product_id', '=', $this->product_id)
             ->where('merchant_id', '=', $this->attribute['name'])
             ->first();
@@ -30,17 +33,17 @@ class ProductAttributeN11 extends Component
             $this->value = $sync->merchant_value;
         }
 
-//        dd($this->value_id);
+        //        dd($this->value_id);
     }
 
     public function save()
     {
         Product::find($this->product_id)->merchantAttributes()->updateOrCreate([
-            'merchant' => "n11",
+            'merchant' => 'n11',
             'merchant_id' => $this->attribute['name'],
             'product_id' => $this->product_id,
         ], [
-            "merchant_value" => $this->value
+            'merchant_value' => $this->value,
         ]);
     }
 }

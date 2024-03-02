@@ -12,14 +12,15 @@ class Helper
         $values = N11ProductStatus::cases();
         $data = [];
 
-        foreach ($values as $value){
+        foreach ($values as $value) {
             [$id, $text, $turkish] = explode('|', $value->value);
-            $data[] = (object)[
-                'id' => (int)$id,
+            $data[] = (object) [
+                'id' => (int) $id,
                 'text' => $text,
-                'turkish' => $turkish
+                'turkish' => $turkish,
             ];
         }
+
         return collect($data)->filter(fn ($item) => $item->id === $status)->first();
     }
 
@@ -28,13 +29,14 @@ class Helper
         $values = HepsiburadaProductStatus::cases();
         $data = [];
 
-        foreach ($values as $value){
+        foreach ($values as $value) {
             [$text, $turkish] = explode('|', $value->value);
-            $data[] = (object)[
+            $data[] = (object) [
                 'text' => $text,
-                'turkish' => $turkish
+                'turkish' => $turkish,
             ];
         }
+
         return collect($data)->filter(fn ($item) => $item->text === $status)->first();
     }
 }
