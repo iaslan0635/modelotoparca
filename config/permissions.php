@@ -78,6 +78,7 @@ return [
             [
                 'name' => 'Kategoriler',
                 'children' => [
+                    ['name' => 'Listele'],
                     ['name' => 'Ara'],
                     ['name' => 'Ekle'],
                     [
@@ -94,6 +95,7 @@ return [
             [
                 'name' => 'Markalar',
                 'children' => [
+                    ['name' => 'Listele'],
                     ['name' => 'Ara'],
                     [
                         'name' => 'Düzenle',

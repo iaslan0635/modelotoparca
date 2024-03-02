@@ -25,12 +25,12 @@ class SynchronizePermissionsCommand extends Command
 
         $removedPermissions = PermissionSynchronizer::diff();
         if (filled($removedPermissions)) {
-            $this->warn('The following permissions are present in the database but not in the configuration:');
+            $this->warn("\nThe following permissions are present in the database but not in the configuration:");
             foreach ($removedPermissions as $permission) {
                 $this->warn("$permission");
             }
         }
 
-        $this->info('Permissions synchronized.');
+        $this->info("\nPermissions synchronized.");
     }
 }
