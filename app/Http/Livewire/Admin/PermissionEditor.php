@@ -4,12 +4,8 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Employee;
 use App\Models\Role;
-use App\Packages\Permissions\PermissionSynchronizer;
 use App\Packages\Permissions\Tree;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\PermissionRegistrar;
 
 class PermissionEditor extends Component
 {
@@ -22,17 +18,7 @@ class PermissionEditor extends Component
     public function booted()
     {
         $model = $this->model;
-        if ($model instanceof Employee) {
-            $role = $model->roles()->first();
-            if ($role !== null) {
-                $roleDesignations = $role->permissionTree()->value("tree");
-                if ($roleDesignations !== null) {
-                    $roleTree = Tree::fromDesignations($roleDesignations);
-                }
-            }
-        }
-
-        $this->tree = Tree::fromDesignations($this->designations, $roleTree ?? null);
+        $this->tree = Tree::fromModel($model, $this->designations);
     }
 
     public function mount(Employee|Role $model)
@@ -71,23 +57,7 @@ class PermissionEditor extends Component
 
     public function save()
     {
-        DB::transaction(function () {
-            $this->model->permissionTree()->updateOrCreate([], ["tree" => $this->designations]);
-
-            if ($this->model instanceof Employee) {
-                $permissionNames = $this->tree->resolvePermissionNames();
-                $permissionIds = Permission::whereIn("name", $permissionNames)->pluck("id");
-
-                if (count($permissionNames) !== count($permissionIds)) {
-                    PermissionSynchronizer::sync();
-                    $permissionIds = Permission::whereIn("name", $permissionNames)->pluck("id");
-                }
-
-                $this->model->permissions()->sync($permissionIds);
-                app(PermissionRegistrar::class)->forgetCachedPermissions();
-            }
-        });
-
+        $this->tree->save($this->model);
         $this->isDirty = false;
     }
 }
