@@ -142,6 +142,7 @@
         </x-sidebar.menu>
     @endcanany
 
+
     @canany(permissions("Site Yönetimi.*"))
         <x-sidebar.section title="Yönetim"/>
 
