@@ -69,7 +69,7 @@
 
             <x-sidebar.section title="Stok Yönetimi">@include('admin.icons.stock-management')</x-sidebar.section>
 
-            @can("Stok Yönetimi.Ürünler.Listele")
+            @can('Stok Yönetimi.Ürünler.Listele')
                 <x-sidebar.item :href="route('admin.products.index')">Ürünler</x-sidebar.item>
             @endcan
             @can("Stok Yönetimi.Kategoriler.Ara")
