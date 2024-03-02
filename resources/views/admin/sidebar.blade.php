@@ -72,10 +72,10 @@
             @can('Stok Yönetimi.Ürünler.Listele')
                 <x-sidebar.item :href="route('admin.products.index')">Ürünler</x-sidebar.item>
             @endcan
-            @can("Stok Yönetimi.Kategoriler.Ara")
+            @can('Stok Yönetimi.Kategoriler.Ara')
                 <x-sidebar.item :href="route('admin.categories.index')">Kategoriler</x-sidebar.item>
             @endcan
-            @can("Stok Yönetimi.Markalar.Ara")
+            @can('Stok Yönetimi.Markalar.Ara')
                 <x-sidebar.item :href="route('admin.brands.index')">Markalar</x-sidebar.item>
             @endcan
 
