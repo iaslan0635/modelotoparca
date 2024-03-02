@@ -60,22 +60,6 @@
                 <!--end::Card body-->
             </div>
             <!--end::Card-->
-            <!--begin::Connected Accounts-->
-            <div class="card mb-5 mb-xl-8">
-                <!--begin::Card header-->
-                <div class="card-header border-0">
-                    <div class="card-title">
-                        <h3 class="fw-bold m-0"></h3>
-                    </div>
-                </div>
-                <!--end::Card header-->
-                <!--begin::Card body-->
-                <div class="card-body pt-2">
-                    <img src="/assets/media/svg/illustrations/easy/2-dark.svg" class="mx-auto d-block">
-                </div>
-                <!--end::Card body-->
-            </div>
-            <!--end::Connected Accounts-->
         </div>
         <!--end::Sidebar-->
         <!--begin::Content-->
