@@ -69,13 +69,13 @@
 
             <x-sidebar.section title="Stok Yönetimi">@include('admin.icons.stock-management')</x-sidebar.section>
 
-            @can("Stok Yönetimi.Ürünler.Listele")
+            @can('Stok Yönetimi.Ürünler.Listele')
                 <x-sidebar.item :href="route('admin.products.index')">Ürünler</x-sidebar.item>
             @endcan
-            @can("Stok Yönetimi.Kategoriler.Ara")
+            @can('Stok Yönetimi.Kategoriler.Ara')
                 <x-sidebar.item :href="route('admin.categories.index')">Kategoriler</x-sidebar.item>
             @endcan
-            @can("Stok Yönetimi.Markalar.Ara")
+            @can('Stok Yönetimi.Markalar.Ara')
                 <x-sidebar.item :href="route('admin.brands.index')">Markalar</x-sidebar.item>
             @endcan
 
@@ -123,9 +123,13 @@
                 <x-sidebar.item href="">Kargodaki Siparişler</x-sidebar.item>
                 <x-sidebar.item href="">Tamamlanan Siparişler</x-sidebar.item>
             </x-sidebar.menu>
-            <x-sidebar.item :href="route('admin.category-sync')">Kategori Eşitleme</x-sidebar.item>
-            <x-sidebar.item :href="route('admin.brand-sync')">Marka Eşitleme</x-sidebar.item>
 
+            @can("Pazaryerleri.Ürünler.Tüm Ürünler")
+            <x-sidebar.item :href="route('admin.category-sync')">Kategori Eşitleme</x-sidebar.item>
+            @endcan
+            @can("Pazaryerleri.Ürünler.Tüm Ürünler")
+            <x-sidebar.item :href="route('admin.brand-sync')">Marka Eşitleme</x-sidebar.item>
+            @endcan
 
             <x-sidebar.section title="E-Ticaret"/>
             <x-sidebar.menu title="Siparişler">
