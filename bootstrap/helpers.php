@@ -29,6 +29,7 @@ function get_item($target, $key, $default = null)
  * @param string ...$permissionPatterns The permission patterns to retrieve.
  * @return array The permissions for the provided names.
  * @throws Exception If no permission name is provided or if a permission is not found.
+ * @todo Add cache for performance (clear cache while adding new permissions)
  */
 function permissions(string ...$permissionPatterns)
 {
