@@ -3,7 +3,7 @@
 @section("card-title", $editing ? "$employee->full_name adlı kullanıcıyı düzenle" : "Yeni kullanıcı ekle")
 @php $passwordRequired = $editing ? "" : "required" @endphp
 @section("card-content")
-    <form class="form" action="{{ $editing ? route("admin.employee.update", $employee) : route('admin.user.store') }}" method="post">
+    <form class="form" action="{{ $editing ? route("admin.employee.update", $employee) : route('admin.employee.store') }}" method="post">
         @csrf
         @if($editing) @method('PUT') @endif
         <div class="fv-row mb-7">
