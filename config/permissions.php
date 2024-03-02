@@ -115,6 +115,7 @@ return [
             [
                 'name' => 'Kullanıcılar',
                 'children' => [
+                    ['name' => 'Listele'],
                     ['name' => 'Ekle'],
                     [
                         'name' => 'Düzenle',
@@ -130,7 +131,7 @@ return [
             [
                 'name' => 'Yöneticiler',
                 'children' => [
-                    ['name' => 'Ekle'],
+                    ['name' => 'Listele'],
                     [
                         'name' => 'Düzenle',
                         'children' => [
@@ -145,6 +146,7 @@ return [
             [
                 'name' => 'Roller',
                 'children' => [
+                    ['name' => 'Listele'],
                     ['name' => 'İzinleri Görüntüle'],
                     ['name' => 'İzinleri Düzenle'],
                     ['name' => 'Sil'],
@@ -175,6 +177,7 @@ return [
             [
                 'name' => 'Arama Düzeltmleri',
                 'children' => [
+                    ['name' => 'Listele'],
                     ['name' => 'Ekle'],
                     ['name' => 'Sil'],
                 ],
@@ -182,6 +185,7 @@ return [
             [
                 'name' => 'Araçlar',
                 'children' => [
+                    ['name' => 'Listele'],
                     ['name' => 'Ara'],
                     ['name' => 'Düzenle'],
                     ['name' => 'Aktif Pasif Yap'],
@@ -204,6 +208,7 @@ return [
                 'name' => 'Siparişler',
                 'children' => [
                     ['name' => 'Tüm Siparişler'],
+                    ['name' => 'Kargodaki Siparişler'],
                     ['name' => 'Yeni Siparişler'],
                     ['name' => 'Tamamlanan Siparişler'],
                 ],
@@ -230,10 +235,10 @@ return [
             [
                 'name' => 'İade İşlemleri',
                 'children' => [
-                    ['name' => 'İade Sorgula'],
                     [
                         'name' => 'İade Talepleri',
                         'children' => [
+                            ['name' => 'Listele'],
                             ['name' => 'İşlem Yap'],
                         ],
                     ],
