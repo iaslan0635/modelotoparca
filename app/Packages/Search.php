@@ -146,6 +146,14 @@ class Search
             ->boost(self::BOOST['producercode_unbranded']);
     }
 
+    private static function tecdocQuery(string $term)
+    {
+        return Query::nested()
+            ->path('tecdoc')
+            ->query(Query::term()->field('tecdoc.name')->value($term)
+                ->boost(self::BOOST['oem']));
+    }
+
     private static function suggestionsOem(string $cleanTerm)
     {
         $oemSuggestQuery = Query::bool()
@@ -480,6 +488,7 @@ class Search
                 [self::producerQuery(...), self::producerRegexQuery(...)],
                 [self::producer2Query(...), self::producer2RegexQuery(...)],
                 [self::producerUnbrandedQuery(...), self::producerUnbrandedRegexQuery(...)],
+                [self::tecdocQuery(...), self::tecdocQuery(...)],
             ]
         );
 
