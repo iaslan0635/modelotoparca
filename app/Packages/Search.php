@@ -154,6 +154,14 @@ class Search
                 ->boost(self::BOOST['oem']));
     }
 
+    private static function tecdocRegexQuery(string $term)
+    {
+        return Query::nested()
+            ->path('tecdoc')
+            ->query(Query::term()->field('tecdoc.name_regex')->value($term)
+                ->boost(self::BOOST['oem']));
+    }
+
     private static function suggestionsOem(string $cleanTerm)
     {
         $oemSuggestQuery = Query::bool()
@@ -317,7 +325,9 @@ class Search
             ])
             ->highlight('cars.regex_name')
             ->highlight('similars.code')
-            ->highlight('similars.code_regex');
+            ->highlight('similars.code_regex')
+            ->highlight('tecdoc.name')
+            ->highlight('tecdoc.name_regex');
 
         if ($relations) {
             $products->load($relations);
@@ -488,7 +498,7 @@ class Search
                 [self::producerQuery(...), self::producerRegexQuery(...)],
                 [self::producer2Query(...), self::producer2RegexQuery(...)],
                 [self::producerUnbrandedQuery(...), self::producerUnbrandedRegexQuery(...)],
-                [self::tecdocQuery(...), self::tecdocQuery(...)],
+                [self::tecdocQuery(...), self::tecdocRegexQuery(...)],
             ]
         );
 
