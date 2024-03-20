@@ -309,7 +309,7 @@
                                 <livewire:admin.bot-image-manager :product="$product"/>
                             </div>
                             <!--end::Tab pane-->
-                            @env("production")
+                            @env("production", "local")
                                 <!--begin::Tab pane-->
                                 <div class="tab-pane fade" id="trendyol-product-sync" role="tabpanel">
                                     <div class="d-flex flex-column gap-7 gap-lg-10">

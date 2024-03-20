@@ -18,7 +18,15 @@ class ProductAttributeN11 extends Component
 
     public function render()
     {
-        return view('livewire.admin.product-attribute-n11');
+        $attribute = $this->attribute;
+        $name = $attribute?->name ?? $attribute['name'];
+        $isMandatory = $attribute['mandatory'];
+        $isText = !array_key_exists("valueList", $attribute);
+        $getIterator = fn() => get_item($attribute['valueList'], "value");
+        $getOptionValue = fn($value) => get_item($value, "name");
+        $getOptionText = fn($value) => get_item($value, "name");
+
+        return view('livewire.admin.product-attribute', compact('name', 'isMandatory', 'isText', 'getIterator', 'getOptionValue', 'getOptionText', 'attribute'));
     }
 
     public function mount()

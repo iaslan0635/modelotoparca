@@ -30,7 +30,7 @@
                 @else
                     @foreach($attributes->category->attributeList as $attribute)
                         @if(($attribute?->name ?? $attribute['name']) !== "Marka")
-                            <livewire:admin.product-attribute-n11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
+                            <livewire:admin.product-attribute-nw11 :key="$attribute->id" :attribute="(array)$attribute" :product_id="$product->id"/>
                         @endif
                     @endforeach
                 @endif

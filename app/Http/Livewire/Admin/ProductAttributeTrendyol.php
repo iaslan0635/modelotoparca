@@ -37,7 +37,15 @@ class ProductAttributeTrendyol extends Component
 
     public function render()
     {
-        return view('livewire.admin.product-attribute-trendyol');
+        $attribute = $this->attribute;
+        $name = $attribute['attribute']?->name ?? $attribute['attribute']['name'];
+        $isMandatory = $attribute['required'];
+        $isText = $attribute['allowCustom'];
+        $getIterator = fn() => $attribute['attributeValues'];
+        $getOptionValue = fn($value) => $value?->id ?? $value['id'];
+        $getOptionText = fn($value) => $value?->name ?? $value['name'];
+
+        return view('livewire.admin.product-attribute', compact('name', 'isMandatory', 'isText', 'getIterator', 'getOptionValue', 'getOptionText', 'attribute'));
     }
 
     public function save()
