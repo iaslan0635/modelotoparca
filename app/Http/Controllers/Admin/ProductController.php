@@ -11,6 +11,7 @@ use App\Models\Car;
 use App\Models\Product;
 use App\Models\TigerProduct;
 use Closure;
+use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -183,7 +184,7 @@ class ProductController extends Controller
 
     public function rerunBot(Product $product)
     {
-        dispatch(new RunSingleBotJob(TigerProduct::findOrFail($product->id)));
+        $product->runBot();
 
         return back();
     }
