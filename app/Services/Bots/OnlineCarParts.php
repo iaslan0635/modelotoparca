@@ -70,8 +70,7 @@ class OnlineCarParts
     {
         $links = [];
         $searchPages = $this->getSearchPages();
-        foreach ($searchPages as $i => $searchPage) {
-            $pageNumber = $i + 1;
+        foreach ($searchPages as $pageNumber => $searchPage) {
             array_push($links, ...$this->scrapeSearchPage($searchPage, $pageNumber));
         }
 
@@ -110,9 +109,9 @@ class OnlineCarParts
         if ($pages->count()) {
             $pageCount = (int)$pages->last()->text();
             $this->log("Arama sonucu $pageCount sayfadan oluşuyor.");
-            $searchPages = [$crawler];
+            $searchPages = [1 => $crawler];
             for ($i = 2; $i <= $pageCount; $i++) {
-                $searchPages[] = new Crawler(OcpClient::request("$url&page=$i"));
+                $searchPages[$i] = new Crawler(OcpClient::request("$url&page=$i"));
             }
 
             return $searchPages;
