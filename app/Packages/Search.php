@@ -472,7 +472,7 @@ class Search
 
     public static function query(?string $term, $sortBy = null, int $selectCategory = null, array $relations = null, QueryBuilderInterface $filterQuery = null): array
     {
-        $startTime = microtime(true);
+//        $startTime = microtime(true);
         if (empty($term)) {
             return [
                 'products' => new LengthAwarePaginator([], 0, 1, 0),
