@@ -14,4 +14,6 @@ return [
     'oems.oem' => 'Oem kodundan bulundu',
     'cars.name' => 'Araç modelinden bulundu',
     'cars.regex_name' => 'Araç modelinden bulundu',
+    'tecdoc.name' => "Tecdoc'dan bulundu",
+    'tecdoc.name_regex' => "Tecdoc'dan bulundu",
 ];

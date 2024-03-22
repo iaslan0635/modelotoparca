@@ -21,7 +21,15 @@ class ProductAttributeHepsiburada extends Component
 
     public function render()
     {
-        return view('livewire.admin.product-attribute-hepsiburada');
+        $attribute = $this->attribute;
+        $name = $attribute?->name ?? $attribute['name'];
+        $isMandatory = $attribute['mandatory'];
+        $isText = $attribute['type'] === "string";
+        $getIterator = fn() => $this->values;
+        $getOptionValue = fn($value) => $value?->value ?? $value['value'];
+        $getOptionText = fn($value) => $value?->value ?? $value['value'];
+
+        return view('livewire.admin.product-attribute', compact('name', 'isMandatory', 'isText', 'getIterator', 'getOptionValue', 'getOptionText', 'attribute'));
     }
 
     public function mount()
