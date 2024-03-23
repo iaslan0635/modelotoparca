@@ -35,7 +35,14 @@ class Search
                 ->boost(self::BOOST['car']));
     }
 
-    public static function query(?string $term, $sortBy = null, int $selectCategory = null, array $relations = null, QueryBuilderInterface $filterQuery = null): array
+    public static function query(
+        ?string               $term,
+                              $sortBy = null,
+        int                   $selectCategory = null,
+        array                 $relations = null,
+        QueryBuilderInterface $filterQuery = null,
+        ?array                $brandIds = null
+    ): array
     {
 //        $startTime = microtime(true);
         if (empty($term)) {
@@ -86,8 +93,8 @@ class Search
             $compoundQuery = self::combineQueries(...$nonCodeQueries);
             $compoundQueryWithoutBrandFilter = self::combineQueries(...$nonCodeQueries);
         }
-        if (request()->has('brands')) {
-            $compoundQuery->filter(self::brandFilter(request()->input('brands')));
+        if ($brandIds) {
+            $compoundQuery->filter(self::brandFilter($brandIds));
         }
         $finalQuery = self::finalizeQuery($compoundQuery, $selectCategory);
         $compoundQueryWithoutBrandFilter = self::finalizeQuery($compoundQueryWithoutBrandFilter, $selectCategory);

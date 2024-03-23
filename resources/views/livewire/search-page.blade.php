@@ -115,7 +115,7 @@
                                                                                     <input class="input-check__input"
                                                                                            name="brands[]"
                                                                                            value="{{ $key }}"
-                                                                                           {{ request()->has('brands') ? in_array($key, request()->input('brands')) ? "checked":null:null }}
+                                                                                           {{ $brandFilters ? in_array($key, $brandFilters) ? "checked":null:null }}
                                                                                            type="checkbox">
                                                                                     <span
                                                                                         class="input-check__box"></span>
