@@ -154,20 +154,20 @@ class OnlineCarParts
     {
         $productEls = $searchPage->filter('.product-card:not([data-recommended-products])');
 
-        //        if (
-        //            $this->field === "producercode" ||
-        //            $this->field === "producercode2" ||
-        //            $this->field === "cross_code" ||
-        //            $this->field === "abk"
-        //        ) {
-        //            $commonizedKeyword = self::commonizeString($this->keyword);
-        //            $productEls = $productEls->reduce(
-        //                function (Crawler $el) use ($commonizedKeyword) {
-        //                    $artklEl = $el->filter(".product-card__artkl span");
-        //                    return $artklEl->count() != 0 && self::commonizeString($artklEl->innerText()) === $commonizedKeyword;
-        //                }
-        //            );
-        //        }
+        if (
+            $this->field === "producercode" ||
+            $this->field === "producercode2" ||
+            $this->field === "cross_code" ||
+            $this->field === "abk"
+        ) {
+            $commonizedKeyword = self::commonizeString($this->keyword);
+            $productEls = $productEls->reduce(
+                function (Crawler $el) use ($commonizedKeyword) {
+                    $artklEl = $el->filter(".product-card__artkl span");
+                    return $artklEl->count() != 0 && self::commonizeString($artklEl->innerText()) === $commonizedKeyword;
+                }
+            );
+        }
 
         $links = $productEls->each(function (Crawler $el) {
             $linkEl = $el->filter('.product-card__title-link');
