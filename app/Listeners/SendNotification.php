@@ -20,7 +20,7 @@ class SendNotification
      */
     public function handle(object $event): void
     {
-        if ($event instanceof Notifable) {
+        if ($event instanceof Notifable && app()->isProduction()) {
             Notification::send($event->getNotificationAudience(), $event->getNotification());
         }
     }

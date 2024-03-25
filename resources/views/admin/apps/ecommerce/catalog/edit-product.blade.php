@@ -164,7 +164,7 @@
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
                                             <table class="tables table-striped">
-                                                @foreach($product->tiger->getAttributes() as $key => $value)
+                                                @foreach($product->tiger?->getAttributes() ?? [] as $key => $value)
                                                     <tr>
                                                         <td class="fw-bold">{{ $key }}</td>
                                                         <td>{{ $value }}</td>
