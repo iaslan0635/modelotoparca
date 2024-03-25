@@ -1,32 +1,30 @@
 @extends('layouts.master')
 @section('content')
-    <!-- site__body -->
-    <div class="site__body">
-        <div class="block-space block-space--layout--after-header"></div>
-        <div class="block">
-            <div class="container container--max--lg">
-                <div class="row">
-                    <div class="col-md-6 d-flex">
-                        <div class="card flex-grow-1 mb-md-0 mr-0 mr-lg-3 ml-0 ml-lg-4">
-                            <div class="card-body card-body--padding--2">
-                                <h3 class="card-title">Giriş Yap</h3>
-                                <form action="{{ route('login') }}" method="POST">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="signin-email">Email Adres</label>
-                                        <input id="signin-email" type="email" name="email" class="form-control"
-                                               placeholder="customer@example.com">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="signin-password">Şifre</label>
-                                        <input id="signin-password" type="password" name="password" class="form-control"
-                                               placeholder="Secret word">
-                                        <small class="form-text text-muted">
-                                            <a href="">Şifremi Unuttum?</a>
-                                        </small>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
+    <div class="block-space block-space--layout--after-header"></div>
+    <div class="block">
+        <div class="container container--max--lg">
+            <div class="row">
+                <div class="col-md-6 d-flex">
+                    <div class="card flex-grow-1 mb-md-0 mr-0 mr-lg-3 ml-0 ml-lg-4">
+                        <div class="card-body card-body--padding--2">
+                            <h3 class="card-title">Giriş Yap</h3>
+                            <form action="{{ route('login') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="signin-email">Email Adres</label>
+                                    <input id="signin-email" type="email" name="email" class="form-control"
+                                           placeholder="customer@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signin-password">Şifre</label>
+                                    <input id="signin-password" type="password" name="password" class="form-control"
+                                           placeholder="Secret word">
+                                    <small class="form-text text-muted">
+                                        <a href="">Şifremi Unuttum?</a>
+                                    </small>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
                                                 <span class="input-check form-check-input">
                                                     <span class="input-check__body">
                                                         <input class="input-check__input" type="checkbox"
@@ -39,80 +37,78 @@
                                                         </span>
                                                     </span>
                                                 </span>
-                                            <label class="form-check-label" for="signin-remember">Beni Hatırla</label>
-                                        </div>
+                                        <label class="form-check-label" for="signin-remember">Beni Hatırla</label>
                                     </div>
-                                    <div class="form-group mb-0">
-                                        <button type="submit" class="btn btn-primary mt-3">Giriş Yap</button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn btn-primary mt-3">Giriş Yap</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex mt-4 mt-md-0">
-                        <div class="card flex-grow-1 mb-0 ml-0 ml-lg-3 mr-0 mr-lg-4">
-                            <div class="card-body card-body--padding--2">
-                                <h3 class="card-title">Kayıt Ol</h3>
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <form action="{{ route('register') }}" method="POST">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="signup-name">Adınız</label>
-                                        <input id="signup-name" type="text" name="first_name" class="form-control"
-                                               placeholder="Adınız">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="signup-last-name">Soyadınız</label>
-                                        <input id="signup-last-name" type="text" name="last_name" class="form-control"
-                                               placeholder="Soyadınız">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="signup-gender">Cinsiyetiniz</label>
-                                        <select name="gender" id="signup-gender" class="form-control">
-                                            <option value="male">Erkek</option>
-                                            <option value="female">Kadın</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="signup-date-of-birth">Doğum Tarihiniz</label>
-                                        <input id="signup-date-of-birth" type="date" name="date_of_birth"
-                                               class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="signup-email">E-Posta Adresi</label>
-                                        <input id="signup-email" type="email" name="email" class="form-control"
-                                               placeholder="email@email.com">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="signup-password">Şifre</label>
-                                        <input id="signup-password" type="password" name="password" class="form-control"
-                                               placeholder="Şifre Yazınız">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="signup-confirm">Şifre Tekrarı</label>
-                                        <input id="signup-confirm" type="password" name="password_confirmation"
-                                               class="form-control"
-                                               placeholder="Şifre Tekrarı">
-                                    </div>
-                                    <div class="form-group mb-0">
-                                        <button type="submit" class="btn btn-primary mt-3">Kayıt Ol</button>
-                                    </div>
-                                </form>
-                            </div>
+                </div>
+                <div class="col-md-6 d-flex mt-4 mt-md-0">
+                    <div class="card flex-grow-1 mb-0 ml-0 ml-lg-3 mr-0 mr-lg-4">
+                        <div class="card-body card-body--padding--2">
+                            <h3 class="card-title">Kayıt Ol</h3>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <form action="{{ route('register') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="signup-name">Adınız</label>
+                                    <input id="signup-name" type="text" name="first_name" class="form-control"
+                                           placeholder="Adınız">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signup-last-name">Soyadınız</label>
+                                    <input id="signup-last-name" type="text" name="last_name" class="form-control"
+                                           placeholder="Soyadınız">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signup-gender">Cinsiyetiniz</label>
+                                    <select name="gender" id="signup-gender" class="form-control">
+                                        <option value="male">Erkek</option>
+                                        <option value="female">Kadın</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="signup-date-of-birth">Doğum Tarihiniz</label>
+                                    <input id="signup-date-of-birth" type="date" name="date_of_birth"
+                                           class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signup-email">E-Posta Adresi</label>
+                                    <input id="signup-email" type="email" name="email" class="form-control"
+                                           placeholder="email@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signup-password">Şifre</label>
+                                    <input id="signup-password" type="password" name="password" class="form-control"
+                                           placeholder="Şifre Yazınız">
+                                </div>
+                                <div class="form-group">
+                                    <label for="signup-confirm">Şifre Tekrarı</label>
+                                    <input id="signup-confirm" type="password" name="password_confirmation"
+                                           class="form-control"
+                                           placeholder="Şifre Tekrarı">
+                                </div>
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn btn-primary mt-3">Kayıt Ol</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="block-space block-space--layout--before-footer"></div>
     </div>
-    <!-- site__body / end -->
+    <div class="block-space block-space--layout--before-footer"></div>
 @endsection

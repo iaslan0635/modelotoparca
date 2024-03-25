@@ -11,16 +11,6 @@ class SearchPage extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
-
-    public $query;
-
-    public $category;
-
-    public $term = 'product';
-
-    public $highlights = [];
-
     const CODE_FIELDS = [
         'part_number',
         'producercode',
@@ -37,10 +27,21 @@ class SearchPage extends Component
         'similars.code',
         'similars.code_regex',
     ];
+    public $query;
 
-    protected $queryString = ['query', 'category'];
+    public $category;
 
+    public $term = 'product';
+
+    public $highlights = [];
     public $sortBy;
+    public ?array $brandFilters = null;
+    protected $paginationTheme = 'bootstrap';
+    protected $queryString = [
+        'query',
+        'category',
+        'brandFilters' => ["as" => "brands"],
+    ];
 
     public function render()
     {
@@ -49,20 +50,9 @@ class SearchPage extends Component
         return view('livewire.search-page', $search);
     }
 
-    public function isCodeHighlight(array $a)
-    {
-        foreach (self::CODE_FIELDS as $codeField) {
-            if (array_key_exists($codeField, $a)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public function search()
     {
-        $query = Searchable::query($this->query, $this->sortBy, $this->category);
+        $query = Searchable::query($this->query, $this->sortBy, $this->category, brandIds: $this->brandFilters);
         $products = $query['products'];
         $brands = $query['brands'];
         $categories = $query['categories'];
@@ -85,6 +75,17 @@ class SearchPage extends Component
             'alternatives',
             'similars'
         );
+    }
+
+    public function isCodeHighlight(array $a)
+    {
+        foreach (self::CODE_FIELDS as $codeField) {
+            if (array_key_exists($codeField, $a)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function changeCategory($id)

@@ -348,7 +348,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">{{ $product->price->formattedPrice }}</span>
+                                                    <span class="text-gray-600 fw-bold fs-6">{{ $product->price?->formattedPrice }}</span>
                                                 </td>
                                                 <td class="text-end">
                                                     <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">

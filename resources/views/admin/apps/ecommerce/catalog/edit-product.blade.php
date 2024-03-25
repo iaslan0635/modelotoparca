@@ -26,7 +26,7 @@
                         <!--begin::Item-->
                         <li class="breadcrumb-item text-muted">
                             <a href="{{ url()->previous() }}">Ürünler</a>
-                            </li>
+                        </li>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <li class="breadcrumb-item">
@@ -34,7 +34,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">{{$product->sku}} / {{$product->title}}</li>
+                        <li class="breadcrumb-item text-muted">{{$product->sku}} / {{$product->title}} / {{ $product->producercode }}</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -143,38 +143,7 @@
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade show active" id="bot_connections" role="tabpanel">
                                 <div class="d-flex flex-column gap-7 gap-lg-10">
-                                    <!--begin::Card-->
-                                    <div class="card card-flush py-4">
-                                        <!--begin::Card header-->
-                                        <div class="card-header">
-                                            <!--begin::Card title-->
-                                            <div class="card-title">
-                                                <h2>Bot Ürün Eşleşmeleri ({{ count($product->bots) }})</h2>
-                                            </div>
-                                            <!--end::Card title-->
-                                        </div>
-                                        <!--end::Card header-->
-                                        <!--begin::Card body-->
-                                        <div class="card-body pt-0">
-                                            <table class="table table-responsive">
-                                                <thead>
-                                                <tr>
-                                                    <th>Url</th>
-                                                    <th>Kaynak Alan</th>
-                                                    <th>Yasaklı mı?</th>
-                                                    <th>İşlemler</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($product->bots as $url)
-                                                    <livewire:bot-connection-ban-panel :url="$url"/>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!--end::Card body-->
-                                    </div>
-                                    <!--end::Card-->
+                                    <livewire:bot-connection-ban-panel :product="$product"/>
                                 </div>
                             </div>
                             <!--end::Tab pane-->
