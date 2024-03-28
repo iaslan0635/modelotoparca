@@ -46,14 +46,14 @@
                                     }}</div>
                                     <!--end::Users-->
                                     <!--begin::Permissions-->
-                                    <div class="d-flex flex-column text-gray-600">
-                                        @foreach($role->permissions as $permission)
-                                            <div class="d-flex align-items-center py-2">
-                                                <span class="bullet bg-primary me-3"></span>
-                                                {{ $permission->name }}
-                                            </div>
-                                        @endforeach
-                                    </div>
+{{--                                    <div class="d-flex flex-column text-gray-600">--}}
+{{--                                        @foreach($role->permissions as $permission)--}}
+{{--                                            <div class="d-flex align-items-center py-2">--}}
+{{--                                                <span class="bullet bg-primary me-3"></span>--}}
+{{--                                                {{ $permission->name }}--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
+{{--                                    </div>--}}
                                     <!--end::Permissions-->
                                 </div>
                                 <!--end::Card body-->
