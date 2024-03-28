@@ -19,6 +19,7 @@
             <tr>
                 <th>Url</th>
                 <th>Kaynak Alan</th>
+                <th>Aranan kelime</th>
                 <th>Yasaklı mı?</th>
                 <th>İşlemler</th>
             </tr>
@@ -39,6 +40,7 @@
                             <span class="badge rounded-pill text-white text-bg-danger">Hayır</span>
                         @endif
                     </td>
+                    <td>{{ get_item($item['connection'], "keyword") }}</td>
                     <td>
                         @if($item['isBanned'])
                             <button class="btn btn-sm btn-success" wire:click="unban({{$i}})" wire:loading.attr="disabled">
