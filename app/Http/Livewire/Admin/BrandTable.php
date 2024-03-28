@@ -6,6 +6,7 @@ use App\Models\Brand;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
+/** @deprecated */
 class BrandTable extends Component
 {
     /** @var Collection<array-key, Brand> */

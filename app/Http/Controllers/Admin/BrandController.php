@@ -53,18 +53,23 @@ class BrandController extends Controller
     public function update(Brand $brand)
     {
         $data = request()->validate([
-            'name' => 'required',
-            'slug' => 'required',
-            'botname' => 'required',
-            'image' => 'sometimes|image',
+            'name' => 'nullable',
+            'slug' => 'nullable',
+            'botname' => 'nullable',
         ]);
 
-        if (request('image')) {
-            $data['image'] = request('image')->store('brands', 'public');
+        if(\request()->hasFile('image')){
+            $imagePath = \request()->file('image')->store('images/brands', 'public');
+            $brand->image()->updateOrCreate([], ['path' => $imagePath]);
         }
 
         $brand->update($data);
 
         return redirect()->route('admin.brands.index');
+    }
+
+    public function edit(Brand $brand)
+    {
+        return view('admin.inhouse.brands.edit', compact('brand'));
     }
 }
