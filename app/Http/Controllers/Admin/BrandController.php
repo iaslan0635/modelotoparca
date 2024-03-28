@@ -45,8 +45,26 @@ class BrandController extends Controller
             $brands->where("name", 'like', "%$search%");
         }
 
-        return view('admin.pages.brands', [
+        return view('admin.inhouse.brands.index', [
             'brands' => $brands->paginate(),
         ]);
+    }
+
+    public function update(Brand $brand)
+    {
+        $data = request()->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'botname' => 'required',
+            'image' => 'sometimes|image',
+        ]);
+
+        if (request('image')) {
+            $data['image'] = request('image')->store('brands', 'public');
+        }
+
+        $brand->update($data);
+
+        return redirect()->route('admin.brands.index');
     }
 }
