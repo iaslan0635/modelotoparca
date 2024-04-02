@@ -1,7 +1,7 @@
 @extends("admin.inhouse.layouts.card")
 @section("card-title", "Marka Düzenle")
 @section("card-content")
-    <form action="{{ route("admin.brands.update") }}" method="POST">
+    <form action="{{ route("admin.brands.update", $brand) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method("PUT")
         <input type="hidden" name="id" value="{{ $brand->id }}">
