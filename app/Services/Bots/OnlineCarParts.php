@@ -71,7 +71,13 @@ class OnlineCarParts
         $links = [];
         $searchPages = $this->getSearchPages();
         foreach ($searchPages as $pageNumber => $searchPage) {
-            array_push($links, ...$this->scrapeSearchPage($searchPage, $pageNumber));
+            $pageLinks = $this->scrapeSearchPage($searchPage, $pageNumber);
+            $pageLinksCount = count($pageLinks);
+            if ($this->field !== 'oem_codes' && $pageLinksCount !== 0) {
+                $this->log("$pageLinksCount adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
+                break;
+            }
+            array_push($links, ...$pageLinks);
         }
 
         return $links;
