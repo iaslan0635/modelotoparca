@@ -163,7 +163,14 @@
                                         <!--end::Card header-->
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
-                                            <p>{{ $product->description }}</p>
+                                            <table class="tables table-striped">
+                                                @foreach($product->tiger->getAttributes() as $key => $value)
+                                                    <tr>
+                                                        <td class="fw-bold">{{ $key }}</td>
+                                                        <td>{{ $value }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
                                         </div>
                                         <!--end::Card body-->
                                     </div>
