@@ -45,9 +45,4 @@ class Garage extends Component
     {
         GarageFacade::remove($id);
     }
-
-    public function deselect()
-    {
-        GarageFacade::deselect();
-    }
 }
