@@ -230,9 +230,13 @@ class Product extends BaseModel implements CanVisit
         return $this->hasOne(TigerProduct::class, 'id', 'id');
     }
 
-
     public function runBot()
     {
         dispatch(new RunSingleBotJob(TigerProduct::findOrFail($this->id)));
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }

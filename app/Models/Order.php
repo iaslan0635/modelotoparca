@@ -21,9 +21,9 @@ class Order extends BaseModel
         return $this->hasMany(OrderItem::class);
     }
 
-    public function user(): HasOne
+    public function user()
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function invoiceAddress(): HasOne

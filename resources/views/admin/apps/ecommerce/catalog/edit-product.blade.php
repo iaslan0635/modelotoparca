@@ -97,7 +97,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#todo">Sipariş Geçmişi
+                                   href="#order-history">Sipariş Geçmişi
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -252,6 +252,55 @@
                             <!--begin::Tab pane-->
                             <div class="tab-pane fade" id="cars" role="tabpanel">
                                 <livewire:admin.car-panel :car_brands="$car_brands" :product_id="$product->id"/>
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="order-history" role="tabpanel">
+                                <div class="d-flex flex-column gap-7 gap-lg-10">
+                                    <!--begin::Card-->
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <!--begin::Card title-->
+                                            <div class="card-title">
+                                                <h2>Sipariş Geçmişi</h2>
+                                            </div>
+                                            <!--end::Card title-->
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-row-dashed fs-6 gy-5 my-0">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Müşteri</th>
+                                                        <th>Adet</th>
+                                                        <th>Fiyat</th>
+                                                        <th>Sipariş Tarihi</th>
+                                                        <th>İşlem</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($product->orderItems->map->order->unique() as $order)
+                                                        <tr>
+                                                            <td>{{ $order->user->name }}</td>
+                                                            <td>{{ $order->quantity }}</td>
+                                                            <td>{{ $order->price }}</td>
+                                                            <td>{{ $order->created_at }}</td>
+                                                            <td>
+                                                                <a href="{{ route('admin.order.show', $order) }}" class="btn btn-sm btn-primary">
+                                                                    Detay
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!--end::Card header-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
                             </div>
                             <!--end::Tab pane-->
                             <!--begin::Tab pane-->

@@ -26,4 +26,9 @@ class OrderItem extends BaseModel
     {
         return Attribute::get(fn () => number_format($this->price * $this->quantity, 2).' ₺');
     }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
