@@ -42,34 +42,29 @@
                                             {{$extraFilters ?? ''}}
                                             <div class="widget-filters__item">
                                                 <div class="filter filter--opened" data-collapse-item>
-                                                    <button type="button" class="filter__title"
-                                                            data-collapse-trigger>
+                                                    <button type="button" class="filter__title" data-collapse-trigger>
                                                         Fiyat
-                                                        <span class="filter__arrow"><svg width="12px" height="7px">
+                                                        <span class="filter__arrow">
+                                                            <svg width="12px" height="7px">
                                                                 <path
                                                                     d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                            </svg></span>
+                                                            </svg>
+                                                        </span>
                                                     </button>
                                                     <div class="filter__body" data-collapse-content>
                                                         <div class="filter__container">
-                                                            <div class="filter-price"
-                                                                 data-min="0"
-                                                                 data-max="99999"
-                                                                 data-from="0"
-                                                                 data-to="99999">
+                                                            <div class="filter-price" data-min="0" data-max="99999" data-from="0" data-to="99999">
                                                                 <div class="filter-price__slider"></div>
                                                                 <div class="filter-price__title-button">
-                                                                    <input type="hidden" name="min_price" value=""
-                                                                           id="min-value">
-                                                                    <input type="hidden" name="max_price" value=""
-                                                                           id="max-value">
-                                                                    <div class="filter-price__title">₺<span
-                                                                            class="filter-price__min-value"></span>
-                                                                        – ₺<span
-                                                                            class="filter-price__max-value"></span>
+                                                                    <input type="hidden" name="min_price" value="" id="min-value">
+                                                                    <input type="hidden" name="max_price" value="" id="max-value">
+                                                                    <div class="filter-price__title">
+                                                                        ₺
+                                                                        <span class="filter-price__min-value"></span>
+                                                                        – ₺
+                                                                        <span class="filter-price__max-value"></span>
                                                                     </div>
-                                                                    <button type="submit"
-                                                                            class="btn btn-xs btn-secondary filter-price__button">
+                                                                    <button type="submit" class="btn btn-xs btn-secondary filter-price__button">
                                                                         Filtrele
                                                                     </button>
                                                                 </div>
@@ -84,10 +79,12 @@
                                                         <button type="button" class="filter__title"
                                                                 data-collapse-trigger>
                                                             Markalar
-                                                            <span class="filter__arrow"><svg width="12px" height="7px">
-                                                                <path
-                                                                    d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                            </svg></span>
+                                                            <span class="filter__arrow">
+                                                                <svg width="12px" height="7px">
+                                                                    <path
+                                                                        d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
+                                                                </svg>
+                                                            </span>
                                                         </button>
                                                         <div class="filter__body"
                                                              data-collapse-content
@@ -98,28 +95,29 @@
                                                                         @foreach($brands as $key => $brand)
                                                                             <label class="filter-list__item"
                                                                                    wire:key="brand-top-{{$key}}">
-                                                                            <span
-                                                                                class="input-check filter-list__input">
-                                                                                <span class="input-check__body">
-                                                                                    <input class="input-check__input"
-                                                                                           name="brands[]"
-                                                                                           value="{{ $key }}"
-                                                                                           wire:model="brandsArray.{{$key}}"
-                                                                                           {{ request()->has('brands') ? in_array($key, request()->input('brands')) ? "checked":null:null }}
-                                                                                           type="checkbox">
-                                                                                    <span
-                                                                                        class="input-check__box"></span>
-                                                                                    <span class="input-check__icon"><svg
-                                                                                            width="9px" height="7px">
-                                                                                            <path
-                                                                                                d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
-                                                                                        </svg>
+                                                                                <span
+                                                                                    class="input-check filter-list__input">
+                                                                                    <span class="input-check__body">
+                                                                                        <input class="input-check__input"
+                                                                                               name="brands[]"
+                                                                                               value="{{ $key }}"
+                                                                                               wire:model="brandsArray.{{$key}}"
+                                                                                               {{ request()->has('brands') ? in_array($key, request()->input('brands')) ? "checked":null:null }}
+                                                                                               type="checkbox">
+                                                                                        <span
+                                                                                            class="input-check__box"></span>
+                                                                                        <span class="input-check__icon">
+                                                                                            <svg
+                                                                                                width="9px" height="7px">
+                                                                                                <path
+                                                                                                    d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
+                                                                                            </svg>
+                                                                                        </span>
                                                                                     </span>
                                                                                 </span>
-                                                                            </span>
                                                                                 <span class="filter-list__title">
-                                                                                {{ $brand[0]?->brand?->name }}
-                                                                            </span>
+                                                                                    {{ $brand[0]?->brand?->name }}
+                                                                                </span>
                                                                                 <span
                                                                                     class="filter-list__counter">{{ count($brand) }}</span>
                                                                             </label>
@@ -135,9 +133,8 @@
                                                 @if($property->show_filter)
                                                     <div class="widget-filters__item" wire:key="prop-{{$property->id}}">
                                                         <div class="filter filter--opened" data-collapse-item>
-                                                            <button type="button"
-                                                                    class="filter__title"
-                                                                    data-collapse-trigger>{{ $property->name }}
+                                                            <button type="button" class="filter__title" data-collapse-trigger>
+                                                                {{ $property->name }}
                                                                 <span class="filter__arrow">
                                                                     <svg width="12px" height="7px">
                                                                         <path
@@ -176,8 +173,7 @@
                                                                                         <span class="filter-list__title">{{ $value->value }}</span>
                                                                                     </label>
                                                                                 @elseif($property->search_type === "none")
-                                                                                    <label class="filter-list__item"
-                                                                                           wire:key="prop-val-{{$value->id}}">
+                                                                                    <label class="filter-list__item" wire:key="prop-val-{{$value->id}}">
                                                                                         <span class="input-check filter-list__input">
                                                                                             <span class="input-check__body">
                                                                                                 <input
@@ -189,8 +185,7 @@
                                                                                                     wire:model="property.{{ $property->id }}">
                                                                                                 <span class="input-check__box"></span>
                                                                                                 <span class="input-check__icon">
-                                                                                                    <svg width="9px"
-                                                                                                         height="7px">
+                                                                                                    <svg width="9px" height="7px">
                                                                                                         <path d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
                                                                                                     </svg>
                                                                                                 </span>
@@ -227,7 +222,8 @@
                             <div class="products-view__options view-options view-options--offcanvas--mobile">
                                 <div class="view-options__body">
                                     <button type="button" class="view-options__filters-button filters-button">
-                                        <span class="filters-button__icon"><svg width="16" height="16">
+                                        <span class="filters-button__icon">
+                                            <svg width="16" height="16">
                                                 <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2
 	C10.2,10,10,9.8,10,9.5v-3C10,6.2,10.2,6,10.5,6H12.5z M7,2h9v2H7V2z M5.5,5h-2C3.2,5,3,4.8,3,4.5v-3C3,1.2,3.2,1,3.5,1h2
 	C5.8,1,6,1.2,6,1.5v3C6,4.8,5.8,5,5.5,5z M0,2h2v2H0V2z M9,9H0V7h9V9z M2,14H0v-2h2V14z M3.5,11h2C5.8,11,6,11.2,6,11.5v3
@@ -283,9 +279,7 @@
                                     <div class="view-options__spring"></div>
                                     <div class="view-options__select">
                                         <label for="view-option-sort">Sort:</label>
-                                        <select id="view-option-sort"
-                                                class="form-control form-control-sm"
-                                                wire:model="sortBy">
+                                        <select id="view-option-sort" class="form-control form-control-sm" wire:model="sortBy">
                                             <option value="price-asc">Yükselen Fiyat</option>
                                             <option value="price-desc">Azalan Fiyat</option>
                                             <option value="title-asc">Yükselen Başlık</option>
@@ -294,9 +288,7 @@
                                     </div>
                                     <div class="view-options__select">
                                         <label for="view-option-limit">Show:</label>
-                                        <select id="view-option-limit"
-                                                class="form-control form-control-sm"
-                                                wire:model="pageSize">
+                                        <select id="view-option-limit" class="form-control form-control-sm" wire:model="pageSize">
                                             <option value="12">12</option>
                                             <option value="24">24</option>
                                             <option value="48">48</option>
@@ -309,39 +301,23 @@
                                         <form method="GET" id="querySearch">
                                             <ul class="applied-filters__list">
                                                 @if(isset($min_price) && $min_price)
-                                                    <input type="hidden"
-                                                           name="min_price"
-                                                           id="min-price"
-                                                           wire:key="max-price-input"
-                                                           value="{{ $min_price }}">
+                                                    <input type="hidden" name="min_price" id="min-price" wire:key="max-price-input" value="{{ $min_price }}">
                                                     <li class="applied-filters__item" wire:key="max-price">
-                                                        <a href="#"
-                                                           class="applied-filters__button applied-filters__button--filter">
+                                                        <a href="#" class="applied-filters__button applied-filters__button--filter">
                                                             En düşük fiyat: {{ $min_price }}
-                                                            <svg width="9"
-                                                                 height="9"
-                                                                 onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
-                                                                <path
-                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                            <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
+                                                                <path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                             </svg>
                                                         </a>
                                                     </li>
                                                 @endif
                                                 @if(isset($max_price) && $max_price)
-                                                    <input type="hidden"
-                                                           name="max_price"
-                                                           id="max-price"
-                                                           wire:key="min-price-input"
-                                                           value="{{ $max_price }}">
+                                                    <input type="hidden" name="max_price" id="max-price" wire:key="min-price-input" value="{{ $max_price }}">
                                                     <li class="applied-filters__item" wire:key="min-price">
-                                                        <a href="#"
-                                                           class="applied-filters__button applied-filters__button--filter">
+                                                        <a href="#" class="applied-filters__button applied-filters__button--filter">
                                                             En yüksek fiyat: {{ $max_price }}
-                                                            <svg width="9"
-                                                                 height="9"
-                                                                 onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
-                                                                <path
-                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                            <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
+                                                                <path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                             </svg>
                                                         </a>
                                                     </li>
@@ -349,33 +325,24 @@
                                                 @foreach(($brandsArray ?? []) as $brand)
                                                     @php if(!$brands->has($brand)) continue; @endphp
                                                     <li class="applied-filters__item" wire:key="brand-{{$brand}}">
-                                                        <input type="hidden"
-                                                               name="brands[]"
+                                                        <input type="hidden" name="brands[]"
                                                                id="brand-{{ $brands[$brand][0]->brand->id }}"
                                                                value="{{ $brands[$brand][0]->brand->id }}">
-                                                        <a href="#"
-                                                           class="applied-filters__button applied-filters__button--filter">
+                                                        <a href="#" class="applied-filters__button applied-filters__button--filter">
                                                             Marka: {{ $brands[$brand][0]?->brand?->name }}
-                                                            <svg
-                                                                onclick="$(`#brand-{{ $brands[$brand][0]->brand->id }}`).remove() && $('#querySearch').submit()"
-                                                                width="9" height="9">
-                                                                <path
-                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                            <svg width="9" height="9"
+                                                                 onclick="$(`#brand-{{ $brands[$brand][0]->brand->id }}`).remove() && $('#querySearch').submit()">
+                                                                <path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                             </svg>
                                                         </a>
                                                     </li>
                                                 @endforeach
                                                 @foreach(($filteredProperties ?? []) as  $id => $prop)
                                                     <li class="applied-filters__item" wire:key="propfilter-{{$prop}}">
-                                                        <a href="#"
-                                                           class="applied-filters__button applied-filters__button--filter">
-                                                            {{ $properties->firstWhere("0.id", $id)[0]->name }}
-                                                            : {{ $prop }}
-                                                            <svg
-                                                                wire:click="deselectProperty({{$id}})"
-                                                                width="9" height="9">
-                                                                <path
-                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                        <a href="#" class="applied-filters__button applied-filters__button--filter">
+                                                            {{ $properties->firstWhere("0.id", $id)[0]->name }}: {{ $prop }}
+                                                            <svg wire:click="deselectProperty({{$id}})" width="9" height="9">
+                                                                <path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                             </svg>
                                                         </a>
                                                     </li>
@@ -393,13 +360,8 @@
             <div class="block-space block-space--layout--before-footer"></div>
         </div>
     </div>
-    <div style="
-    position: fixed;
-    bottom: 3rem;
-    right: 3rem;
-    width: 3rem;
-    height: 3rem;
-" class="align-items-center bg-dark justify-content-center rounded-circle" wire:loading.flex>
+    <div style="position: fixed; bottom: 3rem; right: 3rem; width: 3rem; height: 3rem;"
+         class="align-items-center bg-dark justify-content-center rounded-circle" wire:loading.flex>
         <div class="spinner-border text-white" role="status"></div>
     </div>
 </div>
@@ -421,6 +383,5 @@
 
         updateSelection()
         $(".layout-switcher__button").click(e => localStorage.setItem("selected-layout", e.currentTarget.dataset.layoutId))
-
     </script>
 @endpush
