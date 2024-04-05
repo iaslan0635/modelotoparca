@@ -13,10 +13,9 @@ function merchant_setting(string $merchant, string $key, mixed $default = null)
 
 /**
  * Less overheaded version of `data_get`
- * @param $target
- * @param $key
- * @param $default
+ *
  * @return mixed
+ *
  * @see data_get()
  */
 function get_item($target, $key, $default = null)
@@ -34,7 +33,7 @@ function get_item($target, $key, $default = null)
  * Retrieves the permissions for the provided permission names.
  * It can accept any pattern that data_get accepts, for example 'group.*' or 'group.*.name'.
  *
- * @param string ...$permissionPatterns The permission patterns to retrieve.
+ * @param  string  ...$permissionPatterns The permission patterns to retrieve.
  * @return array The permissions for the provided names.
  *
  * @throws Exception If no permission name is provided or if a permission is not found.

@@ -42,7 +42,7 @@ class BrandController extends Controller
         $brands = Brand::query();
 
         if ($search = request('search')) {
-            $brands->where("name", 'like', "%$search%");
+            $brands->where('name', 'like', "%$search%");
         }
 
         return view('admin.inhouse.brands.index', [
@@ -58,7 +58,7 @@ class BrandController extends Controller
             'botname' => 'nullable',
         ]);
 
-        if(\request()->hasFile('image')){
+        if (\request()->hasFile('image')) {
             $imagePath = \request()->file('image')->store('images/brands', 'public');
             $brand->image()->updateOrCreate([], ['path' => $imagePath]);
         }

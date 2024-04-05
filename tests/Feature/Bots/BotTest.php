@@ -45,9 +45,9 @@ class BotTest extends TestCase
     #[DataProvider('searchPredenceProvider')]
     public function testSearchPredence($product, $expectedField, $expectedUrl)
     {
-        $this->markTestSkipped("This test does not work for paginated bot.");
+        $this->markTestSkipped('This test does not work for paginated bot.');
 
-        Mockery::mock('overload:' . Log::class)
+        Mockery::mock('overload:'.Log::class)
             ->shouldReceive('create')
             ->andReturnUsing(function ($data) {
                 dump($data);
