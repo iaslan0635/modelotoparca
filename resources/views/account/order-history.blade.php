@@ -24,17 +24,21 @@
                                             <th>Date</th>
                                             <th>Status</th>
                                             <th>Total</th>
+                                            <th>İşlemler</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($orders as $order)
                                             <tr>
-                                                <td><a href="{{ route('order-details', $order) }}">#{{ $order->id }}</a>
+                                                <td>
+                                                    <a href="{{ route('order-details', $order) }}">#{{ $order->id }}</a>
                                                 </td>
                                                 <td>{{ $order->created_at->diffForHumans() }}</td>
                                                 <td>{{ __("status.". $order->payment_status) }}</td>
-                                                <td>{{ count($order->items) }} ürün
-                                                    için {{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                                <td>{{ count($order->items) }} ürün için {{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                                <td>
+                                                    <button class="btn btn-danger btn-sm" data-cancel-order-id="{{ $order->id }}">İptal et</button>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -54,3 +58,22 @@
     </div>
     <!-- site__body / end -->
 @endsection
+
+@push('scripts')
+    <script defer>
+        $('button[data-cancel-order-id]').click(function () {
+            if (!confirm('Siparişi iptal etmek istediğinize emin misiniz?')) return
+            let orderId = $(this).data('cancel-order-id')
+            let button = $(this)
+            $.ajax({
+                url: '{{ route('order.cancel') }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    order_id: orderId
+                },
+                success: () => button.closest('tr').remove()
+            })
+        })
+    </script>
+@endpush
