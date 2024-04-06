@@ -12,19 +12,15 @@
                         <div class="filter__container">
                             <div class="filter-categories">
                                 <ul class="filter-categories__list">
-                                    @foreach(
-                                        $query->clone()->with('categories')->get()->pluck('categories')->flatten()->unique('name') as $child
-                                    )
-                                        @if($child->deepProductsCount > 0)
-                                            <li class="filter-categories__item filter-categories__item--child"
-                                                wire:key="cat-{{$child->id}}">
-                                                <img src="{{ $child->imageUrl() }}" class="category-icon-image">
-                                                <a href="?category={{$child->slug}}">
-                                                    {{ $child->name }}
-                                                </a>
-                                                <div class="filter-categories__counter">{{ $child->products_count }}</div>
-                                            </li>
-                                        @endif
+                                    @foreach($query->clone()->with('categories')->get("id")->pluck('categories')->flatten()->unique('name') as $child)
+                                        <li class="filter-categories__item filter-categories__item--child"
+                                            wire:key="cat-{{$child->id}}">
+                                            <img src="{{ $child->imageUrl() }}" class="category-icon-image">
+                                            <a href="?category={{$child->slug}}">
+                                                {{ $child->name }}
+                                            </a>
+                                            <div class="filter-categories__counter">{{ $child->products_count }}</div>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
