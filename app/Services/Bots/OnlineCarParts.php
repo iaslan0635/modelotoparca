@@ -122,7 +122,7 @@ class OnlineCarParts
             return $searchPages;
         }
 
-        return [$crawler];
+        return [1 => $crawler];
     }
 
     public static function commonizeString(string $string): string
