@@ -8,7 +8,7 @@
     <div class="block block-brands block-brands--layout--columns-8-full">
         <div class="container">
             <ul class="block-brands__list">
-                @foreach(\App\Models\Brand::all() as $brand)
+                @foreach($brands as $brand)
                     <li class="block-brands__item">
                         <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link">
                             <img src="images/brands/{{$brand->name}}.png" alt="">
