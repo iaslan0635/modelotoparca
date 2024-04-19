@@ -11,7 +11,7 @@
                 @foreach($brands as $brand)
                     <li class="block-brands__item">
                         <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link">
-                            <img src="images/brands/{{$brand->name}}.png" alt="">
+                            <img src="{{ $brand->imageUrl() }}" alt="">
                             <span class="block-brands__item-name">{{$brand->name}}</span>
                         </a>
                     </li>
