@@ -1,4 +1,4 @@
-<x-product-list :products="$products" :filtered-properties="$property" :properties="$property">
+<x-product-list :products="$products" :filtered-properties="$property" :properties="$allProperties">
     <x-slot:breadcrumb>
         <x-breadcrumb :parts="[
             ['name' => 'Kategoriler', 'link' => route('category.index')],
@@ -17,7 +17,7 @@
                         <div class="filter-categories">
                             <ul class="filter-categories__list">
                                 @foreach($parents->unique("name")->sortBy("name") as $parent)
-                                    <li class="filter-categories__item filter-categories__item--parent"
+                                    <li class="filter-categories__item filter-categories__item--b parent"
                                         wire:key="cat-parent-{{$parent->id}}">
                                         <span class="filter-categories__arrow">@include('icons/chevron-left')</span>
                                         <img src="{{ $parent->imageUrl() }}" class="category-icon-image">

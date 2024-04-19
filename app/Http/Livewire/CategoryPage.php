@@ -109,9 +109,9 @@ class CategoryPage extends Component
         $products = $query->paginate($this->pageSize);
 
         $propertyValues = PropertyValue::whereHas('product', fn (Builder $q) => $q->whereIn('id', $productIds))->with('property')->get();
-        $properties = $propertyValues->map(fn (PropertyValue $pv) => $pv->property)->unique('id')->map(fn (Property $p) => [$p, $propertyValues->where('property.id', $p->id)]);
+        $allProperties = $propertyValues->map(fn (PropertyValue $pv) => $pv->property)->unique('id')->map(fn (Property $p) => [$p, $propertyValues->where('property.id', $p->id)]);
 
-        return view('livewire.category-page', compact('category', 'products', 'brands', 'properties'));
+        return view('livewire.category-page', compact('category', 'products', 'brands', 'allProperties'));
     }
 
     public function deselectProperty($id)
