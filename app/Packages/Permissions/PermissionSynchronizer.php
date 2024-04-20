@@ -2,6 +2,7 @@
 
 namespace App\Packages\Permissions;
 
+use Illuminate\Support\Facades\Cache;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\PermissionRegistrar;
 
@@ -11,8 +12,7 @@ final class PermissionSynchronizer
     public static function sync(): array
     {
         $addedPermissions = [];
-        app(PermissionRegistrar::class)->forgetCachedPermissions();
-        foreach (self::getPermissions() as $permission) {
+        foreach (self::getPermissionsFromConfig() as $permission) {
             if (! Permission::where('name', $permission)->exists()) {
                 $addedPermissions[] = Permission::create([
                     'name' => $permission,
@@ -24,18 +24,18 @@ final class PermissionSynchronizer
         return $addedPermissions;
     }
 
-    public static function getPermissions(): array
+    public static function getPermissionsFromConfig(): array
     {
-        return self::convertArray(config('permissions'));
+        return self::convertPermissionConfigArray(config('permissions'));
     }
 
-    private static function convertArray(array $array, string $currentKey = ''): array
+    private static function convertPermissionConfigArray(array $array, string $currentKey = ''): array
     {
         $result = [];
         foreach ($array as $element) {
             $newKey = $currentKey.($currentKey ? '.' : '').$element['name'];
             $result = isset($element['children']) ?
-                array_merge($result, self::convertArray($element['children'], $newKey)) :
+                array_merge($result, self::convertPermissionConfigArray($element['children'], $newKey)) :
                 array_merge($result, [$newKey]);
         }
 
@@ -45,9 +45,15 @@ final class PermissionSynchronizer
     /** Obtain permissions that are present in the configuration but not in the database. */
     public static function diff()
     {
-        $permissions = self::getPermissions();
+        $permissions = self::getPermissionsFromConfig();
         $dbPermissions = Permission::pluck('name')->toArray();
 
         return array_diff($dbPermissions, $permissions);
+    }
+
+    public static function clearCache()
+    {
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+        Cache::forget('permissionPatterns:*'); // TODO: wildcard does not work
     }
 }

@@ -13,7 +13,7 @@ class PermissionsListCommand extends Command
 
     public function handle(): void
     {
-        $permissions = PermissionSynchronizer::getPermissions();
+        $permissions = PermissionSynchronizer::getPermissionsFromConfig();
 
         foreach ($permissions as $item) {
             $this->info($item);
