@@ -72,11 +72,11 @@ class OnlineCarParts
         foreach ($searchPages as $pageNumber => $searchPage) {
             $pageLinks = $this->scrapeSearchPage($searchPage, $pageNumber);
             $pageLinksCount = count($pageLinks);
+            array_push($links, ...$pageLinks);
             if ($this->field !== 'oem_codes' && $pageLinksCount !== 0) {
                 $this->log("$pageLinksCount adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
                 break;
             }
-            array_push($links, ...$pageLinks);
         }
 
         return $links;
@@ -122,7 +122,7 @@ class OnlineCarParts
             return $searchPages;
         }
 
-        return [$crawler];
+        return [1 => $crawler];
     }
 
     public static function commonizeString(string $string): string

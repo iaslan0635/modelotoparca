@@ -19,4 +19,9 @@ class BrandController extends Controller
 
         return view('products-page', compact('query'));
     }
+
+    public function index()
+    {
+        return view('brands', ['brands' => Brand::has('products')->get()]);
+    }
 }
