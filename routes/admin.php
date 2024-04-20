@@ -30,13 +30,22 @@ Route::prefix('products/{product}/edit')->name('products.edit.')->controller(Pro
 });
 
 Route::get('products/export', [ProductController::class, 'exportToExcel'])->name('products.export');
-Route::resource('products', ProductController::class)->only(['index', 'show']);
+
+# region product
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
+Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');
+# endregion
 
 Route::prefix('categories/{category}/edit')->name('categories.edit.')->controller(CategoryController::class)->group(function () {
     Route::post('image', 'push_image')->name('image');
     Route::post('delete_image', 'delete_image')->name('delete_image');
 });
-Route::resource('categories', CategoryController::class)->only(['index', 'show']);
+
+# region category
+Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+# endregion
+
 Route::post('delete_image', [ImageController::class, 'delete'])->name('delete-image');
 
 Route::controller(ImportController::class)->prefix('import')->name('import.')->group(function () {
@@ -61,7 +70,11 @@ Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(fu
     Route::post('toggleIndexing', 'toggleIndexing')->name('toggleIndexing');
 });
 
-Route::resource('brands', BrandController::class)->only(['index', 'edit', 'update']);
+# region brand
+Route::get('brands', [BrandController::class, 'index'])->name('brands.index');
+Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit');
+Route::put('brands/{brand}', [BrandController::class, 'update'])->name('brands.update');
+# endregion
 
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
@@ -80,13 +93,34 @@ Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-syn
 Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update');
 Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands'])->name('brand-sync.search');
 
-Route::resource('permission', PermissionController::class, ['parameters' => ['permission' => 'employee']]);
+# region permission
+Route::get('permission', [PermissionController::class, 'index'])->name('permission.index');
+Route::get('permission/{employee}', [PermissionController::class, 'show'])->name('permission.show');
+Route::get('permission/create', [PermissionController::class, 'create'])->name('permission.create');
+Route::post('permission', [PermissionController::class, 'store'])->name('permission.store');
+Route::get('permission/{employee}/edit', [PermissionController::class, 'edit'])->name('permission.edit');
+Route::put('permission/{employee}', [PermissionController::class, 'update'])->name('permission.update');
+Route::delete('permission/{employee}', [PermissionController::class, 'destroy'])->name('permission.destroy');
+# endregion
+
 Route::get('role/{role}/delete', [RoleController::class, 'delete'])->name('role.delete');
-Route::resource('role', RoleController::class)->except('destroy');
+
+# region role
+Route::get('role', [RoleController::class, 'index'])->name('role.index');
+Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
+Route::post('role', [RoleController::class, 'store'])->name('role.store');
+Route::get('role/{role}', [RoleController::class, 'show'])->name('role.show');
+Route::get('role/{role}/edit', [RoleController::class, 'edit'])->name('role.edit');
+Route::put('role/{role}', [RoleController::class, 'update'])->name('role.update');
+# endregion
+
 Route::get('role/unassign/{role}/{user}', [RoleController::class, 'unassign'])->name('role.unassign');
 Route::get('merchant/failed', [MerchantTrackingController::class, 'failed'])->name('merchant.failed');
 
-Route::resource('merchant-setting', MerchantSettingController::class)->only(['index', 'store']);
+# region merchant-setting
+Route::get('merchant-setting', [MerchantSettingController::class, 'index'])->name('merchant-setting.index');
+Route::post('merchant-setting', [MerchantSettingController::class, 'store'])->name('merchant-setting.store');
+# endregion
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {
@@ -106,5 +140,22 @@ Route::controller(AuthController::class)
         Route::get('logout', 'logout')->name('logout');
     });
 
-Route::resource('user', UserController::class);
-Route::resource('employee', EmployeeController::class);
+# region user
+Route::get('user', [UserController::class, 'index'])->name('user.index');
+Route::get('user/create', [UserController::class, 'create'])->name('user.create');
+Route::post('user', [UserController::class, 'store'])->name('user.store');
+Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('user/{user}', [UserController::class, 'update'])->name('user.update');
+Route::delete('user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+# endregion
+
+# region  employee
+Route::get('employee', [EmployeeController::class, 'index'])->name('employee.index');
+Route::get('employee/create', [EmployeeController::class, 'create'])->name('employee.create');
+Route::post('employee', [EmployeeController::class, 'store'])->name('employee.store');
+Route::get('employee/{employee}', [EmployeeController::class, 'show'])->name('employee.show');
+Route::get('employee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+Route::put('employee/{employee}', [EmployeeController::class, 'update'])->name('employee.update');
+Route::delete('employee/{employee}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+# endregion
