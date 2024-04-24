@@ -8,7 +8,7 @@
         @if($editing)
             @method('PUT')
         @endif
-        @can("Kullanıcı İşlemleri.Kullanıcılar.Düzenle.Ad")
+        @can("Kullanıcı İşlemleri.Kullanıcılar.Yöneticiler.Ad")
             <div class="fv-row mb-7">
                 <label class="required fw-semibold fs-6 mb-2" for="signup-name">Adı</label>
                 <input id="signup-name" type="text" name="first_name" value="{{ old("first_name") ?? @$employee->first_name }}"
@@ -18,7 +18,7 @@
                 @enderror
             </div>
         @endcan
-        @can("Kullanıcı İşlemleri.Kullanıcılar.Düzenle.Soyad")
+        @can("Kullanıcı İşlemleri.Kullanıcılar.Yöneticiler.Soyad")
             <div class="fv-row mb-7">
                 <label class="required fw-semibold fs-6 mb-2" for="signup-last-name">Soyadı</label>
                 <input id="signup-last-name" type="text" name="last_name" value="{{ old("last_name") ?? @$employee->last_name }}"
@@ -28,7 +28,7 @@
                 @enderror
             </div>
         @endcan
-        @can("Kullanıcı İşlemleri.Kullanıcılar.Düzenle.Eposta")
+        @can("Kullanıcı İşlemleri.Kullanıcılar.Yöneticiler.Eposta")
             <div class="fv-row mb-7">
                 <label class="required fw-semibold fs-6 mb-2" for="signup-email">E-Posta Adresi</label>
                 <input id="signup-email" type="email" name="email" value="{{ old("email") ?? @$employee->email }}"
@@ -38,7 +38,7 @@
                 @enderror
             </div>
         @endcan
-        @can("Kullanıcı İşlemleri.Kullanıcılar.Düzenle.Şifre")
+        @can("Kullanıcı İşlemleri.Kullanıcılar.Yöneticiler.Şifre")
             <div class="fv-row mb-7">
                 <label class="{{$passwordRequired}} fw-semibold fs-6 mb-2" for="signup-password">Şifre</label>
                 <input id="signup-password" type="password" name="password" value="{{ old("password") }}"
