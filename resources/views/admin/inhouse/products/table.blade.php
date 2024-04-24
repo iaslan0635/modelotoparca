@@ -19,13 +19,17 @@
                         </svg>
                     </span>
                     <!--end::Svg Icon-->
-                    <form>
-                        <input type="text" name="search"
-                               class="form-control form-control-solid w-250px ps-14" placeholder="Ürün Ara"
-                               value="{{ \request()->input("search") }}"/>
-                    </form>
+                    @can("Stok Yönetimi.Ürünler.Ara")
+                        <form>
+                            <input type="text" name="search"
+                                   class="form-control form-control-solid w-250px ps-14" placeholder="Ürün Ara"
+                                   value="{{ \request()->input("search") }}"/>
+                        </form>
+                    @endcan
                 </div>
-                <a class="btn btn-primary" href="{{ route('admin.products.export', \request()->input()) }}">{{$products->total()}} adet ürünü dışa aktar</a>
+                @can("Stok Yönetimi.Ürünler.Dışarı Aktar")
+                    <a class="btn btn-primary" href="{{ route('admin.products.export', \request()->input()) }}">{{$products->total()}} adet ürünü dışa aktar</a>
+                @endcan
                 <!--end::Search-->
             </div>
             <!--end::Card title-->
@@ -33,7 +37,7 @@
             <form class="card-toolbar flex-row-fluid justify-content-end gap-6">
                 <div class="w-100 mw-250px">
                     <!--begin::Select2-->
-                    <select class="form-select form-select-solid" id="brand-filter-select" multiple
+                    <select class="form-select form-select-solid" id="brand-filter-select" multiple @cannot("Stok Yönetimi.Ürünler.Filtrele.Marka") disabled @endcannot
                             data-hide-search="true" data-placeholder="Marka" name="brands">
                         <option value="all">Tüm markalar</option>
                         @foreach($brands as $brand)
@@ -46,7 +50,7 @@
                 </div>
                 <div class="w-100 mw-250px">
                     <!--begin::Select2-->
-                    <select class="form-select form-select-solid" id="status-filter-select" multiple
+                    <select class="form-select form-select-solid" id="status-filter-select" multiple @cannot("Stok Yönetimi.Ürünler.Filtrele.Durum") disabled @endcannot
                             data-hide-search="true" data-placeholder="Ürün Filtresi" name="filters">
                         <option value="all">Tüm ürünler</option>
                         @foreach($filterConstraintsToShow as $key => $value)
@@ -91,7 +95,7 @@
                 <!--begin::Table body-->
                 <tbody class="fw-semibold text-gray-600">
                 @foreach($products as $product)
-                    @php $link = route("admin.products.show", $product) @endphp
+                    @php $link = \Gate::check("Stok Yönetimi.Ürünler.Detay Görüntüle.Bilgileri") ? route("admin.products.show", $product) : false @endphp
                         <!--begin::Table row-->
                     <tr>
                         <!--begin::Checkbox-->
@@ -115,16 +119,16 @@
                         <td>
                             <div class="d-flex align-items-center">
                                 <!--begin::Thumbnail-->
-                                <a href="{{ $link }}" class="symbol symbol-50px">
+                                <a @if($link) href="{{ $link }}" @endif class="symbol symbol-50px">
                                     <span class="symbol-label"
                                           style="background-image:url({{ $product->imageUrl() }});"></span>
                                 </a>
                                 <!--end::Thumbnail-->
                                 <div class="ms-5">
                                     <!--begin::Title-->
-                                    <a href="{{ $link }}"
-                                       class="text-gray-800 text-hover-primary fs-5 fw-bold"
-                                       data-kt-ecommerce-product-filter="product_name">{{ $product->title }}</a>
+                                    <a @if($link) href="{{ $link }}" @endif
+                                    class="text-gray-800 text-hover-primary fs-5 fw-bold"
+                                    >{{ $product->title }}</a>
                                     <!--end::Title-->
                                 </div>
                             </div>
