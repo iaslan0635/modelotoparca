@@ -132,6 +132,7 @@ return [
                 'name' => 'Yöneticiler',
                 'children' => [
                     ['name' => 'Listele'],
+                    ['name' => 'Ekle'],
                     [
                         'name' => 'Düzenle',
                         'children' => [
@@ -149,6 +150,7 @@ return [
                     ['name' => 'Listele'],
                     ['name' => 'İzinleri Görüntüle'],
                     ['name' => 'İzinleri Düzenle'],
+                    ['name' => 'Ekle'],
                     ['name' => 'Sil'],
                 ],
             ],
