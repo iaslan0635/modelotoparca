@@ -70,4 +70,11 @@ class OrderController extends Controller
 
         return view('account.order-history', compact('orders'));
     }
+
+    public function cancel()
+    {
+        $order = Order::findOrFail(request()->input('order_id'));
+        $order->payment_status = OrderStatuses::CANCELLED;
+        $order->save();
+    }
 }

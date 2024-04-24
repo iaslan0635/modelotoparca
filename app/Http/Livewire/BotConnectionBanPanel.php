@@ -9,6 +9,7 @@ use Livewire\Component;
 class BotConnectionBanPanel extends Component
 {
     public Product $product;
+
     public array $connections;
 
     public bool $isDirty = false;
@@ -17,7 +18,7 @@ class BotConnectionBanPanel extends Component
     {
         $this->product = $product;
         $this->connections = $product->bots->map(
-            fn(BotProduct $botProduct) => [
+            fn (BotProduct $botProduct) => [
                 'connection' => $botProduct,
                 'isBanned' => $botProduct->is_banned,
             ]

@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::view('search', 'search')->name('search');
 Route::view('models-list', 'models-list')->name('models-list');
-Route::view('brands', 'brands')->name('brands-list');
+Route::get('brands', [BrandController::class, 'index'])->name('brands-list');
 
 Route::get('cars/{permalink}', [CarController::class, 'show'])->name('car.search')->where('permalink', '.*');
 Route::get('oem/{oem}', [OemController::class, 'show'])->name('oem.search')->where('oem', '.*');
@@ -41,6 +41,7 @@ Route::view('cart', 'cart')->name('cart');
 Route::view('checkout', 'checkout')->name('checkout');
 Route::post('order-complete', [OrderController::class, 'complete'])->name('order-complete')->middleware('auth');
 Route::get('order-success', [OrderController::class, 'success'])->name('order-success');
+Route::post('order/cancel', [OrderController::class, 'cancel'])->name('order.cancel');
 
 //account
 

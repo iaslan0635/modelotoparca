@@ -251,7 +251,9 @@ class ExcelImport implements ShouldQueue
                 $oems = explode(',', $product[$field]);
                 foreach ($oems as $oem) {
                     $trimmed = trim($oem);
-                    if (strlen($trimmed) < 5) continue;
+                    if (strlen($trimmed) < 5) {
+                        continue;
+                    }
                     (new OnlineCarParts(
                         keyword: $trimmed,
                         product_id: $product->id,

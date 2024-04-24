@@ -27,6 +27,7 @@ class SearchPage extends Component
         'similars.code',
         'similars.code_regex',
     ];
+
     public $query;
 
     public $category;
@@ -34,13 +35,17 @@ class SearchPage extends Component
     public $term = 'product';
 
     public $highlights = [];
+
     public $sortBy;
+
     public ?array $brandFilters = null;
+
     protected $paginationTheme = 'bootstrap';
+
     protected $queryString = [
         'query',
         'category',
-        'brandFilters' => ["as" => "brands"],
+        'brandFilters' => ['as' => 'brands'],
     ];
 
     public function render()

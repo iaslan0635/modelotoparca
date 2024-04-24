@@ -13,10 +13,9 @@ function merchant_setting(string $merchant, string $key, mixed $default = null)
 
 /**
  * Less overheaded version of `data_get`
- * @param $target
- * @param $key
- * @param $default
+ *
  * @return mixed
+ *
  * @see data_get()
  */
 function get_item($target, $key, $default = null)
@@ -48,16 +47,19 @@ function permissions(string ...$permissionPatterns)
     } elseif (count($permissionPatterns) > 1) {
         return array_merge(...array_map(permissions(...), $permissionPatterns));
     }
+
     $permission = $permissionPatterns[0];
 
-    $permissions = PermissionSynchronizer::getPermissions();
-    $permissions = collect($permissions)->combine($permissions)->undot();
-    $results = collect(data_get($permissions, $permission))
-        ->flatten()->values()->toArray();
+    return Cache::rememberForever("permissionPatterns:", function () use ($permission) {
+        $permissions = PermissionSynchronizer::getPermissionsFromConfig();
+        $permissions = collect($permissions)->combine($permissions)->undot();
+        $results = collect(data_get($permissions, $permission))
+            ->flatten()->values()->toArray();
 
-    if (empty($results)) {
-        throw new Exception("Permission not found: $permission");
-    }
+        if (empty($results)) {
+            throw new Exception("Permission pattern has no matches: $permission");
+        }
 
-    return $results;
+        return $results;
+    });
 }

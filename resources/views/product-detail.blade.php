@@ -31,7 +31,7 @@
 
                                                     <div class="product-card__badges" style="text-align: -webkit-right">
                                                         <div style=" right:5px;">
-                                                            <img style="max-width: 150px; max-height: 25px;"
+                                                            <img style="max-width: 150px; max-height: 60px;"
                                                                  src="{{ $product->brand?->imageUrl() }}"
                                                                  alt="">
                                                         </div>

@@ -20,7 +20,7 @@
                                         <div class="btn btn-secondary btn-sm">Yeni Ekle</div>
                                     </a>
                                     <div class="addresses-list__divider"></div>
-                                    @foreach(auth()->user()->addresses as $address)
+                                    @foreach(auth()->user()?->addresses ?? [] as $address)
                                         @if($address->genre === "address")
                                             <div class="addresses-list__item card address-card">
                                                 <div class="address-card__badge tag-badge tag-badge--theme">Default
