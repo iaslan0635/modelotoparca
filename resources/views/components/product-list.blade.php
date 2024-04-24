@@ -222,7 +222,7 @@
                                     </div>
                                     <div class="view-options__spring"></div>
                                     <div class="view-options__select">
-                                        <label for="view-option-sort">Sort:</label>
+                                        <label for="view-option-sort">Sırala:</label>
                                         <select id="view-option-sort" class="form-control form-control-sm" wire:model="sortBy">
                                             <option value="price-asc">Yükselen Fiyat</option>
                                             <option value="price-desc">Azalan Fiyat</option>
@@ -231,7 +231,7 @@
                                         </select>
                                     </div>
                                     <div class="view-options__select">
-                                        <label for="view-option-limit">Show:</label>
+                                        <label for="view-option-limit">Göster:</label>
                                         <select id="view-option-limit" class="form-control form-control-sm" wire:model="pageSize">
                                             <option value="12">12</option>
                                             <option value="24">24</option>
