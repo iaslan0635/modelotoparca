@@ -45,9 +45,9 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         $data = $request->validate([
-            'first_name' => ['required'],
-            'last_name' => ['required'],
-            'email' => ['required', 'email'],
+            'first_name' => ['sometimes'],
+            'last_name' => ['sometimes'],
+            'email' => ['sometimes', 'email'],
             'password' => ['sometimes', 'confirmed'],
         ]);
 
