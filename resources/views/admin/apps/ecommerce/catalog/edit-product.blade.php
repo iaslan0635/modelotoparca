@@ -46,10 +46,12 @@
                        class="btn btn-sm fw-bold btn-secondary">
                         Mağaza sayfası
                     </a>
-                    <a href="{{ route('admin.products.edit.rerunBot', $product) }}"
-                       class="btn btn-sm fw-bold btn-primary">
-                        Bot ile Yeniden Çek
-                    </a>
+                    @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Bot ile Yeniden Çek")
+                        <a href="{{ route('admin.products.edit.rerunBot', $product) }}"
+                           class="btn btn-sm fw-bold btn-primary">
+                            Bot ile Yeniden Çek
+                        </a>
+                    @endcan
                     <livewire:admin.product.create-merchant :product="$product"/>
                 </div>
                 <!--end::Actions-->
@@ -75,66 +77,90 @@
                         <!--begin:::Tabs-->
                         <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2">
                             <!--begin:::Tab item-->
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4 active"
-                                   data-bs-toggle="tab" href="#bot_connections">Bot Eşleşmeleri
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#details">Ürün bilgileri
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#oems">Oem Kodlar
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#cars">Uyumlu Araçlar
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#order-history">Sipariş Geçmişi
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#todo">Yorum Geçmişi
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#todo">Mağaza Soruları
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#bot-logs">Bot kayıtları
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#bot-images">Bot resimleri
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#trendyol-product-sync">Trendyol Özellik Eşleştirmesi
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#hepsiburada-product-sync">Hepsiburada Özellik Eşleştirmesi
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
-                                   href="#n11-product-sync">N11 Özellik Eşleştirmesi
-                                </a>
-                            </li>
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Bot Eşleşmeleri.İşlem Yap")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4 active"
+                                       data-bs-toggle="tab" href="#bot_connections">Bot Eşleşmeleri
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Bilgileri")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#details">Ürün bilgileri
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Oem Kodlar.Ekle")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#oems">Oem Kodlar
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Uyumlu Araçlar.İşlem Yap")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#cars">Uyumlu Araçlar
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Sipariş Geçmişi")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#order-history">Sipariş Geçmişi
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Yorum Geçmişi")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#todo">Yorum Geçmişi
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Mağaza Soruları")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#todo">Mağaza Soruları
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Bot Kayıtları")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#bot-logs">Bot kayıtları
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Bot Resimleri.İşlem Yap")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#bot-images">Bot resimleri
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Trendyol Özellik Eşleştirme.İşlem Yap")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#trendyol-product-sync">Trendyol Özellik Eşleştirmesi
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Hepsiburada Özellik Eşleştirme.İşlem Yap")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#hepsiburada-product-sync">Hepsiburada Özellik Eşleştirmesi
+                                    </a>
+                                </li>
+                            @endcan
+                            @can("Stok Yönetimi.Ürünler.Detay Görüntüle.N11 Özellik Eşleştirme.İşlem Yap")
+                                <li class="nav-item">
+                                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab"
+                                       href="#n11-product-sync">N11 Özellik Eşleştirmesi
+                                    </a>
+                                </li>
+                            @endcan
                             <!--end:::Tab item-->
                         </ul>
                         <!--end:::Tabs-->
