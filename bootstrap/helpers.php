@@ -50,7 +50,7 @@ function permissions(string ...$permissionPatterns)
 
     $permission = $permissionPatterns[0];
 
-    return Cache::rememberForever("permissionPatterns:", function () use ($permission) {
+    return Cache::tags("permissionPatterns")->rememberForever("permissionPattern_$permission", function () use ($permission) {
         $permissions = PermissionSynchronizer::getPermissionsFromConfig();
         $permissions = collect($permissions)->combine($permissions)->undot();
         $results = collect(data_get($permissions, $permission))
