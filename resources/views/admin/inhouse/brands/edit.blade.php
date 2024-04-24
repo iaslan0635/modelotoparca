@@ -5,7 +5,6 @@
         @csrf
         @method("PUT")
         <input type="hidden" name="id" value="{{ $brand->id }}">
-
         @if($errors->any())
             <div class="alert alert-danger">
                 <ul class="list-unstyled mb-0">
