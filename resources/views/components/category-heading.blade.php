@@ -7,8 +7,8 @@
                 </div>
                 <div class="col d-flex flex-column justify-content-between">
                     <div>
-                        <h2>Oil filter for auto</h2>
-                        <h5>Popular manufacturers</h5>
+                        <h2>{{$category->name}}</h2>
+                        <h5>Popüler üreticiler</h5>
                     </div>
                     <div wire:ignore>
                         <div class="owl-carousel owl-brands-slider">
