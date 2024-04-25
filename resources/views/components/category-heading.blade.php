@@ -10,7 +10,7 @@
                         <h2>Oil filter for auto</h2>
                         <h5>Popular manufacturers</h5>
                     </div>
-                    <div class="">
+                    <div wire:ignore>
                         <div class="owl-carousel owl-brands-slider">
                             @foreach(collect($brands)->chunk(2) as $i => $chunk)
                                 <div class="item" wire:key="brand-slider-chunk-{{$i}}">
@@ -84,6 +84,7 @@
             align-items: start;
             justify-items: center;
             grid-template-rows: 1fr 1fr;
+            height: 16rem;
         }
 
         .brand-slider-group :focus {
