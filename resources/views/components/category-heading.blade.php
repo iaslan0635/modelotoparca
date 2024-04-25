@@ -3,7 +3,7 @@
         <div class="card-body card-body--padding--2">
             <div class="row">
                 <div class="col-auto">
-                    <img src="//placehold.co/300" style="margin-bottom: 1.65rem">
+                    <img src="{{ $category->imageUrl() }}" style="margin-bottom: 1.65rem">
                 </div>
                 <div class="col d-flex flex-column justify-content-between">
                     <div>
