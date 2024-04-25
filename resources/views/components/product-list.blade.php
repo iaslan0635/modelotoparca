@@ -9,6 +9,7 @@
     'min_price',
     'max_price',
     'filteredProperties',
+    'category',
 ])
 
 <div class="site__body">
@@ -163,6 +164,9 @@
                     <div class="block">
                         <div class="products-view">
                             <x-car-selection/>
+                            @if(isset($category) && $category)
+                                <x-category-heading :category="$category"/>
+                            @endif
                             <div class="products-view__options view-options view-options--offcanvas--mobile">
                                 <div class="view-options__body">
                                     <button type="button" class="view-options__filters-button filters-button">
