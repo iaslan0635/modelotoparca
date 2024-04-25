@@ -12,15 +12,16 @@
 {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">--}}
 {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">--}}
     <!-- css -->
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ time() }}">
-    <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/assets/owl.carousel.min.css') }}?v={{ time() }}">
+    @php $assetVersion = 1; @endphp
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ $assetVersion }}">
+    <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/assets/owl.carousel.min.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/photoswipe.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/default-skin/default-skin.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('css/stylemd.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mod.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.header-classic-variant-one.css') }}?v={{ time() }}" {{--media="(min-width: 1200px)"--}}>
+    <link rel="stylesheet" href="{{ asset('css/style.header-classic-variant-one.css') }}?v={{ $assetVersion }}" {{--media="(min-width: 1200px)"--}}>
     <link rel="stylesheet" href="{{ asset('css/style.mobile-header-variant-one.css') }}" media="(max-width: 1199px)">
     <!-- font - fontawesome -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
