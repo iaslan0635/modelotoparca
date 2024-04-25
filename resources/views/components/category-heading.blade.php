@@ -86,7 +86,8 @@
             align-items: start;
             justify-items: center;
             grid-template-rows: 1fr 1fr;
-            height: 16rem;
+            height: 9rem;
+            justify-items: center;
         }
 
         .brand-slider-group :focus {
