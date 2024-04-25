@@ -165,7 +165,7 @@
                         <div class="products-view">
                             <x-car-selection/>
                             @if(isset($category) && $category)
-                                <x-category-heading :category="$category"/>
+                                <x-category-heading :category="$category" :brandIds="$brands->keys()"/>
                             @endif
                             <div class="products-view__options view-options view-options--offcanvas--mobile">
                                 <div class="view-options__body">
