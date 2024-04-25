@@ -8,6 +8,7 @@ use App\Facades\Garage;
 use App\Jobs\Import\ExcelImport;
 use App\Jobs\RunSingleBotJob;
 use App\Traits\HasImages;
+use Closure;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
 use Elastic\ScoutDriverPlus\Searchable;
@@ -109,7 +110,7 @@ class Product extends BaseModel implements CanVisit
         return asset("storage/imported_images/{$this->id}_$suffix.JPG");
     }
 
-    public function imageUrl(): string
+    public function imageUrl($default = null)
     {
         if ($this->image_appendix & ExcelImport::IMAGE_11) {
             return $this->getImagePath('11');
@@ -118,7 +119,7 @@ class Product extends BaseModel implements CanVisit
             return $this->getImagePath('12');
         }
 
-        return $this->databaseImageUrl();
+        return $this->databaseImageUrl($default);
     }
 
     public function toSearchableArray()

@@ -72,8 +72,7 @@
                     <!--begin::Table row-->
                     <tr>
                         <td>
-                            <img src="{{ $brand->imageUrl() }}" style="max-height: 4rem; max-width: 4rem;"
-                                 onerror="this.src = '/images/products/defaults/product-1.jpg'"/>
+                            <img src="{{ $brand->imageUrl() }}" style="max-height: 4rem; max-width: 4rem;"/>
                         </td>
                         <td>
                             <span class="fw-bold">{{ Arr::get($brand, "name") }}</span>

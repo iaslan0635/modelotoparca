@@ -5,8 +5,10 @@ namespace App\Models;
 use App\Enums\BrandType;
 use App\Events\BrandChangedEvent;
 use App\Traits\HasImages;
+use Closure;
 use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use stdClass;
 
 class Brand extends BaseModel
 {
@@ -48,8 +50,15 @@ class Brand extends BaseModel
     }
 
     // We didn't use the HasImage trait because images are stored according to brand name
-    public function imageUrl()
+    public function imageUrl(string|Closure|null $default = null)
     {
+        $defaultSentinel = new stdClass();
+        $databaseImage = $this->databaseImageUrl($defaultSentinel);
+
+        if ($databaseImage !== $defaultSentinel) {
+            return $databaseImage;
+        }
+
         if (file_exists(public_path("images/brands/$this->name.png"))) {
             return asset("images/brands/$this->name.png");
         }
@@ -57,7 +66,7 @@ class Brand extends BaseModel
             return asset("images/brands/$this->botname.png");
         }
 
-        return $this->databaseImageUrl();
+        return $default === null ? $this->defaultImage() : value($default);
     }
 
     public function merchants(): HasMany
