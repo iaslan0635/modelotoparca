@@ -73,8 +73,9 @@
     <style>
         .brand-slider-item {
             cursor: pointer;
-            width: 7.5rem;
-            max-height: 100%;
+            height: 2.5rem;
+            /*width: 7.5rem;*/
+            /*max-height: 100%;*/
         }
 
         .brand-slider-group {

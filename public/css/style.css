@@ -20882,3 +20882,20 @@ select.form-control::-ms-expand {
     color: #20548e !important;
 
 }
+
+.subcat-brand-slider-item
+{
+    align-items: center;
+    display: inline-block !important;
+    flex-wrap: wrap;
+    height: 40px;
+    justify-content: center;
+    margin: 0 20px 30px;
+    max-height: 40px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+    width: 155px;
+    /*margin: 0 0 30px;*/
+}
