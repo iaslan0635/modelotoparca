@@ -14,9 +14,9 @@
                         <div class="owl-carousel owl-brands-slider">
                             @foreach(collect($brands)->chunk(2) as $i => $chunk)
                                 <div class="item" wire:key="brand-slider-chunk-{{$i}}">
-                                    <div class="brand-slider-item">
+                                    <div class="brand-slider-group">
                                         @foreach($chunk as $brand)
-                                            <img wire:key="brand-slider-item-{{$brand->id}}" src="{{ $brand->imageUrl() }}" data-id="{{$brand->id}}" class="brand-carousel-item">
+                                            <img wire:key="brand-slider-group-{{$brand->id}}" src="{{ $brand->imageUrl() }}" data-id="{{$brand->id}}" class="brand-slider-item">
                                         @endforeach
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
         }
 
         let isDragging = false
-        $('.brand-carousel-item')
+        $('.brand-slider-item')
             .mousedown(() => isDragging = false)
             .mousemove(() => isDragging = true)
             .mouseup(function () {
@@ -71,17 +71,22 @@
 @endpush
 @push("styles")
     <style>
-        .brand-carousel-item {
+        .brand-slider-item {
             cursor: pointer;
+            width: 7.5rem;
+            max-height: 100%;
         }
 
-        .brand-slider-item {
-            display: flex;
+        .brand-slider-group {
+            display: grid;
             flex-direction: column;
             gap: 10px;
+            align-items: start;
+            justify-items: center;
+            grid-template-rows: 1fr 1fr;
         }
 
-        .brand-slider-item :focus {
+        .brand-slider-group :focus {
             outline: none;
         }
 

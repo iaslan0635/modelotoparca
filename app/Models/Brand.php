@@ -59,12 +59,11 @@ class Brand extends BaseModel
             return $databaseImage;
         }
 
-        if (file_exists(public_path("images/brands/$this->name.png"))) {
-            return asset("images/brands/$this->name.png");
-        }
-        if (file_exists(public_path("images/brands/$this->botname.png"))) {
-            return asset("images/brands/$this->botname.png");
-        }
+        $filename = "images/brands/$this->name.png";
+        if (file_exists(public_path($filename))) return asset($filename);
+
+        $botFilename = "images/brands/$this->botname.png";
+        if (file_exists(public_path($botFilename))) return asset($botFilename);
 
         return $default === null ? $this->defaultImage() : value($default);
     }
