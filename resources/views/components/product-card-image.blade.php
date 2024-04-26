@@ -7,7 +7,7 @@
         <div class="owl-carousel owl-theme">
             @foreach($product->imageUrls() as $url)
                 <div class="item">
-                    <img class="product-slider-image" loading="lazy" src="{{ $url }}">
+                    <img class="product-slider-image" loading="lazy" src="{{ $url }}" onerror="this.remove()">
                 </div>
             @endforeach
         </div>
