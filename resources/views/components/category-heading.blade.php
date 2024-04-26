@@ -66,7 +66,7 @@
             .mouseup(function () {
                 if (!isDragging) selectBrand($(this).data('id'))
                 isDragging = false
-            });
+            })
     </script>
 @endpush
 @push("styles")
