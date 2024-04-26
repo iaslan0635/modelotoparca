@@ -46,6 +46,7 @@
                     margin: 10,
                     nav: true,
                     items: 3,
+                    center: true,
                 })
 
                 el.find('.product-slider-image').trueclick(function () {
