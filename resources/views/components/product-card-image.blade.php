@@ -2,8 +2,7 @@
     <div class="image image--type--product">
         <a href="{{ route('product.show', $product) }}"
            class="image__body">
-            <img loading="lazy" class="image__tag"
-                 src="{{ $product->imageUrl() }}" alt="{{ $product->title }}">
+            <img class="image__tag" style="line-height: 10;text-align: center;" src="{{ $product->imageUrl() }}" alt="{{ $product->title }}" loading="lazy">
         </a>
         <div class="owl-carousel owl-theme">
             @foreach($product->imageUrls() as $url)
