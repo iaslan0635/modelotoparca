@@ -43,16 +43,7 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="product-card__image">
-                        <div class="image image--type--product">
-                            <a href="{{ route('product.show', $product) }}"
-                               class="image__body">
-                                <img loading="lazy" class="image__tag"
-                                     src="{{ $product->imageUrl() }}" alt="">
-                            </a>
-                        </div>
-                        <x-compatible-badge/>
-                    </div>
+                    <x-product-card-image :product="$product" compatible/>
                     <div class="product-card__info">
                         <div class="product-card__meta">
                             <span
