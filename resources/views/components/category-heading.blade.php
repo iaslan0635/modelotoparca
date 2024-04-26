@@ -31,7 +31,7 @@
 
 @push("scripts")
     <script defer>
-        $('.owl-carousel').owlCarousel({
+        $('.owl-brands-slider').owlCarousel({
             loop: true,
             margin: 10,
             dots: true,
