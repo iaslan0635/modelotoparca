@@ -59,14 +59,9 @@
             window.location.search = qs.toString()
         }
 
-        let isDragging = false
-        $('.brand-slider-item')
-            .mousedown(() => isDragging = false)
-            .mousemove(() => isDragging = true)
-            .mouseup(function () {
-                if (!isDragging) selectBrand($(this).data('id'))
-                isDragging = false
-            })
+        $('.brand-slider-item').trueclick(function () {
+            selectBrand($(this).data('id'))
+        })
     </script>
 @endpush
 @push("styles")

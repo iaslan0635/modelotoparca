@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <!-- fonts -->
     <link rel="stylesheet" href="https://site.modelotoparca.com/fonts/levenim-mt-2.ttf">
-{{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">--}}
-{{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">--}}
+    {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">--}}
+    {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">--}}
     <!-- css -->
     @php $assetVersion = 2; @endphp
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ $assetVersion }}">
@@ -26,7 +26,7 @@
     <!-- font - fontawesome -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
     @stack('styles')
-    <livewire:styles />
+    <livewire:styles/>
 </head>
 
 <body>
@@ -148,16 +148,16 @@
                 <div class="vehicles-list">
                     <div class="vehicles-list__body">
                         <label class="vehicles-list__item">
-                                <span class="vehicles-list__item-radio input-radio">
-                                    <span class="input-radio__body">
-                                        <input class="input-radio__input" name="header-vehicle" type="radio">
-                                        <span class="input-radio__circle"></span>
-                                    </span>
+                            <span class="vehicles-list__item-radio input-radio">
+                                <span class="input-radio__body">
+                                    <input class="input-radio__input" name="header-vehicle" type="radio">
+                                    <span class="input-radio__circle"></span>
                                 </span>
+                            </span>
                             <span class="vehicles-list__item-info">
-                                    <span class="vehicles-list__item-name">2011 Ford Focus S</span>
-                                    <span class="vehicles-list__item-details">Engine 2.0L 1742DA L4 FI Turbo</span>
-                                </span>
+                                <span class="vehicles-list__item-name">2011 Ford Focus S</span>
+                                <span class="vehicles-list__item-details">Engine 2.0L 1742DA L4 FI Turbo</span>
+                            </span>
                             <button type="button" class="vehicles-list__item-remove">
                                 <svg width="16" height="16">
                                     <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z"/>
@@ -165,16 +165,16 @@
                             </button>
                         </label>
                         <label class="vehicles-list__item">
-                                <span class="vehicles-list__item-radio input-radio">
-                                    <span class="input-radio__body">
-                                        <input class="input-radio__input" name="header-vehicle" type="radio">
-                                        <span class="input-radio__circle"></span>
-                                    </span>
+                            <span class="vehicles-list__item-radio input-radio">
+                                <span class="input-radio__body">
+                                    <input class="input-radio__input" name="header-vehicle" type="radio">
+                                    <span class="input-radio__circle"></span>
                                 </span>
+                            </span>
                             <span class="vehicles-list__item-info">
-                                    <span class="vehicles-list__item-name">2019 Audi Q7 Premium</span>
-                                    <span class="vehicles-list__item-details">Engine 3.0L 5626CC L6 QK</span>
-                                </span>
+                                <span class="vehicles-list__item-name">2019 Audi Q7 Premium</span>
+                                <span class="vehicles-list__item-details">Engine 3.0L 5626CC L6 QK</span>
+                            </span>
                             <button type="button" class="vehicles-list__item-remove">
                                 <svg width="16" height="16">
                                     <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z"/>
@@ -298,9 +298,39 @@
 <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('js/number.js') }}"></script>
 <script src="{{ asset('js/main.js') }}" defer></script>
-<livewire:scripts />
+<livewire:scripts/>
 <script>
     Livewire.on('reload', () => window.location.reload())
+</script>
+<script>
+    // A basic script to listen click events without dragging (useful in carousels)
+
+    const TRUECLICK_DISTANCE_TRESHOLD = 5;
+
+    $.fn.trueclick = function (handler) {
+        var startX, startY;
+
+        this.on('mousedown', function (event) {
+            startX = event.pageX;
+            startY = event.pageY;
+        });
+
+        this.on('click', function (event) {
+            var endX = event.pageX;
+            var endY = event.pageY;
+
+            // Calculate distance between start and end points
+            var distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+
+            // If the distance is smaller than threshold consider it a true click
+            console.log("distance:", distance);
+            if (distance < TRUECLICK_DISTANCE_TRESHOLD) {
+                handler.call(this, event);
+            }
+        });
+
+        return this;
+    };
 </script>
 @stack('scripts')
 </body>

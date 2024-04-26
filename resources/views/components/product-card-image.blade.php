@@ -1,10 +1,17 @@
-<div {{ $attributes->class(['product-card__image']) }}>
+<div {{ $attributes->class(['product-card__image', 'product-image-with-slider']) }}>
     <div class="image image--type--product">
         <a href="{{ route('product.show', $product) }}"
            class="image__body">
             <img loading="lazy" class="image__tag"
-                 src="{{ $product->imageUrl() }}" alt="">
+                 src="{{ $product->imageUrl() }}" alt="{{ $product->title }}">
         </a>
+        <div class="owl-carousel owl-theme">
+            @foreach($product->imageUrls() as $url)
+                <div class="item">
+                    <img loading="lazy" src="{{ $url }}">
+                </div>
+            @endforeach
+        </div>
     </div>
     @if($compatible)
         <x-compatible-badge/>
@@ -26,3 +33,29 @@
         </div>--}}
     @endif
 </div>
+
+@once
+    @push("scripts")
+        <script type="module">
+            $('.product-image-with-slider').each(function () {
+                const el = $(this)
+                el.find('.owl-carousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    }
+                })
+            })
+        </script>
+    @endpush
+@endonce
