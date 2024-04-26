@@ -43,6 +43,7 @@
 
                 el.find('.owl-carousel').owlCarousel({
                     loop: false,
+                    rewind: false,
                     margin: 10,
                     nav: true,
                     responsive: {
