@@ -50,7 +50,7 @@ class Brand extends BaseModel
     }
 
     // We didn't use the HasImage trait because images are stored according to brand name
-    public function imageUrl(string|Closure|null $default = null)
+    public function imageUrl($default = null)
     {
         $defaultSentinel = new stdClass();
         $databaseImage = $this->databaseImageUrl($defaultSentinel);
