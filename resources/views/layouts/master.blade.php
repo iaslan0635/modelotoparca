@@ -305,32 +305,18 @@
 <script>
     // A basic script to listen click events without dragging (useful in carousels)
 
-    const TRUECLICK_DISTANCE_TRESHOLD = 5;
+    (function ($) {
+        $.fn.trueclick = function (handler) {
+            let isDragging = false;
 
-    $.fn.trueclick = function (handler) {
-        var startX, startY;
-
-        this.on('mousedown', function (event) {
-            startX = event.pageX;
-            startY = event.pageY;
-        });
-
-        this.on('click', function (event) {
-            var endX = event.pageX;
-            var endY = event.pageY;
-
-            // Calculate distance between start and end points
-            var distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
-
-            // If the distance is smaller than threshold consider it a true click
-            console.log("distance:", distance);
-            if (distance < TRUECLICK_DISTANCE_TRESHOLD) {
-                handler.call(this, event);
-            }
-        });
-
-        return this;
-    };
+            return this
+                .on('mousedown', () => isDragging = false)
+                .on('mousemove', () => isDragging = true)
+                .on('mouseup', function (event) {
+                    if (!isDragging) handler.call(this, event);
+                });
+        };
+    })(jQuery);
 </script>
 @stack('scripts')
 </body>

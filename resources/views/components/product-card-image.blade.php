@@ -8,7 +8,7 @@
         <div class="owl-carousel owl-theme">
             @foreach($product->imageUrls() as $url)
                 <div class="item">
-                    <img loading="lazy" src="{{ $url }}">
+                    <img class="product-slider-image" loading="lazy" src="{{ $url }}">
                 </div>
             @endforeach
         </div>
@@ -39,6 +39,8 @@
         <script type="module">
             $('.product-image-with-slider').each(function () {
                 const el = $(this)
+                const image = el.find('.image__tag')
+
                 el.find('.owl-carousel').owlCarousel({
                     loop: true,
                     margin: 10,
@@ -54,6 +56,10 @@
                             items: 5
                         }
                     }
+                })
+
+                el.find('.product-slider-image').trueclick(function () {
+                    image.attr('src', $(this).attr('src'))
                 })
             })
         </script>
