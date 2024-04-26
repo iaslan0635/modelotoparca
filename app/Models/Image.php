@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Image extends BaseModel
 {
@@ -14,6 +13,6 @@ class Image extends BaseModel
 
     protected function absolutePath(): Attribute
     {
-        return Attribute::get(fn() => storage_path(app()->joinPaths("app", $this->path)));
+        return Attribute::get(fn() => storage_path(app()->joinPaths("app/public", $this->path)));
     }
 }
