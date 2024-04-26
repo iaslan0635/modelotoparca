@@ -346,14 +346,7 @@
                                                         <div class="product-card__meta"><span
                                                                 class="product-card__meta-title">{{ $product->producercode }}</span>
                                                         </div>
-                                                        <div class="product-card__name">
-                                                            <div>
-                                                                <div class="product-card__badges">
-                                                                    <div class="tag-badge tag-badge--sale">{{ $product->brand?->name }}</div>
-                                                                </div>
-                                                                <a href="{{ route('product.show', $product) }}">{{ $product->fullTitle }}</a>
-                                                            </div>
-                                                        </div>
+                                                        <x-product-card-name :product="$product"/>
                                                         <div class="product-card__features">
                                                             <ul>
                                                                 @foreach(($product->specifications ?? []) as $key => $spec)
