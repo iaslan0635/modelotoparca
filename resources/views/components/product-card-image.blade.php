@@ -36,7 +36,7 @@
 
 @once
     @push("scripts")
-        <script type="module">
+        <script>
             $('.product-image-with-slider').each(function () {
                 const el = $(this)
                 const image = el.find('.image__tag')
@@ -46,17 +46,7 @@
                     rewind: false,
                     margin: 10,
                     nav: true,
-                    responsive: {
-                        0: {
-                            items: 1
-                        },
-                        600: {
-                            items: 3
-                        },
-                        1000: {
-                            items: 5
-                        }
-                    }
+                    items: 3,
                 })
 
                 el.find('.product-slider-image').trueclick(function () {
