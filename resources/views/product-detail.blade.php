@@ -12,28 +12,15 @@
                         <div class="product__body">
                             <div class="product__card product__card--one"></div>
                             <div class="product__card product__card--two"></div>
-                            <div class="product-gallery product-gallery--layout--product-full product__gallery"
-                                 data-layout="product-full">
+                            <div class="product-gallery product-gallery--layout--product-full product__gallery" data-layout="product-full">
                                 <div class="product-gallery__featured">
-                                    {{--                                    <button type="button" class="product-gallery__zoom">--}}
-                                    {{--                                        <svg width="24" height="24">--}}
-                                    {{--                                            <path d="M15,18c-2,0-3.8-0.6-5.2-1.7c-1,1.3-2.1,2.8-3.5,4.6c-2.2,2.8-3.4,1.9-3.4,1.9s-0.6-0.3-1.1-0.7--}}
-                                    {{--	c-0.4-0.4-0.7-1-0.7-1s-0.9-1.2,1.9-3.3c1.8-1.4,3.3-2.5,4.6-3.5C6.6,12.8,6,11,6,9c0-5,4-9,9-9s9,4,9,9S20,18,15,18z M15,2--}}
-                                    {{--	c-3.9,0-7,3.1-7,7s3.1,7,7,7s7-3.1,7-7S18.9,2,15,2z M16,13h-2v-3h-3V8h3V5h2v3h3v2h-3V13z"/>--}}
-                                    {{--                                        </svg>--}}
-                                    {{--                                    </button>--}}
                                     <div class="owl-carousel">
                                         @foreach($product->imageUrls() as $image)
-
-                                            <a class="image image--type--product" href="{{ $image }}"
-                                               target="_blank" data-width="700" data-height="700">
+                                            <a class="image image--type--product" href="{{ $image }}" target="_blank" data-width="700" data-height="700">
                                                 <div class="image__body">
-
                                                     <div class="product-card__badges" style="text-align: -webkit-right">
                                                         <div style=" right:5px;">
-                                                            <img style="max-width: 150px; max-height: 60px;"
-                                                                 src="{{ $product->brand?->imageUrl() }}"
-                                                                 alt="">
+                                                            <img style="max-width: 150px; max-height: 60px;" src="{{ $product->brand?->imageUrl() }}" alt="">
                                                         </div>
                                                     </div>
                                                     <img class="image__tag" src="{{ $image }}" alt="">
