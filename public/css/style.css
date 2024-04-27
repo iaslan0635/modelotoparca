@@ -6576,7 +6576,7 @@ select.form-control::-ms-expand {
     height: 100%;
     left: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(152 167 158 / 55);
     opacity: 0;
     -webkit-transition: opacity 0.15s;
     transition: opacity 0.15s;
