@@ -348,6 +348,20 @@
 </div>
 <!-- photoswipe / end -->
 <!-- scripts -->
+<script>
+    let isMainJsResolved = false;
+    const mainJsListeners = [];
+
+    const onMainJsResolved = listener => {
+        if (isMainJsResolved) listener()
+        else mainJsListeners.push(listener);
+    }
+
+    const resolveMainJs = () => {
+        isMainJsResolved = true;
+        mainJsListeners.forEach(listener => listener());
+    }
+</script>
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/owl-carousel/owl.carousel.min.js') }}"></script>

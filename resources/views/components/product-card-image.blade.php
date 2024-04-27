@@ -48,7 +48,7 @@
 @once
     @push("scripts")
         <script>
-            $(() => {
+            onMainJsResolved(() => {
                 $('.product-gallery').each(function (i, gallery) {
                     initProductGallery(gallery, "quickview", true);
                 })
