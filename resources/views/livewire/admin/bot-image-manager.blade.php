@@ -1,7 +1,7 @@
 <div class="d-flex d-lg-grid flex-column gap-7 gap-lg-10" style="grid-template-columns: repeat(4, 1fr)">
     @forelse($this->getImages() as $image)
-        <div class="card card-flush py-4" style="min-height: 0px !important;">
-            <div class="card-header justify-content-start" style="min-height: 0px !important;">
+        <div class="card card-flush py-4" style="min-height: 0 !important;">
+            <div class="card-header justify-content-start" style="min-height: 0 !important;">
 {{--                <div class="card-title w-100">--}}
 {{--                    <a style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden">--}}
 {{--                        {{ $image->bot_page_url }}--}}
