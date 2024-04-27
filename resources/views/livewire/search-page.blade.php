@@ -345,15 +345,7 @@
                                                     </svg>
                                                 </button>
                                             </div>
-                                            <div class="product-card__image">
-                                                <div class="image image--type--product">
-                                                    <a href="{{ route('product.show', $product->model()) }}"
-                                                       class="image__body">
-                                                        <img loading="lazy" class="image__tag"
-                                                             src="{{ $product->model()?->imageUrl() }}" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            <x-product-card-image :product="$product" />
                                             <div class="product-card__info">
                                                 <div class="product-card__meta">
                                                     <span class="product-card__meta-title"> {{ $product->model()?->producercode }} </span>
