@@ -345,7 +345,7 @@
                                                     </svg>
                                                 </button>
                                             </div>
-                                            <x-product-card-image :product="$product" />
+                                            <x-product-card-image :product="$product->model()" />
                                             <div class="product-card__info">
                                                 <div class="product-card__meta">
                                                     <span class="product-card__meta-title"> {{ $product->model()?->producercode }} </span>
