@@ -1,17 +1,29 @@
 <div {{ $attributes->class(['product-card__image', 'product-image-with-slider']) }}>
-    <div class="image image--type--product">
-        <a href="{{ route('product.show', $product) }}"
-           class="image__body">
-            <img class="image__tag" style="line-height: 10;text-align: center;" src="{{ $product->imageUrl() }}" alt="{{ $product->title }}" loading="lazy">
-        </a>
-        <div class="owl-carousel owl-theme">
-            @foreach($product->imageUrls() as $url)
-                <div class="item">
-                    <img class="product-slider-image" loading="lazy" src="{{ $url }}" onerror="this.remove()">
-                </div>
-            @endforeach
+    <div class="product-gallery product-gallery--layout--quickview quickview__gallery" data-layout="quickview" style="width: 100%;">
+        <div class="product-gallery__featured">
+            <div class="owl-carousel">
+                @foreach($product->imageUrls() as $imageUrl)
+                    <a class="image image--type--product">
+                        <div class="image__body">
+                            <img class="image__tag" src="{{$imageUrl}}">
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+        <div class="product-gallery__thumbnails">
+            <div class="owl-carousel">
+                @foreach($product->imageUrls() as $imageUrl)
+                    <div class="product-gallery__thumbnails-item image image--type--product">
+                        <div class="image__body">
+                            <img class="image__tag" src="{{$imageUrl}}">
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
+
     @if($compatible)
         <x-compatible-badge/>
         {{-- Car search page has this --}}
@@ -36,21 +48,9 @@
 @once
     @push("scripts")
         <script>
-            $('.product-image-with-slider').each(function () {
-                const el = $(this)
-                const image = el.find('.image__tag')
-
-                el.find('.owl-carousel').owlCarousel({
-                    loop: false,
-                    rewind: false,
-                    margin: 10,
-                    nav: true,
-                    items: 3,
-                    center: true,
-                })
-
-                el.find('.product-slider-image').trueclick(function () {
-                    image.attr('src', $(this).attr('src'))
+            $(() => {
+                $('.product-gallery').each(function (i, gallery) {
+                    initProductGallery(gallery, "quickview", true);
                 })
             })
         </script>
