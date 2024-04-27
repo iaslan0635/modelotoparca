@@ -370,7 +370,7 @@
 <script src="{{ asset('vendor/photoswipe/photoswipe-ui-default.min.js') }}"></script>
 <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('js/number.js') }}"></script>
-<script src="{{ asset('js/main.js') }}" defer></script>
+<script src="{{ asset('js/main.js') }}?v={{ $assetVersion }}" defer></script>
 <livewire:scripts/>
 <script>
     Livewire.on('reload', () => window.location.reload())
