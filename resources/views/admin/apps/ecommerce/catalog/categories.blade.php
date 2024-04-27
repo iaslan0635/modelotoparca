@@ -195,7 +195,6 @@
                                     </div>
                                 </th>
                                 <th class="min-w-250px">Category</th>
-                                <th class="text-end min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
                             </thead>
