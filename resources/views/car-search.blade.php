@@ -350,6 +350,7 @@
                                                                 @endforeach
                                                             </ul>
                                                         </div>
+                                                        <x-product-meta :tiger="$product->tiger"/>
                                                     </div>
                                                     <div class="product-card__footer">
                                                         <div class="product-card__prices">

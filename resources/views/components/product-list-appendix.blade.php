@@ -55,6 +55,7 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            <x-product-meta :tiger="$product->tiger"/>
                             @isset($highlights)
                                 <div class="status-badge status-badge--style--success status-badge--has-icon status-badge--has-text">
                                     @foreach($highlights[$product->id] ?? [] as $key => $mark)
