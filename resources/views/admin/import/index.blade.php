@@ -47,44 +47,7 @@
                     <form class="d-flex flex-column gap-7 gap-lg-10">
                         @foreach($routes as $route)
                             <!--begin::Card-->
-                            <div class="card card-flush py-4">
-                                <!--begin::Card header-->
-                                <div class="card-header">
-                                    <div class="card-title">
-                                        <h2>
-                                            {{ str_replace("__APPEND", "", $route) }}.xlsx
-                                            @if(str_ends_with($route, "__APPEND"))
-                                                (Ekleme modu)
-                                            @endif
-                                        </h2>
-                                    </div>
-                                </div>
-                                <!--end::Card header-->
-                                <!--begin::Card body-->
-                                <div class="card-body pt-0">
-                                    <!--begin::Input group-->
-                                    <div class="fv-row mb-2">
-                                        <!--begin::Dropzone-->
-                                        <div class="dropzone" data-route="{{ $route }}">
-                                            <!--begin::Message-->
-                                            <div class="dz-message needsclick">
-                                                <!--begin::Icon-->
-                                                <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
-                                                <!--end::Icon-->
-                                                <!--begin::Info-->
-                                                <div class="ms-4">
-                                                    <h3 class="fs-5 fw-bold text-gray-900 mb-1">Dosyayı buraya bırakın veya yüklemek için tıklayın.</h3>
-                                                    <span class="fs-7 fw-semibold text-gray-400">Dosya yüklendikten sonra kuyruğa eklenecektir.</span>
-                                                </div>
-                                                <!--end::Info-->
-                                            </div>
-                                        </div>
-                                        <!--end::Dropzone-->
-                                    </div>
-                                    <!--end::Input group-->
-                                </div>
-                                <!--end::Card header-->
-                            </div>
+                            <x-import-card :filename="$route"/>
                             <!--end::Card-->
                         @endforeach
                     </form>
