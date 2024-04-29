@@ -22,6 +22,6 @@ class BrandController extends Controller
 
     public function index()
     {
-        return view('brands', ['brands' => Brand::has('products')->get()]);
+        return view('brands', ['brands' => Brand::has('products')->orderBy("name")->get()]);
     }
 }

@@ -16,17 +16,15 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MerchantOrderController;
 use App\Http\Controllers\MerchantSettingController;
 use App\Http\Controllers\MerchantTrackingController;
-use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
-use Spatie\Permission\Middleware\PermissionMiddleware;
 
-function permitPattern($permissionPattern)
-{
-    return PermissionMiddleware::using(permissions($permissionPattern));
-}
 
 Route::get('/', DashboardController::class)->name('dashboard');
+
+Route::get('/h', function () {
+    return view('admin.horizental.layout');
+});
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
     Route::get('oem', 'push_oem')->name('oem');
@@ -78,8 +76,8 @@ Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(fu
 
 # region brand
 Route::get('brands', [BrandController::class, 'index'])->name('brands.index')->middleware('permission:Stok Yönetimi.Markalar.Ara');
-Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit')->middleware(permitPattern("Stok Yönetimi.Markalar.Düzenle.*"));
-Route::put('brands/{brand}', [BrandController::class, 'update'])->name('brands.update')->middleware(permitPattern("Stok Yönetimi.Markalar.Düzenle.*"));;
+Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit')->middleware(permissionMiddleware("Stok Yönetimi.Markalar.Düzenle.*"));
+Route::put('brands/{brand}', [BrandController::class, 'update'])->name('brands.update')->middleware(permissionMiddleware("Stok Yönetimi.Markalar.Düzenle.*"));;
 # endregion
 
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list')->middleware('permission:Eticaret Yönetimi.Siparişler.Tüm Siparişler');
@@ -141,9 +139,9 @@ Route::get('user', [UserController::class, 'index'])->name('user.index')->middle
 Route::get('user/create', [UserController::class, 'create'])->name('user.create')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Ekle');
 Route::post('user', [UserController::class, 'store'])->name('user.store')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Ekle');
 Route::get('user/{user}', [UserController::class, 'show'])->name('user.show')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Listele');
-Route::get('user/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware(permitPattern('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
-Route::put('user/{user}', [UserController::class, 'update'])->name('user.update')->middleware(permitPattern('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
-Route::delete('user/{user}', [UserController::class, 'destroy'])->name('user.destroy')->middleware(permitPattern('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
+Route::get('user/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
+Route::put('user/{user}', [UserController::class, 'update'])->name('user.update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
+Route::delete('user/{user}', [UserController::class, 'destroy'])->name('user.destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
 # endregion
 
 # region  employee
@@ -151,7 +149,7 @@ Route::get('employee', [EmployeeController::class, 'index'])->name('employee.ind
 Route::get('employee/create', [EmployeeController::class, 'create'])->name('employee.create')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Ekle');
 Route::post('employee', [EmployeeController::class, 'store'])->name('employee.store')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Ekle');
 Route::get('employee/{employee}', [EmployeeController::class, 'show'])->name('employee.show')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Listele');
-Route::get('employee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee.edit')->middleware(permitPattern('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
-Route::put('employee/{employee}', [EmployeeController::class, 'update'])->name('employee.update')->middleware(permitPattern('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
-Route::delete('employee/{employee}', [EmployeeController::class, 'destroy'])->name('employee.destroy')->middleware(permitPattern('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
+Route::get('employee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee.edit')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
+Route::put('employee/{employee}', [EmployeeController::class, 'update'])->name('employee.update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
+Route::delete('employee/{employee}', [EmployeeController::class, 'destroy'])->name('employee.destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
 # endregion

@@ -1,0 +1,16 @@
+@props(['tiger' ])
+
+<span {{ $attributes }}>
+    {{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}
+    <h6 {{ $attributes }}>
+        <span
+            class="badge @if($tiger?->stock_on_51) badge-success @else badge-danger @endif">S51
+        </span>
+        <span
+            class="badge @if($tiger?->stock_on_38) badge-success @else badge-danger @endif">S38
+        </span>
+        <span
+            class="badge @if($tiger?->stock_on_01) badge-success @else badge-danger @endif">S01
+        </span>
+    </h6>
+</span>

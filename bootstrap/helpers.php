@@ -2,6 +2,7 @@
 
 use App\Packages\Permissions\PermissionSynchronizer;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Middleware\PermissionMiddleware;
 
 function merchant_setting(string $merchant, string $key, mixed $default = null)
 {
@@ -62,4 +63,9 @@ function permissions(string ...$permissionPatterns)
 
         return $results;
     });
+}
+
+function permissionMiddleware(string $permissionPattern)
+{
+    return PermissionMiddleware::using(permissions($permissionPattern));
 }

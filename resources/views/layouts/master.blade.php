@@ -9,23 +9,83 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <!-- fonts -->
     <link rel="stylesheet" href="https://site.modelotoparca.com/fonts/levenim-mt-2.ttf">
-{{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">--}}
-{{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">--}}
+    {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">--}}
+    {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">--}}
     <!-- css -->
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ time() }}">
-    <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/assets/owl.carousel.min.css') }}">
+    @php $assetVersion = 6 @endphp
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ $assetVersion }}">
+    <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/assets/owl.carousel.min.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/photoswipe.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/default-skin/default-skin.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('css/stylemd.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mod.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.header-classic-variant-one.css') }}?v={{ time() }}" {{--media="(min-width: 1200px)"--}}>
+    <link rel="stylesheet" href="{{ asset('css/style.header-classic-variant-one.css') }}?v={{ $assetVersion }}" {{--media="(min-width: 1200px)"--}}>
     <link rel="stylesheet" href="{{ asset('css/style.mobile-header-variant-one.css') }}" media="(max-width: 1199px)">
     <!-- font - fontawesome -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
+    <style>
+        .owl-theme .owl-nav {
+            margin-top: 10px;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .owl-theme .owl-nav [class*='owl-'] {
+            color: #FFF;
+            font-size: 14px;
+            margin: 5px;
+            padding: 4px 7px;
+            background: #D6D6D6;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .owl-theme .owl-nav [class*='owl-']:hover {
+            background: #869791;
+            color: #FFF;
+            text-decoration: none;
+        }
+
+        .owl-theme .owl-nav .disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        .owl-theme .owl-nav.disabled + .owl-dots {
+            margin-top: 10px;
+        }
+
+        .owl-theme .owl-dots {
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .owl-theme .owl-dots .owl-dot {
+            display: inline-block;
+            zoom: 1;
+            *display: inline;
+        }
+
+        .owl-theme .owl-dots .owl-dot span {
+            width: 10px;
+            height: 10px;
+            margin: 5px 7px;
+            background: #D6D6D6;
+            display: block;
+            -webkit-backface-visibility: visible;
+            transition: opacity 200ms ease;
+            border-radius: 30px;
+        }
+
+        .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+            background: #869791;
+        }
+    </style>
     @stack('styles')
-    <livewire:styles />
+    <livewire:styles/>
 </head>
 
 <body>
@@ -147,16 +207,16 @@
                 <div class="vehicles-list">
                     <div class="vehicles-list__body">
                         <label class="vehicles-list__item">
-                                <span class="vehicles-list__item-radio input-radio">
-                                    <span class="input-radio__body">
-                                        <input class="input-radio__input" name="header-vehicle" type="radio">
-                                        <span class="input-radio__circle"></span>
-                                    </span>
+                            <span class="vehicles-list__item-radio input-radio">
+                                <span class="input-radio__body">
+                                    <input class="input-radio__input" name="header-vehicle" type="radio">
+                                    <span class="input-radio__circle"></span>
                                 </span>
+                            </span>
                             <span class="vehicles-list__item-info">
-                                    <span class="vehicles-list__item-name">2011 Ford Focus S</span>
-                                    <span class="vehicles-list__item-details">Engine 2.0L 1742DA L4 FI Turbo</span>
-                                </span>
+                                <span class="vehicles-list__item-name">2011 Ford Focus S</span>
+                                <span class="vehicles-list__item-details">Engine 2.0L 1742DA L4 FI Turbo</span>
+                            </span>
                             <button type="button" class="vehicles-list__item-remove">
                                 <svg width="16" height="16">
                                     <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z"/>
@@ -164,16 +224,16 @@
                             </button>
                         </label>
                         <label class="vehicles-list__item">
-                                <span class="vehicles-list__item-radio input-radio">
-                                    <span class="input-radio__body">
-                                        <input class="input-radio__input" name="header-vehicle" type="radio">
-                                        <span class="input-radio__circle"></span>
-                                    </span>
+                            <span class="vehicles-list__item-radio input-radio">
+                                <span class="input-radio__body">
+                                    <input class="input-radio__input" name="header-vehicle" type="radio">
+                                    <span class="input-radio__circle"></span>
                                 </span>
+                            </span>
                             <span class="vehicles-list__item-info">
-                                    <span class="vehicles-list__item-name">2019 Audi Q7 Premium</span>
-                                    <span class="vehicles-list__item-details">Engine 3.0L 5626CC L6 QK</span>
-                                </span>
+                                <span class="vehicles-list__item-name">2019 Audi Q7 Premium</span>
+                                <span class="vehicles-list__item-details">Engine 3.0L 5626CC L6 QK</span>
+                            </span>
                             <button type="button" class="vehicles-list__item-remove">
                                 <svg width="16" height="16">
                                     <path d="M2,4V2h3V1h6v1h3v2H2z M13,13c0,1.1-0.9,2-2,2H5c-1.1,0-2-0.9-2-2V5h10V13z"/>
@@ -288,6 +348,20 @@
 </div>
 <!-- photoswipe / end -->
 <!-- scripts -->
+<script>
+    let isMainJsResolved = false;
+    const mainJsListeners = [];
+
+    const onMainJsResolved = listener => {
+        if (isMainJsResolved) listener()
+        else mainJsListeners.push(listener);
+    }
+
+    const resolveMainJs = () => {
+        isMainJsResolved = true;
+        mainJsListeners.forEach(listener => listener());
+    }
+</script>
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/owl-carousel/owl.carousel.min.js') }}"></script>
@@ -296,10 +370,26 @@
 <script src="{{ asset('vendor/photoswipe/photoswipe-ui-default.min.js') }}"></script>
 <script src="{{ asset('vendor/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('js/number.js') }}"></script>
-<script src="{{ asset('js/main.js') }}" defer></script>
-<livewire:scripts />
+<script src="{{ asset('js/main.js') }}?v={{ $assetVersion }}" defer></script>
+<livewire:scripts/>
 <script>
     Livewire.on('reload', () => window.location.reload())
+</script>
+<script>
+    // A basic script to listen click events without dragging (useful in carousels)
+
+    (function ($) {
+        $.fn.trueclick = function (handler) {
+            let isDragging = false;
+
+            return this
+                .on('mousedown', () => isDragging = false)
+                .on('mousemove', () => isDragging = true)
+                .on('mouseup', function (event) {
+                    if (!isDragging) handler.call(this, event);
+                });
+        };
+    })(jQuery);
 </script>
 @stack('scripts')
 </body>

@@ -333,27 +333,12 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    <div class="product-card__image">
-                                                        <div class="image image--type--product">
-                                                            <a href="{{ route('product.show', $product) }}"
-                                                               class="image__body">
-                                                                <img loading="lazy" class="image__tag"
-                                                                     src="{{ $product->imageUrl() }}" alt="">
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                                    <x-product-card-image :product="$product"/>
                                                     <div class="product-card__info">
                                                         <div class="product-card__meta"><span
                                                                 class="product-card__meta-title">{{ $product->producercode }}</span>
                                                         </div>
-                                                        <div class="product-card__name">
-                                                            <div>
-                                                                <div class="product-card__badges">
-                                                                    <div class="tag-badge tag-badge--sale">{{ $product->brand?->name }}</div>
-                                                                </div>
-                                                                <a href="{{ route('product.show', $product) }}">{{ $product->fullTitle }}</a>
-                                                            </div>
-                                                        </div>
+                                                        <x-product-card-name :product="$product"/>
                                                         <div class="product-card__features">
                                                             <ul>
                                                                 @foreach(($product->specifications ?? []) as $key => $spec)
@@ -361,6 +346,7 @@
                                                                 @endforeach
                                                             </ul>
                                                         </div>
+                                                        <x-product-meta :tiger="$product->tiger"/>
                                                     </div>
                                                     <div class="product-card__footer">
                                                         <div class="product-card__prices">

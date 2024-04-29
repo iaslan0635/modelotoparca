@@ -20,7 +20,7 @@ class BotCommand extends Command
             'last-50' => TigerProduct::latest()->limit(50),
         };
 
-        self::runBotsForQuery($this, $query, $this->option('queue'), $this->option('failsafe'));
+        self::runBotsForQuery($this, $query, $this->option('queue') ?? 'default', $this->option('failsafe'));
     }
 
     public static function runBotsForQuery(Command $commandContext, Builder $query, ?string $queue = 'default', bool $failsafe = false)

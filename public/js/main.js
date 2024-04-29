@@ -101,7 +101,7 @@
     /*
     // .product-gallery
     */
-    const initProductGallery = function (element, layout) {
+    const initProductGallery = function (element, layout, disablePhotoSwipe = false) {
         layout = layout !== undefined ? layout : 'standard';
 
         const options = {
@@ -134,10 +134,10 @@
             },
             quickview: {
                 responsive: {
-                    992: {items: 5},
-                    520: {items: 6},
-                    440: {items: 5},
-                    340: {items: 4},
+                    992: {items: 3}, // 5
+                    520: {items: 3}, // 6
+                    440: {items: 3}, // 5
+                    340: {items: 3}, // 4
                     0: {items: 3}
                 }
             },
@@ -184,6 +184,8 @@
         }
 
         function openPhotoSwipe(index) {
+            if (disablePhotoSwipe) return
+
             const photoSwipeImages = image.find('.owl-item a').toArray().map(function (element) {
                 const img = $(element).find('img')[0];
                 const width = $(element).data('width') || img.naturalWidth;
@@ -258,6 +260,8 @@
             }
         }
     };
+
+    window.initProductGallery = initProductGallery;
 
     $(function () {
         $('.product').each(function () {
@@ -1325,4 +1329,6 @@
             item.find('~ .vehicle-form__item--select select').trigger('change.select2');
         });
     });
+
+    resolveMainJs()
 })(jQuery);

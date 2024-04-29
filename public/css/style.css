@@ -6576,7 +6576,7 @@ select.form-control::-ms-expand {
     height: 100%;
     left: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(152 167 158 / 55);
     opacity: 0;
     -webkit-transition: opacity 0.15s;
     transition: opacity 0.15s;
@@ -15392,7 +15392,9 @@ select.form-control::-ms-expand {
 }
 
 .product-card .product-card__name a {
-    color: inherit;
+    /*color: inherit;*/
+    color: #20548e;
+    font-weight: 800;
 }
 
 .product-card .product-card__name a:hover {
@@ -20879,4 +20881,21 @@ select.form-control::-ms-expand {
     border-radius: 25px !important;
     color: #20548e !important;
 
+}
+
+.subcat-brand-slider-item
+{
+    align-items: center;
+    display: inline-block !important;
+    flex-wrap: wrap;
+    height: 40px;
+    justify-content: center;
+    margin: 0 20px 30px;
+    max-height: 40px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: top;
+    width: 155px;
+    /*margin: 0 0 30px;*/
 }
