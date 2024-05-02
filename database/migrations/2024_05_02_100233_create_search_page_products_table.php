@@ -9,7 +9,7 @@ return new class extends Migration {
 
     public function up(): void
     {
-        Schema::create('search_result_products', function (Blueprint $table) {
+        Schema::create('search_page_products', function (Blueprint $table) {
             $table->foreignId('search_result_id');
             $table->foreignId('product_id');
             $table->integer('page');
@@ -21,6 +21,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('search_result_products');
+        Schema::dropIfExists('search_page_products');
     }
 };

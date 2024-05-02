@@ -5,12 +5,12 @@ namespace App\Models\Ocp;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class SearchResultProduct extends Pivot
+class SearchPageProduct extends Pivot
 {
     public $timestamps = false;
     protected $connection = 'bigdata';
 
-    public function searchResult(): BelongsTo
+    public function searchPage(): BelongsTo
     {
         return $this->belongsTo(SearchPage::class);
     }
