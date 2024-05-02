@@ -26,7 +26,7 @@ class Scraper
         $specs = Utils::fromEntries($crawler->filter('table.product__table tr')->each(function (Crawler $row) {
             [$key, $value] = $row->filter('td')->each(fn(Crawler $col) => $col->innerText());
 
-            return [OnlineCarParts::normalizeColumnName($key), $value];
+            return [$this->normalizeColumnName($key), $value];
         }));
 
         $makerIds = $crawler->filter('.compatibility__maker-title')->each(fn(Crawler $el) => $el->attr('data-maker-id'));
@@ -46,7 +46,7 @@ class Scraper
         $tecdoc = Utils::fromEntries(
             $crawler->filter('.product-analogs__wrapper li')
                 ->each(fn(Crawler $el) => [
-                    OnlineCarParts::normalizeColumnName($el->filter('span')->innerText()),
+                    $this->normalizeColumnName($el->filter('span')->innerText()),
                     $el->innerText(),
                 ])
         );
@@ -122,4 +122,9 @@ class Scraper
         return collect($links)->filter(fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
     }
 
+
+    protected function normalizeColumnName(string $string): string
+    {
+        return trim($string, ": \t\n\r\0\x0B");
+    }
 }

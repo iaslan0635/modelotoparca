@@ -114,11 +114,6 @@ class OnlineCarParts
         return true;
     }
 
-    public static function normalizeColumnName(string $string): string
-    {
-        return trim($string, ": \t\n\r\0\x0B");
-    }
-
     public static function getVehicleIds(string|int $ocpProductId, array $makerIds): array
     {
         $vehicleIds = [];
