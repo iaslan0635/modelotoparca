@@ -49,6 +49,7 @@ class ProductPage
                     'sku' => $this->sku,
                     'gtin13' => $this->gtin13,
                     'url' => $this->url,
+                    'article_no' => $this->articleId,
                 ]
             );
 

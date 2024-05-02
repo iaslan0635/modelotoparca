@@ -8,8 +8,10 @@ use App\Packages\Fuzz;
 use App\Packages\Utils;
 use App\Services\Bots\OcpClient;
 use Illuminate\Support\Arr;
+use Spatie\Url\Url;
 use Symfony\Component\DomCrawler\Crawler;
 
+/** Responsible for scraping and parsing. Intended to be used only by DataProvider */
 class Scraper
 {
     public function getProductPage(string $url)
@@ -82,7 +84,7 @@ class Scraper
         return $productPage;
     }
 
-    protected function normalizeColumnName(string $string): string
+    private function normalizeColumnName(string $string): string
     {
         return trim($string, ": \t\n\r\0\x0B");
     }
@@ -128,9 +130,12 @@ class Scraper
         return $searchPage;
     }
 
-    public function getSearchPageProductLinks(string $url, ?string $articleNo)
+    public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)
     {
-        $crawler = new Crawler(OcpClient::request($url));
+        $url = Url::fromString($searchPage->url)->withQueryParameter('page', $pageNumber);
+        if ($brandId) $url = $url->withQueryParameter('brand', $brandId);
+
+        $crawler = new Crawler(OcpClient::request((string)$url));
         $productEls = $crawler->filter('.product-card:not([data-recommended-products])');
 
         if ($articleNo !== null) {
