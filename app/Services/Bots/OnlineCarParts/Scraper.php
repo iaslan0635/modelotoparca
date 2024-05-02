@@ -2,10 +2,11 @@
 
 namespace App\Services\Bots\OnlineCarParts;
 
+use App\Models\Ocp\Brand;
 use App\Models\Ocp\SearchPage;
+use App\Packages\Fuzz;
 use App\Packages\Utils;
 use App\Services\Bots\OcpClient;
-use App\Services\Bots\OnlineCarParts;
 use Illuminate\Support\Arr;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -41,7 +42,7 @@ class Scraper
             throw new \Exception("Article ID not found in artkl: $_artkl");
         }
 
-        $vehicles = OnlineCarParts::getVehicleIds($ocpProductId, $makerIds);
+        $vehicles = $this->getVehicleIds($ocpProductId, $makerIds);
 
         $tecdoc = Utils::fromEntries(
             $crawler->filter('.product-analogs__wrapper li')
@@ -60,7 +61,7 @@ class Scraper
                 ->text()
         );
 
-        return new ProductPage(
+        $productPage = new ProductPage(
             url: $url,
             id: $ocpProductId,
             articleId: $articleId,
@@ -77,17 +78,44 @@ class Scraper
             sku: $metadata->sku,
             gtin13: $metadata->gtin13,
         );
+        $productPage->saveToBigData();
+        return $productPage;
+    }
+
+    protected function normalizeColumnName(string $string): string
+    {
+        return trim($string, ": \t\n\r\0\x0B");
+    }
+
+    private function getVehicleIds(string|int $ocpProductId, array $makerIds): array
+    {
+        $vehicleIds = [];
+        foreach ($makerIds as $makerId) {
+            $url = "https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$ocpProductId&makerId=$makerId";
+            $crawler = new Crawler(OcpClient::request($url));
+            $modelIds = $crawler->filter('[data-model-id]')->each(fn(Crawler $el) => $el->attr('data-model-id'));
+            foreach ($modelIds as $modelId) {
+                $modelUrl = "https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$ocpProductId&makerId=$makerId&modelId=$modelId";
+                $vehicles = json_decode(OcpClient::request($modelUrl))->vehicles;
+                array_push($vehicleIds, ...collect($vehicles)->pluck('id'));
+            }
+        }
+
+        return $vehicleIds;
     }
 
     public function getSearchPage(string $keyword, bool $isOem)
     {
         $url = $isOem
-            ? 'https://www.onlinecarparts.co.uk/oenumber/' . OnlineCarParts::commonizeString($keyword) . '.html?'
+            ? 'https://www.onlinecarparts.co.uk/oenumber/' . Fuzz::regexify($keyword) . '.html?'
             : 'https://www.onlinecarparts.co.uk/spares-search.html?keyword=' . urlencode($keyword);
 
         $crawler = new Crawler(OcpClient::request($url));
 
-        $brands = $crawler->filter('.brand-slider__item')->each(fn(Crawler $el) => $el->filter('img')->attr('alt'));
+        $brands = $crawler->filter('.brand-slider__item')->each(fn(Crawler $el) => Brand::create([
+            'name' => $el->filter('img')->attr('alt'),
+            'value' => $el->filter('input')->attr('value'),
+        ]));
 
         $pageEls = $crawler->filter('.listing-pagination__item[data-pagination-page]');
         $pageCount = (int)$pageEls->last()->text();
@@ -95,7 +123,9 @@ class Scraper
         $type = $isOem ? 'oem' : 'keyword';
         $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn(Crawler $el) => $el->text());
 
-        return new SearchPage(compact('keyword', 'pageCount', 'type', 'url', 'brands', 'categories'));
+        $searchPage = SearchPage::create(compact('keyword', 'pageCount', 'type', 'url', 'categories'));
+        $searchPage->brands()->sync($brands);
+        return $searchPage;
     }
 
     public function getSearchPageProductLinks(string $url, ?string $articleNo)
@@ -104,12 +134,12 @@ class Scraper
         $productEls = $crawler->filter('.product-card:not([data-recommended-products])');
 
         if ($articleNo !== null) {
-            $commonizedKeyword = OnlineCarParts::commonizeString($articleNo);
+            $commonizedKeyword = Fuzz::regexify($articleNo);
             $productEls = $productEls->reduce(
                 function (Crawler $el) use ($commonizedKeyword) {
                     $artklEl = $el->filter('.product-card__artkl span');
 
-                    return $artklEl->count() != 0 && OnlineCarParts::commonizeString($artklEl->innerText()) === $commonizedKeyword;
+                    return $artklEl->count() != 0 && Fuzz::regexify($artklEl->innerText()) === $commonizedKeyword;
                 }
             );
         }
@@ -120,11 +150,5 @@ class Scraper
         });
 
         return collect($links)->filter(fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
-    }
-
-
-    protected function normalizeColumnName(string $string): string
-    {
-        return trim($string, ": \t\n\r\0\x0B");
     }
 }

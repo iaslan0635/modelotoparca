@@ -2,6 +2,7 @@
 
 namespace App\Models\Ocp;
 
+use App\Packages\Fuzz;
 use Illuminate\Database\Eloquent\Model;
 
 class SearchPage extends Model
@@ -17,8 +18,13 @@ class SearchPage extends Model
         return $this->belongsToMany(Product::class)->using(SearchPageProduct::class);
     }
 
-    public function toUrl()
+    public function brands()
     {
-        return Url::fromSearchPage($this);
+        return $this->belongsToMany(Brand::class)->using(ProductPageBrand::class);
+    }
+
+    public function getBrandId(string $brandName): ?int
+    {
+        return $this->brands->first(fn($brand) => Fuzz::isEqual($brand->name, $brandName))?->id;
     }
 }
