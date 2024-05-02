@@ -5,7 +5,6 @@ namespace App\Services\Bots;
 use App\Models\BotProduct;
 use App\Models\Log;
 use App\Models\Ocp;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler;
 
 class OnlineCarParts
@@ -21,6 +20,21 @@ class OnlineCarParts
     )
     {
         $this->data = app(OnlineCarParts\DataProvider::class);
+    }
+
+    public static function getVehicleIds(string|int $ocpProductId, array $makerIds): array
+    {
+        $vehicleIds = [];
+        foreach ($makerIds as $makerId) {
+            $crawler = new Crawler(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$ocpProductId&makerId=$makerId"));
+            $modelIds = $crawler->filter('[data-model-id]')->each(fn(Crawler $el) => $el->attr('data-model-id'));
+            foreach ($modelIds as $modelId) {
+                $vehicles = json_decode(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$ocpProductId&makerId=$makerId&modelId=$modelId"))->vehicles;
+                array_push($vehicleIds, ...collect($vehicles)->pluck('id'));
+            }
+        }
+
+        return $vehicleIds;
     }
 
     public function smash(): bool
@@ -41,39 +55,29 @@ class OnlineCarParts
 
     public function scrape(): bool
     {
-        $productLinks = $this->getAllProductLinks();
-        if (count($productLinks) === 0) {
-            $this->log('Ürün bulunamadı.');
-            return false;
-        }
-
         $successfulProductCount = 0;
-        foreach ($productLinks as $link) {
-            if (self::scrapeProductPage($link)) {
-                $successfulProductCount++;
-            }
-        }
 
-        $this->log("$successfulProductCount Adet ürün çekildi.");
-
-        return $successfulProductCount > 0;
-    }
-
-    public function getAllProductLinks()
-    {
-        $allLinks = collect();
-        $searchPage = $this->data->getSearchPage($this->keyword, $this->field === 'oem_codes');
+        $isOemSearch = $this->field === 'oem_codes';
+        $searchPage = $this->data->getSearchPage($this->keyword, $isOemSearch);
         for ($pageNumber = 1; $pageNumber <= $searchPage->pageCount; $pageNumber++) {
             $links = $this->getProductLinksForPage($searchPage, $pageNumber);
+
+            foreach ($links as $link) {
+                if (self::scrapeProductPage($link)) {
+                    $successfulProductCount++;
+                }
+            }
+
             $count = count($links);
-            $allLinks->push(...$links);
             if ($this->field !== 'oem_codes' && $count !== 0) {
                 $this->log("$count adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
                 break;
             }
         }
 
-        return $allLinks;
+        $this->log("$successfulProductCount Adet ürün çekildi.");
+
+        return $successfulProductCount > 0;
     }
 
     public function getProductLinksForPage(Ocp\SearchPage $searchPage, int $pageNumber)
@@ -103,9 +107,7 @@ class OnlineCarParts
             ['product_id' => $this->product_id, 'url' => $url],
             ['origin_field' => $this->field, 'keyword' => $this->keyword]
         );
-        if ($connection->is_banned) {
-            return false;
-        }
+        if ($connection->is_banned) return false;
 
         $ocpp = $this->data->getProductPage($url);
         $ocpp->saveToBigData();
@@ -114,24 +116,16 @@ class OnlineCarParts
         return true;
     }
 
-    public static function getVehicleIds(string|int $ocpProductId, array $makerIds): array
-    {
-        $vehicleIds = [];
-        foreach ($makerIds as $makerId) {
-            $crawler = new Crawler(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$ocpProductId&makerId=$makerId"));
-            $modelIds = $crawler->filter('[data-model-id]')->each(fn(Crawler $el) => $el->attr('data-model-id'));
-            foreach ($modelIds as $modelId) {
-                $vehicles = json_decode(OcpClient::request("https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$ocpProductId&makerId=$makerId&modelId=$modelId"))->vehicles;
-                array_push($vehicleIds, ...collect($vehicles)->pluck('id'));
-            }
-        }
-
-        return $vehicleIds;
-    }
-
     public static function commonizeString(string $string): string
     {
         return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $string));
+    }
+
+    public function getAllProductLinks()
+    {
+        $allLinks = collect();
+
+        return $allLinks;
     }
 
     public function getSearchPages(): array
