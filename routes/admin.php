@@ -55,7 +55,7 @@ Route::post('delete_image', [ImageController::class, 'delete'])->name('delete-im
 Route::controller(ImportController::class)->prefix('import')->name('import.')->group(function () {
     Route::get('', 'index')->name('index');
     Route::post('ITEMS_WEB', 'ITEMS_WEB')->name('ITEMS_WEB')->middleware("permission:Aktarma İşlemleri.İçe Aktar.ITEMS WEB");
-    Route::post('ITEMS_WEB__APPEND', 'ITEMS_WEB__APPEND')->name('ITEMS_WEB__APPEND')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS WEB EK');
+    Route::post('ITEMS_WEB_EK', 'ITEMS_WEB_EK')->name('ITEMS_WEB_EK')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS WEB EK');
     Route::post('ITEMSUBS', 'ITEMSUBS')->name('ITEMSUBS')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS SUBS');
     Route::post('ITMCLSAS', 'ITMCLSAS')->name('ITMCLSAS')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMCLSAS');
     Route::post('FILTER_OIL', 'FILTER_OIL')->name('FILTER_OIL')->middleware('permission:Aktarma İşlemleri.İçe Aktar.FILTER_OIL');

@@ -49,7 +49,7 @@ final class PermissionSynchronizer
     public static function clearCache()
     {
         app(PermissionRegistrar::class)->forgetCachedPermissions();
-        Cache::forget('permissionPatterns:*'); // TODO: wildcard does not work
+        Cache::tags("permissionPatterns")->flush();
     }
 
     /** Obtain permissions that are present in the configuration but not in the database. */

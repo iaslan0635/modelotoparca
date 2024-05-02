@@ -12,7 +12,7 @@ class ImportController extends Controller
 {
     public function index()
     {
-        return view('admin.import.index', ['routes' => ['ITEMS_WEB', 'ITEMS_WEB__APPEND', 'ITEMSUBS', 'ITMCLSAS', 'FILTER_OIL', 'MARKALAR']]);
+        return view('admin.import.index', ['routes' => ['ITEMS_WEB', 'ITEMS_WEB_EK', 'ITEMSUBS', 'ITMCLSAS', 'FILTER_OIL', 'MARKALAR']]);
     }
 
     protected function storeFile(): string
@@ -28,7 +28,7 @@ class ImportController extends Controller
         dispatch(new OuterExcelImportJob($this->storeFile(), false));
     }
 
-    public function ITEMS_WEB__APPEND()
+    public function ITEMS_WEB_EK()
     {
         dispatch(new OuterExcelImportJob($this->storeFile(), true));
     }
