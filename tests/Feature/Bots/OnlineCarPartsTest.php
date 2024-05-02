@@ -30,7 +30,7 @@ class OnlineCarPartsTest extends TestCase
         );
 
         $links = $bot->getAllProductLinks();
-        $resultBrands = array_map(fn ($link) => $bot->getProduct($link)->brand, $links);
+        $resultBrands = array_map(fn ($link) => OnlineCarParts\Scraper::getProductPage($link)->brand, $links);
 
         $this->assertEquals($shouldFind ? [$brand] : [], array_unique($resultBrands));
     }
@@ -54,7 +54,7 @@ class OnlineCarPartsTest extends TestCase
         );
 
         $links = $bot->getAllProductLinks();
-        $resultArticleIds = array_map(fn ($link) => $bot->getProduct($link)->articleId, $links);
+        $resultArticleIds = array_map(fn ($link) => OnlineCarParts\Scraper::getProductPage($link)->articleId, $links);
 
         $this->assertEquals($shouldFind ? [$code] : [], array_unique($resultArticleIds));
     }

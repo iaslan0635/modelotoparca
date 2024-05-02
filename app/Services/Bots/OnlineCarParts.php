@@ -2,15 +2,9 @@
 
 namespace App\Services\Bots;
 
-use App\Models\BotImage;
 use App\Models\BotProduct;
 use App\Models\Log;
 use App\Models\Ocp;
-use App\Models\Product;
-use App\Models\ProductCar;
-use App\Models\ProductOem;
-use App\Packages\Utils;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -31,12 +25,8 @@ class OnlineCarParts
 
     public function smash(): bool
     {
-        if ($this->scrape()) {
-            return true;
-        }
-        if ($this->regexed) {
-            return false;
-        }
+        if ($this->scrape()) return true;
+        if ($this->regexed) return false;
 
         $regexedBot = new OnlineCarParts(
             keyword: self::commonizeString($this->keyword),
@@ -117,84 +107,11 @@ class OnlineCarParts
             return false;
         }
 
-        $ocpp = self::getProduct($url);
-        DB::connection('bigdata')->transaction(
-            fn() => $this->saveOcpProductToBigData($ocpp)
-        );
-        DB::transaction(function () use ($ocpp, $connection) {
-            $this->saveOcpProductToDatabase($ocpp);
-            $connection->save();
-        });
+        $ocpp = $this->data->getProductPage($url);
+        $ocpp->saveToBigData();
+        $ocpp->saveToDatabase($this->product_id);
 
         return true;
-    }
-
-    public static function getProduct(string $url): OcpProduct
-    {
-        $crawler = new Crawler(OcpClient::request($url));
-
-        $oems = array_merge(...$crawler->filter('.product-oem__link')->each(function (Crawler $el) {
-            $text = $el->innerText(); // "AUDI / SKODA / VW - OE-N 012 412 1" || "FORD - OE-1833857"
-            [$brandsStr, $code] = explode(' - OE-', $text);
-            $brands = explode(' / ', $brandsStr);
-
-            return array_map(fn(string $brand) => ['brand' => $brand, 'oem' => $code], $brands);
-        }));
-
-        $specs = Utils::fromEntries($crawler->filter('table.product__table tr')->each(function (Crawler $row) {
-            [$key, $value] = $row->filter('td')->each(fn(Crawler $col) => $col->innerText());
-
-            return [self::normalizeColumnName($key), $value];
-        }));
-
-        $makerIds = $crawler->filter('.compatibility__maker-title')->each(fn(Crawler $el) => $el->attr('data-maker-id'));
-        $ocpProductId = Utils::regex('/-(\d+)\.html/', $url, 1);
-        if ($ocpProductId === null) {
-            throw new \Exception("ID not found in URL: $url");
-        }
-
-        $_artkl = $crawler->filter('.product__artkl')->innerText();
-        $articleId = Utils::regex('/Article №: ([^ ]+)/', $_artkl, 1);
-        if ($articleId === null) {
-            throw new \Exception("Article ID not found in artkl: $_artkl");
-        }
-
-        $vehicles = self::getVehicleIds($ocpProductId, $makerIds);
-
-        $tecdoc = Utils::fromEntries(
-            $crawler->filter('.product-analogs__wrapper li')
-                ->each(fn(Crawler $el) => [
-                    self::normalizeColumnName($el->filter('span')->innerText()),
-                    $el->innerText(),
-                ])
-        );
-
-        $subtitle = $crawler->filter('.product__subtitle')->innerText();
-
-        $metadata = json_decode(
-            $crawler
-                ->filter('script[type="application/ld+json"]')
-                ->reduce(fn(Crawler $el) => json_decode($el->text())->{'@type'} === 'Product')
-                ->text()
-        );
-
-        return new OcpProduct(
-            url: $url,
-            id: $ocpProductId,
-            articleId: $articleId,
-            oems: $oems,
-            specs: $specs,
-            vehicles: $vehicles,
-            tecdoc: $tecdoc,
-            title: $metadata->name,
-            subtitle: $subtitle,
-            brand: $metadata->brand->name,
-            images: Arr::wrap($metadata->image), // $metadata->image is sometimes string, sometimes array of strings
-            category: $metadata->category ?? 'NO CATEGORY',
-            mpn: $metadata->mpn,
-            sku: $metadata->sku,
-            gtin13: $metadata->gtin13,
-        );
     }
 
     public static function normalizeColumnName(string $string): string
@@ -215,63 +132,6 @@ class OnlineCarParts
         }
 
         return $vehicleIds;
-    }
-
-    public static function saveOcpProductToBigData(OcpProduct $ocpp): void
-    {
-        $db = DB::connection('bigdata');
-
-        $db->table('products')->updateOrInsert(
-            ['id' => $ocpp->id],
-            [
-                'title' => $ocpp->title,
-                'subtitle' => $ocpp->subtitle,
-                'brand' => $ocpp->brand,
-                'specifications' => json_encode($ocpp->specs),
-                'tecdoc' => json_encode($ocpp->tecdoc),
-                'images' => json_encode($ocpp->images),
-                'category' => $ocpp->category,
-                'mpn' => $ocpp->mpn,
-                'sku' => $ocpp->sku,
-                'gtin13' => $ocpp->gtin13,
-                'url' => $ocpp->url,
-            ]
-        );
-
-        $db->table('product_oems')->insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['product_id' => $ocpp->id]), $ocpp->oems));
-
-        $db->table('product_cars')->insertOrIgnore(
-            array_map(fn($vehicleId) => [
-                'product_id' => $ocpp->id,
-                'car_id' => $vehicleId,
-            ], $ocpp->vehicles)
-        );
-    }
-
-    public function saveOcpProductToDatabase(OcpProduct $ocpp): void
-    {
-        ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['logicalref' => $this->product_id]), $ocpp->oems));
-
-        $product = Product::findOrFail($this->product_id, ['id', 'tecdoc', 'specifications']);
-        $product->update([
-            'specifications' => $ocpp->specs,
-            'tecdoc' => array_merge($product->tecdoc ?? [], $ocpp->tecdoc),
-        ]);
-
-        ProductCar::insertOrIgnore(
-            array_map(fn($vehicleId) => [
-                'logicalref' => $this->product_id,
-                'car_id' => $vehicleId,
-            ], $ocpp->vehicles)
-        );
-
-        BotImage::insertOrIgnore(
-            array_map(fn($image) => [
-                'product_id' => $this->product_id,
-                'url' => $image,
-                'bot_page_url' => $ocpp->url,
-            ], $ocpp->images)
-        );
     }
 
     public static function commonizeString(string $string): string
