@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Cache;
 
 class OcpClient
 {
-    /** @throws OcpClientException */
-    public static function requestWithoutCache(string $url): string
+    public static function request(string $url): string
     {
         $curlHandle = curl_init();
         curl_setopt($curlHandle, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_3);
@@ -31,21 +30,6 @@ class OcpClient
         if (! ($httpStatusCode >= 200 && $httpStatusCode < 300)) {
             throw new OcpClientException($httpStatusCode, $url, $response);
         }
-
-        return $response;
-    }
-
-    /** @throws OcpClientException */
-    public static function request(string $url): string
-    {
-        $cache = Cache::driver('file');
-        $cached = $cache->get($url);
-        if ($cached !== null) {
-            return $cached;
-        }
-
-        $response = self::requestWithoutCache($url);
-        $cache->set($url, $response, TTL::MONTH * 3);
 
         return $response;
     }

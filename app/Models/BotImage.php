@@ -10,7 +10,7 @@ class BotImage extends BaseModel
 
     public function downloadImage()
     {
-        $image = OcpClient::requestWithoutCache($this->url);
+        $image = OcpClient::request($this->url);
         $path = "product_images/extras/{$this->id}.png";
         \Storage::disk('public')->put($path, $image);
 
