@@ -29,7 +29,7 @@ class OnlineCarPartsTest extends TestCase
             brand_filter: $brand
         );
 
-        $links = $bot->searchProducts();
+        $links = $bot->getAllProductLinks();
         $resultBrands = array_map(fn ($link) => $bot->getProduct($link)->brand, $links);
 
         $this->assertEquals($shouldFind ? [$brand] : [], array_unique($resultBrands));
@@ -53,7 +53,7 @@ class OnlineCarPartsTest extends TestCase
             field: 'producercode',
         );
 
-        $links = $bot->searchProducts();
+        $links = $bot->getAllProductLinks();
         $resultArticleIds = array_map(fn ($link) => $bot->getProduct($link)->articleId, $links);
 
         $this->assertEquals($shouldFind ? [$code] : [], array_unique($resultArticleIds));

@@ -12,7 +12,7 @@ class SearchResultProduct extends Pivot
 
     public function searchResult(): BelongsTo
     {
-        return $this->belongsTo(SearchResult::class);
+        return $this->belongsTo(SearchPage::class);
     }
 
     public function product(): BelongsTo

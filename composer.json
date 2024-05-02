@@ -10,7 +10,10 @@
   "require": {
     "php": "^8.1",
     "ext-bcmath": "*",
+    "ext-curl": "*",
     "ext-dom": "*",
+    "ext-fileinfo": "*",
+    "ext-pdo": "*",
     "ext-simplexml": "*",
     "ext-soap": "*",
     "babenkoivan/elastic-migrations": "^3.3",
@@ -30,12 +33,10 @@
     "phpoffice/phpspreadsheet": "^1.28",
     "predis/predis": "^2.1",
     "spatie/laravel-permission": "^6.0",
+    "spatie/url": "^2.4",
     "symfony/css-selector": "^6.2",
     "symfony/dom-crawler": "^6.2",
-    "tarfin-labs/netgsm": "^4.5",
-    "ext-curl": "*",
-    "ext-pdo": "*",
-    "ext-fileinfo": "*"
+    "tarfin-labs/netgsm": "^4.5"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.8",

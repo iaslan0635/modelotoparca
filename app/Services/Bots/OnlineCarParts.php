@@ -5,6 +5,7 @@ namespace App\Services\Bots;
 use App\Models\BotImage;
 use App\Models\BotProduct;
 use App\Models\Log;
+use App\Models\Ocp;
 use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
@@ -15,6 +16,8 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class OnlineCarParts
 {
+    private readonly OnlineCarParts\DataProvider $data;
+
     public function __construct(
         public readonly string  $keyword,
         public readonly int     $product_id,
@@ -23,6 +26,7 @@ class OnlineCarParts
         public readonly bool    $regexed = false,
     )
     {
+        $this->data = app(OnlineCarParts\DataProvider::class);
     }
 
     public function smash(): bool
@@ -47,16 +51,15 @@ class OnlineCarParts
 
     public function scrape(): bool
     {
-        $links = $this->searchProducts();
-        if (count($links) === 0) {
+        $productLinks = $this->getAllProductLinks();
+        if (count($productLinks) === 0) {
             $this->log('Ürün bulunamadı.');
-
             return false;
         }
 
         $successfulProductCount = 0;
-        foreach ($links as $link) {
-            if (self::scrapePage($link)) {
+        foreach ($productLinks as $link) {
+            if (self::scrapeProductPage($link)) {
                 $successfulProductCount++;
             }
         }
@@ -66,82 +69,30 @@ class OnlineCarParts
         return $successfulProductCount > 0;
     }
 
-    public function searchProducts(): array
+    public function getAllProductLinks()
     {
-        $links = [];
-        $searchPages = $this->getSearchPages();
-        foreach ($searchPages as $pageNumber => $searchPage) {
-            $pageLinks = $this->scrapeSearchPage($searchPage, $pageNumber);
-            $pageLinksCount = count($pageLinks);
-            array_push($links, ...$pageLinks);
-            if ($this->field !== 'oem_codes' && $pageLinksCount !== 0) {
-                $this->log("$pageLinksCount adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
+        $allLinks = collect();
+        $searchPage = $this->data->getSearchPage($this->keyword, $this->field === 'oem_codes');
+        for ($pageNumber = 1; $pageNumber <= $searchPage->pageCount; $pageNumber++) {
+            $links = $this->getProductLinksForPage($searchPage, $pageNumber);
+            $count = count($links);
+            $allLinks->push(...$links);
+            if ($this->field !== 'oem_codes' && $count !== 0) {
+                $this->log("$count adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
                 break;
             }
         }
 
-        return $links;
+        return $allLinks;
     }
 
-    public function getSearchPages(): array
+    public function getProductLinksForPage(Ocp\SearchPage $searchPage, int $pageNumber)
     {
-        $url = $this->field === 'oem_codes'
-            ? 'https://www.onlinecarparts.co.uk/oenumber/' . self::commonizeString($this->keyword) . '.html?'
-            : 'https://www.onlinecarparts.co.uk/spares-search.html?keyword=' . urlencode($this->keyword);
-
-        try {
-            if ($this->brand_filter !== null) {
-                $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
-                if ($brandId === null) {
-                    $this->log('Marka arama sayfasında bulunamadı.');
-
-                    return [];
-                }
-                $url .= '&brand[]=' . $brandId;
-            }
-
-            $crawler = new Crawler(OcpClient::request($url));
-        } catch (OcpClientException $e) {
-            if ($this->field === 'oem_codes' && $e->statusCode === 404) {
-                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor. | Aranan sayfa: $e->url");
-
-                return [];
-            } else {
-                throw $e;
-            }
-        }
-
-        $pages = $crawler->filter('.listing-pagination__item[data-pagination-page]');
-        if ($pages->count()) {
-            $pageCount = (int)$pages->last()->text();
-            $this->log("Arama sonucu $pageCount sayfadan oluşuyor.");
-            $searchPages = [1 => $crawler];
-            for ($i = 2; $i <= $pageCount; $i++) {
-                $searchPages[$i] = new Crawler(OcpClient::request("$url&page=$i"));
-            }
-
-            return $searchPages;
-        }
-
-        return [1 => $crawler];
-    }
-
-    public static function commonizeString(string $string): string
-    {
-        return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $string));
-    }
-
-    public static function findBrandIdFromSearchPage(string $searchPageUrl, string $brand): ?string
-    {
-        $commonizedBrand = self::commonizeString($brand);
-        $crawler = new Crawler(OcpClient::request($searchPageUrl));
-        $foundBrandEls = $crawler->filter('.brand-slider__item')
-            ->reduce(fn(Crawler $el) => self::commonizeString($el->filter('img')->attr('alt')) === $commonizedBrand);
-        if ($foundBrandEls->count() < 1) {
-            return null;
-        }
-
-        return $foundBrandEls->eq(0)->filter('input')->attr('value');
+        $matchArticleNo = $this->field === 'producercode' || $this->field === 'producercode2' || $this->field === 'cross_code' || $this->field === 'abk';
+        $articleNo = $matchArticleNo ? $this->keyword : null;
+        $productLinks = $this->data->getSearchPageProductLinks($searchPage->urlWithPage($pageNumber), $articleNo);
+        $this->log("$pageNumber. Sayfadan " . count($productLinks) . ' adet ürün bulundu.');
+        return $productLinks;
     }
 
     private function log(string $message): void
@@ -156,49 +107,17 @@ class OnlineCarParts
         ]);
     }
 
-    public function scrapeSearchPage(Crawler $searchPage, int $pageNumber)
-    {
-        $productEls = $searchPage->filter('.product-card:not([data-recommended-products])');
-
-        if (
-            $this->field === 'producercode' ||
-            $this->field === 'producercode2' ||
-            $this->field === 'cross_code' ||
-            $this->field === 'abk'
-        ) {
-            $commonizedKeyword = self::commonizeString($this->keyword);
-            $productEls = $productEls->reduce(
-                function (Crawler $el) use ($commonizedKeyword) {
-                    $artklEl = $el->filter('.product-card__artkl span');
-
-                    return $artklEl->count() != 0 && self::commonizeString($artklEl->innerText()) === $commonizedKeyword;
-                }
-            );
-        }
-
-        $links = $productEls->each(function (Crawler $el) {
-            $linkEl = $el->filter('.product-card__title-link');
-
-            return $linkEl->attr('href') ?? $linkEl->attr('data-link');
-        });
-
-        $links = array_filter($links, fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
-        $this->log("$pageNumber. Sayfadan " . count($links) . ' adet ürün bulundu.');
-
-        return $links;
-    }
-
-    public function scrapePage(string $link): bool
+    public function scrapeProductPage(string $url): bool
     {
         $connection = BotProduct::firstOrNew(
-            ['product_id' => $this->product_id, 'url' => $link],
+            ['product_id' => $this->product_id, 'url' => $url],
             ['origin_field' => $this->field, 'keyword' => $this->keyword]
         );
         if ($connection->is_banned) {
             return false;
         }
 
-        $ocpp = self::getProduct($link);
+        $ocpp = self::getProduct($url);
         DB::connection('bigdata')->transaction(
             fn() => $this->saveOcpProductToBigData($ocpp)
         );
@@ -353,5 +272,67 @@ class OnlineCarParts
                 'bot_page_url' => $ocpp->url,
             ], $ocpp->images)
         );
+    }
+
+    public static function commonizeString(string $string): string
+    {
+        return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $string));
+    }
+
+    public function getSearchPages(): array
+    {
+        $isOemSearch = $this->field === 'oem_codes';
+        $url = $isOemSearch
+            ? 'https://www.onlinecarparts.co.uk/oenumber/' . self::commonizeString($this->keyword) . '.html?'
+            : 'https://www.onlinecarparts.co.uk/spares-search.html?keyword=' . urlencode($this->keyword);
+
+        try {
+            if ($this->brand_filter !== null) {
+                $brandId = self::findBrandIdFromSearchPage($url, $this->brand_filter);
+                if ($brandId === null) {
+                    $this->log('Marka arama sayfasında bulunamadı.');
+
+                    return [];
+                }
+                $url .= '&brand[]=' . $brandId;
+            }
+
+            $crawler = new Crawler(OcpClient::request($url));
+        } catch (OcpClientException $e) {
+            if ($isOemSearch && $e->statusCode === 404) {
+                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor. | Aranan sayfa: $e->url");
+
+                return [];
+            } else {
+                throw $e;
+            }
+        }
+
+        $pages = $crawler->filter('.listing-pagination__item[data-pagination-page]');
+        if ($pages->count()) {
+            $pageCount = (int)$pages->last()->text();
+            $this->log("Arama sonucu $pageCount sayfadan oluşuyor.");
+            $searchPages = [1 => $crawler];
+            for ($i = 2; $i <= $pageCount; $i++) {
+                $searchPages[$i] = new Crawler(OcpClient::request("$url&page=$i"));
+            }
+
+            return $searchPages;
+        }
+
+        return [1 => $crawler];
+    }
+
+    public static function findBrandIdFromSearchPage(string $searchPageUrl, string $brand): ?string
+    {
+        $commonizedBrand = self::commonizeString($brand);
+        $crawler = new Crawler(OcpClient::request($searchPageUrl));
+        $foundBrandEls = $crawler->filter('.brand-slider__item')
+            ->reduce(fn(Crawler $el) => self::commonizeString($el->filter('img')->attr('alt')) === $commonizedBrand);
+        if ($foundBrandEls->count() < 1) {
+            return null;
+        }
+
+        return $foundBrandEls->eq(0)->filter('input')->attr('value');
     }
 }
