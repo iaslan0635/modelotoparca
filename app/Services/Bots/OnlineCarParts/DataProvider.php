@@ -2,6 +2,7 @@
 
 namespace App\Services\Bots\OnlineCarParts;
 
+use App\Models\Ocp\Product;
 use App\Models\Ocp\SearchPage;
 
 /** A bridge between Scraper and Bot. Attempts to use already fetched data */
@@ -16,7 +17,9 @@ class DataProvider
 
     public function getProductPage(string $url)
     {
-        // TODO: convert to Ocp\Product
+        $product = Product::where("url", $url)->first();
+        if ($product) return ProductPage::fromBigData($product);
+
         return $this->scraper->getProductPage($url);
     }
 

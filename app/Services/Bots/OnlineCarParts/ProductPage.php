@@ -6,10 +6,28 @@ use App\Models\BotImage;
 use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
+use App\Models\Ocp;
 use Illuminate\Support\Facades\DB;
 
-class ProductPage
+final class ProductPage
 {
+    /**
+     * @param string $url
+     * @param string $id
+     * @param string $articleId
+     * @param array<array{brand: string, oem: string}> $oems
+     * @param array $specs
+     * @param int[] $vehicles
+     * @param array $tecdoc
+     * @param string $title
+     * @param string $subtitle
+     * @param string $brand
+     * @param array $images
+     * @param string $category
+     * @param string $mpn
+     * @param string $sku
+     * @param string $gtin13
+     */
     public function __construct(
         public readonly string $url,
         public readonly string $id,
@@ -62,6 +80,34 @@ class ProductPage
                 ], $this->vehicles)
             );
         });
+    }
+
+    public static function fromBigData(Ocp\Product $product)
+    {
+        $oems = $product->oems->map(fn(Ocp\ProductOem $oem) => [
+            'brand' => $oem->brand,
+            'oem' => $oem->oem,
+        ])->toArray();
+
+        $vehicleIds = $product->cars->pluck('car_id')->toArray();
+
+        return new ProductPage(
+            url: $product->url,
+            id: $product->id,
+            articleId: $product->article_no,
+            oems: $oems,
+            specs: $product->specifications,
+            vehicles: $vehicleIds,
+            tecdoc: $product->tecdoc,
+            title: $product->title,
+            subtitle: $product->subtitle,
+            brand: $product->brand,
+            images: $product->images,
+            category: $product->category,
+            mpn: $product->mpn,
+            sku: $product->sku,
+            gtin13: $product->gtin13,
+        );
     }
 
     public function saveToDatabase(int $product_id)
