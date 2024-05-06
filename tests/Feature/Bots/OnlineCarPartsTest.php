@@ -29,8 +29,8 @@ class OnlineCarPartsTest extends TestCase
             brand_filter: $brand
         );
 
-        $links = $bot->searchProducts();
-        $resultBrands = array_map(fn ($link) => $bot->getProduct($link)->brand, $links);
+        $links = $bot->getAllProductLinks();
+        $resultBrands = array_map(fn ($link) => OnlineCarParts\Scraper::getProductPage($link)->brand, $links);
 
         $this->assertEquals($shouldFind ? [$brand] : [], array_unique($resultBrands));
     }
@@ -53,8 +53,8 @@ class OnlineCarPartsTest extends TestCase
             field: 'producercode',
         );
 
-        $links = $bot->searchProducts();
-        $resultArticleIds = array_map(fn ($link) => $bot->getProduct($link)->articleId, $links);
+        $links = $bot->getAllProductLinks();
+        $resultArticleIds = array_map(fn ($link) => OnlineCarParts\Scraper::getProductPage($link)->articleId, $links);
 
         $this->assertEquals($shouldFind ? [$code] : [], array_unique($resultArticleIds));
     }
