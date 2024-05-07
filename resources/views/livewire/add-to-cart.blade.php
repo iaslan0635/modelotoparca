@@ -1,4 +1,4 @@
-<div style="display: flex">
+<div style="display: flex; width: 100%">
     @if($quantity_mode)
         <div class="product__actions-item product__actions-item--quantity">
             <div class="input-number">

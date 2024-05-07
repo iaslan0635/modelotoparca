@@ -67,9 +67,9 @@
                         <x-product-meta :tiger="$product->tiger"/>
                     </div>
                     <div class="product-card__footer">
-                        <div class="product-card__prices">
+                        <div class="product-card__prices productlist-price">
                             <div
-                                class="product-card__price product-card__price--current">{{ $product->price?->formattedPrice }}</div>
+                                class="product-card__price product-card__price--current product-list-price">{{ $product->price?->formattedPrice }}</div>
                         </div>
                         <button class="product-card__addtocart-icon" type="button"
                                 aria-label="Add to cart">
@@ -81,7 +81,6 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
                             </svg>
                         </button>
-                        <livewire:add-to-cart :product="$product" :key="$product->id" :quantity_mode="false"/>
                         <button class="product-card__wishlist" type="button">
                             <svg width="16" height="16">
                                 <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
@@ -100,6 +99,8 @@
                             </svg>
                             <span>Karşılaştır</span>
                         </button>
+                        <br>
+                        <livewire:add-to-cart :product="$product" :key="$product->id" :quantity_mode="false"/>
                     </div>
                 </div>
             </div>
