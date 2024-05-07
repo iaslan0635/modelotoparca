@@ -9805,8 +9805,7 @@ select.form-control::-ms-expand {
         width: 270px;
     }
     .block-split--has-sidebar .block-split__item-content {
-        width: calc(100% - 10px);
-        /*width: calc(100% - 310px);*/
+        width: calc(100% - 310px);
     }
     [dir=ltr] .block-split--has-sidebar .block-split__item + .block-split__item {
         margin-left: 10px;
@@ -17681,7 +17680,7 @@ select.form-control::-ms-expand {
 .products-view__options {
     background-color: #fff;
     -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.09);
-    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.09);
     margin-bottom: 20px;
 }
 
