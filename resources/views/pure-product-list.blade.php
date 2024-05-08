@@ -47,7 +47,7 @@
                     <div class="product-card__info">
                         <div class="product-card__meta">
                             <span
-                                class="product-card__meta-title">{{ $product->producercode }}</span>
+                                class="product-card__meta-title">    <x-product-meta :tiger="$product->tiger"/> </span>
                         </div>
                         <x-product-card-name :product="$product"/>
 
@@ -64,7 +64,7 @@
                             </ul>
                         </div>
 
-                        <x-product-meta :tiger="$product->tiger"/>
+
                     </div>
                     <div class="product-card__footer">
                         <div class="product-card__prices productlist-price">
