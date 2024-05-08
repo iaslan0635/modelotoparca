@@ -136,7 +136,7 @@ class Scraper
     public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)
     {
         $url = Url::fromString($searchPage->url)->withQueryParameter('page', $pageNumber);
-        if ($brandId) $url = $url->withQueryParameter('brand', $brandId);
+        if ($brandId) $url = $url->withQueryParameter('brand[]', $brandId);
 
         $crawler = new Crawler(OcpClient::request((string)$url));
         $productEls = $crawler->filter('.product-card:not([data-recommended-products])');
