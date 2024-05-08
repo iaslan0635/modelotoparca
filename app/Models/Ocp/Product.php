@@ -17,7 +17,7 @@ class Product extends BaseModel
 
     public function oems()
     {
-        return $this->hasMany(ProductOem::class, "logicalref");
+        return $this->hasMany(ProductOem::class);
     }
 
     public function cars()

@@ -45,7 +45,17 @@ class OnlineCarParts
     public function scrape(): bool
     {
         $isOemSearch = $this->field === 'oem_codes';
-        $searchPage = $this->data->getSearchPage($this->keyword, $isOemSearch);
+
+        try {
+            $searchPage = $this->data->getSearchPage($this->keyword, $isOemSearch);
+        } catch (OcpClientException $e) {
+            if ($this->field === 'oem_codes' && $e->statusCode === 404) {
+                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor. | Aranan sayfa: $e->url");
+                return false;
+            } else {
+                throw $e;
+            }
+        }
 
         if ($this->brand_filter) {
             $brandId = $searchPage->getBrandId($this->brand_filter);
