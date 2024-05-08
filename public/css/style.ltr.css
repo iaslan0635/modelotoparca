@@ -8926,7 +8926,8 @@ select.form-control-sm {
     width: 270px;
   }
   .block-split--has-sidebar .block-split__item-content {
-    width: calc(100% - 310px);
+    width: calc(100% - 10px);
+    /*width: calc(100% - 310px);*/
   }
   .block-split--has-sidebar .block-split__item + .block-split__item {
     margin-left: 40px;
@@ -12577,7 +12578,7 @@ select.form-control-sm {
 }
 
 .product__price {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 700;
   letter-spacing: -.04em;
   color: #262626;

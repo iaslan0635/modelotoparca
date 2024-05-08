@@ -43,24 +43,6 @@
                             </div>
                             <div class="product__header">
                                 <h1 class="product__title">{{ $product->fullTitle }}</h1>
-                                <div class="product__subtitle">
-                                    <div class="product__rating">
-                                        <div class="product__rating-stars">
-                                            <div class="rating">
-                                                <div class="rating__body">
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product__rating-label">
-                                            <a href="">3.5 on 7 reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="product__main">
                                 <div class="product__excerpt">{{ $product->description }}</div>
@@ -78,7 +60,25 @@
                             <div class="product__info">
                                 <div class="product__info-card">
                                     <div class="product__info-body">
-                                        <div class="product__badge tag-badge tag-badge--sale">Sale</div>
+                                        <div class="product__subtitle">
+                                            <div class="product__rating">
+                                                <div class="product__rating-stars">
+                                                    <div class="rating">
+                                                        <div class="rating__body">
+                                                            <div class="rating__star"></div>
+                                                            <div class="rating__star"></div>
+                                                            <div class="rating__star"></div>
+                                                            <div class="rating__star"></div>
+                                                            <div class="rating__star"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product__rating-label">
+                                                    <a href=""><span style="font-weight: bold">0</span>/5 </a>   <a href=""> 0 Değerlendirme</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
                                         <div class="product__prices-stock">
                                             <div class="product__prices">
                                                 <div
@@ -87,8 +87,7 @@
                                             <div
                                                 class="status-badge status-badge--style--success product__stock status-badge--has-text">
                                                 <div class="status-badge__body">
-                                                    <div
-                                                        class="status-badge__text">{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}</div>
+                                                    <span class="badge badge-danger">{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}</span>
                                                     <div class="status-badge__tooltip" tabindex="0"
                                                          data-toggle="tooltip"
                                                          title="{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}"></div>
@@ -127,10 +126,19 @@
                                         </div>
                                     </div>
                                     <div class="product__actions">
-                                        <livewire:add-to-cart :product="$product"/>
+                                        @if ($product->quantity <= 0)
+                                                <a href="https://wa.me/905528880668/?text=https://site.modelotoparca.com/p/{{ $product->slug }} Ürün İle İlgili Bilgi Almak İstiyorum" target="_blank" class="btn btn-success"
+                                                style="border-radius: 20px; width: 50%">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                                                    </svg> Bilgi Al</a>
+                                        @else
+                                            <livewire:add-to-cart :product="$product"/>
+                                        @endif
                                         <div class="product__actions-divider"></div>
                                         <livewire:product.whislist :product="$product"/>
                                     </div>
+
                                     <div class="product__tags-and-share-links">
                                         <div class="product__tags tags tags--sm">
                                             <div class="tags__list">
@@ -143,6 +151,7 @@
                                                 @endforeach
                                             </div>
                                         </div>
+
                                         <div class="product__share-links share-links">
                                             <ul class="share-links__list">
                                                 <li class="share-links__item share-links__item--type--like">
@@ -190,11 +199,11 @@
                                     <li class="product-tabs__item">
                                         <a href="#tecdoc-equivalents">TecDoc</a>
                                     </li>
-                                    <li class="product-tabs__item">
-                                        <a href="#product-tab-reviews">Değerlendirmeler
-                                            <span class="product-tabs__item-counter">0</span>
-                                        </a>
-                                    </li>
+{{--                                    <li class="product-tabs__item">--}}
+{{--                                        <a href="#product-tab-reviews">Değerlendirmeler--}}
+{{--                                            <span class="product-tabs__item-counter">0</span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
                                 </ul>
                                 <div class="product-tabs__content">
                                     <div class="product-tabs__pane" id="product-tab-reviews">

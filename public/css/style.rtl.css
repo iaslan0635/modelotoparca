@@ -14982,8 +14982,11 @@ select.form-control-sm {
     margin-right: 6px;
   }
   .products-list[data-layout="list"] .product-card .product-card__addtocart-full {
+
     display: block;
-    height: 36px;
+      min-height: 50px;
+      border-radius:60px;
+    /*height: 36px;*/
     padding: 0 20px;
     width: 100%;
     margin-bottom: 10px;
