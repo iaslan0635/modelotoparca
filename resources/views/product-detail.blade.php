@@ -43,24 +43,6 @@
                             </div>
                             <div class="product__header">
                                 <h1 class="product__title">{{ $product->fullTitle }}</h1>
-                                <div class="product__subtitle">
-                                    <div class="product__rating">
-                                        <div class="product__rating-stars">
-                                            <div class="rating">
-                                                <div class="rating__body">
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star rating__star--active"></div>
-                                                    <div class="rating__star"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product__rating-label">
-                                            <a href="">3.5 on 7 reviews</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="product__main">
                                 <div class="product__excerpt">{{ $product->description }}</div>
@@ -78,7 +60,25 @@
                             <div class="product__info">
                                 <div class="product__info-card">
                                     <div class="product__info-body">
-
+                                        <div class="product__subtitle">
+                                            <div class="product__rating">
+                                                <div class="product__rating-stars">
+                                                    <div class="rating">
+                                                        <div class="rating__body">
+                                                            <div class="rating__star"></div>
+                                                            <div class="rating__star"></div>
+                                                            <div class="rating__star"></div>
+                                                            <div class="rating__star"></div>
+                                                            <div class="rating__star"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product__rating-label">
+                                                    <a href=""><span style="font-weight: bold">0</span>/5 </a>   <a href=""> 0 Değerlendirme</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
                                         <div class="product__prices-stock">
                                             <div class="product__prices">
                                                 <div
@@ -138,6 +138,7 @@
                                         <div class="product__actions-divider"></div>
                                         <livewire:product.whislist :product="$product"/>
                                     </div>
+
                                     <div class="product__tags-and-share-links">
                                         <div class="product__tags tags tags--sm">
                                             <div class="tags__list">
@@ -150,6 +151,7 @@
                                                 @endforeach
                                             </div>
                                         </div>
+
                                         <div class="product__share-links share-links">
                                             <ul class="share-links__list">
                                                 <li class="share-links__item share-links__item--type--like">
@@ -197,11 +199,11 @@
                                     <li class="product-tabs__item">
                                         <a href="#tecdoc-equivalents">TecDoc</a>
                                     </li>
-                                    <li class="product-tabs__item">
-                                        <a href="#product-tab-reviews">Değerlendirmeler
-                                            <span class="product-tabs__item-counter">0</span>
-                                        </a>
-                                    </li>
+{{--                                    <li class="product-tabs__item">--}}
+{{--                                        <a href="#product-tab-reviews">Değerlendirmeler--}}
+{{--                                            <span class="product-tabs__item-counter">0</span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
                                 </ul>
                                 <div class="product-tabs__content">
                                     <div class="product-tabs__pane" id="product-tab-reviews">
