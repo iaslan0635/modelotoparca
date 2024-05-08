@@ -114,19 +114,22 @@ class Scraper
 
         $crawler = new Crawler(OcpClient::request($url));
 
-        $brands = $crawler->filter('.brand-slider__item')->each(fn(Crawler $el) => Brand::create([
-            'name' => $el->filter('img')->attr('alt'),
-            'value' => $el->filter('input')->attr('value'),
-        ]));
+        $brands = $crawler->filter('.brand-slider__item')->each(
+            fn(Crawler $el) => Brand::firstOrCreate(
+                ['id' => $el->filter('input')->attr('value')],
+                ['name' => $el->filter('img')->attr('alt')],
+            )
+        );
 
         $pageEls = $crawler->filter('.listing-pagination__item[data-pagination-page]');
-        $pageCount = (int)$pageEls->last()->text();
+        $pageCount = $pageEls->count() > 0 ? (int)$pageEls->last()->text() : 1;
 
         $type = $isOem ? 'oem' : 'keyword';
         $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn(Crawler $el) => $el->text());
 
+        // We trust DataProvider to call this only if it doesn't exist
         $searchPage = SearchPage::create(compact('keyword', 'pageCount', 'type', 'url', 'categories'));
-        $searchPage->brands()->sync($brands);
+        $searchPage->brands()->sync(array_map(fn (Brand $b) => $b->id, $brands));
         return $searchPage;
     }
 

@@ -10,20 +10,21 @@ class SearchPage extends BaseModel
 
     protected $casts = [
         'brands' => 'array',
+        'categories' => 'array',
     ];
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->using(SearchPageProduct::class);
+        return $this->belongsToMany(Product::class, "search_page_products")->using(SearchPageProduct::class);
     }
 
     public function brands()
     {
-        return $this->belongsToMany(Brand::class)->using(ProductPageBrand::class);
+        return $this->belongsToMany(Brand::class, "search_page_brands")->using(ProductPageBrand::class);
     }
 
     public function getBrandId(string $brandName): ?int
     {
-        return $this->brands->first(fn($brand) => Fuzz::isEqual($brand->name, $brandName))?->id;
+        return $this->brands()->get()->first(fn($brand) => Fuzz::isEqual($brand->name, $brandName))?->id;
     }
 }

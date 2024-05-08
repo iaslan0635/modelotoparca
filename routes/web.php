@@ -88,3 +88,8 @@ Route::get('/garage/deselect', function () {
 
     return redirect('/');
 });
+
+Route::get("/runbot", function () {
+    \App\Jobs\RunSingleBotJob::dispatchSync(\App\Models\TigerProduct::first());
+    return "done";
+});
