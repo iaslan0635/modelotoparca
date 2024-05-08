@@ -10,7 +10,7 @@ use Throwable;
 
 class BotCommand extends Command
 {
-    protected $signature = 'bot {--queue=default} {--filter=} {--failsafe}';
+    protected $signature = 'bot {--queue=default} {--filter=} {--failsafe} {--sync}';
 
     public function handle(): void
     {
@@ -20,16 +20,16 @@ class BotCommand extends Command
             'last-50' => TigerProduct::latest()->limit(50),
         };
 
-        self::runBotsForQuery($this, $query, $this->option('queue'), $this->option('failsafe'));
+        self::runBotsForQuery($this, $query, $this->option('failsafe'));
     }
 
-    public static function runBotsForQuery(Command $commandContext, Builder $query, ?string $queue = 'default', bool $failsafe = false)
+    public function runBotsForQuery(Command $commandContext, Builder $query, bool $failsafe = false)
     {
         $ids = $query->latest()->pluck('id');
 
-        $commandContext->withProgressBar($ids, function (int $id) use ($failsafe, $commandContext, $queue) {
+        $commandContext->withProgressBar($ids, function (int $id) use ($failsafe, $commandContext) {
             try {
-                self::handleProduct($id, $queue);
+                self::handleProduct($id);
             } catch (Throwable $throwable) {
                 if ($failsafe) {
                     throw $throwable;
@@ -41,14 +41,14 @@ class BotCommand extends Command
         });
     }
 
-    public static function handleProduct(int $productId, ?string $queue)
+    public function handleProduct(int $productId)
     {
         $product = TigerProduct::findOrFail($productId);
         $job = new RunSingleBotJob($product);
-        if ($queue) {
-            dispatch($job->onQueue($queue));
-        } else {
+        if ($this->option('sync')) {
             dispatch_sync($job);
+        } else {
+            dispatch($job->onQueue($this->option('queue')));
         }
     }
 }
