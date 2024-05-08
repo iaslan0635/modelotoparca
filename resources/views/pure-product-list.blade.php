@@ -51,9 +51,9 @@
 {{--                                <x-product-meta :tiger="$product->tiger"/> --}}
                                 @props(['tiger' ])
 
-
+                                {{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}
     <h6 {{ $attributes }}>
-         {{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}
+
         <span
             class="badge @if($tiger?->stock_on_51) badge-success @else badge-danger @endif">S51
         </span>
