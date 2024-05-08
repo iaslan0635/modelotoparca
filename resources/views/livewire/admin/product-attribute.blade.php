@@ -18,7 +18,7 @@ $dispatch('input', $refs.select.value)
             <select
                 class="product-attribute-selector form-select" x-ref="select" wire:ignore>
                 <option disabled>Seçiniz</option>
-                @foreach($getIterator() as $value)
+                @foreach($getIterator() ?? [] as $value)
                     <option value="{{ $getOptionValue($value) }}">
                         {{ $getOptionText($value) }}
                     </option>
