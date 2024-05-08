@@ -78,7 +78,7 @@
                             <div class="product__info">
                                 <div class="product__info-card">
                                     <div class="product__info-body">
-                                        <div class="product__badge tag-badge tag-badge--sale">Sale</div>
+
                                         <div class="product__prices-stock">
                                             <div class="product__prices">
                                                 <div
@@ -87,8 +87,7 @@
                                             <div
                                                 class="status-badge status-badge--style--success product__stock status-badge--has-text">
                                                 <div class="status-badge__body">
-                                                    <div
-                                                        class="status-badge__text">{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}</div>
+                                                    <span class="badge badge-danger">{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}</span>
                                                     <div class="status-badge__tooltip" tabindex="0"
                                                          data-toggle="tooltip"
                                                          title="{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}"></div>
