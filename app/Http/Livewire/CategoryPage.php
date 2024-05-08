@@ -31,7 +31,7 @@ class CategoryPage extends Component
 
     public $sortBy;
 
-    public $brandsArray;
+    public array $brandsArray = [];
 
     protected $queryString = [
         'min_price' => ['except' => ''],
@@ -39,7 +39,7 @@ class CategoryPage extends Component
         'sortBy' => ['except' => ''],
         'pageSize' => ['except' => '12'],
         'property' => ['except' => ''],
-        'brandsArray' => ['except' => '', 'as' => 'brands'],
+        'brandsArray' => ['except' => null, 'as' => 'brands'],
     ];
 
     public function mount(Category $category)

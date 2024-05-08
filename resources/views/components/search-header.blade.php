@@ -2,12 +2,8 @@
     <div class="card">
         <div class="card-body card-body--padding--2">
             <div class="row">
-                <div class="col-auto">
-                    <img src="{{ $category->imageUrl() }}" style="max-height: 15rem;margin-bottom: 1.65rem;">
-                </div>
                 <div class="col d-flex flex-column justify-content-between">
                     <div>
-                        <h2>{{$category->name}}</h2>
                         <h5>Markalar</h5>
                     </div>
                     <div wire:ignore>

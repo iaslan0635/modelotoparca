@@ -153,6 +153,7 @@
                 </div>
             </div>
             <div class="block-split__item block-split__item-content col-auto">
+                <x-search-header :brandIds="$brands->keys()"/>
                 <div class="block">
                     <div class="products-view" id="product-lists">
                         <div class="products-view__options view-options view-options--offcanvas--mobile">

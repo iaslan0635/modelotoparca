@@ -1,4 +1,4 @@
-<x-product-list :products="$products" :filtered-properties="$property" :properties="$allProperties" :category="$category" :brands="$brands">
+<x-product-list :products="$products" :filtered-properties="$property" :properties="$allProperties" :category="$category" :brands-array="$brandsArray" :brands="$brands">
     <x-slot:breadcrumb>
         <x-breadcrumb :parts="[
             ['name' => 'Kategoriler', 'link' => route('category.index')],
@@ -21,7 +21,7 @@
                                         wire:key="cat-parent-{{$parent->id}}">
                                         <span class="filter-categories__arrow">@include('icons/chevron-left')</span>
                                         <img src="{{ $parent->imageUrl() }}" class="category-icon-image">
-                                        <a href="{{ route('category.show', [...request()->query(), 'category' => $parent]) }}">
+                                        <a href="{{ route('category.show', [...Arr::except(request()->query(), ['page']), 'category' => $parent]) }}">
                                             {{ $parent->name }}
                                         </a>
                                         <div class="filter-categories__counter">{{ $parent->deepProductsCount }}</div>
@@ -30,7 +30,7 @@
                                 <li class="filter-categories__item filter-categories__item--current"
                                     wire:key="cat-current">
                                     <img src="{{ $category->imageUrl() }}" class="category-icon-image">
-                                    <a href="{{ route('category.show', [...request()->query(), 'category' => $category]) }}">
+                                    <a href="{{ route('category.show', [...Arr::except(request()->query(), ['page']), 'category' => $category]) }}">
                                         {{ $category->name }}
                                     </a>
                                     <div class="filter-categories__counter">{{ $category->products_count }}</div>
@@ -40,7 +40,7 @@
                                         <li class="filter-categories__item filter-categories__item--child"
                                             wire:key="cat-{{$child->id}}">
                                             <img src="{{ $child->imageUrl() }}" class="category-icon-image">
-                                            <a href="{{ route('category.show', [...request()->query(), 'category' => $child]) }}">
+                                            <a href="{{ route('category.show', [...Arr::except(request()->query(), ['page']), 'category' => $child]) }}">
                                                 {{ $child->name }}
                                             </a>
                                             <div class="filter-categories__counter">{{ $child->products_count }}</div>
@@ -73,7 +73,7 @@
                                     <label class="filter-list__item" wire:key="brand-top-{{$key}}">
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
-                                                <input class="input-check__input" name="brands[]" value="{{ $key }}" wire:model="brandsArray.{{$key}}" type="checkbox"
+                                                <input class="input-check__input" name="brands[]" value="{{ $key }}" wire:model="brandsArray" type="checkbox"
                                                     {{ request()->has('brands') ? in_array($key, request()->input('brands')) ? "checked":null:null }}>
                                                 <span class="input-check__box"></span><span class="input-check__icon">
                                                     <svg width="9px" height="7px">
@@ -84,6 +84,7 @@
                                         </span>
                                         <span class="filter-list__title">
                                             {{ $brand[0]?->brand?->name }}
+                                            <img src="{{ $brand[0]?->brand?->imageUrl() }}" class="category-icon-image">
                                         </span>
                                         <span class="filter-list__counter">{{ count($brand) }}</span>
                                     </label>
