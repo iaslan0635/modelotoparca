@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
     <x-breadcrumb :parts="[
-    @if(isset($product->categories[0]))
-        ['name' => $product->categories[0]->name, 'link' => route('category.show', $product->categories[0])],
-    @endif
-    ['name' => \Str::limit($product->title, 20)]
-]"/>
+           @isset($product->categories[0])
+            ['name' => $product->categories[0]->name, 'link' => route('category.show', $product->categories[0])],
+             @endisset
+            ['name' => \Str::limit($product->title, 20)]
+        ]"/>
     <div class="block-split">
         <div class="container">
             <div class="block-split__row row no-gutters">
