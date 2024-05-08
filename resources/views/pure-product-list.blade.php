@@ -50,10 +50,9 @@
                                 class="product-card__meta-title">
 {{--                                <x-product-meta :tiger="$product->tiger"/> --}}
                                 @props(['tiger' ])
-
-                                {{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}
+<span {{ $attributes }}>
+    {{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}
     <h6 {{ $attributes }}>
-
         <span
             class="badge @if($tiger?->stock_on_51) badge-success @else badge-danger @endif">S51
         </span>
@@ -64,7 +63,7 @@
             class="badge @if($tiger?->stock_on_01) badge-success @else badge-danger @endif">S01
         </span>
     </h6>
-
+</span>
                             </span>
                         </div>
                         <x-product-card-name :product="$product"/>
