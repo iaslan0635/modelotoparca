@@ -3,9 +3,8 @@
 namespace App\Models\Ocp;
 
 use App\Packages\Fuzz;
-use Illuminate\Database\Eloquent\Model;
 
-class SearchPage extends Model
+class SearchPage extends BaseModel
 {
     public $timestamps = false;
 

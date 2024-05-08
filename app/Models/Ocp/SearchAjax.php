@@ -2,9 +2,7 @@
 
 namespace App\Models\Ocp;
 
-use Illuminate\Database\Eloquent\Model;
-
-class SearchAjax extends Model
+class SearchAjax extends BaseModel
 {
     public $timestamps = false;
 }
