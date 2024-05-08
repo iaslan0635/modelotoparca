@@ -45,7 +45,7 @@
                     </div>
                     <x-product-card-image :product="$product" compatible/>
                     <div class="product-card__info">
-                        <div class="product-card__meta">
+                        <div class="product-card__meta" style="height: 60px">
                             <span
                                 class="product-card__meta-title"> <x-product-meta :tiger="$product->tiger"/></span>
                         </div>
