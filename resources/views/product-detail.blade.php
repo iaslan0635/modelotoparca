@@ -84,7 +84,7 @@
                                         <div class="product__prices-stock">
                                             <div class="product__prices">
                                                 <div
-                                                    class="product__price product__price--current">{{ $product->price?->formattedPrice }}</div>
+                                                    class="product__price product__price--current">{{ $product->price?->discounted_price }}</div>
                                             </div>
                                             <div
                                                 class="status-badge status-badge--style--success product__stock status-badge--has-text">
