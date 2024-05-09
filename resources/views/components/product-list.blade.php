@@ -14,8 +14,8 @@
 
 <div class="site__body">
     {{ $breadcrumb ?? '' }}
-    <div class="block-split block-split--has-sidebar">
-        <div class="block-split__item block-split__item-sidebar col-auto solyasla">
+    <div class="block-split block-split--has-sidebar solyasla">
+        <div class="block-split__item block-split__item-sidebar col-auto">
             <div class="sidebar sidebar--offcanvas--mobile solyasla">
                 <div class="sidebar__backdrop"></div>
                 <div class="sidebar__body">
