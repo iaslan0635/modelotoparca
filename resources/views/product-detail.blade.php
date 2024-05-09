@@ -83,8 +83,12 @@
                                         <br>
                                         <div class="product__prices-stock">
                                             <div class="product__prices">
-                                                <div
-                                                    class="product__price product__price--current">{{ $product->price?->discounted_price }}</div>
+                                                @if($product->price?->discount)
+                                                    <div class="product__price product__price--old">{{ $product->price?->price }} {{ $product->price?->symbol }}</div>
+                                                    <div class="product__price product__price--new">{{ $product->price?->discounted_price }} {{ $product->price?->symbol }}</div>
+                                                @else
+                                                    <div class="product__price product__price--current">{{ $product->price?->price }} {{ $product->price?->symbol }}</div>
+                                                @endif
                                             </div>
                                             <div
                                                 class="status-badge status-badge--style--success product__stock status-badge--has-text">
