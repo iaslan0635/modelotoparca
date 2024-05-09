@@ -33,7 +33,7 @@ class DataProvider
     public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)
     {
         $dbPageSize = $searchPage->products()->wherePivot("page", $pageNumber)->count();
-        if ($dbPageSize > 15) \Log::warning("Onlinecarparts page size is above 15 ($dbPageSize) for page $pageNumber in $searchPage->url");
+        if ($dbPageSize > 15) \Log::error("Onlinecarparts page size is above 15 ($dbPageSize) for page $pageNumber in $searchPage->url");
 
         $isDbComplete = $dbPageSize === 15;
         if (!$isDbComplete) return $this->scraper->getSearchPageProductLinks($searchPage, $pageNumber, $brandId, $articleNo);
