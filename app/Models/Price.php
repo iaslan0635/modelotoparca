@@ -47,7 +47,7 @@ class Price extends BaseModel
     protected function realDiscountAmount(): Attribute
     {
         return Attribute::get(fn() => match ($this->discount_type) {
-            'percentile' => $this->price * $this->discount_amount,
+            'percentile', 'percentage' => $this->price * $this->discount_amount,
             'fixed' => $this->discount_amount,
             default => throw new \Exception("The discount type ($this->discount_type) of the price record with id $this->id is incorrect."),
         });
