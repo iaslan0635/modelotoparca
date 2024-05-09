@@ -20912,7 +20912,7 @@ select.form-control::-ms-expand {
 }
 
 .solyasla {
-    position: fixed;
+    position: fixed !important;
     left: 0px;
     top: 0pxs;
 }
