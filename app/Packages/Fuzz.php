@@ -5,9 +5,9 @@ namespace App\Packages;
 /** Symbol tolerant string comparison */
 class Fuzz
 {
-    public static function isEqual(string $string1, string $string2): bool
+    public static function isEqual(string $lhs, string $rhs): bool
     {
-        return self::regexify($string1) === self::regexify($string2);
+        return self::regexify($lhs) === self::regexify($rhs);
     }
 
     public static function regexify(string $string): string

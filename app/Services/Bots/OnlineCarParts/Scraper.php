@@ -3,11 +3,13 @@
 namespace App\Services\Bots\OnlineCarParts;
 
 use App\Models\Ocp\Brand;
+use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
 use App\Packages\Fuzz;
 use App\Packages\Utils;
 use App\Services\Bots\OcpClient;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Spatie\Url\Url;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -68,20 +70,23 @@ class Scraper
         return collect($links)->filter(fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
     }
 
-    public function getAjaxPage(string $keyword, ?int $brandId, ?string $articleNo)
+    /** returns a collection of array{type: string, link: string} */
+    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?int $brandName, ?string $articleNo)
     {
-        $url = "https://www.onlinecarparts.co.uk/ajax/search/autocomplete?keyword=" . urlencode($keyword);
+        $url = $searchAjax->url;
         $json = json_decode(OcpClient::request($url), true);
 
         $results = $json['results'];
-        foreach ($results as $result) {
-            $type = $result['meta']['type'];
-            $values = $result['values'];
-            foreach ($values as $value) {
-                $url = $type === 'oem' ? $value['url'] : $value['link'];
-                $this->getProductPage($url);
-            }
-        }
+
+        return collect($results)->flatMap(function ($result) use ($articleNo, $brandName) {
+            $type = $result['type'];
+            $items = collect($result['values'])->filter(fn($item) => !str_contains($item['url'], '/tyres-shop/'));
+
+            if ($brandName) $items = $items->filter(fn($item) => Fuzz::isEqual($item['brandName'], $brandName));
+            if ($articleNo) $items = $items->filter(fn($item) => Fuzz::isEqual($item['articleNo'], $articleNo));
+
+            return $items->map(fn($item) => ['type' => $type, 'link' => $item['url']]);
+        });
     }
 
     public function getProductPage(string $url)

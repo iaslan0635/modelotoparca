@@ -3,6 +3,7 @@
 namespace App\Services\Bots\OnlineCarParts;
 
 use App\Models\Ocp\Product;
+use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
 
 /** A bridge between Scraper and Bot. Attempts to use already fetched data */
@@ -43,5 +44,17 @@ class DataProvider
         if ($articleNo) $query->where("article_no", $articleNo);
 
         return $query->pluck("url");
+    }
+
+    /** returns a collection of array{type: string, link: string} */
+    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?int $brandName, ?string $articleNo)
+    {
+        return $this->scraper->getSearchAjaxProductLinks($searchAjax, $brandName, $articleNo);
+    }
+
+    public function getSearchAjax(string $keyword)
+    {
+        $url = "https://www.onlinecarparts.co.uk/ajax/search/autocomplete?keyword=" . urlencode($keyword);
+        return SearchAjax::firstOrCreate(["keyword" => $keyword], ["url" => $url]);
     }
 }
