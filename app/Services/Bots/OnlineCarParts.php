@@ -71,10 +71,21 @@ class OnlineCarParts
         for ($pageNumber = 1; $pageNumber <= $searchPage->pageCount; $pageNumber++) {
             $links = $this->getProductLinksForPage($searchPage, $pageNumber, $brandId);
 
-            foreach ($links as $link) {
-                if (self::saveProductPage($link)) {
-                    $successfulProductCount++;
-                }
+            foreach ($links as $i => $link) {
+                if (!$this->shouldSaveProduct($link)) continue;
+
+                $productPage = $this->data->getProductPage($link);
+                $productPage->saveToDatabase($this->product_id);
+
+                $searchPage->products()->syncWithoutDetaching([
+                    $productPage->id => [
+                        'page' => $pageNumber,
+                        'index' => $i,
+                        'brand_id' => $brandId
+                    ]
+                ]);
+
+                $successfulProductCount++;
             }
 
             $count = count($links);
@@ -112,18 +123,12 @@ class OnlineCarParts
         return $productLinks;
     }
 
-    public function saveProductPage(string $url): bool
+    public function shouldSaveProduct(string $productUrl): bool
     {
         $connection = BotProduct::firstOrNew(
-            ['product_id' => $this->product_id, 'url' => $url],
+            ['product_id' => $this->product_id, 'url' => $productUrl],
             ['origin_field' => $this->field, 'keyword' => $this->keyword]
         );
-        if ($connection->is_banned) return false;
-
-        $this->data
-            ->getProductPage($url)
-            ->saveToDatabase($this->product_id);
-
-        return true;
+        return !$connection->is_banned;
     }
 }

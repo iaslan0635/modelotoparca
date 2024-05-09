@@ -14,6 +14,76 @@ use Symfony\Component\DomCrawler\Crawler;
 /** Responsible for scraping and parsing. Intended to be used only by DataProvider */
 class Scraper
 {
+    public function getSearchPage(string $keyword, bool $isOem)
+    {
+        $url = $isOem
+            ? 'https://www.onlinecarparts.co.uk/oenumber/' . Fuzz::regexify($keyword) . '.html?'
+            : 'https://www.onlinecarparts.co.uk/spares-search.html?keyword=' . urlencode($keyword);
+
+        $crawler = new Crawler(OcpClient::request($url));
+
+        $brands = $crawler->filter('.brand-slider__item')->each(
+            fn(Crawler $el) => Brand::firstOrCreate(
+                ['id' => $el->filter('input')->attr('value')],
+                ['name' => $el->filter('img')->attr('alt')],
+            )
+        );
+
+        $pageEls = $crawler->filter('.listing-pagination__item[data-pagination-page]');
+        $pageCount = $pageEls->count() > 0 ? (int)$pageEls->last()->text() : 1;
+
+        $type = $isOem ? 'oem' : 'keyword';
+        $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn(Crawler $el) => $el->text());
+
+        // We trust DataProvider to call this only if it doesn't exist
+        $searchPage = SearchPage::create(compact('keyword', 'pageCount', 'type', 'url', 'categories'));
+        $searchPage->brands()->sync(array_map(fn(Brand $b) => $b->id, $brands));
+        return $searchPage;
+    }
+
+    public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)
+    {
+        $url = Url::fromString($searchPage->url)->withQueryParameter('page', $pageNumber);
+        if ($brandId) $url = $url->withQueryParameter('brand[]', $brandId);
+
+        $crawler = new Crawler(OcpClient::request((string)$url));
+        $productEls = $crawler->filter('.product-card:not([data-recommended-products])');
+
+        if ($articleNo !== null) {
+            $commonizedKeyword = Fuzz::regexify($articleNo);
+            $productEls = $productEls->reduce(
+                function (Crawler $el) use ($commonizedKeyword) {
+                    $artklEl = $el->filter('.product-card__artkl span');
+
+                    return $artklEl->count() != 0 && Fuzz::regexify($artklEl->innerText()) === $commonizedKeyword;
+                }
+            );
+        }
+
+        $links = $productEls->each(function (Crawler $el) {
+            $linkEl = $el->filter('.product-card__title-link');
+            return $linkEl->attr('href') ?? $linkEl->attr('data-link');
+        });
+
+        return collect($links)->filter(fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
+    }
+
+    public function getAjaxPage(string $keyword, ?int $brandId, ?string $articleNo)
+    {
+        $url = "https://www.onlinecarparts.co.uk/ajax/search/autocomplete?keyword=" . urlencode($keyword);
+        $json = json_decode(OcpClient::request($url), true);
+
+        $results = $json['results'];
+        foreach ($results as $result) {
+            $type = $result['meta']['type'];
+            $values = $result['values'];
+            foreach ($values as $value) {
+                $url = $type === 'oem' ? $value['url'] : $value['link'];
+                $this->getProductPage($url);
+            }
+        }
+    }
+
     public function getProductPage(string $url)
     {
         $crawler = new Crawler(OcpClient::request($url));
@@ -104,59 +174,5 @@ class Scraper
         }
 
         return $vehicleIds;
-    }
-
-    public function getSearchPage(string $keyword, bool $isOem)
-    {
-        $url = $isOem
-            ? 'https://www.onlinecarparts.co.uk/oenumber/' . Fuzz::regexify($keyword) . '.html?'
-            : 'https://www.onlinecarparts.co.uk/spares-search.html?keyword=' . urlencode($keyword);
-
-        $crawler = new Crawler(OcpClient::request($url));
-
-        $brands = $crawler->filter('.brand-slider__item')->each(
-            fn(Crawler $el) => Brand::firstOrCreate(
-                ['id' => $el->filter('input')->attr('value')],
-                ['name' => $el->filter('img')->attr('alt')],
-            )
-        );
-
-        $pageEls = $crawler->filter('.listing-pagination__item[data-pagination-page]');
-        $pageCount = $pageEls->count() > 0 ? (int)$pageEls->last()->text() : 1;
-
-        $type = $isOem ? 'oem' : 'keyword';
-        $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn(Crawler $el) => $el->text());
-
-        // We trust DataProvider to call this only if it doesn't exist
-        $searchPage = SearchPage::create(compact('keyword', 'pageCount', 'type', 'url', 'categories'));
-        $searchPage->brands()->sync(array_map(fn (Brand $b) => $b->id, $brands));
-        return $searchPage;
-    }
-
-    public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)
-    {
-        $url = Url::fromString($searchPage->url)->withQueryParameter('page', $pageNumber);
-        if ($brandId) $url = $url->withQueryParameter('brand[]', $brandId);
-
-        $crawler = new Crawler(OcpClient::request((string)$url));
-        $productEls = $crawler->filter('.product-card:not([data-recommended-products])');
-
-        if ($articleNo !== null) {
-            $commonizedKeyword = Fuzz::regexify($articleNo);
-            $productEls = $productEls->reduce(
-                function (Crawler $el) use ($commonizedKeyword) {
-                    $artklEl = $el->filter('.product-card__artkl span');
-
-                    return $artklEl->count() != 0 && Fuzz::regexify($artklEl->innerText()) === $commonizedKeyword;
-                }
-            );
-        }
-
-        $links = $productEls->each(function (Crawler $el) {
-            $linkEl = $el->filter('.product-card__title-link');
-            return $linkEl->attr('href') ?? $linkEl->attr('data-link');
-        });
-
-        return collect($links)->filter(fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Services\Bots\OnlineCarParts;
 
 use App\Models\BotImage;
+use App\Models\Ocp;
 use App\Models\Product;
 use App\Models\ProductCar;
 use App\Models\ProductOem;
-use App\Models\Ocp;
 use Illuminate\Support\Facades\DB;
 
 final class ProductPage
@@ -48,41 +48,7 @@ final class ProductPage
     {
     }
 
-    public function saveToBigData()
-    {
-        DB::connection('bigdata')->transaction(function () {
-            $db = DB::connection('bigdata');
-
-            $db->table('products')->updateOrInsert(
-                ['id' => $this->id],
-                [
-                    'title' => $this->title,
-                    'subtitle' => $this->subtitle,
-                    'brand' => $this->brand,
-                    'specifications' => json_encode($this->specs),
-                    'tecdoc' => json_encode($this->tecdoc),
-                    'images' => json_encode($this->images),
-                    'category' => $this->category,
-                    'mpn' => $this->mpn,
-                    'sku' => $this->sku,
-                    'gtin13' => $this->gtin13,
-                    'url' => $this->url,
-                    'article_no' => $this->articleId,
-                ]
-            );
-
-            $db->table('product_oems')->insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['product_id' => $this->id]), $this->oems));
-
-            $db->table('product_cars')->insertOrIgnore(
-                array_map(fn($vehicleId) => [
-                    'product_id' => $this->id,
-                    'car_id' => $vehicleId,
-                ], $this->vehicles)
-            );
-        });
-    }
-
-    public static function fromBigData(Ocp\Product $product)
+    public static function fromBigData(Ocp\Product $product): ProductPage
     {
         $oems = $product->oems->map(fn(Ocp\ProductOem $oem) => [
             'brand' => $oem->brand,
@@ -108,6 +74,38 @@ final class ProductPage
             sku: $product->sku,
             gtin13: $product->gtin13,
         );
+    }
+
+    public function saveToBigData()
+    {
+        DB::connection("bigdata")->transaction(function () {
+            Ocp\Product::updateOrInsert(
+                ['id' => $this->id],
+                [
+                    'title' => $this->title,
+                    'subtitle' => $this->subtitle,
+                    'brand' => $this->brand,
+                    'specifications' => json_encode($this->specs),
+                    'tecdoc' => json_encode($this->tecdoc),
+                    'images' => json_encode($this->images),
+                    'category' => $this->category,
+                    'mpn' => $this->mpn,
+                    'sku' => $this->sku,
+                    'gtin13' => $this->gtin13,
+                    'url' => $this->url,
+                    'article_no' => $this->articleId,
+                ]
+            );
+
+            Ocp\ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['product_id' => $this->id]), $this->oems));
+
+            Ocp\ProductCar::insertOrIgnore(
+                array_map(fn($vehicleId) => [
+                    'product_id' => $this->id,
+                    'car_id' => $vehicleId,
+                ], $this->vehicles)
+            );
+        });
     }
 
     public function saveToDatabase(int $product_id)
