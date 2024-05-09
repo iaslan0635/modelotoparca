@@ -71,7 +71,7 @@ class Scraper
     }
 
     /** returns a collection of array{type: string, link: string} */
-    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?int $brandName, ?string $articleNo)
+    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?string $brandName, ?string $articleNo)
     {
         $url = $searchAjax->url;
         $json = json_decode(OcpClient::request($url), true);
@@ -79,7 +79,7 @@ class Scraper
         $results = $json['results'];
 
         return collect($results)->flatMap(function ($result) use ($articleNo, $brandName) {
-            $type = $result['type'];
+            $type = $result['meta']['type'];
             $items = collect($result['values'])->filter(fn($item) => !str_contains($item['url'], '/tyres-shop/'));
 
             if ($brandName) $items = $items->filter(fn($item) => Fuzz::isEqual($item['brandName'], $brandName));

@@ -47,7 +47,7 @@ class DataProvider
     }
 
     /** returns a collection of array{type: string, link: string} */
-    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?int $brandName, ?string $articleNo)
+    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?string $brandName, ?string $articleNo)
     {
         return $this->scraper->getSearchAjaxProductLinks($searchAjax, $brandName, $articleNo);
     }

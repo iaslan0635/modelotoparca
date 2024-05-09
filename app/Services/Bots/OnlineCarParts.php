@@ -160,10 +160,10 @@ class OnlineCarParts
     }
 
     /** returns a collection of array{type: string, link: string} */
-    public function getProductLinksForAjax(Ocp\SearchAjax $searchAjax, ?int $brandId)
+    public function getProductLinksForAjax(Ocp\SearchAjax $searchAjax, ?string $brandName)
     {
         $articleNo = $this->getArticleNo();
-        return $this->data->getSearchAjaxProductLinks($searchAjax, $brandId, $articleNo);
+        return $this->data->getSearchAjaxProductLinks($searchAjax, $brandName, $articleNo);
     }
 
     public function shouldSaveProduct(string $productUrl): bool

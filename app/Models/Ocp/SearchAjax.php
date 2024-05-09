@@ -9,6 +9,6 @@ class SearchAjax extends BaseModel
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, "search_page_products")->using(SearchPageProduct::class);
+        return $this->belongsToMany(Product::class, "search_ajax_products")->using(SearchPageProduct::class);
     }
 }
