@@ -161,7 +161,7 @@
         <div class="container">
             <div class="block-split__row row no-gutters">
 
-                <div class="block-split__item block-split__item-content col-auto">
+                <div class="block-split__item block-split__item-fullwitdh col-auto">
                     <div class="block">
                         <div class="products-view">
                             <x-car-selection/>
