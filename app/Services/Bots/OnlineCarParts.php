@@ -43,8 +43,12 @@ class OnlineCarParts
 
     public function scrape(): bool
     {
-        if ($this->scrapeFromSearchAjax()) return true;
+        if ($this->scrapeFromSearchAjax()) {
+            $this->log('Ajax tarafından ürün bulunduğu için arama sayfası es geçiliyor.');
+            return true;
+        }
 
+        $this->log("Ajax'tan ürün bulunamadığı için arama sayfası taranıyor.");
         return $this->scrapeFromSearchPage();
     }
 
@@ -73,7 +77,7 @@ class OnlineCarParts
             $successfulProductCount++;
         }
 
-        $this->log("$successfulProductCount Adet ürün çekildi.");
+        $this->log("Ajax tarafından $successfulProductCount adet ürün çekildi.");
 
         return $successfulProductCount > 0;
     }
@@ -129,7 +133,7 @@ class OnlineCarParts
             }
         }
 
-        $this->log("$successfulProductCount Adet ürün çekildi.");
+        $this->log("$successfulProductCount adet ürün çekildi.");
 
         return $successfulProductCount > 0;
     }
