@@ -17,16 +17,26 @@
             <thead>
             <tr>
                 <th>Mesaj</th>
-                <th class="text-end">Tarih</th>
+                <th class="text-end">Tarih/Kaynak</th>
             </tr>
             </thead>
             <tbody>
             @foreach($logs as $log)
                 <tr>
-                    <td>
-                        <pre>{{ $log->message }}</pre>
+                    <td class="ps-4 fs-4">
+                        <span>{{ $log->message }}</span>
+                        @if($log->context)
+                            <div class="d-flex w-100 gap-6 mt-2">
+                                @foreach($log->context as $key => $value)
+                                    <div class="badge text-bg-light border border-primary fw-normal">{{ $key }}: {{ $value }}</div>
+                                @endforeach
+                            </div>
+                        @endif
                     </td>
-                    <td class="text-end">{{ $log->created_at->diffForHumans() }}</td>
+                    <td class="text-end">
+                        <div>{{ $log->created_at->diffForHumans() }}</div>
+                        <div class="badge text-bg-{{ $log->sourceColor }} text-light mt-4">{{ $log->source }}</div>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

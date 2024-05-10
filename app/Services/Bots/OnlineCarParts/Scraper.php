@@ -175,7 +175,8 @@ class Scraper
             foreach ($modelIds as $modelId) {
                 $modelUrl = "https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$ocpProductId&makerId=$makerId&modelId=$modelId";
                 $vehicles = json_decode(OcpClient::request($modelUrl))->vehicles;
-                array_push($vehicleIds, ...collect($vehicles)->pluck('id'));
+                $ids = Arr::pluck($vehicles, 'id');
+                array_push($vehicleIds, ...$ids);
             }
         }
 

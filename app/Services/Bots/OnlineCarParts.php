@@ -85,7 +85,7 @@ class OnlineCarParts
             $searchPage = $this->data->getSearchPage($this->keyword, $this->isOem);
         } catch (OcpClientException $e) {
             if ($this->isOem && $e->statusCode === 404) {
-                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor. | Aranan sayfa: $e->url");
+                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor.", ['Aranan sayfa', $e->url]);
                 return false;
             } else {
                 throw $e;
@@ -135,16 +135,18 @@ class OnlineCarParts
         return $successfulProductCount > 0;
     }
 
-    private function log(string $message): void
+    private function log(string $message, ?array $context = null): void
     {
-        Log::create([
-            'product_id' => $this->product_id,
-            'message' => $message .
-                " | Anahtar Kelime: $this->keyword" .
-                " | Alan: $this->field" .
-                ' | Sembolsüz: ' . ($this->regexed ? 'Evet' : 'Hayır') .
-                ($this->brand_filter !== null ? " | Marka filtresi: $this->brand_filter" : ''),
-        ]);
+        $logContext = [
+            "Anahtar Kelime" => $this->keyword,
+            "Alan" => $this->field,
+            "Sembolsüz" => ($this->regexed ? 'Evet' : 'Hayır'),
+            "Marka filtresi" => $this->brand_filter ?? "(Yok)",
+        ];
+
+        if ($context) $logContext = array_merge($logContext, $context);
+
+        Log::log($this->product_id, $message, $logContext, 'bot');
     }
 
     public function getProductLinksForPage(Ocp\SearchPage $searchPage, int $pageNumber, ?int $brandId)

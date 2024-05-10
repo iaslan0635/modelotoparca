@@ -15,6 +15,7 @@ use App\Models\TigerProduct;
 use App\Services\Bots\OnlineCarParts;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
@@ -108,10 +109,15 @@ class ExcelImport implements ShouldQueue
             $isChaged = $product->isDirty($veriler);
             foreach ($product->getChanges() as $column => $new) {
                 if ($column !== 'updated_at' && $column !== 'created_at') {
-                    Log::create([
-                        'product_id' => $product->id,
-                        'message' => "Değişiklik yapıldı. Kolon: $column\nEski: {$product->getOriginal($column)}, Yeni: $new",
-                    ]);
+                    static::log(
+                        $product,
+                        "Değişiklik yapıldı.",
+                        [
+                            'Kolon' => $column,
+                            'Eski' => $product->getOriginal($column),
+                            'Yeni' => $new,
+                        ]
+                    );
                 }
             }
 
@@ -194,7 +200,7 @@ class ExcelImport implements ShouldQueue
             'title' => $title,
             'sub_title' => $allWebNames,
             'description' => $allWebNames,
-            'slug' => Str::slug($title).'-'.$id,
+            'slug' => Str::slug($title) . '-' . $id,
             'sku' => $product->code,
             'quantity' => $product->onhand,
             'status' => intval($product->active) === 0,
@@ -267,21 +273,13 @@ class ExcelImport implements ShouldQueue
             }
 
             if ($product[$field] === null) {
-                Log::create([
-                    'product_id' => $product->id,
-                    'message' => "Boş (null) değer atlandı. Kolon: $field",
-                ]);
-
+                static::log($product, "Boş (null) değer atlandı.", ['Kolon' => $field]);
                 continue;
             }
 
             $value = trim($product[$field]);
             if (strlen($value) === 0) {
-                Log::create([
-                    'product_id' => $product->id,
-                    'message' => "Boş değer atlandı. Kolon: $field",
-                ]);
-
+                static::log($product, "Boş değer atlandı.", ['Kolon' => $field]);
                 continue;
             }
 
@@ -298,10 +296,14 @@ class ExcelImport implements ShouldQueue
                 brand_filter: $brand_filter,
             ))->smash();
             if ($found) {
-                Log::create([
-                    'product_id' => $product->id,
-                    'message' => "Ürün bulundu, bot sonlandırılıyor. Kolon: $field | Değer: $value | Marka filtresi: ".($brand_filter ?? '(Yok)'),
-                ]);
+                static::log(
+                    $product, "Ürün bulundu, bot sonlandırılıyor.",
+                    [
+                        'Kolon' => $field,
+                        'Değer' => $value,
+                        'Marka filtresi' => $brand_filter ?? '(Yok)',
+                    ]
+                );
                 break;
             }
         }
@@ -342,10 +344,16 @@ class ExcelImport implements ShouldQueue
     private static function getBrand(TigerProduct $product): ?string
     {
         $brand = Brand::find($product->markref, ['name', 'botname']);
-        if (! $brand) {
+        if (!$brand) {
             return null;
         }
 
         return $brand->botname ?? $brand->name;
+    }
+
+    private static function log(int|Model $productOrId, string $message, ?array $context = null)
+    {
+        $productId = $productOrId instanceof Model ? $productOrId->getKey() : $productOrId;
+        return Log::log($productId, $message, $context, 'excel');
     }
 }
