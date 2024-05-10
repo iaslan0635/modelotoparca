@@ -58,10 +58,7 @@ class OnlineCarParts
         $productLinks = $this->getProductLinksForAjax($searchAjax, $this->brand_filter);
 
         $successfulProductCount = 0;
-        foreach ($productLinks as $i => ["type" => $type, "link" => $link]) {
-            $isOemType = $type === 'oen'; // Onlinecarparts uses 'oen' for OEMs
-            if ($isOemType !== $this->isOem) continue;
-
+        foreach ($productLinks as $i => $link) {
             if (!$this->shouldSaveProduct($link)) continue;
 
             $productPage = $this->data->getProductPage($link);
@@ -69,7 +66,7 @@ class OnlineCarParts
 
             $searchAjax->products()->syncWithoutDetaching([
                 $productPage->id => [
-                    'type' => $type,
+                    'type' => "product", // This may be 'oem' in the future
                     'index' => $i,
                 ]
             ]);

@@ -8,6 +8,7 @@ use App\Models\Ocp\SearchPage;
 use App\Packages\Fuzz;
 use App\Packages\Utils;
 use App\Services\Bots\OcpClient;
+use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Spatie\Url\Url;
@@ -70,23 +71,23 @@ class Scraper
         return collect($links)->filter(fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
     }
 
-    /** returns a collection of array{type: string, link: string} */
-    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?string $brandName, ?string $articleNo)
+    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?string $brandName, ?string $articleNo): Collection
     {
         $url = $searchAjax->url;
         $json = json_decode(OcpClient::request($url), true);
-
         $results = $json['results'];
 
-        return collect($results)->flatMap(function ($result) use ($articleNo, $brandName) {
-            $type = $result['meta']['type'];
-            $items = collect($result['values'])->filter(fn($item) => !str_contains($item['url'], '/tyres-shop/'));
+        $productResults = array_filter($results, fn($result) => $result['meta']['type'] === 'product');
 
-            if ($brandName) $items = $items->filter(fn($item) => Fuzz::isEqual($item['brandName'], $brandName));
-            if ($articleNo) $items = $items->filter(fn($item) => Fuzz::isEqual($item['articleNo'], $articleNo));
+        if (count($productResults) > 1) throw new Exception("Multiple product sections found in search ajax response");
+        if (empty($productResults)) return collect(); // No results
 
-            return $items->map(fn($item) => ['type' => $type, 'link' => $item['url']]);
-        });
+        $products = collect($productResults[0]['values']);
+
+        if ($brandName) $products = $products->filter(fn($p) => Fuzz::isEqual($p['brandName'], $brandName));
+        if ($articleNo) $products = $products->filter(fn($p) => Fuzz::isEqual($p['articleNo'], $articleNo));
+
+        return $products->pluck('url')->filter(fn($url) => !str_contains($url, '/tyres-shop/'));
     }
 
     public function getProductPage(string $url)
@@ -110,13 +111,13 @@ class Scraper
         $makerIds = $crawler->filter('.compatibility__maker-title')->each(fn(Crawler $el) => $el->attr('data-maker-id'));
         $ocpProductId = Utils::regex('/-(\d+)\.html/', $url, 1);
         if ($ocpProductId === null) {
-            throw new \Exception("ID not found in URL: $url");
+            throw new Exception("ID not found in URL: $url");
         }
 
         $_artkl = $crawler->filter('.product__artkl')->innerText();
         $articleId = Utils::regex('/Article №: ([^ ]+)/', $_artkl, 1);
         if ($articleId === null) {
-            throw new \Exception("Article ID not found in artkl: $_artkl");
+            throw new Exception("Article ID not found in artkl: $_artkl");
         }
 
         $vehicles = $this->getVehicleIds($ocpProductId, $makerIds);
