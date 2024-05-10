@@ -130,7 +130,7 @@ class OnlineCarParts
             }
         }
 
-        $this->log("$successfulProductCount adet ürün çekildi.");
+        $this->log("Arama sayfalarından $successfulProductCount adet ürün çekildi.");
 
         return $successfulProductCount > 0;
     }
