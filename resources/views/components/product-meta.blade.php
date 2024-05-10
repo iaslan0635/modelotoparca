@@ -10,7 +10,7 @@
             class="badge @if($tiger?->stock_on_38) badge-success @else badge-danger @endif">S38 / {{$tiger?->stock_on_38}}
         </span>
         <span
-            class="badge @if($tiger?->stock_on_01) badge-success @else badge-danger @endif">S01 / {{$tiger->stock_on_01}}
+            class="badge @if($tiger?->stock_on_01) badge-success @else badge-danger @endif">S01 / {{$tiger?->stock_on_01}}
         </span>
     </h6>
 </span>
