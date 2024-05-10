@@ -65,7 +65,7 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
 });
 
 Route::controller(AnalysisController::class)->prefix('analysis')->name('analysis.')->group(function () {
-    Route::get('search', 'search')->name('search')->middleware('permission:Analizler.Arama İstatistikleri');
+    Route::get('search', 'index')->name('search')->middleware('permission:Analizler.Arama İstatistikleri');
     Route::get('search-replacements', 'searchReplacements')->name('search-replacements')->middleware('permission:Analizler.Arama Düzeltmleri.Listele');
 });
 

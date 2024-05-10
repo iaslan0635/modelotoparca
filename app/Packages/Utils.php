@@ -2,6 +2,8 @@
 
 namespace App\Packages;
 
+use Illuminate\Contracts\Database\Query\Builder;
+
 class Utils
 {
     /**
@@ -44,5 +46,19 @@ class Utils
     public static function regex(string $pattern, string $subject, int $group, mixed $default = null)
     {
         return preg_match($pattern, $subject, $matches) ? $matches[$group] : $default;
+    }
+
+    public static function search(Builder $query, array|string $keys)
+    {
+        $search = request('search');
+        if (!$search) return $query;
+
+        if (is_string($keys)) return $query->where($keys, 'like', "%$search%");
+
+        return $query->where(function ($query) use ($search, $keys) {
+            foreach ($keys as $key) {
+                $query->orWhere($key, 'like', "%$search%");
+            }
+        });
     }
 }

@@ -39,11 +39,7 @@ class BrandController extends Controller
 
     public function index()
     {
-        $brands = Brand::query();
-
-        if ($search = request('search')) {
-            $brands->where('name', 'like', "%$search%");
-        }
+        $brands = $this->search(Brand::query(), "name");
 
         return view('admin.inhouse.brands.index', [
             'brands' => $brands->paginate(),
