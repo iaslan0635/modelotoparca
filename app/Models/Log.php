@@ -30,7 +30,7 @@ class Log extends BaseModel
     {
         return Attribute::get(
             fn() => match ($this->source) {
-                'bot' => 'primary',
+                str_starts_with('bot', $this->source) => 'primary',
                 'excel' => 'success',
                 default => 'dark',
             }
