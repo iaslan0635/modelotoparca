@@ -32,7 +32,8 @@
                                     ksort($context);
                                 @endphp
                                 @foreach($context as $key => $value)
-                                    <div class="badge text-bg-light border border-primary fw-normal">{{ $key }}: {{ $value }}</div>
+                                    <div class="badge text-bg-light border border-primary fw-normal">
+                                        {{ $key }}: {{ is_bool($value) ? ($value ? "Evet": "Hayır") : $value }}</div>
                                 @endforeach
                             </div>
                         @endif

@@ -246,6 +246,20 @@ class ExcelImport implements ShouldQueue
     {
         self::clearBotAssociations($product);
 
+        $ajaxBotStatus = self::runBotForAjax($product, true);
+        if (!$ajaxBotStatus) {
+            static::log($product, "Ajax bot ürün bulamadı, normal bot çalıştırılıyor.");
+            $pageBotStatus = self::runBotForAjax($product, false);
+            if (!$pageBotStatus) {
+                static::log($product, "Normal bot da ürün bulamadı.");
+            }
+        }
+
+        $product->actualProduct?->searchable();
+    }
+
+    private function runBotForAjax(TigerProduct $product, bool $ajax): bool
+    {
         $search_predence = [
             'abk',
             'producercode',
@@ -255,46 +269,18 @@ class ExcelImport implements ShouldQueue
         ];
 
         foreach ($search_predence as $field) {
-            if ($field === 'oem_codes') {
-                $oems = explode(',', $product[$field]);
-                foreach ($oems as $oem) {
-                    $trimmed = trim($oem);
-                    if (strlen($trimmed) < 5) {
-                        continue;
-                    }
-                    (new OnlineCarParts(
-                        keyword: $trimmed,
-                        product_id: $product->id,
-                        field: $field,
-                    ))->smash();
-                }
-
-                continue;
-            }
-
             if ($product[$field] === null) {
-                static::log($product, "Boş (null) değer atlandı.", ['Kolon' => $field]);
+                static::log($product, "Boş (null) değer atlandı.", ['Kolon' => $field, "Ajax" => $ajax]);
                 continue;
             }
 
             $value = trim($product[$field]);
             if (strlen($value) === 0) {
-                static::log($product, "Boş değer atlandı.", ['Kolon' => $field]);
+                static::log($product, "Boş değer atlandı.", ['Kolon' => $field, "Ajax" => $ajax]);
                 continue;
             }
 
-            $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
-
-            if ($field === 'abk' && str_contains($value, '@')) {
-                [$brand_filter, $value] = explode('@', $value);
-            }
-
-            $found = (new OnlineCarParts(
-                keyword: $value,
-                product_id: $product->id,
-                field: $field,
-                brand_filter: $brand_filter,
-            ))->smash();
+            $found = self::runBotForField($product, $field, $value, $ajax);
             if ($found) {
                 static::log(
                     $product, "Ürün bulundu, bot sonlandırılıyor.",
@@ -302,13 +288,49 @@ class ExcelImport implements ShouldQueue
                         'Kolon' => $field,
                         'Değer' => $value,
                         'Marka filtresi' => $brand_filter ?? '(Yok)',
+                        'Ajax' => $ajax,
                     ]
                 );
-                break;
+
+                return true;
             }
         }
 
-        $product->actualProduct?->searchable();
+        return false;
+    }
+
+    private static function runBotForField(TigerProduct $product, string $field, string $value, bool $ajax): bool
+    {
+        if ($field === 'oem_codes') {
+            $oems = explode(',', $product[$field]);
+            foreach ($oems as $oem) {
+                $trimmed = trim($oem);
+                if (strlen($trimmed) < 5) {
+                    continue;
+                }
+                (new OnlineCarParts(
+                    keyword: $trimmed,
+                    product_id: $product->id,
+                    field: $field,
+                ))->smash();
+            }
+
+            return false;
+        }
+
+        $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
+
+        if ($field === 'abk' && str_contains($value, '@')) {
+            [$brand_filter, $value] = explode('@', $value);
+        }
+
+        return (new OnlineCarParts(
+            keyword: $value,
+            product_id: $product->id,
+            field: $field,
+            brand_filter: $brand_filter,
+            ajax: $ajax,
+        ))->smash();
     }
 
     public static function clearBotAssociations(TigerProduct $product)

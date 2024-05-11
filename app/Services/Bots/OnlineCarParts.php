@@ -21,6 +21,7 @@ class OnlineCarParts
         public readonly string  $field,
         public readonly ?string $brand_filter = null,
         public readonly bool    $regexed = false,
+        public readonly bool    $ajax = false,
     )
     {
         $this->data = new OnlineCarParts\DataProvider();
@@ -38,6 +39,7 @@ class OnlineCarParts
             field: $this->field,
             brand_filter: $this->brand_filter,
             regexed: true,
+            ajax: $this->ajax,
         );
 
         return $regexedBot->scrape();
@@ -45,13 +47,11 @@ class OnlineCarParts
 
     public function scrape(): bool
     {
-        if ($this->scrapeFromSearchAjax()) {
-            $this->log('Ajax tarafından ürün bulunduğu için arama sayfası es geçiliyor.');
-            return true;
+        if ($this->ajax) {
+            return $this->scrapeFromSearchAjax();
+        } else {
+            return $this->scrapeFromSearchPage();
         }
-
-        $this->log("Ajax'tan ürün bulunamadığı için arama sayfası taranıyor.");
-        return $this->scrapeFromSearchPage();
     }
 
     public function scrapeFromSearchAjax(): bool
@@ -142,8 +142,9 @@ class OnlineCarParts
         $logContext = [
             "Anahtar Kelime" => $this->keyword,
             "Alan" => $this->field,
-            "Sembolsüz" => ($this->regexed ? 'Evet' : 'Hayır'),
+            "Sembolsüz" => $this->regexed,
             "Marka filtresi" => $this->brand_filter ?? "(Yok)",
+            "Ajax" => $this->ajax,
         ];
 
         if ($context) $logContext = array_merge($logContext, $context);
