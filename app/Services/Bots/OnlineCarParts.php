@@ -87,7 +87,7 @@ class OnlineCarParts
             $searchPage = $this->data->getSearchPage($this->keyword, $this->isOem);
         } catch (OcpClientException $e) {
             if ($this->isOem && $e->statusCode === 404) {
-                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor.", ['Aranan sayfa', $e->url]);
+                $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor.", ['Aranan sayfa' => $e->url]);
                 return false;
             } else {
                 throw $e;
