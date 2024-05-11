@@ -26,7 +26,7 @@
                     <td class="ps-4 fs-4">
                         <span>{{ $log->message }}</span>
                         @if($log->context)
-                            <div class="d-flex w-100 gap-6 mt-2">
+                            <div class="d-flex w-100 gap-6 mt-2 flex-wrap">
                                 @php
                                     $context = $log->context;
                                     ksort($context);
