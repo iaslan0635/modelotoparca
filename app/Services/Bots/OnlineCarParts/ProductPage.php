@@ -55,7 +55,7 @@ final class ProductPage
             'oem' => $oem->oem,
         ])->toArray();
 
-        $vehicleIds = $product->cars->pluck('car_id')->toArray();
+        $vehicleIds = Ocp\ProductCar::where('product_id', $product->id)->pluck('car_id')->toArray();
 
         return new ProductPage(
             url: $product->url,
