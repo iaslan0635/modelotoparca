@@ -38,8 +38,7 @@ class Scraper
         $type = $isOem ? 'oem' : 'keyword';
         $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn(Crawler $el) => $el->text());
 
-        // We trust DataProvider to call this only if it doesn't exist
-        $searchPage = SearchPage::create(compact('keyword', 'pageCount', 'type', 'url', 'categories'));
+        $searchPage = SearchPage::firstOrCreate(compact('url'), compact('keyword', 'pageCount', 'type', 'categories'));
         $searchPage->brands()->sync(array_map(fn(Brand $b) => $b->id, $brands));
         return $searchPage;
     }
