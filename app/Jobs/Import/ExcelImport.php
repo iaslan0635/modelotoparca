@@ -258,7 +258,7 @@ class ExcelImport implements ShouldQueue
         $product->actualProduct?->searchable();
     }
 
-    private function runBotForAjax(TigerProduct $product, bool $ajax): bool
+    private static function runBotForAjax(TigerProduct $product, bool $ajax): bool
     {
         $search_predence = [
             'abk',
