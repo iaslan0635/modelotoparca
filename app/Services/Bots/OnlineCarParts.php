@@ -187,6 +187,6 @@ class OnlineCarParts
     {
         if (!str_starts_with($logSource, 'bot-v')) return false;
         $version = str_replace('bot-v', '', $logSource);
-        return $version == self::VERSION;
+        return $version != self::VERSION;
     }
 }
