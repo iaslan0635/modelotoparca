@@ -357,7 +357,7 @@ class ExcelImport implements ShouldQueue
             ]);
         }
 
-        $product->actualProduct->update([
+        $product->actualProduct?->update([
             'tecdoc' => null,
             'specifications' => null,
         ]);
