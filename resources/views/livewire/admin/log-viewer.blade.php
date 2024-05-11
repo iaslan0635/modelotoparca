@@ -27,7 +27,11 @@
                         <span>{{ $log->message }}</span>
                         @if($log->context)
                             <div class="d-flex w-100 gap-6 mt-2">
-                                @foreach($log->context as $key => $value)
+                                @php
+                                    $context = $log->context;
+                                    ksort($context);
+                                @endphp
+                                @foreach($context as $key => $value)
                                     <div class="badge text-bg-light border border-primary fw-normal">{{ $key }}: {{ $value }}</div>
                                 @endforeach
                             </div>
