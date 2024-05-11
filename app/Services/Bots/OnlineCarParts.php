@@ -10,6 +10,8 @@ use App\Packages\Fuzz;
 
 class OnlineCarParts
 {
+    public const VERSION = 1; // Used for logging
+
     private readonly OnlineCarParts\DataProvider $data;
     private readonly bool $isOem;
 
@@ -146,7 +148,7 @@ class OnlineCarParts
 
         if ($context) $logContext = array_merge($logContext, $context);
 
-        Log::log($this->product_id, $message, $logContext, 'bot');
+        Log::log($this->product_id, $message, $logContext, 'bot-v' . self::VERSION);
     }
 
     public function getProductLinksForPage(Ocp\SearchPage $searchPage, int $pageNumber, ?int $brandId)
@@ -178,5 +180,12 @@ class OnlineCarParts
     {
         $matchArticleNo = $this->field === 'producercode' || $this->field === 'producercode2' || $this->field === 'cross_code' || $this->field === 'abk';
         return $matchArticleNo ? $this->keyword : null;
+    }
+
+    public static function isOldVersion(string $logSource)
+    {
+        if (!str_starts_with($logSource, 'bot-v')) return false;
+        $version = str_replace('bot-v', '', $logSource);
+        return $version == self::VERSION;
     }
 }

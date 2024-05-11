@@ -39,7 +39,12 @@
                     </td>
                     <td class="text-end">
                         <div>{{ $log->created_at->diffForHumans() }}</div>
-                        <div class="badge text-bg-{{ $log->sourceColor }} text-light mt-4">{{ $log->source }}</div>
+                        <div class="d-flex justify-content-end align-items-center  mt-4">
+                            @if (str_starts_with($log->source, "bot") && \App\Services\Bots\OnlineCarParts::isOldVersion($logs->source))
+                                <div class="badge text bg-danger text-light">Eski sürüm</div>
+                            @endif
+                            <div class="badge text-bg-{{ $log->sourceColor }} text-light">{{ $log->source }}</div>
+                        </div>
                     </td>
                 </tr>
             @endforeach
