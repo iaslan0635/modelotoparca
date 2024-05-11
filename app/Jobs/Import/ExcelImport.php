@@ -236,7 +236,7 @@ class ExcelImport implements ShouldQueue
             'price' => $price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), 'try'),
             'discount' => (bool)$product->sales_discount_rate,
-            'discount_amount' => $product->sales_discount_rate,
+            'discount_amount' => $product->sales_discount_rate ?? 0,
         ]);
 
         $realProduct->searchable();
