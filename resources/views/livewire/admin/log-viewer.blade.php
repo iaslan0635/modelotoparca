@@ -26,13 +26,13 @@
                     <td class="ps-4 fs-4">
                         <span>{{ $log->message }}</span>
                         @if($log->context)
-                            <div class="d-flex w-100 gap-6 mt-2 flex-wrap">
+                            <div class="d-flex w-100 gap-2 mt-2 flex-wrap">
                                 @php
                                     $context = $log->context;
                                     ksort($context);
                                 @endphp
                                 @foreach($context as $key => $value)
-                                    <div class="badge text-bg-light border border-primary fw-normal">
+                                    <div class="badge text-bg-light border border-primary fw-normal me-4">
                                         {{ $key }}: {{ is_bool($value) ? ($value ? "Evet": "Hayır") : $value }}</div>
                                 @endforeach
                             </div>
