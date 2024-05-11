@@ -25,9 +25,12 @@
                                 $failed = \DB::table("failed_jobs")->where("queue", "default")->count();
                             @endphp
                             <span class="d-inline badge badge-primary mx-2">İşlem kuyruğu | Bekleyen: {{ $c(0, false) }} | Çalışan: {{ $c(1, true) }}</span>
-                            <span class="d-inline badge badge-warning text-black mx-2">2. Deneme | Bekleyen: {{ $c(1, false) }} | Çalışan: {{ $c(2, true) }}</span>
-                            <span class="d-inline badge badge-warning text-black mx-2">3. Deneme | Bekleyen: {{ $c(2, false) }} | Çalışan: {{ $c(3, true) }}</span>
                             <span class="d-inline badge badge-danger mx-2">Başarısız işlemler: {{ $failed }}</span>
+                            <span style="filter: grayscale(100%); float: right">
+                                <span>Tekrar denemeler geçici olarak devre dışı</span>
+                                <span class="d-inline badge badge-warning text-black mx-2">2. Deneme | Bekleyen: {{ $c(1, false) }} | Çalışan: {{ $c(2, true) }}</span>
+                                <span class="d-inline badge badge-warning text-black mx-2">3. Deneme | Bekleyen: {{ $c(2, false) }} | Çalışan: {{ $c(3, true) }}</span>
+                            </span>
                         </div>
                     </div>
                     <!--end::Title-->
