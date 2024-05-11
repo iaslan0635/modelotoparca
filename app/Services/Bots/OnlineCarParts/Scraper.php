@@ -82,7 +82,7 @@ class Scraper
         if (count($productResults) > 1) throw new Exception("Multiple product sections found in search ajax response");
         if (empty($productResults)) return collect(); // No results
 
-        $products = collect($productResults[0]['values']);
+        $products = collect(reset($productResults)['values']);
 
         if ($brandName) $products = $products->filter(fn($p) => Fuzz::isEqual($p['brandName'], $brandName));
         if ($articleNo) $products = $products->filter(fn($p) => Fuzz::isEqual($p['articleNo'], $articleNo));
