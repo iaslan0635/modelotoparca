@@ -29,10 +29,10 @@ class Log extends BaseModel
     protected function sourceColor(): Attribute
     {
         return Attribute::get(
-            fn() => match ($this->source) {
-                str_starts_with('bot', $this->source) => 'primary',
-                'excel' => 'success',
-                default => 'dark',
+            function () {
+                if (str_starts_with($this->source, 'bot')) return 'primary';
+                if ($this->source === 'excel') return 'success';
+                return 'dark';
             }
         );
     }
