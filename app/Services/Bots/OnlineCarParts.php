@@ -172,7 +172,7 @@ class OnlineCarParts
         return $this->data->getSearchAjaxProductLinks($searchAjax, $brandName, $articleNo);
     }
 
-    private function getConnection(string $productUrl): \App\Models\BaseModel|BotProduct
+    private function getConnection(string $productUrl): BotProduct
     {
         return BotProduct::firstOrNew(
             ['product_id' => $this->product_id, 'url' => $productUrl],
