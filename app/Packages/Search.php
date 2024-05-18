@@ -238,15 +238,7 @@ class Search
     private static function productQuery(string $term)
     {
         $query = Query::bool();
-        $words = explode(' ', $term);
-        foreach ($words as $word) {
-            if (empty($word)) {
-                continue;
-            }
-            $query->must(Query::match()->field('full_text')->query($word)/*->caseInsensitive(true)*/);
-            //            $query->must(Query::prefix()->field('title')->value($word)->caseInsensitive(true));
-        }
-
+        $query->must(Query::match()->field('full_text')->query($term));
         return $query;
     }
 
