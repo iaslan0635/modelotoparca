@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class Controller extends BaseController
 {
@@ -18,8 +20,22 @@ class Controller extends BaseController
         return '/storage/' . $file->storePublicly($path, ['disk' => 'public']);
     }
 
-    protected function search(Builder $query, array|string $keys)
+    protected static function search(Builder $query, array|string $columns)
     {
-        return Utils::search($query, $keys);
+        return Utils::search($query, $columns);
+    }
+
+    /** Same with search but gives priority to code columns */
+    protected static function searchWithCode(Builder $query, array|string $codeColumns, array|string $columns, ?string $search = null)
+    {
+        $search = $search ?: request('search');
+        if (!$search) return $query;
+
+        $codeColumnToSearch = Collection::wrap($codeColumns)->first(
+            fn($column) => Utils::searchValue($query->clone(), $column, $search)->exists()
+        );
+        if ($codeColumnToSearch) return Utils::searchValue($query, $codeColumnToSearch, $search);
+
+        return static::search($query, $columns);
     }
 }
