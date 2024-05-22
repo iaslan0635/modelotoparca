@@ -29,8 +29,11 @@ class Price extends BaseModel
     protected function price(): Attribute
     {
         return Attribute::get(
-            fn(?string $value) => $value === null ? null :
-                TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount ?? 20)
+            fn(?string $price) => $price === null ? null :
+                TaxFacade::calculate(
+                    ExchangeRate::convertToTRY($this->currency, $price),
+                    $this->tax?->vat_amount ?? 20
+                )
         );
     }
 
