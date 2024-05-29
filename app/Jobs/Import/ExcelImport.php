@@ -232,7 +232,8 @@ class ExcelImport implements ShouldQueue
         // INCVAT: 0 => KDV hariç, 1 => KDV dahil
 
         $price = $product->incvat == 1 ? TaxFacade::reverseCalculate($product->price, 20) : $product->price;
-        $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate ?? 0);
+        if ($price)
+            $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate ?? 0);
 
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $price,
