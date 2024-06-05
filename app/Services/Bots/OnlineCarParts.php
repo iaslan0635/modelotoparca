@@ -61,7 +61,8 @@ class OnlineCarParts
 
         $successfulProductCount = 0;
         foreach ($productLinks as $i => $link) {
-            if (!$this->shouldSaveProduct($link)) continue;
+            $connection = $this->getConnection($link);
+            if ($connection->is_banned) continue;
 
             $productPage = $this->data->getProductPage($link);
             $productPage->saveToDatabase($this->product_id);
@@ -74,6 +75,7 @@ class OnlineCarParts
             ]);
 
             $successfulProductCount++;
+            if (!$connection->exists) $connection->save();
         }
 
         $this->log("Ajax tarafından $successfulProductCount adet ürün çekildi.");
@@ -109,7 +111,8 @@ class OnlineCarParts
             $links = $this->getProductLinksForPage($searchPage, $pageNumber, $brandId);
 
             foreach ($links as $i => $link) {
-                if (!$this->shouldSaveProduct($link)) continue;
+                $connection = $this->getConnection($link);
+                if ($connection->is_banned) continue;
 
                 $productPage = $this->data->getProductPage($link);
                 $productPage->saveToDatabase($this->product_id);
@@ -123,6 +126,7 @@ class OnlineCarParts
                 ]);
 
                 $successfulProductCount++;
+                if (!$connection->exists) $connection->save();
             }
 
             $count = count($links);
@@ -168,13 +172,12 @@ class OnlineCarParts
         return $this->data->getSearchAjaxProductLinks($searchAjax, $brandName, $articleNo);
     }
 
-    public function shouldSaveProduct(string $productUrl): bool
+    private function getConnection(string $productUrl): BotProduct
     {
-        $connection = BotProduct::firstOrNew(
+        return BotProduct::firstOrNew(
             ['product_id' => $this->product_id, 'url' => $productUrl],
             ['origin_field' => $this->field, 'keyword' => $this->keyword]
         );
-        return !$connection->is_banned;
     }
 
     private function getArticleNo(): ?string

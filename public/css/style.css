@@ -9807,9 +9807,6 @@ select.form-control::-ms-expand {
     .block-split--has-sidebar .block-split__item-content {
         width: calc(100% - 310px);
     }
-    .block-split--has-sidebar .block-split__item-fullwitdh {
-        width: calc(100% - 10px);
-    }
     [dir=ltr] .block-split--has-sidebar .block-split__item + .block-split__item {
         margin-left: 10px;
     }
@@ -20912,13 +20909,4 @@ select.form-control::-ms-expand {
     font-size: 48px;
     font-weight: 700;
     padding-right: 20px;
-}
-
-.solyasla {
-    left: 0px;
-    top: 0pxs;
-}
-
-.solyaslasidebar{
-    position: fixed !important;
 }

@@ -243,8 +243,7 @@ class Search
             if (empty($word)) {
                 continue;
             }
-            $query->must(Query::prefix()->field('full_text')->value($word)->caseInsensitive(true));
-            //            $query->must(Query::prefix()->field('title')->value($word)->caseInsensitive(true));
+            $query->must(Query::term()->field('full_text')->value($word)->caseInsensitive(true));
         }
 
         return $query;

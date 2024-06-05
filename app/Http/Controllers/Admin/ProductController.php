@@ -29,14 +29,15 @@ class ProductController extends Controller
     ];
 
     const FIELDS_TO_SEARCH = [
-        'sku',
-        'part_number',
+        'id',
         'producercode',
-        'cross_code',
-        'oem_codes',
         'producercode2',
-        'abk',
+        'cross_code',
+        'sku',
         'similar_product_codes',
+        'abk',
+        'part_number',
+        'oem_codes',
     ];
 
     /**
@@ -75,16 +76,12 @@ class ProductController extends Controller
             }
         }
 
-        if ($search) {
-            $query->where(function (Builder $query) use ($search) {
-                foreach (self::FIELDS_TO_SEARCH as $field) {
-                    $query->orWhere($field, 'like', "%$search%");
-                }
-            });
-        }
-
         if ($brands) {
             $query = $query->whereIn('brand_id', $brands);
+        }
+
+        if ($search) {
+            $query = static::searchWithCode($query, static::FIELDS_TO_SEARCH, ['title', 'description'], $search);
         }
 
         return $query;

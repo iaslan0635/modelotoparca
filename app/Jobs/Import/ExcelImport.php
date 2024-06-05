@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Import;
 
+use App\Facades\DiscountFacade;
 use App\Facades\TaxFacade;
 use App\Models\BotProduct;
 use App\Models\Brand;
@@ -231,6 +232,8 @@ class ExcelImport implements ShouldQueue
         // INCVAT: 0 => KDV hariç, 1 => KDV dahil
 
         $price = $product->incvat == 1 ? TaxFacade::reverseCalculate($product->price, 20) : $product->price;
+        if ($price)
+            $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate ?? 0);
 
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $price,

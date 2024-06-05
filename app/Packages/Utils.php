@@ -52,13 +52,23 @@ class Utils
     {
         $search = request('search');
         if (!$search) return $query;
+        return self::searchValue($query, $keys, $search);
+    }
 
-        if (is_string($keys)) return $query->where($keys, 'like', "%$search%");
+    public static function searchValue(Builder $query, array|string $keys, string $search)
+    {
+        if (is_string($keys)) return $query->where($keys, 'like', "%$search%")->orderBy($keys);
 
-        return $query->where(function ($query) use ($search, $keys) {
+        $query->where(function ($query) use ($search, $keys) {
             foreach ($keys as $key) {
                 $query->orWhere($key, 'like', "%$search%");
             }
         });
+
+        foreach ($keys as $key) {
+            $query->orderBy($key);
+        }
+
+        return $query;
     }
 }
