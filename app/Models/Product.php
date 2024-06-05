@@ -78,6 +78,8 @@ class Product extends BaseModel implements CanVisit
 
     protected static function booted()
     {
+        static::addGlobalScope('active', fn (Builder $builder) => $builder->where('status', '=', 1));
+
         if (Garage::hasChosen()) {
             $chosen = Garage::chosen();
             static::addGlobalScope('chosen_car', fn (Builder $builder) => $builder->whereRelation('cars', 'id', '=', $chosen));
