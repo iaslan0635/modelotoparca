@@ -17,6 +17,7 @@ class BrandController extends Controller
             });
         }
 
+        dump($brand);
         $query->dd();
 
         return view('products-page', compact('query'));
