@@ -17,6 +17,8 @@ class BrandController extends Controller
             });
         }
 
+        $query->dd();
+
         return view('products-page', compact('query'));
     }
 
