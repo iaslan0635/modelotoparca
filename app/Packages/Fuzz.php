@@ -14,4 +14,9 @@ class Fuzz
     {
         return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $string));
     }
+
+    public static function regexifyNullable(?string $string): ?string
+    {
+        return $string === null ? null : self::regexify($string);
+    }
 }

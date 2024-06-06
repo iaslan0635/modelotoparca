@@ -542,4 +542,20 @@ class Search
             ->query(Query::term()->field('tecdoc.name_regex')->value($term)
                 ->boost(self::BOOST['oem']));
     }
+
+    private static function hiddenSearchableQuery(string $term)
+    {
+        return Query::term()
+            ->field('hidden_searchable')
+            ->value($term)
+            ->caseInsensitive(true);
+    }
+
+    private static function hiddenSearchableRegexQuery(string $cleanTerm)
+    {
+        return Query::term()
+            ->field('hidden_searchable_regex')
+            ->value($cleanTerm)
+            ->caseInsensitive(true);
+    }
 }
