@@ -165,6 +165,16 @@ class Product extends BaseModel implements CanVisit
         ];
     }
 
+    public function searchableWith()
+    {
+        return ['cars', 'oems', 'categories', 'price', 'brand'];
+    }
+
+    public function shouldBeSearchable()
+    {
+        return (bool)$this->status;
+    }
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'product_categories');
