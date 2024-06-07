@@ -3,6 +3,8 @@
         <div class="suggestions__group-title">Ürünler</div>
         <div class="suggestions__group-content">
             @foreach($results as $product)
+                @if(!$product->model()) @continue @endif
+
                 {{-- {{ dd($product->model()) }}--}}
                 <a class="suggestions__item suggestions__product"
                    href="{{ route('product.show', $product->model()) }}">
