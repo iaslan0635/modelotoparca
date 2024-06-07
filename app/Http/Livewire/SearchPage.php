@@ -73,8 +73,6 @@ class SearchPage extends Component
             $similars = null;
         }
 
-        dd($products);
-
         return compact(
             'products',
             'brands',

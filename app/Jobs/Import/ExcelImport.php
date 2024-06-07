@@ -196,7 +196,7 @@ class ExcelImport implements ShouldQueue
             $image_appendix |= self::IMAGE_12;
         } // IMAGE2INC
 
-        $realProduct = Product::updateOrCreate(['id' => $id], [
+        $realProduct = Product::withoutGlobalScope("active")->updateOrCreate(['id' => $id], [
             'brand_id' => $product->markref,
             'title' => $title,
             'sub_title' => $allWebNames,
