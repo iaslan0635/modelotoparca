@@ -48,6 +48,7 @@
                             </div>
                             <div class="product__main">
                                 <div class="product__excerpt">{{ $product->description }}</div>
+                                @if($product->fitting_position) <div class="product__excerpt">Montaj Konumu: {{ $product->fitting_position }}</div> @endif
                                 <div class="product__features">
                                     <div class="product__features-title">Key Features:</div>
                                     <ul>
