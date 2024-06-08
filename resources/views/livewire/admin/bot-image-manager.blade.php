@@ -14,21 +14,24 @@
                 <img class="rounded-4" src="{{ $image->url }}" style="max-width: 100%"/>
                 @can("Stok Yönetimi.Ürünler.Detay Görüntüle.Bot Resimleri.İşlem Yap")
                     <form class="mt-4">
-                        <div class="form-check" wire:click="intermediate({{$image->id}})">
+                        <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" name="status" type="radio" @if(!$image->rejected && !$image->image_id) checked @endif>
+                                <input class="form-check-input" wire:change="intermediate({{$image->id}})"
+                                       name="status" type="radio" @if(!$image->rejected && !$image->image_id) checked @endif>
                                 Beklemede
                             </label>
                         </div>
-                        <div class="form-check" wire:click="accept({{$image->id}})">
+                        <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" name="status" type="radio" @if($image->image_id) checked @endif>
+                                <input class="form-check-input" wire:change="accept({{$image->id}})"
+                                       name="status" type="radio" @if($image->image_id) checked @endif>
                                 Kabul et
                             </label>
                         </div>
-                        <div class="form-check" wire:click="reject({{$image->id}})">
+                        <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" name="status" type="radio" @if($image->rejected) checked @endif>
+                                <input class="form-check-input" wire:change="reject({{$image->id}})"
+                                       name="status" type="radio" @if($image->rejected) checked @endif>
                                 Reddet
                             </label>
                         </div>

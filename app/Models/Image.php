@@ -23,4 +23,9 @@ class Image extends BaseModel
             unlink($path);
         }
     }
+
+    public function botImage()
+    {
+        return $this->hasOne(BotImage::class);
+    }
 }
