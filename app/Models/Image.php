@@ -15,4 +15,12 @@ class Image extends BaseModel
     {
         return Attribute::get(fn() => storage_path(app()->joinPaths("app/public", $this->path)));
     }
+
+    public function deleteFile()
+    {
+        $path = $this->absolute_path;
+        if (file_exists($path)) {
+            unlink($path);
+        }
+    }
 }
