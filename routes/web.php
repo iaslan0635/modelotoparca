@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Livewire\CategoryPage;
+use App\Http\Livewire\FullPageCarSelector;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Route::view('models-list', 'models-list')->name('models-list');
 Route::get('brands', [BrandController::class, 'index'])->name('brands-list');
 
 Route::get('cars/{permalink}', [CarController::class, 'show'])->name('car.search')->where('permalink', '.*');
+Route::get('cars', FullPageCarSelector::class)->name('car.select');
 Route::get('oem/{oem}', [OemController::class, 'show'])->name('oem.search')->where('oem', '.*');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
