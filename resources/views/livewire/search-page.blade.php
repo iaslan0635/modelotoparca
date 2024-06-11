@@ -33,7 +33,7 @@
                                                     <span class="filter__arrow">
                                                         <svg width="12px" height="7px">
                                                             <path
-                                                                d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
+                                                                    d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
                                                         </svg>
                                                     </span>
                                                 </button>
@@ -44,14 +44,15 @@
                                                                 @if($category)
                                                                     <li class="filter-categories__item filter-categories__item--current">
                                                                         <a href="#"
-                                                                           wire:click="cleanCategory">Geri Dön</a>
+                                                                           wire:click="cleanCategory">Geri Dön
+                                                                        </a>
                                                                     </li>
                                                                 @endif
                                                                 @foreach($categories->sortBy("name") as ["category" => $category, "count" => $count])
                                                                     <li class="filter-categories__item filter-categories__item--current">
                                                                         <a href="#" wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
                                                                         <div
-                                                                            class="filter-categories__counter">{{ $count }}</div>
+                                                                                class="filter-categories__counter">{{ $count }}</div>
                                                                     </li>
                                                                 @endforeach
                                                             </ul>
@@ -65,10 +66,12 @@
                                                 <button type="button" class="filter__title"
                                                         data-collapse-trigger>
                                                     Fiyat
-                                                    <span class="filter__arrow"><svg width="12px" height="7px">
-                                                                    <path
-                                                                        d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                                </svg></span>
+                                                    <span class="filter__arrow">
+                                                        <svg width="12px" height="7px">
+                                                            <path
+                                                                    d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
+                                                        </svg>
+                                                    </span>
                                                 </button>
                                                 <div class="filter__body" data-collapse-content>
                                                     <div class="filter__container">
@@ -98,10 +101,12 @@
                                                 <button type="button" class="filter__title"
                                                         data-collapse-trigger>
                                                     Markalar
-                                                    <span class="filter__arrow"><svg width="12px" height="7px">
-                                                                    <path
-                                                                        d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                                </svg></span>
+                                                    <span class="filter__arrow">
+                                                        <svg width="12px" height="7px">
+                                                            <path
+                                                                    d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
+                                                        </svg>
+                                                    </span>
                                                 </button>
                                                 <div class="filter__body" data-collapse-content style="max-height: 175px;overflow: auto;">
                                                     <div class="filter__container">
@@ -109,29 +114,30 @@
                                                             <div class="filter-list__list">
                                                                 @foreach($brands as $key => $brand)
                                                                     <label class="filter-list__item ">
-                                                                            <span
+                                                                        <span
                                                                                 class="input-check filter-list__input">
-                                                                                <span class="input-check__body">
-                                                                                    <input class="input-check__input"
-                                                                                           name="brands[]"
-                                                                                           value="{{ $key }}"
-                                                                                           {{ $brandFilters ? in_array($key, $brandFilters) ? "checked":null:null }}
-                                                                                           type="checkbox">
-                                                                                    <span
+                                                                            <span class="input-check__body">
+                                                                                <input class="input-check__input"
+                                                                                       name="brands[]"
+                                                                                       value="{{ $key }}"
+                                                                                       {{ $brandFilters ? in_array($key, $brandFilters) ? "checked":null:null }}
+                                                                                       type="checkbox">
+                                                                                <span
                                                                                         class="input-check__box"></span>
-                                                                                    <span class="input-check__icon"><svg
+                                                                                <span class="input-check__icon">
+                                                                                    <svg
                                                                                             width="9px" height="7px">
-                                                                                            <path
+                                                                                        <path
                                                                                                 d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
-                                                                                        </svg>
-                                                                                    </span>
+                                                                                    </svg>
                                                                                 </span>
                                                                             </span>
+                                                                        </span>
                                                                         <span class="filter-list__title">
-                                                                                {{ $brand["brand"]->name }}
-                                                                            </span>
+                                                                            {{ $brand["brand"]->name }}
+                                                                        </span>
                                                                         <span
-                                                                            class="filter-list__counter">{{ $brand["count"] }}</span>
+                                                                                class="filter-list__counter">{{ $brand["count"] }}</span>
                                                                     </label>
                                                                 @endforeach
                                                             </div>
@@ -159,13 +165,14 @@
                         <div class="products-view__options view-options view-options--offcanvas--mobile">
                             <div class="view-options__body">
                                 <button type="button" class="view-options__filters-button filters-button">
-                                                <span class="filters-button__icon"><svg width="16" height="16">
-                                                        <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2
+                                    <span class="filters-button__icon">
+                                        <svg width="16" height="16">
+                                            <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2
 	C10.2,10,10,9.8,10,9.5v-3C10,6.2,10.2,6,10.5,6H12.5z M7,2h9v2H7V2z M5.5,5h-2C3.2,5,3,4.8,3,4.5v-3C3,1.2,3.2,1,3.5,1h2
 	C5.8,1,6,1.2,6,1.5v3C6,4.8,5.8,5,5.5,5z M0,2h2v2H0V2z M9,9H0V7h9V9z M2,14H0v-2h2V14z M3.5,11h2C5.8,11,6,11.2,6,11.5v3
 	C6,14.8,5.8,15,5.5,15h-2C3.2,15,3,14.8,3,14.5v-3C3,11.2,3.2,11,3.5,11z"/>
-                                                    </svg>
-                                                </span>
+                                        </svg>
+                                    </span>
                                     <span class="filters-button__title">Filters</span>
                                     <span class="filters-button__counter">3</span>
                                 </button>
@@ -229,7 +236,9 @@
                                 </div>
                             </div>
                             <div class="view-options__body view-options__body--filters">
-                                <div class="view-options__label">Active Filters</div>
+                                @if (request()->has('min_price') || request()->has('max_price') || count(request()->input('brands', [])) > 0)
+                                    <div class="view-options__label">Active Filters</div>
+                                @endif
                                 <div class="applied-filters">
                                     <form method="GET" id="querySearch">
                                         <input type="hidden" name="query" value="{{ request()->input('query') }}">
@@ -249,7 +258,7 @@
                                                         En düşük fiyat: {{ request()->input('min_price') }}
                                                         <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
                                                             <path
-                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                         </svg>
                                                     </a>
                                                 </li>
@@ -263,7 +272,7 @@
                                                         En yüksek fiyat: {{ request()->input('max_price') }}
                                                         <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
                                                             <path
-                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                         </svg>
                                                     </a>
                                                 </li>
@@ -276,10 +285,10 @@
                                                        class="applied-filters__button applied-filters__button--filter">
                                                         Marka: {{ $brands[$brand]["brand"]->name }}
                                                         <svg
-                                                            onclick="$(`#brand-{{ $brands[$brand]["brand"]->id }}`).remove() && $('#querySearch').submit()"
-                                                            width="9" height="9">
+                                                                onclick="$(`#brand-{{ $brands[$brand]["brand"]->id }}`).remove() && $('#querySearch').submit()"
+                                                                width="9" height="9">
                                                             <path
-                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                         </svg>
                                                     </a>
                                                 </li>
@@ -309,41 +318,41 @@
                                         <div class="product-card">
                                             <div class="product-card__actions-list">
                                                 <button
-                                                    class="product-card__action product-card__action--quickview"
-                                                    data-slug="{{ $product->model()?->slug }}" type="button"
-                                                    aria-label="Quick view">
+                                                        class="product-card__action product-card__action--quickview"
+                                                        data-slug="{{ $product->model()?->slug }}" type="button"
+                                                        aria-label="Quick view">
                                                     <svg width="16" height="16">
                                                         <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
 	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
                                                     </svg>
                                                 </button>
                                                 <button
-                                                    class="product-card__action product-card__action--wishlist"
-                                                    type="button" aria-label="Add to wish list">
+                                                        class="product-card__action product-card__action--wishlist"
+                                                        type="button" aria-label="Add to wish list">
                                                     <svg width="16" height="16">
                                                         <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
 	l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
                                                     </svg>
                                                 </button>
                                                 <button
-                                                    class="product-card__action product-card__action--compare"
-                                                    type="button" aria-label="Add to compare">
+                                                        class="product-card__action product-card__action--compare"
+                                                        type="button" aria-label="Add to compare">
                                                     <svg width="16" height="16">
                                                         <path
-                                                            d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>
+                                                                d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>
                                                         <path
-                                                            d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"/>
+                                                                d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"/>
                                                         <path
-                                                            d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"/>
+                                                                d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"/>
                                                     </svg>
                                                 </button>
                                             </div>
-                                            <x-product-card-image :product="$product->model()" />
+                                            <x-product-card-image :product="$product->model()"/>
                                             <div class="product-card__info">
                                                 <div class="product-card__meta">
                                                     <span class="product-card__meta-title"> {{ $product->model()?->producercode }} </span>
                                                 </div>
-                                                <x-product-card-name :product="$product->model()" />
+                                                <x-product-card-name :product="$product->model()"/>
                                                 <div class="product-card__features">
                                                     <ul>
                                                         @foreach(($product->model()?->specifications ?? []) as $key => $spec)
@@ -367,7 +376,7 @@
                                             <div class="product-card__footer">
                                                 <div class="product-card__prices">
                                                     <div
-                                                        class="product-card__price product-card__price--current">{{ $product->model()?->price?->formattedPrice }}</div>
+                                                            class="product-card__price product-card__price--current">{{ $product->model()?->price?->formattedPrice }}</div>
                                                 </div>
                                                 <button class="product-card__addtocart-icon" type="button"
                                                         aria-label="Add to cart">
