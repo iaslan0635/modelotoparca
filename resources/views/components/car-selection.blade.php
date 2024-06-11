@@ -13,7 +13,7 @@
                     <div class="vehicles-list__body">
                         <div class="vehicles-list__item">
                             <div>
-                                <img src="{{ $car->imageUrl() }}" alt="{{ $car->name }}" class="img-fluid">
+                                <img src="{{ $car->imageUrl() }}" alt="{{ $car->name }}" style="height: 2em">
                             </div>
                             <div class="vehicles-list__item-info">
                                 <div class="vehicles-list__item-name">{{ $car->name }}</div>
