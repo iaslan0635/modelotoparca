@@ -1,6 +1,6 @@
 <div class="site__body container">
-    <div class="loading-overlay" wire:loading.block wire:loading.delay>
-        Yükleniyor...
+    <div class="loading-overlay" wire:loading.delay>
+        <span>Yükleniyor...</span>
     </div>
     <div class="row mt-4">
         <div class="col-12">
@@ -37,9 +37,15 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            color : white;
+            color: white;
             font-size: 2rem;
             cursor: wait;
+        }
+
+        .loading-overlay span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
         }
 
         .auto-item__image {
