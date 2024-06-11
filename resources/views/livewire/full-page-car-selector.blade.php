@@ -1,5 +1,5 @@
 <div class="site__body container">
-    <div class="loading-overlay" wire:loading.delay.flex>
+    <div class="loading-overlay" wire:loading.block wire:loading.delay>
         Yükleniyor...
     </div>
     <div class="row mt-4">
