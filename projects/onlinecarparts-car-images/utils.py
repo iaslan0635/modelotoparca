@@ -21,6 +21,9 @@ def soup(url: str):
     html = ocp_client.get(url)
     return bs4.BeautifulSoup(html, "html.parser")
 
+async def async_soup(url: str):
+    html = await ocp_client.get_async(url)
+    return bs4.BeautifulSoup(html, "html.parser")
 
 def get_link(el: bs4.Tag) -> str:
     if el.has_attr("href"):
