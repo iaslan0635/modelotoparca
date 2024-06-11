@@ -10,13 +10,8 @@ class FullPageCarSelector extends Component
 {
     public ?string $makerId = null;
     public ?string $shortName = null;
-    public ?string $modelId = null;
+    public ?string $carId = null;
 
-    protected $queryString = [
-        "makerId" => ["except" => null],
-        "shortName" => ["except" => null],
-        "modelId" => ["except" => null],
-    ];
 
     public function getItems()
     {
@@ -34,25 +29,40 @@ class FullPageCarSelector extends Component
                 ->map(fn(Car $car) => [
                     "name" => $car->short_name,
                     "image" => $car->imageUrl(),
-                    "action" => "\$set('shortName', $car->short_name)"
+                    "action" => "\$set('shortName', '$car->short_name')"
                 ]);
         }
 
-        if ($this->modelId === null) {
+        if ($this->carId === null) {
             return Car::where("maker_id", $this->makerId)->where("short_name", $this->shortName)->get(["id", "name"])
                 ->map(fn(Car $car) => [
                     "name" => $car->name,
                     "image" => $car->imageUrl(),
-                    "action" => "\$set('modelId', $car->id)"
+                    "action" => "\$set('carId', $car->id)"
                 ]);
         }
+    }
 
-        dd("Selected model: " . $this->modelId);
+    public function back()
+    {
+        if ($this->carId !== null) {
+            $this->carId = null;
+        } elseif ($this->shortName !== null) {
+            $this->shortName = null;
+        } elseif ($this->makerId !== null) {
+            $this->makerId = null;
+        }
     }
 
     public function render()
     {
-        $items = $this->getItems();
+        if ($this->carId !== null) {
+            $car = Car::find($this->carId);
+            \App\Facades\Garage::addAndChoose($car);
+            $this->redirect(route("category.index"));
+            $items = [];
+        } else $items = $this->getItems();
+
         return view('livewire.full-page-car-selector', compact('items'));
     }
 }

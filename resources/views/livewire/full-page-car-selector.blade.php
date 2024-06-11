@@ -1,5 +1,16 @@
-<div class="site__body container mt-4">
-    <div class="row">
+<div class="site__body container">
+    <div class="loading-overlay" wire:loading.flex>
+        Yükleniyor...
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <button class="btn btn-secondary" wire:click="back()">
+                <i class="fa fa-arrow-left ms-1"></i>
+                Geri
+            </button>
+        </div>
+    </div>
+    <div class="row mt-2">
         @foreach($items as ['name' => $name, 'image' => $image, 'action' => $action])
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                 <div class="auto-item" wire:click="{{ $action }}">
@@ -15,6 +26,22 @@
 
 @push('styles')
     <style>
+        body {
+            position: relative;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            color : white;
+            font-size: 2rem;
+            cursor: wait;
+        }
+
         .auto-item__image {
             max-width: 100%;
             max-height: 100%;
