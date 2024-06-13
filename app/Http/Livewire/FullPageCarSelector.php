@@ -12,6 +12,8 @@ class FullPageCarSelector extends Component
     public ?string $shortName = null;
     public ?string $carId = null;
 
+    public ?string $year = null;
+
 
     public function getItems()
     {
@@ -33,10 +35,23 @@ class FullPageCarSelector extends Component
                 ]);
         }
 
-        if ($this->carId === null) {
+        if ($this->year === null) {
             return Car::where("maker_id", $this->makerId)->where("short_name", $this->shortName)->get(["id", "from_year"])
                 ->map(fn(Car $car) => [
                     "name" => $car->from_year,
+                    "image" => $car->imageUrl(),
+                    "action" => "\$set('year', $car->from_year)"
+                ]);
+        }
+
+        if ($this->carId === null) {
+            return Car::query()
+                ->where("maker_id", $this->makerId)
+                ->where("short_name", $this->shortName)
+                ->where("from_year", $this->year)
+                ->get(["id", "type"])
+                ->map(fn(Car $car) => [
+                    "name" => $car->type,
                     "image" => $car->imageUrl(),
                     "action" => "\$set('carId', $car->id)"
                 ]);
