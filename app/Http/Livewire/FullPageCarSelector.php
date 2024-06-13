@@ -34,9 +34,9 @@ class FullPageCarSelector extends Component
         }
 
         if ($this->carId === null) {
-            return Car::where("maker_id", $this->makerId)->where("short_name", $this->shortName)->get(["id", "engine_code"])
+            return Car::where("maker_id", $this->makerId)->where("short_name", $this->shortName)->get(["id", "from_year"])
                 ->map(fn(Car $car) => [
-                    "name" => $car->engine_code,
+                    "name" => $car->from_year,
                     "image" => $car->imageUrl(),
                     "action" => "\$set('carId', $car->id)"
                 ]);
