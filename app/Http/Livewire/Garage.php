@@ -14,6 +14,8 @@ class Garage extends Component
 
     public ?int $chosen;
 
+    public bool $onlyChosen = false;
+
     protected $listeners = ['chooseCar', 'reloadData', 'forwardCallToGarage'];
 
     public function render()
@@ -30,7 +32,7 @@ class Garage extends Component
 
     public function reloadData()
     {
-        $this->cars = GarageFacade::items();
+        $this->cars = $this->onlyChosen ? [GarageFacade::findChosen()] : GarageFacade::items();
         $this->chosen = GarageFacade::chosen();
     }
 
