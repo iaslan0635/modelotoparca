@@ -12,7 +12,13 @@
     </div>
     <div class="row mt-2">
         @foreach($items as ['name' => $name, 'image' => $image, 'action' => $action])
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <div
+                @if($expandCols)
+                    class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+                @else
+                    class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3"
+                @endif
+            >
                 <div class="auto-item" wire:click="{{ $action }}">
                     <img src="{{ $image }}" class="auto-item__image">
                     <div class="auto-item__name">

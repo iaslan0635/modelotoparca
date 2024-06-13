@@ -15,7 +15,7 @@ class FullPageCarSelector extends Component
     public ?string $year = null;
 
 
-    public function getItems()
+    public function getItems(bool &$expandCols)
     {
         if ($this->makerId === null) {
             return Maker::get(["id", "name"])
@@ -45,6 +45,7 @@ class FullPageCarSelector extends Component
         }
 
         if ($this->carId === null) {
+            $expandCols = true;
             return Car::query()
                 ->where("maker_id", $this->makerId)
                 ->where("short_name", $this->shortName)
@@ -71,13 +72,14 @@ class FullPageCarSelector extends Component
 
     public function render()
     {
+        $expandCols = false;
         if ($this->carId !== null) {
             $car = Car::find($this->carId);
             \App\Facades\Garage::addAndChoose($car);
             $this->redirect(route("category.index"));
             $items = [];
-        } else $items = $this->getItems();
+        } else $items = $this->getItems($expandCols);
 
-        return view('livewire.full-page-car-selector', compact('items'));
+        return view('livewire.full-page-car-selector', compact('items', 'expandCols'));
     }
 }
