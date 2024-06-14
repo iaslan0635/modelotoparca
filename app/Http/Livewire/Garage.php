@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Facades\Garage as GarageFacade;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Traits\ForwardsCalls;
 use Livewire\Component;
 
@@ -32,7 +33,7 @@ class Garage extends Component
 
     public function reloadData()
     {
-        $this->cars = $this->onlyChosen ? [GarageFacade::findChosen()] : GarageFacade::items();
+        $this->cars = $this->onlyChosen ? Arr::wrap(GarageFacade::findChosen()) : GarageFacade::items();
         $this->chosen = GarageFacade::chosen();
     }
 
