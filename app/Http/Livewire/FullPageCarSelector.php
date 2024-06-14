@@ -61,13 +61,10 @@ class FullPageCarSelector extends Component
 
     public function back()
     {
-        if ($this->carId !== null) {
-            $this->carId = null;
-        } elseif ($this->shortName !== null) {
-            $this->shortName = null;
-        } elseif ($this->makerId !== null) {
-            $this->makerId = null;
-        }
+        if ($this->carId !== null) $this->carId = null;
+        elseif ($this->year !== null) $this->year = null;
+        elseif ($this->shortName !== null) $this->shortName = null;
+        elseif ($this->makerId !== null) $this->makerId = null;
     }
 
     public function render()
