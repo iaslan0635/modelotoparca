@@ -2,12 +2,14 @@
 
 namespace App\Services\Bots\OnlineCarParts;
 
+use App\Models\BaseModel;
 use App\Models\Ocp\Brand;
 use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
 use App\Packages\Fuzz;
 use App\Packages\Utils;
 use App\Services\Bots\OcpClient;
+use App\Services\Bots\OcpClientException;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -17,6 +19,12 @@ use Symfony\Component\DomCrawler\Crawler;
 /** Responsible for scraping and parsing. Intended to be used only by DataProvider */
 class Scraper
 {
+    /**
+     * @param string $keyword
+     * @param bool $isOem
+     * @return SearchPage
+     * @throws OcpClientException
+     */
     public function getSearchPage(string $keyword, bool $isOem)
     {
         $url = $isOem

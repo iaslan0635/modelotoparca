@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Cache;
 
 class OcpClient
 {
+    /**
+     * @param string $url
+     * @return string
+     * @throws OcpClientException
+     */
     public static function request(string $url): string
     {
         $curlHandle = curl_init();

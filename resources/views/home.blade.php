@@ -53,7 +53,6 @@
                             <span class="block-brands__item-name">{{ $category->name }}</span>
                         </a>
                     </li>
-                    <li class="block-brands__divider" role="presentation"></li>
                 @endforeach
                 <li class="block-brands__item">
                     <a href="{{ route("category.index") }}" class="block-brands__item-link">
@@ -68,7 +67,6 @@
                         <span class="block-brands__item-name">Tüm kategoriler</span>
                     </a>
                 </li>
-                <li class="block-brands__divider" role="presentation"></li>
             </ul>
         </div>
     </div>

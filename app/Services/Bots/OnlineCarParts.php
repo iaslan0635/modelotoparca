@@ -91,9 +91,9 @@ class OnlineCarParts
             if ($this->isOem && $e->statusCode === 404) {
                 $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor.", ['Aranan sayfa' => $e->url]);
                 return false;
-            } else {
-                throw $e;
             }
+
+            throw $e;
         }
 
         if ($this->brand_filter) {

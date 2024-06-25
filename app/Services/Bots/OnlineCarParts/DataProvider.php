@@ -2,9 +2,11 @@
 
 namespace App\Services\Bots\OnlineCarParts;
 
+use App\Models\BaseModel;
 use App\Models\Ocp\Product;
 use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
+use App\Services\Bots\OcpClientException;
 
 /** A bridge between Scraper and Bot. Attempts to use already fetched data */
 class DataProvider
@@ -24,6 +26,12 @@ class DataProvider
         return $this->scraper->getProductPage($url);
     }
 
+    /**
+     * @param string $keyword
+     * @param bool $isOem
+     * @return SearchPage
+     * @throws OcpClientException
+     */
     public function getSearchPage(string $keyword, bool $isOem)
     {
         $type = $isOem ? 'oem' : 'keyword';
