@@ -29,7 +29,7 @@ class OcpClient
             throw new \Exception(curl_error($curlHandle));
         }
         if (str_contains($response, '<title>Just a moment...</title>')) {
-            throw new \Exception('Response blocked by cloudflare.');
+            throw new \Exception("Response blocked by cloudflare.\nurl: $url\nresponse: $response");
         }
 
         if (! ($httpStatusCode >= 200 && $httpStatusCode < 300)) {
