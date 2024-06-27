@@ -38,7 +38,7 @@ class DataProvider
     {
         $type = $isOem ? 'oem' : 'keyword';
         $searchPage = SearchPage::where("keyword", $keyword)->where("type", $type)->first();
-        return $searchPage ?? $this->scraper->getSearchPage($keyword, $isOem);
+        return $searchPage ?? $this->scraper->getAndSaveSearchPage($keyword, $isOem);
     }
 
     public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)

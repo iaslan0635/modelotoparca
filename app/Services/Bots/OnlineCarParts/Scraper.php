@@ -25,7 +25,7 @@ class Scraper
      * @return SearchPage
      * @throws OcpClientException
      */
-    public function getSearchPage(string $keyword, bool $isOem)
+    public function getAndSaveSearchPage(string $keyword, bool $isOem)
     {
         $url = $isOem
             ? 'https://www.onlinecarparts.co.uk/oenumber/' . Fuzz::regexify($keyword) . '.html?'
