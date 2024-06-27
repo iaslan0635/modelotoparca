@@ -2,10 +2,10 @@
 
 namespace App\Services\Bots\OnlineCarParts;
 
-use App\Models\BaseModel;
 use App\Models\Ocp\Product;
 use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
+use App\Packages\Fuzz;
 use App\Services\Bots\OcpClientException;
 
 /** A bridge between Scraper and Bot. Attempts to use already fetched data */
@@ -54,10 +54,20 @@ class DataProvider
         return $query->pluck("url");
     }
 
-    /** returns a collection of array{type: string, link: string} */
     public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?string $brandName, ?string $articleNo)
     {
-        return $this->scraper->getSearchAjaxProductLinks($searchAjax, $brandName, $articleNo);
+        if ($searchAjax->fetched_products !== null) {
+            $products = $searchAjax->fetched_products;
+        } else {
+            $products = $this->scraper->getSearchAjaxProducts($searchAjax);
+            $searchAjax->fetched_products = $products;
+            $searchAjax->save();
+        }
+
+        if ($brandName) $products = $products->filter(fn($p) => Fuzz::isEqual($p['brandName'], $brandName));
+        if ($articleNo) $products = $products->filter(fn($p) => Fuzz::isEqual($p['articleNo'], $articleNo));
+
+        return $products->pluck('url')->filter(fn($url) => !str_contains($url, '/tyres-shop/'));
     }
 
     public function getSearchAjax(string $keyword)

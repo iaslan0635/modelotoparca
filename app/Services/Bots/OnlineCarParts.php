@@ -165,7 +165,6 @@ class OnlineCarParts
         return $productLinks;
     }
 
-    /** returns a collection of array{type: string, link: string} */
     public function getProductLinksForAjax(Ocp\SearchAjax $searchAjax, ?string $brandName)
     {
         $articleNo = $this->getArticleNo();

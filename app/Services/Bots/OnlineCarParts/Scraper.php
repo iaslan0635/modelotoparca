@@ -78,7 +78,7 @@ class Scraper
         return collect($links)->filter(fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
     }
 
-    public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?string $brandName, ?string $articleNo): Collection
+    public function getSearchAjaxProducts(SearchAjax $searchAjax): Collection
     {
         $url = $searchAjax->url;
         $json = json_decode(OcpClient::request($url), true);
@@ -89,12 +89,7 @@ class Scraper
         if (count($productResults) > 1) throw new Exception("Multiple product sections found in search ajax response");
         if (empty($productResults)) return collect(); // No results
 
-        $products = collect(reset($productResults)['values']);
-
-        if ($brandName) $products = $products->filter(fn($p) => Fuzz::isEqual($p['brandName'], $brandName));
-        if ($articleNo) $products = $products->filter(fn($p) => Fuzz::isEqual($p['articleNo'], $articleNo));
-
-        return $products->pluck('url')->filter(fn($url) => !str_contains($url, '/tyres-shop/'));
+        return collect(reset($productResults)['values']);
     }
 
     public function getProductPage(string $url)
