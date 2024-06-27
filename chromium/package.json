@@ -1,0 +1,21 @@
+{
+    "name": "chromium",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "node main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/turgutefeyuksel/modelotoparca"
+    },
+    "private": true,
+    "devDependencies": {
+        "playwright": "^1.31.1"
+    },
+    "dependencies": {
+        "express": "^4.19.2"
+    },
+    "type": "module"
+}
