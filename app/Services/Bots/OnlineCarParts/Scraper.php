@@ -141,7 +141,7 @@ class Scraper
                 ->text()
         );
 
-        $productPage = new ProductPage(
+        return new ProductPage(
             url: $url,
             id: $ocpProductId,
             articleId: $articleId,
@@ -158,8 +158,6 @@ class Scraper
             sku: $metadata->sku,
             gtin13: $metadata->gtin13,
         );
-        $productPage->saveToBigData();
-        return $productPage;
     }
 
     private function normalizeColumnName(string $string): string

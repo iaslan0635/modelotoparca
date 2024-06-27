@@ -23,7 +23,9 @@ class DataProvider
         $product = Product::where("url", $url)->first();
         if ($product) return ProductPage::fromBigData($product);
 
-        return $this->scraper->getProductPage($url);
+        $productPage = $this->scraper->getProductPage($url);
+        $productPage->saveToBigData();
+        return $productPage;
     }
 
     /**
