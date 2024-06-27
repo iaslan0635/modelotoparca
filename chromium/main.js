@@ -4,7 +4,7 @@ import express from "express"
 const app = express()
 
 const browser = await playwright.chromium.launch({
-    headless: false,
+    headless: true,
     timeout: 180000,
 })
 
