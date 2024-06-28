@@ -10,8 +10,11 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('search_page_products', function (Blueprint $table) {
-            $table->string("url")->index()->change();
-            $table->string("article_no")->index()->change();
+            $table->string("url")->nullable(false)->change();
+            $table->string("article_no")->nullable(false)->change();
+
+            $table->dropPrimary();
+            $table->primary(["search_page_id", "url"]);
 
             $table->dropColumn("product_id");
             $table->dropColumn("brand_id");

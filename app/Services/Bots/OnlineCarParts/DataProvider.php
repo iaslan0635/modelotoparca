@@ -44,7 +44,7 @@ class DataProvider
 
     public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)
     {
-        $dbPageSize = $searchPage->products()->wherePivot("page", $pageNumber)->count();
+        $dbPageSize = $searchPage->products()->where("page", $pageNumber)->count();
         if ($dbPageSize > 15) \Log::error("Onlinecarparts page size is above 15 ($dbPageSize) for page $pageNumber in $searchPage->url");
 
         $isDbComplete = $dbPageSize === 15;
