@@ -33,7 +33,7 @@ class DataProvider
 
     public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?string $articleNo)
     {
-        $isAlreadyFetched = $searchPage->fetched_pages?->contains($pageNumber);
+        $isAlreadyFetched = $searchPage->fetched_pages !== null && in_array($pageNumber, $searchPage->fetched_pages);
         if ($isAlreadyFetched) {
             $query = $searchPage->products()->where("page", $pageNumber)->orderBy("index");
             if ($articleNo) $query->where("article_no", $articleNo);
@@ -53,7 +53,7 @@ class DataProvider
             ]);
         }
 
-        $searchPage->fetched_pages = collect($searchPage->fetched_pages)->push($pageNumber);
+        $searchPage->fetched_pages = array_merge($searchPage->fetched_pages ?? [], [$pageNumber]);
         $searchPage->save();
 
         if ($articleNo !== null) {
