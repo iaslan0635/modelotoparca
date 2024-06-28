@@ -2,9 +2,6 @@
 
 namespace App\Services\Bots;
 
-use App\Facades\TTL;
-use Illuminate\Support\Facades\Cache;
-
 class OcpClient
 {
     private const PROXY_URL = "socks5://139.177.149.246:50101";
