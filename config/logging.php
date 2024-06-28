@@ -133,6 +133,13 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'bot' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/bot.log'),
+            'level' => env('BOT_LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ]
     ],
 
 ];
