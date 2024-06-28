@@ -19,6 +19,8 @@ export async function request(url) {
     const status = response.status()
     const body = await response.body()
 
+    await page.close()
+
     return {
         headers,
         status,
