@@ -24,7 +24,7 @@ class OnlineCarParts
         public readonly bool    $ajax = false,
     )
     {
-        $this->data = new OnlineCarParts\DataProvider();
+        $this->data = app(OnlineCarParts\DataProvider::class);
         $this->isOem = $this->field === 'oem_codes';
     }
 
@@ -60,19 +60,13 @@ class OnlineCarParts
         $productLinks = $this->getProductLinksForAjax($searchAjax, $this->brand_filter);
 
         $successfulProductCount = 0;
-        foreach ($productLinks as $i => $link) {
+        foreach ($productLinks as $link) {
             $connection = $this->getConnection($link);
             if ($connection->is_banned) continue;
 
-            $productPage = $this->data->getProductPage($link);
-            $productPage->saveToDatabase($this->product_id);
-
-            $searchAjax->products()->syncWithoutDetaching([
-                $productPage->id => [
-                    'type' => "product", // This may be 'oem' in the future
-                    'index' => $i,
-                ]
-            ]);
+            $this->data
+                ->getProductPage($link)
+                ->saveToDatabase($this->product_id);
 
             $successfulProductCount++;
             if (!$connection->exists) $connection->save();

@@ -2,13 +2,10 @@
 
 namespace App\Services\Bots\OnlineCarParts;
 
-use App\Models\Ocp\Brand;
 use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
-use App\Packages\Fuzz;
 use App\Packages\Utils;
 use App\Services\Bots\OcpClient;
-use App\Services\Bots\OcpClientException;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -49,7 +46,7 @@ class Scraper
             return compact('url', 'articleNo');
         });
 
-        return collect($items)->filter(fn($item) => $item["link"] && !str_contains($item["link"], '/tyres-shop/'));
+        return collect($items)->filter(fn($item) => $item["url"] && !str_contains($item["url"], '/tyres-shop/'));
     }
 
     public function getSearchAjaxProducts(SearchAjax $searchAjax): Collection

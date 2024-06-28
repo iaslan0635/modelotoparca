@@ -10,11 +10,6 @@ class Product extends BaseModel
         "images" => "array",
     ];
 
-    public function searchPage()
-    {
-        return $this->belongsToMany(SearchPage::class)->using(SearchPageProduct::class);
-    }
-
     public function oems()
     {
         return $this->hasMany(ProductOem::class);

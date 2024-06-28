@@ -12,7 +12,7 @@ class OcpClient
      * @return string
      * @throws OcpClientException
      */
-    public static function request(string $url): string
+    public static function requestWithoutRetry(string $url): string
     {
         $curlHandle = curl_init();
 
@@ -36,10 +36,32 @@ class OcpClient
             throw new \Exception("Response blocked by cloudflare.\nurl: $url\nresponse: $response");
         }
 
-        if (! ($httpStatusCode >= 200 && $httpStatusCode < 300)) {
+        if (!($httpStatusCode >= 200 && $httpStatusCode < 300)) {
             throw new OcpClientException($httpStatusCode, $url, $response);
         }
 
         return $response;
+    }
+
+    /**
+     * @param string $url
+     * @return string
+     * @throws OcpClientException
+     */
+    public static function request(string $url)
+    {
+        $attempts = 0;
+        while (true) {
+            try {
+                return self::requestWithoutRetry($url);
+            } catch (OcpClientException $e) {
+                if ($e->statusCode !== 524 || $attempts >= 3) {
+                    throw $e;
+                }
+
+                $attempts++;
+                sleep(1);
+            }
+        }
     }
 }

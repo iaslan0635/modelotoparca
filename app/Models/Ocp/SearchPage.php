@@ -13,6 +13,7 @@ class SearchPage extends BaseModel
     protected $casts = [
         'brands' => 'array',
         'categories' => 'array',
+        'fetched_pages' => 'collection',
     ];
 
     public function products()

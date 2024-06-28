@@ -10,11 +10,8 @@ use App\Packages\Fuzz;
 /** A bridge between Scraper and Bot. Attempts to use already fetched data */
 class DataProvider
 {
-    private Scraper $scraper;
-
-    public function __construct()
+    public function __construct(private readonly Scraper $scraper)
     {
-        $this->scraper = new Scraper();
     }
 
     public function getProductPage(string $url)
@@ -36,11 +33,8 @@ class DataProvider
 
     public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?string $articleNo)
     {
-        $dbPageSize = $searchPage->products()->where("page", $pageNumber)->count();
-        if ($dbPageSize > 15) \Log::error("Onlinecarparts page size is above 15 ($dbPageSize) for page $pageNumber in $searchPage->url");
-
-        $isDbComplete = $dbPageSize === 15;
-        if ($isDbComplete) {
+        $isAlreadyFetched = $searchPage->fetched_pages?->contains($pageNumber);
+        if ($isAlreadyFetched) {
             $query = $searchPage->products()->where("page", $pageNumber)->orderBy("index");
             if ($articleNo) $query->where("article_no", $articleNo);
 
@@ -50,13 +44,17 @@ class DataProvider
         $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber);
 
         foreach ($items->values() as $i => $item) {
-            $searchPage->products()->create([
+            $searchPage->products()->firstOrCreate([
+                "url" => $item['url']
+            ], [
                 "index" => $i,
-                "url" => $item['url'],
                 "article_no" => $item['articleNo'],
                 "page" => $pageNumber,
             ]);
         }
+
+        $searchPage->fetched_pages = collect($searchPage->fetched_pages)->push($pageNumber);
+        $searchPage->save();
 
         if ($articleNo !== null) {
             $commonizedKeyword = Fuzz::regexify($articleNo);

@@ -9,13 +9,15 @@ return new class extends Migration {
 
     public function up(): void
     {
-        Schema::dropIfExists("search_page_brands");
         Schema::table('search_pages', function (Blueprint $table) {
-            $table->integer("brand_id")->nullable();
+            $table->json('fetched_pages')->nullable();
         });
+    }
 
-        Schema::table('brands', function (Blueprint $table) {
-            $table->string("regexed_name")->storedAs("regexp_replace(`name`, '[^a-zA-Z0-9]', '')")->index();
+    public function down(): void
+    {
+        Schema::table('search_pages', function (Blueprint $table) {
+            $table->dropColumn('fetched_pages');
         });
     }
 };
