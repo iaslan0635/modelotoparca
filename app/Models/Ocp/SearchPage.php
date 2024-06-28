@@ -15,7 +15,7 @@ class SearchPage extends BaseModel
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, "search_page_products")->using(SearchPageProduct::class);
+        return $this->hasMany(SearchPageProduct::class);
     }
 
     public function brands()
