@@ -7,6 +7,7 @@ use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
 use App\Packages\Fuzz;
 use App\Services\Bots\OcpClientException;
+use Symfony\Component\DomCrawler\Crawler;
 
 /** A bridge between Scraper and Bot. Attempts to use already fetched data */
 class DataProvider
@@ -47,13 +48,22 @@ class DataProvider
         if ($dbPageSize > 15) \Log::error("Onlinecarparts page size is above 15 ($dbPageSize) for page $pageNumber in $searchPage->url");
 
         $isDbComplete = $dbPageSize === 15;
-        if (!$isDbComplete) return $this->scraper->getSearchPageProductLinks($searchPage, $pageNumber, $brandId, $articleNo);
+        if ($isDbComplete) {
+            $query = $searchPage->products()->wherePivot("page", $pageNumber)->orderByPivot("index");
+            if ($brandId) $query->where("brand_id", $brandId);
+            if ($articleNo) $query->where("article_no", $articleNo);
 
-        $query = $searchPage->products()->wherePivot("page", $pageNumber)->orderByPivot("index");
-        if ($brandId) $query->where("brand_id", $brandId);
-        if ($articleNo) $query->where("article_no", $articleNo);
+            return $query->pluck("url");
+        }
 
-        return $query->pluck("url");
+        $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber, $brandId);
+
+        if ($articleNo !== null) {
+            $commonizedKeyword = Fuzz::regexify($articleNo);
+            $items = $items->filter(fn($item) => Fuzz::regexifyNullable($item['articleNo']) === $commonizedKeyword);
+        }
+
+        return $items->pluck('url');
     }
 
     public function getSearchAjaxProductLinks(SearchAjax $searchAjax, ?string $brandName, ?string $articleNo)

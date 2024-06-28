@@ -2,7 +2,6 @@
 
 namespace App\Services\Bots\OnlineCarParts;
 
-use App\Models\BaseModel;
 use App\Models\Ocp\Brand;
 use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
@@ -51,7 +50,7 @@ class Scraper
         return $searchPage;
     }
 
-    public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)
+    public function getSearchPageProducts(SearchPage $searchPage, int $pageNumber, ?int $brandId)
     {
         $url = Url::fromString($searchPage->url)->withQueryParameter('page', $pageNumber);
         if ($brandId) $url = $url->withQueryParameter('brand[]', $brandId);
@@ -59,23 +58,17 @@ class Scraper
         $crawler = new Crawler(OcpClient::request((string)$url));
         $productEls = $crawler->filter('.product-card:not([data-recommended-products])');
 
-        if ($articleNo !== null) {
-            $commonizedKeyword = Fuzz::regexify($articleNo);
-            $productEls = $productEls->reduce(
-                function (Crawler $el) use ($commonizedKeyword) {
-                    $artklEl = $el->filter('.product-card__artkl span');
-
-                    return $artklEl->count() != 0 && Fuzz::regexify($artklEl->innerText()) === $commonizedKeyword;
-                }
-            );
-        }
-
-        $links = $productEls->each(function (Crawler $el) {
+        $items = $productEls->each(function (Crawler $el) {
             $linkEl = $el->filter('.product-card__title-link');
-            return $linkEl->attr('href') ?? $linkEl->attr('data-link');
+            $url = $linkEl->attr('href') ?? $linkEl->attr('data-link');
+
+            $artklEl = $el->filter('.product-card__artkl span');
+            $articleNo = $artklEl->count() > 0 ? $artklEl->innerText() : null;
+
+            return compact('url', 'articleNo');
         });
 
-        return collect($links)->filter(fn(?string $link) => $link && !str_contains($link, '/tyres-shop/'));
+        return collect($items)->filter(fn($item) => $item["link"] && !str_contains($item["link"], '/tyres-shop/'));
     }
 
     public function getSearchAjaxProducts(SearchAjax $searchAjax): Collection

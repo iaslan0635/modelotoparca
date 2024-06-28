@@ -14,9 +14,4 @@ class SearchPageProduct extends Pivot
     {
         return $this->belongsTo(SearchPage::class);
     }
-
-    public function product(): BelongsTo
-    {
-        return $this->belongsTo(Product::class);
-    }
 }
