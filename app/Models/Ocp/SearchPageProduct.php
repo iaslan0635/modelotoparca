@@ -3,9 +3,8 @@
 namespace App\Models\Ocp;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class SearchPageProduct extends Pivot
+class SearchPageProduct extends BaseModel
 {
     public $timestamps = false;
     protected $connection = 'bigdata';

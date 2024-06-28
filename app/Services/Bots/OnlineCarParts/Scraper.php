@@ -18,26 +18,10 @@ use Symfony\Component\DomCrawler\Crawler;
 /** Responsible for scraping and parsing. Intended to be used only by DataProvider */
 class Scraper
 {
-    /**
-     * @param string $keyword
-     * @param bool $isOem
-     * @return SearchPage
-     * @throws OcpClientException
-     */
-    public function getAndSaveSearchPage(string $keyword, bool $isOem)
+    public function firstOrCreateSearchPage(string $keyword, bool $isOem, ?int $brand_id)
     {
-        $url = $isOem
-            ? 'https://www.onlinecarparts.co.uk/oenumber/' . Fuzz::regexify($keyword) . '.html?'
-            : 'https://www.onlinecarparts.co.uk/spares-search.html?keyword=' . urlencode($keyword);
-
+        $url = SearchPage::makeUrl($keyword, $isOem, $brand_id);
         $crawler = new Crawler(OcpClient::request($url));
-
-        $brands = $crawler->filter('.brand-slider__item')->each(
-            fn(Crawler $el) => Brand::firstOrCreate(
-                ['id' => $el->filter('input')->attr('value')],
-                ['name' => $el->filter('img')->attr('alt')],
-            )
-        );
 
         $pageEls = $crawler->filter('.listing-pagination__item[data-pagination-page]');
         $pageCount = $pageEls->count() > 0 ? (int)$pageEls->last()->text() : 1;
@@ -45,15 +29,12 @@ class Scraper
         $type = $isOem ? 'oem' : 'keyword';
         $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn(Crawler $el) => $el->text());
 
-        $searchPage = SearchPage::firstOrCreate(compact('url'), compact('keyword', 'pageCount', 'type', 'categories'));
-        $searchPage->brands()->sync(array_map(fn(Brand $b) => $b->id, $brands));
-        return $searchPage;
+        return SearchPage::firstOrCreate(compact('url'), compact('keyword', 'pageCount', 'type', 'categories', 'brand_id'));
     }
 
-    public function getSearchPageProducts(SearchPage $searchPage, int $pageNumber, ?int $brandId)
+    public function getSearchPageProducts(SearchPage $searchPage, int $pageNumber)
     {
         $url = Url::fromString($searchPage->url)->withQueryParameter('page', $pageNumber);
-        if ($brandId) $url = $url->withQueryParameter('brand[]', $brandId);
 
         $crawler = new Crawler(OcpClient::request((string)$url));
         $productEls = $crawler->filter('.product-card:not([data-recommended-products])');

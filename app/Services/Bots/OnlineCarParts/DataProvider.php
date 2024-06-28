@@ -6,8 +6,6 @@ use App\Models\Ocp\Product;
 use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
 use App\Packages\Fuzz;
-use App\Services\Bots\OcpClientException;
-use Symfony\Component\DomCrawler\Crawler;
 
 /** A bridge between Scraper and Bot. Attempts to use already fetched data */
 class DataProvider
@@ -29,34 +27,36 @@ class DataProvider
         return $productPage;
     }
 
-    /**
-     * @param string $keyword
-     * @param bool $isOem
-     * @return SearchPage
-     * @throws OcpClientException
-     */
-    public function getSearchPage(string $keyword, bool $isOem)
+    public function getSearchPage(string $keyword, bool $isOem, ?int $brandId)
     {
         $type = $isOem ? 'oem' : 'keyword';
         $searchPage = SearchPage::where("keyword", $keyword)->where("type", $type)->first();
-        return $searchPage ?? $this->scraper->getAndSaveSearchPage($keyword, $isOem);
+        return $searchPage ?? $this->scraper->firstOrCreateSearchPage($keyword, $isOem, $brandId);
     }
 
-    public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?int $brandId, ?string $articleNo)
+    public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?string $articleNo)
     {
         $dbPageSize = $searchPage->products()->where("page", $pageNumber)->count();
         if ($dbPageSize > 15) \Log::error("Onlinecarparts page size is above 15 ($dbPageSize) for page $pageNumber in $searchPage->url");
 
         $isDbComplete = $dbPageSize === 15;
         if ($isDbComplete) {
-            $query = $searchPage->products()->wherePivot("page", $pageNumber)->orderByPivot("index");
-            if ($brandId) $query->where("brand_id", $brandId);
+            $query = $searchPage->products()->where("page", $pageNumber)->orderBy("index");
             if ($articleNo) $query->where("article_no", $articleNo);
 
             return $query->pluck("url");
         }
 
-        $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber, $brandId);
+        $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber);
+
+        foreach ($items->values() as $i => $item) {
+            $searchPage->products()->create([
+                "index" => $i,
+                "url" => $item['url'],
+                "article_no" => $item['articleNo'],
+                "page" => $pageNumber,
+            ]);
+        }
 
         if ($articleNo !== null) {
             $commonizedKeyword = Fuzz::regexify($articleNo);
@@ -71,7 +71,10 @@ class DataProvider
         if ($searchAjax->fetched_products !== null) {
             $products = $searchAjax->fetched_products;
         } else {
-            $products = $this->scraper->getSearchAjaxProducts($searchAjax);
+            $products = $this->scraper
+                ->getSearchAjaxProducts($searchAjax)
+                ->filter(fn($p) => $p['url'] && !str_contains($p['url'], '/tyres-shop/'));
+
             $searchAjax->fetched_products = $products;
             $searchAjax->save();
         }
@@ -79,7 +82,7 @@ class DataProvider
         if ($brandName) $products = $products->filter(fn($p) => Fuzz::isEqual($p['brandName'], $brandName));
         if ($articleNo) $products = $products->filter(fn($p) => Fuzz::isEqual($p['articleNo'], $articleNo));
 
-        return $products->pluck('url')->filter(fn($url) => !str_contains($url, '/tyres-shop/'));
+        return $products->pluck('url');
     }
 
     public function getSearchAjax(string $keyword)

@@ -3,6 +3,8 @@
 namespace App\Models\Ocp;
 
 use App\Packages\Fuzz;
+use App\Services\Bots\OcpClient;
+use Symfony\Component\DomCrawler\Crawler;
 
 class SearchPage extends BaseModel
 {
@@ -18,13 +20,27 @@ class SearchPage extends BaseModel
         return $this->hasMany(SearchPageProduct::class);
     }
 
-    public function brands()
+    public static function makeUrl(string $keyword, bool $isOem, ?int $brandId): string
     {
-        return $this->belongsToMany(Brand::class, "search_page_brands")->using(ProductPageBrand::class);
+        if ($isOem) {
+            $url = 'https://www.onlinecarparts.co.uk/oenumber/' . Fuzz::regexify($keyword) . '.html';
+        } else {
+            $url = 'https://www.onlinecarparts.co.uk/spares-search.html?keyword=' . urlencode($keyword);
+            if ($brandId !== null) $url .= '&brand[]=' . $brandId;
+        }
+
+        return $url;
     }
 
-    public function getBrandId(string $brandName): ?int
+    public static function fetchBrands(string $url)
     {
-        return $this->brands()->get()->first(fn($brand) => Fuzz::isEqual($brand->name, $brandName))?->id;
+        $crawler = new Crawler(OcpClient::request($url));
+
+        return $crawler->filter('.brand-slider__item')->each(
+            fn(Crawler $el) => Brand::firstOrCreate(
+                ['id' => $el->filter('input')->attr('value')],
+                ['name' => $el->filter('img')->attr('alt')],
+            )
+        );
     }
 }

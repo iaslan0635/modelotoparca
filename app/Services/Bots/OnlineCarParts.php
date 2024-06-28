@@ -85,8 +85,18 @@ class OnlineCarParts
 
     public function scrapeFromSearchPage(): bool
     {
+        if ($this->brand_filter) {
+            $brandId = Ocp\Brand::idFromNameWithFetchFallback($this->brand_filter, $this->keyword, $this->isOem);
+            if (!$brandId) {
+                $this->log("Marka ($this->brand_filter) bigdata'da bulunamadı.");
+                return false;
+            }
+        } else {
+            $brandId = null;
+        }
+
         try {
-            $searchPage = $this->data->getSearchPage($this->keyword, $this->isOem);
+            $searchPage = $this->data->getSearchPage($this->keyword, $this->isOem, $brandId);
         } catch (OcpClientException $e) {
             if ($this->isOem && $e->statusCode === 404) {
                 $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor.", ['Aranan sayfa' => $e->url]);
@@ -96,34 +106,17 @@ class OnlineCarParts
             throw $e;
         }
 
-        if ($this->brand_filter) {
-            $brandId = $searchPage->getBrandId($this->brand_filter);
-            if (!$brandId) {
-                $this->log('Marka arama sayfasında bulunamadı.');
-                return false;
-            }
-        } else {
-            $brandId = null;
-        }
-
         $successfulProductCount = 0;
         for ($pageNumber = 1; $pageNumber <= $searchPage->pageCount; $pageNumber++) {
-            $links = $this->getProductLinksForPage($searchPage, $pageNumber, $brandId);
+            $links = $this->getProductLinksForPage($searchPage, $pageNumber);
 
-            foreach ($links as $i => $link) {
+            foreach ($links as $link) {
                 $connection = $this->getConnection($link);
                 if ($connection->is_banned) continue;
 
-                $productPage = $this->data->getProductPage($link);
-                $productPage->saveToDatabase($this->product_id);
-
-                $searchPage->products()->syncWithoutDetaching([
-                    $productPage->id => [
-                        'page' => $pageNumber,
-                        'index' => $i,
-                        'brand_id' => $brandId
-                    ]
-                ]);
+                $this->data
+                    ->getProductPage($link)
+                    ->saveToDatabase($this->product_id);
 
                 $successfulProductCount++;
                 if (!$connection->exists) $connection->save();
@@ -156,10 +149,10 @@ class OnlineCarParts
         Log::log($this->product_id, $message, $logContext, 'bot-v' . self::VERSION);
     }
 
-    public function getProductLinksForPage(Ocp\SearchPage $searchPage, int $pageNumber, ?int $brandId)
+    public function getProductLinksForPage(Ocp\SearchPage $searchPage, int $pageNumber)
     {
         $articleNo = $this->getArticleNo();
-        $productLinks = $this->data->getSearchPageProductLinks($searchPage, $pageNumber, $brandId, $articleNo);
+        $productLinks = $this->data->getSearchPageProductLinks($searchPage, $pageNumber, $articleNo);
 
         $this->log("$pageNumber. Sayfadan " . count($productLinks) . ' adet ürün bulundu.');
         return $productLinks;
