@@ -65,7 +65,7 @@ final class PriceBuilder implements Stringable
 
     public function addComission(string|int|float $comission): self
     {
-        if (!is_numeric($comission)) throw new Exception('Comission must be a number.');
+        if (!is_numeric($comission)) throw new Exception('Comission must be numeric.');
         if ($comission < 0) throw new Exception('Comission must be a positive number.');
         if ($comission === 0 || $comission === "0") return $this;
 
