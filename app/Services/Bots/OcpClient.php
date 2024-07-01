@@ -4,9 +4,6 @@ namespace App\Services\Bots;
 
 class OcpClient
 {
-    private const PROXY_URL = "socks5://139.177.149.246:50101";
-    private const PROXY_AUTH = "enproyazilim:7YhzvaWDyc";
-
     /**
      * @param string $url
      * @return string
@@ -16,8 +13,9 @@ class OcpClient
     {
         $curlHandle = curl_init();
 
-        curl_setopt($curlHandle, CURLOPT_PROXY, self::PROXY_URL);
-        curl_setopt($curlHandle, CURLOPT_PROXYUSERPWD, self::PROXY_AUTH);
+        $proxyUrl = config("modelotoparca.proxy.protocol") . "://" . config("modelotoparca.proxy.origin");
+        curl_setopt($curlHandle, CURLOPT_PROXY, $proxyUrl);
+        curl_setopt($curlHandle, CURLOPT_PROXYUSERPWD, config("modelotoparca.proxy_auth"));
 
         curl_setopt($curlHandle, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_3);
         curl_setopt($curlHandle, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; Android 12; sdk_gphone64_x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Mobile Safari/537.36');

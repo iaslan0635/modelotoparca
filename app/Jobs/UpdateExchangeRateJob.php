@@ -20,8 +20,8 @@ class UpdateExchangeRateJob
 
     public static function updateRates()
     {
-        // TODO: find alternative to tcmb
-        $xmlStirng = Http::withoutVerifying()->get('https://kur.doviz.day')->body();
+        $proxy = config("modelotoparca.proxy.protocol") . "://" . config("modelotoparca.proxy.auth") . "@" . config("modelotoparca.proxy.origin");
+        $xmlStirng = Http::withOptions(['proxy' => $proxy])->get('https://kur.doviz.day')->body();
 
         $xml = new SimpleXMLElement($xmlStirng);
         $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
