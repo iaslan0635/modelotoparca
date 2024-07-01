@@ -27,8 +27,8 @@ class UpdateExchangeRateJob
         $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
         $eur = (string) $xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
 
-        Cache::put('usd_price', $usd, TTL::DAY);
-        Cache::put('eur_price', $eur, TTL::DAY);
+        Cache::put('usd_rate', $usd, TTL::DAY);
+        Cache::put('eur_rate', $eur, TTL::DAY);
     }
 
     public function handle()
