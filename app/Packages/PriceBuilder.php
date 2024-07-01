@@ -83,10 +83,11 @@ final class PriceBuilder implements Stringable
 
     public function format(int $decimals = 2): string
     {
+        $p = $this->numberFormat($decimals);
         $symbol = match (strtolower($this->currency)) {
-            'try' => '₺',
-            'usd' => '$',
-            'eur' => '€',
+            'try' => "$p ₺",
+            'usd' => "\$$p",
+            'eur' => "€$p",
             default => '?',
         };
 
