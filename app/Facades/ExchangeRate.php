@@ -2,57 +2,57 @@
 
 namespace App\Facades;
 
-use App\Jobs\UpdateExchangeRateJob;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 class ExchangeRate
 {
-    public const CACHE_KEY_SUFFIX = '_rate';
-
     /**
      * @note Ürün fiyatını çevirmek için convert metodlarını kullanın
      *
      * @see ExchangeRate::convertFromTRY()
      * @see ExchangeRate::convertToTRY()
      */
-    public static function get(string $currency): string
+    public static function getRate(string $currency): string
     {
         $currency = strtolower($currency);
 
         if ($currency === 'try') {
             return 1;
         }
+
         if (!($currency === 'usd' || $currency === 'eur')) {
-            throw new \InvalidArgumentException('currency must be usd, eur or try');
+            throw new \InvalidArgumentException("currency ($currency) must be usd, eur or try");
         }
 
-        $key = $currency . self::CACHE_KEY_SUFFIX;
+        $allRates = self::getAllRates();
+        return $allRates[$currency];
+    }
 
-        if (!Cache::has($key)) {
-            UpdateExchangeRateJob::updateRates();
-            if (!Cache::has($key)) {
-                throw new \Exception('UpdateExchangeRateJob::updateRates() is not working properly');
-            }
-        }
+    public static function getAllRates()
+    {
+        return Cache::remember('exchange_rates', TTL::DAY, function () {
+            $proxy = config("modelotoparca.proxy.protocol") . "://" . config("modelotoparca.proxy.auth") . "@" . config("modelotoparca.proxy.origin");
+            $xmlStirng = Http::withOptions(['proxy' => $proxy])->throw()->get('https://www.tcmb.gov.tr/kurlar/today.xml')->body();
 
-        return Cache::get($key);
+            $xml = new \SimpleXMLElement($xmlStirng);
+            $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
+            $eur = (string)$xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
+
+            return [
+                'usd' => $usd,
+                'eur' => $eur,
+            ];
+        });
     }
 
     public static function convertFromTRY(string $currency, string $moneyAsTRY, int $scale = 2): string
     {
-        if ($currency === 'try') {
-            return $moneyAsTRY;
-        }
-
-        return bcdiv($moneyAsTRY, self::get($currency), $scale);
+        return bcdiv($moneyAsTRY, self::getRate($currency), $scale);
     }
 
     public static function convertToTRY(string $currency, string $moneyAsCurrency, int $scale = 2): string
     {
-        if ($currency === 'try') {
-            return $moneyAsCurrency;
-        }
-
-        return bcmul($moneyAsCurrency, self::get($currency), $scale);
+        return bcmul($moneyAsCurrency, self::getRate($currency), $scale);
     }
 }
