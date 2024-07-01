@@ -21,7 +21,7 @@ class UpdateExchangeRateJob
     public static function updateRates()
     {
         $proxy = config("modelotoparca.proxy.protocol") . "://" . config("modelotoparca.proxy.auth") . "@" . config("modelotoparca.proxy.origin");
-        $xmlStirng = Http::withOptions(['proxy' => $proxy])->get('https://kur.doviz.day')->body();
+        $xmlStirng = Http::withOptions(['proxy' => $proxy])->get('https://www.tcmb.gov.tr/kurlar/today.xml')->body();
 
         $xml = new SimpleXMLElement($xmlStirng);
         $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
