@@ -21,7 +21,7 @@ class Brand extends BaseModel
 
         $url = SearchPage::makeUrl($keyword, $isOem, null);
         $brands = SearchPage::fetchBrands($url);
-        $brand = $brands->first(fn($brand) => Fuzz::isEqual($brand->name, $name));
+        $brand = collect($brands)->first(fn($brand) => Fuzz::isEqual($brand->name, $name));
 
         return $brand?->id;
     }
