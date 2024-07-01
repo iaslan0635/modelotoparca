@@ -6,8 +6,9 @@ use App\Facades\ExchangeRate;
 use App\Facades\TaxFacade;
 use App\Models\Price;
 use Exception;
+use Stringable;
 
-final class PriceBuilder
+final class PriceBuilder implements Stringable
 {
     private const SCALE = 8;
 
@@ -92,7 +93,7 @@ final class PriceBuilder
         return number_format($this->value, $decimals) . ' ' . $symbol;
     }
 
-    public function getValue()
+    public function getValue(): string
     {
         return $this->value;
     }

@@ -69,7 +69,7 @@
                     <div class="product-card__footer">
                         <div class="product-card__prices productlist-price">
                             <div
-                                class="product-card__price product-card__price--current product-list-price">{{ $product->price?->formattedPrice }}</div>
+                                class="product-card__price product-card__price--current product-list-price">{{ $product->price?->sellingPrice() }}</div>
                         </div>
                         <button class="product-card__addtocart-icon" type="button"
                                 aria-label="Add to cart">
