@@ -15,7 +15,7 @@ use Symfony\Component\DomCrawler\Crawler;
 /** Responsible for scraping and parsing. Intended to be used only by DataProvider */
 class Scraper
 {
-    public function firstOrCreateSearchPage(string $keyword, bool $isOem, ?int $brand_id)
+    public function updateOrCreateSearchPage(string $keyword, bool $isOem, ?int $brand_id)
     {
         $url = SearchPage::makeUrl($keyword, $isOem, $brand_id);
         $crawler = new Crawler(OcpClient::request($url));
@@ -26,7 +26,7 @@ class Scraper
         $type = $isOem ? 'oem' : 'keyword';
         $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn(Crawler $el) => $el->text());
 
-        return SearchPage::firstOrCreate(compact('url'), compact('keyword', 'pageCount', 'type', 'categories', 'brand_id'));
+        return SearchPage::updateOrCreate(compact('url'), compact('keyword', 'pageCount', 'type', 'categories', 'brand_id'));
     }
 
     public function getSearchPageProducts(SearchPage $searchPage, int $pageNumber)

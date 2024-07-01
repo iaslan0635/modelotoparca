@@ -33,7 +33,7 @@ class DataProvider
     {
         $type = $isOem ? 'oem' : 'keyword';
         $searchPage = SearchPage::where("keyword", $keyword)->where("type", $type)->first();
-        return $searchPage ?? $this->scraper->firstOrCreateSearchPage($keyword, $isOem, $brandId);
+        return $searchPage ?? $this->scraper->updateOrCreateSearchPage($keyword, $isOem, $brandId);
     }
 
     public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?string $articleNo)
@@ -94,6 +94,6 @@ class DataProvider
     public function getSearchAjax(string $keyword)
     {
         $url = "https://www.onlinecarparts.co.uk/ajax/search/autocomplete?keyword=" . urlencode($keyword);
-        return SearchAjax::firstOrCreate(["keyword" => $keyword], ["url" => $url]);
+        return SearchAjax::updateOrCreate(["keyword" => $keyword], ["url" => $url]);
     }
 }
