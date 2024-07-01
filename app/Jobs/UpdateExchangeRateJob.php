@@ -24,11 +24,11 @@ class UpdateExchangeRateJob
         $xmlStirng = Http::withoutVerifying()->get('https://kur.doviz.day')->body();
 
         $xml = new SimpleXMLElement($xmlStirng);
-        $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
-        $eur = (string) $xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
+        $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
+        $eur = (string)$xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
 
-        Cache::put('usd_rate', $usd, TTL::DAY);
-        Cache::put('eur_rate', $eur, TTL::DAY);
+        Cache::put('usd' . ExchangeRate::CACHE_KEY_SUFFIX, $usd, TTL::DAY);
+        Cache::put('eur' . ExchangeRate::CACHE_KEY_SUFFIX, $eur, TTL::DAY);
     }
 
     public function handle()

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Cache;
 
 class ExchangeRate
 {
+    public const CACHE_KEY_SUFFIX = '_rate';
+
     /**
      * @note Ürün fiyatını çevirmek için convert metodlarını kullanın
      *
@@ -24,7 +26,7 @@ class ExchangeRate
             throw new \InvalidArgumentException('currency must be usd, eur or try');
         }
 
-        $key = $currency . '_rate';
+        $key = $currency . self::CACHE_KEY_SUFFIX;
 
         if (!Cache::has($key)) {
             UpdateExchangeRateJob::updateRates();
