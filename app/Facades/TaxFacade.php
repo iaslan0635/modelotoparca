@@ -18,11 +18,6 @@ class TaxFacade
         return $result;
     }
 
-    public static function formattedPrice($amount): string
-    {
-        return number_format($amount, 2) . ' ₺';
-    }
-
     /**
      * @param float|int|string $total price with tax
      * @param float|int|string $percentage tax percentage multiplied by one hundred. For example, use 20 if tax rate is 20%

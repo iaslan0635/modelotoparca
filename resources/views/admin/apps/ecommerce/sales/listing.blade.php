@@ -275,7 +275,7 @@
                                     <!--end::Status=-->
                                     <!--begin::Total=-->
                                     <td class="text-end pe-0">
-                                        <span class="fw-bold">{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</span>
+                                        <span class="fw-bold">{{ format_money($order->items()->sum('price')) }}</span>
                                     </td>
                                     <!--end::Total=-->
                                     <!--begin::Date Added=-->

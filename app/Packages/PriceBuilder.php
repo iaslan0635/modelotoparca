@@ -2,6 +2,7 @@
 
 namespace App\Packages;
 
+use App\Facades\ExchangeRate;
 use App\Facades\TaxFacade;
 use App\Models\Price;
 use Exception;
@@ -23,19 +24,11 @@ final class PriceBuilder
         $this->currency = $price->currency;
     }
 
-    /** TRY conversion must be first step */
-    public static function asTRY(Price $price): self
+    public function convertToTRY(): self
     {
-        $builder = new self($price);
-
-        $try_price = $builder->price->try_price;
-        if ($try_price === null) {
-            throw new Exception("The try_price of price record with id {$builder->price->id} is null.");
-        }
-
-        $builder->value = $try_price;
-        $builder->currency = 'try';
-        return $builder;
+        $this->value = ExchangeRate::convertToTRY($this->currency, $this->value, self::SCALE);
+        $this->currency = 'try';
+        return $this;
     }
 
     public function applyTax(): self
