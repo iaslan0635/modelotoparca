@@ -21,7 +21,7 @@ final class PriceBuilder implements Stringable
     public function __construct(Price $price)
     {
         $this->price = $price;
-        $this->value = $price->getRawOriginal('price');
+        $this->value = $price->price;
         $this->currency = $price->currency;
     }
 
