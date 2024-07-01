@@ -88,7 +88,7 @@ final class PriceBuilder implements Stringable
             'try' => "$p ₺",
             'usd' => "\$$p",
             'eur' => "€$p",
-            default => '?',
+            default => "$p $this->currency",
         };
     }
 
