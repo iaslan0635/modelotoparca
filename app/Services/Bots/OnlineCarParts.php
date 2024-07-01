@@ -10,7 +10,7 @@ use App\Packages\Fuzz;
 
 class OnlineCarParts
 {
-    public const VERSION = 1; // Used for logging
+    public const VERSION = 2; // Used for logging
 
     private readonly OnlineCarParts\DataProvider $data;
     private readonly bool $isOem;
