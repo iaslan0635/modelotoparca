@@ -8,6 +8,7 @@ class SearchPageProduct extends BaseModel
 {
     public $timestamps = false;
     protected $connection = 'bigdata';
+    protected $primaryKey = ['search_page_id', 'url'];
 
     public function searchPage(): BelongsTo
     {
