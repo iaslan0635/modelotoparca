@@ -85,12 +85,13 @@ class CartItem
         try {
             $product = Product::query()->findOrFail($this->model->id);
 
-            if ($product->price?->price != $this->price) {
+            $listingPrice = $product->price?->listingPrice()->getValue();
+            if ($listingPrice != $this->price) {
                 $this->alert = true;
                 $this->alertType = 'warning';
                 $this->alertMessage = 'Ürün fiyatı güncellenmiştir biz de sepetinizde fiyatı güncelledik.';
 
-                Cart::updateItemPrice($this->id, $product->price?->price);
+                Cart::updateItemPrice($this->id, $listingPrice);
             }
 
         } catch (ModelNotFoundException $exception) {

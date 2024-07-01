@@ -99,11 +99,12 @@ class N11 implements Merchant
         $this->client = app(N11Client::class);
     }
 
-    private function preparePriceToSend(float|int $price)
+    private function getPrice(Product $product)
     {
-        $price *= (100 + merchant_setting('n11', 'comission', 0)) / 100;
-
-        return number_format($price, 2, '.', '');
+        $comission = merchant_setting('n11', 'comission', 0);
+        return $product->price->listingPrice()
+            ->applyComission($comission)
+            ->numberFormat(2, '.', '');
     }
 
     public function syncOrders()
@@ -234,7 +235,7 @@ class N11 implements Merchant
                 'value' => $p->merchant_value,
             ]);
 
-        $price = $this->preparePriceToSend($product->price->price);
+        $price = $this->getPrice($product);
         $response = $this->client->product->SaveProduct([
             'product' => [
                 'productSellerCode' => $product->sku,
@@ -455,7 +456,7 @@ class N11 implements Merchant
     {
         return $this->client->product->UpdateProductPriceBySellerCode([
             'productSellerCode' => $product->sku,
-            'price' => $this->preparePriceToSend($product->price->price),
+            'price' => $this->getPrice($product),
         ]);
     }
 

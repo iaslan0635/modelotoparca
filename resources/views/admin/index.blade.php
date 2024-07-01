@@ -482,7 +482,7 @@
                                                 <span class="fw-bold ms-3">{{ $product->quantity }}</span>
                                             </td>
                                             <td class="text-end pe-0">
-                                                <span class="text-gray-600 fw-bold fs-6">{{ $product->price?->formatted_price }}</span>
+                                                <span class="text-gray-600 fw-bold fs-6">{{ $product->price?->sellingPrice() }}</span>
                                             </td>
                                             <td class="text-end pe-12">
                                                 <span class="badge py-3 px-4 fs-7 badge-light-primary">In Process</span>

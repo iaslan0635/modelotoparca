@@ -2,7 +2,6 @@
 
 namespace App\Packages;
 
-use App\Facades\ExchangeRate;
 use App\Facades\TaxFacade;
 use App\Models\Price;
 use Exception;
@@ -24,20 +23,19 @@ final class PriceBuilder
         $this->currency = $price->currency;
     }
 
-    public function convertToTRY(): self
+    /** TRY conversion must be first step */
+    public static function asTRY(Price $price): self
     {
-        if ($this->taxApplied || $this->discountApplied) {
-            throw new Exception('TRY conversion must be done before modifying price value.');
-        }
+        $builder = new self($price);
 
-        $try_price = $this->price->try_price;
+        $try_price = $builder->price->try_price;
         if ($try_price === null) {
-            throw new Exception("The try_price of price record with id {$this->price->id} is null.");
+            throw new Exception("The try_price of price record with id {$builder->price->id} is null.");
         }
 
-        $this->value = $try_price;
-        $this->currency = 'try';
-        return $this;
+        $builder->value = $try_price;
+        $builder->currency = 'try';
+        return $builder;
     }
 
     public function applyTax(): self
@@ -58,18 +56,38 @@ final class PriceBuilder
             throw new Exception('Discount has already been applied to this price.');
         }
 
+        if (!$this->price->discount) return $this;
+
         $discountAmount = match ($this->price->discount_type) {
-            'percentile', 'percentage' => $this->value * $this->price->discount_amount,
+            'percentile', 'percentage' => bcmul($this->value, $this->price->discount_amount, self::SCALE),
             'fixed' => $this->price->discount_amount,
             default => throw new Exception("PriceBuilder: The discount type ({$this->price->discount_type}) of the price record with id {$this->price->id} is incorrect."),
         };
 
-        $this->value = bcsub($this->value, $discountAmount, 4);
+        $this->value = bcsub($this->value, $discountAmount, self::SCALE);
         $this->discountApplied = true;
         return $this;
     }
 
-    public function format(): string
+    public function applyComission(string|int|float $comission): self
+    {
+        if (!is_numeric($comission)) throw new Exception('Comission must be a number.');
+        if ($comission < 0) throw new Exception('Comission must be a positive number.');
+        if ($comission === 0 || $comission === "0") return $this;
+
+        $oldScale = bcscale(self::SCALE);
+        $this->value = bcmul($this->value, bcdiv(bcadd(100, $comission), 100));
+        bcscale($oldScale);
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->format();
+    }
+
+    public function format(int $decimals = 2): string
     {
         $symbol = match (strtolower($this->currency)) {
             'try' => '₺',
@@ -78,16 +96,16 @@ final class PriceBuilder
             default => '?',
         };
 
-        return number_format($this->value, 2) . ' ' . $symbol;
-    }
-
-    public function __toString(): string
-    {
-        return $this->format();
+        return number_format($this->value, $decimals) . ' ' . $symbol;
     }
 
     public function getValue()
     {
         return $this->value;
+    }
+
+    function numberFormat(int $decimals = 0, ?string $decimal_separator = '.', ?string $thousands_separator = ','): string
+    {
+        return number_format($this->value, $decimals, $decimal_separator, $thousands_separator);
     }
 }
