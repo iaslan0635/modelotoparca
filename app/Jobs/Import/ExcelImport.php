@@ -189,12 +189,8 @@ class ExcelImport implements ShouldQueue
         $allWebNames = implode(' ', [$product->name, $product->name3, $product->name4]);
 
         $image_appendix = 0;
-        if ($product->image1) {
-            $image_appendix |= self::IMAGE_11;
-        } // IMAGEINC
-        if ($product->image2) {
-            $image_appendix |= self::IMAGE_12;
-        } // IMAGE2INC
+        if ($product->image1) $image_appendix |= self::IMAGE_11; // IMAGEINC
+        if ($product->image2) $image_appendix |= self::IMAGE_12; // IMAGE2INC
 
         $realProduct = Product::withoutGlobalScope("active")->updateOrCreate(['id' => $id], [
             'brand_id' => $product->markref,
