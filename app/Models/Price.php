@@ -33,12 +33,12 @@ class Price extends BaseModel
     /** Build price without discount */
     public function listingPrice(): PriceBuilder
     {
-        return $this->builder()->convertToTRY()->applyDiscount()->applyTax();
+        return $this->builder()->convertToTRY()->applyTax();
     }
 
     /** Build price with discount */
     public function sellingPrice(): PriceBuilder
     {
-        return $this->builder()->convertToTRY()->applyTax();
+        return $this->builder()->convertToTRY()->applyDiscount()->applyTax();
     }
 }
