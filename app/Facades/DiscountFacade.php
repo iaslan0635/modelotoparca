@@ -13,8 +13,6 @@ class DiscountFacade
         }
 
         // Calculate the original price
-        $originalPrice = $discountedPrice / (1 - $discountPercentage / 100);
-
-        return $originalPrice;
+        return $discountedPrice / (1 - ($discountPercentage / 100));
     }
 }

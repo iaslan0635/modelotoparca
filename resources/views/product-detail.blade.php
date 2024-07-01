@@ -85,10 +85,10 @@
                                         <div class="product__prices-stock">
                                             <div class="product__prices">
                                                 @if($product->price?->discount)
-                                                    <div class="product__price product__price--old">{{ $product->price?->price }} {{ $product->price?->symbol }}</div>
-                                                    <div class="product__price product__price--new">{{ $product->price?->discounted_price }} {{ $product->price?->symbol }}</div>
+                                                    <div class="product__price product__price--old">{{ $product->price?->price }} ₺</div>
+                                                    <div class="product__price product__price--new">{{ $product->price?->discounted_price }} ₺</div>
                                                 @else
-                                                    <div class="product__price product__price--current">{{ $product->price?->price }} {{ $product->price?->symbol }}</div>
+                                                    <div class="product__price product__price--current">{{ $product->price?->price }} ₺</div>
                                                 @endif
                                             </div>
                                             <div
