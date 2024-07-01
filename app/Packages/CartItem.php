@@ -85,7 +85,7 @@ class CartItem
         try {
             $product = Product::query()->findOrFail($this->model->id);
 
-            $listingPrice = $product->price?->sellingPrice()->getValue();
+            $listingPrice = $product->price->sellingPrice()->getValue();
             if ($listingPrice != $this->price) {
                 $this->alert = true;
                 $this->alertType = 'warning';
