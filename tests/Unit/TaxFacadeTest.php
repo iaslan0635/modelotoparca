@@ -20,7 +20,7 @@ class TaxFacadeTest extends TestCase
     #[DataProvider('taxProvider')]
     public function testCalculate(int $price, int $taxRate, float $priceWithTaxRate)
     {
-        $this->assertEquals($priceWithTaxRate, TaxFacade::calculate($price, $taxRate));
+        $this->assertEquals($priceWithTaxRate, (float)(TaxFacade::calculate($price, $taxRate)));
     }
 
     #[DataProvider('taxProvider')]

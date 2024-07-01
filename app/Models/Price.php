@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Events\PriceChangedEvent;
 use App\Facades\ExchangeRate;
 use App\Facades\TaxFacade;
+use App\Packages\PriceBuilder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -24,6 +25,23 @@ class Price extends BaseModel
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function builder(): PriceBuilder
+    {
+        return new PriceBuilder($this);
+    }
+
+    /** Build price without discount */
+    public function listingPrice()
+    {
+        return $this->builder()->convertToTRY()->applyDiscount()->applyTax();
+    }
+
+    /** Build price with discount */
+    public function sellingPrice()
+    {
+        return $this->builder()->convertToTRY()->applyTax();
     }
 
     protected function price(): Attribute

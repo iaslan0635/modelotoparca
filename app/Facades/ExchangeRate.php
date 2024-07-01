@@ -20,37 +20,37 @@ class ExchangeRate
         if ($currency === 'try') {
             return 1;
         }
-        if (! ($currency === 'usd' || $currency === 'eur')) {
-            throw new \Exception('currency must be usd, eur or try');
+        if (!($currency === 'usd' || $currency === 'eur')) {
+            throw new \InvalidArgumentException('currency must be usd, eur or try');
         }
-        $key = $currency.'_price';
-        if (Cache::has($key)) {
-            return Cache::get($key);
-        } else {
+
+        $key = $currency . '_rate';
+
+        if (!Cache::has($key)) {
             UpdateExchangeRateJob::updateRates();
-            if (! Cache::has($key)) {
+            if (!Cache::has($key)) {
                 throw new \Exception('UpdateExchangeRateJob::updateRates() is not working properly');
             }
-
-            return Cache::get($key);
         }
+
+        return Cache::get($key);
     }
 
-    public static function convertFromTRY(string $currency, string $moneyAsTRY): string
+    public static function convertFromTRY(string $currency, string $moneyAsTRY, int $scale = 2): string
     {
         if ($currency === 'try') {
             return $moneyAsTRY;
         }
 
-        return bcdiv($moneyAsTRY, self::get($currency), 2);
+        return bcdiv($moneyAsTRY, self::get($currency), $scale);
     }
 
-    public static function convertToTRY(string $currency, string $moneyAsCurrency): string
+    public static function convertToTRY(string $currency, string $moneyAsCurrency, int $scale = 2): string
     {
         if ($currency === 'try') {
             return $moneyAsCurrency;
         }
 
-        return bcmul($moneyAsCurrency, self::get($currency), 2);
+        return bcmul($moneyAsCurrency, self::get($currency), $scale);
     }
 }

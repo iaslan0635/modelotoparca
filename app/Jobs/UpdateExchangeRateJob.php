@@ -42,7 +42,7 @@ class UpdateExchangeRateJob
         foreach (['usd', 'eur'] as $currency) {
             $rate = ExchangeRate::get($currency);
             Price::where('currency', $currency)->update([
-                'price' => DB::raw("CEIL($rate * 100 * untouchedPrice) / 100"),
+                'try_price' => DB::raw("price * $rate"),
             ]);
         }
     }

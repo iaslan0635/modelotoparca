@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Jobs\SyncMerchantOrdersJob;
 use App\Jobs\SyncMerchantQuestionsJob;
+use App\Jobs\UpdateExchangeRateJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('queue:prune-batches')->daily();
         $schedule->job(SyncMerchantOrdersJob::class, 'important')->everyFiveMinutes();
         $schedule->job(SyncMerchantQuestionsJob::class, 'important')->everyFiveMinutes();
+        $schedule->job(UpdateExchangeRateJob::class, 'important')->daily();
     }
 
     /**
