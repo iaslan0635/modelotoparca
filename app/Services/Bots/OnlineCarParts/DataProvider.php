@@ -49,15 +49,15 @@ class DataProvider
 
         $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber);
 
-        foreach ($items->values() as $i => $item) {
-            SearchPageProduct::insertOrIgnore([
-                "url" => $item['url'],
-                "search_page_id" => $searchPage->id,
-                "index" => $i,
-                "article_no" => $item['articleNo'],
-                "page" => $pageNumber,
-            ]);
-        }
+        $values = $items->values()->map(fn($item, $i) => [
+            "url" => $item['url'],
+            "search_page_id" => $searchPage->id,
+            "index" => $i,
+            "article_no" => $item['articleNo'],
+            "page" => $pageNumber,
+        ])->all();
+
+        SearchPageProduct::insertOrIgnore($values);
 
         $searchPage->fetched_pages = array_merge($searchPage->fetched_pages ?? [], [$pageNumber]);
         $searchPage->save();
