@@ -50,10 +50,9 @@ class DataProvider
         $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber);
 
         foreach ($items->values() as $i => $item) {
-            SearchPageProduct::updateOrCreate([
+            SearchPageProduct::insertOrIgnore([
                 "url" => $item['url'],
                 "search_page_id" => $searchPage->id,
-            ], [
                 "index" => $i,
                 "article_no" => $item['articleNo'],
                 "page" => $pageNumber,
