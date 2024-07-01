@@ -103,7 +103,7 @@ class N11 implements Merchant
     {
         $comission = merchant_setting('n11', 'comission', 0);
         return $product->price->listingPrice()
-            ->applyComission($comission)
+            ->addComission($comission)
             ->numberFormat(2, '.', '');
     }
 

@@ -45,7 +45,7 @@ class Hepsiburada implements TrackableMerchant
     {
         $comission = merchant_setting('hepsiburada', 'comission', 0);
         return $product->price->listingPrice()
-            ->applyComission($comission)
+            ->addComission($comission)
             ->numberFormat(2, ',', '');
     }
 

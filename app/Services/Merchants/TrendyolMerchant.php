@@ -49,7 +49,7 @@ class TrendyolMerchant implements TrackableMerchant
     {
         $comission = merchant_setting('trendyol', 'comission', 0);
         return $product->price->listingPrice()
-            ->applyComission($comission)
+            ->addComission($comission)
             ->numberFormat(2, '.', '');
     }
 
@@ -57,7 +57,7 @@ class TrendyolMerchant implements TrackableMerchant
     {
         $comission = merchant_setting('trendyol', 'comission', 0);
         return $product->price->sellingPrice()
-            ->applyComission($comission)
+            ->addComission($comission)
             ->numberFormat(2, '.', '');
     }
 
