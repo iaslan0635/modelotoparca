@@ -25,20 +25,20 @@ class Price extends BaseModel
         return $this->belongsTo(Product::class);
     }
 
-    public function builder(): PriceBuilder
+    public function builder(): ?PriceBuilder
     {
-        return new PriceBuilder($this);
+        return $this->price === null ? null : new PriceBuilder($this);
     }
 
     /** Build price without discount */
-    public function listingPrice(): PriceBuilder
+    public function listingPrice(): ?PriceBuilder
     {
-        return $this->builder()->convertToTRY()->applyTax();
+        return $this->builder()?->convertToTRY()->applyTax();
     }
 
     /** Build price with discount */
-    public function sellingPrice(): PriceBuilder
+    public function sellingPrice(): ?PriceBuilder
     {
-        return $this->builder()->convertToTRY()->applyDiscount()->applyTax();
+        return $this->builder()?->convertToTRY()->applyDiscount()->applyTax();
     }
 }
