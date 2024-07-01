@@ -10,11 +10,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('search_page_products', function (Blueprint $table) {
-            $table->dropIndex([
-                "search_page_products_article_no_index",
-                "search_page_products_index_index",
-                "search_page_products_url_index",
-            ]);
+            $table->dropIndex("search_page_products_article_no_index");
+            $table->dropIndex("search_page_products_index_index");
+            $table->dropIndex("search_page_products_url_index");
 
             $table->index(["search_page_id", "page", "index"]);
             $table->index(["search_page_id", "page", "article_no", "index"]);
@@ -24,8 +22,8 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('search_page_products', function (Blueprint $table) {
-            $table->dropIndex(["search_page_products_search_page_id_page_index_index"]);
-            $table->dropIndex(["search_page_products_search_page_id_page_article_no_index_index"]);
+            $table->dropIndex("search_page_products_search_page_id_page_index_index");
+            $table->dropIndex("search_page_products_search_page_id_page_article_no_index_index");
 
             $table->index("article_no");
             $table->index("index");
