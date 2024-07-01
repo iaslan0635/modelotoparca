@@ -215,10 +215,6 @@ class ExcelImport implements ShouldQueue
             'hidden_searchable' => $product->name2,
         ]);
 
-        if ($isChaged) {
-            self::runBot($product);
-        }
-
         $mainCategory = Category::find($product->dominantref, ['name']);
         if ($mainCategory) {
             $categories = Category::where('name', $mainCategory->name)->pluck('id');
@@ -239,6 +235,10 @@ class ExcelImport implements ShouldQueue
         ]);
 
         $realProduct->searchable();
+
+        if ($isChaged) {
+            self::runBot($product);
+        }
     }
 
     public static function runBot(TigerProduct $product): void
