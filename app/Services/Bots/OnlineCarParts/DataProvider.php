@@ -5,6 +5,7 @@ namespace App\Services\Bots\OnlineCarParts;
 use App\Models\Ocp\Product;
 use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
+use App\Models\Ocp\SearchPageProduct;
 use App\Packages\Fuzz;
 use Illuminate\Support\Facades\Log;
 
@@ -49,8 +50,9 @@ class DataProvider
         $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber);
 
         foreach ($items->values() as $i => $item) {
-            $searchPage->products()->firstOrCreate([
-                "url" => $item['url']
+            SearchPageProduct::updateOrCreate([
+                "url" => $item['url'],
+                "search_page_id" => $searchPage->id,
             ], [
                 "index" => $i,
                 "article_no" => $item['articleNo'],
