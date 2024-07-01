@@ -41,10 +41,10 @@ class DataProvider
         $isAlreadyFetched = $searchPage->fetched_pages !== null && in_array($pageNumber, $searchPage->fetched_pages);
         if ($isAlreadyFetched) {
             $this->logger->info("Using already fetched data for page $pageNumber in $searchPage->url");
-            $query = $searchPage->products()->where("page", $pageNumber)->orderBy("index");
+            $query = $searchPage->products()->where("page", $pageNumber);
             if ($articleNo) $query->where("article_no", $articleNo);
 
-            return $query->pluck("url");
+            return $query->orderBy("index")->pluck("url");
         }
 
         $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber);
