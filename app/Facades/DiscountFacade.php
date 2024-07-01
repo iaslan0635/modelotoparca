@@ -2,6 +2,8 @@
 
 namespace App\Facades;
 
+use InvalidArgumentException;
+
 class DiscountFacade
 {
     public static function reverseCalculate(float $discountedPrice, float $discountPercentage) {
