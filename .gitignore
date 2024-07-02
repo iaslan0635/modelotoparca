@@ -40,3 +40,5 @@ storage/*.key
 /public/demo?
 
 /data
+
+nohup.out
