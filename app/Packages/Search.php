@@ -116,7 +116,7 @@ class Search
 
     private static function cleanTerm(string $term)
     {
-        return strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $term));
+        return strtolower(preg_replace('/[^a-zA-Z0-9 ]+/', '', $term));
     }
 
     private static function termWiseQueryCombination(
