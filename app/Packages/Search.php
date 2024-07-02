@@ -35,14 +35,26 @@ class Search
                 ->boost(self::BOOST['car']));
     }
 
+    private static function multiQuery(string $cleanTerm)
+    {
+        return Query::multiMatch()
+            ->fields([
+                'title',
+                'sub_title',
+                'brand.name',
+                '*_regex',
+            ])->query($cleanTerm);
+    }
+
     public static function query(
-        ?string $term,
-        $sortBy = null,
-        int $selectCategory = null,
-        array $relations = null,
+        ?string               $term,
+                              $sortBy = null,
+        int                   $selectCategory = null,
+        array                 $relations = null,
         QueryBuilderInterface $filterQuery = null,
-        array $brandIds = null
-    ): array {
+        array                 $brandIds = null
+    ): array
+    {
         //        $startTime = microtime(true);
         if (empty($term)) {
             return [
@@ -87,6 +99,7 @@ class Search
                 self::carQuery($replacedTerm),
                 self::productQuery($term),
                 self::productQuery($replacedTerm),
+                self::multiQuery($cleanReplacedTerm),
             ];
 
             $compoundQuery = self::combineQueries(...$nonCodeQueries);
@@ -111,8 +124,9 @@ class Search
         string $cleanTerm,
         string $replacedTerm,
         string $cleanReplacedTerm,
-        array $queryFnPairs
-    ) {
+        array  $queryFnPairs
+    )
+    {
         $queries = [];
         foreach ($queryFnPairs as [$queryFn, $regexQueryFn]) {
             $queries[] = $queryFn($term);
@@ -264,33 +278,33 @@ class Search
         $products = self::paginateProducts($finalQuery, $sortBy, $relations);
 
         $productsWithCategories = Product::searchQuery($finalQuery)
-            ->refineModels(fn (Builder $q) => $q->select(['id']))
+            ->refineModels(fn(Builder $q) => $q->select(['id']))
             ->load(['categories'])->size(100)->execute()->models();
 
         $productsWithBrand = Product::searchQuery($finalQueryWithoutBrandFilter)
-            ->refineModels(fn (Builder $q) => $q->select(['id', 'brand_id']))
+            ->refineModels(fn(Builder $q) => $q->select(['id', 'brand_id']))
             ->load(['brand'])->size(1000)->execute()->models();
 
         $categories =
             $productsWithCategories
-                ->map(fn (Product $product) => $product->categories)->flatten()
+                ->map(fn(Product $product) => $product->categories)->flatten()
                 //collect([\App\Models\Category::find(79548)])
                 ->groupBy('name')
-                ->map(fn (Collection $cats) => [
+                ->map(fn(Collection $cats) => [
                     'category' => $cats[0],
                     'count' => $cats->count(),
                 ]);
 
         $brands = $productsWithBrand
-            ->map(fn (Product $product) => $product->brand)
-            ->filter(fn (?Brand $brand) => $brand !== null)
+            ->map(fn(Product $product) => $product->brand)
+            ->filter(fn(?Brand $brand) => $brand !== null)
             ->groupBy('id')
-            ->map(fn (Collection $brandCollection) => [
+            ->map(fn(Collection $brandCollection) => [
                 'brand' => $brandCollection[0],
                 'count' => $brandCollection->count(),
             ]);
 
-        $highlights = $products->getCollection()->mapWithKeys(fn (Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
+        $highlights = $products->getCollection()->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
 
         self::log($term);
 
@@ -323,7 +337,7 @@ class Search
 
         $suggestionOems = ProductOem::searchQuery($oemSuggestQuery)->execute();
 
-        return $suggestionOems->models()->pluck('oem')->unique()->map(fn (string $s) => "<strong>$s</strong>")->all();
+        return $suggestionOems->models()->pluck('oem')->unique()->map(fn(string $s) => "<strong>$s</strong>")->all();
     }
 
     private static function suggestionsCrossCode(string $term)
@@ -344,14 +358,14 @@ class Search
         foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()['cross_code'])) {
                 foreach ($highlight->raw()['cross_code'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
             }
             if (isset($highlight->raw()['cross_code_regex'])) {
                 foreach ($highlight->raw()['cross_code_regex'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
@@ -379,14 +393,14 @@ class Search
         foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()['producercode'])) {
                 foreach ($highlight->raw()['producercode'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
             }
             if (isset($highlight->raw()['producercode_regex'])) {
                 foreach ($highlight->raw()['producercode_regex'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
@@ -414,14 +428,14 @@ class Search
         foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()['producercode2'])) {
                 foreach ($highlight->raw()['producercode2'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
             }
             if (isset($highlight->raw()['producercode2_regex'])) {
                 foreach ($highlight->raw()['producercode2_regex'] as $item) {
-                    if (! in_array($item, $suggestions)) {
+                    if (!in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }
