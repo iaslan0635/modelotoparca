@@ -19,6 +19,8 @@ class Search extends Component
 
     public function render()
     {
+        if (!$this->query && request()->has("query")) $this->query = request("query");
+
         $relations = [
             'alternatives',
             'similars',
