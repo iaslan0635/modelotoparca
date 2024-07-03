@@ -139,7 +139,7 @@ class Product extends BaseModel implements CanVisit
             'producercode_unbranded' => $this->producercode_unbranded,
             'producercode2' => $this->producercode2,
             'cross_code' => $this->cross_code,
-            'oems' => $this->oems->pluck("oem")->values()->all(),
+            'oems' => $this->oems->pluck("oem"),
             'similars' => $similars,
             'hidden_searchable' => $this->hidden_searchable,
             'tecdoc' => collect($this->tecdoc)->values(),

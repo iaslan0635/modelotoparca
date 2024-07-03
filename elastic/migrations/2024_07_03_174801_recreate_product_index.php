@@ -20,15 +20,10 @@ final class RecreateProductIndex implements MigrationInterface
                     'code_analyzer' => [
                         'type' => 'custom',
                         'tokenizer' => 'code_tokenizer',
-                        'filter' => ['multiplexed'],
+                        'filter' => ['asciifolding', 'lowercase'],
                     ]
                 ],
-                'filter' => [
-                    'multiplexed' => [
-                        "type" => "multiplexer",
-                        "filters" => ["asciifolding, lowercase", "asciifolding, lowercase, edge_ngram"]
-                    ]
-                ],
+                'filter' => [],
                 'tokenizer' => [
                     'code_tokenizer' => [
                         'type' => 'char_group',
