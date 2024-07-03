@@ -144,7 +144,7 @@ class Product extends BaseModel implements CanVisit
             'hidden_searchable' => $this->hidden_searchable,
             'tecdoc' => collect($this->tecdoc)->values(),
             'cars' => $cars->map(fn(Car $car) => ["id" => $car->id, "name" => $car->name]),
-            'brand' => $this->brand?->map(fn(Brand $brand) => ["id" => $brand->id, "name" => $brand->name]),
+            'brand' => ($brand = $this->brand) ? ["id" => $brand->id, "name" => $brand->name] : null,
             'categories' => $this->categories->map(fn(Category $category) => ["id" => $category->id, "name" => $category->name]),
         ];
     }

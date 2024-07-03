@@ -46,7 +46,6 @@ final class RecreateProductIndex implements MigrationInterface
             $mapping->text('oems', $codeAnalyzer);
             $mapping->text('cars');
             $mapping->text('categories');
-            $mapping->text('brand');
             $mapping->text('similars', $codeAnalyzer);
             $mapping->text('hidden_searchable', $codeAnalyzer);
 
