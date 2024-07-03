@@ -182,6 +182,7 @@ class Search
     public static function parseHighlights(LengthAwarePaginator $productPaginator)
     {
         return $productPaginator->getCollection()
+            ->filter(fn(Hit $hit) => $hit->highlight() !== null)
             ->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
     }
 }
