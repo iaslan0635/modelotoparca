@@ -6604,7 +6604,7 @@ select.form-control::-ms-expand {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: .04em;
-    color: #b3b3b3;
+    color: rgb(3, 47, 74);
     margin-top: 4px;
     margin-bottom: -2px;
     -webkit-transition: color 0.15s;
