@@ -14,8 +14,8 @@ class ProductCardImage extends Component
     {
     }
 
-    public function render(): View
+    public function render(): ?View
     {
-        return view('components.product-card-image');
+        return $this->product === null ? null : view('components.product-card-image');
     }
 }
