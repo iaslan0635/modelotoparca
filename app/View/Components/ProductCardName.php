@@ -9,13 +9,17 @@ use Illuminate\View\Component;
 class ProductCardName extends Component
 {
     public function __construct(
-        public Product $product,
+        public ?Product $product,
     )
     {
     }
 
-    public function render(): View
+    public function render(): ?View
     {
+        if ($this->product === null) {
+            return null;
+        }
+
         $defaultSentinel = new \stdClass();
         $brand = $this->product->brand;
         $brandImage = $brand?->imageUrl($defaultSentinel);
