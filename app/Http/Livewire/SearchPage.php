@@ -3,7 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
-use App\Packages\Search as Searchable;
+use App\Packages;
+use App\Packages\Search\Search;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -57,12 +58,17 @@ class SearchPage extends Component
 
     public function search()
     {
-        $query = Searchable::query($this->query, $this->sortBy, $this->category, brandIds: $this->brandFilters);
-        $products = $query['products'];
-        $brands = $query['brands'];
-        $categories = $query['categories'];
-        //        $this->term = $query['term'];
-        $this->highlights = $query['highlights'];
+        $search = new Search(
+            term: $this->query,
+            sortBy: $this->sortBy,
+            categoryId: $this->category,
+            brandIds: $this->brandFilters
+        );
+
+        $products = $search->paginateProducts();
+        $brands = $search->brands();
+        $categories = $search->categories();
+        $this->highlights = Search::parseHighlights($products);
 
         $searchedOnCode = $this->highlights->some($this->isCodeHighlight(...));
 

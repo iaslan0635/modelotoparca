@@ -7,7 +7,6 @@ use App\Events\ProductCreatedEvent;
 use App\Facades\Garage;
 use App\Jobs\Import\ExcelImport;
 use App\Jobs\RunSingleBotJob;
-use App\Packages\Fuzz;
 use App\Traits\HasImages;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
@@ -131,37 +130,22 @@ class Product extends BaseModel implements CanVisit
         $similars = collect(explode(',', $this->similar_product_codes ?? ''))->map(fn($s) => trim($s));
         $similars->push(...$this->similarCodes->map(fn(ProductSimilar $ps) => $ps->code));
 
-        $tecdoc = collect($this->tecdoc)->values()->map(fn($value) => ['name' => $value, 'name_regex' => Fuzz::regexify($value)]);
-
         return [
-            'id' => $this->id,
             'title' => $this->title,
             'sub_title' => $this->sub_title,
             'slug' => $this->slug,
             'part_number' => $this->part_number,
-            'part_number_regex' => Fuzz::regexifyNullable($this->part_number),
             'producercode' => $this->producercode,
             'producercode_unbranded' => $this->producercode_unbranded,
-            'producercode_unbranded_regex' => Fuzz::regexifyNullable($this->producercode_unbranded),
-            'producercode_regex' => Fuzz::regexifyNullable($this->producercode),
             'producercode2' => $this->producercode2,
-            'producercode2_regex' => Fuzz::regexifyNullable($this->producercode2),
             'cross_code' => $this->cross_code,
-            'cross_code_regex' => Fuzz::regexifyNullable($this->cross_code),
-
-            'oems' => $this->oems->map->toSearchableArray(),
-            'cars' => $cars->map->toSearchableArray(),
-            'similars' => $similars->map(fn($s) => ['code' => $s, 'code_regex' => Fuzz::regexify($s)]),
-            'categories' => $this->categories->map->toSearchableArray(),
-            'brand' => $this->brand?->toSearchableArray(),
-            'price' => $this->price?->price,
-
-            'full_text' => collect([$this->title, $this->sub_title])->merge($cars->map->getRegexedName())->join(' | '),
-
+            'oems' => $this->oems->pluck("oem"),
+            'similars' => $similars,
             'hidden_searchable' => $this->hidden_searchable,
-            'hidden_searchable_regex' => Fuzz::regexifyNullable($this->hidden_searchable),
-
-            'tecdoc' => $tecdoc,
+            'tecdoc' => collect($this->tecdoc)->values(),
+            'cars' => $cars->map(fn(Car $car) => ["id" => $car->id, "name" => $car->name]),
+            'brand' => $this->brand?->map(fn(Brand $brand) => ["id" => $brand->id, "name" => $brand->name]),
+            'categories' => $this->categories->map(fn(Category $category) => ["id" => $category->id, "name" => $category->name]),
         ];
     }
 

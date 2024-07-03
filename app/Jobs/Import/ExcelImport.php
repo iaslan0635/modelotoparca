@@ -236,9 +236,9 @@ class ExcelImport implements ShouldQueue
 
         $realProduct->searchable();
 
-        if ($isChaged) {
+        /*if ($isChaged) {
             self::runBot($product);
-        }
+        }*/
     }
 
     public static function runBot(TigerProduct $product): void

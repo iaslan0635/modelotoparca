@@ -3,11 +3,14 @@
 namespace App\Http\Livewire\Header;
 
 use App\Facades\Garage;
-use App\Packages\Search as Searchable;
+use App\Packages;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Search extends Component
 {
+    use WithPagination;
+
     public $query = '';
 
     public $term = 'product';
@@ -30,14 +33,11 @@ class Search extends Component
         $categories = [];
         $results = [];
         $suggestions = [];
-        //        dd($this->query);
         if (strlen($this->query) >= 3) {
-            $result = Searchable::query($this->query, relations: $relations);
-            $categories = $result['categories'];
-            $results = $result['products'];
-            $suggestions = $result['suggestions'];
-
-            //            dd($result);
+            $search = new Packages\Search\Search($this->query, loadRelations: $relations, prefixMode: true);
+            $categories = $search->categories();
+            $results = $search->paginateProducts();
+            $suggestions = $search->suggestions();
         }
 
         $data = [

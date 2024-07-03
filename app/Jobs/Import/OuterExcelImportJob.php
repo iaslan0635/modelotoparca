@@ -22,6 +22,8 @@ class OuterExcelImportJob implements ShouldQueue
 
     public function handle(): void
     {
+        // TODO: find out what products deactivated ahead of time and update elastic index accordingly
+
         if (! $this->append) {
             Product::query()->update(['status' => false]);
             TigerProduct::query()->update(['active' => 1]);
