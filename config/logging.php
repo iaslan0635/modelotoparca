@@ -139,7 +139,14 @@ return [
             'path' => storage_path('logs/bot.log'),
             'level' => env('BOT_LOG_LEVEL', 'debug'),
             'replace_placeholders' => true,
-        ]
+        ],
+
+        'important' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/important.log'),
+            'level' => 'error',
+            'replace_placeholders' => true,
+        ],
     ],
 
 ];

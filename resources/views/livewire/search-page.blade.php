@@ -33,7 +33,7 @@
                                                     <span class="filter__arrow">
                                                         <svg width="12px" height="7px">
                                                             <path
-                                                                    d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
+                                                                d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
                                                         </svg>
                                                     </span>
                                                 </button>
@@ -52,7 +52,7 @@
                                                                     <li class="filter-categories__item filter-categories__item--current">
                                                                         <a href="#" wire:click="changeCategory({{ $category->id }})">{{ $category->name }}</a>
                                                                         <div
-                                                                                class="filter-categories__counter">{{ $count }}</div>
+                                                                            class="filter-categories__counter">{{ $count }}</div>
                                                                     </li>
                                                                 @endforeach
                                                             </ul>
@@ -69,7 +69,7 @@
                                                     <span class="filter__arrow">
                                                         <svg width="12px" height="7px">
                                                             <path
-                                                                    d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
+                                                                d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
                                                         </svg>
                                                     </span>
                                                 </button>
@@ -104,7 +104,7 @@
                                                     <span class="filter__arrow">
                                                         <svg width="12px" height="7px">
                                                             <path
-                                                                    d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
+                                                                d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
                                                         </svg>
                                                     </span>
                                                 </button>
@@ -115,7 +115,7 @@
                                                                 @foreach($brands as $key => $brand)
                                                                     <label class="filter-list__item ">
                                                                         <span
-                                                                                class="input-check filter-list__input">
+                                                                            class="input-check filter-list__input">
                                                                             <span class="input-check__body">
                                                                                 <input class="input-check__input"
                                                                                        name="brands[]"
@@ -123,12 +123,12 @@
                                                                                        {{ $brandFilters ? in_array($key, $brandFilters) ? "checked":null:null }}
                                                                                        type="checkbox">
                                                                                 <span
-                                                                                        class="input-check__box"></span>
+                                                                                    class="input-check__box"></span>
                                                                                 <span class="input-check__icon">
                                                                                     <svg
-                                                                                            width="9px" height="7px">
+                                                                                        width="9px" height="7px">
                                                                                         <path
-                                                                                                d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
+                                                                                            d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
                                                                                     </svg>
                                                                                 </span>
                                                                             </span>
@@ -137,7 +137,7 @@
                                                                             {{ $brand["brand"]->name }}
                                                                         </span>
                                                                         <span
-                                                                                class="filter-list__counter">{{ $brand["count"] }}</span>
+                                                                            class="filter-list__counter">{{ $brand["count"] }}</span>
                                                                     </label>
                                                                 @endforeach
                                                             </div>
@@ -258,7 +258,7 @@
                                                         En düşük fiyat: {{ request()->input('min_price') }}
                                                         <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
                                                             <path
-                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                         </svg>
                                                     </a>
                                                 </li>
@@ -272,7 +272,7 @@
                                                         En yüksek fiyat: {{ request()->input('max_price') }}
                                                         <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
                                                             <path
-                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                         </svg>
                                                     </a>
                                                 </li>
@@ -285,10 +285,10 @@
                                                        class="applied-filters__button applied-filters__button--filter">
                                                         Marka: {{ $brands[$brand]["brand"]->name }}
                                                         <svg
-                                                                onclick="$(`#brand-{{ $brands[$brand]["brand"]->id }}`).remove() && $('#querySearch').submit()"
-                                                                width="9" height="9">
+                                                            onclick="$(`#brand-{{ $brands[$brand]["brand"]->id }}`).remove() && $('#querySearch').submit()"
+                                                            width="9" height="9">
                                                             <path
-                                                                    d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
+                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                         </svg>
                                                     </a>
                                                 </li>
@@ -315,56 +315,59 @@
                             <div class="products-list__content" wire:loading.remove>
                                 @foreach($products as $product)
                                     @if(($model = $product->model()) === null)
-                                        @dd($product)
+                                        @php
+                                            Log::driver("important")->error("Product model is null. product: {product}", ["product" => $product])
+                                        @endphp
+                                        @continue
                                     @endif
                                     <div class="products-list__item">
                                         <div class="product-card">
                                             <div class="product-card__actions-list">
                                                 <button
-                                                        class="product-card__action product-card__action--quickview"
-                                                        data-slug="{{ $product->model()?->slug }}" type="button"
-                                                        aria-label="Quick view">
+                                                    class="product-card__action product-card__action--quickview"
+                                                    data-slug="{{ $model->slug }}" type="button"
+                                                    aria-label="Quick view">
                                                     <svg width="16" height="16">
                                                         <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
 	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"/>
                                                     </svg>
                                                 </button>
                                                 <button
-                                                        class="product-card__action product-card__action--wishlist"
-                                                        type="button" aria-label="Add to wish list">
+                                                    class="product-card__action product-card__action--wishlist"
+                                                    type="button" aria-label="Add to wish list">
                                                     <svg width="16" height="16">
                                                         <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
 	l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"/>
                                                     </svg>
                                                 </button>
                                                 <button
-                                                        class="product-card__action product-card__action--compare"
-                                                        type="button" aria-label="Add to compare">
+                                                    class="product-card__action product-card__action--compare"
+                                                    type="button" aria-label="Add to compare">
                                                     <svg width="16" height="16">
                                                         <path
-                                                                d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>
+                                                            d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"/>
                                                         <path
-                                                                d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"/>
+                                                            d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"/>
                                                         <path
-                                                                d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"/>
+                                                            d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"/>
                                                     </svg>
                                                 </button>
                                             </div>
-                                            <x-product-card-image :product="$product->model()"/>
+                                            <x-product-card-image :product="$model"/>
                                             <div class="product-card__info">
                                                 <div class="product-card__meta">
-                                                    <span class="product-card__meta-title"> {{ $product->model()?->producercode }} </span>
+                                                    <span class="product-card__meta-title"> {{ $model->producercode }} </span>
                                                 </div>
-                                                <x-product-card-name :product="$product->model()"/>
+                                                <x-product-card-name :product="$model"/>
                                                 <div class="product-card__features">
                                                     <ul>
-                                                        @foreach(($product->model()?->specifications ?? []) as $key => $spec)
+                                                        @foreach(($model->specifications ?? []) as $key => $spec)
                                                             <li>{{ "{$key} : {$spec}" }}</li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
                                                 <div class="status-badge status-badge--style--success status-badge--has-icon status-badge--has-text">
-                                                    @foreach($highlights[$product->model()?->id] ?? [] as $key => $mark)
+                                                    @foreach($highlights[$model->id] ?? [] as $key => $mark)
                                                         <div class="status-badge__body mt-2">
                                                             <div class="status-badge__icon">
                                                                 <svg width="13" height="13">
@@ -379,7 +382,7 @@
                                             <div class="product-card__footer">
                                                 <div class="product-card__prices">
                                                     <div
-                                                            class="product-card__price product-card__price--current">{{ $product->model()?->price?->sellingPrice() }}</div>
+                                                        class="product-card__price product-card__price--current">{{ $model->price?->sellingPrice() }}</div>
                                                 </div>
                                                 <button class="product-card__addtocart-icon" type="button"
                                                         aria-label="Add to cart">
@@ -391,8 +394,8 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
                                                     </svg>
                                                 </button>
-                                                <livewire:add-to-cart :wire:key="$product->model()?->id"
-                                                                      :product="$product->model()"
+                                                <livewire:add-to-cart :wire:key="$model->id"
+                                                                      :product="$model"
                                                                       :quantity_mode="false"/>
                                                 <button class="product-card__wishlist" type="button">
                                                     <svg width="16" height="16">
