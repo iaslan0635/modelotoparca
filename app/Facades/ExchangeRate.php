@@ -32,8 +32,7 @@ class ExchangeRate
     public static function getAllRates()
     {
         return Cache::remember('exchange_rates', TTL::DAY, function () {
-            $proxy = config("modelotoparca.proxy.protocol") . "://" . config("modelotoparca.proxy.auth") . "@" . config("modelotoparca.proxy.origin");
-            $xmlStirng = Http::withOptions(['proxy' => $proxy])->throw()->get('https://www.tcmb.gov.tr/kurlar/today.xml')->body();
+            $xmlStirng = Http::withoutVerifying()->throw()->get('https://kur.doviz.day')->body();
 
             $xml = new \SimpleXMLElement($xmlStirng);
             $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
