@@ -314,6 +314,9 @@
                             </div>
                             <div class="products-list__content" wire:loading.remove>
                                 @foreach($products as $product)
+                                    @if(($model = $product->model()) === null)
+                                        @dd($product)
+                                    @endif
                                     <div class="products-list__item">
                                         <div class="product-card">
                                             <div class="product-card__actions-list">
