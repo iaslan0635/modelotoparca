@@ -34,7 +34,7 @@ class ElasticImportCommand extends Command
                 $this->info("Starting from ID: $startId");
                 $query = $model::query()->where('id', '>', $startId);
 
-                $model->makeAllSearchableUsing($query)
+                $query
                     ->orderBy($model->qualifyColumn($model->getScoutKeyName()))
                     ->searchable($this->option('chunk'));
             } else {
