@@ -135,6 +135,7 @@ class Search
         return Query::multiMatch()
             ->fields($fieldsWithBoosts)
             ->type('cross_fields')
+            ->operator('and')
             ->query($this->term);
     }
 
