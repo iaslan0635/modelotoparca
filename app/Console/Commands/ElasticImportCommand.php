@@ -5,7 +5,9 @@ namespace App\Console\Commands;
 use Elastic\Adapter\Exceptions\BulkOperationException;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Events\ModelsImported;
+use Laravel\Scout\Searchable;
 
 class ElasticImportCommand extends Command
 {
@@ -18,6 +20,7 @@ class ElasticImportCommand extends Command
         $class = $this->argument('model');
         $this->info("Importing $class");
 
+        /** @var Model&Searchable $model */
         $model = new $class;
 
         $events->listen(ModelsImported::class, function ($event) use ($class) {
@@ -29,7 +32,11 @@ class ElasticImportCommand extends Command
         try {
             if ($startId = $this->option('start-id')) {
                 $this->info("Starting from ID: $startId");
-                $model::where('id', '>', $startId)->makeAllSearchable($this->option('chunk'));
+                $query = $model::query()->where('id', '>', $startId);
+
+                $model->makeAllSearchableUsing($query)
+                    ->orderBy($model->qualifyColumn($model->getScoutKeyName()))
+                    ->searchable($this->option('chunk'));
             } else {
                 $model::makeAllSearchable($this->option('chunk'));
             }
