@@ -366,7 +366,7 @@
                                                         @endforeach
                                                     </ul>
                                                 </div>
-                                                <x-product-meta :tiger="$product->tiger"/>
+                                                <x-product-meta :tiger="$model->tiger"/>
                                                 <div class="status-badge status-badge--style--success status-badge--has-icon status-badge--has-text">
                                                     @foreach($highlights[$model->id] ?? [] as $key => $mark)
                                                         <div class="status-badge__body mt-2">
