@@ -151,7 +151,7 @@ class Product extends BaseModel implements CanVisit
 
     public function searchableWith()
     {
-        return ['cars', 'oems', 'categories', 'price', 'brand'];
+        return ['cars', 'oems', 'categories', 'brand'];
     }
 
     public function shouldBeSearchable()
