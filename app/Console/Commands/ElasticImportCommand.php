@@ -32,7 +32,7 @@ class ElasticImportCommand extends Command
         try {
             if ($startId = $this->option('start-id')) {
                 $this->info("Starting from ID: $startId");
-                $query = $model::query()->where('id', '>', $startId);
+                $query = $model::query()->where('id', '>=', $startId);
 
                 $query
                     ->orderBy($model->qualifyColumn($model->getScoutKeyName()))
@@ -42,7 +42,7 @@ class ElasticImportCommand extends Command
             }
         } catch (BulkOperationException $e) {
             $result = collect($e->rawResult());
-            $items = collect($result["items"]);//->reject(fn($item) => $item["index"]["result"] === "created" || $item["index"]["result"] === "updated");
+            $items = collect($result["items"])->filter(fn($item) => array_key_exists("error", $item));
             $result->forget("items");
             dd($result->all(), $items->all());
         }
