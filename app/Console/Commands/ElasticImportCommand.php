@@ -35,7 +35,7 @@ class ElasticImportCommand extends Command
             }
         } catch (BulkOperationException $e) {
             $result = collect($e->rawResult());
-            $items = $result["items"]->reject(fn($item) => $item["index"]["result"] === "created" || $item["index"]["result"] === "updated");
+            $items = collect($result["items"])->reject(fn($item) => $item["index"]["result"] === "created" || $item["index"]["result"] === "updated");
             $result->forget("items");
             dd($result, $items);
         }
