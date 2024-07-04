@@ -17,37 +17,35 @@ final class RecreateProductIndex implements MigrationInterface
         Index::create('products_index', function (Mapping $mapping, Settings $settings) {
             $settings->analysis([
                 'analyzer' => [
-                    'code_analyzer' => [
+                    'default' => [
                         'type' => 'custom',
-                        'tokenizer' => 'code_tokenizer',
+                        'tokenizer' => 'symbol_tokenizer',
                         'filter' => ['asciifolding', 'lowercase'],
                     ]
                 ],
                 'filter' => [],
                 'tokenizer' => [
-                    'code_tokenizer' => [
+                    'symbol_tokenizer' => [
                         'type' => 'char_group',
                         'tokenize_on_chars' => ['whitespace', 'symbol', 'punctuation'],
                     ],
                 ],
             ]);
 
-            $codeAnalyzer = ['analyzer' => 'code_analyzer'];
-
             $mapping->text('title');
             $mapping->text('sub_title');
             $mapping->keyword('slug');
-            $mapping->text('part_number', $codeAnalyzer);
-            $mapping->text('producercode', $codeAnalyzer);
-            $mapping->text('producercode_unbranded', $codeAnalyzer);
-            $mapping->text('cross_code', $codeAnalyzer);
-            $mapping->text('producercode2', $codeAnalyzer);
+            $mapping->text('part_number');
+            $mapping->text('producercode');
+            $mapping->text('producercode_unbranded');
+            $mapping->text('cross_code');
+            $mapping->text('producercode2');
             $mapping->text('description');
-            $mapping->text('oems', $codeAnalyzer);
+            $mapping->text('oems');
             $mapping->text('cars');
             $mapping->text('categories');
-            $mapping->text('similars', $codeAnalyzer);
-            $mapping->text('hidden_searchable', $codeAnalyzer);
+            $mapping->text('similars');
+            $mapping->text('hidden_searchable');
 
             $mapping->object('brand', [
                 'properties' => [
