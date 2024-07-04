@@ -66,10 +66,10 @@ class SearchPage extends Component
             brandIds: $this->brandFilters
         );
 
-        $products = Packages\Measure::run(fn () => $search->paginateProducts(), "paginateProducts");
-        $brands = Packages\Measure::run(fn () => $search->brands(), "brands");
-        $categories = Packages\Measure::run(fn () => $search->categories(), "categories");
-        $this->highlights = Packages\Measure::run(fn () => Search::parseHighlights($products), "parseHighlights");
+        $products = $search->paginateProducts();
+        $brands = $search->brands();
+        $categories = $search->categories();
+        $this->highlights = Search::parseHighlights($products);
         $measurement->log('Search');
 
         $searchedOnCode = $this->highlights->some($this->isCodeHighlight(...));
