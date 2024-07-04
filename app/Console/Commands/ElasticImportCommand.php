@@ -42,8 +42,9 @@ class ElasticImportCommand extends Command
             }
         } catch (BulkOperationException $e) {
             $result = collect($e->rawResult());
-            $items = collect($result["items"])->filter(fn($item) => array_key_exists("error", $item));
+            $items = collect($result["items"])->pluck("index")->filter(fn($item) => array_key_exists("error", $item));
             $result->forget("items");
+
             dd($result->all(), $items->all());
         }
 
