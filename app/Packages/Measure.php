@@ -2,6 +2,7 @@
 
 namespace App\Packages;
 
+use Closure;
 use Illuminate\Support\Facades\Log;
 
 /** Measure execution time and log it */
@@ -14,6 +15,19 @@ class Measure
     public static function start()
     {
         return new self(microtime(true));
+    }
+
+    /**
+     * @template T
+     * @param Closure(): T $closure
+     * @return T
+     */
+    public static function run(Closure $closure, string $name)
+    {
+        $measurement = self::start();
+        $result = $closure();
+        $measurement->log($name);
+        return $result;
     }
 
     public function stop()
