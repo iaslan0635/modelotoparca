@@ -162,20 +162,7 @@ class Search
     private function addHighlights(SearchParametersBuilder $searchParameters)
     {
         $searchParameters
-            ->highlight('title', [
-                'pre_tags' => ['<strong>'],
-                'post_tags' => ['</strong>'],
-            ])
-            ->highlight('sub_title')
-            ->highlight('cross_code')
-            ->highlight('producercode')
-            ->highlight('producercode2')
-            ->highlight('producercode_unbranded')
-            ->highlight('similar_product_codes')
-            ->highlight('oems')
-            ->highlight('cars.name')
-            ->highlight('similars')
-            ->highlight('tecdoc');
+            ->highlight('*');
     }
 
     public static function parseHighlights(LengthAwarePaginator $productPaginator)
