@@ -186,7 +186,7 @@ class ExcelImport implements ShouldQueue
 
         $id = $product->id;
         $title = $product->web_name ?? $product->name ?? 'BAŞLIKSIZ ÜRÜN';
-        $allWebNames = implode(' ', [$product->name, $product->name3, $product->name4]);
+        $allWebNames = implode("\n", [$product->name, $product->name3, $product->name4]);
 
         $image_appendix = 0;
         if ($product->image1) $image_appendix |= self::IMAGE_11; // IMAGEINC
