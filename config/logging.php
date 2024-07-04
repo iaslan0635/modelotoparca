@@ -147,6 +147,13 @@ return [
             'level' => 'error',
             'replace_placeholders' => true,
         ],
+
+        'measurements' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/measurements.log'),
+            'level' => 'debug',
+            'replace_placeholders' => true,
+        ],
     ],
 
 ];

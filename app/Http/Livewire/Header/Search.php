@@ -34,10 +34,14 @@ class Search extends Component
         $results = [];
         $suggestions = [];
         if (strlen($this->query) >= 3) {
-            $search = new Packages\Search\Search($this->query, loadRelations: $relations/*, prefixMode: true*/);
+            $measurement = Packages\Measure::start();
+
+            $search = new Packages\Search\Search($this->query, loadRelations: $relations);
             $categories = $search->categories();
             $results = $search->paginateProducts();
             $suggestions = $search->suggestions();
+
+            $measurement->log('Ajax search');
         }
 
         $data = [

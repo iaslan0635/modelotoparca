@@ -44,7 +44,6 @@ class Search
         private readonly ?int    $categoryId = null,
         private readonly ?array  $brandIds = null,
         private readonly ?array  $loadRelations = null,
-        private readonly bool    $prefixMode = false,
     )
     {
     }
@@ -135,7 +134,7 @@ class Search
 
         return Query::multiMatch()
             ->fields($fieldsWithBoosts)
-            ->type($this->prefixMode ? 'phrase_prefix' : 'cross_fields')
+            ->type('cross_fields')
             ->query($this->term);
     }
 

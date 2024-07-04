@@ -2,6 +2,7 @@
 
 use App\Packages\Permissions\PermissionSynchronizer;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Middleware\PermissionMiddleware;
 
 if (!function_exists("merchant_setting")) {
