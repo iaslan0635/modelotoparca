@@ -58,7 +58,6 @@ class SearchPage extends Component
 
     public function search()
     {
-        $measurement = Packages\Measure::start();
         $search = new Search(
             term: $this->query,
             sortBy: $this->sortBy,
@@ -70,7 +69,6 @@ class SearchPage extends Component
         $brands = $search->brands();
         $categories = $search->categories();
         $this->highlights = Search::parseHighlights($products);
-        $measurement->log('Search');
 
         $searchedOnCode = $this->highlights->some($this->isCodeHighlight(...));
 
