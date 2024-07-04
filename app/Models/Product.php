@@ -44,17 +44,17 @@ class Product extends BaseModel implements CanVisit
     protected $searchableAs = 'products_index';
 
     /**
-     * @param  Collection<int, Product>  $products
+     * @param Collection<int, Product> $products
      * @return array<Collection>
      */
     public static function alternativesAndSimilars(Collection $products)
     {
-        $idComparer = fn (Product $p, Product $i) => $p->id <=> $i->id;
+        $idComparer = fn(Product $p, Product $i) => $p->id <=> $i->id;
 
-        $alternatives = $products->map(fn (Product $p) => $p->alternatives()->get())->flatten()->unique('id');
+        $alternatives = $products->map(fn(Product $p) => $p->alternatives()->get())->flatten()->unique('id');
         $alternatives = $alternatives->diffUsing($products, $idComparer);
 
-        $similars = $products->map(fn (Product $p) => $p->similars()->get())->flatten()->unique('id');
+        $similars = $products->map(fn(Product $p) => $p->similars()->get())->flatten()->unique('id');
         $similars = $similars->diffUsing($products, $idComparer);
         $similars = $similars->diffUsing($alternatives, $idComparer);
 
@@ -77,11 +77,11 @@ class Product extends BaseModel implements CanVisit
 
     protected static function booted()
     {
-        static::addGlobalScope('active', fn (Builder $builder) => $builder->where('status', '=', 1));
+        static::addGlobalScope('active', fn(Builder $builder) => $builder->where('status', '=', 1));
 
         if (Garage::hasChosen()) {
             $chosen = Garage::chosen();
-            static::addGlobalScope('chosen_car', fn (Builder $builder) => $builder->whereRelation('cars', 'id', '=', $chosen));
+            static::addGlobalScope('chosen_car', fn(Builder $builder) => $builder->whereRelation('cars', 'id', '=', $chosen));
         }
     }
 
@@ -125,10 +125,13 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        $cars = $this->cars->filter(fn (Car $car) => $car->indexable && $car->body_type !== 'truck' && $car->body_type !== 'urban_bus')->values();
+        $cars = $this->cars->filter(fn(Car $car) => $car->indexable && $car->body_type !== 'truck' && $car->body_type !== 'urban_bus')->values();
 
-        $similars = collect(explode(',', $this->similar_product_codes ?? ''))->map(fn ($s) => trim($s));
-        $similars->push(...$this->similarCodes->map(fn (ProductSimilar $ps) => $ps->code));
+        $similars = collect(explode(',', $this->similar_product_codes ?? ''))->map(fn($s) => trim($s));
+        $similars->push(...$this->similarCodes->map(fn(ProductSimilar $ps) => $ps->code));
+
+        $price = $this->price === null || $this->price->price === null ? null
+            : floatval($this->price->listingPrice()->getValue());
 
         return [
             'title' => $this->title,
@@ -143,20 +146,21 @@ class Product extends BaseModel implements CanVisit
             'similars' => $similars,
             'hidden_searchable' => $this->hidden_searchable,
             'tecdoc' => collect($this->tecdoc)->values(),
-            'cars' => $cars->map(fn (Car $car) => ['id' => $car->id, 'name' => $car->name]),
+            'cars' => $cars->map(fn(Car $car) => ['id' => $car->id, 'name' => $car->name]),
             'brand' => ($brand = $this->brand) ? ['id' => $brand->id, 'name' => $brand->name] : null,
-            'categories' => $this->categories->map(fn (Category $category) => ['id' => $category->id, 'name' => $category->name]),
+            'categories' => $this->categories->map(fn(Category $category) => ['id' => $category->id, 'name' => $category->name]),
+            'price' => $price,
         ];
     }
 
     public function searchableWith()
     {
-        return ['cars', 'oems', 'categories', 'brand'];
+        return ['cars', 'oems', 'categories', 'brand', 'price'];
     }
 
     public function shouldBeSearchable()
     {
-        return (bool) $this->status;
+        return (bool)$this->status;
     }
 
     public function categories(): BelongsToMany
@@ -193,7 +197,7 @@ class Product extends BaseModel implements CanVisit
 
     public function fullTitle(): Attribute
     {
-        return Attribute::get(fn () => $this->title.($this->producercode ? ' @'.$this->producercode : ''));
+        return Attribute::get(fn() => $this->title . ($this->producercode ? ' @' . $this->producercode : ''));
     }
 
     public function cars(): BelongsToMany

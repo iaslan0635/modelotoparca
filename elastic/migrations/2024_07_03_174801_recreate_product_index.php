@@ -47,6 +47,7 @@ final class RecreateProductIndex implements MigrationInterface
             $mapping->text('categories');
             $mapping->text('similars');
             $mapping->text('hidden_searchable');
+            $mapping->double('price');
 
             $mapping->object('brand', [
                 'properties' => [

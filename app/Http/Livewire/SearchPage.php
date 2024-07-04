@@ -61,7 +61,9 @@ class SearchPage extends Component
             term: $this->query,
             sortBy: $this->sortBy,
             categoryId: $this->category,
-            brandIds: $this->brandFilters
+            brandIds: $this->brandFilters,
+            minPrice: request('min_price'),
+            maxPrice: request('max_price'),
         );
 
         $products = $search->paginateProducts();
