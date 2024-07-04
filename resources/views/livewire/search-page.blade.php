@@ -362,10 +362,11 @@
                                                 <div class="product-card__features">
                                                     <ul>
                                                         @foreach(($model->specifications ?? []) as $key => $spec)
-                                                            <li>{{ "{$key} : {$spec}" }}</li>
+                                                            <li>{{ "$key: $spec" }}</li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
+                                                <x-product-meta :tiger="$product->tiger"/>
                                                 <div class="status-badge status-badge--style--success status-badge--has-icon status-badge--has-text">
                                                     @foreach($highlights[$model->id] ?? [] as $key => $mark)
                                                         <div class="status-badge__body mt-2">
