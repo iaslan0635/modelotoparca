@@ -102,6 +102,7 @@ class N11 implements Merchant
     private function getPrice(Product $product)
     {
         $comission = merchant_setting('n11', 'comission', 0);
+
         return $product->price->listingPrice()
             ->addComission($comission)
             ->numberFormat(2, '.', '');

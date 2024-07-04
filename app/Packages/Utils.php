@@ -51,13 +51,18 @@ class Utils
     public static function search(Builder $query, array|string $keys)
     {
         $search = request('search');
-        if (!$search) return $query;
+        if (! $search) {
+            return $query;
+        }
+
         return self::searchValue($query, $keys, $search);
     }
 
     public static function searchValue(Builder $query, array|string $keys, string $search)
     {
-        if (is_string($keys)) return $query->where($keys, 'like', "%$search%")->orderBy($keys);
+        if (is_string($keys)) {
+            return $query->where($keys, 'like', "%$search%")->orderBy($keys);
+        }
 
         $query->where(function ($query) use ($search, $keys) {
             foreach ($keys as $key) {

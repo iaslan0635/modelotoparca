@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class SearchPageProduct extends BaseModel
 {
     public $timestamps = false;
+
     protected $connection = 'bigdata';
 
     public function searchPage(): BelongsTo

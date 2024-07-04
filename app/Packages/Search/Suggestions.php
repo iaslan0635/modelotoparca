@@ -16,8 +16,9 @@ class Suggestions
     public function oem()
     {
         $query = Query::prefix()->field('oems')->value($this->term)->caseInsensitive(true);
+
         return ProductOem::searchQuery($query)->execute()->models()->pluck('oem')
-            ->unique()->map(fn(string $s) => "<strong>$s</strong>")->all();
+            ->unique()->map(fn (string $s) => "<strong>$s</strong>")->all();
     }
 
     public function crossCode()
@@ -51,7 +52,7 @@ class Suggestions
         foreach ($suggestion->highlights() as $highlight) {
             if (isset($highlight->raw()[$field])) {
                 foreach ($highlight->raw()[$field] as $item) {
-                    if (!in_array($item, $suggestions)) {
+                    if (! in_array($item, $suggestions)) {
                         $suggestions[] = $item;
                     }
                 }

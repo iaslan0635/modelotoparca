@@ -13,9 +13,13 @@ final class PriceBuilder implements Stringable
     private const SCALE = 8;
 
     private Price $price;
+
     private string $value;
+
     private string $currency;
+
     private bool $taxApplied = false;
+
     private bool $discountApplied = false;
 
     public function __construct(Price $price)
@@ -29,6 +33,7 @@ final class PriceBuilder implements Stringable
     {
         $this->value = ExchangeRate::convertToTRY($this->currency, $this->value, self::SCALE);
         $this->currency = 'try';
+
         return $this;
     }
 
@@ -41,6 +46,7 @@ final class PriceBuilder implements Stringable
         $vat_amount = $this->price->tax?->vat_amount ?? 20;
         $this->value = TaxFacade::calculate($this->value, $vat_amount, self::SCALE);
         $this->taxApplied = true;
+
         return $this;
     }
 
@@ -50,7 +56,9 @@ final class PriceBuilder implements Stringable
             throw new Exception('Discount has already been applied to this price.');
         }
 
-        if (!$this->price->discount) return $this;
+        if (! $this->price->discount) {
+            return $this;
+        }
 
         $discountAmount = match ($this->price->discount_type) {
             'percentile', 'percentage' => bcmul($this->value, $this->price->discount_amount, self::SCALE),
@@ -60,14 +68,21 @@ final class PriceBuilder implements Stringable
 
         $this->value = bcsub($this->value, $discountAmount, self::SCALE);
         $this->discountApplied = true;
+
         return $this;
     }
 
     public function addComission(string|int|float $comission): self
     {
-        if (!is_numeric($comission)) throw new Exception('Comission must be numeric.');
-        if ($comission < 0) throw new Exception('Comission must be a positive number.');
-        if ($comission === 0 || $comission === "0") return $this;
+        if (! is_numeric($comission)) {
+            throw new Exception('Comission must be numeric.');
+        }
+        if ($comission < 0) {
+            throw new Exception('Comission must be a positive number.');
+        }
+        if ($comission === 0 || $comission === '0') {
+            return $this;
+        }
 
         $oldScale = bcscale(self::SCALE);
         $this->value = bcmul($this->value, bcdiv(bcadd(100, $comission), 100));
@@ -84,6 +99,7 @@ final class PriceBuilder implements Stringable
     public function format(int $decimals = 2): string
     {
         $p = $this->numberFormat($decimals);
+
         return match (strtolower($this->currency)) {
             'try' => "$p ₺",
             'usd' => "\$$p",
@@ -97,7 +113,7 @@ final class PriceBuilder implements Stringable
         return $this->value;
     }
 
-    function numberFormat(int $decimals = 0, ?string $decimal_separator = '.', ?string $thousands_separator = ','): string
+    public function numberFormat(int $decimals = 0, ?string $decimal_separator = '.', ?string $thousands_separator = ','): string
     {
         return number_format($this->value, $decimals, $decimal_separator, $thousands_separator);
     }

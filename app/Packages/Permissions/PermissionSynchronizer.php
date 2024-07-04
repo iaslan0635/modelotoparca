@@ -13,7 +13,7 @@ final class PermissionSynchronizer
     {
         $addedPermissions = [];
         foreach (self::getPermissionsFromConfig() as $permission) {
-            if (!Permission::where('name', $permission)->exists()) {
+            if (! Permission::where('name', $permission)->exists()) {
                 $addedPermissions[] = Permission::create([
                     'name' => $permission,
                     'guard_name' => 'admin',
@@ -21,7 +21,7 @@ final class PermissionSynchronizer
             }
         }
 
-        if (!empty($addedPermissions)) {
+        if (! empty($addedPermissions)) {
             self::clearCache();
         }
 
@@ -37,7 +37,7 @@ final class PermissionSynchronizer
     {
         $result = [];
         foreach ($array as $element) {
-            $newKey = $currentKey . ($currentKey ? '.' : '') . $element['name'];
+            $newKey = $currentKey.($currentKey ? '.' : '').$element['name'];
             $result = isset($element['children']) ?
                 array_merge($result, self::convertPermissionConfigArray($element['children'], $newKey)) :
                 array_merge($result, [$newKey]);
@@ -49,7 +49,7 @@ final class PermissionSynchronizer
     public static function clearCache()
     {
         app(PermissionRegistrar::class)->forgetCachedPermissions();
-        Cache::tags("permissionPatterns")->flush();
+        Cache::tags('permissionPatterns')->flush();
     }
 
     /** Obtain permissions that are present in the configuration but not in the database. */

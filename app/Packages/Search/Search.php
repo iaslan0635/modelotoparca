@@ -38,14 +38,13 @@ class Search
     ];
 
     public function __construct(
-        private readonly string  $term,
+        private readonly string $term,
         private readonly ?string $sortBy = null,
         private readonly ?string $sortDirection = null,
-        private readonly ?int    $categoryId = null,
-        private readonly ?array  $brandIds = null,
-        private readonly ?array  $loadRelations = null,
-    )
-    {
+        private readonly ?int $categoryId = null,
+        private readonly ?array $brandIds = null,
+        private readonly ?array $loadRelations = null,
+    ) {
     }
 
     public function paginateProducts(int $perPage = 12)
@@ -67,6 +66,7 @@ class Search
     public function suggestions()
     {
         $suggestions = new Suggestions($this->term);
+
         return [
             'oems' => $suggestions->oem(),
             'cross_codes' => $suggestions->crossCode(),
@@ -78,14 +78,14 @@ class Search
     public function brands()
     {
         $productsWithBrand = $this->getSearchQuery(ignoreBrandFilter: true)
-            ->refineModels(fn(Builder $q) => $q->select(['id', 'brand_id']))
+            ->refineModels(fn (Builder $q) => $q->select(['id', 'brand_id']))
             ->load(['brand'])->size(1000)->execute()->models();
 
         return $productsWithBrand
-            ->map(fn(Product $product) => $product->brand)
-            ->filter(fn(?Brand $brand) => $brand !== null)
+            ->map(fn (Product $product) => $product->brand)
+            ->filter(fn (?Brand $brand) => $brand !== null)
             ->groupBy('id')
-            ->map(fn(Collection $brandCollection) => [
+            ->map(fn (Collection $brandCollection) => [
                 'brand' => $brandCollection[0],
                 'count' => $brandCollection->count(),
             ]);
@@ -94,13 +94,13 @@ class Search
     public function categories()
     {
         $productsWithCategories = $this->getSearchQuery()
-            ->refineModels(fn(Builder $q) => $q->select(['id']))
+            ->refineModels(fn (Builder $q) => $q->select(['id']))
             ->load(['categories'])->size(100)->execute()->models();
 
         return $productsWithCategories
-            ->map(fn(Product $product) => $product->categories)->flatten()
+            ->map(fn (Product $product) => $product->categories)->flatten()
             ->groupBy('name')
-            ->map(fn(Collection $cats) => [
+            ->map(fn (Collection $cats) => [
                 'category' => $cats[0],
                 'count' => $cats->count(),
             ]);
@@ -111,7 +111,7 @@ class Search
         $query = Query::bool();
         $query->must($this->getBaseQuery());
 
-        if (!$ignoreBrandFilter && filled($this->brandIds)) {
+        if (! $ignoreBrandFilter && filled($this->brandIds)) {
             $query->filter($this->brandFilter());
         }
 
@@ -129,7 +129,7 @@ class Search
     private function getBaseQuery()
     {
         $fieldsWithBoosts = collect(self::SEARCH_FIELDS)->reverse()->values()
-            ->map(fn(string $field, int $index) => "$field^" . ($index + 1))
+            ->map(fn (string $field, int $index) => "$field^".($index + 1))
             ->all();
 
         return Query::multiMatch()
@@ -169,7 +169,7 @@ class Search
     public static function parseHighlights(LengthAwarePaginator $productPaginator)
     {
         return $productPaginator->getCollection()
-            ->filter(fn(Hit $hit) => $hit->highlight() !== null)
-            ->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
+            ->filter(fn (Hit $hit) => $hit->highlight() !== null)
+            ->mapWithKeys(fn (Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
     }
 }

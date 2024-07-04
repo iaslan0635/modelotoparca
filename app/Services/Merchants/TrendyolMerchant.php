@@ -48,6 +48,7 @@ class TrendyolMerchant implements TrackableMerchant
     private function getPrice(Product $product)
     {
         $comission = merchant_setting('trendyol', 'comission', 0);
+
         return $product->price->listingPrice()
             ->addComission($comission)
             ->numberFormat(2, '.', '');
@@ -56,6 +57,7 @@ class TrendyolMerchant implements TrackableMerchant
     private function getDiscountedPrice(Product $product)
     {
         $comission = merchant_setting('trendyol', 'comission', 0);
+
         return $product->price->sellingPrice()
             ->addComission($comission)
             ->numberFormat(2, '.', '');

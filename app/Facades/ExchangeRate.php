@@ -21,11 +21,12 @@ class ExchangeRate
             return 1;
         }
 
-        if (!($currency === 'usd' || $currency === 'eur')) {
+        if (! ($currency === 'usd' || $currency === 'eur')) {
             throw new \InvalidArgumentException("currency ($currency) must be usd, eur or try");
         }
 
         $allRates = self::getAllRates();
+
         return $allRates[$currency];
     }
 
@@ -35,8 +36,8 @@ class ExchangeRate
             $xmlStirng = Http::withoutVerifying()->throw()->get('https://kur.doviz.day')->body();
 
             $xml = new \SimpleXMLElement($xmlStirng);
-            $usd = (string)$xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
-            $eur = (string)$xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
+            $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
+            $eur = (string) $xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
 
             return [
                 'usd' => $usd,

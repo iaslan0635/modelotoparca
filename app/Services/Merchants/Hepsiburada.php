@@ -44,6 +44,7 @@ class Hepsiburada implements TrackableMerchant
     private function getPrice(Product $product)
     {
         $comission = merchant_setting('hepsiburada', 'comission', 0);
+
         return $product->price->listingPrice()
             ->addComission($comission)
             ->numberFormat(2, ',', '');
@@ -69,11 +70,11 @@ class Hepsiburada implements TrackableMerchant
     public function sendProduct(Product $product)
     {
         $exists = rescue(
-            fn() => $this->client('listing-external')->get("listings/merchantid/$this->merchantId", [
-                    'offset' => 0,
-                    'limit' => 1,
-                    'merchantSkuList' => $product->sku,
-                ])->object()->totalCount > 0,
+            fn () => $this->client('listing-external')->get("listings/merchantid/$this->merchantId", [
+                'offset' => 0,
+                'limit' => 1,
+                'merchantSkuList' => $product->sku,
+            ])->object()->totalCount > 0,
             false
         );
 
@@ -135,9 +136,9 @@ class Hepsiburada implements TrackableMerchant
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'hepsiburada')
             ->where('product_id', '=', $product->id)
-            ->get()->mapWithKeys(fn($attr) => [$attr->merchant_id => $attr->merchant_value]);
+            ->get()->mapWithKeys(fn ($attr) => [$attr->merchant_id => $attr->merchant_value]);
 
-        $images = $product->imageUrls()->values()->mapWithKeys(fn($image, $k) => ['Image' . ($k + 1) => $image]);
+        $images = $product->imageUrls()->values()->mapWithKeys(fn ($image, $k) => ['Image'.($k + 1) => $image]);
 
         $payload = [
             'categoryId' => $product->categories[0]->merchants()
@@ -293,7 +294,7 @@ class Hepsiburada implements TrackableMerchant
                 'status' => $item->status,
                 'delivery_status' => '',
                 'payment_status' => '',
-                'lines' => array_map(fn($line) => [
+                'lines' => array_map(fn ($line) => [
                     'sku' => $line->barcode,
                     'quantity' => $line->quantity,
                     'price' => $line->totalPrice,
@@ -316,8 +317,8 @@ class Hepsiburada implements TrackableMerchant
     public function getTrackingResult(string $trackingId): PromiseInterface
     {
         return $this->client('mpop')->async()->get("product/api/products/status/$trackingId")
-            ->then(fn($request) => json_decode($request->getBody()->getContents(), true))
-            ->then(fn($response) => new TrackingResult(
+            ->then(fn ($request) => json_decode($request->getBody()->getContents(), true))
+            ->then(fn ($response) => new TrackingResult(
                 trackingId: $trackingId,
                 success: array_key_exists('success', $response) && $response['success'],
                 result: $response
@@ -331,7 +332,7 @@ class Hepsiburada implements TrackableMerchant
 
     public function createTestOrder()
     {
-        if (!config('merchants.test_mode')) {
+        if (! config('merchants.test_mode')) {
             throw new \Exception('Hepsiburada::createTestOrder() requires merchants.test_mode to be true');
         }
 
@@ -390,7 +391,7 @@ class Hepsiburada implements TrackableMerchant
             'limit' => 1,
             'barcode' => $product->sku,
         ])->object();
-        if (!$status->success) {
+        if (! $status->success) {
             return 'Ürün Bulunamadı!';
         }
 

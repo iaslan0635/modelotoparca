@@ -24,10 +24,12 @@ class SearchPage extends BaseModel
     public static function makeUrl(string $keyword, bool $isOem, ?int $brandId): string
     {
         if ($isOem) {
-            $url = 'https://www.onlinecarparts.co.uk/oenumber/' . Fuzz::regexify($keyword) . '.html';
+            $url = 'https://www.onlinecarparts.co.uk/oenumber/'.Fuzz::regexify($keyword).'.html';
         } else {
-            $url = 'https://www.onlinecarparts.co.uk/spares-search.html?keyword=' . urlencode($keyword);
-            if ($brandId !== null) $url .= '&brand[]=' . $brandId;
+            $url = 'https://www.onlinecarparts.co.uk/spares-search.html?keyword='.urlencode($keyword);
+            if ($brandId !== null) {
+                $url .= '&brand[]='.$brandId;
+            }
         }
 
         return $url;
@@ -38,7 +40,7 @@ class SearchPage extends BaseModel
         $crawler = new Crawler(OcpClient::request($url));
 
         return $crawler->filter('.brand-slider__item')->each(
-            fn(Crawler $el) => Brand::firstOrCreate(
+            fn (Crawler $el) => Brand::firstOrCreate(
                 ['id' => $el->filter('input')->attr('value')],
                 ['name' => $el->filter('img')->attr('alt')],
             )

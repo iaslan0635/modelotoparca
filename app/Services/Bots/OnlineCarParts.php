@@ -7,31 +7,34 @@ use App\Models\Log;
 use App\Models\Ocp;
 use App\Packages\Fuzz;
 
-
 class OnlineCarParts
 {
     public const VERSION = 2; // Used for logging
 
     private readonly OnlineCarParts\DataProvider $data;
+
     private readonly bool $isOem;
 
     public function __construct(
-        public readonly string  $keyword,
-        public readonly int     $product_id,
-        public readonly string  $field,
+        public readonly string $keyword,
+        public readonly int $product_id,
+        public readonly string $field,
         public readonly ?string $brand_filter = null,
-        public readonly bool    $regexed = false,
-        public readonly bool    $ajax = false,
-    )
-    {
+        public readonly bool $regexed = false,
+        public readonly bool $ajax = false,
+    ) {
         $this->data = app(OnlineCarParts\DataProvider::class);
         $this->isOem = $this->field === 'oem_codes';
     }
 
     public function smash(): bool
     {
-        if ($this->scrape()) return true;
-        if ($this->regexed) return false;
+        if ($this->scrape()) {
+            return true;
+        }
+        if ($this->regexed) {
+            return false;
+        }
 
         $regexedBot = new OnlineCarParts(
             keyword: Fuzz::regexify($this->keyword),
@@ -62,14 +65,18 @@ class OnlineCarParts
         $successfulProductCount = 0;
         foreach ($productLinks as $link) {
             $connection = $this->getConnection($link);
-            if ($connection->is_banned) continue;
+            if ($connection->is_banned) {
+                continue;
+            }
 
             $this->data
                 ->getProductPage($link)
                 ->saveToDatabase($this->product_id);
 
             $successfulProductCount++;
-            if (!$connection->exists) $connection->save();
+            if (! $connection->exists) {
+                $connection->save();
+            }
         }
 
         $this->log("Ajax tarafından $successfulProductCount adet ürün çekildi.");
@@ -81,8 +88,9 @@ class OnlineCarParts
     {
         if ($this->brand_filter) {
             $brandId = Ocp\Brand::idFromNameWithFetchFallback($this->brand_filter, $this->keyword, $this->isOem);
-            if (!$brandId) {
+            if (! $brandId) {
                 $this->log("Marka ($this->brand_filter) bigdata'da bulunamadı.");
+
                 return false;
             }
         } else {
@@ -94,6 +102,7 @@ class OnlineCarParts
         } catch (OcpClientException $e) {
             if ($this->isOem && $e->statusCode === 404) {
                 $this->log("OnlineCarParts $this->keyword OEM kodunu tanımıyor.", ['Aranan sayfa' => $e->url]);
+
                 return false;
             }
 
@@ -106,18 +115,22 @@ class OnlineCarParts
 
             foreach ($links as $link) {
                 $connection = $this->getConnection($link);
-                if ($connection->is_banned) continue;
+                if ($connection->is_banned) {
+                    continue;
+                }
 
                 $this->data
                     ->getProductPage($link)
                     ->saveToDatabase($this->product_id);
 
                 $successfulProductCount++;
-                if (!$connection->exists) $connection->save();
+                if (! $connection->exists) {
+                    $connection->save();
+                }
             }
 
             $count = count($links);
-            if (!$this->isOem && $count !== 0) {
+            if (! $this->isOem && $count !== 0) {
                 $this->log("$count adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
                 break;
             }
@@ -128,19 +141,21 @@ class OnlineCarParts
         return $successfulProductCount > 0;
     }
 
-    private function log(string $message, ?array $context = null): void
+    private function log(string $message, array $context = null): void
     {
         $logContext = [
-            "Anahtar Kelime" => $this->keyword,
-            "Alan" => $this->field,
-            "Sembolsüz" => $this->regexed,
-            "Marka filtresi" => $this->brand_filter ?? "(Yok)",
-            "Ajax" => $this->ajax,
+            'Anahtar Kelime' => $this->keyword,
+            'Alan' => $this->field,
+            'Sembolsüz' => $this->regexed,
+            'Marka filtresi' => $this->brand_filter ?? '(Yok)',
+            'Ajax' => $this->ajax,
         ];
 
-        if ($context) $logContext = array_merge($logContext, $context);
+        if ($context) {
+            $logContext = array_merge($logContext, $context);
+        }
 
-        Log::log($this->product_id, $message, $logContext, 'bot-v' . self::VERSION);
+        Log::log($this->product_id, $message, $logContext, 'bot-v'.self::VERSION);
     }
 
     public function getProductLinksForPage(Ocp\SearchPage $searchPage, int $pageNumber)
@@ -148,13 +163,15 @@ class OnlineCarParts
         $articleNo = $this->getArticleNo();
         $productLinks = $this->data->getSearchPageProductLinks($searchPage, $pageNumber, $articleNo);
 
-        $this->log("$pageNumber. Sayfadan " . count($productLinks) . ' adet ürün bulundu.');
+        $this->log("$pageNumber. Sayfadan ".count($productLinks).' adet ürün bulundu.');
+
         return $productLinks;
     }
 
     public function getProductLinksForAjax(Ocp\SearchAjax $searchAjax, ?string $brandName)
     {
         $articleNo = $this->getArticleNo();
+
         return $this->data->getSearchAjaxProductLinks($searchAjax, $brandName, $articleNo);
     }
 
@@ -169,13 +186,17 @@ class OnlineCarParts
     private function getArticleNo(): ?string
     {
         $matchArticleNo = $this->field === 'producercode' || $this->field === 'producercode2' || $this->field === 'cross_code' || $this->field === 'abk';
+
         return $matchArticleNo ? $this->keyword : null;
     }
 
     public static function isOldVersion(string $logSource)
     {
-        if (!str_starts_with($logSource, 'bot-v')) return true;
+        if (! str_starts_with($logSource, 'bot-v')) {
+            return true;
+        }
         $version = str_replace('bot-v', '', $logSource);
+
         return $version != self::VERSION;
     }
 }

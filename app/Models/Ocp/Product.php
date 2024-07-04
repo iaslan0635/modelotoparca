@@ -5,9 +5,9 @@ namespace App\Models\Ocp;
 class Product extends BaseModel
 {
     protected $casts = [
-        "specifications" => "array",
-        "tecdoc" => "array",
-        "images" => "array",
+        'specifications' => 'array',
+        'tecdoc' => 'array',
+        'images' => 'array',
     ];
 
     public function oems()

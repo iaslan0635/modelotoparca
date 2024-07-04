@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Elastic\Adapter\Indices\Mapping;
@@ -21,7 +22,7 @@ final class RecreateProductIndex implements MigrationInterface
                         'type' => 'custom',
                         'tokenizer' => 'symbol_tokenizer',
                         'filter' => ['asciifolding', 'lowercase'],
-                    ]
+                    ],
                 ],
                 'filter' => [],
                 'tokenizer' => [

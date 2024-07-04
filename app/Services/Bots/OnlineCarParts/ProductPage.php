@@ -12,45 +12,31 @@ use Illuminate\Support\Facades\DB;
 final class ProductPage
 {
     /**
-     * @param string $url
-     * @param string $id
-     * @param string $articleId
-     * @param array<array{brand: string, oem: string}> $oems
-     * @param array $specs
-     * @param int[] $vehicles
-     * @param array $tecdoc
-     * @param string $title
-     * @param string $subtitle
-     * @param string $brand
-     * @param array $images
-     * @param string $category
-     * @param string $mpn
-     * @param string $sku
-     * @param string $gtin13
+     * @param  array<array{brand: string, oem: string}>  $oems
+     * @param  int[]  $vehicles
      */
     public function __construct(
         public readonly string $url,
         public readonly string $id,
         public readonly string $articleId,
-        public readonly array  $oems,
-        public readonly array  $specs,
-        public readonly array  $vehicles,
-        public readonly array  $tecdoc,
+        public readonly array $oems,
+        public readonly array $specs,
+        public readonly array $vehicles,
+        public readonly array $tecdoc,
         public readonly string $title,
         public readonly string $subtitle,
         public readonly string $brand,
-        public readonly array  $images,
+        public readonly array $images,
         public readonly string $category,
         public readonly string $mpn,
         public readonly string $sku,
         public readonly string $gtin13,
-    )
-    {
+    ) {
     }
 
     public static function fromBigData(Ocp\Product $product): ProductPage
     {
-        $oems = $product->oems->map(fn(Ocp\ProductOem $oem) => [
+        $oems = $product->oems->map(fn (Ocp\ProductOem $oem) => [
             'brand' => $oem->brand,
             'oem' => $oem->oem,
         ])->toArray();
@@ -78,7 +64,7 @@ final class ProductPage
 
     public function saveToBigData()
     {
-        DB::connection("bigdata")->transaction(function () {
+        DB::connection('bigdata')->transaction(function () {
             Ocp\Product::updateOrInsert(
                 ['id' => $this->id],
                 [
@@ -97,10 +83,10 @@ final class ProductPage
                 ]
             );
 
-            Ocp\ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['product_id' => $this->id]), $this->oems));
+            Ocp\ProductOem::insertOrIgnore(array_map(fn ($oem) => array_merge($oem, ['product_id' => $this->id]), $this->oems));
 
             Ocp\ProductCar::insertOrIgnore(
-                array_map(fn($vehicleId) => [
+                array_map(fn ($vehicleId) => [
                     'product_id' => $this->id,
                     'car_id' => $vehicleId,
                 ], $this->vehicles)
@@ -111,7 +97,7 @@ final class ProductPage
     public function saveToDatabase(int $product_id)
     {
         DB::transaction(function () use ($product_id) {
-            ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['logicalref' => $product_id]), $this->oems));
+            ProductOem::insertOrIgnore(array_map(fn ($oem) => array_merge($oem, ['logicalref' => $product_id]), $this->oems));
 
             $product = Product::findOrFail($product_id, ['id', 'tecdoc', 'specifications']);
             $product->update([
@@ -120,14 +106,14 @@ final class ProductPage
             ]);
 
             ProductCar::insertOrIgnore(
-                array_map(fn($vehicleId) => [
+                array_map(fn ($vehicleId) => [
                     'logicalref' => $product_id,
                     'car_id' => $vehicleId,
                 ], $this->vehicles)
             );
 
             BotImage::insertOrIgnore(
-                array_map(fn($image) => [
+                array_map(fn ($image) => [
                     'product_id' => $product_id,
                     'url' => $image,
                     'bot_page_url' => $this->url,

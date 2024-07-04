@@ -21,10 +21,10 @@ class Scraper
         $crawler = new Crawler(OcpClient::request($url));
 
         $pageEls = $crawler->filter('.listing-pagination__item[data-pagination-page]');
-        $pageCount = $pageEls->count() > 0 ? (int)$pageEls->last()->text() : 1;
+        $pageCount = $pageEls->count() > 0 ? (int) $pageEls->last()->text() : 1;
 
         $type = $isOem ? 'oem' : 'keyword';
-        $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn(Crawler $el) => $el->text());
+        $categories = $crawler->filter('.catalog-line-slider .catalog-grid-item__name span')->each(fn (Crawler $el) => $el->text());
 
         return SearchPage::updateOrCreate(compact('url'), compact('keyword', 'pageCount', 'type', 'categories', 'brand_id'));
     }
@@ -33,7 +33,7 @@ class Scraper
     {
         $url = Url::fromString($searchPage->url)->withQueryParameter('page', $pageNumber);
 
-        $crawler = new Crawler(OcpClient::request((string)$url));
+        $crawler = new Crawler(OcpClient::request((string) $url));
         $productEls = $crawler->filter('.product-card:not([data-recommended-products])');
 
         $items = $productEls->each(function (Crawler $el) {
@@ -46,7 +46,7 @@ class Scraper
             return compact('url', 'articleNo');
         });
 
-        return collect($items)->filter(fn($item) => $item["url"] && !str_contains($item["url"], '/tyres-shop/'));
+        return collect($items)->filter(fn ($item) => $item['url'] && ! str_contains($item['url'], '/tyres-shop/'));
     }
 
     public function getSearchAjaxProducts(SearchAjax $searchAjax): Collection
@@ -55,10 +55,14 @@ class Scraper
         $json = json_decode(OcpClient::request($url), true);
         $results = $json['results'];
 
-        $productResults = array_filter($results, fn($result) => $result['meta']['type'] === 'product');
+        $productResults = array_filter($results, fn ($result) => $result['meta']['type'] === 'product');
 
-        if (count($productResults) > 1) throw new Exception("Multiple product sections found in search ajax response");
-        if (empty($productResults)) return collect(); // No results
+        if (count($productResults) > 1) {
+            throw new Exception('Multiple product sections found in search ajax response');
+        }
+        if (empty($productResults)) {
+            return collect();
+        } // No results
 
         return collect(reset($productResults)['values']);
     }
@@ -72,16 +76,16 @@ class Scraper
             [$brandsStr, $code] = explode(' - OE-', $text);
             $brands = explode(' / ', $brandsStr);
 
-            return array_map(fn(string $brand) => ['brand' => $brand, 'oem' => $code], $brands);
+            return array_map(fn (string $brand) => ['brand' => $brand, 'oem' => $code], $brands);
         }));
 
         $specs = Utils::fromEntries($crawler->filter('table.product__table tr')->each(function (Crawler $row) {
-            [$key, $value] = $row->filter('td')->each(fn(Crawler $col) => $col->innerText());
+            [$key, $value] = $row->filter('td')->each(fn (Crawler $col) => $col->innerText());
 
             return [$this->normalizeColumnName($key), $value];
         }));
 
-        $makerIds = $crawler->filter('.compatibility__maker-title')->each(fn(Crawler $el) => $el->attr('data-maker-id'));
+        $makerIds = $crawler->filter('.compatibility__maker-title')->each(fn (Crawler $el) => $el->attr('data-maker-id'));
         $ocpProductId = Utils::regex('/-(\d+)\.html/', $url, 1);
         if ($ocpProductId === null) {
             throw new Exception("ID not found in URL: $url");
@@ -97,7 +101,7 @@ class Scraper
 
         $tecdoc = Utils::fromEntries(
             $crawler->filter('.product-analogs__wrapper li')
-                ->each(fn(Crawler $el) => [
+                ->each(fn (Crawler $el) => [
                     $this->normalizeColumnName($el->filter('span')->innerText()),
                     $el->innerText(),
                 ])
@@ -108,7 +112,7 @@ class Scraper
         $metadata = json_decode(
             $crawler
                 ->filter('script[type="application/ld+json"]')
-                ->reduce(fn(Crawler $el) => json_decode($el->text())->{'@type'} === 'Product')
+                ->reduce(fn (Crawler $el) => json_decode($el->text())->{'@type'} === 'Product')
                 ->text()
         );
 
@@ -142,7 +146,7 @@ class Scraper
         foreach ($makerIds as $makerId) {
             $url = "https://www.onlinecarparts.co.uk/ajax/product/related-auto?productId=$ocpProductId&makerId=$makerId";
             $crawler = new Crawler(OcpClient::request($url));
-            $modelIds = $crawler->filter('[data-model-id]')->each(fn(Crawler $el) => $el->attr('data-model-id'));
+            $modelIds = $crawler->filter('[data-model-id]')->each(fn (Crawler $el) => $el->attr('data-model-id'));
             foreach ($modelIds as $modelId) {
                 $modelUrl = "https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$ocpProductId&makerId=$makerId&modelId=$modelId";
                 $vehicles = json_decode(OcpClient::request($modelUrl))->vehicles;

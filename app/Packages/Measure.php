@@ -19,7 +19,8 @@ class Measure
 
     /**
      * @template T
-     * @param Closure(): T $closure
+     *
+     * @param  Closure(): T  $closure
      * @return T
      */
     public static function run(Closure $closure, string $name)
@@ -27,12 +28,14 @@ class Measure
         $measurement = self::start();
         $result = $closure();
         $measurement->log($name);
+
         return $result;
     }
 
     public function stop()
     {
         $end = microtime(true);
+
         return $end - $this->start;
     }
 
@@ -44,6 +47,6 @@ class Measure
     public function log(string $name)
     {
         $time = $this->stop();
-        Log::driver("measurements")->debug("$name took $time seconds");
+        Log::driver('measurements')->debug("$name took $time seconds");
     }
 }

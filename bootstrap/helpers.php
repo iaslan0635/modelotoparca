@@ -2,10 +2,9 @@
 
 use App\Packages\Permissions\PermissionSynchronizer;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Middleware\PermissionMiddleware;
 
-if (!function_exists("merchant_setting")) {
+if (! function_exists('merchant_setting')) {
     function merchant_setting(string $merchant, string $key, mixed $default = null)
     {
         return DB::table('merchants')
@@ -15,7 +14,7 @@ if (!function_exists("merchant_setting")) {
     }
 }
 
-if (!function_exists("get_item")) {
+if (! function_exists('get_item')) {
     /**
      * Less overheaded version of `data_get`
      *
@@ -34,12 +33,12 @@ if (!function_exists("get_item")) {
         }
     }
 }
-if (!function_exists("permissions")) {
+if (! function_exists('permissions')) {
     /**
      * Retrieves the permissions for the provided permission names.
      * It can accept any pattern that data_get accepts, for example 'group.*' or 'group.*.name'.
      *
-     * @param string ...$permissionPatterns The permission patterns to retrieve.
+     * @param  string  ...$permissionPatterns The permission patterns to retrieve.
      * @return array The permissions for the provided names.
      *
      * @throws Exception If no permission name is provided or if a permission is not found.
@@ -56,7 +55,7 @@ if (!function_exists("permissions")) {
 
         $permission = $permissionPatterns[0];
 
-        return Cache::tags("permissionPatterns")->rememberForever("permissionPattern_$permission", function () use ($permission) {
+        return Cache::tags('permissionPatterns')->rememberForever("permissionPattern_$permission", function () use ($permission) {
             $permissions = PermissionSynchronizer::getPermissionsFromConfig();
             $permissions = collect($permissions)->combine($permissions)->undot();
             $results = collect(data_get($permissions, $permission))
@@ -71,17 +70,16 @@ if (!function_exists("permissions")) {
     }
 }
 
-
-if (!function_exists("permissionMiddleware")) {
+if (! function_exists('permissionMiddleware')) {
     function permissionMiddleware(string $permissionPattern)
     {
         return PermissionMiddleware::using(permissions($permissionPattern));
     }
 }
 
-if (!function_exists("format_money")) {
+if (! function_exists('format_money')) {
     function format_money($amount): string
     {
-        return number_format($amount, 2) . ' ₺';
+        return number_format($amount, 2).' ₺';
     }
 }

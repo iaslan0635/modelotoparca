@@ -35,7 +35,8 @@ class BotImageManager extends Component
     {
         $image = BotImage::findOrFail($id);
         $image->update(['rejected' => false]);
-        if ($image->image_id !== null)
+        if ($image->image_id !== null) {
             $image->removeImage();
+        }
     }
 }

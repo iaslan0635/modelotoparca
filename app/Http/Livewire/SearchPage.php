@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
-use App\Packages;
 use App\Packages\Search\Search;
 use Livewire\Component;
 use Livewire\WithPagination;
