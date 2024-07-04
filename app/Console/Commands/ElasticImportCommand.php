@@ -29,7 +29,10 @@ class ElasticImportCommand extends Command
         try {
             $model::makeAllSearchable($this->option('chunk'));
         } catch (BulkOperationException $e) {
-            dd($e->rawResult());
+            $result = collect($e->rawResult());
+            $items = $result["items"]->reject(fn($item) => $item["result"] === "created" || $item["result"] === "updated");
+            $result->forget("items");
+            dd($result, $items);
         }
 
         $events->forget(ModelsImported::class);
