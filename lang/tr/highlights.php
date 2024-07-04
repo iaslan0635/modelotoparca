@@ -16,4 +16,6 @@ return [
     'cars.regex_name' => 'Araç modelinden bulundu',
     'tecdoc.name' => "Tecdoc'dan bulundu",
     'tecdoc.name_regex' => "Tecdoc'dan bulundu",
+    'hidden_searchable' => 'Gizli aranabilir verilerden bulundu',
+
 ];
