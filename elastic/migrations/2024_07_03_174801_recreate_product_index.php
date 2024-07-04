@@ -49,21 +49,21 @@ final class RecreateProductIndex implements MigrationInterface
             $mapping->text('similars', $codeAnalyzer);
             $mapping->text('hidden_searchable', $codeAnalyzer);
 
-            $mapping->nested('brand', [
+            $mapping->object('brand', [
                 'properties' => [
                     'id' => ['type' => 'keyword'],
                     'name' => ['type' => 'text'],
                 ],
             ]);
 
-            $mapping->nested('categories', [
+            $mapping->object('categories', [
                 'properties' => [
                     'id' => ['type' => 'keyword'],
                     'name' => ['type' => 'text'],
                 ],
             ]);
 
-            $mapping->nested('cars', [
+            $mapping->object('cars', [
                 'properties' => [
                     'id' => ['type' => 'keyword'],
                     'name' => ['type' => 'text'],
