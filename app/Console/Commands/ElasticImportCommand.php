@@ -9,7 +9,7 @@ use Laravel\Scout\Events\ModelsImported;
 
 class ElasticImportCommand extends Command
 {
-    protected $signature = 'elastic:import {model=\App\Models\Product} {--c|chunk=500}';
+    protected $signature = 'elastic:import {model=\App\Models\Product} {--c|chunk=500} {--start-id=}';
 
     protected $description = 'Command description';
 
@@ -27,10 +27,15 @@ class ElasticImportCommand extends Command
         });
 
         try {
-            $model::makeAllSearchable($this->option('chunk'));
+            if ($startId = $this->option('start-id')) {
+                $this->info("Starting from ID: $startId");
+                $model::where('id', '>', $startId)->makeAllSearchable($this->option('chunk'));
+            } else {
+                $model::makeAllSearchable($this->option('chunk'));
+            }
         } catch (BulkOperationException $e) {
             $result = collect($e->rawResult());
-            $items = $result["items"]->reject(fn($item) => $item["result"] === "created" || $item["result"] === "updated");
+            $items = $result["items"]->reject(fn($item) => $item["index"]["result"] === "created" || $item["index"]["result"] === "updated");
             $result->forget("items");
             dd($result, $items);
         }
