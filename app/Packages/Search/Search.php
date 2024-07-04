@@ -17,6 +17,8 @@ class Search
 {
     /** Ordered by priority */
     const SEARCH_FIELDS = [
+        'brand.name',
+
         'producercode',
         'producercode_unbranded',
         'part_number',
@@ -24,7 +26,6 @@ class Search
         'producercode2',
         'hidden_searchable',
 
-        'brand.name',
         'categories.name',
 
         'title',
@@ -32,7 +33,6 @@ class Search
         'description',
 
         'cars.name',
-        'cars',
         'oems',
         'similars',
     ];
