@@ -24,7 +24,7 @@ class OuterExcelImportJob implements ShouldQueue
 
     public function handle(): void
     {
-        if (! $this->append) {
+        if (!$this->append) {
             $this->deactivateMissingProducts();
         }
 
@@ -33,18 +33,19 @@ class OuterExcelImportJob implements ShouldQueue
 
     private function getProductIdsFromExcel(): array
     {
-        $readFilter = new class implements IReadFilter
-        {
+        $readFilter = new class implements IReadFilter {
             public function readCell($columnAddress, $row, $worksheetName = '')
             {
                 return $columnAddress == 'B' && $row < 10;
             }
         };
 
-        $reader = IOFactory::createReaderForFile(storage_path($this->file));
+        $path = storage_path("app/$this->file");
+
+        $reader = IOFactory::createReaderForFile($path);
         $reader->setReadDataOnly(true);
         $reader->setReadFilter($readFilter);
-        $spreadsheet = $reader->load($this->file);
+        $spreadsheet = $reader->load($path);
         $worksheet = $spreadsheet->getActiveSheet();
 
         $highestRow = $worksheet->getHighestRow();
