@@ -700,7 +700,7 @@
                                                                     <a href="{{ route('product.show', $cross) }}"
                                                                        class="image__body">
                                                                         <img class="image__tag"
-                                                                             src="{{ $product->imageUrl() }}" alt="">
+                                                                             src="{{ $cross->imageUrl() }}" alt="">
                                                                     </a>
                                                                 </div>
                                                                 <div
