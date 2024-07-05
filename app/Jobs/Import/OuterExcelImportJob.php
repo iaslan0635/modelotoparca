@@ -41,7 +41,7 @@ class OuterExcelImportJob implements ShouldQueue
             }
         };
 
-        $reader = IOFactory::createReaderForFile($this->file);
+        $reader = IOFactory::createReaderForFile(storage_path($this->file));
         $reader->setReadDataOnly(true);
         $reader->setReadFilter($readFilter);
         $spreadsheet = $reader->load($this->file);
