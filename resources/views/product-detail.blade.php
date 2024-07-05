@@ -62,7 +62,8 @@
                                         <ul>
                                             @foreach($product->specifications as $key => $spec)
                                                 <li>
-                                                    {{ $key }}: <span>{{ $spec }}</span>
+                                                    {{ $key }}:
+                                                    <span>{{ $spec }}</span>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -106,7 +107,7 @@
                                                     @endif
                                                 </div>
                                                 <div
-                                                        class="status-badge status-badge--style--success product__stock status-badge--has-text">
+                                                    class="status-badge status-badge--style--success product__stock status-badge--has-text">
                                                     <div class="status-badge__body">
                                                         <span class="badge badge-danger">{{ $product->quantity > 0 ? "Stokta Var" : "Stokta Yok" }}</span>
                                                         <div class="status-badge__tooltip" tabindex="0"
@@ -154,7 +155,7 @@
                                                style="border-radius: 20px; width: 50%">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
                                                     <path
-                                                            d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                                                        d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
                                                 </svg>
                                                 Bilgi Al
                                             </a>
@@ -193,7 +194,7 @@
                                                 </li>
                                                 <li class="share-links__item share-links__item--type--counter">
                                                     <a
-                                                            href="">Paylaş
+                                                        href="">Paylaş
                                                     </a>
                                                 </li>
                                             </ul>
@@ -215,7 +216,7 @@
                                     </li>
                                     <li class="product-tabs__item">
                                         <a
-                                                href="#product-tab-cars">Uyumlu Araçlar
+                                            href="#product-tab-cars">Uyumlu Araçlar
                                         </a>
                                     </li>
                                     <li class="product-tabs__item">
@@ -242,8 +243,8 @@
                                                                 <div class="review__body">
                                                                     <div class="review__avatar">
                                                                         <img
-                                                                                src="{{ asset('images/avatars/avatar-1-42x42.jpg') }}"
-                                                                                alt="">
+                                                                            src="{{ asset('images/avatars/avatar-1-42x42.jpg') }}"
+                                                                            alt="">
                                                                     </div>
                                                                     <div class="review__meta">
                                                                         <div class="review__author">Samantha Smith</div>
@@ -253,13 +254,13 @@
                                                                         <div class="rating">
                                                                             <div class="rating__body">
                                                                                 <div
-                                                                                        class="rating__star rating__star--active"></div>
+                                                                                    class="rating__star rating__star--active"></div>
                                                                                 <div
-                                                                                        class="rating__star rating__star--active"></div>
+                                                                                    class="rating__star rating__star--active"></div>
                                                                                 <div
-                                                                                        class="rating__star rating__star--active"></div>
+                                                                                    class="rating__star rating__star--active"></div>
                                                                                 <div
-                                                                                        class="rating__star rating__star--active"></div>
+                                                                                    class="rating__star rating__star--active"></div>
                                                                                 <div class="rating__star"></div>
                                                                             </div>
                                                                         </div>
@@ -281,12 +282,12 @@
                                                                 <a class="page-link page-link--with-arrow" href=""
                                                                    aria-label="Previous">
                                                                     <span
-                                                                            class="page-link__arrow page-link__arrow--left"
-                                                                            aria-hidden="true">
+                                                                        class="page-link__arrow page-link__arrow--left"
+                                                                        aria-hidden="true">
                                                                         <svg width="7"
                                                                              height="11">
                                                                             <path
-                                                                                    d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z"/>
+                                                                                d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z"/>
                                                                         </svg>
                                                                     </span>
                                                                 </a>
@@ -316,8 +317,8 @@
                                                                 <a class="page-link page-link--with-arrow" href=""
                                                                    aria-label="Next">
                                                                     <span
-                                                                            class="page-link__arrow page-link__arrow--right"
-                                                                            aria-hidden="true">
+                                                                        class="page-link__arrow page-link__arrow--right"
+                                                                        aria-hidden="true">
                                                                         <svg width="7"
                                                                              height="11">
                                                                             <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
@@ -398,15 +399,18 @@
                                                 @php $index = $loop->index; @endphp
                                                 @foreach($cars_by_names as $name => $cars)
                                                     <div
-                                                            class="uyumlu-car-select-line model col-md-12 models-{{ $index }}"
-                                                            style="display: {{ $index === 0 ? "block":"none" }}">
-                                                        <div class="title">{{ $name }}</div>
+                                                        class="uyumlu-car-select-line model col-md-12 models-{{ $index }}"
+                                                        style="display: {{ $index === 0 ? "block":"none" }}">
+                                                        <div class="title">
+                                                            <div class="model-indicator">+</div>
+                                                            {{ $name }}
+                                                        </div>
                                                         <div class="content" style="display: none">
                                                             <div class="card-body">
                                                                 <div class="container">
                                                                     <div class="row">
                                                                         <table
-                                                                                class="analogs-table">
+                                                                            class="analogs-table">
                                                                             <thead>
                                                                             <tr>
                                                                                 <th class="analogs-table__column analogs-table__column--name">
@@ -435,8 +439,8 @@
                                                                                 <tr>
                                                                                     <td class="analogs-table__column">
                                                                                         <img
-                                                                                                src="{{ $car->imageUrl() }}"
-                                                                                                style="height: 2rem">
+                                                                                            src="{{ $car->imageUrl() }}"
+                                                                                            style="height: 2rem">
                                                                                     </td>
                                                                                     <td class="analogs-table__column">{{ $car->name }}</td>
                                                                                     <td class="analogs-table__column">
@@ -480,7 +484,7 @@
                                                     <div class="row">
                                                         @if (count($oems)>0)
                                                             <table
-                                                                    class="analogs-table">
+                                                                class="analogs-table">
                                                                 <thead>
                                                                 <tr>
                                                                     <th class="analogs-table__column analogs-table__column--name">
@@ -537,32 +541,32 @@
                                                         <div class="product-card">
                                                             <div class="product-card__actions-list">
                                                                 <button
-                                                                        class="product-card__action product-card__action--quickview"
-                                                                        type="button" data-slug="{{ $cross->slug }}"
-                                                                        aria-label="Quick view">
+                                                                    class="product-card__action product-card__action--quickview"
+                                                                    type="button" data-slug="{{ $cross->slug }}"
+                                                                    aria-label="Quick view">
                                                                     <svg width="16" height="16">
                                                                         <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
 	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"></path>
                                                                     </svg>
                                                                 </button>
                                                                 <button
-                                                                        class="product-card__action product-card__action--wishlist"
-                                                                        type="button" aria-label="Add to wish list">
+                                                                    class="product-card__action product-card__action--wishlist"
+                                                                    type="button" aria-label="Add to wish list">
                                                                     <svg width="16" height="16">
                                                                         <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
 	l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"></path>
                                                                     </svg>
                                                                 </button>
                                                                 <button
-                                                                        class="product-card__action product-card__action--compare"
-                                                                        type="button" aria-label="Add to compare">
+                                                                    class="product-card__action product-card__action--compare"
+                                                                    type="button" aria-label="Add to compare">
                                                                     <svg width="16" height="16">
                                                                         <path
-                                                                                d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"></path>
+                                                                            d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"></path>
                                                                         <path
-                                                                                d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"></path>
+                                                                            d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"></path>
                                                                         <path
-                                                                                d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"></path>
+                                                                            d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"></path>
                                                                     </svg>
                                                                 </button>
                                                             </div>
@@ -575,12 +579,12 @@
                                                                     </a>
                                                                 </div>
                                                                 <div
-                                                                        class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+                                                                    class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
                                                                     <div class="status-badge__body">
                                                                         <div class="status-badge__icon">
                                                                             <svg width="13" height="13">
                                                                                 <path
-                                                                                        d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"></path>
+                                                                                    d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"></path>
                                                                             </svg>
                                                                         </div>
                                                                     </div>
@@ -588,15 +592,15 @@
                                                             </div>
                                                             <div class="product-card__info">
                                                                 <div
-                                                                        class="product-card__meta">{{ $cross->producercode }}</div>
+                                                                    class="product-card__meta">{{ $cross->producercode }}</div>
                                                                 <div class="product-card__name">
                                                                     <div>
                                                                         {{--                                                                        {{ asset('images/brands') }}--}}
                                                                         <div class="product-card__badges">
                                                                             <img
-                                                                                    style="max-width: 60px; max-height: 30px;"
-                                                                                    src="{{ $cross->brand?->imageUrl() }}"
-                                                                                    alt="">
+                                                                                style="max-width: 60px; max-height: 30px;"
+                                                                                src="{{ $cross->brand?->imageUrl() }}"
+                                                                                alt="">
                                                                             |
                                                                         </div>
                                                                         <a href="{{ route('product.show', $cross) }}">{{ $cross->fullTitle }}</a>
@@ -615,7 +619,7 @@
                                                             <div class="product-card__footer">
                                                                 <div class="product-card__prices">
                                                                     <div
-                                                                            class="product-card__price product-card__price--current">{{ $cross->price?->sellingPrice() }}</div>
+                                                                        class="product-card__price product-card__price--current">{{ $cross->price?->sellingPrice() }}</div>
                                                                 </div>
                                                                 <a href="{{ route('product.show', $cross) }}">
                                                                     <button class="product-card__addtocart-icon"
@@ -624,11 +628,11 @@
                                                                             {{--                                                                        <circle cx="7" cy="17" r="2"></circle>--}}
                                                                             {{--                                                                        <circle cx="15" cy="17" r="2"></circle>--}}
                                                                             <path
-                                                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
-                                                                                    id="mainIconPathAttribute"></path>
+                                                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+                                                                                id="mainIconPathAttribute"></path>
                                                                             <path
-                                                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
-                                                                                    id="mainIconPathAttribute"></path>
+                                                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+                                                                                id="mainIconPathAttribute"></path>
 
                                                                         </svg>
                                                                     </button>
@@ -662,32 +666,32 @@
                                                         <div class="product-card">
                                                             <div class="product-card__actions-list">
                                                                 <button
-                                                                        class="product-card__action product-card__action--quickview"
-                                                                        type="button" data-slug="{{ $cross->slug }}"
-                                                                        aria-label="Quick view">
+                                                                    class="product-card__action product-card__action--quickview"
+                                                                    type="button" data-slug="{{ $cross->slug }}"
+                                                                    aria-label="Quick view">
                                                                     <svg width="16" height="16">
                                                                         <path d="M14,15h-4v-2h3v-3h2v4C15,14.6,14.6,15,14,15z M13,3h-3V1h4c0.6,0,1,0.4,1,1v4h-2V3z M6,3H3v3H1V2c0-0.6,0.4-1,1-1h4V3z
 	 M3,13h3v2H2c-0.6,0-1-0.4-1-1v-4h2V13z"></path>
                                                                     </svg>
                                                                 </button>
                                                                 <button
-                                                                        class="product-card__action product-card__action--wishlist"
-                                                                        type="button" aria-label="Add to wish list">
+                                                                    class="product-card__action product-card__action--wishlist"
+                                                                    type="button" aria-label="Add to wish list">
                                                                     <svg width="16" height="16">
                                                                         <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7
 	l0.6-0.6C9.3,2.4,10.3,2,11.3,2c1,0,1.9,0.4,2.6,1.1C15.4,4.6,15.4,6.9,13.9,8.4z"></path>
                                                                     </svg>
                                                                 </button>
                                                                 <button
-                                                                        class="product-card__action product-card__action--compare"
-                                                                        type="button" aria-label="Add to compare">
+                                                                    class="product-card__action product-card__action--compare"
+                                                                    type="button" aria-label="Add to compare">
                                                                     <svg width="16" height="16">
                                                                         <path
-                                                                                d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"></path>
+                                                                            d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"></path>
                                                                         <path
-                                                                                d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"></path>
+                                                                            d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"></path>
                                                                         <path
-                                                                                d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"></path>
+                                                                            d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"></path>
                                                                     </svg>
                                                                 </button>
                                                             </div>
@@ -700,12 +704,12 @@
                                                                     </a>
                                                                 </div>
                                                                 <div
-                                                                        class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
+                                                                    class="status-badge status-badge--style--success product-card__fit status-badge--has-icon status-badge--has-text">
                                                                     <div class="status-badge__body">
                                                                         <div class="status-badge__icon">
                                                                             <svg width="13" height="13">
                                                                                 <path
-                                                                                        d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"></path>
+                                                                                    d="M12,4.4L5.5,11L1,6.5l1.4-1.4l3.1,3.1L10.6,3L12,4.4z"></path>
                                                                             </svg>
                                                                         </div>
                                                                     </div>
@@ -713,12 +717,12 @@
                                                             </div>
                                                             <div class="product-card__info">
                                                                 <div
-                                                                        class="product-card__meta">{{ $cross->producercode }}</div>
+                                                                    class="product-card__meta">{{ $cross->producercode }}</div>
                                                                 <div class="product-card__name">
                                                                     <div>
                                                                         <div class="product-card__badges">
                                                                             <div
-                                                                                    class="tag-badge tag-badge--sale">{{ $cross->brand?->name }}</div>
+                                                                                class="tag-badge tag-badge--sale">{{ $cross->brand?->name }}</div>
                                                                         </div>
                                                                         <a href="{{ route('product.show', $cross) }}">{{ $cross->fullTitle }}</a>
                                                                     </div>
@@ -727,13 +731,13 @@
                                                                     <div class="rating product-card__rating-stars">
                                                                         <div class="rating__body">
                                                                             <div
-                                                                                    class="rating__star rating__star--active"></div>
+                                                                                class="rating__star rating__star--active"></div>
                                                                             <div
-                                                                                    class="rating__star rating__star--active"></div>
+                                                                                class="rating__star rating__star--active"></div>
                                                                             <div
-                                                                                    class="rating__star rating__star--active"></div>
+                                                                                class="rating__star rating__star--active"></div>
                                                                             <div
-                                                                                    class="rating__star rating__star--active"></div>
+                                                                                class="rating__star rating__star--active"></div>
                                                                             <div class="rating__star"></div>
                                                                         </div>
                                                                     </div>
@@ -754,7 +758,7 @@
                                                             <div class="product-card__footer">
                                                                 <div class="product-card__prices">
                                                                     <div
-                                                                            class="product-card__price product-card__price--current">{{ $cross->price?->sellingPrice() }}</div>
+                                                                        class="product-card__price product-card__price--current">{{ $cross->price?->sellingPrice() }}</div>
                                                                 </div>
                                                                 <button class="product-card__addtocart-icon"
                                                                         type="button" aria-label="Add to cart">
@@ -780,11 +784,11 @@
                                                                 <button class="product-card__compare" type="button">
                                                                     <svg width="16" height="16">
                                                                         <path
-                                                                                d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"></path>
+                                                                            d="M9,15H7c-0.6,0-1-0.4-1-1V2c0-0.6,0.4-1,1-1h2c0.6,0,1,0.4,1,1v12C10,14.6,9.6,15,9,15z"></path>
                                                                         <path
-                                                                                d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"></path>
+                                                                            d="M1,9h2c0.6,0,1,0.4,1,1v4c0,0.6-0.4,1-1,1H1c-0.6,0-1-0.4-1-1v-4C0,9.4,0.4,9,1,9z"></path>
                                                                         <path
-                                                                                d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"></path>
+                                                                            d="M15,5h-2c-0.6,0-1,0.4-1,1v8c0,0.6,0.4,1,1,1h2c0.6,0,1-0.4,1-1V6C16,5.4,15.6,5,15,5z"></path>
                                                                     </svg>
                                                                     <span>Add to compare</span>
                                                                 </button>
@@ -844,12 +848,13 @@
 
         for (let model of models) {
             model.addEventListener('click', function () {
-                let displayValue = model.querySelector('.content').style.display
-                if (displayValue === "none")
-                    model.querySelector('.content').style.display = "block"
+                const content = model.querySelector('.content');
+                const indicator = model.querySelector('.model-indicator')
 
-                if (displayValue === "block")
-                    model.querySelector('.content').style.display = "none"
+                const isOpen = content.style.display === "block"
+
+                content.style.display = isOpen ? "none" : "block"
+                indicator.textContent = isOpen ? "+" : "-"
             })
         }
     </script>
@@ -863,6 +868,14 @@
 
         .internal-card:hover {
             opacity: 1;
+        }
+
+        .model-indicator {
+            font-size: 2rem;
+            line-height: .5;
+            display: inline-block;
+            vertical-align: text-top;
+            margin-right: .5rem;
         }
     </style>
 @endpush
