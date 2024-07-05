@@ -70,6 +70,5 @@ class OuterExcelImportJob implements ShouldQueue
 
         $tigerProductQuery = TigerProduct::whereIn('id', $productIdsToDeactivate);
         $tigerProductQuery->update(['active' => 1]);
-        $tigerProductQuery->unsearchable();
     }
 }
