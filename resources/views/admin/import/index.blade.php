@@ -34,6 +34,11 @@
                         </div>
                     </div>
                     <!--end::Title-->
+                    <div class="mt-4">
+                        <a href="{{ route('admin.import.rerunMissingProducts') }}" class="btn btn-primary">
+                            Araçları eksik
+                        </a>
+                    </div>
                 </div>
                 <!--end::Page title-->
             </div>
