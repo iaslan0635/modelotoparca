@@ -33,6 +33,7 @@ class Search extends Component
         $suggestions = [];
         if (strlen($this->query) >= 3) {
             $search = new Packages\Search\Search($this->query, loadRelations: $relations);
+            $search->saveSearch();
             $categories = $search->categories();
             $results = $search->paginateProducts();
             $suggestions = $search->suggestions();

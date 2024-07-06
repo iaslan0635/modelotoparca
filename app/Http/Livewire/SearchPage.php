@@ -65,6 +65,7 @@ class SearchPage extends Component
             minPrice: request('min_price'),
             maxPrice: request('max_price'),
         );
+        $search->saveSearch();
 
         $products = $search->paginateProducts();
         $brands = $search->brands();

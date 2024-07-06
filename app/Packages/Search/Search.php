@@ -11,6 +11,7 @@ use Elastic\ScoutDriverPlus\Support\Query;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use function auth;
 
 /** @TODO add synonyms for search replacements */
 class Search
@@ -188,5 +189,13 @@ class Search
         return $productPaginator->getCollection()
             ->filter(fn(Hit $hit) => $hit->highlight() !== null)
             ->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
+    }
+
+    public function saveSearch()
+    {
+        \App\Models\Search::create([
+            'query' => $this->term,
+            'user_id' => auth()->id(),
+        ]);
     }
 }
