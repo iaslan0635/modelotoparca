@@ -43,11 +43,10 @@ final class RecreateProductIndex implements MigrationInterface
             $mapping->text('producercode2');
             $mapping->text('description');
             $mapping->text('oems');
-            $mapping->text('cars');
-            $mapping->text('categories');
             $mapping->text('similars');
             $mapping->text('hidden_searchable');
             $mapping->double('price');
+            $mapping->text('tecdoc');
 
             $mapping->object('brand', [
                 'properties' => [

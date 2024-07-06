@@ -140,16 +140,18 @@ class Product extends BaseModel implements CanVisit
             'part_number' => $this->part_number,
             'producercode' => $this->producercode,
             'producercode_unbranded' => $this->producercode_unbranded,
-            'producercode2' => $this->producercode2,
             'cross_code' => $this->cross_code,
+            'producercode2' => $this->producercode2,
+            'description' => $this->description,
             'oems' => $this->oems->pluck('oem'),
             'similars' => $similars,
             'hidden_searchable' => $this->hidden_searchable,
+            'price' => $price,
             'tecdoc' => collect($this->tecdoc)->values(),
-            'cars' => $cars->map(fn(Car $car) => ['id' => $car->id, 'name' => $car->name]),
+
             'brand' => ($brand = $this->brand) ? ['id' => $brand->id, 'name' => $brand->name] : null,
             'categories' => $this->categories->map(fn(Category $category) => ['id' => $category->id, 'name' => $category->name]),
-            'price' => $price,
+            'cars' => $cars->map(fn(Car $car) => ['id' => $car->id, 'name' => $car->name]),
         ];
     }
 
