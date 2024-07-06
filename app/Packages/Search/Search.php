@@ -25,6 +25,7 @@ class Search
         'cross_code',
         'producercode2',
         'hidden_searchable',
+        'tecdoc',
 
         'categories.name',
 
