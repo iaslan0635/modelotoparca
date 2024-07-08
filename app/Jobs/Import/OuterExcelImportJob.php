@@ -62,7 +62,7 @@ class OuterExcelImportJob implements ShouldQueue
         $excelProductIds = $this->getProductIdsFromExcel();
         $databaseProductIds = Product::pluck('id')->toArray();
 
-        $productIdsToDeactivate = array_diff($databaseProductIds, $excelProductIds);
+        $productIdsToDeactivate = array_values(array_diff($databaseProductIds, $excelProductIds));
 
         $productQuery = Product::whereIn('id', $productIdsToDeactivate);
         $productQuery->update(['status' => false]);
