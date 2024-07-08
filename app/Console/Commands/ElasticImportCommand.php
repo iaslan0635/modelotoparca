@@ -11,16 +11,21 @@ use Laravel\Scout\Searchable;
 
 class ElasticImportCommand extends Command
 {
-    protected $signature = 'elastic:import {model=\App\Models\Product} {--c|chunk=500} {--start-id=}';
+    protected $signature = 'elastic:import {model=\App\Models\Product} {--c|chunk=500} {--start-id=} {--flush}';
 
     protected $description = 'Command description';
 
     public function handle(Dispatcher $events): void
     {
+        /** @var class-string<Model&Searchable> $class */
         $class = $this->argument('model');
         $this->info("Importing $class");
 
-        /** @var Model&Searchable $model */
+        if ($this->option('flush')) {
+            $this->info("Removing all [$class] records from search index.");
+            $class::removeAllFromSearch();
+        }
+
         $model = new $class;
 
         $events->listen(ModelsImported::class, function ($event) use ($class) {
