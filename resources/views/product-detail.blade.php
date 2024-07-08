@@ -595,7 +595,7 @@
                                                                     class="product-card__meta">{{ $cross->producercode }}</div>
                                                                 <div class="product-card__name">
                                                                     <div>
-                                                                        {{--                                                                        {{ asset('images/brands') }}--}}
+                                                                        {{-- {{ asset('images/brands') }} --}}
                                                                         <div class="product-card__badges">
                                                                             <img
                                                                                 style="max-width: 60px; max-height: 30px;"
