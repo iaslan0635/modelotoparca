@@ -316,7 +316,7 @@
                                 @foreach($products as $product)
                                     @if(($model = $product->model()) === null)
                                         @php
-                                            Log::driver("important")->error("Product model is null. product: {product}", ["product" => $product])
+                                            Log::driver("important")->error("Product model is null. id: " . $product->document()->id())
                                         @endphp
                                         @continue
                                     @endif
