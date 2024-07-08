@@ -603,7 +603,10 @@
                                                                                 alt="">
                                                                             |
                                                                         </div>
-                                                                        <a href="{{ route('product.show', $cross) }}">{{ $cross->fullTitle }}</a>
+                                                                        <a href="{{ route('product.show', $cross) }}">
+                                                                            {{ $cross->fullTitle }}
+                                                                            <x-product-meta-stock :tiger="$cross->tiger" />
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-card__features">
@@ -653,9 +656,6 @@
                                                 <div class="products-list__column products-list__column--meta">SKU</div>
                                                 <div class="products-list__column products-list__column--product">
                                                     Product
-                                                </div>
-                                                <div class="products-list__column products-list__column--rating">
-                                                    Rating
                                                 </div>
                                                 <div class="products-list__column products-list__column--price">Price
                                                 </div>
@@ -724,25 +724,10 @@
                                                                             <div
                                                                                 class="tag-badge tag-badge--sale">{{ $cross->brand?->name }}</div>
                                                                         </div>
-                                                                        <a href="{{ route('product.show', $cross) }}">{{ $cross->fullTitle }}</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-card__rating">
-                                                                    <div class="rating product-card__rating-stars">
-                                                                        <div class="rating__body">
-                                                                            <div
-                                                                                class="rating__star rating__star--active"></div>
-                                                                            <div
-                                                                                class="rating__star rating__star--active"></div>
-                                                                            <div
-                                                                                class="rating__star rating__star--active"></div>
-                                                                            <div
-                                                                                class="rating__star rating__star--active"></div>
-                                                                            <div class="rating__star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-card__rating-label">4 on 3
-                                                                        reviews
+                                                                        <a href="{{ route('product.show', $cross) }}">
+                                                                            {{ $cross->fullTitle }}
+                                                                            <x-product-meta-stock :tiger="$cross->tiger" />
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-card__features">
