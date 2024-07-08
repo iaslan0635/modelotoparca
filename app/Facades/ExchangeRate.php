@@ -36,8 +36,8 @@ class ExchangeRate
             $xmlStirng = Http::withoutVerifying()->throw()->get('https://kur.doviz.day')->body();
 
             $xml = new \SimpleXMLElement($xmlStirng);
-            $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/BanknoteSelling')[0];
-            $eur = (string) $xml->xpath('Currency[@CurrencyCode="EUR"]/BanknoteSelling')[0];
+            $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/ForexSelling')[0];
+            $eur = (string) $xml->xpath('Currency[@CurrencyCode="EUR"]/ForexSelling')[0];
 
             return [
                 'usd' => $usd,
