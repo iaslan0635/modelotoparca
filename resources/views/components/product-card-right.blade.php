@@ -6,7 +6,7 @@
 <div {{ $attributes->class(['product-card__footer']) }}>
     <div class="product-card__prices flex-column">
         @if($product->price?->discount)
-            <div class="product-card__price product-card__price--old">{{ $product->price?->listingPrice() }}</div>
+            <div class="product-card__price product-card__price--old" style="font-size: xx-large">{{ $product->price?->listingPrice() }}</div>
             <div class="product-card__price product-card__price--new">{{ $product->price?->sellingPrice() }}</div>
         @else
             <div class="product-card__price product-card__price--current">{{ $product->price?->sellingPrice() }}</div>
