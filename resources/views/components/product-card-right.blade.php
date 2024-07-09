@@ -1,14 +1,12 @@
 @props([
     /** @var \App\Models\Product */
-    'model',
-    /** @var \App\Models\Product */
     'product'
 ])
 
 <div {{ $attributes->class(['product-card__footer']) }}>
     <div class="product-card__prices">
         <div
-                class="product-card__price product-card__price--current">{{ $model->price?->sellingPrice() }}</div>
+                class="product-card__price product-card__price--current">{{ $product->price?->sellingPrice() }}</div>
     </div>
     <button class="product-card__addtocart-icon" type="button"
             aria-label="Add to cart">
@@ -20,8 +18,8 @@
 	C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z"/>
         </svg>
     </button>
-    <livewire:add-to-cart :wire:key="$model->id"
-                          :product="$model"
+    <livewire:add-to-cart :wire:key="$product->id"
+                          :product="$product"
                           :quantity_mode="false"/>
     <button class="product-card__wishlist" type="button">
         <svg width="16" height="16">
@@ -31,7 +29,6 @@
         <span>Favorilerime Ekle</span>
     </button>
     <div class="product-card__compare">
-        {{}}
-        <span>Skor: {{ $product->score() }}</span>
+        {{ $slot }}
     </div>
 </div>
