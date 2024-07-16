@@ -201,7 +201,7 @@ class ExcelImport implements ShouldQueue
             'title' => $title,
             'sub_title' => $allWebNames,
             'description' => $allWebNames,
-            'slug' => Str::slug($title).'-'.$id,
+            'slug' => Str::slug($title) . '-' . $id,
             'sku' => $product->code,
             'quantity' => $product->onhand,
             'status' => intval($product->active) === 0,
@@ -228,14 +228,14 @@ class ExcelImport implements ShouldQueue
         // INCVAT: 0 => KDV hariç, 1 => KDV dahil
 
         $price = $product->incvat == 1 ? TaxFacade::reverseCalculate($product->price, 20) : $product->price;
-        if ($price) {
-            $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate ?? 0);
+        if ($price && $product->sales_discount_rate) {
+            $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate);
         }
 
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), 'try'),
-            'discount' => (bool) $product->sales_discount_rate,
+            'discount' => (bool)$product->sales_discount_rate,
             'discount_amount' => $product->sales_discount_rate ?? 0,
         ]);
 
@@ -251,10 +251,10 @@ class ExcelImport implements ShouldQueue
         self::clearBotAssociations($product);
 
         $ajaxBotStatus = self::runBotForAjax($product, true);
-        if (! $ajaxBotStatus) {
+        if (!$ajaxBotStatus) {
             static::log($product, 'Ajax bot ürün bulamadı, normal bot çalıştırılıyor.');
             $pageBotStatus = self::runBotForAjax($product, false);
-            if (! $pageBotStatus) {
+            if (!$pageBotStatus) {
                 static::log($product, 'Normal bot da ürün bulamadı.');
             }
         }
@@ -372,7 +372,7 @@ class ExcelImport implements ShouldQueue
     private static function getBrand(TigerProduct $product): ?string
     {
         $brand = Brand::find($product->markref, ['name', 'botname']);
-        if (! $brand) {
+        if (!$brand) {
             return null;
         }
 
