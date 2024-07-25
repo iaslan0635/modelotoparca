@@ -144,7 +144,7 @@ return [
         'important' => [
             'driver' => 'single',
             'path' => storage_path('logs/important.log'),
-            'level' => 'error',
+            'level' => 'debug',
             'replace_placeholders' => true,
         ],
 
