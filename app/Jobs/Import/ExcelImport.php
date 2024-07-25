@@ -167,7 +167,8 @@ class ExcelImport implements ShouldQueue
             ]);
 
             if ($product->cross_code) {
-                $product->similars()->firstOrCreate([
+                ProductSimilar::insertOrIgnore([
+                    'product_id' => $product->id,
                     'code' => $product->cross_code,
                 ]);
             }
@@ -175,10 +176,11 @@ class ExcelImport implements ShouldQueue
             $oems = explode(',', $product->oem_codes);
 
             foreach ($oems as $oem) {
-                $product->oems()->updateOrCreate(
-                    ['oem' => $oem],
-                    ['type' => 'excel']
-                );
+                ProductOem::insertOrIgnore([
+                    'logicalref' => $product->id,
+                    'oem' => $oem,
+                    'type' => 'excel',
+                ]);
             }
 
             $isChaged = true;
@@ -241,9 +243,9 @@ class ExcelImport implements ShouldQueue
 
         $realProduct->searchable();
 
-        /*if ($isChaged) {
+        if ($isChaged) {
             self::runBot($product);
-        }*/
+        }
     }
 
     public static function runBot(TigerProduct $product): void
@@ -351,7 +353,7 @@ class ExcelImport implements ShouldQueue
         BotProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
 
         if ($product->cross_code) {
-            ProductSimilar::firstOrCreate([
+            ProductSimilar::insertOrIgnore([
                 'product_id' => $product->id,
                 'code' => $product->cross_code,
             ]);
