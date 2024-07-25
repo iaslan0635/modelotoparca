@@ -351,14 +351,21 @@ class ExcelImport implements ShouldQueue
         BotProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
 
         if ($product->cross_code) {
-            $product->similars()->firstOrCreate([
+            ProductSimilar::firstOrCreate([
+                'product_id' => $product->id,
                 'code' => $product->cross_code,
             ]);
         }
 
         $oems = explode(',', $product->oem_codes ?? '');
         foreach ($oems as $oem) {
-            $product->oems()->firstOrCreate([
+            ProductOem::insertOrIgnore([
+                'logicalref' => $product->id,
+                'oem' => $oem,
+            ]);
+
+            ProductOem::insertOrIgnore([
+                'logicalref' => $product->id,
                 'oem' => $oem,
             ]);
         }
