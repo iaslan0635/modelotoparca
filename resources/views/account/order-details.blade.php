@@ -34,20 +34,20 @@
                                         @foreach($order->items as $item)
                                             <tr>
                                                 <td>{{ $item->product_data['title'] }}</td>
-                                                <td>{{ \App\Facades\TaxFacade::formattedPrice($item->price_data['price']) }}</td>
+                                                <td>{{ format_money($item->price_data['price']) }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
                                         <tbody class="card-table__body card-table__body--merge-rows">
                                         <tr>
                                             <th>Ara Toplam</th>
-                                            <td>{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                            <td>{{ format_money($order->items()->sum('price')) }}</td>
                                         </tr>
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <th>Toplam</th>
-                                            <td>{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                            <td>{{ format_money($order->items()->sum('price')) }}</td>
                                         </tr>
                                         </tfoot>
                                     </table>

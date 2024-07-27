@@ -385,7 +385,7 @@
                                                         <td class="text-end">{{ $item['quantity'] }}</td>
                                                         <!--end::Quantity-->
                                                         <!--begin::Price-->
-                                                        <td class="text-end">{{ \App\Facades\TaxFacade::formattedPrice($item['price']) }}</td>
+                                                        <td class="text-end">{{ format_money($item['price']) }}</td>
                                                         <!--end::Price-->
                                                         <td class="text-end">
                                                             <div class="dropdown">
@@ -407,7 +407,7 @@
                                                 <!--begin::Grand total-->
                                                 <tr>
                                                     <td colspan="4" class="fs-3 text-dark text-end">Toplam</td>
-                                                    <td class="text-dark fs-3 fw-bolder text-end">{{ \App\Facades\TaxFacade::formattedPrice($order->price) }}</td>
+                                                    <td class="text-dark fs-3 fw-bolder text-end">{{ format_money($order->price) }}</td>
                                                 </tr>
                                                 <!--end::Grand total-->
                                                 </tbody>

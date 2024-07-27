@@ -23,7 +23,7 @@ class SyncCategories extends Component
         $trendyol = new TrendyolMerchant();
 
         return view('livewire.admin.sync-categories', [
-            'categories' => Utils::search(Category::query(), "name")->paginate(),
+            'categories' => Utils::search(Category::query(), 'name')->paginate(),
             'n11Categories' => $n11->getCategories()->categoryList->category,
             'hepsiCategories' => $hepsiburada->getCategories()->data,
             'trendyolCategories' => $trendyol->getCategories()->categories,

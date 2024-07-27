@@ -35,7 +35,7 @@
                                                 </td>
                                                 <td>{{ $order->created_at->diffForHumans() }}</td>
                                                 <td>{{ __("status.". $order->payment_status) }}</td>
-                                                <td>{{ count($order->items) }} ürün için {{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                                <td>{{ count($order->items) }} ürün için {{ format_money($order->items()->sum('price')) }}</td>
                                                 <td>
                                                     <button class="btn btn-danger btn-sm" data-cancel-order-id="{{ $order->id }}">İptal et</button>
                                                 </td>

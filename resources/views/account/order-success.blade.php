@@ -33,7 +33,7 @@
                             </li>
                             <li class="order-success__meta-item">
                                 <span class="order-success__meta-title">Toplam Tutar:</span>
-                                <span class="order-success__meta-value">{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</span>
+                                <span class="order-success__meta-value">{{ format_money($order->items()->sum('price')) }}</span>
                             </li>
                             <li class="order-success__meta-item">
                                 <span class="order-success__meta-title">Ödeme Yöntemi:</span>
@@ -88,13 +88,13 @@
                                 <tbody class="order-list__subtotals">
                                 <tr>
                                     <th class="order-list__column-label" colspan="3">Toplam</th>
-                                    <td class="order-list__column-total">{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                    <td class="order-list__column-total">{{ format_money($order->items()->sum('price')) }}</td>
                                 </tr>
                                 </tbody>
                                 <tfoot class="order-list__footer">
                                 <tr>
                                     <th class="order-list__column-label" colspan="3">Genel Toplam</th>
-                                    <td class="order-list__column-total">{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                    <td class="order-list__column-total">{{ format_money($order->items()->sum('price')) }}</td>
                                 </tr>
                                 </tfoot>
                             </table>

@@ -42,7 +42,7 @@
                         <div class="text-nowrap">{{ $log->created_at->diffForHumans() }}</div>
                         <div class="d-flex justify-content-end align-items-center  mt-4">
                             @if (str_starts_with($log->source, "bot") && \App\Services\Bots\OnlineCarParts::isOldVersion($log->source))
-                                <div class="badge text bg-danger text-light">Eski sürüm</div>
+                                <div class="badge text bg-danger text-light me-2">Eski sürüm</div>
                             @endif
                             <div class="badge text-bg-{{ $log->sourceColor }} text-light">{{ $log->source }}</div>
                         </div>

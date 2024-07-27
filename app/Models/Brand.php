@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Enums\BrandType;
 use App\Events\BrandChangedEvent;
 use App\Traits\HasImages;
-use Closure;
 use Elastic\ScoutDriverPlus\Searchable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use stdClass;
@@ -60,10 +59,14 @@ class Brand extends BaseModel
         }
 
         $filename = "images/brands/$this->name.png";
-        if (file_exists(public_path($filename))) return asset($filename);
+        if (file_exists(public_path($filename))) {
+            return asset($filename);
+        }
 
         $botFilename = "images/brands/$this->botname.png";
-        if (file_exists(public_path($botFilename))) return asset($botFilename);
+        if (file_exists(public_path($botFilename))) {
+            return asset($botFilename);
+        }
 
         return $default === null ? $this->defaultImage() : value($default);
     }

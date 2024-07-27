@@ -2,17 +2,17 @@
 
 namespace App\Facades;
 
+
+use Illuminate\Support\Facades\Log;
+
 class DiscountFacade
 {
-    public static function reverseCalculate(float $discountedPrice, float $discountPercentage) {
-        // Ensure the discount percentage is between 0 and 100
-        if ($discountPercentage < 0 || $discountPercentage > 100) {
-            throw new InvalidArgumentException("Discount percentage must be between 0 and 100.");
+    public static function reverseCalculate(float|int|string $discountedPrice, float|int|string $discountPercentage)
+    {
+        if (!is_numeric($discountedPrice) || !is_numeric($discountPercentage)) {
+            Log::channel("important")->error("Both arguments must be numeric discountedPrice: $discountedPrice discountPercentage: $discountPercentage");
         }
 
-        // Calculate the original price
-        $originalPrice = $discountedPrice / (1 - $discountPercentage / 100);
-
-        return $originalPrice;
+        return bcdiv($discountedPrice, bcsub(1, $discountPercentage, 2), 2);
     }
 }

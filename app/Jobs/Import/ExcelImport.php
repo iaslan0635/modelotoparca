@@ -112,7 +112,7 @@ class ExcelImport implements ShouldQueue
                 if ($column !== 'updated_at' && $column !== 'created_at') {
                     static::log(
                         $product,
-                        "Değişiklik yapıldı.",
+                        'Değişiklik yapıldı.',
                         [
                             'Kolon' => $column,
                             'Eski' => $product->getOriginal($column),
@@ -167,7 +167,8 @@ class ExcelImport implements ShouldQueue
             ]);
 
             if ($product->cross_code) {
-                $product->similars()->firstOrCreate([
+                ProductSimilar::insertOrIgnore([
+                    'product_id' => $product->id,
                     'code' => $product->cross_code,
                 ]);
             }
@@ -175,10 +176,11 @@ class ExcelImport implements ShouldQueue
             $oems = explode(',', $product->oem_codes);
 
             foreach ($oems as $oem) {
-                $product->oems()->updateOrCreate(
-                    ['oem' => $oem],
-                    ['type' => 'excel']
-                );
+                ProductOem::insertOrIgnore([
+                    'logicalref' => $product->id,
+                    'oem' => $oem,
+                    'type' => 'excel',
+                ]);
             }
 
             $isChaged = true;
@@ -186,7 +188,7 @@ class ExcelImport implements ShouldQueue
 
         $id = $product->id;
         $title = $product->web_name ?? $product->name ?? 'BAŞLIKSIZ ÜRÜN';
-        $allWebNames = implode(' ', [$product->name, $product->name3, $product->name4]);
+        $allWebNames = implode("\n", [$product->name, $product->name3, $product->name4]);
 
         $image_appendix = 0;
         if ($product->image1) {
@@ -196,7 +198,7 @@ class ExcelImport implements ShouldQueue
             $image_appendix |= self::IMAGE_12;
         } // IMAGE2INC
 
-        $realProduct = Product::updateOrCreate(['id' => $id], [
+        $realProduct = Product::withoutGlobalScope('active')->updateOrCreate(['id' => $id], [
             'brand_id' => $product->markref,
             'title' => $title,
             'sub_title' => $allWebNames,
@@ -219,10 +221,6 @@ class ExcelImport implements ShouldQueue
             'hidden_searchable' => $product->name2,
         ]);
 
-        if ($isChaged) {
-            self::runBot($product);
-        }
-
         $mainCategory = Category::find($product->dominantref, ['name']);
         if ($mainCategory) {
             $categories = Category::where('name', $mainCategory->name)->pluck('id');
@@ -232,8 +230,9 @@ class ExcelImport implements ShouldQueue
         // INCVAT: 0 => KDV hariç, 1 => KDV dahil
 
         $price = $product->incvat == 1 ? TaxFacade::reverseCalculate($product->price, 20) : $product->price;
-        if ($price)
-            $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate ?? 0);
+        if ($price && $product->sales_discount_rate) {
+            $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate);
+        }
 
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $price,
@@ -243,6 +242,10 @@ class ExcelImport implements ShouldQueue
         ]);
 
         $realProduct->searchable();
+
+        if ($isChaged) {
+            self::runBot($product);
+        }
     }
 
     public static function runBot(TigerProduct $product): void
@@ -251,10 +254,10 @@ class ExcelImport implements ShouldQueue
 
         $ajaxBotStatus = self::runBotForAjax($product, true);
         if (!$ajaxBotStatus) {
-            static::log($product, "Ajax bot ürün bulamadı, normal bot çalıştırılıyor.");
+            static::log($product, 'Ajax bot ürün bulamadı, normal bot çalıştırılıyor.');
             $pageBotStatus = self::runBotForAjax($product, false);
             if (!$pageBotStatus) {
-                static::log($product, "Normal bot da ürün bulamadı.");
+                static::log($product, 'Normal bot da ürün bulamadı.');
             }
         }
 
@@ -273,20 +276,22 @@ class ExcelImport implements ShouldQueue
 
         foreach ($search_predence as $field) {
             if ($product[$field] === null) {
-                static::log($product, "Boş (null) değer atlandı.", ['Kolon' => $field, "Ajax" => $ajax]);
+                static::log($product, 'Boş (null) değer atlandı.', ['Kolon' => $field, 'Ajax' => $ajax]);
+
                 continue;
             }
 
             $value = trim($product[$field]);
             if (strlen($value) === 0) {
-                static::log($product, "Boş değer atlandı.", ['Kolon' => $field, "Ajax" => $ajax]);
+                static::log($product, 'Boş değer atlandı.', ['Kolon' => $field, 'Ajax' => $ajax]);
+
                 continue;
             }
 
             $found = self::runBotForField($product, $field, $value, $ajax);
             if ($found) {
                 static::log(
-                    $product, "Ürün bulundu, bot sonlandırılıyor.",
+                    $product, 'Ürün bulundu, bot sonlandırılıyor.',
                     [
                         'Kolon' => $field,
                         'Değer' => $value,
@@ -348,14 +353,21 @@ class ExcelImport implements ShouldQueue
         BotProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
 
         if ($product->cross_code) {
-            $product->similars()->firstOrCreate([
+            ProductSimilar::insertOrIgnore([
+                'product_id' => $product->id,
                 'code' => $product->cross_code,
             ]);
         }
 
         $oems = explode(',', $product->oem_codes ?? '');
         foreach ($oems as $oem) {
-            $product->oems()->firstOrCreate([
+            ProductOem::insertOrIgnore([
+                'logicalref' => $product->id,
+                'oem' => $oem,
+            ]);
+
+            ProductOem::insertOrIgnore([
+                'logicalref' => $product->id,
                 'oem' => $oem,
             ]);
         }
@@ -376,9 +388,10 @@ class ExcelImport implements ShouldQueue
         return $brand->botname ?? $brand->name;
     }
 
-    private static function log(int|Model $productOrId, string $message, ?array $context = null)
+    private static function log(int|Model $productOrId, string $message, array $context = null)
     {
         $productId = $productOrId instanceof Model ? $productOrId->getKey() : $productOrId;
+
         return Log::log($productId, $message, $context, 'excel');
     }
 }

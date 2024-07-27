@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
-    protected $connection = "bigdata";
+return new class extends Migration
+{
+    protected $connection = 'bigdata';
 
     public function up(): void
     {
@@ -13,8 +14,8 @@ return new class extends Migration {
             $table->dropColumn('brands');
         });
 
-        Schema::table("search_page_products", function (Blueprint $table) {
-           $table->renameColumn("search_result_id", "search_page_id");
+        Schema::table('search_page_products', function (Blueprint $table) {
+            $table->renameColumn('search_result_id', 'search_page_id');
         });
     }
 
@@ -24,8 +25,8 @@ return new class extends Migration {
             $table->json('brands')->nullable();
         });
 
-        Schema::table("search_page_products", function (Blueprint $table) {
-            $table->renameColumn("search_page_id", "search_result_id");
+        Schema::table('search_page_products', function (Blueprint $table) {
+            $table->renameColumn('search_page_id', 'search_result_id');
         });
     }
 };

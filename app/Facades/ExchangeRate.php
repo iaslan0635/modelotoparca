@@ -2,8 +2,8 @@
 
 namespace App\Facades;
 
-use App\Jobs\UpdateExchangeRateJob;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 class ExchangeRate
 {
@@ -13,44 +13,46 @@ class ExchangeRate
      * @see ExchangeRate::convertFromTRY()
      * @see ExchangeRate::convertToTRY()
      */
-    public static function get(string $currency): string
+    public static function getRate(string $currency): string
     {
         $currency = strtolower($currency);
 
         if ($currency === 'try') {
             return 1;
         }
+
         if (! ($currency === 'usd' || $currency === 'eur')) {
-            throw new \Exception('currency must be usd, eur or try');
+            throw new \InvalidArgumentException("currency ($currency) must be usd, eur or try");
         }
-        $key = $currency.'_price';
-        if (Cache::has($key)) {
-            return Cache::get($key);
-        } else {
-            UpdateExchangeRateJob::updateRates();
-            if (! Cache::has($key)) {
-                throw new \Exception('UpdateExchangeRateJob::updateRates() is not working properly');
-            }
 
-            return Cache::get($key);
-        }
+        $allRates = self::getAllRates();
+
+        return $allRates[$currency];
     }
 
-    public static function convertFromTRY(string $currency, string $moneyAsTRY): string
+    public static function getAllRates()
     {
-        if ($currency === 'try') {
-            return $moneyAsTRY;
-        }
+        return Cache::remember('exchange_rates', TTL::DAY, function () {
+            $xmlStirng = Http::withoutVerifying()->throw()->get('https://kur.doviz.day')->body();
 
-        return bcdiv($moneyAsTRY, self::get($currency), 2);
+            $xml = new \SimpleXMLElement($xmlStirng);
+            $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/ForexSelling')[0];
+            $eur = (string) $xml->xpath('Currency[@CurrencyCode="EUR"]/ForexSelling')[0];
+
+            return [
+                'usd' => $usd,
+                'eur' => $eur,
+            ];
+        });
     }
 
-    public static function convertToTRY(string $currency, string $moneyAsCurrency): string
+    public static function convertFromTRY(string $currency, string $moneyAsTRY, int $scale = 2): string
     {
-        if ($currency === 'try') {
-            return $moneyAsCurrency;
-        }
+        return bcdiv($moneyAsTRY, self::getRate($currency), $scale);
+    }
 
-        return bcmul($moneyAsCurrency, self::get($currency), 2);
+    public static function convertToTRY(string $currency, string $moneyAsCurrency, int $scale = 2): string
+    {
+        return bcmul($moneyAsCurrency, self::getRate($currency), $scale);
     }
 }

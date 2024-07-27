@@ -348,7 +348,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-end pe-13">
-                                                    <span class="text-gray-600 fw-bold fs-6">{{ $product->price?->formattedPrice }}</span>
+                                                    <span class="text-gray-600 fw-bold fs-6">{{ $product->price?->sellingPrice() }}</span>
                                                 </td>
                                                 <td class="text-end">
                                                     <a href="#" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
@@ -494,7 +494,7 @@
                                 <td class="text-end">
                                     <span class="text-gray-600 text-hover-primary">{{ $order->user?->full_name ?? '???' }}</span>
                                 </td>
-                                <td class="text-end">{{ \App\Facades\TaxFacade::formattedPrice($order->items()->sum('price')) }}</td>
+                                <td class="text-end">{{ format_money($order->items()->sum('price')) }}</td>
                                 <td class="text-end">
                                     @if($order->payment_status == "completed")
                                         <span class="badge py-3 px-4 fs-7 badge-light-success">Tamamlandı</span>
@@ -619,7 +619,7 @@
                                 <td class="text-end">
                                     <span class="text-gray-600 text-hover-primary">{{ @$data["client"]["full_name"] ?? '???' }}</span>
                                 </td>
-                                <td class="text-end">{{ \App\Facades\TaxFacade::formattedPrice($order->price) }}</td>
+                                <td class="text-end">{{ format_money($order->price) }}</td>
                                 <td class="text-end">
                                     <span class="badge py-3 px-4 fs-7 badge-primary badge-outline">{{ $order->status }}</span>
                                 </td>

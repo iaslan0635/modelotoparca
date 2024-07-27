@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
     <livewire:car-search variant="homepage"/>
     <div class="block block-slideshow">
         <div class="container">
@@ -24,19 +23,21 @@
                         <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
                               style="background-image: url('images/slides/slide-1-mobile.jpg')"></span>
                         <span class="block-slideshow__item-offer">
-                                    30% OFF
-                                </span>
+                            30% OFF
+                        </span>
                         <span class="block-slideshow__item-title">
-                                    Big Choice Of<br>
-                                    Wheel Tires
-                                </span>
+                            Big Choice Of
+                            <br>
+                            Wheel Tires
+                        </span>
                         <span class="block-slideshow__item-details">
-                                    Any size and diameter, with or without spikes,<br>
-                                    summer or winter, rain or snow.
-                                </span>
+                            Any size and diameter, with or without spikes,
+                            <br>
+                            summer or winter, rain or snow.
+                        </span>
                         <span class="block-slideshow__item-button">
-                                    Shop Now
-                                </span>
+                            Shop Now
+                        </span>
                     </a>
                 </div>
             </div>
@@ -45,31 +46,29 @@
     <div class="block-space block-space--layout--divider-xs"></div>
     <div class="block block-brands block-brands--layout--columns-8-full">
         <div class="container">
-            <ul class="block-brands__list">
+            <div class="ad_-_categories row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
                 @foreach($categories as $category)
-                    <li class="block-brands__item">
-                        <a href="{{ route("category.show", $category) }}" class="block-brands__item-link">
-                            <img src="{{ $category->imageUrl() }}" alt="">
-                            <span class="block-brands__item-name">{{ $category->name }}</span>
-                        </a>
-                    </li>
-                    <li class="block-brands__divider" role="presentation"></li>
+                    <div class="col">
+                        <div class="top-parts-item" data-catalog="" data-tecdoc-catalogue-parent="" data-parent-id="23208">
+                            <span class="top-parts-item__content" data-show-catalog="">
+                                <a href="{{ route("category.show", $category) }}" class="top-parts-item__img">
+                                    <img class="img-fluid" src="{{ $category->imageUrl() }}">
+                                </a>
+                                <span class="top-parts-item__name">{{ $category->name }}</span>
+                            </span>
+                        </div>
+                    </div>
                 @endforeach
-                <li class="block-brands__item">
-                    <a href="{{ route("category.index") }}" class="block-brands__item-link">
-                        <svg style="scale: 4;margin-bottom: 20px;margin-right: 10px" width="7" height="11">
-                            <path
-                                d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
-                        </svg>
-                        <svg style="scale: 4;margin-bottom: 20px;" width="7" height="11">
-                            <path
-                                d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
-                        </svg>
-                        <span class="block-brands__item-name">Tüm kategoriler</span>
-                    </a>
-                </li>
-                <li class="block-brands__divider" role="presentation"></li>
-            </ul>
+            </div>
+            <div class="pt-4 d-flex justify-content-center">
+                <a href="{{ route("category.index") }}" class="border border-primary btn btn-outline-primary" style="transition: color 0.3s">
+                    <span>Tüm kategoriler</span>
+                    <svg width="7" height="11">
+                        <path
+                            d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
     <div class="block-space block-space--layout--divider-nl"></div>
@@ -154,12 +153,20 @@
         <div class="container">
             <div class="block-banners__list">
                 <a href="" class="block-banners__item block-banners__item--style--one">
-                    <span class="block-banners__item-image"><img src="images/banners/banner1.png" alt=""></span>
-                    <span class="block-banners__item-image block-banners__item-image--blur"><img src="images/banners/banner1.png" alt=""></span>
+                    <span class="block-banners__item-image">
+                        <img src="images/banners/banner1.png" alt="">
+                    </span>
+                    <span class="block-banners__item-image block-banners__item-image--blur">
+                        <img src="images/banners/banner1.png" alt="">
+                    </span>
                 </a>
                 <a href="" class="block-banners__item block-banners__item--style--two">
-                    <span class="block-banners__item-image"><img src="images/banners/banner2.png" alt=""></span>
-                    <span class="block-banners__item-image block-banners__item-image--blur"><img src="images/banners/banner2.png" alt=""></span>
+                    <span class="block-banners__item-image">
+                        <img src="images/banners/banner2.png" alt="">
+                    </span>
+                    <span class="block-banners__item-image block-banners__item-image--blur">
+                        <img src="images/banners/banner2.png" alt="">
+                    </span>
                 </a>
             </div>
         </div>
@@ -202,7 +209,9 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="block-sale__link"><a href="">Online Yedek Parça</a></div>
+                    <div class="block-sale__link">
+                        <a href="">Online Yedek Parça</a>
+                    </div>
                     <div class="arrow block-sale__arrow block-sale__arrow--next arrow--next">
                         <button class="arrow__button" type="button">
                             <svg width="7" height="11">
@@ -247,8 +256,10 @@
                     </div>
                     <div class="section-header__arrows">
                         <div class="arrow section-header__arrow section-header__arrow--prev arrow--prev">
-                            <button class="arrow__button" type="button"><svg width="7" height="11">
-                                    <path d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z">
+                            <button class="arrow__button" type="button">
+                                <svg width="7" height="11">
+                                    <path
+                                        d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z">
 
                                     </path>
                                 </svg>
@@ -257,7 +268,8 @@
                         <div class="arrow section-header__arrow section-header__arrow--next arrow--next">
                             <button class="arrow__button" type="button">
                                 <svg width="7" height="11">
-                                    <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
+                                    <path
+                                        d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
                                 </svg>
                             </button>
                         </div>
@@ -279,7 +291,8 @@
                                     <div class="block-products-carousel__cell">
                                         <div class="product-card product-card--layout--grid">
                                             <div>
-                                                <a href="https://www.onlinecarparts.co.uk/manufacturer/bosch.html" class="brand-slider__item" style="width: 100%; display: inline-block;" tabindex="0">
+                                                <a href="https://www.onlinecarparts.co.uk/manufacturer/bosch.html" class="brand-slider__item"
+                                                   style="width: 100%; display: inline-block;" tabindex="0">
                                                     <img alt="BOSCH original car parts internet store" title="BOSCH" src="https://cdn.autoteiledirekt.de/brands/thumbs/30.png?m=2">
                                                 </a>
                                             </div>
@@ -289,15 +302,21 @@
                             </div>
 
 
-
-
-
-
-
-
                         </div>
                     </div>
-                    <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div></div></div></div></div>
+                    <div class="owl-nav disabled">
+                        <button type="button" role="presentation" class="owl-prev">
+                            <span aria-label="Previous">‹</span>
+                        </button>
+                        <button type="button" role="presentation" class="owl-next">
+                            <span aria-label="Next">›</span>
+                        </button>
+                    </div>
+                    <div class="owl-dots disabled"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="block-space block-space--layout--divider-nl"></div>
     <div class="block block-posts-carousel block-posts-carousel--layout--list" data-layout="list">
         <div class="container">
@@ -348,11 +367,16 @@
                                     <a href="blog-classic-right-sidebar.html">Special Offers</a>
                                 </div>
                                 <div class="post-card__title">
-                                    <h2><a href="post-full-width.html">Philosophy That Addresses Topics Such As
-                                            Goodness</a></h2>
+                                    <h2>
+                                        <a href="post-full-width.html">Philosophy That Addresses Topics Such As
+                                            Goodness
+                                        </a>
+                                    </h2>
                                 </div>
                                 <div class="post-card__date">
-                                    By <a href="">Jessica Moore</a> on October 19, 2019
+                                    By
+                                    <a href="">Jessica Moore</a>
+                                    on October 19, 2019
                                 </div>
                                 <div class="post-card__excerpt">
                                     <div class="typography">
@@ -381,11 +405,16 @@
                                     <a href="blog-classic-right-sidebar.html">Latest News</a>
                                 </div>
                                 <div class="post-card__title">
-                                    <h2><a href="post-full-width.html">Logic Is The Study Of Reasoning And Argument Part
-                                            2</a></h2>
+                                    <h2>
+                                        <a href="post-full-width.html">Logic Is The Study Of Reasoning And Argument Part
+                                            2
+                                        </a>
+                                    </h2>
                                 </div>
                                 <div class="post-card__date">
-                                    By <a href="">Jessica Moore</a> on September 5, 2019
+                                    By
+                                    <a href="">Jessica Moore</a>
+                                    on September 5, 2019
                                 </div>
                                 <div class="post-card__excerpt">
                                     <div class="typography">
@@ -414,11 +443,16 @@
                                     <a href="blog-classic-right-sidebar.html">New Arrivals</a>
                                 </div>
                                 <div class="post-card__title">
-                                    <h2><a href="post-full-width.html">Some Philosophers Specialize In One Or More
-                                            Historical Periods</a></h2>
+                                    <h2>
+                                        <a href="post-full-width.html">Some Philosophers Specialize In One Or More
+                                            Historical Periods
+                                        </a>
+                                    </h2>
                                 </div>
                                 <div class="post-card__date">
-                                    By <a href="">Jessica Moore</a> on August 12, 2019
+                                    By
+                                    <a href="">Jessica Moore</a>
+                                    on August 12, 2019
                                 </div>
                                 <div class="post-card__excerpt">
                                     <div class="typography">
@@ -447,11 +481,16 @@
                                     <a href="blog-classic-right-sidebar.html">Special Offers</a>
                                 </div>
                                 <div class="post-card__title">
-                                    <h2><a href="post-full-width.html">A Variety Of Other Academic And Non-Academic
-                                            Approaches Have Been Explored</a></h2>
+                                    <h2>
+                                        <a href="post-full-width.html">A Variety Of Other Academic And Non-Academic
+                                            Approaches Have Been Explored
+                                        </a>
+                                    </h2>
                                 </div>
                                 <div class="post-card__date">
-                                    By <a href="">Jessica Moore</a> on Jule 30, 2019
+                                    By
+                                    <a href="">Jessica Moore</a>
+                                    on Jule 30, 2019
                                 </div>
                                 <div class="post-card__excerpt">
                                     <div class="typography">
@@ -480,11 +519,16 @@
                                     <a href="blog-classic-right-sidebar.html">New Arrivals</a>
                                 </div>
                                 <div class="post-card__title">
-                                    <h2><a href="post-full-width.html">Germany Was The First Country To Professionalize
-                                            Philosophy</a></h2>
+                                    <h2>
+                                        <a href="post-full-width.html">Germany Was The First Country To Professionalize
+                                            Philosophy
+                                        </a>
+                                    </h2>
                                 </div>
                                 <div class="post-card__date">
-                                    By <a href="">Jessica Moore</a> on June 12, 2019
+                                    By
+                                    <a href="">Jessica Moore</a>
+                                    on June 12, 2019
                                 </div>
                                 <div class="post-card__excerpt">
                                     <div class="typography">
@@ -513,11 +557,16 @@
                                     <a href="blog-classic-right-sidebar.html">Special Offers</a>
                                 </div>
                                 <div class="post-card__title">
-                                    <h2><a href="post-full-width.html">Logic Is The Study Of Reasoning And Argument Part
-                                            1</a></h2>
+                                    <h2>
+                                        <a href="post-full-width.html">Logic Is The Study Of Reasoning And Argument Part
+                                            1
+                                        </a>
+                                    </h2>
                                 </div>
                                 <div class="post-card__date">
-                                    By <a href="">Jessica Moore</a> on May 21, 2019
+                                    By
+                                    <a href="">Jessica Moore</a>
+                                    on May 21, 2019
                                 </div>
                                 <div class="post-card__excerpt">
                                     <div class="typography">
@@ -672,7 +721,7 @@
                         </svg>
                     </div>
                     <div class="block-features__item-info">
-                            <div class="block-features__item-title">Kolay İade</div>
+                        <div class="block-features__item-title">Kolay İade</div>
                         <div class="block-features__item-subtitle">14 Gün içerisinde iade</div>
                     </div>
                 </li>
@@ -701,10 +750,113 @@
                     </div>
                     <div class="block-features__item-info">
                         <div class="block-features__item-title">100% Uyumlu Parçalar</div>
-{{--                        <div class="block-features__item-subtitle">Ürünlerde uyumlu araç listesi</div>--}}
+                        {{--                        <div class="block-features__item-subtitle">Ürünlerde uyumlu araç listesi</div>--}}
                     </div>
                 </li>
             </ul>
         </div>
     </div>
 @endsection
+@push("styles")
+    <style>
+        .top-parts-item__name {
+            font-family: Arial, sans-serif;
+            font-size: 17px !important;
+            font-weight: 500 !important;
+            line-height: 20px !important;
+
+            align-items: center;
+            color: #032f4a;
+            display: flex;
+            justify-content: center;
+            min-height: 40px;
+            text-align: center;
+        }
+
+        .top-parts-item {
+            height: 100%
+        }
+
+        .top-parts-item__content {
+            align-content: stretch;
+            align-items: stretch;
+            background: #f9fafb;
+            border-radius: 2px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: flex-start;
+            padding: 16px;
+            position: relative
+        }
+
+        .top-parts-item__content:hover {
+            text-decoration: none
+        }
+
+        .top-parts-item__img {
+            border-bottom: 1px solid #e5eaed;
+            display: block;
+            margin-bottom: 16px;
+            padding-top: 100%;
+            position: relative;
+            width: 100%
+        }
+
+        .top-parts-item__img:before {
+            background-color: #007bff;
+            border: 3px solid #f9fafb;
+            border-radius: 50%;
+            bottom: -6px;
+            content: "";
+            display: block;
+            height: 12px;
+            left: 50%;
+            margin-left: -6px;
+            position: absolute;
+            width: 12px
+        }
+
+        .top-parts-item__img img {
+            height: auto;
+            left: 50%;
+            max-width: 150px;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%
+        }
+
+
+        @media (max-width: 767px) {
+            .top-parts-item__name {
+                font-size: 15px !important;
+                line-height: 16px !important
+            }
+        }
+
+        .top-parts-item__content,
+        .top-parts-item__content,
+        a.top-parts-item__content {
+            border: 1px solid transparent;
+            transition: all .2s
+        }
+
+        .top-parts-item__content:hover,
+        .top-parts-item__content:hover,
+        a.top-parts-item__content:hover {
+            background: #fff;
+            border: 1px solid #007bff
+        }
+
+        .ad_-_categories {
+            row-gap: 15px !important
+        }
+
+        .ad_-_categories .col {
+            padding: 0 8px !important;
+        }
+    </style>
+@endpush

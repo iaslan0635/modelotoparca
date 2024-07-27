@@ -10,7 +10,7 @@ class Log extends BaseModel
         'context' => 'array',
     ];
 
-    public static function log(int $productId, string $message, ?array $context = null, ?string $source = null)
+    public static function log(int $productId, string $message, array $context = null, string $source = null)
     {
         return static::create([
             'product_id' => $productId,
@@ -30,8 +30,13 @@ class Log extends BaseModel
     {
         return Attribute::get(
             function () {
-                if (str_starts_with($this->source, 'bot')) return 'primary';
-                if ($this->source === 'excel') return 'success';
+                if (str_starts_with($this->source, 'bot')) {
+                    return 'primary';
+                }
+                if ($this->source === 'excel') {
+                    return 'success';
+                }
+
                 return 'dark';
             }
         );

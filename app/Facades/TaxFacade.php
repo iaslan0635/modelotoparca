@@ -5,27 +5,30 @@ namespace App\Facades;
 class TaxFacade
 {
     /**
-     * @param  float  $amount tax free price
-     * @param  float  $percentage tax percentage multiplied by one hundred. For example, use 20 if tax rate is 20%
-     * @return float price with tax
+     * @param  float|int|string  $amount tax free price
+     * @param  float|int|string  $percentage tax percentage multiplied by one hundred. For example, use 20 if tax rate is 20%
+     * @return string price with tax
      */
-    public static function calculate(float $amount, float $percentage = 0): float
+    public static function calculate(float|int|string $amount, float|int|string $percentage = 0, int $scale = 2): string
     {
-        return $amount + (($amount / 100) * $percentage);
-    }
+        $oldScale = bcscale($scale);
+        $result = bcadd($amount, bcmul(bcdiv($amount, 100), $percentage));
+        bcscale($oldScale);
 
-    public static function formattedPrice($amount): string
-    {
-        return number_format($amount, 2).' ₺';
+        return $result;
     }
 
     /**
-     * @param  float  $total price with tax
-     * @param  float  $percentage tax percentage multiplied by one hundred. For example, use 20 if tax rate is 20%
-     * @return float tax free price
+     * @param  float|int|string  $total price with tax
+     * @param  float|int|string  $percentage tax percentage multiplied by one hundred. For example, use 20 if tax rate is 20%
+     * @return string tax free price
      */
-    public static function reverseCalculate(float $total, float $percentage = 0): float
+    public static function reverseCalculate(float|int|string $total, float|int|string $percentage = 0, int $scale = 2): string
     {
-        return ($total / ($percentage + 100)) * 100;
+        $oldScale = bcscale($scale);
+        $result = bcmul(bcdiv($total, bcadd(100, $percentage)), 100);
+        bcscale($oldScale);
+
+        return $result;
     }
 }
