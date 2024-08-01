@@ -116,6 +116,7 @@ class Search
     private function getSearchQuery(bool $ignoreBrandFilter = false)
     {
         $query = Query::bool();
+        $query->filter($this->enabledFilter());
         $query->must($this->getBaseQuery());
 
         if (!$ignoreBrandFilter && filled($this->brandIds)) {
@@ -148,6 +149,13 @@ class Search
             ->type('cross_fields')
             ->operator('and')
             ->query($this->term);
+    }
+
+    private function enabledFilter()
+    {
+        return Query::term()
+            ->field('status')
+            ->value(true);
     }
 
     private function brandFilter()
