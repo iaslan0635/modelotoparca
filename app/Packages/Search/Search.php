@@ -83,8 +83,9 @@ class Search
     public function brands()
     {
         $productsWithBrand = $this->getSearchQuery(ignoreBrandFilter: true)
+            ->aggregate("unique_brands", ['terms' => ['field' => 'brand.id']])
             ->refineModels(fn(Builder $q) => $q->select(['id', 'brand_id']))
-            ->load(['brand'])->size(1000)->execute()->models();
+            ->load(['brand'])->size(100)->execute()->models();
 
         return $productsWithBrand
             ->map(fn(Product $product) => $product->brand)
@@ -99,6 +100,7 @@ class Search
     public function categories()
     {
         $productsWithCategories = $this->getSearchQuery()
+            ->aggregate("unique_categories", ['terms' => ['field' => 'categories.id']])
             ->refineModels(fn(Builder $q) => $q->select(['id']))
             ->load(['categories'])->size(100)->execute()->models();
 
