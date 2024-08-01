@@ -75,6 +75,7 @@ class Hepsiburada implements TrackableMerchant
                 'limit' => 1,
                 'merchantSkuList' => $product->sku,
             ])->object()->totalCount > 0,
+            false,
             false
         );
 
