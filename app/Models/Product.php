@@ -152,6 +152,8 @@ class Product extends BaseModel implements CanVisit
             'brand' => ($brand = $this->brand) ? ['id' => $brand->id, 'name' => $brand->name] : null,
             'categories' => $this->categories->map(fn(Category $category) => ['id' => $category->id, 'name' => $category->name]),
             'cars' => $cars->map(fn(Car $car) => ['id' => $car->id, 'name' => $car->name]),
+
+            'status' => $this->status,
         ];
     }
 
