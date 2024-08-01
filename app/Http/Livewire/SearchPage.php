@@ -68,7 +68,7 @@ class SearchPage extends Component
         $search->saveSearch();
 
         $products = $search->paginateProducts();
-        $brands = $search->brands();
+        $brands = collect(); # $search->brands();
         $categories = $search->categories();
         $this->highlights = Search::parseHighlights($products);
 
