@@ -5,7 +5,7 @@ use Elastic\Adapter\Indices\Mapping;
 use Elastic\Migrations\MigrationInterface;
 use Elastic\Migrations\Facades\Index;
 
-final class add_status_to_products_index implements MigrationInterface
+final class AddStatusToProductsIndex implements MigrationInterface
 {
     /**
      * Run the migration.
