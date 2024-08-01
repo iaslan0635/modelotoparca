@@ -153,7 +153,7 @@ class Product extends BaseModel implements CanVisit
             'categories' => $this->categories->map(fn(Category $category) => ['id' => $category->id, 'name' => $category->name]),
             'cars' => $cars->map(fn(Car $car) => ['id' => $car->id, 'name' => $car->name]),
 
-            'status' => $this->status,
+            'status' => (bool)$this->status,
         ];
     }
 
