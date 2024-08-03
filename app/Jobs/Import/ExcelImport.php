@@ -21,6 +21,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log as LogFacade;
 use Illuminate\Support\Str;
 
 class ExcelImport implements ShouldQueue
@@ -230,6 +231,12 @@ class ExcelImport implements ShouldQueue
         // INCVAT: 0 => KDV hariç, 1 => KDV dahil
 
         $price = $product->incvat == 1 ? TaxFacade::reverseCalculate($product->price, 20) : $product->price;
+
+        if (is_string($price) && str_contains($price, 'E')) {
+            LogFacade::channel('important')
+                ->error("Price is in scientific notation: $price, product_id: $id, incvat: $product->incvat, product_price: $product->price");
+        }
+
         if ($price && $product->sales_discount_rate) {
             $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate);
         }
