@@ -13,7 +13,7 @@ class DiscountFacade
             return bcdiv($discountedPrice, bcsub(1, $discountPercentage, 2), 2);
         } catch (\Throwable $e) {
             Log::channel("important")->error("Error while reverse calculating discount: $e, discountedPrice: $discountedPrice discountPercentage: $discountPercentage");
-            report($e);
+            throw $e;
         }
     }
 }
