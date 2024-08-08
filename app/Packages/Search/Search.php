@@ -127,7 +127,8 @@ class Search
             $query->filter($this->categoryFilter());
         }
 
-        if (($carId = Garage::chosen()) !== null) {
+        $carId = Garage::chosen();
+        if ($carId !== null) {
             $query->filter($this->carFilter($carId));
         }
 
