@@ -36,7 +36,7 @@ class BrandImporter extends Importer
                         'id' => $id,
                     ], [
                         'name' => $code,
-                        'slug' => Str::slug($code),
+                        'slug' => Str::slug($code) . $suffix,
                         'botname' => $desc,
                     ]);
                     break;
