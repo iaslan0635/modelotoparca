@@ -4,6 +4,7 @@ namespace App\Importers;
 
 use App\Models\Brand;
 use Illuminate\Support\Str;
+use PDOException;
 
 class BrandImporter extends Importer
 {
@@ -26,13 +27,27 @@ class BrandImporter extends Importer
             $code = $getCell('B');
             $desc = $getCell('C');
 
-            Brand::updateOrCreate([
-                'id' => $id,
-            ], [
-                'name' => $code,
-                'slug' => Str::slug($code),
-                'botname' => $desc,
-            ]);
+            $slugSuffix = null;
+
+            while (true) {
+                try {
+                    $suffix = $slugSuffix !== null ? "-$slugSuffix" : '';
+                    Brand::updateOrCreate([
+                        'id' => $id,
+                    ], [
+                        'name' => $code,
+                        'slug' => Str::slug($code),
+                        'botname' => $desc,
+                    ]);
+                    break;
+                } catch (PDOException $e) {
+                    if ($e->getCode() === '23000') {
+                        $slugSuffix = $slugSuffix === null ? 1 : $slugSuffix + 1;
+                    } else {
+                        throw $e;
+                    }
+                }
+            }
         }
     }
 }
