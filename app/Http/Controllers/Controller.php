@@ -32,10 +32,10 @@ class Controller extends BaseController
         if (!$search) {
             return $query;
         }
-
+//        xdebug_break();
         $exactCodeColumns = Collection::wrap($codeColumns)
-            ->filter(fn ($column) => $query->where($column, $search)->exists());
-        if ($exactCodeColumns->isNotEmpty()) return Utils::search($query->clone(), $exactCodeColumns, $search);
+            ->filter(fn ($column) => $query->clone()->where($column, $search)->exists());
+        if ($exactCodeColumns->isNotEmpty()) return Utils::search($query->clone(), $exactCodeColumns->toArray(), $search);
 
         $codeQuery = Utils::search($query->clone(), $codeColumns, $search);
         if ($codeQuery->exists()) return $codeQuery;
