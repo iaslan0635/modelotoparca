@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Collection;
 
 class Controller extends BaseController
 {
@@ -27,11 +28,18 @@ class Controller extends BaseController
     protected static function searchWithCode(Builder $query, array|string $codeColumns, array|string $columns, string $search = null)
     {
         $search ??= request('search');
+
         if (!$search) {
             return $query;
         }
 
+        $exactCodeColumn = Collection::wrap($codeColumns)
+            ->first(fn ($column) => $query->where($column, $search)->exists());
+        if ($exactCodeColumn) return $query->where($exactCodeColumn, $search);
+
         $codeQuery = Utils::search($query->clone(), $codeColumns, $search);
-        return $codeQuery->exists() ? $codeQuery : static::search($query, $columns, $search);
+        if ($codeQuery->exists()) return $codeQuery;
+
+        return static::search($query, $columns, $search);
     }
 }
