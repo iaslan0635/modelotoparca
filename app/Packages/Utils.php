@@ -3,6 +3,7 @@
 namespace App\Packages;
 
 use Illuminate\Contracts\Database\Query\Builder;
+use Illuminate\Support\Collection;
 
 class Utils
 {
@@ -48,7 +49,7 @@ class Utils
         return preg_match($pattern, $subject, $matches) ? $matches[$group] : $default;
     }
 
-    public static function search(Builder $query, array|string $keys, ?string $search = null)
+    public static function search(Builder $query, array|Collection|string $keys, ?string $search = null)
     {
         $search ??= request('search');
 
