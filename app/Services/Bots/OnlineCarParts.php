@@ -87,7 +87,7 @@ class OnlineCarParts
     public function scrapeFromSearchPage(): bool
     {
         if ($this->brand_filter) {
-            $brandId = Ocp\Brand::idFromNameWithFetchFallback($this->brand_filter, $this->keyword, $this->isOem);
+            $brandId = Ocp\Brand::getIdFromNameWithFetchFallback($this->brand_filter, $this->keyword, $this->isOem);
             if (! $brandId) {
                 $this->log("Marka ($this->brand_filter) bigdata'da bulunamadı.");
 

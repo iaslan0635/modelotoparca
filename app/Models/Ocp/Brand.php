@@ -15,7 +15,7 @@ class Brand extends BaseModel
         return self::where('regexed_name', $regexed)->first()?->id;
     }
 
-    public static function idFromNameWithFetchFallback(string $name, string $keyword, bool $isOem)
+    public static function getIdFromNameWithFetchFallback(string $name, string $keyword, bool $isOem)
     {
         if ($id = self::idFromName($name)) {
             return $id;

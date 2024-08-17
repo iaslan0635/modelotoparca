@@ -222,67 +222,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <!--end::Customer name-->
-                                        <!--begin::Customer email-->
-                                        <tr>
-                                            <td class="text-muted">
-                                                <div class="d-flex align-items-center">
-                                                    <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
-                                                    <span class="svg-icon svg-icon-2 me-2">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <path opacity="0.3"
-                                                                  d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19Z"
-                                                                  fill="currentColor"/>
-                                                            <path
-                                                                d="M21 5H2.99999C2.69999 5 2.49999 5.10005 2.29999 5.30005L11.2 13.3C11.7 13.7 12.4 13.7 12.8 13.3L21.7 5.30005C21.5 5.10005 21.3 5 21 5Z"
-                                                                fill="currentColor"/>
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->Email
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-muted">
-                                                <div class="d-flex align-items-center">
-                                                    <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
-                                                    <span class="svg-icon svg-icon-2 me-2">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <path opacity="0.3"
-                                                                  d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19Z"
-                                                                  fill="currentColor"/>
-                                                            <path
-                                                                d="M21 5H2.99999C2.69999 5 2.49999 5.10005 2.29999 5.30005L11.2 13.3C11.7 13.7 12.4 13.7 12.8 13.3L21.7 5.30005C21.5 5.10005 21.3 5 21 5Z"
-                                                                fill="currentColor"/>
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->Email
-                                                </div>
-                                            </td>
-                                        </tr>
                                         <!--end::Payment method-->
-                                        <!--begin::Date-->
-                                        <tr>
-                                            <td class="text-muted">
-                                                <div class="d-flex align-items-center">
-                                                    <!--begin::Svg Icon | path: icons/duotune/electronics/elc003.svg-->
-                                                    <span class="svg-icon svg-icon-2 me-2">
-                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M5 20H19V21C19 21.6 18.6 22 18 22H6C5.4 22 5 21.6 5 21V20ZM19 3C19 2.4 18.6 2 18 2H6C5.4 2 5 2.4 5 3V4H19V3Z"
-                                                                fill="currentColor"/>
-                                                            <path opacity="0.3" d="M19 4H5V20H19V4Z" fill="currentColor"/>
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->Telefon Numarası
-                                                </div>
-                                            </td>
-                                            <td class="fw-bold text-end">+90 555 555 55 55</td>
-                                        </tr>
-                                        <!--end::Date-->
                                         </tbody>
                                         <!--end::Table body-->
                                     </table>
@@ -624,58 +564,6 @@
                                     <!--end::Card body-->
                                 </div>
                                 <!--end::Order history-->
-                                <!--begin::Order data-->
-                                <div class="card card-flush py-4 flex-row-fluid">
-                                    <!--begin::Card header-->
-                                    <div class="card-header">
-                                        <div class="card-title">
-                                            <h2>Order Data</h2>
-                                        </div>
-                                    </div>
-                                    <!--end::Card header-->
-                                    <!--begin::Card body-->
-                                    <div class="card-body pt-0">
-                                        <div class="table-responsive">
-                                            <!--begin::Table-->
-                                            <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5">
-                                                <!--begin::Table body-->
-                                                <tbody class="fw-semibold text-gray-600">
-                                                <!--begin::IP address-->
-                                                <tr>
-                                                    <td class="text-muted">IP Address</td>
-                                                    <td class="fw-bold text-end">172.68.221.26</td>
-                                                </tr>
-                                                <!--end::IP address-->
-                                                <!--begin::Forwarded IP-->
-                                                <tr>
-                                                    <td class="text-muted">Forwarded IP</td>
-                                                    <td class="fw-bold text-end">89.201.163.49</td>
-                                                </tr>
-                                                <!--end::Forwarded IP-->
-                                                <!--begin::User agent-->
-                                                <tr>
-                                                    <td class="text-muted">User Agent</td>
-                                                    <td class="fw-bold text-end">Mozilla/5.0 (Windows NT 10.0; Win64;
-                                                        x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110
-                                                        Safari/537.36
-                                                    </td>
-                                                </tr>
-                                                <!--end::User agent-->
-                                                <!--begin::Accept language-->
-                                                <tr>
-                                                    <td class="text-muted">Accept Language</td>
-                                                    <td class="fw-bold text-end">en-GB,en-US;q=0.9,en;q=0.8</td>
-                                                </tr>
-                                                <!--end::Accept language-->
-                                                </tbody>
-                                                <!--end::Table body-->
-                                            </table>
-                                            <!--end::Table-->
-                                        </div>
-                                    </div>
-                                    <!--end::Card body-->
-                                </div>
-                                <!--end::Order data-->
                             </div>
                             <!--end::Orders-->
                         </div>
