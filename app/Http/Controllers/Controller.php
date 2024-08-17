@@ -31,8 +31,7 @@ class Controller extends BaseController
             return $query;
         }
 
-        $result = Utils::search($query->clone(), $codeColumns, $search)->get();
-
-        return $result->isNotEmpty() ? $result : static::search($query, $columns, $search);
+        $codeQuery = Utils::search($query->clone(), $codeColumns, $search);
+        return $codeQuery->exists() ? $codeQuery : static::search($query, $columns, $search);
     }
 }
