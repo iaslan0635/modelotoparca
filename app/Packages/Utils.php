@@ -48,18 +48,10 @@ class Utils
         return preg_match($pattern, $subject, $matches) ? $matches[$group] : $default;
     }
 
-    public static function search(Builder $query, array|string $keys)
+    public static function search(Builder $query, array|string $keys, ?string $search = null)
     {
-        $search = request('search');
-        if (! $search) {
-            return $query;
-        }
+        $search ??= request('search');
 
-        return self::searchValue($query, $keys, $search);
-    }
-
-    public static function searchValue(Builder $query, array|string $keys, string $search)
-    {
         if (is_string($keys)) {
             return $query->where($keys, 'like', "%$search%")->orderBy($keys);
         }
