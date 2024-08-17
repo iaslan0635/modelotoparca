@@ -40,6 +40,6 @@ class Controller extends BaseController
         $codeQuery = Utils::search($query->clone(), $codeColumns, $search);
         if ($codeQuery->exists()) return $codeQuery;
 
-        return Utils::search($query, $columns, $search);
+        return Utils::search($query->clone(), $columns, $search);
     }
 }
