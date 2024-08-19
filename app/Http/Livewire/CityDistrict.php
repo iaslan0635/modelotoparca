@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Epigra\TrGeoZones\Models\City;
-use Epigra\TrGeoZones\Models\District;
+use Epigra\TrGeoZones\Models\County;
 use Livewire\Component;
 
 class CityDistrict extends Component
@@ -33,18 +33,18 @@ class CityDistrict extends Component
     public function addresses()
     {
         $this->cities = City::all();
-        $towns = District::query()->where('county_id', $this->city)->get()->groupBy('ilce');
+        $towns = County::query()->where('city_id', $this->city)->get();
         foreach ($towns as $key => $town) {
-            $this->towns[] = $key;
+            $this->towns[] = $town->name;
         }
     }
 
     public function changeCity($id)
     {
         $this->towns = [];
-        $towns = District::query()->where('county_id', $id)->get()->groupBy('ilce');
+        $towns = County::query()->where('city_id', $id)->get();
         foreach ($towns as $key => $town) {
-            $this->towns[] = $key;
+            $this->towns[] = $town->name;
         }
     }
 }
