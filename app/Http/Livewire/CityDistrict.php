@@ -8,8 +8,6 @@ use Livewire\Component;
 
 class CityDistrict extends Component
 {
-    public $cities;
-
     public $city = 1;
 
     public $town = '';
