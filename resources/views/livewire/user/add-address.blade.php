@@ -81,7 +81,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12 mb-0">
                                     <label for="address-identity">Doğum tarihi</label>
-                                    <input type="date" class="form-control" id="address-identity" name="identity"
+                                    <input type="date" class="form-control" id="address-identity" name="birthdate"
                                            value="{{ old('birthdate', $address?->birthdate) }}">
                                     @error('birthdate') <span class="error">{{ $message }}</span> @enderror
                                 </div>
