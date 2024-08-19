@@ -58,7 +58,33 @@ class AddressController extends Controller
      */
     public function update(Request $request, Address $address)
     {
-        //
+        $data = $request->validate([
+            'type' => 'sometimes',
+            'first_name' => 'sometimes',
+            'last_name' => 'sometimes',
+            'identity' => 'sometimes,length:11',
+            'birthdate' => 'sometimes',
+            'company_name' => 'sometimes',
+            'tax_office' => 'sometimes',
+            'tax_number' => 'sometimes',
+            'phone' => 'sometimes',
+            'city' => 'sometimes',
+            'district' => 'sometimes',
+            'address' => 'sometimes',
+        ]);
+
+        $data['genre'] = 'address';
+
+        if ($data["type"] == "individual") {
+            $isIdValid = $this->verifyIdentity($data);
+            if (!$isIdValid) {
+                return back()->withErrors(['identity' => 'Kimlik bilgileri doğrulanamadı.']);
+            }
+        }
+
+        $address->update($data);
+
+        return back();
     }
 
     /**
