@@ -21,12 +21,11 @@ class CityDistrict extends Component
     public function mount()
     {
         $this->addresses();
+        $this->changeCity($this->city);
     }
 
     public function render()
     {
-        $this->changeCity($this->city);
-
         return view('livewire.city-district');
     }
 
