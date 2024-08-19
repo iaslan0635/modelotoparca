@@ -10,8 +10,6 @@ class CityDistrict extends Component
 {
     public $cities;
 
-    public $towns = [];
-
     public $city = 1;
 
     public $town = '';
@@ -21,29 +19,12 @@ class CityDistrict extends Component
     public function mount()
     {
         $this->addresses();
-        $this->changeCity($this->city);
     }
 
     public function render()
     {
-        return view('livewire.city-district');
-    }
-
-    public function addresses()
-    {
-        $this->cities = City::all();
-        $towns = County::query()->where('city_id', $this->city)->get();
-        foreach ($towns as $key => $town) {
-            $this->towns[] = $town->name;
-        }
-    }
-
-    public function changeCity($id)
-    {
-        $this->towns = [];
-        $towns = County::query()->where('city_id', $id)->get();
-        foreach ($towns as $key => $town) {
-            $this->towns[] = $town->name;
-        }
+        $cities = City::all();
+        $towns = County::query()->where('city_id', $this->city)->pluck("name")->all();
+        return view('livewire.city-district', compact('towns', 'cities'));
     }
 }
