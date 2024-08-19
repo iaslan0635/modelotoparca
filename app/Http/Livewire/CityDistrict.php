@@ -33,7 +33,7 @@ class CityDistrict extends Component
     public function addresses()
     {
         $this->cities = City::all();
-        $towns = District::query()->where('city_id', $this->city)->get()->groupBy('ilce');
+        $towns = District::query()->where('county_id', $this->city)->get()->groupBy('ilce');
         foreach ($towns as $key => $town) {
             $this->towns[] = $key;
         }
@@ -42,7 +42,7 @@ class CityDistrict extends Component
     public function changeCity($id)
     {
         $this->towns = [];
-        $towns = District::query()->where('city_id', $id)->get()->groupBy('ilce');
+        $towns = District::query()->where('county_id', $id)->get()->groupBy('ilce');
         foreach ($towns as $key => $town) {
             $this->towns[] = $key;
         }
