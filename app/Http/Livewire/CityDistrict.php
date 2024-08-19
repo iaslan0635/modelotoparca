@@ -8,16 +8,18 @@ use Livewire\Component;
 
 class CityDistrict extends Component
 {
-    public $city = 1;
+    public int $city = 1;
 
-    public $town = '';
+    public ?string $town = null;
 
-    public $type = 'default';
+    public string $type = 'default';
 
     public function render()
     {
         $cities = City::all();
-        $towns = County::query()->where('city_id', $this->city)->pluck("name")->all();
+        $towns = County::query()->where('city_id', $this->city)->pluck("name");
+        $this->town ??= $towns->first();
+
         return view('livewire.city-district', compact('towns', 'cities'));
     }
 }
