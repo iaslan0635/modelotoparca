@@ -74,8 +74,16 @@
                                 <div class="form-group col-md-12 mb-0">
                                     <label for="address-identity">T.C. Kimlik Numarası </label>
                                     <input type="text" class="form-control" id="address-identity" name="identity"
-                                           value="{{ old('identity', $address?->identity) }}" placeholder="Avcılar">
+                                           value="{{ old('identity', $address?->identity) }}">
                                     @error('identity') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12 mb-0">
+                                    <label for="address-identity">Doğum tarihi</label>
+                                    <input type="date" class="form-control" id="address-identity" name="identity"
+                                           value="{{ old('birthdate', $address?->birthdate) }}">
+                                    @error('birthdate') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         @else
