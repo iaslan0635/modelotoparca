@@ -417,6 +417,7 @@
                                                     <th class="min-w-70px text-end">Adet</th>
                                                     <th class="min-w-100px text-end">Birim Fiyat</th>
                                                     <th class="min-w-100px text-end">Toplam</th>
+                                                    <th class="min-w-100px text-end">İptal</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="fw-semibold text-gray-600">
@@ -453,6 +454,21 @@
                                                         <!--begin::Total-->
                                                         <td class="text-end">{{ $item->formattedTotalPrice }}</td>
                                                         <!--end::Total-->
+                                                        <td class="text-end">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    İptal Et
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    @foreach(\App\Enums\OrderRejectReasonType::cases() as $rejectReason)
+                                                                        <li>
+                                                                            <a class="dropdown-item"
+                                                                               href="{{ route('admin.order.declineOrder', [$order, $item->id, $rejectReason->value]) }}">{{__($rejectReason->value)}}</a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                                 <!--begin::Subtotal-->
@@ -566,13 +582,13 @@
                                                 <!--begin::IP address-->
                                                 <tr>
                                                     <td class="text-muted">IP Address</td>
-                                                    <td class="fw-bold text-end">{{ $order->client_data["ip"] }}</td>
+                                                    <td class="fw-bold text-end">{{ $order->client_data["ip"] ?? '?' }}</td>
                                                 </tr>
                                                 <!--end::IP address-->
                                                 <!--begin::User agent-->
                                                 <tr>
                                                     <td class="text-muted">User Agent</td>
-                                                    <td class="fw-bold text-end">{{ $order->client_data["user_agent"] }}</td>
+                                                    <td class="fw-bold text-end">{{ $order->client_data["user_agent"] ?? '?' }}</td>
                                                 </tr>
                                                 <!--end::User agent-->
                                                 </tbody>

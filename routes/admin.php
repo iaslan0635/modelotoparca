@@ -84,13 +84,14 @@ Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list')-
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show')->middleware('permission:Eticaret Yönetimi.Siparişler.Sipariş Sorgula');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit')->middleware('permission:Eticaret Yönetimi.Siparişler.Sipariş Sorgula');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update')->middleware('permission:Eticaret Yönetimi.Siparişler.Sipariş Sorgula');
+Route::get('/order/{order}/decline/{lineId}/{reasonType}', [OrderController::class, 'declineOrder'])->name('order.declineOrder')->middleware('permission:Eticaret Yönetimi.Siparişler.İptal Edilenler');
 
 Route::get('/marketplace-products', [MerchantProductController::class, 'index'])->name('marketplace-products.index')->middleware('permission:Pazaryerleri.Ürünler.Tüm Ürünler');
 Route::get('/marketplace-products/on-sale', [MerchantProductController::class, 'onSaleIndex'])->name('marketplace-products.on-sale')->middleware('permission:Pazaryerleri.Ürünler.Satıştaki Ürünler');
 
 Route::get('/marketplace-orders', [MerchantOrderController::class, 'index'])->name('order.marketplace')->middleware('permission:Pazaryerleri.Siparişler.Tüm Siparişler');
 Route::get('/marketplace-order/{order}', [MerchantOrderController::class, 'show'])->name('order.marketplace.show')->middleware('permission:Pazaryerleri.Siparişler.Tüm Siparişler');
-Route::get('/marketplace-order/{order}/{lineId}/{reasonType}', [MerchantOrderController::class, 'declineOrder'])->name('order.marketplace.declineOrder')->middleware('permission:Pazaryerleri.Siparişler.Tüm Siparişler');
+Route::get('/marketplace-order/{order}/decline/{lineId}/{reasonType}', [MerchantOrderController::class, 'declineOrder'])->name('order.marketplace.declineOrder')->middleware('permission:Pazaryerleri.Siparişler.Tüm Siparişler');
 
 Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync')->middleware('permission:Pazaryerleri.Kategori Eşitleme');
 Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-sync')->middleware('permission:Pazaryerleri.Marka Eşitleme');

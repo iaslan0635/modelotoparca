@@ -2,11 +2,7 @@
 
 namespace App\Models;
 
-use App\Events\InvoiceAddressChangedEvent;
-use App\Events\OrderCreatedEvent;
-use App\Events\PaymentStatusChangedEvent;
-use App\Events\ShipmentAddressChangedEvent;
-use App\Events\ShipmentStatusChangedEvent;
+use App\Events;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Request;
@@ -50,16 +46,16 @@ class Order extends BaseModel
     {
         static::updated(function (Order $order) {
             if ($order->wasChanged('shipment_status')) {
-                dispatch(new ShipmentStatusChangedEvent($order));
+                dispatch(new Events\ShipmentStatusChangedEvent($order));
             }
             if ($order->wasChanged('shipment_address_id')) {
-                dispatch(new ShipmentAddressChangedEvent($order));
+                dispatch(new Events\ShipmentAddressChangedEvent($order));
             }
             if ($order->wasChanged('invoice_address_id')) {
-                dispatch(new InvoiceAddressChangedEvent($order));
+                dispatch(new Events\InvoiceAddressChangedEvent($order));
             }
             if ($order->wasChanged('payment_status')) {
-                dispatch(new PaymentStatusChangedEvent($order));
+                dispatch(new Events\PaymentStatusChangedEvent($order));
             }
         });
     }

@@ -2,11 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\InvoiceAddressChangedEvent;
-use App\Events\OrderCreatedEvent;
-use App\Events\PaymentStatusChangedEvent;
-use App\Events\ShipmentAddressChangedEvent;
-use App\Events\ShipmentStatusChangedEvent;
+use App\Events;
 use App\Models\Order;
 use App\Models\OrderHistory;
 
@@ -31,11 +27,11 @@ class OrderHistoryListener
     private function getMessage(object $event): string
     {
         return match (true) {
-            $event instanceof OrderCreatedEvent => 'Sipariş oluşturuldu',
-            $event instanceof ShipmentStatusChangedEvent => 'Sipariş durumu değişti',
-            $event instanceof ShipmentAddressChangedEvent => 'Kargo adresi değişti',
-            $event instanceof InvoiceAddressChangedEvent => 'Fatura adresi değişti',
-            $event instanceof PaymentStatusChangedEvent => 'Ödeme durumu değişti',
+            $event instanceof Events\OrderCreatedEvent => 'Sipariş oluşturuldu',
+            $event instanceof Events\ShipmentStatusChangedEvent => 'Sipariş durumu değişti',
+            $event instanceof Events\ShipmentAddressChangedEvent => 'Kargo adresi değişti',
+            $event instanceof Events\InvoiceAddressChangedEvent => 'Fatura adresi değişti',
+            $event instanceof Events\PaymentStatusChangedEvent => 'Ödeme durumu değişti',
             default => $event::class,
         };
     }
