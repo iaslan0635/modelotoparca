@@ -16,11 +16,6 @@ class CityDistrict extends Component
 
     public $type = 'default';
 
-    public function mount()
-    {
-        $this->addresses();
-    }
-
     public function render()
     {
         $cities = City::all();
