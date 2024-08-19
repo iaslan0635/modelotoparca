@@ -116,7 +116,7 @@
                             <input type="text" class="form-control" id="address-phone" name="phone"
                                    placeholder="05xx xxx xx xx" value="{{ old('phone', $address?->phone) }}">
                         </div>
-                        <livewire:city-district />
+                        <livewire:city-district :city="old('city', $address?->city)" :town="old('district', $address?->district)" />
                         <div class="form-group">
                             <label for="address-address1">Adres</label>
                             <textarea type="text" class="form-control" name="address" id="address-address1"
