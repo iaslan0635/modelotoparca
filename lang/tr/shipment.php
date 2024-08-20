@@ -5,4 +5,5 @@ return [
     'completed' => 'Tamamlanmış',
     'incargo' => 'Kargoda',
     'returned' => 'İade',
+    'cancelled' => 'İptal Edildi',
 ];

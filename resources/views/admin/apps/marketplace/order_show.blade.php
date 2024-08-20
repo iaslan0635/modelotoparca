@@ -336,7 +336,9 @@
                                                                     @foreach(\App\Enums\OrderRejectReasonType::cases() as $rejectReason)
                                                                         <li>
                                                                             <a class="dropdown-item"
-                                                                               href="{{ route('admin.order.marketplace.declineOrder', [$order, $item["id"], $rejectReason->value]) }}">{{__($rejectReason->value)}}</a>
+                                                                               href="{{ route('admin.order.marketplace.declineOrder', [$order, $item["id"], $rejectReason->value]) }}">
+                                                                                {{__('OrderRejectReasonType.'.$rejectReason->value)}}
+                                                                            </a>
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>

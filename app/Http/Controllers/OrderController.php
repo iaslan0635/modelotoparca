@@ -21,12 +21,18 @@ class OrderController extends Controller
             return redirect()->route('add-adress');
         }
 
+        $address = auth()->user()->addresses[0];
         $order = auth()->user()->orders()->create([
             'payment_method' => $request->input('checkout_payment_method'),
-            'shipment_address_id' => auth()->user()->addresses[0]->id,
-            'invoice_address_id' => auth()->user()->addresses[0]->id,
+            'shipment_address_id' => $address->id,
+            'invoice_address_id' => $address->id,
             'payment_status' => OrderStatuses::PENDING,
             'shipment_status' => OrderStatuses::PENDING,
+            "original_data" => [
+                'shipment_address' => $address,
+                'invoice_address' => $address,
+                'user' => auth()->user(),
+            ],
         ]);
 
         foreach (Cart::getItems() as $item) {
