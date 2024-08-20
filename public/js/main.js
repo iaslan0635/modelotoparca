@@ -555,9 +555,9 @@
             $('.filters-button').on('click', function () {
                 open();
             });
-            $('.sidebar__backdrop, .sidebar__close').on('click', function () {
-                close();
-            });
+            // $('.sidebar__backdrop, .sidebar__close').on('click', function () {
+            //     close();
+            // });
         }
     });
 
