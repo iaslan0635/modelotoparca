@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events;
+use App\Events\OrderCreatedEvent;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Request;
@@ -58,27 +59,5 @@ class Order extends BaseModel
                 dispatch(new Events\PaymentStatusChangedEvent($order));
             }
         });
-    }
-
-    public static function placeOrder(
-        ?Request $request = null,
-        ?User $user = null,
-        ?Address $invoiceAddress = null,
-        ?Address $shipmentAddress = null
-        // TODO
-    )
-    {
-        $clientData = [
-            "ip" => $request->ip(),
-            "user_agent" => $request->userAgent(),
-        ];
-
-        return Order::create([
-            "original_data" => compact("user", "invoiceAddress", "shipmentAddress"),
-            "client_data" => $clientData,
-            "user_id" => $user->id,
-            "invoice_address_id" => $invoiceAddress->id,
-            "shipment_address_id" => $shipmentAddress->id,
-        ]);
     }
 }

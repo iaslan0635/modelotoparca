@@ -172,81 +172,6 @@
         </div>
     </div>
     <div class="block-space block-space--layout--divider-nl"></div>
-    <div class="block block-sale">
-        <div class="block-sale__content">
-            <div class="block-sale__header">
-                <div class="block-sale__title">Attention! Deal Zone</div>
-                <div class="block-sale__subtitle">Hurry up! Discounts up to 70%</div>
-                <div class="block-sale__timer">
-                    <div class="timer">
-                        <div class="timer__part">
-                            <div class="timer__part-value timer__part-value--days">02</div>
-                            <div class="timer__part-label">Gün</div>
-                        </div>
-                        <div class="timer__dots"></div>
-                        <div class="timer__part">
-                            <div class="timer__part-value timer__part-value--hours">23</div>
-                            <div class="timer__part-label">Saat</div>
-                        </div>
-                        <div class="timer__dots"></div>
-                        <div class="timer__part">
-                            <div class="timer__part-value timer__part-value--minutes">07</div>
-                            <div class="timer__part-label">Dak.</div>
-                        </div>
-                        <div class="timer__dots"></div>
-                        <div class="timer__part">
-                            <div class="timer__part-value timer__part-value--seconds">54</div>
-                            <div class="timer__part-label">San.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="block-sale__controls">
-                    <div class="arrow block-sale__arrow block-sale__arrow--prev arrow--prev">
-                        <button class="arrow__button" type="button">
-                            <svg width="7" height="11">
-                                <path
-                                    d="M6.7,0.3L6.7,0.3c-0.4-0.4-0.9-0.4-1.3,0L0,5.5l5.4,5.2c0.4,0.4,0.9,0.3,1.3,0l0,0c0.4-0.4,0.4-1,0-1.3l-4-3.9l4-3.9C7.1,1.2,7.1,0.6,6.7,0.3z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="block-sale__link">
-                        <a href="">Online Yedek Parça</a>
-                    </div>
-                    <div class="arrow block-sale__arrow block-sale__arrow--next arrow--next">
-                        <button class="arrow__button" type="button">
-                            <svg width="7" height="11">
-                                <path d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9
-	C-0.1,9.8-0.1,10.4,0.3,10.7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="decor block-sale__header-decor decor--type--center">
-                        <div class="decor__body">
-                            <div class="decor__start"></div>
-                            <div class="decor__end"></div>
-                            <div class="decor__center"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="block-sale__body">
-                <div class="decor block-sale__body-decor decor--type--bottom">
-                    <div class="decor__body">
-                        <div class="decor__start"></div>
-                        <div class="decor__end"></div>
-                        <div class="decor__center"></div>
-                    </div>
-                </div>
-                <div class="block-sale__image" style="background-image: url('images/sale-1903x640.png');"></div>
-                <div class="container">
-                    <div class="block-sale__carousel">
-                        <x-product-carousel :products="$featured_products"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="block-space block-space--layout--divider-nl"></div>
     <div class="block block-products-carousel" data-layout="grid-4-sidebar">
         <div class="container">
             <div class="section-header">
@@ -282,37 +207,21 @@
                 <div class="block-products-carousel__carousel-loader">
 
                 </div>
-                <div class="owl-carousel owl-loaded owl-drag">
-                    <div class="owl-stage-outer">
-                        <div class="owl-stage"
-                             style="transform: translate3d(-2915px, 0px, 0px); transition: all 0.5s ease 0s; width: 5300px;">
-                            <div class="owl-item cloned" style="width: 200px; margin-right: 20px;">
-                                <div class="block-products-carousel__column">
-                                    <div class="block-products-carousel__cell">
-                                        <div class="product-card product-card--layout--grid">
-                                            <div>
-                                                <a href="https://www.onlinecarparts.co.uk/manufacturer/bosch.html" class="brand-slider__item"
-                                                   style="width: 100%; display: inline-block;" tabindex="0">
-                                                    <img alt="BOSCH original car parts internet store" title="BOSCH" src="https://cdn.autoteiledirekt.de/brands/thumbs/30.png?m=2">
-                                                </a>
-                                            </div>
-                                        </div>
+                <div class="owl-carousel">
+                    @foreach(\App\Models\Brand::has('products')->inRandomOrder()->limit(12)->get() as $brand)
+                        <div class="block-products-carousel__column">
+                            <div class="block-products-carousel__cell">
+                                <div class="product-card product-card--layout--grid">
+                                    <div>
+                                        <a href="{{ route('brand.show', $brand) }}" class="brand-slider__item"
+                                           style="width: 100%; display: inline-block;" tabindex="0">
+                                            <img style="height: 120px" alt="BOSCH original car parts internet store" title="{{ $brand->name }}" src="{{ $brand->imageUrl() }}">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
-                    </div>
-                    <div class="owl-nav disabled">
-                        <button type="button" role="presentation" class="owl-prev">
-                            <span aria-label="Previous">‹</span>
-                        </button>
-                        <button type="button" role="presentation" class="owl-next">
-                            <span aria-label="Next">›</span>
-                        </button>
-                    </div>
-                    <div class="owl-dots disabled"></div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -857,6 +766,11 @@
 
         .ad_-_categories .col {
             padding: 0 8px !important;
+        }
+
+        .block-banners__item:before {
+            display: none !important;
+            content: none !important;
         }
     </style>
 @endpush

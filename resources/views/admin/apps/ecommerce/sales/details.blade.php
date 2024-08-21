@@ -387,9 +387,10 @@
                                         </div>
                                         <!--end::Card header-->
                                         <!--begin::Card body-->
-                                        <div class="card-body pt-0">{{ $order->shipmentAddress->address }}
-                                            <br/>{{ $order->shipmentAddress->city }},
-                                            <br/>{{ $order->shipmentAddress->district }}.
+                                        <div class="card-body pt-0">
+                                            {{ $order->shipmentAddress->address }}<br/>
+                                            {{ $order->shipmentAddress->city }},<br/>
+                                            {{ $order->shipmentAddress->district }}.
                                         </div>
                                         <!--end::Card body-->
                                     </div>
@@ -463,7 +464,9 @@
                                                                     @foreach(\App\Enums\OrderRejectReasonType::cases() as $rejectReason)
                                                                         <li>
                                                                             <a class="dropdown-item"
-                                                                               href="{{ route('admin.order.declineOrder', [$order, $item->id, $rejectReason->value]) }}">{{__($rejectReason->value)}}</a>
+                                                                               href="{{ route('admin.order.declineOrder', [$order, $item->id, $rejectReason->value]) }}">
+                                                                                {{__('OrderRejectReasonType.'.$rejectReason->value)}}
+                                                                            </a>
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>
