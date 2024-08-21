@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Jobs\Import\ExcelImport;
+use App\Jobs\BotJob;
 use App\Jobs\Import\OuterExcelImportJob;
 use App\Models\Product;
 use App\Services\Bots\OnlineCarParts;
@@ -34,7 +34,7 @@ class ExcelImportTest extends TestCase
 
 
         // Import the first file
-        ExcelImport::mockBot(\Mockery::mock(
+        BotJob::mockBot(\Mockery::mock(
             OnlineCarParts::class,
             fn(MockInterface $mock) => $mock->shouldReceive("smash")->times(5)->andReturns(true)
         ));
@@ -44,7 +44,7 @@ class ExcelImportTest extends TestCase
 
 
         // Import the same file and check if the bot is not called
-        ExcelImport::mockBot(\Mockery::mock(
+        BotJob::mockBot(\Mockery::mock(
             OnlineCarParts::class,
             fn(MockInterface $mock) => $mock->shouldNotReceive("smash")
         ));
@@ -54,7 +54,7 @@ class ExcelImportTest extends TestCase
 
 
         // Import the changed file and check if the bot is called
-        ExcelImport::mockBot(\Mockery::mock(
+        BotJob::mockBot(\Mockery::mock(
             OnlineCarParts::class,
             fn(MockInterface $mock) => $mock->shouldReceive("smash")->withArgs([3899])->once()->andReturns(true)
         ));
