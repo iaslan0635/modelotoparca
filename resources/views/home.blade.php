@@ -209,7 +209,7 @@
                 </div>
                 <div class="owl-carousel">
                     @foreach(\App\Models\Brand::has('products')->inRandomOrder()->limit(12)->get() as $brand)
-                        <div class="block-products-carousel__column">
+                        <div class="block-products-carousel__column" style="height: 120px">
                             <div class="block-products-carousel__cell">
                                 <div class="product-card product-card--layout--grid">
                                     <div>
