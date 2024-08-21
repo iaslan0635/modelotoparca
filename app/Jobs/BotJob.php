@@ -20,6 +20,8 @@ class BotJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    const VERSION = 1;
+
     private static $botMock = null;
 
     public function __construct(
@@ -32,20 +34,11 @@ class BotJob implements ShouldQueue
     {
         $product = $this->product;
         $this->clearBotAssociations($product);
-
-        $ajaxBotStatus = $this->runBotForAjax($product, true);
-        if (!$ajaxBotStatus) {
-            $this->log($product, 'Ajax bot ürün bulamadı, normal bot çalıştırılıyor.');
-            $pageBotStatus = $this->runBotForAjax($product, false);
-            if (!$pageBotStatus) {
-                $this->log($product, 'Normal bot da ürün bulamadı.');
-            }
-        }
-
+        $this->runBotForProduct($product);
         $product->actualProduct?->searchable();
     }
 
-    private function runBotForAjax(TigerProduct $product, bool $ajax): bool
+    private function runBotForProduct(TigerProduct $product): bool
     {
         $search_predence = [
             'abk',
@@ -57,31 +50,33 @@ class BotJob implements ShouldQueue
 
         foreach ($search_predence as $field) {
             if ($product[$field] === null) {
-                $this->log($product, 'Boş (null) değer atlandı.', ['Kolon' => $field, 'Ajax' => $ajax]);
-
+                $this->log($product, 'Boş (null) değer atlandı.', ['Kolon' => $field]);
                 continue;
             }
 
             $value = trim($product[$field]);
             if (strlen($value) === 0) {
-                $this->log($product, 'Boş değer atlandı.', ['Kolon' => $field, 'Ajax' => $ajax]);
-
+                $this->log($product, 'Boş değer atlandı.', ['Kolon' => $field]);
                 continue;
             }
 
-            $found = $this->runBotForField($product, $field, $value, $ajax);
-            if ($found) {
-                $this->log(
-                    $product, 'Ürün bulundu, bot sonlandırılıyor.',
-                    [
-                        'Kolon' => $field,
-                        'Değer' => $value,
-                        'Marka filtresi' => $brand_filter ?? '(Yok)',
-                        'Ajax' => $ajax,
-                    ]
-                );
+            foreach ([true, false] as $ajax) {
+                $this->log($product, 'Bot başlatılıyor', ['Kolon' => $field, 'Ajax' => $ajax]);
 
-                return true;
+                $found = $this->runBotForField($product, $field, $value, $ajax);
+                if ($found) {
+                    $this->log(
+                        $product, 'Ürün bulundu, bot sonlandırılıyor.',
+                        [
+                            'Kolon' => $field,
+                            'Değer' => $value,
+                            'Marka filtresi' => $brand_filter ?? '(Yok)',
+                            'Ajax' => $ajax,
+                        ]
+                    );
+
+                    return true;
+                }
             }
         }
 
@@ -124,12 +119,12 @@ class BotJob implements ShouldQueue
     }
 
     private function smashBot(
-        string $keyword,
-        int $product_id,
-        string $field,
+        string  $keyword,
+        int     $product_id,
+        string  $field,
         ?string $brand_filter = null,
-        bool $regexed = false,
-        bool $ajax = false,
+        bool    $regexed = false,
+        bool    $ajax = false,
     )
     {
         if (self::$botMock) {
@@ -197,11 +192,17 @@ class BotJob implements ShouldQueue
     {
         $productId = $productOrId instanceof Model ? $productOrId->getKey() : $productOrId;
 
-        return Log::log($productId, $message, $context, 'bot-manager');
+        return Log::log($productId, $message, $context, 'bot-manager-v' . self::VERSION);
     }
 
     public static function mockBot($mockInstance)
     {
         self::$botMock = $mockInstance;
+    }
+
+    public static function isOldVersion(string $logSource)
+    {
+        $version = str_replace('bot-manager-v', '', $logSource);
+        return $version != self::VERSION;
     }
 }
