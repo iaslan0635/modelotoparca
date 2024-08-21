@@ -16,7 +16,6 @@ class DataProvider
 
     public function __construct(private readonly Scraper $scraper)
     {
-        $this->logger = Log::driver('bot');
     }
 
     public function getProductPage(string $url)
@@ -44,7 +43,7 @@ class DataProvider
     {
         $isAlreadyFetched = $searchPage->fetched_pages !== null && in_array($pageNumber, $searchPage->fetched_pages);
         if ($isAlreadyFetched) {
-            $this->logger->info("Using already fetched data for page $pageNumber in $searchPage->url");
+            // $this->logger->info("Using already fetched data for page $pageNumber in $searchPage->url");
             $query = $searchPage->products()->where('page', $pageNumber);
             if ($articleNo) {
                 $query->where('article_no', $articleNo);
@@ -67,7 +66,7 @@ class DataProvider
 
         $searchPage->fetched_pages = array_merge($searchPage->fetched_pages ?? [], [$pageNumber]);
         $searchPage->save();
-        $this->logger->info("Saved new data for page $pageNumber in $searchPage->url");
+        // $this->logger->info("Saved new data for page $pageNumber in $searchPage->url");
 
         if ($articleNo !== null) {
             $commonizedKeyword = Fuzz::regexify($articleNo);
