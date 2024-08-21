@@ -28,6 +28,8 @@ class ExcelImport implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    private static $botMock = null;
+
     const CURRENCY_MAP = [
         160 => 'try',
         1 => 'usd',
@@ -323,11 +325,12 @@ class ExcelImport implements ShouldQueue
                 if (strlen($trimmed) < 5) {
                     continue;
                 }
-                (new OnlineCarParts(
+
+                self::smashBot(
                     keyword: $trimmed,
                     product_id: $product->id,
                     field: $field,
-                ))->smash();
+                );
             }
 
             return false;
@@ -339,11 +342,34 @@ class ExcelImport implements ShouldQueue
             [$brand_filter, $value] = explode('@', $value);
         }
 
-        return (new OnlineCarParts(
+        return self::smashBot(
             keyword: $value,
             product_id: $product->id,
             field: $field,
             brand_filter: $brand_filter,
+            ajax: $ajax,
+        );
+    }
+
+    private static function smashBot(
+        string $keyword,
+        int $product_id,
+        string $field,
+        ?string $brand_filter = null,
+        bool $regexed = false,
+        bool $ajax = false,
+    )
+    {
+        if (self::$botMock) {
+            return self::$botMock->smash($product_id);
+        }
+
+        return (new OnlineCarParts(
+            keyword: $keyword,
+            product_id: $product_id,
+            field: $field,
+            brand_filter: $brand_filter,
+            regexed: $regexed,
             ajax: $ajax,
         ))->smash();
     }
@@ -400,5 +426,10 @@ class ExcelImport implements ShouldQueue
         $productId = $productOrId instanceof Model ? $productOrId->getKey() : $productOrId;
 
         return Log::log($productId, $message, $context, 'excel');
+    }
+
+    public static function mockBot($mockInstance)
+    {
+        self::$botMock = $mockInstance;
     }
 }
