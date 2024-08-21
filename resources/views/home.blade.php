@@ -209,13 +209,13 @@
                 </div>
                 <div class="owl-carousel">
                     @foreach(\App\Models\Brand::has('products')->inRandomOrder()->limit(12)->get() as $brand)
-                        <div class="block-products-carousel__column" style="height: 120px">
+                        <div class="block-products-carousel__column">
                             <div class="block-products-carousel__cell">
                                 <div class="product-card product-card--layout--grid">
                                     <div>
                                         <a href="{{ route('brand.show', $brand) }}" class="brand-slider__item"
                                            style="width: 100%; display: inline-block;" tabindex="0">
-                                            <img alt="BOSCH original car parts internet store" title="{{ $brand->name }}" src="{{ $brand->imageUrl() }}">
+                                            <img style="height: 120px" alt="BOSCH original car parts internet store" title="{{ $brand->name }}" src="{{ $brand->imageUrl() }}">
                                         </a>
                                     </div>
                                 </div>
