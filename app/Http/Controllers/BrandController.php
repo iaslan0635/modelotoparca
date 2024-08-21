@@ -11,7 +11,7 @@ class BrandController extends Controller
     {
         $query = $brand->products();
 
-        if (request("category")) {
+        if (request('category')) {
             $query->whereHas('categories', function (Builder $query) {
                 $query->where('slug', request('category'));
             });
@@ -22,6 +22,6 @@ class BrandController extends Controller
 
     public function index()
     {
-        return view('brands', ['brands' => Brand::has('products')->orderBy("name")->get()]);
+        return view('brands', ['brands' => Brand::has('products')->orderBy('name')->whereNot('name', 'like', '-%')->get()]);
     }
 }

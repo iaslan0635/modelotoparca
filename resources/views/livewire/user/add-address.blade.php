@@ -74,8 +74,16 @@
                                 <div class="form-group col-md-12 mb-0">
                                     <label for="address-identity">T.C. Kimlik Numarası </label>
                                     <input type="text" class="form-control" id="address-identity" name="identity"
-                                           value="{{ old('identity', $address?->identity) }}" placeholder="Avcılar">
+                                           value="{{ old('identity', $address?->identity) }}">
                                     @error('identity') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12 mb-0">
+                                    <label for="address-identity">Doğum tarihi</label>
+                                    <input type="date" class="form-control" id="address-identity" name="birthdate"
+                                           value="{{ old('birthdate', $address?->birthdate) }}">
+                                    @error('birthdate') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         @else
@@ -108,30 +116,7 @@
                             <input type="text" class="form-control" id="address-phone" name="phone"
                                    placeholder="05xx xxx xx xx" value="{{ old('phone', $address?->phone) }}">
                         </div>
-                        <div class="form-group">
-                            <label for="address-country">İl</label>
-                            <select id="address-country" name="city" class="form-control">
-                                <option value="">Select a country...</option>
-                                <option value="AU">Australia</option>
-                                <option value="DE">Germany</option>
-                                <option value="FR">France</option>
-                                <option value="IT">Italy</option>
-                                <option value="RU">Russia</option>
-                                <option value="UA">Ukraine</option>
-                                <option value="US">United States</option>
-                            </select>
-                            <label for="address-country">İlçe</label>
-                            <select id="address-country" name="district" class="form-control">
-                                <option value="">Select a country...</option>
-                                <option value="AU">Australia</option>
-                                <option value="DE">Germany</option>
-                                <option value="FR">France</option>
-                                <option value="IT">Italy</option>
-                                <option value="RU">Russia</option>
-                                <option value="UA">Ukraine</option>
-                                <option value="US">United States</option>
-                            </select>
-                        </div>
+                        <livewire:city-district :city="old('city', $address?->city)" :town="old('district', $address?->district)" />
                         <div class="form-group">
                             <label for="address-address1">Adres</label>
                             <textarea type="text" class="form-control" name="address" id="address-address1"

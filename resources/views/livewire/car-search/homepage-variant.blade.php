@@ -10,7 +10,7 @@
     <div class="block-finder__body container container--max--xl">
         <form class="block-finder__form" wire:submit.prevent="add">
             <div class="vehicles-list">
-                <livewire:garage/>
+                <livewire:garage :only-chosen="true" />
             </div>
             <div class="block-finder__form-control block-finder__form-control--select">
                 <select wire:change="resetTo('maker')" wire:model="maker" name="maker" aria-label="Aracın Markası" @if(blank($makers)) disabled @endif class="car-search-select disable-select2">

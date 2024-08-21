@@ -21,6 +21,7 @@
     "bluem/tree": "^3.2",
     "cknow/laravel-money": "^7.1",
     "coderflexx/laravisit": "^1.4",
+    "epigra/trgeozones": "^4.2",
     "guzzlehttp/guzzle": "^7.2",
     "ismail0234/n11-php-api": "^1.1",
     "laravel/framework": "^10.0",

@@ -8,7 +8,6 @@ use App\Facades\Garage;
 use App\Jobs\Import\ExcelImport;
 use App\Jobs\RunSingleBotJob;
 use App\Traits\HasImages;
-use Closure;
 use Coderflex\Laravisit\Concerns\CanVisit;
 use Coderflex\Laravisit\Concerns\HasVisits;
 use Elastic\ScoutDriverPlus\Searchable;
@@ -45,17 +44,17 @@ class Product extends BaseModel implements CanVisit
     protected $searchableAs = 'products_index';
 
     /**
-     * @param  Collection<int, Product>  $products
+     * @param Collection<int, Product> $products
      * @return array<Collection>
      */
     public static function alternativesAndSimilars(Collection $products)
     {
-        $idComparer = fn (Product $p, Product $i) => $p->id <=> $i->id;
+        $idComparer = fn(Product $p, Product $i) => $p->id <=> $i->id;
 
-        $alternatives = $products->map(fn (Product $p) => $p->alternatives()->get())->flatten()->unique('id');
+        $alternatives = $products->map(fn(Product $p) => $p->alternatives()->get())->flatten()->unique('id');
         $alternatives = $alternatives->diffUsing($products, $idComparer);
 
-        $similars = $products->map(fn (Product $p) => $p->similars()->get())->flatten()->unique('id');
+        $similars = $products->map(fn(Product $p) => $p->similars()->get())->flatten()->unique('id');
         $similars = $similars->diffUsing($products, $idComparer);
         $similars = $similars->diffUsing($alternatives, $idComparer);
 
@@ -78,9 +77,11 @@ class Product extends BaseModel implements CanVisit
 
     protected static function booted()
     {
+        static::addGlobalScope('active', fn(Builder $builder) => $builder->where('status', '=', 1));
+
         if (Garage::hasChosen()) {
             $chosen = Garage::chosen();
-            static::addGlobalScope('chosen_car', fn (Builder $builder) => $builder->whereRelation('cars', 'id', '=', $chosen));
+            static::addGlobalScope('chosen_car', fn(Builder $builder) => $builder->whereRelation('cars', 'id', '=', $chosen));
         }
     }
 
@@ -124,41 +125,46 @@ class Product extends BaseModel implements CanVisit
 
     public function toSearchableArray()
     {
-        $cars = $this->cars->filter(fn (Car $car) => $car->indexable && $car->body_type !== 'truck' && $car->body_type !== 'urban_bus')->values();
-        $regex = fn ($s) => strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $s));
+        $cars = $this->cars->filter(fn(Car $car) => $car->indexable && $car->body_type !== 'truck' && $car->body_type !== 'urban_bus')->values();
 
-        $similars = collect(explode(',', $this->similar_product_codes ?? ''))->map(fn ($s) => trim($s));
-        $similars->push(...$this->similarCodes->map(fn (ProductSimilar $ps) => $ps->code));
+        $similars = collect(explode(',', $this->similar_product_codes ?? ''))->map(fn($s) => trim($s));
+        $similars->push(...$this->similarCodes->map(fn(ProductSimilar $ps) => $ps->code));
 
-        $tecdoc = collect($this->tecdoc)->values()->map(fn ($value) => ['name' => $value, 'name_regex' => $regex($value)]);
+        $price = $this->price === null || $this->price->price === null ? null
+            : floatval($this->price->listingPrice()->getValue());
 
         return [
-            'id' => $this->id,
             'title' => $this->title,
             'sub_title' => $this->sub_title,
             'slug' => $this->slug,
             'part_number' => $this->part_number,
-            'part_number_regex' => $this->part_number ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->part_number)) : null,
             'producercode' => $this->producercode,
             'producercode_unbranded' => $this->producercode_unbranded,
-            'producercode_unbranded_regex' => $this->producercode_unbranded ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode_unbranded)) : null,
-            'producercode_regex' => $this->producercode ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode)) : null,
-            'producercode2' => $this->producercode2,
-            'producercode2_regex' => $this->producercode2 ? strtolower(preg_replace('/[^a-zA-Z0-9]+/', '', $this->producercode2)) : null,
             'cross_code' => $this->cross_code,
-            'cross_code_regex' => $this->cross_code ? $regex($this->cross_code) : null,
+            'producercode2' => $this->producercode2,
+            'description' => $this->description,
+            'oems' => $this->oems->pluck('oem'),
+            'similars' => $similars,
+            'hidden_searchable' => $this->hidden_searchable,
+            'price' => $price,
+            'tecdoc' => collect($this->tecdoc)->values(),
 
-            'oems' => $this->oems->map->toSearchableArray(),
-            'cars' => $cars->map->toSearchableArray(),
-            'similars' => $similars->map(fn ($s) => ['code' => $s, 'code_regex' => $regex($s)]),
-            'categories' => $this->categories->map->toSearchableArray(),
-            'brand' => $this->brand?->toSearchableArray(),
-            'price' => $this->price?->price,
+            'brand' => ($brand = $this->brand) ? ['id' => $brand->id, 'name' => $brand->name] : null,
+            'categories' => $this->categories->map(fn(Category $category) => ['id' => $category->id, 'name' => $category->name]),
+            'cars' => $cars->map(fn(Car $car) => ['id' => $car->id, 'name' => $car->name]),
 
-            'full_text' => collect([$this->title, $this->sub_title, $this->hidden_searchable])->merge($cars->map->getRegexedName())->join(' | '),
-
-            'tecdoc' => $tecdoc,
+            'status' => (bool)$this->status,
         ];
+    }
+
+    public function searchableWith()
+    {
+        return ['cars', 'oems', 'categories', 'brand', 'price'];
+    }
+
+    public function shouldBeSearchable()
+    {
+        return (bool)$this->status;
     }
 
     public function categories(): BelongsToMany
@@ -195,7 +201,7 @@ class Product extends BaseModel implements CanVisit
 
     public function fullTitle(): Attribute
     {
-        return Attribute::get(fn () => $this->title.($this->producercode ? ' @'.$this->producercode : ''));
+        return Attribute::get(fn() => $this->title . ($this->producercode ? ' @' . $this->producercode : ''));
     }
 
     public function cars(): BelongsToMany

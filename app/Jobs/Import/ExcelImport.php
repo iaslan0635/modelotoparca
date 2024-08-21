@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Import;
 
+use App\Facades\DiscountFacade;
 use App\Facades\TaxFacade;
 use App\Models\BotProduct;
 use App\Models\Brand;
@@ -15,10 +16,12 @@ use App\Models\TigerProduct;
 use App\Services\Bots\OnlineCarParts;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log as LogFacade;
 use Illuminate\Support\Str;
 
 class ExcelImport implements ShouldQueue
@@ -108,10 +111,15 @@ class ExcelImport implements ShouldQueue
             $isChaged = $product->isDirty($veriler);
             foreach ($product->getChanges() as $column => $new) {
                 if ($column !== 'updated_at' && $column !== 'created_at') {
-                    Log::create([
-                        'product_id' => $product->id,
-                        'message' => "Değişiklik yapıldı. Kolon: $column\nEski: {$product->getOriginal($column)}, Yeni: $new",
-                    ]);
+                    static::log(
+                        $product,
+                        'Değişiklik yapıldı.',
+                        [
+                            'Kolon' => $column,
+                            'Eski' => $product->getOriginal($column),
+                            'Yeni' => $new,
+                        ]
+                    );
                 }
             }
 
@@ -160,7 +168,8 @@ class ExcelImport implements ShouldQueue
             ]);
 
             if ($product->cross_code) {
-                $product->similars()->firstOrCreate([
+                ProductSimilar::insertOrIgnore([
+                    'product_id' => $product->id,
                     'code' => $product->cross_code,
                 ]);
             }
@@ -168,10 +177,11 @@ class ExcelImport implements ShouldQueue
             $oems = explode(',', $product->oem_codes);
 
             foreach ($oems as $oem) {
-                $product->oems()->updateOrCreate(
-                    ['oem' => $oem],
-                    ['type' => 'excel']
-                );
+                ProductOem::insertOrIgnore([
+                    'logicalref' => $product->id,
+                    'oem' => $oem,
+                    'type' => 'excel',
+                ]);
             }
 
             $isChaged = true;
@@ -179,7 +189,7 @@ class ExcelImport implements ShouldQueue
 
         $id = $product->id;
         $title = $product->web_name ?? $product->name ?? 'BAŞLIKSIZ ÜRÜN';
-        $allWebNames = implode(' ', [$product->name, $product->name3, $product->name4]);
+        $allWebNames = implode("\n", [$product->name, $product->name3, $product->name4]);
 
         $image_appendix = 0;
         if ($product->image1) {
@@ -189,12 +199,12 @@ class ExcelImport implements ShouldQueue
             $image_appendix |= self::IMAGE_12;
         } // IMAGE2INC
 
-        $realProduct = Product::updateOrCreate(['id' => $id], [
+        $realProduct = Product::withoutGlobalScope('active')->updateOrCreate(['id' => $id], [
             'brand_id' => $product->markref,
             'title' => $title,
             'sub_title' => $allWebNames,
             'description' => $allWebNames,
-            'slug' => Str::slug($title).'-'.$id,
+            'slug' => Str::slug($title) . '-' . $id,
             'sku' => $product->code,
             'quantity' => $product->onhand,
             'status' => intval($product->active) === 0,
@@ -212,10 +222,6 @@ class ExcelImport implements ShouldQueue
             'hidden_searchable' => $product->name2,
         ]);
 
-        if ($isChaged) {
-            self::runBot($product);
-        }
-
         $mainCategory = Category::find($product->dominantref, ['name']);
         if ($mainCategory) {
             $categories = Category::where('name', $mainCategory->name)->pluck('id');
@@ -226,20 +232,47 @@ class ExcelImport implements ShouldQueue
 
         $price = $product->incvat == 1 ? TaxFacade::reverseCalculate($product->price, 20) : $product->price;
 
+        if (is_string($price) && str_contains($price, 'E')) {
+            LogFacade::channel('important')
+                ->error("Price is in scientific notation: $price, product_id: $id, incvat: $product->incvat, product_price: $product->price");
+        }
+
+        if ($price && $product->sales_discount_rate) {
+            $price = DiscountFacade::reverseCalculate($price, $product->sales_discount_rate);
+        }
+
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), 'try'),
             'discount' => (bool)$product->sales_discount_rate,
-            'discount_amount' => $product->sales_discount_rate,
+            'discount_amount' => $product->sales_discount_rate ?? 0,
         ]);
 
         $realProduct->searchable();
+
+        if ($isChaged) {
+            self::runBot($product);
+        }
     }
 
     public static function runBot(TigerProduct $product): void
     {
         self::clearBotAssociations($product);
 
+        $ajaxBotStatus = self::runBotForAjax($product, true);
+        if (!$ajaxBotStatus) {
+            static::log($product, 'Ajax bot ürün bulamadı, normal bot çalıştırılıyor.');
+            $pageBotStatus = self::runBotForAjax($product, false);
+            if (!$pageBotStatus) {
+                static::log($product, 'Normal bot da ürün bulamadı.');
+            }
+        }
+
+        $product->actualProduct?->searchable();
+    }
+
+    private static function runBotForAjax(TigerProduct $product, bool $ajax): bool
+    {
         $search_predence = [
             'abk',
             'producercode',
@@ -249,64 +282,70 @@ class ExcelImport implements ShouldQueue
         ];
 
         foreach ($search_predence as $field) {
-            if ($field === 'oem_codes') {
-                $oems = explode(',', $product[$field]);
-                foreach ($oems as $oem) {
-                    $trimmed = trim($oem);
-                    if (strlen($trimmed) < 5) {
-                        continue;
-                    }
-                    (new OnlineCarParts(
-                        keyword: $trimmed,
-                        product_id: $product->id,
-                        field: $field,
-                    ))->smash();
-                }
-
-                continue;
-            }
-
             if ($product[$field] === null) {
-                Log::create([
-                    'product_id' => $product->id,
-                    'message' => "Boş (null) değer atlandı. Kolon: $field",
-                ]);
+                static::log($product, 'Boş (null) değer atlandı.', ['Kolon' => $field, 'Ajax' => $ajax]);
 
                 continue;
             }
 
             $value = trim($product[$field]);
             if (strlen($value) === 0) {
-                Log::create([
-                    'product_id' => $product->id,
-                    'message' => "Boş değer atlandı. Kolon: $field",
-                ]);
+                static::log($product, 'Boş değer atlandı.', ['Kolon' => $field, 'Ajax' => $ajax]);
 
                 continue;
             }
 
-            $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
-
-            if ($field === 'abk' && str_contains($value, '@')) {
-                [$brand_filter, $value] = explode('@', $value);
-            }
-
-            $found = (new OnlineCarParts(
-                keyword: $value,
-                product_id: $product->id,
-                field: $field,
-                brand_filter: $brand_filter,
-            ))->smash();
+            $found = self::runBotForField($product, $field, $value, $ajax);
             if ($found) {
-                Log::create([
-                    'product_id' => $product->id,
-                    'message' => "Ürün bulundu, bot sonlandırılıyor. Kolon: $field | Değer: $value | Marka filtresi: ".($brand_filter ?? '(Yok)'),
-                ]);
-                break;
+                static::log(
+                    $product, 'Ürün bulundu, bot sonlandırılıyor.',
+                    [
+                        'Kolon' => $field,
+                        'Değer' => $value,
+                        'Marka filtresi' => $brand_filter ?? '(Yok)',
+                        'Ajax' => $ajax,
+                    ]
+                );
+
+                return true;
             }
         }
 
-        $product->actualProduct?->searchable();
+        return false;
+    }
+
+    private static function runBotForField(TigerProduct $product, string $field, string $value, bool $ajax): bool
+    {
+        if ($field === 'oem_codes') {
+            $oems = explode(',', $product[$field]);
+            foreach ($oems as $oem) {
+                $trimmed = trim($oem);
+                if (strlen($trimmed) < 5) {
+                    continue;
+                }
+                (new OnlineCarParts(
+                    keyword: $trimmed,
+                    product_id: $product->id,
+                    field: $field,
+                ))->smash();
+            }
+
+            return false;
+        }
+
+        $brand_filter = $field === 'producercode' || $field === 'producercode2' ? self::getBrand($product) : null;
+
+        if ($field === 'abk' && str_contains($value, '@')) {
+            [$brand_filter, $value] = explode('@', $value);
+        }
+
+        return (new OnlineCarParts(
+            keyword: $value,
+            product_id: $product->id,
+            field: $field,
+            brand_filter: $brand_filter,
+            ajax: $ajax,
+        ))->smash();
     }
 
     public static function clearBotAssociations(TigerProduct $product)
@@ -321,19 +360,26 @@ class ExcelImport implements ShouldQueue
         BotProduct::where('product_id', $product->id)->where('is_banned', false)->delete();
 
         if ($product->cross_code) {
-            $product->similars()->firstOrCreate([
+            ProductSimilar::insertOrIgnore([
+                'product_id' => $product->id,
                 'code' => $product->cross_code,
             ]);
         }
 
         $oems = explode(',', $product->oem_codes ?? '');
         foreach ($oems as $oem) {
-            $product->oems()->firstOrCreate([
+            ProductOem::insertOrIgnore([
+                'logicalref' => $product->id,
+                'oem' => $oem,
+            ]);
+
+            ProductOem::insertOrIgnore([
+                'logicalref' => $product->id,
                 'oem' => $oem,
             ]);
         }
 
-        $product->actualProduct->update([
+        $product->actualProduct?->update([
             'tecdoc' => null,
             'specifications' => null,
         ]);
@@ -342,10 +388,17 @@ class ExcelImport implements ShouldQueue
     private static function getBrand(TigerProduct $product): ?string
     {
         $brand = Brand::find($product->markref, ['name', 'botname']);
-        if (! $brand) {
+        if (!$brand) {
             return null;
         }
 
         return $brand->botname ?? $brand->name;
+    }
+
+    private static function log(int|Model $productOrId, string $message, array $context = null)
+    {
+        $productId = $productOrId instanceof Model ? $productOrId->getKey() : $productOrId;
+
+        return Log::log($productId, $message, $context, 'excel');
     }
 }

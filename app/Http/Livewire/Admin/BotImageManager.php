@@ -17,23 +17,26 @@ class BotImageManager extends Component
 
     public function getImages()
     {
-        return $this->product->botImages()->where('rejected', false)->whereNull('image_id')->get();
+        return $this->product->botImages()->get();
     }
 
-    public function decline(int $id)
+    public function reject(int $id)
     {
         BotImage::where('id', $id)->update(['rejected' => true]);
     }
 
     public function accept(int $id)
     {
-        $botImage = BotImage::where('id', $id)->firstOrFail();
-        $localImagePath = $botImage->downloadImage();
-        $image = $this->product->images()->create([
-            'path' => $localImagePath,
-            'from_bot' => true,
-        ]);
+        $botImage = BotImage::findOrFail($id);
+        $botImage->downloadAndAssociateImage();
+    }
 
-        $botImage->update(['image_id' => $image->id]);
+    public function intermediate(int $id)
+    {
+        $image = BotImage::findOrFail($id);
+        $image->update(['rejected' => false]);
+        if ($image->image_id !== null) {
+            $image->removeImage();
+        }
     }
 }

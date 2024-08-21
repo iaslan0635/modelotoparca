@@ -7,6 +7,7 @@ use App\Jobs\Import\ImportAlternativeJob;
 use App\Jobs\Import\ImportBrandsJob;
 use App\Jobs\Import\ImportFilterJob;
 use App\Jobs\Import\OuterExcelImportJob;
+use App\Jobs\RerunBotForMissingProductsJob;
 
 class ImportController extends Controller
 {
@@ -51,5 +52,11 @@ class ImportController extends Controller
     public function ITMCLSAS()
     {
         abort(500, 'Not imlemented');
+    }
+
+    public function rerunMissingProducts()
+    {
+        RerunBotForMissingProductsJob::dispatch();
+        return back();
     }
 }

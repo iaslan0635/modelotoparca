@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Category;
+use App\Packages\Utils;
 use App\Services\Merchants\Hepsiburada;
 use App\Services\Merchants\N11;
 use App\Services\Merchants\TrendyolMerchant;
@@ -22,7 +23,7 @@ class SyncCategories extends Component
         $trendyol = new TrendyolMerchant();
 
         return view('livewire.admin.sync-categories', [
-            'categories' => Category::paginate(10),
+            'categories' => Utils::search(Category::query(), 'name')->paginate(),
             'n11Categories' => $n11->getCategories()->categoryList->category,
             'hepsiCategories' => $hepsiburada->getCategories()->data,
             'trendyolCategories' => $trendyol->getCategories()->categories,

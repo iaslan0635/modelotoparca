@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate();
+        $categories = $this->search(Category::query(), 'name')->paginate();
 
         return view('admin.apps.ecommerce.catalog.categories', compact('categories'));
     }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class ProductPageBrand extends Pivot
 {
     public $timestamps = false;
+
     protected $connection = 'bigdata';
 
     public function searchPage(): BelongsTo

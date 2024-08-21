@@ -6546,6 +6546,8 @@ select.form-control::-ms-expand {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     border: 1px solid #ebebeb;
+
+    gap: 1rem;
 }
 
 .block-brands__item {
@@ -6561,6 +6563,8 @@ select.form-control::-ms-expand {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+
+    background: #f9fafb;
 }
 
 .block-brands__item-link {
@@ -6577,7 +6581,7 @@ select.form-control::-ms-expand {
     height: 100%;
     left: 0;
     top: 0;
-    background: rgba(152 167 158 / 55);
+    /*background: rgba(152 167 158 / 55);*/
     opacity: 0;
     -webkit-transition: opacity 0.15s;
     transition: opacity 0.15s;
@@ -6601,7 +6605,7 @@ select.form-control::-ms-expand {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: .04em;
-    color: #b3b3b3;
+    color: rgb(3, 47, 74);
     margin-top: 4px;
     margin-bottom: -2px;
     -webkit-transition: color 0.15s;
@@ -9807,9 +9811,6 @@ select.form-control::-ms-expand {
     }
     .block-split--has-sidebar .block-split__item-content {
         width: calc(100% - 310px);
-    }
-    .block-split--has-sidebar .block-split__item-fullwitdh {
-        width: calc(100% - 10px);
     }
     [dir=ltr] .block-split--has-sidebar .block-split__item + .block-split__item {
         margin-left: 10px;
@@ -20913,13 +20914,4 @@ select.form-control::-ms-expand {
     font-size: 48px;
     font-weight: 700;
     padding-right: 20px;
-}
-
-.solyasla {
-    left: 0px;
-    top: 0pxs;
-}
-
-.solyaslasidebar{
-    position: fixed !important;
 }

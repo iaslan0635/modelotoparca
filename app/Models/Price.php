@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use App\Events\PriceChangedEvent;
-use App\Facades\ExchangeRate;
-use App\Facades\TaxFacade;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Packages\PriceBuilder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Price extends BaseModel
@@ -21,54 +20,25 @@ class Price extends BaseModel
         return $this->hasOne(Tax::class, 'id', 'tax_id');
     }
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    protected function price(): Attribute
+    public function builder(): ?PriceBuilder
     {
-        return Attribute::get(
-            fn(?string $value) => $value === null ? null :
-                TaxFacade::calculate(ExchangeRate::convertToTRY($this->currency, $value), $this->tax?->vat_amount ?? 20)
-        );
+        return $this->price === null ? null : new PriceBuilder($this);
     }
 
-    protected function priceWithoutTax(): Attribute
+    /** Build price without discount */
+    public function listingPrice(): ?PriceBuilder
     {
-        return Attribute::get(fn() => ExchangeRate::convertToTRY($this->currency, $this->getRawOriginal('price')));
+        return $this->builder()?->convertToTRY()->applyTax();
     }
 
-    protected function formattedPrice(): Attribute
+    /** Build price with discount */
+    public function sellingPrice(): ?PriceBuilder
     {
-        return Attribute::get(fn() => number_format($this->price, 2) . ' ₺');
-    }
-
-    protected function realDiscountAmount(): Attribute
-    {
-        return Attribute::get(fn() => match ($this->discount_type) {
-            'percentile', 'percentage' => $this->price * $this->discount_amount,
-            'fixed' => $this->discount_amount,
-            default => throw new \Exception("The discount type ($this->discount_type) of the price record with id $this->id is incorrect."),
-        });
-    }
-
-    protected function discountedPrice(): Attribute
-    {
-        return Attribute::get(fn() => $this->price - $this->real_discount_amount);
-    }
-
-    protected function discountedPriceWithoutTax(): Attribute
-    {
-        return Attribute::get(fn() => $this->price_without_tax - $this->real_discount_amount);
-    }
-
-    protected function symbol(): Attribute
-    {
-        return Attribute::get(fn() => match ($this->currency) {
-            'usd' => '$',
-            'eur' => '€',
-            default => '₺',
-        });
+        return $this->builder()?->convertToTRY()->applyDiscount()->applyTax();
     }
 }

@@ -10,8 +10,7 @@ class ProductCardName extends Component
 {
     public function __construct(
         public Product $product,
-    )
-    {
+    ) {
     }
 
     public function render(): View
@@ -23,6 +22,6 @@ class ProductCardName extends Component
 
         $product = $this->product;
 
-        return view('components.product-card-name', compact("hasBrandImage", "brandImage", "product"));
+        return view('components.product-card-name', compact('hasBrandImage', 'brandImage', 'product'));
     }
 }

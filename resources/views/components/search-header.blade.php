@@ -28,7 +28,7 @@
 @push("scripts")
     <script defer>
         $('.owl-brands-slider').owlCarousel({
-            loop: true,
+            loop: false,
             margin: 10,
             dots: true,
             responsive: {

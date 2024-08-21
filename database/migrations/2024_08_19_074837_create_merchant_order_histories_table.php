@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('merchant_order_histories', function (Blueprint $table) {
+            $table->id();
+            $table->integer('merchant_order_id');
+            $table->string('message');
+            $table->string('status');
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('merchant_order_histories');
+    }
+};

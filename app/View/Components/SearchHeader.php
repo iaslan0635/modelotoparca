@@ -23,6 +23,7 @@ class SearchHeader extends Component
     public function render(): View|Closure|string
     {
         $brands = Brand::query()->whereIn('id', $this->brandIds)->get();
+
         return view('components.search-header', compact('brands'));
     }
 }

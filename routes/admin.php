@@ -19,7 +19,6 @@ use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', DashboardController::class)->name('dashboard');
 
 Route::get('/h', function () {
@@ -35,26 +34,26 @@ Route::prefix('products/{product}/edit')->name('products.edit.')->controller(Pro
 
 Route::get('products/export', [ProductController::class, 'exportToExcel'])->name('products.export');
 
-# region product
+// region product
 Route::get('products', [ProductController::class, 'index'])->name('products.index')->middleware('permission:Stok Yönetimi.Ürünler.Listele');
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show')->middleware('permission:Stok Yönetimi.Ürünler.Listele');
-# endregion
+// endregion
 
 Route::prefix('categories/{category}/edit')->name('categories.edit.')->controller(CategoryController::class)->group(function () {
     Route::post('image', 'push_image')->name('image');
     Route::post('delete_image', 'delete_image')->name('delete_image');
 });
 
-# region category
+// region category
 Route::get('categories', [CategoryController::class, 'index'])->name('categories.index')->middleware('permission:Stok Yönetimi.Kategoriler.Listele');
 Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show')->middleware('permission:Stok Yönetimi.Kategoriler.Listele');
-# endregion
+// endregion
 
 Route::post('delete_image', [ImageController::class, 'delete'])->name('delete-image');
 
 Route::controller(ImportController::class)->prefix('import')->name('import.')->group(function () {
     Route::get('', 'index')->name('index');
-    Route::post('ITEMS_WEB', 'ITEMS_WEB')->name('ITEMS_WEB')->middleware("permission:Aktarma İşlemleri.İçe Aktar.ITEMS WEB");
+    Route::post('ITEMS_WEB', 'ITEMS_WEB')->name('ITEMS_WEB')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS WEB');
     Route::post('ITEMS_WEB_EK', 'ITEMS_WEB_EK')->name('ITEMS_WEB_EK')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS WEB EK');
     Route::post('ITEMSUBS', 'ITEMSUBS')->name('ITEMSUBS')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS SUBS');
     Route::post('ITMCLSAS', 'ITMCLSAS')->name('ITMCLSAS')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMCLSAS');
@@ -62,10 +61,11 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::post('MARKALAR', 'MARKALAR')->name('MARKALAR')->middleware('permission:Aktarma İşlemleri.İçe Aktar.MARKALAR');
     Route::get('sparetobot_bot', 'sparetobot_bot')->name('sparetobot_bot');
     Route::get('sparetobot_connect', 'sparetobot_connect')->name('sparetobot_connect');
+    Route::get('rerunMissingProducts', 'rerunMissingProducts')->name('rerunMissingProducts');
 });
 
 Route::controller(AnalysisController::class)->prefix('analysis')->name('analysis.')->group(function () {
-    Route::get('search', 'search')->name('search')->middleware('permission:Analizler.Arama İstatistikleri');
+    Route::get('search', 'index')->name('search')->middleware('permission:Analizler.Arama İstatistikleri');
     Route::get('search-replacements', 'searchReplacements')->name('search-replacements')->middleware('permission:Analizler.Arama Düzeltmleri.Listele');
 });
 
@@ -74,23 +74,24 @@ Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(fu
     Route::post('toggleIndexing', 'toggleIndexing')->name('toggleIndexing')->middleware('permission:Analizler.Araçlar.Düzenle');
 });
 
-# region brand
+// region brand
 Route::get('brands', [BrandController::class, 'index'])->name('brands.index')->middleware('permission:Stok Yönetimi.Markalar.Ara');
-Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit')->middleware(permissionMiddleware("Stok Yönetimi.Markalar.Düzenle.*"));
-Route::put('brands/{brand}', [BrandController::class, 'update'])->name('brands.update')->middleware(permissionMiddleware("Stok Yönetimi.Markalar.Düzenle.*"));;
-# endregion
+Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit')->middleware(permissionMiddleware('Stok Yönetimi.Markalar.Düzenle.*'));
+Route::put('brands/{brand}', [BrandController::class, 'update'])->name('brands.update')->middleware(permissionMiddleware('Stok Yönetimi.Markalar.Düzenle.*'));
+// endregion
 
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list')->middleware('permission:Eticaret Yönetimi.Siparişler.Tüm Siparişler');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show')->middleware('permission:Eticaret Yönetimi.Siparişler.Sipariş Sorgula');
 Route::get('/order-edit/{order}', [OrderController::class, 'edit'])->name('order.edit')->middleware('permission:Eticaret Yönetimi.Siparişler.Sipariş Sorgula');
 Route::put('/order-update/{order}', [OrderController::class, 'update'])->name('order.update')->middleware('permission:Eticaret Yönetimi.Siparişler.Sipariş Sorgula');
+Route::get('/order/{order}/decline/{lineId}/{reasonType}', [OrderController::class, 'declineOrder'])->name('order.declineOrder')->middleware('permission:Eticaret Yönetimi.Siparişler.İptal Edilenler');
 
 Route::get('/marketplace-products', [MerchantProductController::class, 'index'])->name('marketplace-products.index')->middleware('permission:Pazaryerleri.Ürünler.Tüm Ürünler');
 Route::get('/marketplace-products/on-sale', [MerchantProductController::class, 'onSaleIndex'])->name('marketplace-products.on-sale')->middleware('permission:Pazaryerleri.Ürünler.Satıştaki Ürünler');
 
 Route::get('/marketplace-orders', [MerchantOrderController::class, 'index'])->name('order.marketplace')->middleware('permission:Pazaryerleri.Siparişler.Tüm Siparişler');
 Route::get('/marketplace-order/{order}', [MerchantOrderController::class, 'show'])->name('order.marketplace.show')->middleware('permission:Pazaryerleri.Siparişler.Tüm Siparişler');
-Route::get('/marketplace-order/{order}/{lineId}/{reasonType}', [MerchantOrderController::class, 'declineOrder'])->name('order.marketplace.declineOrder')->middleware('permission:Pazaryerleri.Siparişler.Tüm Siparişler');
+Route::get('/marketplace-order/{order}/decline/{lineId}/{reasonType}', [MerchantOrderController::class, 'declineOrder'])->name('order.marketplace.declineOrder')->middleware('permission:Pazaryerleri.Siparişler.Tüm Siparişler');
 
 Route::get('category-sync', [CategoryController::class, 'categorySync'])->name('category-sync')->middleware('permission:Pazaryerleri.Kategori Eşitleme');
 Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-sync')->middleware('permission:Pazaryerleri.Marka Eşitleme');
@@ -99,22 +100,22 @@ Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands']
 
 Route::get('role/{role}/delete', [RoleController::class, 'delete'])->name('role.delete')->middleware('permission:Kullanıcı İşlemleri.Roller.Sil');
 
-# region role
+// region role
 Route::get('role', [RoleController::class, 'index'])->name('role.index')->middleware('permission:Kullanıcı İşlemleri.Roller.Listele');
 Route::get('role/create', [RoleController::class, 'create'])->name('role.create')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
 Route::post('role', [RoleController::class, 'store'])->name('role.store')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
 Route::get('role/{role}', [RoleController::class, 'show'])->name('role.show')->middleware('permission:Kullanıcı İşlemleri.Roller.Listele');
 Route::get('role/{role}/edit', [RoleController::class, 'edit'])->name('role.edit')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
 Route::put('role/{role}', [RoleController::class, 'update'])->name('role.update')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
-# endregion
+// endregion
 
 Route::get('role/unassign/{role}/{user}', [RoleController::class, 'unassign'])->name('role.unassign')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
 Route::get('merchant/failed', [MerchantTrackingController::class, 'failed'])->name('merchant.failed')->middleware('permission:Pazaryerleri.Ürünler.Hatalı Ürünler');
 
-# region merchant-setting
+// region merchant-setting
 Route::get('merchant-setting', [MerchantSettingController::class, 'index'])->name('merchant-setting.index')->middleware('permission:Pazaryerleri.Entegrasyon Ayarları');
 Route::post('merchant-setting', [MerchantSettingController::class, 'store'])->name('merchant-setting.store')->middleware('permission:Pazaryerleri.Entegrasyon Ayarları');
-# endregion
+// endregion
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {
@@ -134,7 +135,7 @@ Route::controller(AuthController::class)
         Route::get('logout', 'logout')->name('logout');
     });
 
-# region user
+// region user
 Route::get('user', [UserController::class, 'index'])->name('user.index')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Listele');
 Route::get('user/create', [UserController::class, 'create'])->name('user.create')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Ekle');
 Route::post('user', [UserController::class, 'store'])->name('user.store')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Ekle');
@@ -142,9 +143,9 @@ Route::get('user/{user}', [UserController::class, 'show'])->name('user.show')->m
 Route::get('user/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
 Route::put('user/{user}', [UserController::class, 'update'])->name('user.update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
 Route::delete('user/{user}', [UserController::class, 'destroy'])->name('user.destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
-# endregion
+// endregion
 
-# region  employee
+// region  employee
 Route::get('employee', [EmployeeController::class, 'index'])->name('employee.index')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Listele');
 Route::get('employee/create', [EmployeeController::class, 'create'])->name('employee.create')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Ekle');
 Route::post('employee', [EmployeeController::class, 'store'])->name('employee.store')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Ekle');
@@ -152,4 +153,4 @@ Route::get('employee/{employee}', [EmployeeController::class, 'show'])->name('em
 Route::get('employee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee.edit')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
 Route::put('employee/{employee}', [EmployeeController::class, 'update'])->name('employee.update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
 Route::delete('employee/{employee}', [EmployeeController::class, 'destroy'])->name('employee.destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
-# endregion
+// endregion

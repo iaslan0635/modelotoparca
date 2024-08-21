@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Packages\SubSearch;
-use App\Providers\AppServiceProvider;
 use Illuminate\Database\Eloquent\Builder;
 
 class OemController extends Controller

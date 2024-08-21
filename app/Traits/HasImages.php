@@ -14,7 +14,7 @@ trait HasImages
     public function storeImage(UploadedFile $image): void
     {
         $path = $image->storePublicly('images', ['disk' => 'public']);
-        if (!$path) {
+        if (! $path) {
             throw new Exception('Unable to store image');
         }
         $this->images()->create(['path' => $path]);
@@ -33,7 +33,7 @@ trait HasImages
     /**
      * Default can be a closure that returns default image url
      * If default is null, it will return the predefined default image url
-     * @param $default
+     *
      * @return mixed|string
      */
     public function imageUrl($default = null)
@@ -48,6 +48,6 @@ trait HasImages
 
     public function imageUrls(): Collection
     {
-        return $this->images->map(fn(Image $image) => $image->url);
+        return $this->images->map(fn (Image $image) => $image->url);
     }
 }

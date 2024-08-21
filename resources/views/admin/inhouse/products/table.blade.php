@@ -146,7 +146,7 @@
                         <!--end::Qty=-->
                         <!--begin::Price=-->
                         <td class="text-end pe-0">
-                            <span class="fw-bold text-dark">{{ $product->price?->formatted_price }}</span>
+                            <span class="fw-bold text-dark">{{ $product->price?->sellingPrice() }}</span>
                         </td>
                         <!--end::Price=-->
                         <!--begin::Status=-->

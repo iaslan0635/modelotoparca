@@ -2,6 +2,54 @@
 
 namespace App\Providers;
 
+use App\Events\AddressCreatedEvent;
+use App\Events\BrandChangedEvent;
+use App\Events\InvoiceAddressChangedEvent;
+use App\Events\InvoiceCreatedEvent;
+use App\Events\InvoicePaidDateChangedEvent;
+use App\Events\InvoiceRefundChangedEvent;
+use App\Events\InvoiceStatusChangedEvent;
+use App\Events\MerchantOrderCreatedEvent;
+use App\Events\OrderCreatedEvent;
+use App\Events\PaymentStatusChangedEvent;
+use App\Events\PriceChangedEvent;
+use App\Events\ProductCategoryChangedEvent;
+use App\Events\ProductChangedEvent;
+use App\Events\ProductCreatedEvent;
+use App\Events\ProductPropertyChangedEvent;
+use App\Events\ProductVariantChangedEvent;
+use App\Events\ProductVariantCreatedEvent;
+use App\Events\ShipmentAddressChangedEvent;
+use App\Events\ShipmentStatusChangedEvent;
+use App\Events\TaxChangedEvent;
+use App\Events\UserActiveStateChangedEvent;
+use App\Events\UserBanStateChangedEvent;
+use App\Events\UserRegisteredEvent;
+use App\Listeners\AddressCreatedListener;
+use App\Listeners\BrandChangedListener;
+use App\Listeners\InvoiceAddressChangedListener;
+use App\Listeners\InvoiceCreatedListener;
+use App\Listeners\InvoicePaidDateChangedListener;
+use App\Listeners\InvoiceRefundChangedListener;
+use App\Listeners\InvoiceStatusChangedListener;
+use App\Listeners\MerchantOrderCreatedListener;
+use App\Listeners\OrderCreatedListener;
+use App\Listeners\OrderHistoryListener;
+use App\Listeners\PaymentStatusChangedListener;
+use App\Listeners\PriceChangedListener;
+use App\Listeners\ProductCategoryChangedListener;
+use App\Listeners\ProductChangedListener;
+use App\Listeners\ProductCreatedListener;
+use App\Listeners\ProductPropertyChangedListener;
+use App\Listeners\ProductVariantChangedListener;
+use App\Listeners\ProductVariantCreatedListener;
+use App\Listeners\SendNotification;
+use App\Listeners\ShipmentAddressChangedListener;
+use App\Listeners\ShipmentStatusChangedListener;
+use App\Listeners\TaxChangedListener;
+use App\Listeners\UserActiveStateChangedListener;
+use App\Listeners\UserBanStateChangedListener;
+use App\Listeners\UserRegisteredListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
@@ -13,88 +61,93 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        \App\Events\PaymentStatusChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\PaymentStatusChangedListener::class,
+        PaymentStatusChangedEvent::class => [
+            SendNotification::class,
+            PaymentStatusChangedListener::class,
+            OrderHistoryListener::class,
         ],
-        \App\Events\ShipmentAddressChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\ShipmentAddressChangedListener::class,
+        ShipmentAddressChangedEvent::class => [
+            SendNotification::class,
+            ShipmentAddressChangedListener::class,
+            OrderHistoryListener::class,
         ],
-        \App\Events\ShipmentStatusChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\ShipmentStatusChangedListener::class,
+        ShipmentStatusChangedEvent::class => [
+            SendNotification::class,
+            ShipmentStatusChangedListener::class,
+            OrderHistoryListener::class,
         ],
-        \App\Events\InvoiceAddressChangedEvent::class => [
-            \App\Listeners\InvoiceAddressChangedListener::class,
+        InvoiceAddressChangedEvent::class => [
+            InvoiceAddressChangedListener::class,
+            OrderHistoryListener::class,
         ],
-        \App\Events\ProductChangedEvent::class => [
-            \App\Listeners\ProductChangedListener::class,
+        ProductChangedEvent::class => [
+            ProductChangedListener::class,
         ],
-        \App\Events\ProductCreatedEvent::class => [
-            \App\Listeners\ProductCreatedListener::class,
+        ProductCreatedEvent::class => [
+            ProductCreatedListener::class,
         ],
-        \App\Events\OrderCreatedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\OrderCreatedListener::class,
+        OrderCreatedEvent::class => [
+            SendNotification::class,
+            OrderCreatedListener::class,
+            OrderHistoryListener::class,
         ],
-        \App\Events\AddressCreatedEvent::class => [
-            \App\Listeners\AddressCreatedListener::class,
+        AddressCreatedEvent::class => [
+            AddressCreatedListener::class,
         ],
-        \App\Events\MerchantOrderCreatedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\MerchantOrderCreatedListener::class,
+        MerchantOrderCreatedEvent::class => [
+            SendNotification::class,
+            MerchantOrderCreatedListener::class,
         ],
-        \App\Events\PriceChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\PriceChangedListener::class,
+        PriceChangedEvent::class => [
+            SendNotification::class,
+            PriceChangedListener::class,
         ],
-        \App\Events\ProductCategoryChangedEvent::class => [
-            \App\Listeners\ProductCategoryChangedListener::class,
+        ProductCategoryChangedEvent::class => [
+            ProductCategoryChangedListener::class,
         ],
-        \App\Events\ProductPropertyChangedEvent::class => [
-            \App\Listeners\ProductPropertyChangedListener::class,
+        ProductPropertyChangedEvent::class => [
+            ProductPropertyChangedListener::class,
         ],
-        \App\Events\TaxChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\TaxChangedListener::class,
+        TaxChangedEvent::class => [
+            SendNotification::class,
+            TaxChangedListener::class,
         ],
-        \App\Events\UserActiveStateChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\UserActiveStateChangedListener::class,
+        UserActiveStateChangedEvent::class => [
+            SendNotification::class,
+            UserActiveStateChangedListener::class,
         ],
-        \App\Events\ProductVariantChangedEvent::class => [
-            \App\Listeners\ProductVariantChangedListener::class,
+        ProductVariantChangedEvent::class => [
+            ProductVariantChangedListener::class,
         ],
-        \App\Events\ProductVariantCreatedEvent::class => [
-            \App\Listeners\ProductVariantCreatedListener::class,
+        ProductVariantCreatedEvent::class => [
+            ProductVariantCreatedListener::class,
         ],
-        \App\Events\InvoiceCreatedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\InvoiceCreatedListener::class,
+        InvoiceCreatedEvent::class => [
+            SendNotification::class,
+            InvoiceCreatedListener::class,
         ],
-        \App\Events\InvoiceStatusChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\InvoiceStatusChangedListener::class,
+        InvoiceStatusChangedEvent::class => [
+            SendNotification::class,
+            InvoiceStatusChangedListener::class,
         ],
-        \App\Events\InvoicePaidDateChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\InvoicePaidDateChangedListener::class,
+        InvoicePaidDateChangedEvent::class => [
+            SendNotification::class,
+            InvoicePaidDateChangedListener::class,
         ],
-        \App\Events\InvoiceRefundChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\InvoiceRefundChangedListener::class,
+        InvoiceRefundChangedEvent::class => [
+            SendNotification::class,
+            InvoiceRefundChangedListener::class,
         ],
-        \App\Events\BrandChangedEvent::class => [
-            \App\Listeners\BrandChangedListener::class,
+        BrandChangedEvent::class => [
+            BrandChangedListener::class,
         ],
-        \App\Events\UserRegisteredEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\UserRegisteredListener::class,
+        UserRegisteredEvent::class => [
+            SendNotification::class,
+            UserRegisteredListener::class,
         ],
-        \App\Events\UserBanStateChangedEvent::class => [
-            \App\Listeners\SendNotification::class,
-            \App\Listeners\UserBanStateChangedListener::class,
+        UserBanStateChangedEvent::class => [
+            SendNotification::class,
+            UserBanStateChangedListener::class,
         ],
     ];
 

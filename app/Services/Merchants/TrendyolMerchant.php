@@ -45,11 +45,22 @@ class TrendyolMerchant implements TrackableMerchant
         return config('merchants.test_mode') ? 'https://stageapi.trendyol.com/stagesapigw/' : 'https://api.trendyol.com/sapigw/';
     }
 
-    private function preparePriceToSend($price)
+    private function getPrice(Product $product)
     {
-        $price *= (100 + merchant_setting('trendyol', 'comission', 0)) / 100;
+        $comission = merchant_setting('trendyol', 'comission', 0);
 
-        return number_format($price, 2, '.', '');
+        return $product->price->listingPrice()
+            ->addComission($comission)
+            ->numberFormat(2, '.', '');
+    }
+
+    private function getDiscountedPrice(Product $product)
+    {
+        $comission = merchant_setting('trendyol', 'comission', 0);
+
+        return $product->price->sellingPrice()
+            ->addComission($comission)
+            ->numberFormat(2, '.', '');
     }
 
     public function setStock(Product $product, $stock)
@@ -123,9 +134,9 @@ class TrendyolMerchant implements TrackableMerchant
                     'vatRate' => 20,
                     'images' => $product->imageUrls()->map(fn ($image) => ['url' => $image]),
                     'cargoCompanyId' => 10,
-                    'listPrice' => $this->preparePriceToSend($product->price->price),
+                    'listPrice' => $this->getPrice($product),
                     'quantity' => $product->quantity,
-                    'salePrice' => $this->preparePriceToSend($product->price->discounted_price),
+                    'salePrice' => $this->getDiscountedPrice($product),
                     'brand' => $product->brand->name, //?
                     'currencyType' => 'TRY', // Bütün pazaryerlerine TL göndereceğiz
                     'attributes' => $attributes,
@@ -400,8 +411,8 @@ class TrendyolMerchant implements TrackableMerchant
             'items' => [
                 [
                     'barcode' => $product->sku,
-                    'salePrice' => $this->preparePriceToSend($product->price->price),
-                    'listPrice' => $this->preparePriceToSend($product->price->discounted_price),
+                    'salePrice' => $this->getPrice($product),
+                    'listPrice' => $this->getDiscountedPrice($product),
                 ],
             ],
         ])->object()->batchRequestId;

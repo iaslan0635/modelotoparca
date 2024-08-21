@@ -3,6 +3,13 @@
         <div class="suggestions__group-title">Ürünler</div>
         <div class="suggestions__group-content">
             @foreach($results as $product)
+                @if(($model = $product->model()) === null)
+                    @php
+                        Log::driver("important")->error("Product model is null. id: " . $product->document()->id())
+                    @endphp
+                    @continue
+                @endif
+
                 {{-- {{ dd($product->model()) }}--}}
                 <a class="suggestions__item suggestions__product"
                    href="{{ route('product.show', $product->model()) }}">

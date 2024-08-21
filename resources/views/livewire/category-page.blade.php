@@ -69,7 +69,12 @@
                     <div class="filter__container">
                         <div class="filter-list">
                             <div class="filter-list__list">
-                                @foreach($brands as $key => $brand)
+                                @foreach(
+                                    collect($brands)
+                                        ->map(fn ($p) => [$p[0]?->brand, count($p)])
+                                        ->filter(fn ($pair) => $pair[0])
+                                        ->sortBy(fn ($pair) => $pair[0]?->name)
+                                as $key => [$brand, $count])
                                     <label class="filter-list__item" wire:key="brand-top-{{$key}}">
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
@@ -83,10 +88,10 @@
                                             </span>
                                         </span>
                                         <span class="filter-list__title">
-                                            {{ $brand[0]?->brand?->name }}
-                                            <img src="{{ $brand[0]?->brand?->imageUrl() }}" class="category-icon-image">
+                                            {{ $brand?->name }}
+                                            <img src="{{ $brand?->imageUrl() }}" class="category-icon-image">
                                         </span>
-                                        <span class="filter-list__counter">{{ count($brand) }}</span>
+                                        <span class="filter-list__counter">{{ $count }}</span>
                                     </label>
                                 @endforeach
                             </div>

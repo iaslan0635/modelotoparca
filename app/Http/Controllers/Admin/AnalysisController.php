@@ -7,10 +7,13 @@ use App\Models\Search;
 
 class AnalysisController extends Controller
 {
-    public function search()
+    public function index()
     {
+        $query = Search::query()->orderBy('id', 'desc');
+        $query = $this->search($query, 'query');
+
         return view('admin.pages.search-analysis', [
-            'searches' => Search::orderBy('id', 'desc')->paginate(),
+            'searches' => $query->paginate(),
         ]);
     }
 

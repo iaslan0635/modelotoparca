@@ -8,11 +8,24 @@ class Image extends BaseModel
 {
     protected function url(): Attribute
     {
-        return Attribute::get(fn() => asset("storage/$this->path"));
+        return Attribute::get(fn () => asset("storage/$this->path"));
     }
 
     protected function absolutePath(): Attribute
     {
-        return Attribute::get(fn() => storage_path(app()->joinPaths("app/public", $this->path)));
+        return Attribute::get(fn () => storage_path(app()->joinPaths('app/public', $this->path)));
+    }
+
+    public function deleteFile()
+    {
+        $path = $this->absolute_path;
+        if (file_exists($path)) {
+            unlink($path);
+        }
+    }
+
+    public function botImage()
+    {
+        return $this->hasOne(BotImage::class);
     }
 }
