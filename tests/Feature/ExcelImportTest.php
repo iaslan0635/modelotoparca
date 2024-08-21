@@ -11,7 +11,7 @@ use Mockery\MockInterface;
 use Queue;
 use Tests\TestCase;
 
-class ExcelTest extends TestCase
+class ExcelImportTest extends TestCase
 {
     use RefreshDatabase;
 
