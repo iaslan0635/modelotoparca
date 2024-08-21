@@ -46,6 +46,7 @@ class ExcelImport implements ShouldQueue
      */
     public function __construct($jobData)
     {
+        $this->onQueue("productImport");
         $this->data = $jobData;
     }
 
@@ -252,7 +253,7 @@ class ExcelImport implements ShouldQueue
         $realProduct->searchable();
 
         if ($isChaged) {
-            BotJob::dispatch($product)->onQueue("bot");
+            BotJob::dispatch($product);
         }
     }
 

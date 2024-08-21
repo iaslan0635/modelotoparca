@@ -28,6 +28,7 @@ class BotJob implements ShouldQueue
         public readonly TigerProduct $product
     )
     {
+        $this->onQueue("bot");
     }
 
     public function handle(): void
