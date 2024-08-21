@@ -12,26 +12,6 @@
                         <h1 class="page-heading d-inline">
                             İçe aktar
                         </h1>
-                        <div class="d-inline">
-                            @php
-                                $jobQuery = \DB::table("jobs")->where("queue", "default");
-                                $c = fn (int $attempts, bool $running) => $jobQuery->clone()
-                                    ->where("attempts", $attempts)
-                                    ->when($running,
-                                        fn ($q) => $q->whereNotNull("reserved_at"),
-                                        fn ($q) => $q->whereNull("reserved_at")
-                                    )->count();
-
-                                $failed = \DB::table("failed_jobs")->where("queue", "default")->count();
-                            @endphp
-                            <span class="d-inline badge badge-primary mx-2">İşlem kuyruğu | Bekleyen: {{ $c(0, false) }} | Çalışan: {{ $c(1, true) }}</span>
-                            <span class="d-inline badge badge-danger mx-2">Başarısız işlemler: {{ $failed }}</span>
-                            <span style="filter: grayscale(100%); float: right">
-                                <span>Tekrar denemeler geçici olarak devre dışı</span>
-                                <span class="d-inline badge badge-warning text-black mx-2">2. Deneme | Bekleyen: {{ $c(1, false) }} | Çalışan: {{ $c(2, true) }}</span>
-                                <span class="d-inline badge badge-warning text-black mx-2">3. Deneme | Bekleyen: {{ $c(2, false) }} | Çalışan: {{ $c(3, true) }}</span>
-                            </span>
-                        </div>
                     </div>
                     <!--end::Title-->
                     <div class="mt-4">
@@ -53,6 +33,11 @@
                 <!--begin::Main column-->
                 <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
                     <form class="d-flex flex-column gap-7 gap-lg-10">
+                        <div class="row">
+                            <x-queue-card class="col mx-4" title="Genel işlemler" queue="default"/>
+                            <x-queue-card class="col mx-4" title="Ürün içe aktarma" queue="productImport"/>
+                            <x-queue-card class="col mx-4" title="Bot" queue="bot"/>
+                        </div>
                         @foreach($routes as $route)
                             <!--begin::Card-->
                             <x-import-card :filename="$route"/>
