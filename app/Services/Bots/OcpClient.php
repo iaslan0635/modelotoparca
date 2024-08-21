@@ -2,6 +2,8 @@
 
 namespace App\Services\Bots;
 
+use Exception;
+
 class OcpClient
 {
     /**
@@ -26,10 +28,10 @@ class OcpClient
         curl_close($curlHandle);
 
         if (curl_errno($curlHandle)) {
-            throw new \Exception(curl_error($curlHandle));
+            throw new Exception(curl_error($curlHandle));
         }
         if (str_contains($response, '<title>Just a moment...</title>')) {
-            throw new \Exception("Response blocked by cloudflare.\nurl: $url\nresponse: $response");
+            throw new Exception("Response blocked by cloudflare.\nurl: $url\nresponse: $response");
         }
 
         if (! ($httpStatusCode >= 200 && $httpStatusCode < 300)) {
@@ -50,8 +52,9 @@ class OcpClient
         while (true) {
             try {
                 return self::requestWithoutRetry($url);
-            } catch (OcpClientException $e) {
-                if ($e->statusCode !== 524 || $attempts >= 3) {
+            } catch (Exception $e) {
+                $isGatewayTimeout = $e instanceof OcpClientException && $e->statusCode !== 524;
+                if ($isGatewayTimeout || $attempts >= 3) {
                     throw $e;
                 }
 
