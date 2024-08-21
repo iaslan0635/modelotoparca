@@ -17,16 +17,10 @@ class QueueCard extends Component
     public function render(): View
     {
         $jobQuery = \DB::table("jobs")->where("queue", $this->queue);
-        $get = fn(int $attempts, bool $running) => $jobQuery->clone()
-            ->where("attempts", $attempts)
-            ->when($running,
-                fn($q) => $q->whereNotNull("reserved_at"),
-                fn($q) => $q->whereNull("reserved_at")
-            )->count();
 
-        $failedCount = \DB::table("failed_jobs")->where("queue", "default")->count();
-        $awaitingCount = $get(0, false);
-        $runningCount = $get(1, true);
+        $failedCount = \DB::table("failed_jobs")->where("queue", $this->queue)->count();
+        $awaitingCount = $jobQuery->clone()->whereNull("reserved_at")->count();
+        $runningCount = $jobQuery->clone()->whereNotNull("reserved_at")->count();
 
         return view('components.queue-card', compact('failedCount', 'awaitingCount', 'runningCount'));
     }
