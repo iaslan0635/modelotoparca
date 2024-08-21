@@ -305,8 +305,11 @@ class N11 implements Merchant
         ]);
 
         if (
-            $response->result->status !== 'success' &&
-            $response->result->errorCode !== 'SELLER_API.catalog.suggest.failed.alreadySuggested'
+            is_null($response->result) ||
+            (
+                $response->result->status !== 'success' &&
+                $response->result->errorCode !== 'SELLER_API.catalog.suggest.failed.alreadySuggested'
+            )
         ) {
             throw new N11ClientException($response);
         }
