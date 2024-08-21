@@ -20,7 +20,6 @@ class BotJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $queue = 'bot';
     private static $botMock = null;
 
     public function __construct(

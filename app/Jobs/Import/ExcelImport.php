@@ -252,7 +252,7 @@ class ExcelImport implements ShouldQueue
         $realProduct->searchable();
 
         if ($isChaged) {
-            BotJob::dispatch($product);
+            BotJob::dispatch($product)->onQueue("bot");
         }
     }
 
