@@ -30,9 +30,6 @@ class ExcelImportTest extends TestCase
         copy(self::$dataPath . "/$excelPath", storage_path("app/$excelPath"));
         copy(self::$dataPath . "/$changedExcelPath", storage_path("app/$changedExcelPath"));
 
-        Queue::setDefaultDriver("sync");
-
-
         // Import the first file
         BotJob::mockBot(\Mockery::mock(
             OnlineCarParts::class,
