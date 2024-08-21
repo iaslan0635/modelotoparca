@@ -41,12 +41,12 @@ class Hepsiburada implements TrackableMerchant
         )->throw()->baseUrl($this->baseUrl($service));
     }
 
-    private function getPrice(Product $product)
+    private function getPrice(Product $product): ?string
     {
         $comission = merchant_setting('hepsiburada', 'comission', 0);
 
         return $product->price->listingPrice()
-            ->addComission($comission)
+            ?->addComission($comission)
             ->numberFormat(2, ',', '');
     }
 
@@ -61,9 +61,14 @@ class Hepsiburada implements TrackableMerchant
 
     public function updatePrice(Product $product)
     {
+        $price = $this->getPrice($product);
+        if ($price === null) {
+            return; // skip products without price
+        }
+
         $this->client('listing-external')->post("Listings/merchantid/$this->merchantId/price-uploads", [
             'merchantSku' => $product->sku,
-            'price' => $this->getPrice($product),
+            'price' => $price,
         ]);
     }
 
@@ -85,6 +90,10 @@ class Hepsiburada implements TrackableMerchant
     private function updateProduct(Product $product)
     {
         $price = $this->getPrice($product);
+        if ($price === null) {
+            return; // skip products without price
+        }
+
         $payload = [
             'merchantId' => $this->merchantId,
             'items' => [
@@ -134,6 +143,10 @@ class Hepsiburada implements TrackableMerchant
     private function createProduct(Product $product)
     {
         $price = $this->getPrice($product);
+        if ($price === null) {
+            return; // skip products without price
+        }
+
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'hepsiburada')
             ->where('product_id', '=', $product->id)

@@ -99,12 +99,12 @@ class N11 implements Merchant
         $this->client = app(N11Client::class);
     }
 
-    private function getPrice(Product $product)
+    private function getPrice(Product $product): ?string
     {
         $comission = merchant_setting('n11', 'comission', 0);
 
         return $product->price->listingPrice()
-            ->addComission($comission)
+            ?->addComission($comission)
             ->numberFormat(2, '.', '');
     }
 
@@ -225,6 +225,11 @@ class N11 implements Merchant
 
     public function sendProduct(Product $product)
     {
+        $price = $this->getPrice($product);
+        if ($price === null) {
+            return; // skip products without price
+        }
+
         $images = $product->imageUrls()->whenEmpty(fn (Collection $self) => $self->push($product->imageUrl()))->values();
 
         $attrs = ProductMerchantAttribute::query()
@@ -236,7 +241,6 @@ class N11 implements Merchant
                 'value' => $p->merchant_value,
             ]);
 
-        $price = $this->getPrice($product);
         $response = $this->client->product->SaveProduct([
             'product' => [
                 'productSellerCode' => $product->sku,
@@ -458,9 +462,14 @@ class N11 implements Merchant
 
     public function updatePrice(Product $product)
     {
+        $price = $this->getPrice($product);
+        if ($price === null) {
+            return; // skip products without price
+        }
+
         return $this->client->product->UpdateProductPriceBySellerCode([
             'productSellerCode' => $product->sku,
-            'price' => $this->getPrice($product),
+            'price' => $price,
             'currencyType' => 1
         ]);
     }

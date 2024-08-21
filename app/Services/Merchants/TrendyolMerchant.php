@@ -45,12 +45,12 @@ class TrendyolMerchant implements TrackableMerchant
         return config('merchants.test_mode') ? 'https://stageapi.trendyol.com/stagesapigw/' : 'https://api.trendyol.com/sapigw/';
     }
 
-    private function getPrice(Product $product)
+    private function getPrice(Product $product): ?string
     {
         $comission = merchant_setting('trendyol', 'comission', 0);
 
         return $product->price->listingPrice()
-            ->addComission($comission)
+            ?->addComission($comission)
             ->numberFormat(2, '.', '');
     }
 
@@ -97,6 +97,11 @@ class TrendyolMerchant implements TrackableMerchant
 
     private function _sendProduct(Product $product, string $method)
     {
+        $price = $this->getPrice($product);
+        if ($price === null) {
+            return; // skip products without price
+        }
+
         $fields = ProductMerchantAttribute::query()
             ->where('merchant', '=', 'trendyol')
             ->where('product_id', '=', $product->id)
@@ -134,7 +139,7 @@ class TrendyolMerchant implements TrackableMerchant
                     'vatRate' => 20,
                     'images' => $product->imageUrls()->map(fn ($image) => ['url' => $image]),
                     'cargoCompanyId' => 10,
-                    'listPrice' => $this->getPrice($product),
+                    'listPrice' => $price,
                     'quantity' => $product->quantity,
                     'salePrice' => $this->getDiscountedPrice($product),
                     'brand' => $product->brand->name, //?
@@ -407,11 +412,16 @@ class TrendyolMerchant implements TrackableMerchant
 
     public function updatePrice(Product $product)
     {
+        $price = $this->getPrice($product);
+        if ($price === null) {
+            return; // skip products without price
+        }
+
         return $this->supplierClient()->post('products/price-and-inventory', [
             'items' => [
                 [
                     'barcode' => $product->sku,
-                    'salePrice' => $this->getPrice($product),
+                    'salePrice' => $price,
                     'listPrice' => $this->getDiscountedPrice($product),
                 ],
             ],
