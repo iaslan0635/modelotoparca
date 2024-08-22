@@ -1,0 +1,17 @@
+.site {
+    overflow: hidden;
+}
+
+.fixed-sidebar {
+    align-items: flex-start;
+}
+
+.fixed-sidebar .block-split__item-sidebar {
+    position: sticky;
+    top: 10px;
+}
+
+.wide-container {
+    max-width: unset !important;
+    margin: 0 2rem;
+}

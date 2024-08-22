@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/default-skin/default-skin.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ $assetVersion }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('css/stylemd.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mod.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.header-classic-variant-one.css') }}?v={{ $assetVersion }}" {{--media="(min-width: 1200px)"--}}>

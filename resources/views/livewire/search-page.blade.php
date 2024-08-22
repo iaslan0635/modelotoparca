@@ -1,6 +1,6 @@
 <div class="block-split block-split--has-sidebar">
-    <div class="container">
-        <div class="block-split__row row no-gutters">
+    <div class="container wide-container">
+        <div class="block-split__row row no-gutters fixed-sidebar">
             <div class="block-split__item block-split__item-sidebar col-auto">
                 <div class="sidebar sidebar--offcanvas--mobile">
                     <div class="sidebar__backdrop"></div>
