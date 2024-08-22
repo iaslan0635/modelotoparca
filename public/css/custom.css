@@ -1,5 +1,5 @@
 .site {
-    overflow: hidden;
+    overflow: clip;
 }
 
 .fixed-sidebar {
