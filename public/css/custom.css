@@ -12,6 +12,7 @@
 }
 
 .wide-container {
-    max-width: unset !important;
-    margin: 0 2rem;
+    max-width: calc(100vw - 2rem) !important;
+    margin: auto;
+    padding: 0;
 }
