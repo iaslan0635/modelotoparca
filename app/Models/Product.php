@@ -130,8 +130,8 @@ class Product extends BaseModel implements CanVisit
         $similars = collect(explode(',', $this->similar_product_codes ?? ''))->map(fn($s) => trim($s));
         $similars->push(...$this->similarCodes->map(fn(ProductSimilar $ps) => $ps->code));
 
-        $price = $this->price === null || $this->price->price === null ? null
-            : floatval($this->price->listingPrice()->getValue());
+        $priceString = $this->price?->listingPrice()?->getValue();
+        $price = $priceString === null ? null : floatval($priceString);
 
         return [
             'title' => $this->title,
