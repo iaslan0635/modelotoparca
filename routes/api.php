@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post("/git-webhook", function () {
+Route::post('/git-webhook', function () {
     set_time_limit(0);
-    $proc = new \Symfony\Component\Process\Process(["bash", "deploy.sh"], base_path());
+    $proc = new \Symfony\Component\Process\Process(['bash', 'deploy.sh'], base_path());
     $proc->run();
 });

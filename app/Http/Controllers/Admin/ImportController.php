@@ -57,6 +57,7 @@ class ImportController extends Controller
     public function rerunMissingProducts()
     {
         RerunBotForMissingProductsJob::dispatch();
+
         return back();
     }
 }

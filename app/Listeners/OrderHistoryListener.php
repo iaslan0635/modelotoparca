@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Events;
 use App\Models\Order;
-use App\Models\OrderHistory;
 
 class OrderHistoryListener
 {

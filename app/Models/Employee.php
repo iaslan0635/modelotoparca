@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Employee extends Authenticatable
 {
-    use HasPermissions, HasRoles, Notifiable, SoftDeletes, HasFactory;
+    use HasFactory, HasPermissions, HasRoles, Notifiable, SoftDeletes;
 
     protected $guarded = [];
 

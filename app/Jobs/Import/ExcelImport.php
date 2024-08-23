@@ -5,8 +5,6 @@ namespace App\Jobs\Import;
 use App\Facades\DiscountFacade;
 use App\Facades\TaxFacade;
 use App\Jobs\BotJob;
-use App\Models\BotProduct;
-use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Log;
 use App\Models\Price;
@@ -14,7 +12,6 @@ use App\Models\Product;
 use App\Models\ProductOem;
 use App\Models\ProductSimilar;
 use App\Models\TigerProduct;
-use App\Services\Bots\OnlineCarParts;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
@@ -46,7 +43,7 @@ class ExcelImport implements ShouldQueue
      */
     public function __construct($jobData)
     {
-        $this->onQueue("productImport");
+        $this->onQueue('productImport');
         $this->data = $jobData;
     }
 
@@ -206,7 +203,7 @@ class ExcelImport implements ShouldQueue
             'title' => $title,
             'sub_title' => $allWebNames,
             'description' => $allWebNames,
-            'slug' => Str::slug($title) . '-' . $id,
+            'slug' => Str::slug($title).'-'.$id,
             'sku' => $product->code,
             'quantity' => $product->onhand,
             'status' => intval($product->active) === 0,
@@ -246,7 +243,7 @@ class ExcelImport implements ShouldQueue
         Price::updateOrCreate(['product_id' => $id], [
             'price' => $price,
             'currency' => Arr::get(self::CURRENCY_MAP, intval($product->currency), 'try'),
-            'discount' => (bool)$product->sales_discount_rate,
+            'discount' => (bool) $product->sales_discount_rate,
             'discount_amount' => $product->sales_discount_rate ?? 0,
         ]);
 

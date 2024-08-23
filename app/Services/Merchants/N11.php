@@ -470,7 +470,7 @@ class N11 implements Merchant
         return $this->client->product->UpdateProductPriceBySellerCode([
             'productSellerCode' => $product->sku,
             'price' => $price,
-            'currencyType' => 1
+            'currencyType' => 1,
         ]);
     }
 

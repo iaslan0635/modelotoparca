@@ -7,7 +7,6 @@ use App\Models\Ocp\SearchAjax;
 use App\Models\Ocp\SearchPage;
 use App\Models\Ocp\SearchPageProduct;
 use App\Packages\Fuzz;
-use Illuminate\Support\Facades\Log;
 
 /** A bridge between Scraper and Bot. Attempts to use already fetched data */
 class DataProvider

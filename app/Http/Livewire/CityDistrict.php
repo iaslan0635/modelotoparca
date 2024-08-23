@@ -19,9 +19,10 @@ class CityDistrict extends Component
         $this->city ??= 1;
 
         $cities = City::all();
-        $towns = County::query()->where('city_id', $this->city)->pluck("name");
+        $towns = County::query()->where('city_id', $this->city)->pluck('name');
 
         $this->town ??= $towns->first();
+
         return view('livewire.city-district', compact('towns', 'cities'));
     }
 }

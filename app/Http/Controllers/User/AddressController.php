@@ -33,9 +33,9 @@ class AddressController extends Controller
 
         $data['genre'] = 'address';
 
-        if ($data["type"] == "individual") {
+        if ($data['type'] == 'individual') {
             $isIdValid = $this->verifyIdentity($data);
-            if (!$isIdValid) {
+            if (! $isIdValid) {
                 return back()->withErrors(['identity' => 'Kimlik bilgileri doğrulanamadı.']);
             }
         }
@@ -75,9 +75,9 @@ class AddressController extends Controller
 
         $data['genre'] = 'address';
 
-        if ($data["type"] == "individual") {
+        if ($data['type'] == 'individual') {
             $isIdValid = $this->verifyIdentity($data);
-            if (!$isIdValid) {
+            if (! $isIdValid) {
                 return back()->withErrors(['identity' => 'Kimlik bilgileri doğrulanamadı.']);
             }
         }
@@ -98,21 +98,20 @@ class AddressController extends Controller
     }
 
     /**
-     * @param array $data
      * @return void
      */
     private function verifyIdentity(array $data): bool
     {
-        $client = new SoapClient("https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL");
+        $client = new SoapClient('https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL');
         try {
             $result = $client->TCKimlikNoDogrula([
                 'TCKimlikNo' => $data['identity'],
-                'Ad' => $data["first_name"],
-                'Soyad' => $data["last_name"],
-                'DogumYili' => Carbon::parse($data["birthdate"])->format('Y'),
+                'Ad' => $data['first_name'],
+                'Soyad' => $data['last_name'],
+                'DogumYili' => Carbon::parse($data['birthdate'])->format('Y'),
             ]);
 
-            return (bool)($result->TCKimlikNoDogrulaResult);
+            return (bool) ($result->TCKimlikNoDogrulaResult);
         } catch (Exception $e) {
             report($e);
         }

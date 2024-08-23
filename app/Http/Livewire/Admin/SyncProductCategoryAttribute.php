@@ -33,6 +33,7 @@ class SyncProductCategoryAttribute extends Component
             ]) : '<p>Kategori sayfası alınamadı</p>';
         } catch (\Throwable $e) {
             report($e);
+
             return "<p>Kategori sayfası alınamadı ({$e->getMessage()})</p>";
         }
     }

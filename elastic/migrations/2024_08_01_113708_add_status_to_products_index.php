@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 use Elastic\Adapter\Indices\Mapping;
-use Elastic\Migrations\MigrationInterface;
 use Elastic\Migrations\Facades\Index;
+use Elastic\Migrations\MigrationInterface;
 
 final class AddStatusToProductsIndex implements MigrationInterface
 {

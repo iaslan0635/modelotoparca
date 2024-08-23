@@ -8,14 +8,13 @@ use App\Models\Product;
 use App\Services\Bots\OnlineCarParts;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mockery\MockInterface;
-use Queue;
 use Tests\TestCase;
 
 class ExcelImportTest extends TestCase
 {
     use RefreshDatabase;
 
-    private static string $dataPath = __DIR__ . '/../data';
+    private static string $dataPath = __DIR__.'/../data';
 
     public function testChanges()
     {
@@ -27,33 +26,31 @@ class ExcelImportTest extends TestCase
 
         $excelPath = 'ITEMS WEB-5.xlsx';
         $changedExcelPath = 'ITEMS WEB-5-changed.xlsx';
-        copy(self::$dataPath . "/$excelPath", storage_path("app/$excelPath"));
-        copy(self::$dataPath . "/$changedExcelPath", storage_path("app/$changedExcelPath"));
+        copy(self::$dataPath."/$excelPath", storage_path("app/$excelPath"));
+        copy(self::$dataPath."/$changedExcelPath", storage_path("app/$changedExcelPath"));
 
         // Import the first file
         BotJob::mockBot(\Mockery::mock(
             OnlineCarParts::class,
-            fn(MockInterface $mock) => $mock->shouldReceive("smash")->times(5)->andReturns(true)
+            fn (MockInterface $mock) => $mock->shouldReceive('smash')->times(5)->andReturns(true)
         ));
 
         OuterExcelImportJob::dispatch($excelPath, false);
         $this->assertDatabaseCount('products', 5);
-
 
         // Import the same file and check if the bot is not called
         BotJob::mockBot(\Mockery::mock(
             OnlineCarParts::class,
-            fn(MockInterface $mock) => $mock->shouldNotReceive("smash")
+            fn (MockInterface $mock) => $mock->shouldNotReceive('smash')
         ));
 
         OuterExcelImportJob::dispatch($excelPath, false);
         $this->assertDatabaseCount('products', 5);
 
-
         // Import the changed file and check if the bot is called
         BotJob::mockBot(\Mockery::mock(
             OnlineCarParts::class,
-            fn(MockInterface $mock) => $mock->shouldReceive("smash")->withArgs([3899])->once()->andReturns(true)
+            fn (MockInterface $mock) => $mock->shouldReceive('smash')->withArgs([3899])->once()->andReturns(true)
         ));
 
         OuterExcelImportJob::dispatch($changedExcelPath, false);

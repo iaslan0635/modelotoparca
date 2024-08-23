@@ -21,7 +21,6 @@ class MerchantOrder extends BaseModel
         'created' => MerchantOrderCreatedEvent::class,
     ];
 
-
     public function history()
     {
         return $this->hasMany(MerchantOrderHistory::class);
@@ -30,14 +29,16 @@ class MerchantOrder extends BaseModel
     protected static function booted(): void
     {
         static::updated(function (MerchantOrder $order) {
-            if (!$order->wasChanged("data")) return;
+            if (! $order->wasChanged('data')) {
+                return;
+            }
 
             $original = $order->getOriginal();
 
             $old = MarketPlace::parseOrder($original);
             $new = MarketPlace::parseOrder($order);
 
-            $wasChanged = fn($key) => Arr::get($old, $key) !== Arr::get($new, $key);
+            $wasChanged = fn ($key) => Arr::get($old, $key) !== Arr::get($new, $key);
 
             if ($wasChanged('items.*.cargo')) {
                 dispatch(new Events\MerchantShipmentStatusChangedEvent($order));

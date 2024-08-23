@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Events;
 use App\Models\MerchantOrder;
-use App\Models\Order;
 
 class MerchantOrderHistoryListener
 {

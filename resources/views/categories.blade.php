@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
     <!-- site__body -->
     <div class="site__body">
         <x-breadcrumb :parts="[

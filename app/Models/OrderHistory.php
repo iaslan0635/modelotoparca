@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 class OrderHistory extends BaseModel
 {
     public function order()

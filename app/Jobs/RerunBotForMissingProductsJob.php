@@ -19,7 +19,7 @@ class RerunBotForMissingProductsJob implements ShouldQueue
 
     public function handle(): void
     {
-        Product::whereDoesntHave("cars")->with("tiger")->chunk(100, function ($products) {
+        Product::whereDoesntHave('cars')->with('tiger')->chunk(100, function ($products) {
             foreach ($products as $product) {
                 dispatch(new RunSingleBotJob($product->tiger));
             }

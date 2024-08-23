@@ -16,10 +16,10 @@ class Controller extends BaseController
 
     protected function store_file(UploadedFile $file, string $path)
     {
-        return '/storage/' . $file->storePublicly($path, ['disk' => 'public']);
+        return '/storage/'.$file->storePublicly($path, ['disk' => 'public']);
     }
 
-    protected static function search(Builder $query, array|string $columns, ?string $search = null)
+    protected static function search(Builder $query, array|string $columns, string $search = null)
     {
         return Utils::search($query, $columns, $search);
     }
@@ -29,17 +29,20 @@ class Controller extends BaseController
     {
         $search ??= request('search');
 
-        if (!$search) {
+        if (! $search) {
             return $query;
         }
-//        xdebug_break();
+        //        xdebug_break();
         $exactCodeColumns = Collection::wrap($codeColumns)
             ->filter(fn ($column) => $query->clone()->where($column, $search)->exists());
-        if ($exactCodeColumns->isNotEmpty() && ($exactCodeColumns->count() > 1 || $exactCodeColumns->first() != "id"))
+        if ($exactCodeColumns->isNotEmpty() && ($exactCodeColumns->count() > 1 || $exactCodeColumns->first() != 'id')) {
             return Utils::search($query->clone(), $exactCodeColumns->toArray(), $search);
+        }
 
         $codeQuery = Utils::search($query->clone(), $codeColumns, $search);
-        if ($codeQuery->exists()) return $codeQuery;
+        if ($codeQuery->exists()) {
+            return $codeQuery;
+        }
 
         return Utils::search($query->clone(), $columns, $search);
     }

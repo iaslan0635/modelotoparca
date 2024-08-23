@@ -28,7 +28,7 @@ class OrderController extends Controller
             'invoice_address_id' => $address->id,
             'payment_status' => OrderStatuses::PENDING,
             'shipment_status' => OrderStatuses::PENDING,
-            "original_data" => [
+            'original_data' => [
                 'shipment_address' => $address,
                 'invoice_address' => $address,
                 'user' => auth()->user(),

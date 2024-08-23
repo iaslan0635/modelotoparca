@@ -26,9 +26,8 @@ class BotJob implements ShouldQueue
 
     public function __construct(
         public readonly TigerProduct $product
-    )
-    {
-        $this->onQueue("bot");
+    ) {
+        $this->onQueue('bot');
     }
 
     public function handle(): void
@@ -52,12 +51,14 @@ class BotJob implements ShouldQueue
         foreach ($search_predence as $field) {
             if ($product[$field] === null) {
                 $this->log($product, 'Boş (null) değer atlandı.', ['Kolon' => $field]);
+
                 continue;
             }
 
             $value = trim($product[$field]);
             if (strlen($value) === 0) {
                 $this->log($product, 'Boş değer atlandı.', ['Kolon' => $field]);
+
                 continue;
             }
 
@@ -120,14 +121,13 @@ class BotJob implements ShouldQueue
     }
 
     private function smashBot(
-        string  $keyword,
-        int     $product_id,
-        string  $field,
-        ?string $brand_filter = null,
-        bool    $regexed = false,
-        bool    $ajax = false,
-    )
-    {
+        string $keyword,
+        int $product_id,
+        string $field,
+        string $brand_filter = null,
+        bool $regexed = false,
+        bool $ajax = false,
+    ) {
         if (self::$botMock) {
             return self::$botMock->smash($product_id);
         }
@@ -182,7 +182,7 @@ class BotJob implements ShouldQueue
     private function getBrand(TigerProduct $product): ?string
     {
         $brand = Brand::find($product->markref, ['name', 'botname']);
-        if (!$brand) {
+        if (! $brand) {
             return null;
         }
 
@@ -193,7 +193,7 @@ class BotJob implements ShouldQueue
     {
         $productId = $productOrId instanceof Model ? $productOrId->getKey() : $productOrId;
 
-        return Log::log($productId, $message, $context, 'bot-manager-v' . self::VERSION);
+        return Log::log($productId, $message, $context, 'bot-manager-v'.self::VERSION);
     }
 
     public static function mockBot($mockInstance)
@@ -204,6 +204,7 @@ class BotJob implements ShouldQueue
     public static function isOldVersion(string $logSource)
     {
         $version = str_replace('bot-manager-v', '', $logSource);
+
         return $version != self::VERSION;
     }
 }

@@ -6,7 +6,6 @@ use App\Events;
 use App\Events\OrderCreatedEvent;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Http\Request;
 
 class Order extends BaseModel
 {

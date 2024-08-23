@@ -193,6 +193,7 @@ class OnlineCarParts
     public static function isOldVersion(string $logSource)
     {
         $version = str_replace('bot-v', '', $logSource);
+
         return $version != self::VERSION;
     }
 }
