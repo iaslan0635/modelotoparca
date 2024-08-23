@@ -32,7 +32,7 @@ class Controller extends BaseController
         if (! $search) {
             return $query;
         }
-        //        xdebug_break();
+
         $exactCodeColumns = collect($codeColumns)
             ->filter(fn ($column) => $query->clone()->where($column, $search)->exists());
         if ($exactCodeColumns->isNotEmpty() && ($exactCodeColumns->count() > 1 || $exactCodeColumns->first() != 'id')) {
