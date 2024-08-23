@@ -141,7 +141,7 @@
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--menu main-menu__item--has-submenu">
                             <a href="{{route('car.select')}}" class="main-menu__link">
-                                Araç bul
+                                Araçtan parça bul
                             </a>
                         </li>
                     </ul>
