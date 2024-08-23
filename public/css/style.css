@@ -15410,6 +15410,7 @@ select.form-control::-ms-expand {
     font-size: 12px;
     line-height: 1;
     color: #999;
+    width: max-content !important;
 }
 
 .product-card .product-card__prices {

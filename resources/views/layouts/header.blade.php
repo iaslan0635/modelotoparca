@@ -115,7 +115,7 @@
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--megamenu main-menu__item--has-submenu">
-                            <a href="https://site.modelotoparca.com/c/motor-yagi-78132?pageSize=12" class="main-menu__link">
+                            <a href="{{ route('category.show', "motor-yagi-78132") }}" class="main-menu__link">
                                 Madeni Yağlar
                             </a>
                         </li>
