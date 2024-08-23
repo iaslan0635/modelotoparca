@@ -10,8 +10,8 @@
             <ul class="block-brands__list" style="justify-content: center; border: none">
                 @foreach($brands as $brand)
                     <li class="block-brands__item">
-                        <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link">
-                            <img src="{{ $brand->imageUrl() }}" style="max-width: 120px; max-height: 120px">
+                        <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link" style="width: 150px; height: 120px; display: flex; flex-direction: column; justify-content: space-between">
+                            <img src="{{ $brand->imageUrl() }}">
                             <span class="block-brands__item-name">{{$brand->name}}</span>
                         </a>
                     </li>
