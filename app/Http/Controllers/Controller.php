@@ -33,7 +33,7 @@ class Controller extends BaseController
             return $query;
         }
         //        xdebug_break();
-        $exactCodeColumns = Collection::wrap($codeColumns)
+        $exactCodeColumns = collect($codeColumns)
             ->filter(fn ($column) => $query->clone()->where($column, $search)->exists());
         if ($exactCodeColumns->isNotEmpty() && ($exactCodeColumns->count() > 1 || $exactCodeColumns->first() != 'id')) {
             return Utils::search($query->clone(), $exactCodeColumns->toArray(), $search);
