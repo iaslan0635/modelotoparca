@@ -11,7 +11,9 @@
                 @foreach($brands as $brand)
                     <li class="block-brands__item">
                         <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link" style="width: 150px; height: 120px; display: flex; flex-direction: column; justify-content: space-between">
-                            <img src="{{ $brand->imageUrl() }}">
+                            <div style="display: flex; flex-direction: column; justify-content: center">
+                                <img src="{{ $brand->imageUrl() }}">
+                            </div>
                             <span class="block-brands__item-name">{{$brand->name}}</span>
                         </a>
                     </li>
