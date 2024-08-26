@@ -4,7 +4,7 @@
         <x-breadcrumb :parts="[
             ['name' => 'Araç'],
             ['name' => $car->name]
-        ]" />
+        ]"/>
         <div class="block-split block-split--has-sidebar">
             <div class="container wide-container">
                 <div class="block-split__row row no-gutters fixed-sidebar">
@@ -36,10 +36,12 @@
                                                         <button type="button" class="filter__title"
                                                                 data-collapse-trigger>
                                                             Kategoriler
-                                                            <span class="filter__arrow"><svg width="12px" height="7px">
+                                                            <span class="filter__arrow">
+                                                                <svg width="12px" height="7px">
                                                                     <path
                                                                         d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                                </svg></span>
+                                                                </svg>
+                                                            </span>
                                                         </button>
                                                         <div class="filter__body" data-collapse-content style="max-height: 280px;overflow: auto;">
                                                             <div class="filter__container">
@@ -67,10 +69,12 @@
                                                         <button type="button" class="filter__title"
                                                                 data-collapse-trigger>
                                                             Fiyat
-                                                            <span class="filter__arrow"><svg width="12px" height="7px">
+                                                            <span class="filter__arrow">
+                                                                <svg width="12px" height="7px">
                                                                     <path
                                                                         d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                                </svg></span>
+                                                                </svg>
+                                                            </span>
                                                         </button>
                                                         <div class="filter__body" data-collapse-content>
                                                             <div class="filter__container">
@@ -85,9 +89,11 @@
                                                                                id="min-value">
                                                                         <input type="hidden" name="max_price" value=""
                                                                                id="max-value">
-                                                                        <div class="filter-price__title">₺<span
+                                                                        <div class="filter-price__title">₺
+                                                                            <span
                                                                                 class="filter-price__min-value"></span>
-                                                                            – ₺<span
+                                                                            – ₺
+                                                                            <span
                                                                                 class="filter-price__max-value"></span>
                                                                         </div>
                                                                         <button type="submit"
@@ -105,10 +111,12 @@
                                                         <button type="button" class="filter__title"
                                                                 data-collapse-trigger>
                                                             Markalar
-                                                            <span class="filter__arrow"><svg width="12px" height="7px">
+                                                            <span class="filter__arrow">
+                                                                <svg width="12px" height="7px">
                                                                     <path
                                                                         d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                                </svg></span>
+                                                                </svg>
+                                                            </span>
                                                         </button>
                                                         <div class="filter__body" data-collapse-content style="max-height: 280px;overflow: auto;">
                                                             <div class="filter__container">
@@ -116,27 +124,28 @@
                                                                     <div class="filter-list__list">
                                                                         @foreach($brands as $key => $brand)
                                                                             <label class="filter-list__item ">
-                                                                            <span
-                                                                                class="input-check filter-list__input">
-                                                                                <span class="input-check__body">
-                                                                                    <input class="input-check__input"
-                                                                                           name="brands[]"
-                                                                                           value="{{ $key }}"
-                                                                                           {{ request()->has('brands') ? in_array($key, request()->input('brands')) ? "checked":null:null }}
-                                                                                           type="checkbox">
-                                                                                    <span
-                                                                                        class="input-check__box"></span>
-                                                                                    <span class="input-check__icon"><svg
-                                                                                            width="9px" height="7px">
-                                                                                            <path
-                                                                                                d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
-                                                                                        </svg>
+                                                                                <span
+                                                                                    class="input-check filter-list__input">
+                                                                                    <span class="input-check__body">
+                                                                                        <input class="input-check__input"
+                                                                                               name="brands[]"
+                                                                                               value="{{ $key }}"
+                                                                                               {{ request()->has('brands') ? in_array($key, request()->input('brands')) ? "checked":null:null }}
+                                                                                               type="checkbox">
+                                                                                        <span
+                                                                                            class="input-check__box"></span>
+                                                                                        <span class="input-check__icon">
+                                                                                            <svg
+                                                                                                width="9px" height="7px">
+                                                                                                <path
+                                                                                                    d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
+                                                                                            </svg>
+                                                                                        </span>
                                                                                     </span>
                                                                                 </span>
-                                                                            </span>
                                                                                 <span class="filter-list__title">
-                                                                                {{ $brand[0]?->brand?->name }}
-                                                                            </span>
+                                                                                    {{ $brand[0]?->brand?->name }}
+                                                                                </span>
                                                                                 <span
                                                                                     class="filter-list__counter">{{ count($brand) }}</span>
                                                                             </label>
@@ -154,7 +163,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <x-last-visited />
+                                    <x-last-visited/>
                                 </div>
                             </div>
                         </div>
@@ -164,18 +173,19 @@
                         <div class="block">
                             <div class="products-view">
 
-                                <x-car-selection />
+                                <x-car-selection/>
 
                                 <div class="products-view__options view-options view-options--offcanvas--mobile">
                                     <div class="view-options__body">
                                         <button type="button" class="view-options__filters-button filters-button">
-                                                <span class="filters-button__icon"><svg width="16" height="16">
-                                                        <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2
+                                            <span class="filters-button__icon">
+                                                <svg width="16" height="16">
+                                                    <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2
 	C10.2,10,10,9.8,10,9.5v-3C10,6.2,10.2,6,10.5,6H12.5z M7,2h9v2H7V2z M5.5,5h-2C3.2,5,3,4.8,3,4.5v-3C3,1.2,3.2,1,3.5,1h2
 	C5.8,1,6,1.2,6,1.5v3C6,4.8,5.8,5,5.5,5z M0,2h2v2H0V2z M9,9H0V7h9V9z M2,14H0v-2h2V14z M3.5,11h2C5.8,11,6,11.2,6,11.5v3
 	C6,14.8,5.8,15,5.5,15h-2C3.2,15,3,14.8,3,14.5v-3C3,11.2,3.2,11,3.5,11z"/>
-                                                    </svg>
-                                                </span>
+                                                </svg>
+                                            </span>
                                             <span class="filters-button__title">Filters</span>
                                             <span class="filters-button__counter">3</span>
                                         </button>
@@ -339,7 +349,8 @@
                                                     </div>
                                                     <x-product-card-image :product="$product" compatible/>
                                                     <div class="product-card__info">
-                                                        <div class="product-card__meta"><span
+                                                        <div class="product-card__meta">
+                                                            <span
                                                                 class="product-card__meta-title">{{ $product->producercode }}</span>
                                                         </div>
                                                         <x-product-card-name :product="$product"/>
@@ -352,7 +363,7 @@
                                                         </div>
                                                         <x-product-meta :tiger="$product->tiger"/>
                                                     </div>
-                                                    <x-product-card-right :product="$product" />
+                                                    <x-product-card-right :product="$product"/>
                                                 </div>
                                             </div>
                                         @endforeach

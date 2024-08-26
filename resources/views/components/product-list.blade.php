@@ -10,6 +10,7 @@
     'max_price',
     'filteredProperties',
     'category',
+    'filterCategories'
 ])
 
 <div class="site__body">
@@ -246,6 +247,9 @@
                                 <div class="view-options__body view-options__body--filters">
                                     <div class="view-options__label">Active Filters</div>
                                     <div class="applied-filters">
+                                        <livewire:product-filters :categories="$filterCategories" />
+
+
                                         <form method="GET" id="querySearch">
                                             <ul class="applied-filters__list">
                                                 @if(isset($min_price) && $min_price)
@@ -285,7 +289,7 @@
                                                         </a>
                                                     </li>
                                                 @endforeach
-                                                @foreach(($filteredProperties ?? []) as  $id => $prop)
+                                                {{--@foreach(($filteredProperties ?? []) as  $id => $prop)
                                                     <li class="applied-filters__item" wire:key="propfilter-{{$prop}}">
                                                         <a href="#" class="applied-filters__button applied-filters__button--filter">
                                                             {{ $properties->firstWhere("0.id", $id)[0]->name }}: {{ $prop }}
@@ -294,7 +298,7 @@
                                                             </svg>
                                                         </a>
                                                     </li>
-                                                @endforeach
+                                                @endforeach--}}
                                             </ul>
                                         </form>
                                     </div>

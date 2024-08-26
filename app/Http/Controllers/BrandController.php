@@ -17,7 +17,9 @@ class BrandController extends Controller
             });
         }
 
-        return view('products-page', compact('query'));
+        $filterCategories = $query->clone()->with('categories:id,name,slug')->get("id")->pluck('categories')->flatten()->unique('name');
+
+        return view('products-page', compact('query', 'filterCategories'));
     }
 
     public function index()
