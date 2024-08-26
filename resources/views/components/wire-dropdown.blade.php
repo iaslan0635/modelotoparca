@@ -4,7 +4,7 @@
     <button {{ $attributes->class("dropdown-toggle")  }} type="button" data-toggle="dropdown" aria-expanded="false" wire:ignore.self>
         {{ $slot }}
     </button>
-    <div wire:ignore.self {{ $menu->attributes->class("dropdown-menu") }}>
+    <ul wire:ignore.self {{ $menu->attributes->class("dropdown-menu") }}>
         {{ $menu }}
-    </div>
+    </ul>
 </div>
