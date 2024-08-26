@@ -20,7 +20,7 @@
                                         <span class="input-check form-check-input">
                                             <span class="input-check__body">
                                                 <input class="input-check__input" type="radio"
-                                                       name="type" value="company" wire:model="type"
+                                                       name="type" value="company" wire:model.live="type"
                                                        id="default-address">
                                                 <span class="input-check__box"></span>
                                                 <span class="input-check__icon"><svg width="9px"
@@ -39,7 +39,7 @@
                                         <span class="input-check form-check-input">
                                             <span class="input-check__body">
                                                 <input class="input-check__input" type="radio"
-                                                       name="type" value="individual" wire:model="type"
+                                                       name="type" value="individual" wire:model.live="type"
                                                        id="individual-address">
                                                 <span class="input-check__box"></span>
                                                 <span class="input-check__icon"><svg width="9px"

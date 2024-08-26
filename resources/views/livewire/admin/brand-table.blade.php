@@ -3,7 +3,7 @@
     @php
         $isEditing = $editingIndex === $key;
         $col = $isEditing
-         ? fn($v) => '<input class="fw-bold" wire:model="editingModel.'.$v.'" style="width: 100%;">'
+         ? fn($v) => '<input class="fw-bold" wire:model.live="editingModel.'.$v.'" style="width: 100%;">'
          : fn($v, $d = null) => '<span class="fw-bold">'.e(Arr::get($brand, $v) ?: $d).'</span>';
     @endphp
         <!--begin::Table row-->

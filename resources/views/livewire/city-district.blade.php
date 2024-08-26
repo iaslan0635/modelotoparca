@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="city">İl</label>
-            <select name="{{ $type === "default" ? "city":"city_id" }}" id="city" wire:model="city" class="form-control">
+            <select name="{{ $type === "default" ? "city":"city_id" }}" id="city" wire:model.live="city" class="form-control">
                 @foreach($cities as $city)
                     <option value="{{ $city->id }}">{{ $city->name }}</option>
                 @endforeach
@@ -12,7 +12,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="town">İlçe</label>
-            <select name="{{ $type === "default" ? "district":"district_id" }}" wire:model="town" id="town" class="form-control">
+            <select name="{{ $type === "default" ? "district":"district_id" }}" wire:model.live="town" id="town" class="form-control">
                 @foreach($towns as $town)
                     <option value="{{ $town }}">{{ $town }}</option>
                 @endforeach

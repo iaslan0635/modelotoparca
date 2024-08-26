@@ -63,7 +63,7 @@
             });
         })
 
-        document.addEventListener('livewire:load', () => {
+        document.addEventListener('livewire:init', () => {
             const component = @this;
             $("#car-connector").on("select2:select", (e) => {
                 component.chosen_car_id = e.params.data.id

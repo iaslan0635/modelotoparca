@@ -13,14 +13,14 @@
         <!--begin::Card body-->
         <div class="card-body pt-0">
             <div class="row">
-                <div class="col-5"><input type="text" class="form-control" placeholder="reno" wire:model.defer="original"/></div>
+                <div class="col-5"><input type="text" class="form-control" placeholder="reno" wire:model="original"/></div>
                 <div class="col-auto" style="display: flex; align-items: center;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="currentColor"/>
                         <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="currentColor"/>
                     </svg>
                 </div>
-                <div class="col-5"><input type="text" class="form-control" placeholder="renault" wire:model.defer="replacement"/></div>
+                <div class="col-5"><input type="text" class="form-control" placeholder="renault" wire:model="replacement"/></div>
                 <div class="col">
                     <button class="btn btn-primary" wire:click="add(0)">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading wire:target="add(0)"></span>

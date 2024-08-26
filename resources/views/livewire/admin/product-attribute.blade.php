@@ -1,4 +1,4 @@
-<tr wire:model="value" x-data x-init="
+<tr wire:model.live="value" x-data x-init="
 $($refs.select).select2().on('select2:select', () => {
 $dispatch('input', $refs.select.value)
 })
@@ -13,7 +13,7 @@ $dispatch('input', $refs.select.value)
     </td>
     <td>
         @if($isText)
-            <input type="text" wire:model="value">
+            <input type="text" wire:model.live="value">
         @else
             <select
                 class="product-attribute-selector form-select" x-ref="select" wire:ignore>
@@ -35,7 +35,3 @@ $dispatch('input', $refs.select.value)
         </button>
     </td>
 </tr>
-
-@pushonce("vendor_scripts")
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-@endpushonce

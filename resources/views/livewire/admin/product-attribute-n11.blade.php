@@ -3,9 +3,9 @@
     <td>{!! $attribute['mandatory'] ? "<b>Evet</b>":"Hayır" !!}</td>
     <td>
         @if(!array_key_exists("valueList", $attribute))
-            <input type="text" wire:model="value">
+            <input type="text" wire:model.live="value">
         @else
-            <select wire:model="value" class="form-select">
+            <select wire:model.live="value" class="form-select">
                 <option disabled>Seçiniz</option>
                 @foreach(get_item($attribute['valueList'], "value") as $value)
                     <option value="{{ get_item($value, "name") }}">{{ get_item($value, "name") }}</option>

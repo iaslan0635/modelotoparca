@@ -2,7 +2,7 @@
     <div class="search">
         <form action="{{ route("search") }}" class="search__body">
             <div class="search__shadow"></div>
-            <input name="query" class="search__input" wire:model="query" type="text"
+            <input name="query" class="search__input" wire:model.live="query" type="text"
                    placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
             <button class="search__button search__button--start" type="button" style="position: relative;">
                 <span class="search__button-icon">

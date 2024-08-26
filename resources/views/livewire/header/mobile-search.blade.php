@@ -1,6 +1,6 @@
 <div wire:ignore.self class="mobile-header__search mobile-search">
     <form class="mobile-search__body" action="{{ route("search") }}" name="query">
-        <input name="query" wire:model="query" type="text" class="mobile-search__input" placeholder="Enter keyword or part number">
+        <input name="query" wire:model.live="query" type="text" class="mobile-search__input" placeholder="Enter keyword or part number">
         <button type="button" class="mobile-search__vehicle-picker" aria-label="Select Vehicle">
             <svg width="20" height="20">
                 <path d="M6.6,2c2,0,4.8,0,6.8,0c1,0,2.9,0.8,3.6,2.2C17.7,5.7,17.9,7,18.4,7C20,7,20,8,20,8v1h-1v7.5c0,0.8-0.7,1.5-1.5,1.5h-1

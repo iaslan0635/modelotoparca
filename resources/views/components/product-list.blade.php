@@ -105,7 +105,7 @@
                                                                                                     name="property[{{ $property->id }}][]"
                                                                                                     value="{{ $value->value }}"
                                                                                                     type="checkbox"
-                                                                                                    wire:model="property.{{ $property->id }}">
+                                                                                                    wire:model.live="property.{{ $property->id }}">
                                                                                                 <span class="input-check__box"></span>
                                                                                                 <span class="input-check__icon">
                                                                                                     <svg width="9px"
@@ -127,7 +127,7 @@
                                                                                                     name="property[{{ $property->id }}][]"
                                                                                                     value="{{ $value->value }}"
                                                                                                     type="checkbox"
-                                                                                                    wire:model="property.{{ $property->id }}">
+                                                                                                    wire:model.live="property.{{ $property->id }}">
                                                                                                 <span class="input-check__box"></span>
                                                                                                 <span class="input-check__icon">
                                                                                                     <svg width="9px" height="7px">
@@ -227,7 +227,7 @@
                                     <div class="view-options__spring"></div>
                                     <div class="view-options__select">
                                         <label for="view-option-sort">Sırala:</label>
-                                        <select id="view-option-sort" class="form-control form-control-sm" wire:model="sortBy">
+                                        <select id="view-option-sort" class="form-control form-control-sm" wire:model.live="sortBy">
                                             <option value="price-asc">Yükselen Fiyat</option>
                                             <option value="price-desc">Azalan Fiyat</option>
                                             <option value="title-asc">Yükselen Başlık</option>
@@ -236,7 +236,7 @@
                                     </div>
                                     <div class="view-options__select">
                                         <label for="view-option-limit">Göster:</label>
-                                        <select id="view-option-limit" class="form-control form-control-sm" wire:model="pageSize">
+                                        <select id="view-option-limit" class="form-control form-control-sm" wire:model.live="pageSize">
                                             <option value="12">12</option>
                                             <option value="24">24</option>
                                             <option value="48">48</option>

@@ -13,7 +13,7 @@
                         </svg>
                     </span>
                     <!--end::Svg Icon-->
-                    <input wire:model="searchText" type="text" class="form-control form-control-solid w-250px ps-15" placeholder="Kullanıcı ekle"/>
+                    <input wire:model.live="searchText" type="text" class="form-control form-control-solid w-250px ps-15" placeholder="Kullanıcı ekle"/>
                     <div class="position-absolute" style="right: 1rem; top: 0; bottom: 0; display: none; align-items: center" wire:loading.flex>
                         <div class="spinner-border spinner-border-sm" role="status">
                             <span class="visually-hidden">Loading...</span>

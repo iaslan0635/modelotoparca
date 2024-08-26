@@ -222,7 +222,7 @@
                                 <div class="view-options__select">
                                     <label for="view-option-sort">Sort:</label>
                                     <select id="view-option-sort" class="form-control form-control-sm"
-                                            wire:model="sortBy">
+                                            wire:model.live="sortBy">
                                         <option>Seçiniz...</option>
                                         <option value="price-asc">Fiyat Yükselen</option>
                                         <option value="price-desc">Fiyat Azalan</option>

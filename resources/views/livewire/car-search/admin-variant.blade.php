@@ -16,25 +16,25 @@
         <!--begin::Card body-->
         <div class="card-body pt-0">
             <div class="d-flex gap-2">
-                <select class="form-select" wire:change="resetTo('maker')" wire:model="maker" name="maker" aria-label="Aracın Markası" @if(blank($makers)) disabled @endif >
+                <select class="form-select" wire:change="resetTo('maker')" wire:model.live="maker" name="maker" aria-label="Aracın Markası" @if(blank($makers)) disabled @endif >
                     <option value="none">Aracın Markası</option>
                     @foreach($makers ?? [] as $maker_)
                         <option value="{{ $maker_["id"] }}">{{ $maker_["name"] }}</option>
                     @endforeach
                 </select>
-                <select class="form-select" wire:change="resetTo('car')" wire:model="car" name="car" aria-label="Aracın Modeli" @if(blank($cars)) disabled @endif >
+                <select class="form-select" wire:change="resetTo('car')" wire:model.live="car" name="car" aria-label="Aracın Modeli" @if(blank($cars)) disabled @endif >
                     <option value="none">Aracın Modeli</option>
                     @foreach($cars ?? [] as $car_)
                         <option value="{{ $car_ }}">{{ $car_ }}</option>
                     @endforeach
                 </select>
-                <select class="form-select" wire:change="resetTo('year')" wire:model="year" name="year" aria-label="Aracın Yılı" @if(blank($years)) disabled @endif >
+                <select class="form-select" wire:change="resetTo('year')" wire:model.live="year" name="year" aria-label="Aracın Yılı" @if(blank($years)) disabled @endif >
                     <option value="none">Aracın Yılı</option>
                     @foreach($years ?? [] as $year_)
                         <option>{{ $year_ }}</option>
                     @endforeach
                 </select>
-                <select class="form-select" wire:change="resetTo('spesificCar')" wire:model="spesificCar" name="spesificCar" aria-label="Araç Seçiniz"
+                <select class="form-select" wire:change="resetTo('spesificCar')" wire:model.live="spesificCar" name="spesificCar" aria-label="Araç Seçiniz"
                         @if(blank($spesificCars)) disabled @endif >
                     <option value="none">Araç Seçiniz</option>
                     @foreach($spesificCars ?? [] as $spesificCar_)
@@ -54,7 +54,7 @@
                     @endforeach
                 </form>
             @endif
-            <button type="submit" class="btn btn-primary mt-4" wire:loading.class="btn-loading" wire:click="$emit('submitCars')">Bağla</button>
+            <button type="submit" class="btn btn-primary mt-4" wire:loading.class="btn-loading" wire:click="$dispatch('submitCars')">Bağla</button>
         </div>
         <!--end::Card body-->
     </div>
