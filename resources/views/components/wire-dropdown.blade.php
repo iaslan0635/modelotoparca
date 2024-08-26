@@ -1,10 +1,10 @@
 @props(['menu'])
 
-<div class="dropdown" wire:ignore.self>
-    <button {{ $attributes->class("dropdown-toggle")  }} type="button" data-toggle="dropdown" aria-expanded="false" wire:ignore.self>
+<div class="dropdown">
+    <button wire:key="toggle" wire:ignore.self {{ $attributes->class("dropdown-toggle")  }} type="button" data-toggle="dropdown" aria-expanded="false">
         {{ $slot }}
     </button>
-    <ul wire:ignore.self {{ $menu->attributes->class("dropdown-menu") }}>
+    <ul wire:key="menu" {{ $menu->attributes->class("dropdown-menu") }}>
         {{ $menu }}
     </ul>
 </div>
