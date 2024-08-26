@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Jobs\Import\ExcelImport;
 use App\Models\TigerProduct;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,6 +19,6 @@ class RunSingleBotJob implements ShouldQueue
 
     public function handle(): void
     {
-        ExcelImport::runBot($this->product);
+        (new BotJob($this->product))->handle();
     }
 }
