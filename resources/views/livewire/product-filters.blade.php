@@ -1,5 +1,5 @@
 <div class="d-flex flex-wrap position-relative">
-    <div class="spinner-grow text-primary" role="status" style="position: absolute; top:-30px; z-index: 1">
+    <div class="spinner-grow text-primary" role="status" style="position: absolute; top:-30px; z-index: 1" wire:loading.delay.longer>
         <span class="sr-only">Yükleniyor...</span>
     </div>
 
