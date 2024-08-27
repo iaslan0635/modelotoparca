@@ -71,13 +71,8 @@
                     <div class="filter__container">
                         <div class="filter-list">
                             <div class="filter-list__list">
-                                @foreach(
-                                    collect($brands)
-                                        ->map(fn ($p) => [$p[0]?->brand, count($p)])
-                                        ->filter(fn ($pair) => $pair[0])
-                                        ->sortBy(fn ($pair) => $pair[0]?->name)
-                                as $key => [$brand, $count])
-                                    <label class="filter-list__item" wire:key="brand-top-{{$key}}">
+                                @foreach($brands as ['brand' => $brand, 'count' => $count])
+                                    <label class="filter-list__item" wire:key="{{$brand->id}}">
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
                                                 <input class="input-check__input" name="brands[]" value="{{ $key }}" wire:model.live="brandsArray" type="checkbox"

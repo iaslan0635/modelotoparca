@@ -90,7 +90,13 @@ class CategoryPage extends Component
 
         $query->whereRelation('categories', fn(Builder $q) => $q->whereIn('id', $this->categoryTree['childs']));
 
-        $brands = $query->get()->groupBy('brand_id');
+        $brands = $query->get()->groupBy('brand_id')
+            ->map(fn($products) => [
+                'brand' => $products->first()->brand,
+                'count' => $products->count(),
+            ])
+            ->filter(fn($item) => $item['brand'] && $item['count'] > 0)
+            ->sortBy('brand.name');
 
         if (filled($this->brandsArray)) {
             $query->whereIn('brand_id', $this->brandsArray);
@@ -126,12 +132,12 @@ class CategoryPage extends Component
     public function onFiltered($filters)
     {
         [
-            "category" => $category,
+            "categoryId" => $categoryId,
             "brandIds" => $this->brandsArray,
             "propertyValues" => $this->property,
         ] = $filters;
 
-        if ($category)
-            $this->category = Category::find($category);
+        if ($categoryId)
+            $this->category = Category::find($categoryId);
     }
 }

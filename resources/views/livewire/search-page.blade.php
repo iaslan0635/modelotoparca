@@ -240,61 +240,7 @@
                                     <div class="view-options__label">Active Filters</div>
                                 @endif
                                 <div class="applied-filters">
-                                    <form method="GET" id="querySearch">
-                                        <input type="hidden" name="query" value="{{ request()->input('query') }}">
-                                        <ul class="applied-filters__list">
-                                            <li class="applied-filters__item">
-                                                <a href="#"
-                                                   class="applied-filters__button applied-filters__button--filter">
-                                                    Aranan Kelime: {{ request()->input('query') }}
-                                                </a>
-                                            </li>
-                                            @if(request()->has('min_price'))
-                                                <input type="hidden" name="min_price" id="min-price"
-                                                       value="{{ request()->input('min_price') }}">
-                                                <li class="applied-filters__item">
-                                                    <a href="#"
-                                                       class="applied-filters__button applied-filters__button--filter">
-                                                        En düşük fiyat: {{ request()->input('min_price') }}
-                                                        <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
-                                                            <path
-                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                        </svg>
-                                                    </a>
-                                                </li>
-                                            @endif
-                                            @if(request()->has('max_price'))
-                                                <input type="hidden" name="max_price" id="max-price"
-                                                       value="{{ request()->input('max_price') }}">
-                                                <li class="applied-filters__item">
-                                                    <a href="#"
-                                                       class="applied-filters__button applied-filters__button--filter">
-                                                        En yüksek fiyat: {{ request()->input('max_price') }}
-                                                        <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
-                                                            <path
-                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                        </svg>
-                                                    </a>
-                                                </li>
-                                            @endif
-                                            @foreach(request()->input('brands', []) as $brand)
-                                                <li class="applied-filters__item">
-                                                    <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand]["brand"]->id }}"
-                                                           value="{{ $brands[$brand]["brand"]->id }}">
-                                                    <a href="#"
-                                                       class="applied-filters__button applied-filters__button--filter">
-                                                        Marka: {{ $brands[$brand]["brand"]->name }}
-                                                        <svg
-                                                            onclick="$(`#brand-{{ $brands[$brand]["brand"]->id }}`).remove() && $('#querySearch').submit()"
-                                                            width="9" height="9">
-                                                            <path
-                                                                d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                        </svg>
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </form>
+                                    <livewire:product-filters :$categories :$brands />
                                 </div>
                             </div>
                         </div>

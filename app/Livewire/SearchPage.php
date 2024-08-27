@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Packages\Search\Search;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -111,5 +113,17 @@ class SearchPage extends Component
     {
         $this->category = null;
         $this->resetPage();
+    }
+
+    #[On('filtered')]
+    public function onFiltered($filters)
+    {
+        [
+            "categoryId" => $categoryId,
+            "brandIds" => $this->brandFilters,
+        ] = $filters;
+
+        if ($categoryId)
+            $this->category = $categoryId;
     }
 }

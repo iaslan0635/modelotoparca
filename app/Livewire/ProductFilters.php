@@ -2,23 +2,39 @@
 
 namespace App\Livewire;
 
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use App\Models\Category;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class ProductFilters extends Component
 {
-    public ?EloquentCollection $categories;
-    public Collection $brands;
-    public Collection $properties;
+    /** @var Collection */
+    public $categories;
+    /** @var Collection */
+    public $brands;
+    /** @var Collection */
+    public $properties;
 
     public ?int $selectedCategoryId = null;
     public Collection $selectedBrands;
     public Collection $propertyValues;
 
-    public function mount(EloquentCollection $categories, $brands, $properties)
+    public function mount($categories = null, $brands = null, $properties = null)
     {
-        $this->categories = $categories;
+        $this->categories = collect($categories)
+            ->map(function ($item) {
+                /** @var Category $category */ // Elasticsearch returns nested array
+                $category = $item instanceof Category ? $item : $item['category'];
+                $count = $item instanceof Category ? $item->products_count : $item['count'];
+
+                return [
+                    'id' => $category->id,
+                    'imageUrl' => $category->imageUrl(),
+                    'name' => $category->name,
+                    'count' => $count,
+                ];
+            });
+
         $this->brands = collect($brands);
         $this->properties = collect($properties);
 
@@ -29,7 +45,7 @@ class ProductFilters extends Component
     public function updated()
     {
         $filters = [
-            "category" => $this->selectedCategoryId,
+            "categoryId" => $this->selectedCategoryId,
             "brandIds" => $this->selectedBrands->keys()->toArray(),
             "propertyValues" => $this->propertyValues->toArray(),
         ];
