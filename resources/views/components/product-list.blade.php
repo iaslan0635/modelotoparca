@@ -247,7 +247,7 @@
                                 <div class="view-options__body view-options__body--filters">
                                     <div class="view-options__label">Active Filters</div>
                                     <div class="applied-filters">
-                                        <livewire:product-filters :categories="$filterCategories" :brands="$brands" />
+                                        <livewire:product-filters :categories="$filterCategories" :$brands :$properties />
                                         <form method="GET" id="querySearch">
                                             <ul class="applied-filters__list">
                                                 @if(isset($min_price) && $min_price)
