@@ -1,9 +1,10 @@
 <x-product-list :products="$products" :filtered-properties="$property" :properties="$allProperties" :category="$category" :brands-array="$brandsArray" :brands="$brands"
-:filter-categories="$category->children->unique('name')->sortBy('name')">
+                :filter-categories="$category->children->unique('name')->sortBy('name')">
     <x-slot:breadcrumb>
         <x-breadcrumb :parts="[
             ['name' => 'Kategoriler', 'link' => route('category.index')],
-            ['name' => $category->name]
+            ['name' => $category->name],
+            ['name' => 'f: ' . $filters]
         ]"/>
     </x-slot:breadcrumb>
     <x-slot:extraFilters>
@@ -81,7 +82,8 @@
                                             <span class="input-check__body">
                                                 <input class="input-check__input" name="brands[]" value="{{ $key }}" wire:model.live="brandsArray" type="checkbox"
                                                     {{ request()->has('brands') ? in_array($key, request()->input('brands')) ? "checked":null:null }}>
-                                                <span class="input-check__box"></span><span class="input-check__icon">
+                                                <span class="input-check__box"></span>
+                                                <span class="input-check__icon">
                                                     <svg width="9px" height="7px">
                                                         <path d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
                                                     </svg>

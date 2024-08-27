@@ -1,12 +1,16 @@
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap position-relative">
+    <div class="spinner-grow text-primary" role="status" style="position: absolute; top:-30px; z-index: 1">
+        <span class="sr-only">Yükleniyor...</span>
+    </div>
+
     @if($categories)
         <x-wire-dropdown class="btn btn-secondary my-1 mx-2 my-1 mx-2">
             <span>
-                {{ !$selectedCategory ? 'Kategoriler'
-                    : "Kategori: " . ($categories->find($selectedCategory)?->name ?? '?') }}
+                {{ !$selectedCategoryId ? 'Kategoriler'
+                    : "Kategori: " . ($categories->find($selectedCategoryId)?->name ?? '?') }}
             </span>
-            @if($selectedCategory)
-                <button class="btn btn-danger btn-outline" wire:click="$set('selectedCategory', null)">X</button>
+            @if($selectedCategoryId)
+                <button class="btn btn-danger btn-outline" wire:click="$set('selectedCategoryId', null)">X</button>
             @endif
             <x-slot:menu class="filter-dropdown">
                 <div class="categories">
@@ -16,8 +20,8 @@
                                 @foreach($categories as $category)
                                     <li class="filter-categories__item filter-categories__item--child" wire:key="{{$category->id}}">
                                         <img src="{{ $category->imageUrl() }}" class="category-icon-image">
-                                        <a href="#" wire:click.prevent="$set('selectedCategory', {{ $category->id }})"
-                                           class="{{$selectedCategory == $category->id ? 'fw-bold' : ''}}">
+                                        <a href="#" wire:click.prevent="$set('selectedCategoryId', {{ $category->id }})"
+                                           class="{{$selectedCategoryId == $category->id ? 'fw-bold' : ''}}">
                                             {{ $category->name }}
                                         </a>
                                         <div class="filter-categories__counter">{{ $category->products_count }}</div>
@@ -34,7 +38,7 @@
         <x-wire-dropdown class="btn btn-secondary my-1 mx-2">
             <span>
                 {{ $selectedBrands->isEmpty() ? 'Markalar'
-                    : "Markalar: " . $selectedBrands->keys()->join(', ') }}
+                    : "Markalar: " . $selectedBrands->join(', ') }}
             </span>
             @if($selectedBrands->isNotEmpty())
                 <button class="btn btn-danger btn-outline" wire:click="resetSelectedBrands">X</button>
@@ -49,10 +53,13 @@
                                     ->filter(fn ($pair) => $pair[0])
                                     ->sortBy(fn ($pair) => $pair[0]?->name)
                             as $key => [$brand, $count])
-                                <label class="filter-list__item" wire:key="brand-top-{{$key}}">
+                                <label class="filter-list__item" wire:key="{{$key}}">
                                     <span class="input-check filter-list__input">
                                         <span class="input-check__body">
-                                            <input class="input-check__input" type="checkbox" wire:model.live="selectedBrands.{{ $key }}">
+                                            <input class="input-check__input" type="checkbox"
+                                                   @if($selectedBrands->has($brand->id)) checked wire:key="checked" @else wire:key="unchecked" @endif
+                                                   wire:change="toggleBrand({{ $brand->id }}, '{{ $brand->name }}')"
+                                            >
                                             <span class="input-check__box"></span>
                                             <span class="input-check__icon">
                                                 <svg width="9px" height="7px">
@@ -62,8 +69,8 @@
                                         </span>
                                     </span>
                                     <span class="filter-list__title">
-                                        {{ $brand?->name }}
-                                        <img src="{{ $brand?->imageUrl() }}" class="category-icon-image">
+                                        {{ $brand->name }}
+                                        <img src="{{ $brand->imageUrl() }}" class="category-icon-image">
                                     </span>
                                     <span class="filter-list__counter">{{ $count }}</span>
                                 </label>
@@ -96,8 +103,8 @@
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
                                                 <input class="input-check__input" type="checkbox"
-                                                       @if ($this->isPropertyValueSelected($property->id, $value->value)) checked @endif
-                                                       wire:click="togglePropertyValue({{ $property->id }}, '{{ $value->value }}')"
+                                                       @if ($this->isPropertyValueSelected($property->id, $value->value)) checked wire:key="checked" @else wire:key="unchecked" @endif
+                                                       wire:change="togglePropertyValue({{ $property->id }}, '{{ $value->value }}')"
                                                 >
                                                 <span class="input-check__box"></span>
                                                 <span class="input-check__icon">
@@ -114,8 +121,8 @@
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
                                                 <input class="input-check__input" type="checkbox"
-                                                       @if ($this->isPropertyValueSelected($property->id, $value->value)) checked @endif
-                                                       wire:click="toggleSolePropertyValue({{ $property->id }}, '{{ $value->value }}')"
+                                                       @if ($this->isPropertyValueSelected($property->id, $value->value)) checked wire:key="checked" @else wire:key="unchecked" @endif
+                                                       wire:change="toggleSolePropertyValue({{ $property->id }}, '{{ $value->value }}')"
                                                 >
                                                 <span class="input-check__box"></span>
                                                 <span class="input-check__icon">

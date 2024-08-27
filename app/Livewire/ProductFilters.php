@@ -12,7 +12,7 @@ class ProductFilters extends Component
     public Collection $brands;
     public Collection $properties;
 
-    public ?int $selectedCategory = null;
+    public ?int $selectedCategoryId = null;
     public Collection $selectedBrands;
     public Collection $propertyValues;
 
@@ -24,6 +24,17 @@ class ProductFilters extends Component
 
         $this->selectedBrands = collect();
         $this->propertyValues = collect();
+    }
+
+    public function updated()
+    {
+        $filters = [
+            "category" => $this->selectedCategoryId,
+            "brandIds" => $this->selectedBrands->keys()->toArray(),
+            "propertyValues" => $this->propertyValues->toArray(),
+        ];
+
+        $this->dispatch('filtered', filters: $filters);
     }
 
     public function render()
@@ -83,5 +94,15 @@ class ProductFilters extends Component
     public function getSelectedPropertyValues($propertyId)
     {
         return collect($this->propertyValues->get($propertyId));
+    }
+
+    public function toggleBrand($brandId, $brandName)
+    {
+        if ($this->selectedBrands->has($brandId)) {
+            $this->selectedBrands->forget($brandId);
+            return;
+        }
+
+        $this->selectedBrands[$brandId] = $brandName;
     }
 }

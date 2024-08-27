@@ -11,6 +11,7 @@ use App\Models\PropertyValue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CategoryPage extends Component
@@ -32,6 +33,8 @@ class CategoryPage extends Component
     public $sortBy;
 
     public array $brandsArray = [];
+
+    public $filters;
 
     protected $queryString = [
         'min_price' => ['except' => ''],
@@ -117,5 +120,17 @@ class CategoryPage extends Component
     public function deselectProperty($id)
     {
         unset($this->property[$id]);
+    }
+
+    #[On('filtered')]
+    public function onFiltered($filters)
+    {
+        [
+            "category" => $category,
+            "brandIds" => $this->brandsArray,
+            "propertyValues" => $this->property,
+        ] = $filters;
+
+        $this->category = Category::find($category);
     }
 }
