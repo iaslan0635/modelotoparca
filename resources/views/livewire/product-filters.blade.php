@@ -91,14 +91,13 @@
                     <div class="filter-list">
                         <div class="filter-list__list">
                             @foreach($values as $value)
-                                @php $id = "pv-$property->id-$value->id" @endphp
                                 @if($property->search_type === "multiple")
-                                    <label class="filter-list__item" wire:key="{{ $id }}" for="{{ $id }}">
+                                    <label class="filter-list__item" wire:key="{{$value->id}}">
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
-                                                <input class="input-check__input" type="checkbox" id="{{ $id }}"
+                                                <input class="input-check__input" type="checkbox"
                                                        @if ($this->isPropertyValueSelected($property->id, $value->value)) checked @endif
-{{--                                                       wire:click="togglePropertyValue({{ $property->id }}, '{{ $value->value }}')"--}}
+                                                       wire:click="togglePropertyValue({{ $property->id }}, '{{ $value->value }}')"
                                                 >
                                                 <span class="input-check__box"></span>
                                                 <span class="input-check__icon">
@@ -111,12 +110,13 @@
                                         <span class="filter-list__title">{{ $value->value }}</span>
                                     </label>
                                 @elseif($property->search_type === "none")
-                                    <label class="filter-list__item" wire:key="{{$value->id}}" for="{{ $id }}">
+                                    <label class="filter-list__item" wire:key="{{$value->id}}">
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
-                                                <input class="input-check__input" type="checkbox" id="{{ $id }}"
+                                                <input class="input-check__input" type="checkbox"
                                                        @if ($this->isPropertyValueSelected($property->id, $value->value)) checked @endif
-                                                       wire:click="toggleSolePropertyValue({{ $property->id }}, '{{ $value->value }}')">
+                                                       wire:click="toggleSolePropertyValue({{ $property->id }}, '{{ $value->value }}')"
+                                                >
                                                 <span class="input-check__box"></span>
                                                 <span class="input-check__icon">
                                                     <svg width="9px" height="7px">
