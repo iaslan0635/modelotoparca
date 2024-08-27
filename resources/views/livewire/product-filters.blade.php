@@ -4,10 +4,10 @@
     </div>
 
     @if($categories)
-        <x-wire-dropdown class="btn btn-secondary my-1 mx-2 my-1 mx-2">
+        <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
             <span>
                 {{ !$selectedCategoryId ? 'Kategoriler'
-                    : "Kategori: " . ($categories->find($selectedCategoryId)?->name ?? '?') }}
+                    : "Kategori: " . ($categories->firstWhere("id", $selectedCategoryId)["name"] ?? '?') }}
             </span>
             @if($selectedCategoryId)
                 <button class="btn btn-danger btn-outline" wire:click="$set('selectedCategoryId', null)">X</button>
@@ -35,7 +35,7 @@
         </x-wire-dropdown>
     @endif
     @if($brands)
-        <x-wire-dropdown class="btn btn-secondary my-1 mx-2">
+        <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
             <span>
                 {{ $selectedBrands->isEmpty() ? 'Markalar'
                     : "Markalar: " . $selectedBrands->join(', ') }}
@@ -82,7 +82,7 @@
             @continue
         @endif
 
-        <x-wire-dropdown class="btn btn-secondary my-1 mx-2" wire:key="{{ $property->id }}">
+        <x-wire-dropdown class="btn btn-secondary my-1 ml-3" wire:key="{{ $property->id }}">
             @php $selectedValues = $this->getSelectedPropertyValues($property->id) @endphp
             <span>{{ $property->name }}{{ $selectedValues->isEmpty() ? '' : ": " . $selectedValues->join(", ") }}</span>
             @if($selectedValues->isNotEmpty())

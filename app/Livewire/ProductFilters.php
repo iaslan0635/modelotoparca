@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
 class ProductFilters extends Component
@@ -15,11 +16,22 @@ class ProductFilters extends Component
     /** @var Collection */
     public $properties;
 
-    public ?int $selectedCategoryId = null;
-    public Collection $selectedBrands;
-    public Collection $propertyValues;
+    /** @var ?int */
+    public $selectedCategoryId = null;
+    /** @var Collection */
+    public $selectedBrands;
+    /** @var Collection */
+    public $propertyValues;
 
-    public function mount($categories = null, $brands = null, $properties = null)
+    public function mount(
+        $categories = null,
+        $brands = null,
+        $properties = null,
+
+        $selectedCategoryId = null,
+        $selectedBrands = null,
+        $propertyValues = null
+    )
     {
         $this->categories = collect($categories)
             ->map(function ($item) {
@@ -38,8 +50,19 @@ class ProductFilters extends Component
         $this->brands = collect($brands);
         $this->properties = collect($properties);
 
-        $this->selectedBrands = collect();
-        $this->propertyValues = collect();
+        $this->selectedCategoryId = $selectedCategoryId instanceof Category ? $selectedCategoryId->id : $selectedCategoryId;
+        $this->selectedBrands = collect($selectedBrands);
+        $this->propertyValues = collect($propertyValues);
+
+        if ($this->categories->where('id', $selectedCategoryId)->isEmpty()) {
+            $category = $selectedCategoryId instanceof Category ? $selectedCategoryId : Category::find($selectedCategoryId);
+            $this->categories->push([
+                'id' => $category->id,
+                'imageUrl' => $category->imageUrl(),
+                'name' => $category->name,
+                'count' => 0,
+            ]);
+        }
     }
 
     public function updated()

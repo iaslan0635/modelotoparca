@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Models\Category;
 use App\Models\Product;
 use App\Packages\Search\Search;
 use Livewire\Attributes\On;
@@ -59,10 +58,11 @@ class SearchPage extends Component
 
     public function search()
     {
+        $categoryId = $this->category && is_numeric($this->category) ? (int)$this->category : null;
         $search = new Search(
             term: $this->query,
             sortBy: $this->sortBy,
-            categoryId: $this->category,
+            categoryId: $categoryId,
             brandIds: $this->brandFilters,
             minPrice: request('min_price'),
             maxPrice: request('max_price'),
@@ -119,11 +119,8 @@ class SearchPage extends Component
     public function onFiltered($filters)
     {
         [
-            "categoryId" => $categoryId,
+            "categoryId" => $this->category,
             "brandIds" => $this->brandFilters,
         ] = $filters;
-
-        if ($categoryId)
-            $this->category = $categoryId;
     }
 }

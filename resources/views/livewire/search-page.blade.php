@@ -240,7 +240,11 @@
                                     <div class="view-options__label">Active Filters</div>
                                 @endif
                                 <div class="applied-filters">
-                                    <livewire:product-filters :$categories :$brands />
+                                    <livewire:product-filters
+                                        :$categories :$brands
+                                        :selectedCategoryId="$category"
+                                        :selectedBrands="$brandFilters"
+                                    />
                                 </div>
                             </div>
                         </div>
