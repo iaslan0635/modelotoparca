@@ -45,16 +45,17 @@ class ProductFilters extends Component
     public function resetSelectedBrands()
     {
         $this->selectedBrands = collect();
+        $this->updated();
     }
 
     public function toggleSolePropertyValue($propertyId, $value)
     {
         if ($this->propertyValues->has($propertyId) && $this->propertyValues[$propertyId] === $value) {
             $this->propertyValues->forget($propertyId);
-            return;
+        } else {
+            $this->propertyValues[$propertyId] = $value;
         }
-
-        $this->propertyValues[$propertyId] = $value;
+        $this->updated();
     }
 
     public function togglePropertyValue($propertyId, $value)
@@ -65,6 +66,7 @@ class ProductFilters extends Component
             $this->propertyValues[$propertyId]->contains($value)
         ) {
             $this->propertyValues[$propertyId] = $this->propertyValues[$propertyId]->filter(fn($v) => $v !== $value);
+            $this->updated();
             return;
         }
 
@@ -73,11 +75,13 @@ class ProductFilters extends Component
         }
 
         $this->propertyValues[$propertyId]->push($value);
+        $this->updated();
     }
 
     public function resetPropertyValues($propertyId)
     {
         $this->propertyValues->forget($propertyId);
+        $this->updated();
     }
 
     public function isPropertyValueSelected($propertyId, $value)
@@ -100,9 +104,9 @@ class ProductFilters extends Component
     {
         if ($this->selectedBrands->has($brandId)) {
             $this->selectedBrands->forget($brandId);
-            return;
+        } else {
+            $this->selectedBrands[$brandId] = $brandName;
         }
-
-        $this->selectedBrands[$brandId] = $brandName;
+        $this->updated();
     }
 }

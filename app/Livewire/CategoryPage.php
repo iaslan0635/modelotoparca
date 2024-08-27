@@ -88,7 +88,7 @@ class CategoryPage extends Component
             });
         }
 
-        $query->whereRelation('categories', fn (Builder $q) => $q->whereIn('id', $this->categoryTree['childs']));
+        $query->whereRelation('categories', fn(Builder $q) => $q->whereIn('id', $this->categoryTree['childs']));
 
         $brands = $query->get()->groupBy('brand_id');
 
@@ -111,8 +111,8 @@ class CategoryPage extends Component
 
         $products = $query->paginate($this->pageSize);
 
-        $propertyValues = PropertyValue::whereHas('product', fn (Builder $q) => $q->whereIn('id', $productIds))->with('property')->get();
-        $allProperties = $propertyValues->map(fn (PropertyValue $pv) => $pv->property)->unique('id')->map(fn (Property $p) => [$p, $propertyValues->where('property.id', $p->id)]);
+        $propertyValues = PropertyValue::whereHas('product', fn(Builder $q) => $q->whereIn('id', $productIds))->with('property')->get();
+        $allProperties = $propertyValues->map(fn(PropertyValue $pv) => $pv->property)->unique('id')->map(fn(Property $p) => [$p, $propertyValues->where('property.id', $p->id)]);
 
         return view('livewire.category-page', compact('category', 'products', 'brands', 'allProperties'));
     }
@@ -131,6 +131,7 @@ class CategoryPage extends Component
             "propertyValues" => $this->property,
         ] = $filters;
 
-        $this->category = Category::find($category);
+        if ($category)
+            $this->category = Category::find($category);
     }
 }
