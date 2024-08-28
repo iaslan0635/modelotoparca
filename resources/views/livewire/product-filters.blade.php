@@ -81,7 +81,7 @@
                                         <span class="input-check__body">
                                             <input class="input-check__input" type="checkbox"
                                                    @if($selectedBrands->has($brand->id)) checked wire:key="checked" @else wire:key="unchecked" @endif
-                                                   wire:change="toggleBrand({{ $brand->id }}, '{{ $brand->name }}')"
+                                                   wire:change="toggleBrand({{ $brand->id }}, @js($brand->name))"
                                             >
                                             <span class="input-check__box"></span>
                                             <span class="input-check__icon">
@@ -128,7 +128,7 @@
                                                 <input class="input-check__input" type="checkbox"
                                                        @if ($this->isPropertyValueSelected($property->id, $value->value)) checked wire:key="checked" @else wire:key="unchecked"
                                                        @endif
-                                                       wire:change="togglePropertyValue({{ $property->id }}, '{{ $value->value }}')"
+                                                       wire:change="togglePropertyValue({{ $property->id }}, @js($value->value))"
                                                 >
                                                 <span class="input-check__box"></span>
                                                 <span class="input-check__icon">
@@ -147,7 +147,7 @@
                                                 <input class="input-check__input" type="checkbox"
                                                        @if ($this->isPropertyValueSelected($property->id, $value->value)) checked wire:key="checked" @else wire:key="unchecked"
                                                        @endif
-                                                       wire:change="toggleSolePropertyValue({{ $property->id }}, '{{ $value->value }}')"
+                                                       wire:change="toggleSolePropertyValue({{ $property->id }}, @js($value->value))"
                                                 >
                                                 <span class="input-check__box"></span>
                                                 <span class="input-check__icon">
