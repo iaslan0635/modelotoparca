@@ -45,8 +45,8 @@ class SearchPage extends Component
     #[Url(as: "brands")]
     public ?array $brandFilters = null;
 
-    public $minPrice;
-    public $maxPrice;
+    public $min_price;
+    public $max_price;
 
     public function render()
     {
@@ -63,8 +63,8 @@ class SearchPage extends Component
             sortBy: $this->sortBy,
             categoryId: $categoryId,
             brandIds: $this->brandFilters,
-            minPrice: $this->minPrice,
-            maxPrice: $this->maxPrice,
+            minPrice: $this->min_price,
+            maxPrice: $this->max_price,
         );
         $search->saveSearch();
 
@@ -108,8 +108,8 @@ class SearchPage extends Component
         [
             "categoryId" => $this->category,
             "brandIds" => $this->brandFilters,
-            "priceMin" => $this->minPrice,
-            "priceMax" => $this->maxPrice,
+            "priceMin" => $this->min_price,
+            "priceMax" => $this->max_price,
         ] = $filters;
     }
 }

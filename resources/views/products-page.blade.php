@@ -1,6 +1,6 @@
 @extends("layouts.master")
 @section("content")
-    <x-product-list :products="$query->clone()->paginate(10)" :filter-categories="$filterCategories">
+    <x-product-list :products="$query->clone()->paginate(10)" :filter-categories="$filterCategories" :min_price="$min_price" :max_price="$max_price">
         <x-slot:extraFilters>
             <div class="widget-filters__item">
                 <div class="filter filter--opened" data-collapse-item>

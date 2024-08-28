@@ -29,10 +29,10 @@ class CategoryPage extends Component
     #[Url(except: 12)]
     public $pageSize = 12;
 
-    #[Url]
+    #[Url(except: '')]
     public $min_price;
 
-    #[Url]
+    #[Url(except: '')]
     public $max_price;
 
     #[Url]

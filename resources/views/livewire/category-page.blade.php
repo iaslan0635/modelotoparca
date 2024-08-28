@@ -1,4 +1,4 @@
-<x-product-list :products="$products" :filtered-properties="$property" :properties="$allProperties" :category="$category" :brands-array="$brandsArray" :brands="$brands"
+<x-product-list :products="$products" :filtered-properties="$property" :properties="$allProperties" :category="$category" :brands-array="$brandsArray" :brands="$brands" :min_price="$min_price" :max_price="$max_price"
                 :filter-categories="$category->children->unique('name')->sortBy('name')">
     <x-slot:breadcrumb>
         <x-breadcrumb :parts="[

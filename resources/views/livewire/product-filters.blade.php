@@ -174,6 +174,7 @@
     $(() => {
         // Dropdown close on outside click
         $($wire.$el).find('.dropdown').on('hide.bs.dropdown', function (event) {
+            if (!event || !event.clickEvent) return;
             const dropdown = $(event.target);
 
             // check if the dropdown is being closed because of a click outside
