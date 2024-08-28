@@ -5,19 +5,20 @@ namespace App\Livewire;
 use App\Models\Category;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
 class ProductFilters extends Component
 {
     // Options
     /** @var Collection */
-    public $categories;
+    #[Reactive] public $categories;
     /** @var Collection */
-    public $brands;
+    #[Reactive] public $brands;
     /** @var Collection */
-    public $properties;
-    public $priceRangeMin = 0;
-    public $priceRangeMax = 10000;
+    #[Reactive] public $properties;
+    #[Reactive] public $priceRangeMin = 0;
+    #[Reactive] public $priceRangeMax = 10000;
 
     // Filtered values
     /** @var ?int */
