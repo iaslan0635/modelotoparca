@@ -14,8 +14,6 @@ class SyncCategories extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
-
     public function render()
     {
         $n11 = new N11();

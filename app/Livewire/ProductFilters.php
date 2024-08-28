@@ -90,6 +90,8 @@ class ProductFilters extends Component
             "categoryId" => $this->selectedCategoryId,
             "brandIds" => $this->selectedBrands->keys()->toArray(),
             "propertyValues" => $this->propertyValues->toArray(),
+            "priceMin" => $this->priceMin,
+            "priceMax" => $this->priceMax,
         ];
 
         $this->dispatch('filtered', filters: $filters);

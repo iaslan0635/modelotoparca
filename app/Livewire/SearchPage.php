@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Product;
 use App\Packages\Search\Search;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -29,8 +30,10 @@ class SearchPage extends Component
         'similars.code_regex',
     ];
 
+    #[Url]
     public $query;
 
+    #[Url]
     public $category;
 
     public $term = 'product';
@@ -39,15 +42,11 @@ class SearchPage extends Component
 
     public $sortBy;
 
+    #[Url(as: "brands")]
     public ?array $brandFilters = null;
 
-    protected $paginationTheme = 'bootstrap';
-
-    protected $queryString = [
-        'query',
-        'category',
-        'brandFilters' => ['as' => 'brands'],
-    ];
+    public $minPrice;
+    public $maxPrice;
 
     public function render()
     {
@@ -64,8 +63,8 @@ class SearchPage extends Component
             sortBy: $this->sortBy,
             categoryId: $categoryId,
             brandIds: $this->brandFilters,
-            minPrice: request('min_price'),
-            maxPrice: request('max_price'),
+            minPrice: $this->minPrice,
+            maxPrice: $this->maxPrice,
         );
         $search->saveSearch();
 
@@ -92,7 +91,7 @@ class SearchPage extends Component
         );
     }
 
-    public function isCodeHighlight(array $a)
+    private function isCodeHighlight(array $a)
     {
         foreach (self::CODE_FIELDS as $codeField) {
             if (array_key_exists($codeField, $a)) {
@@ -103,24 +102,14 @@ class SearchPage extends Component
         return false;
     }
 
-    public function changeCategory($id)
-    {
-        $this->category = $id;
-        $this->resetPage();
-    }
-
-    public function cleanCategory()
-    {
-        $this->category = null;
-        $this->resetPage();
-    }
-
     #[On('filtered')]
     public function onFiltered($filters)
     {
         [
             "categoryId" => $this->category,
             "brandIds" => $this->brandFilters,
+            "priceMin" => $this->minPrice,
+            "priceMax" => $this->maxPrice,
         ] = $filters;
     }
 }

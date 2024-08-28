@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class CategoryPage extends Component
@@ -22,28 +23,25 @@ class CategoryPage extends Component
 
     public $categoryTree;
 
+    #[Url]
     public $property = [];
 
+    #[Url(except: 12)]
     public $pageSize = 12;
 
+    #[Url]
     public $min_price;
 
+    #[Url]
     public $max_price;
 
+    #[Url]
     public $sortBy;
 
+    #[Url(as: 'brands')]
     public array $brandsArray = [];
 
     public $filters;
-
-    protected $queryString = [
-        'min_price' => ['except' => ''],
-        'max_price' => ['except' => ''],
-        'sortBy' => ['except' => ''],
-        'pageSize' => ['except' => '12'],
-        'property' => ['except' => ''],
-        'brandsArray' => ['except' => null, 'as' => 'brands'],
-    ];
 
     public function mount(Category $category)
     {
@@ -135,6 +133,8 @@ class CategoryPage extends Component
             "categoryId" => $categoryId,
             "brandIds" => $this->brandsArray,
             "propertyValues" => $this->property,
+            "priceMin" => $this->min_price,
+            "priceMax" => $this->max_price,
         ] = $filters;
 
         if ($categoryId)

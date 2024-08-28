@@ -12,8 +12,6 @@ class SyncBrands extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
-
     public array $trendyolBrands;
 
     public function mount()
