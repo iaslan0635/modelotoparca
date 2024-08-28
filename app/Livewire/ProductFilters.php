@@ -54,14 +54,17 @@ class ProductFilters extends Component
         $this->selectedBrands = collect($selectedBrands);
         $this->propertyValues = collect($propertyValues);
 
+        // Add selected category to categories list if it's not there
         if ($this->categories->where('id', $selectedCategoryId)->isEmpty()) {
             $category = $selectedCategoryId instanceof Category ? $selectedCategoryId : Category::find($selectedCategoryId);
-            $this->categories->push([
-                'id' => $category->id,
-                'imageUrl' => $category->imageUrl(),
-                'name' => $category->name,
-                'count' => 0,
-            ]);
+            if ($category) {
+                $this->categories->push([
+                    'id' => $category->id,
+                    'imageUrl' => $category->imageUrl(),
+                    'name' => $category->name,
+                    'count' => 0,
+                ]);
+            }
         }
     }
 
