@@ -32,54 +32,7 @@
                                     </svg>
                                 </button>
                             </div>
-                            <div class="sidebar__content">
-                                <form method="GET">
-                                    <div class="widget widget-filters widget-filters--offcanvas--mobile"
-                                         data-collapse
-                                         data-collapse-opened-class="filter--opened">
-                                        <div class="widget__header widget-filters__header">
-                                            <h4>Filtrele</h4>
-                                        </div>
-                                        <div class="widget-filters__list">
-                                            {{$extraFilters ?? ''}}
-                                            <div class="widget-filters__item">
-                                                <div class="filter filter--opened" data-collapse-item>
-                                                    <button type="button" class="filter__title" data-collapse-trigger>
-                                                        Fiyat
-                                                        <span class="filter__arrow">
-                                                            <svg width="12px" height="7px">
-                                                                <path
-                                                                    d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                            </svg>
-                                                        </span>
-                                                    </button>
-                                                    <div class="filter__body" data-collapse-content>
-                                                         <div class="filter__container">
-                                                            <div class="filter-price" data-min="0" data-max="99999" data-from="0" data-to="99999">
-                                                                <div class="filter-price__slider"></div>
-                                                                <div class="filter-price__title-button">
-                                                                    <input type="hidden" name="min_price" value="" id="min-value">
-                                                                    <input type="hidden" name="max_price" value="" id="max-value">
-                                                                    <div class="filter-price__title">
-                                                                        <span class="filter-price__min-value"></span> TL
-                                                                        –
-                                                                        <span class="filter-price__max-value"></span> TL
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="widget-filters__actions d-flex">
-                                            <button type="submit" class="btn btn-primary btn-sm">Filtrele</button>
-                                            <button type="reset" class="btn btn-secondary btn-sm">Sıfırla</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <x-last-visited/>
-                            </div>
+                            <x-sidebar />
                         </div>
                     </div>
                 </div>
@@ -169,58 +122,9 @@
                                 <div class="view-options__body view-options__body--filters">
                                     <div class="view-options__label">Active Filters</div>
                                     <div class="applied-filters">
-                                        <livewire:product-filters :categories="$filterCategories" :$brands :$properties />
-                                        <form method="GET" id="querySearch">
-                                            <ul class="applied-filters__list">
-                                                @if(isset($min_price) && $min_price)
-                                                    <input type="hidden" name="min_price" id="min-price" wire:key="max-price-input" value="{{ $min_price }}">
-                                                    <li class="applied-filters__item" wire:key="max-price">
-                                                        <a href="#" class="applied-filters__button applied-filters__button--filter">
-                                                            En düşük fiyat: {{ $min_price }}
-                                                            <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
-                                                                <path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @if(isset($max_price) && $max_price)
-                                                    <input type="hidden" name="max_price" id="max-price" wire:key="min-price-input" value="{{ $max_price }}">
-                                                    <li class="applied-filters__item" wire:key="min-price">
-                                                        <a href="#" class="applied-filters__button applied-filters__button--filter">
-                                                            En yüksek fiyat: {{ $max_price }}
-                                                            <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
-                                                                <path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                @foreach(($brandsArray ?? []) as $brand)
-                                                    @php if(!$brands->has($brand)) continue; @endphp
-                                                    <li class="applied-filters__item" wire:key="brand-{{$brand}}">
-                                                        <input type="hidden" name="brands[]"
-                                                               id="brand-{{ $brands[$brand][0]->brand->id }}"
-                                                               value="{{ $brands[$brand][0]->brand->id }}">
-                                                        <a href="#" class="applied-filters__button applied-filters__button--filter">
-                                                            Marka: {{ $brands[$brand][0]?->brand?->name }}
-                                                            <svg width="9" height="9"
-                                                                 onclick="$(`#brand-{{ $brands[$brand][0]->brand->id }}`).remove() && $('#querySearch').submit()">
-                                                                <path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                                {{--@foreach(($filteredProperties ?? []) as  $id => $prop)
-                                                    <li class="applied-filters__item" wire:key="propfilter-{{$prop}}">
-                                                        <a href="#" class="applied-filters__button applied-filters__button--filter">
-                                                            {{ $properties->firstWhere("0.id", $id)[0]->name }}: {{ $prop }}
-                                                            <svg wire:click="deselectProperty({{$id}})" width="9" height="9">
-                                                                <path d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                @endforeach--}}
-                                            </ul>
-                                        </form>
+                                        <livewire:product-filters :categories="$filterCategories"
+                                            :$brands :$properties :$min_price :$max_price
+                                        />
                                     </div>
                                 </div>
                             </div>
