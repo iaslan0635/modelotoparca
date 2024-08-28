@@ -4,33 +4,45 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use Illuminate\Support\Collection;
-use Livewire\Attributes\Reactive;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class ProductFilters extends Component
 {
+    // Options
     /** @var Collection */
     public $categories;
     /** @var Collection */
     public $brands;
     /** @var Collection */
     public $properties;
+    public $priceRangeMin = 0;
+    public $priceRangeMax = 10000;
 
+    // Filtered values
     /** @var ?int */
     public $selectedCategoryId = null;
     /** @var Collection */
     public $selectedBrands;
     /** @var Collection */
     public $propertyValues;
+    public $priceMin;
+    public $priceMax;
 
     public function mount(
+        // Options
         $categories = null,
         $brands = null,
         $properties = null,
+        $priceRangeMin = 0,
+        $priceRangeMax = 10000,
 
+        // Filtered values
         $selectedCategoryId = null,
         $selectedBrands = null,
-        $propertyValues = null
+        $propertyValues = null,
+        $priceMin = null,
+        $priceMax = null,
     )
     {
         $this->categories = collect($categories)
@@ -47,13 +59,6 @@ class ProductFilters extends Component
                 ];
             });
 
-        $this->brands = collect($brands);
-        $this->properties = collect($properties);
-
-        $this->selectedCategoryId = $selectedCategoryId instanceof Category ? $selectedCategoryId->id : $selectedCategoryId;
-        $this->selectedBrands = collect($selectedBrands);
-        $this->propertyValues = collect($propertyValues);
-
         // Add selected category to categories list if it's not there
         if ($this->categories->where('id', $selectedCategoryId)->isEmpty()) {
             $category = $selectedCategoryId instanceof Category ? $selectedCategoryId : Category::find($selectedCategoryId);
@@ -66,6 +71,17 @@ class ProductFilters extends Component
                 ]);
             }
         }
+
+        $this->brands = collect($brands);
+        $this->properties = collect($properties);
+        $this->priceRangeMin = $priceRangeMin;
+        $this->priceRangeMax = $priceRangeMax;
+
+        $this->selectedCategoryId = $selectedCategoryId instanceof Category ? $selectedCategoryId->id : $selectedCategoryId;
+        $this->selectedBrands = collect($selectedBrands);
+        $this->propertyValues = collect($propertyValues);
+        $this->priceMin = $priceMin;
+        $this->priceMax = $priceMax;
     }
 
     public function updated()
@@ -150,5 +166,31 @@ class ProductFilters extends Component
             $this->selectedBrands[$brandId] = $brandName;
         }
         $this->updated();
+    }
+
+    public function resetPriceFilters()
+    {
+        $this->priceMin = null;
+        $this->priceMax = null;
+    }
+
+    #[Computed]
+    public function priceRepr()
+    {
+        $priceMin = $this->priceMin;
+        $priceMax = $this->priceMax;
+
+        if (!$priceMin && !$priceMax) {
+            return '';
+        }
+
+        $repr = match (true) {
+            $priceMin && $priceMax => $priceMin . " - " . $priceMax,
+            (bool)$priceMin => "En az " . $priceMin,
+            (bool)$priceMax => "En çok " . $priceMax,
+            default => '?'
+        };
+
+        return ": $repr";
     }
 }

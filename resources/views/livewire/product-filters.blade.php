@@ -3,6 +3,35 @@
         <span class="sr-only">Yükleniyor...</span>
     </div>
 
+    <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
+        <span>
+            <span>Fiyat{{ $this->priceRepr }}</span>
+        </span>
+        @if($priceMin || $priceMax)
+            <button class="btn btn-danger btn-outline" wire:click="resetPriceFilters">X</button>
+        @endif
+        <x-slot:menu class="filter-dropdown" style="width: 30rem">
+            <div class="filter__container">
+                <div wire:ignore>
+                    <div class="filter-price__slider"></div>
+                    <div class="filter-price__title-button">
+                        <div class="filter-price__title d-flex justify-content-between w-100">
+                            <span>
+                                <span class="filter-price__min-value"></span>
+                                TL
+                            </span>
+                            <span>-</span>
+                            <span>
+                                <span class="filter-price__max-value"></span>
+                                TL
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </x-slot>
+    </x-wire-dropdown>
+
     @if($categories)
         <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
             <span>
@@ -37,8 +66,7 @@
     @if($brands)
         <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
             <span>
-                {{ $selectedBrands->isEmpty() ? 'Markalar'
-                    : "Markalar: " . $selectedBrands->join(', ') }}
+                {{ $selectedBrands->isEmpty() ? 'Markalar' : "Markalar: " . $selectedBrands->join(', ') }}
             </span>
             @if($selectedBrands->isNotEmpty())
                 <button class="btn btn-danger btn-outline" wire:click="resetSelectedBrands">X</button>
@@ -98,7 +126,8 @@
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
                                                 <input class="input-check__input" type="checkbox"
-                                                       @if ($this->isPropertyValueSelected($property->id, $value->value)) checked wire:key="checked" @else wire:key="unchecked" @endif
+                                                       @if ($this->isPropertyValueSelected($property->id, $value->value)) checked wire:key="checked" @else wire:key="unchecked"
+                                                       @endif
                                                        wire:change="togglePropertyValue({{ $property->id }}, '{{ $value->value }}')"
                                                 >
                                                 <span class="input-check__box"></span>
@@ -116,7 +145,8 @@
                                         <span class="input-check filter-list__input">
                                             <span class="input-check__body">
                                                 <input class="input-check__input" type="checkbox"
-                                                       @if ($this->isPropertyValueSelected($property->id, $value->value)) checked wire:key="checked" @else wire:key="unchecked" @endif
+                                                       @if ($this->isPropertyValueSelected($property->id, $value->value)) checked wire:key="checked" @else wire:key="unchecked"
+                                                       @endif
                                                        wire:change="toggleSolePropertyValue({{ $property->id }}, '{{ $value->value }}')"
                                                 >
                                                 <span class="input-check__box"></span>
@@ -138,6 +168,50 @@
         </x-wire-dropdown>
     @endforeach
 </div>
+
+@script
+<script>
+    $(() => {
+        // Dropdown close on outside click
+        $($wire.$el).find('.dropdown').on('hide.bs.dropdown', function (event) {
+            const dropdown = $(event.target);
+
+            // check if the dropdown is being closed because of a click outside
+            const clickedOutside = !dropdown.find(event.clickEvent.target).length
+            if (!clickedOutside) event.preventDefault()
+        })
+
+        // Slider reactivity
+        const sliderEl = $wire.$el.querySelector('.filter-price__slider');
+        const minEl = $wire.$el.querySelector('.filter-price__min-value');
+        const maxEl = $wire.$el.querySelector('.filter-price__max-value');
+
+        const priceMin = $wire.get('priceMin') ?? $wire.get('priceRangeMin');
+        const priceMax = $wire.get('priceMax') ?? $wire.get('priceRangeMax');
+
+
+        let slider = noUiSlider.create(sliderEl, {
+            start: [priceMin, priceMax],
+            connect: true,
+            step: 100,
+            range: {
+                'min': $wire.get('priceRangeMin'),
+                'max': $wire.get('priceRangeMax'),
+            }
+        })
+
+        slider.on('change', function ([priceMin, priceMax]) {
+            $wire.set('priceMin', priceMin);
+            $wire.set('priceMax', priceMax);
+        });
+
+        slider.on('update', function ([priceMin, priceMax]) {
+            minEl.textContent = priceMin;
+            maxEl.textContent = priceMax;
+        });
+    })
+</script>
+@endscript
 
 @assets
 <style>

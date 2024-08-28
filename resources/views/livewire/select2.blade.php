@@ -1,5 +1,5 @@
 <div wire:ignore>
-    <select id="{{ $this->id() }}">
+    <select>
         @foreach($options as $key => $option)
             <option value="{{ $key }}" wire:key="{{ $key }}">{{ $option }}</option>
         @endforeach
@@ -9,8 +9,7 @@
 @script
 <script>
     $(document).ready(function () {
-        const id = $wire.$id;
-        let x = $(`#${id}`).select2().on('select2:select', function (e) {
+        $($wire.$el).find('select').select2().on('select2:select', function (e) {
             let selectedId = e.params.data.id;
             $wire.set('value', selectedId);
         });
