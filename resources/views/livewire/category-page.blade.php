@@ -4,7 +4,6 @@
         <x-breadcrumb :parts="[
             ['name' => 'Kategoriler', 'link' => route('category.index')],
             ['name' => $category->name],
-            ['name' => 'f: ' . $filters]
         ]"/>
     </x-slot:breadcrumb>
 </x-product-list>
