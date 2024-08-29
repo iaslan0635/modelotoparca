@@ -122,8 +122,10 @@
                                 <div class="view-options__body view-options__body--filters">
                                     <div class="view-options__label">Active Filters</div>
                                     <div class="applied-filters">
-                                        <livewire:product-filters :categories="$filterCategories"
-                                            :$brands :$properties :$min_price :$max_price
+                                        <livewire:product-filters
+                                            :brands="\App\Livewire\ProductFilters::normalizeBrands($brands)"
+                                            :categories="$filterCategories" :$properties :$min_price :$max_price
+                                            :selected-category-id="$category?->id" :selected-brands="$brands->keys()"
                                         />
                                     </div>
                                 </div>

@@ -70,7 +70,6 @@ class SearchPage extends Component
 
         $products = $search->paginateProducts();
         $brands = $search->brands();
-        $categories = $search->categories();
         $this->highlights = Search::parseHighlights($products);
 
         $searchedOnCode = $this->highlights->some($this->isCodeHighlight(...));
@@ -81,6 +80,8 @@ class SearchPage extends Component
             $alternatives = null;
             $similars = null;
         }
+
+        $categories = ProductFilters::normalizeCategories($search->categories());
 
         return compact(
             'products',

@@ -10,7 +10,7 @@ class Sidebar extends Component
 {
     public function render(): View
     {
-        $categories = Category::all();
+        $categories = Category::root()->get();
 
         return view('components.sidebar', compact('categories'));
     }

@@ -32,80 +32,80 @@
         </x-slot>
     </x-wire-dropdown>
 
-    @if($categories)
-        <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
-            <span>
-                {{ !$selectedCategoryId ? 'Kategoriler'
-                    : "Kategori: " . ($categories->firstWhere("id", $selectedCategoryId)["name"] ?? '?') }}
-            </span>
-            @if($selectedCategoryId)
-                <button class="btn btn-danger btn-outline" wire:click="$set('selectedCategoryId', null)">X</button>
-            @endif
-            <x-slot:menu class="filter-dropdown">
-                <div class="categories">
-                    <div class="filter__container">
-                        <div class="filter-categories">
-                            <ul class="filter-categories__list">
-                                @foreach($categories as $category)
-                                    <li class="filter-categories__item filter-categories__item--child" wire:key="{{$category['id']}}">
-                                        <img src="{{ $category['imageUrl'] }}" class="category-icon-image">
-                                        <a href="#" wire:click.prevent="$set('selectedCategoryId', {{ $category['id'] }})"
-                                           class="{{$selectedCategoryId == $category['id'] ? 'fw-bold' : ''}}">
-                                            {{ $category['name'] }}
-                                        </a>
-                                        <div class="filter-categories__counter">{{ $category['count'] }}</div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+    <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
+        <span>
+            {{ !$selectedCategoryId ? 'Kategoriler' : "Kategori: " . ($this->selectedCategoryName) }}
+        </span>
+        @if($selectedCategoryId)
+            <button class="btn btn-danger btn-outline" wire:click="$set('selectedCategoryId', null)">X</button>
+        @endif
+        <x-slot:menu class="filter-dropdown">
+            <div class="categories">
+                <div class="filter__container">
+                    <div class="filter-categories">
+                        <ul class="filter-categories__list">
+                            @forelse($categories as $category)
+                                <li class="filter-categories__item filter-categories__item--child" wire:key="{{$category['id']}}">
+                                    <img src="{{ $category['imageUrl'] }}" class="category-icon-image">
+                                    <a href="#" wire:click.prevent="$set('selectedCategoryId', {{ $category['id'] }})"
+                                       class="{{$selectedCategoryId == $category['id'] ? 'fw-bold' : ''}}">
+                                        {{ $category['name'] }}
+                                    </a>
+                                    <div class="filter-categories__counter">{{ $category['count'] }}</div>
+                                </li>
+                            @empty
+                                <li class="filter-categories__item filter-categories__item--child">
+                                    Alt kategori yok. @if($selectedCategoryId) Seçili kategoriyi kaldırmayı deneyin. @endif
+                                </li>
+                            @endforelse
+                        </ul>
                     </div>
                 </div>
-            </x-slot>
-        </x-wire-dropdown>
-    @endif
-    @if($brands)
-        <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
-            <span>
-                {{ $selectedBrands->isEmpty() ? 'Markalar' : "Markalar: " . $selectedBrands->join(', ') }}
-            </span>
-            @if($selectedBrands->isNotEmpty())
-                <button class="btn btn-danger btn-outline" wire:click="resetSelectedBrands">X</button>
-            @endif
-            <x-slot:menu class="filter-dropdown">
-                <div class="filter__container">
-                    <div class="filter-list">
-                        <div class="filter-list__list">
-                            @foreach($brands as ['brand' => $brand, 'count' => $count])
-                                <label class="filter-list__item" wire:key="{{$brand->id}}">
-                                    <span class="input-check filter-list__input">
-                                        <span class="input-check__body">
-                                            <input class="input-check__input" type="checkbox"
-                                                   @if($selectedBrands->has($brand->id)) checked wire:key="checked" @else wire:key="unchecked" @endif
-                                                   wire:change="toggleBrand({{ $brand->id }}, @js($brand->name))"
-                                            >
-                                            <span class="input-check__box"></span>
-                                            <span class="input-check__icon">
-                                                <svg width="9px" height="7px">
-                                                    <path d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
-                                                </svg>
-                                            </span>
+            </div>
+        </x-slot>
+    </x-wire-dropdown>
+
+    <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
+        <span>
+            {{ $selectedBrands->isEmpty() ? 'Markalar' : "Markalar: " . $selectedBrands->join(', ') }}
+        </span>
+        @if($selectedBrands->isNotEmpty())
+            <button class="btn btn-danger btn-outline" wire:click="resetSelectedBrands">X</button>
+        @endif
+        <x-slot:menu class="filter-dropdown">
+            <div class="filter__container">
+                <div class="filter-list">
+                    <div class="filter-list__list">
+                        @foreach($brands as $brand)
+                            <label class="filter-list__item" wire:key="{{$brand['id']}}">
+                                <span class="input-check filter-list__input">
+                                    <span class="input-check__body">
+                                        <input class="input-check__input" type="checkbox"
+                                               @if($selectedBrands->has($brand['id'])) checked wire:key="checked" @else wire:key="unchecked" @endif
+                                               wire:change="toggleBrand({{ $brand['id'] }}, @js($brand['name']))"
+                                        >
+                                        <span class="input-check__box"></span>
+                                        <span class="input-check__icon">
+                                            <svg width="9px" height="7px">
+                                                <path d="M9,1.395L3.46,7L0,3.5L1.383,2.095L3.46,4.2L7.617,0L9,1.395Z"/>
+                                            </svg>
                                         </span>
                                     </span>
-                                    <span class="filter-list__title">
-                                        {{ $brand->name }}
-                                        <img src="{{ $brand->imageUrl() }}" class="category-icon-image">
-                                    </span>
-                                    <span class="filter-list__counter">{{ $count }}</span>
-                                </label>
-                            @endforeach
-                        </div>
+                                </span>
+                                <span class="filter-list__title">
+                                    {{ $brand['name'] }}
+                                    <img src="{{ $brand['imageUrl'] }}" class="category-icon-image">
+                                </span>
+                                <span class="filter-list__counter">{{ $brand['count'] }}</span>
+                            </label>
+                        @endforeach
                     </div>
                 </div>
-            </x-slot>
-        </x-wire-dropdown>
-    @endif
+            </div>
+        </x-slot>
+    </x-wire-dropdown>
 
-    @foreach($properties as [$property, $values])
+    @foreach($properties ?? [] as [$property, $values])
         @if(!$property->show_filter)
             @continue
         @endif

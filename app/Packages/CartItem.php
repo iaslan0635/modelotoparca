@@ -44,18 +44,6 @@ class CartItem
         $this->stockControl();
     }
 
-    public function toArray()
-    {
-        return [
-            "id" => $this->id,
-            "name" => $this->name,
-            "quantity" => $this->quantity,
-            "price" => $this->price,
-            "attributes" => $this->attributes,
-            "model" => $this->model,
-        ];
-    }
-
     public function formattedPrice($price = null)
     {
         return number_format($price ?? $this->price, 2) . ' ₺';

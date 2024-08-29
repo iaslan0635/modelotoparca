@@ -2,42 +2,30 @@
 
 namespace App\Livewire\Header;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Cart extends Component
 {
-    public string $total = '0 ₺';
-
-    public string $subTotal = '0 ₺';
-
-    public string $shipping = '0 ₺';
-
-    public string $tax = '0 ₺';
-
-    public array $items = [];
-
-    protected $listeners = ['updateContent'];
-
+    #[On('updateContent')]
     public function updateContent()
     {
-        $this->total = \App\Packages\Cart::formattedTotal();
-        $this->subTotal = \App\Packages\Cart::formattedSubTotal();
-        $this->shipping = \App\Packages\Cart::formattedShipping();
-        $this->tax = \App\Packages\Cart::formattedTax();
-        $this->items = \App\Packages\Cart::getItems();
+        // Placeholder listener for rerender
     }
 
     public function render()
     {
-        $this->updateContent();
-
-        return view('livewire.header.cart');
+        return view('livewire.header.cart', [
+            'total' => \App\Packages\Cart::formattedTotal(),
+            'subTotal' => \App\Packages\Cart::formattedSubTotal(),
+            'shipping' => \App\Packages\Cart::formattedShipping(),
+            'tax' => \App\Packages\Cart::formattedTax(),
+            'items' => \App\Packages\Cart::getItems(),
+        ]);
     }
 
     public function removeItem($id)
     {
         \App\Packages\Cart::removeItem($id);
-
-        $this->updateContent();
     }
 }

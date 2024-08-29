@@ -43,7 +43,15 @@ class CategoryPage extends Component
 
     public $filters;
 
+    public Category $defaultCategory;
+
     public function mount(Category $category)
+    {
+        $this->defaultCategory = $category;
+        $this->loadCategory($category);
+    }
+
+    private function loadCategory(Category $category)
     {
         $this->category = $category;
         $category->load('properties');
@@ -118,7 +126,9 @@ class CategoryPage extends Component
         $propertyValues = PropertyValue::whereHas('product', fn(Builder $q) => $q->whereIn('id', $productIds))->with('property')->get();
         $allProperties = $propertyValues->map(fn(PropertyValue $pv) => $pv->property)->unique('id')->map(fn(Property $p) => [$p, $propertyValues->where('property.id', $p->id)]);
 
-        return view('livewire.category-page', compact('category', 'products', 'brands', 'allProperties'));
+        $filterCategories = ProductFilters::normalizeCategories($category->children->unique('name')->sortBy('name'));
+
+        return view('livewire.category-page', compact('category', 'products', 'brands', 'allProperties', 'filterCategories'));
     }
 
     public function deselectProperty($id)
@@ -137,7 +147,9 @@ class CategoryPage extends Component
             "priceMax" => $this->max_price,
         ] = $filters;
 
-        if ($categoryId)
-            $this->category = Category::find($categoryId);
+        if ($categoryId !== $this->category->id) {
+            $category = $categoryId === null ? $this->defaultCategory : Category::find($categoryId);
+            $this->loadCategory($category);
+        }
     }
 }
