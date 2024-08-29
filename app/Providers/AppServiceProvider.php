@@ -3,11 +3,13 @@
 namespace App\Providers;
 
 use App\Facades\N11Client\N11Client;
+use App\Packages\CartItemSynthesizer;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale(config('app.locale'));
         Schema::defaultStringLength(255);
         Paginator::useBootstrapFour();
+
+        Livewire::propertySynthesizer(CartItemSynthesizer::class);
     }
 }
