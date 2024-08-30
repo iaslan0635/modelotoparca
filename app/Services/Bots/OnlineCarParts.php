@@ -45,6 +45,7 @@ class OnlineCarParts
             brand_filter: $this->brand_filter,
             regexed: true,
             ajax: $this->ajax,
+            logContextId: $this->logContextId,
         );
 
         return $regexedBot->scrape();
