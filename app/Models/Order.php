@@ -11,6 +11,7 @@ class Order extends BaseModel
 {
     protected $casts = [
         'client_data' => 'array',
+        'original_data' => 'array',
     ];
 
     protected $dispatchesEvents = [
