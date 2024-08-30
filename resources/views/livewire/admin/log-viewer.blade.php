@@ -50,11 +50,9 @@
                                     <div class="badge text bg-danger text-light me-2">Eski sürüm | bot</div>
                                 @endif
                             @endif
-                            <button
-                                data-content="{{ $log->contextId }}"
-                                type="button" data-container="body" data-toggle="popover" data-placement="left"
+                            <div title="{{ $log->contextId }}"
                                 class="badge text-bg-{{ $log->sourceColor }} text-light"
-                            >{{ $log->source }}</button>
+                            >{{ $log->source }}</div>
                         </div>
                     </td>
                 </tr>
