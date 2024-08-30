@@ -32,6 +32,10 @@
             opacity: 1;
             background: repeating-linear-gradient( 45deg, #3b454c, #3b454c 2px, #343d44 2px, #343d44 10px );
         }
+
+        .header {
+            background: #20548e;
+        }
     </style>
     <style>
         .owl-theme .owl-nav {
