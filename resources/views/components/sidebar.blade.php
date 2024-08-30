@@ -22,7 +22,7 @@
 <style>
     /* Scrollbar genel stil */
     .sidebar__content::-webkit-scrollbar {
-        width: 8px; /* Scrollbar genişliği */
+        width: 18px; /* Scrollbar genişliği */
     }
 
     /* Scrollbar arka planı */
