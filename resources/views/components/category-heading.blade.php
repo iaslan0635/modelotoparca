@@ -6,7 +6,7 @@
                     <div class="subcat__list">
                         @foreach($category->children as $child)
                             <span class="subcaticon">
-                                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
+                                <img class="subcaticon" src="{{ $child->imageUrl() }}" style="height: 100px; aspect-ratio: 1">
                                 <a href="{{ route('category.show', $child) }}">{{ $child->name }}</a>
                             </span>
                         @endforeach
