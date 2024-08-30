@@ -16777,7 +16777,7 @@ select.form-control::-ms-expand {
         top: 0px;
     }
     [dir=ltr] .products-list[data-layout="list"] .product-card .product-card__badges {
-        left: 16px;
+        left: 0px;
     }
     [dir=rtl] .products-list[data-layout="list"] .product-card .product-card__badges {
         right: 16px;
@@ -17011,7 +17011,7 @@ select.form-control::-ms-expand {
         top: 0px;
     }
     [dir=ltr] .products-list[data-layout="list"] .product-card .product-card__badges {
-        left: 16px;
+        left: 0px;
     }
     [dir=rtl] .products-list[data-layout="list"] .product-card .product-card__badges {
         right: 16px;
