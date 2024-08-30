@@ -1,7 +1,7 @@
 <div class="sidebar__content" style="max-height: 98vh; overflow-y: scroll">
     <div class="widget widget-filters widget-filters--offcanvas--mobile">
         <div class="widget__header widget-filters__header">
-            <h4>Kategoriler</h4>
+            <h4 style="color: #ffdf40">Kategoriler</h4>
         </div>
         <div class="widget-filters__list">
             @foreach($categories as $category)
