@@ -33,7 +33,7 @@
 
     /* Scrollbar thumb (kayan kısmı) */
     .sidebar__content::-webkit-scrollbar-thumb {
-        background: #5b8bbd; /* Thumb'un rengi */
+        background: #344356; /* Thumb'un rengi */
         border-radius: 1px; /* Köşelerin yuvarlatılması */
     }
 

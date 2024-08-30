@@ -2,33 +2,15 @@
     <div class="card">
         <div class="card-body card-body--padding--2">
             <div class="subcatrow">
-                    <div class="product-subcat">
-                        <div class="subcat__list">
-            <span class="subcaticon">
-                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
-                <a href="">cat 1</a>
-            </span>
+                <div class="product-subcat">
+                    <div class="subcat__list">
+                        @foreach($category->children as $child)
                             <span class="subcaticon">
-                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
-                <a href="">cat 1</a>
-            </span>
-                            <span class="subcaticon">
-                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
-                <a href="">cat 1</a>
-            </span>
-                            <span class="subcaticon">
-                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
-                <a href="">cat 1</a>
-            </span>
-                            <span class="subcaticon">
-                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
-                <a href="">cat 1</a>
-            </span>
-                            <span class="subcaticon">
-                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
-                <a href="">cat 1</a>
-            </span>
-                        </div>
+                                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
+                                <a href="{{ route('category.show', $child) }}">{{ $child->name }}</a>
+                            </span>
+                        @endforeach
+                    </div>
 
                 </div>
 
@@ -60,7 +42,7 @@
                                 <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
                             </div>
                             <div class="brandslideitem">
-                                <img style="max-height: 60px"src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
                             </div>
                             <div class="brandslideitem">
                                 <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
@@ -72,7 +54,7 @@
                     </div>
                 </div>
             </div>
-<br>
+            <br>
 
             <div class="row">
                 <div class="col-auto">
@@ -136,7 +118,7 @@
 
     .subcaticon img {
         width: 60px;
-        height:60px;
+        height: 60px;
         margin-bottom: 5px; /* Resim ve yazı arasındaki boşluk */
     }
 
@@ -164,9 +146,11 @@
         margin: 0;
         transition: all 0.3s ease-in-out;
     }
+
     .owl-nav button.owl-prev {
         left: 0;
     }
+
     .owl-nav button.owl-next {
         right: 0;
     }
@@ -175,6 +159,7 @@
         text-align: center;
         padding-top: 15px;
     }
+
     .owl-dots button.owl-dot {
         width: 15px;
         height: 15px;
@@ -183,30 +168,37 @@
         background: #ccc;
         margin: 0 3px;
     }
+
     .owl-dots button.owl-dot.active {
         background-color: #000;
     }
+
     .owl-dots button.owl-dot:focus {
         outline: none;
     }
+
     .owl-nav button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         background: rgba(255, 255, 255, 0.38) !important;
     }
+
     .owl-nav button:focus {
         outline: none;
     }
+
     .owl-item {
         /*height: 300px !important; !* Adjust this value as needed *!*/
         display: flex;
     }
+
     .brandslideitem {
         width: 100%;
 
     }
-    .brandimgslideitem{
+
+    .brandimgslideitem {
         width: 100%;
         max-height: 80px;
     }
