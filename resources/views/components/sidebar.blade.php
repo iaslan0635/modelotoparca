@@ -22,7 +22,7 @@
 <style>
     /* Scrollbar genel stil */
     .sidebar__content::-webkit-scrollbar {
-        width: 18px; /* Scrollbar genişliği */
+        width: 8px; /* Scrollbar genişliği */
     }
 
     /* Scrollbar arka planı */
@@ -33,7 +33,7 @@
 
     /* Scrollbar thumb (kayan kısmı) */
     .sidebar__content::-webkit-scrollbar-thumb {
-        background: #227ac5; /* Thumb'un rengi */
+        background: #255583; /* Thumb'un rengi */
         border-radius: 10px; /* Köşelerin yuvarlatılması */
     }
 
