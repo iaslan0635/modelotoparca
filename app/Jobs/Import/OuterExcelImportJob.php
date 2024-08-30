@@ -37,7 +37,7 @@ class OuterExcelImportJob implements ShouldQueue
         {
             public function readCell($columnAddress, $row, $worksheetName = '')
             {
-                return $columnAddress == 'B' && $row < 10;
+                return $columnAddress == 'B';
             }
         };
 
