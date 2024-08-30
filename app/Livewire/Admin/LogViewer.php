@@ -44,15 +44,8 @@ class LogViewer extends Component
     }
 
     private function generateRandomPastelColor() {
-        // Generate random values for red, green, and blue between 127 and 255
-        // This range ensures the colors are light and pastel-like
-        $r = rand(200, 255);
-        $g = rand(200, 255);
-        $b = rand(200, 255);
+        $hue = mt_rand(0, 35);
 
-        // Convert the RGB values to a hex string
-        $color = sprintf("#%02X%02X%02X", $r, $g, $b);
-
-        return $color;
+        return "hsl({$hue}0, 60%, 100%)";
     }
 }
