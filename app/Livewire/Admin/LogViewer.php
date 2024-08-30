@@ -46,6 +46,6 @@ class LogViewer extends Component
     private function generateRandomPastelColor() {
         $hue = mt_rand(0, 35);
 
-        return "hsl({$hue}0deg, 100%, 70%)";
+        return "hsl({$hue}0deg, 100%, 80%)";
     }
 }
