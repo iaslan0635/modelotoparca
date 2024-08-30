@@ -16774,7 +16774,7 @@ select.form-control::-ms-expand {
         width: 260px;
     }
     .products-list[data-layout="list"] .product-card .product-card__badges {
-        top: 16px;
+        top: 0px;
     }
     [dir=ltr] .products-list[data-layout="list"] .product-card .product-card__badges {
         left: 16px;
@@ -17008,7 +17008,7 @@ select.form-control::-ms-expand {
         left: 15px;
     }
     .products-list[data-layout="list"] .product-card .product-card__badges {
-        top: 16px;
+        top: 0px;
     }
     [dir=ltr] .products-list[data-layout="list"] .product-card .product-card__badges {
         left: 16px;
