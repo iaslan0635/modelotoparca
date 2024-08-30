@@ -145,7 +145,7 @@
 </div>
 
 
-@push('scripts')
+@script
     <script>
         // Persist layout selection
         const updateSelection = () => {
@@ -162,4 +162,4 @@
         updateSelection()
         $(".layout-switcher__button").click(e => localStorage.setItem("selected-layout", e.currentTarget.dataset.layoutId))
     </script>
-@endpush
+@endscript
