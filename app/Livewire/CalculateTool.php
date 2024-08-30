@@ -27,8 +27,10 @@ class CalculateTool extends Component
 
     public function total()
     {
-        return CalculateToolModel::forUser()->with("product.price")->get()
+        $value = CalculateToolModel::forUser()->with("product.price")->get()
             ->map(fn (CalculateToolModel $model) => $model->quantity * $model->product->price->sellingPrice()->asFloat())
             ->sum();
+
+        return format_money($value);
     }
 }

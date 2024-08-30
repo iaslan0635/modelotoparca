@@ -41,7 +41,7 @@
             </div>
             <div class="quickview__product">
                 <div class="quickview__product-name">
-                    {{ $product->title }}
+                    {{ $product->full_title }}
                 </div>
                 <div class="quickview__product-rating">
                     <div class="quickview__product-rating-stars">

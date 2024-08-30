@@ -96,16 +96,9 @@ final class PriceBuilder implements Stringable
         return $this->format();
     }
 
-    public function format(int $decimals = 2): string
+    public function format(): string
     {
-        $p = $this->numberFormat($decimals);
-
-        return match (strtolower($this->currency)) {
-            'try' => "$p ₺",
-            'usd' => "\$$p",
-            'eur' => "€$p",
-            default => "$p $this->currency",
-        };
+        return format_money($this->value, $this->currency);
     }
 
     public function getValue(): string
@@ -121,5 +114,11 @@ final class PriceBuilder implements Stringable
     public function numberFormat(int $decimals = 0, ?string $decimal_separator = '.', ?string $thousands_separator = ','): string
     {
         return number_format($this->value, $decimals, $decimal_separator, $thousands_separator);
+    }
+
+    public function multiply($value)
+    {
+        $this->value = bcmul($this->value, $value, self::SCALE);
+        return $this;
     }
 }

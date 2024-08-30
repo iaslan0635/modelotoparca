@@ -19,7 +19,7 @@
                             <!--begin::Title-->
                             <a
                                 class="text-gray-800 text-hover-primary fs-5 fw-bold"
-                                data-kt-ecommerce-product-filter="product_name">{{ $product->title }}</a>
+                                data-kt-ecommerce-product-filter="product_name">{{ $product->full_title }}</a>
                             <!--end::Title-->
                         </div>
                     </div>

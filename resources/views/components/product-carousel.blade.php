@@ -34,7 +34,7 @@
                         </div>
                         <div class="product-card__name">
                             <div>
-                                <a href="{{ route("product.show", $product) }}">{{ $product->title }}</a>
+                                <a href="{{ route("product.show", $product) }}">{{ $product->full_title }}</a>
                             </div>
                         </div>
                         <div class="product-card__rating">

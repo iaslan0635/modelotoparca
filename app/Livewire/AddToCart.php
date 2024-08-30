@@ -22,7 +22,7 @@ class AddToCart extends Component
 
     public function addToCart()
     {
-        Cart::addItem($this->product->title, $this->product->price->sellingPrice()->getValue(), quantity: $this->quantity, attributes: [], model: $this->product);
+        Cart::addItem($this->product->full_title, $this->product->price->sellingPrice()->getValue(), quantity: $this->quantity, attributes: [], model: $this->product);
         $this->dispatch('updateContent');
     }
 

@@ -78,8 +78,15 @@ if (! function_exists('permissionMiddleware')) {
 }
 
 if (! function_exists('format_money')) {
-    function format_money($amount): string
+    function format_money($amount, $currency = "try"): string
     {
-        return number_format($amount, 2).' ₺';
+        $p = number_format($amount, 2);
+
+        return match (strtolower($currency)) {
+            'try' => "$p ₺",
+            'usd' => "\$$p",
+            'eur' => "€$p",
+            default => "$p $currency",
+        };
     }
 }

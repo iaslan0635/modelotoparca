@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\CalculateTool as CalculateToolModel;
 use App\Models\Product;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class HesaplamaButton extends Component
@@ -14,17 +16,26 @@ class HesaplamaButton extends Component
         return view('livewire.hesaplama-button');
     }
 
-    public function addCalculate()
+    public function toggleCalculate()
     {
-        $data = [
-            'session_id' => \Session::getId(),
-            'product_id' => $this->product->id,
-        ];
+        if ($this->exists()) {
+            CalculateToolModel::forUser()->where('product_id', $this->product->id)->delete();
+        } else {
+            $data = [
+                'session_id' => \Session::getId(),
+                'product_id' => $this->product->id,
+            ];
 
-        if (auth()->check()){
-            $data['user_id'] = auth()->id();
+            if (auth()->check()) {
+                $data['user_id'] = auth()->id();
+            }
+
+            CalculateToolModel::create($data);
         }
+    }
 
-        \App\Models\CalculateTool::create($data);
+    public function exists(): bool
+    {
+        return CalculateToolModel::forUser()->where('product_id', $this->product->id)->exists();
     }
 }

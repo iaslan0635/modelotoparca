@@ -3,7 +3,7 @@
     @isset($product->categories[0])
         <x-breadcrumb :parts="[
             ['name' => $product->categories[0]->name, 'link' => route('category.show', $product->categories[0])],
-            ['name' => \Str::limit($product->title, 20)]
+            ['name' => \Str::limit($product->full_title, 20)]
         ]"/>
     @endisset
     <div class="block-split">

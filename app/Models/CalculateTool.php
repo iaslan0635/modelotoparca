@@ -8,14 +8,14 @@ class CalculateTool extends BaseModel
 {
     protected $guarded = [];
 
-    public function product(): HasOne
+    public function product()
     {
-        return $this->hasOne(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
-    public function user(): HasOne
+    public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public static function forUser()

@@ -65,8 +65,8 @@ class CategoryPage extends Component
     {
         $category = $this->category;
 
-        $minPrice = $this->min_price ?? 0;
-        $maxPrice = $this->max_price ?? 999999;
+        $minPrice = $this->min_price ?: 0;
+        $maxPrice = $this->max_price ?: 999999;
 
         $query = Product::query()
             ->with(['categories', 'price', 'brand'])

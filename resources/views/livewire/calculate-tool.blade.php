@@ -22,7 +22,7 @@
                         </div>
                     </td>
                     <td class="cart-table__column cart-table__column--product">
-                        <a href="" class="cart-table__product-name">{{ $item->product->name }}</a>
+                        <a href="" class="cart-table__product-name">{{ $item->product->full_title }}</a>
                     </td>
                     <td class="cart-table__column cart-table__column--price" data-title="Price">{{ $item->product->price->sellingPrice() }}</td>
                     <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
@@ -34,7 +34,7 @@
                             <div class="input-number__sub"></div>
                         </div>
                     </td>
-                    <td class="cart-table__column cart-table__column--total" data-title="Total">{{ $item->product->price->sellingPrice() * $item->quantity }}</td>
+                    <td class="cart-table__column cart-table__column--total" data-title="Total">{{ $item->product->price->sellingPrice()->multiply($item->quantity) }}</td>
                     <td class="cart-table__column cart-table__column--remove">
                         <button wire:click="removeItem('{{ $item->product_id }}')" type="button" class="cart-table__remove btn btn-sm btn-icon btn-muted">
                             <svg width="12" height="12">

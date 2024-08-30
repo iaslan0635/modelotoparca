@@ -128,7 +128,7 @@
                                     <!--begin::Title-->
                                     <a @if($link) href="{{ $link }}" @endif
                                     class="text-gray-800 text-hover-primary fs-5 fw-bold"
-                                    >{{ $product->title }}</a>
+                                    >{{ $product->full_title }}</a>
                                     <!--end::Title-->
                                 </div>
                             </div>
