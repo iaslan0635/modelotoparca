@@ -13,7 +13,7 @@
     </div>
     <!--end::Card header-->
     <div class="card-body pt-0">
-        <table class="table table-responsive table-striped">
+        <table class="table table-responsive">
             <thead>
             <tr>
                 <th>Mesaj</th>
