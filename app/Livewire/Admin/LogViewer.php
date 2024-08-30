@@ -30,8 +30,12 @@ class LogViewer extends Component
         $this->logs = Log::where('product_id', $this->productId)->orderByDesc('created_at')->get();
     }
 
-    public function getColor(string $hash)
+    public function getColor(?string $hash)
     {
+        if (!$hash) {
+            return '#000000';
+        }
+
         if (!isset($this->colors[$hash])) {
             return $this->colors[$hash] = $this->generateRandomPastelColor();
         }
