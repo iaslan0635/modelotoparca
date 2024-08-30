@@ -22,7 +22,7 @@
             </thead>
             <tbody>
             @foreach($logs as $log)
-                <tr>
+                <tr style="background-color: {{ $this->getColor($log->contextId) }}">
                     <td class="ps-4 fs-4">
                         <span>{{ $log->message }}</span>
                         @if($log->context)
@@ -50,7 +50,11 @@
                                     <div class="badge text bg-danger text-light me-2">Eski sürüm | bot</div>
                                 @endif
                             @endif
-                            <div class="badge text-bg-{{ $log->sourceColor }} text-light">{{ $log->source }}</div>
+                            <button
+                                data-content="{{ $log->contextId }}"
+                                type="button" data-container="body" data-toggle="popover" data-placement="left"
+                                class="badge text-bg-{{ $log->sourceColor }} text-light"
+                            >{{ $log->source }}</button>
                         </div>
                     </td>
                 </tr>
