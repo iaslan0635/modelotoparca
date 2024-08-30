@@ -25,6 +25,7 @@
     <livewire:add-to-cart :wire:key="$product->id"
                           :product="$product"
                           :quantity_mode="false"/>
+    <livewire:hesaplama-button :wire:key="$product->id" :product="$product" />
     <button class="product-card__wishlist" type="button">
         <svg width="16" height="16">
             <path d="M13.9,8.4l-5.4,5.4c-0.3,0.3-0.7,0.3-1,0L2.1,8.4c-1.5-1.5-1.5-3.8,0-5.3C2.8,2.4,3.8,2,4.8,2s1.9,0.4,2.6,1.1L8,3.7

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\UserRegisteredEvent;
 use App\Http\Requests\RegisterRequest;
+use App\Models\CalculateTool;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,9 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (\Auth::attempt($credentials, true)) {
+            CalculateTool::where('session_id', \Session::getId())->update([
+                'user_id' => \auth()->id()
+            ]);
             return redirect()->intended('/');
         } else {
             // Giriş başarısız olduğunda yapılacak işlemler

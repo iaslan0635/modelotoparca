@@ -113,6 +113,11 @@ final class PriceBuilder implements Stringable
         return $this->value;
     }
 
+    public function asFloat(): float
+    {
+        return (float)$this->value;
+    }
+
     public function numberFormat(int $decimals = 0, ?string $decimal_separator = '.', ?string $thousands_separator = ','): string
     {
         return number_format($this->value, $decimals, $decimal_separator, $thousands_separator);

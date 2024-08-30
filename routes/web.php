@@ -40,6 +40,7 @@ Route::prefix('p/{product:slug}')->group(function () {
 Route::get('b/{brand:slug}', [BrandController::class, 'show'])->name('brand.show');
 
 Route::view('cart', 'cart')->name('cart');
+Route::view('hesaplama-araci', 'hesaplama-araci')->name('hesaplama-araci');
 Route::view('checkout', 'checkout')->name('checkout');
 Route::post('order-complete', [OrderController::class, 'complete'])->name('order-complete')->middleware('auth');
 Route::get('order-success', [OrderController::class, 'success'])->name('order-success');
