@@ -33,7 +33,7 @@ class LogViewer extends Component
     public function getColor(?string $hash)
     {
         if (!$hash) {
-            return '#000000';
+            return null;
         }
 
         if (!isset($this->colors[$hash])) {
@@ -43,7 +43,7 @@ class LogViewer extends Component
         return $this->colors[$hash];
     }
 
-    function generateRandomPastelColor() {
+    private function generateRandomPastelColor() {
         // Generate random values for red, green, and blue between 127 and 255
         // This range ensures the colors are light and pastel-like
         $r = rand(127, 255);

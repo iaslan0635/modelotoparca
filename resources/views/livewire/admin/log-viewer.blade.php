@@ -22,7 +22,7 @@
             </thead>
             <tbody>
             @foreach($logs as $log)
-                <tr style="background-color: {{ $this->getColor($log->contextId) }}">
+                <tr @if($color = $this->getColor($log->contextId)) style="background-color: {{ $color }}" @endif >
                     <td class="ps-4 fs-4">
                         <span>{{ $log->message }}</span>
                         @if($log->context)
