@@ -1,9 +1,9 @@
 <div class="sidebar__content" style="max-height: 98vh; overflow-y: scroll">
     <div class="widget widget-filters widget-filters--offcanvas--mobile"
          style="
-background-color: #2d486c;
+ background-color: #2e3032;
 opacity: 1;
-background: repeating-linear-gradient( 45deg, #2c4a72, #2c4a72 2px, #2d486c 2px, #2d486c 10px );
+background: repeating-linear-gradient( 45deg, #313538, #313538 2px, #2e3032 2px, #2e3032 10px );
          "
     >
         <div class="widget__header widget-filters__header">
