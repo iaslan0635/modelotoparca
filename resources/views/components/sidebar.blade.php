@@ -27,18 +27,18 @@
 
     /* Scrollbar arka planı */
     .sidebar__content::-webkit-scrollbar-track {
-        background: rgb(106, 118, 141); /* Track'in arka plan rengi */
+        background: rgb(154, 164, 178); /* Track'in arka plan rengi */
         border-radius: 10px; /* Köşelerin yuvarlatılması */
     }
 
     /* Scrollbar thumb (kayan kısmı) */
     .sidebar__content::-webkit-scrollbar-thumb {
-        background: #255583; /* Thumb'un rengi */
-        border-radius: 10px; /* Köşelerin yuvarlatılması */
+        background: #6a9dce; /* Thumb'un rengi */
+        border-radius: 1px; /* Köşelerin yuvarlatılması */
     }
 
     /* Scrollbar thumb hover durumu */
     .sidebar__content::-webkit-scrollbar-thumb:hover {
-        background: #133654; /* Hover durumunda thumb rengi */
+        background: #4e6d8c; /* Hover durumunda thumb rengi */
     }
 </style>
