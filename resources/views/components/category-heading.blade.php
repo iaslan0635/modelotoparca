@@ -25,12 +25,146 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col d-flex flex-column justify-content-between">
+                    <div class="owl-slider">
+                        <div id="carousel" class="owl-carousel">
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="1000X1000">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px"src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
+                            </div>
+                            <div class="brandslideitem">
+                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<style>
+
+    .owl-nav button {
+        position: absolute;
+        top: 50%;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        transition: all 0.3s ease-in-out;
+    }
+    .owl-nav button.owl-prev {
+        left: 0;
+    }
+    .owl-nav button.owl-next {
+        right: 0;
+    }
+
+    .owl-dots {
+        text-align: center;
+        padding-top: 15px;
+    }
+    .owl-dots button.owl-dot {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        display: inline-block;
+        background: #ccc;
+        margin: 0 3px;
+    }
+    .owl-dots button.owl-dot.active {
+        background-color: #000;
+    }
+    .owl-dots button.owl-dot:focus {
+        outline: none;
+    }
+    .owl-nav button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.38) !important;
+    }
+    .owl-nav button:focus {
+        outline: none;
+    }
+    .owl-item {
+        /*height: 300px !important; !* Adjust this value as needed *!*/
+        display: flex;
+    }
+    .brandslideitem {
+        width: 100%;
+
+    }
+    .brandimgslideitem{
+        width: 100%;
+        max-height: 80px;
+    }
+
+</style>
 @push("scripts")
     <script defer>
+
+        jQuery("#carousel").owlCarousel({
+            autoplay: true,
+            rewind: false, /* use rewind if you don't want loop */
+            margin: 20,
+            loop: true,
+            /*
+           animateOut: 'fadeOut',
+           animateIn: 'fadeIn',
+           */
+            responsiveClass: true,
+            autoHeight: true,
+            autoplayTimeout: 7000,
+            smartSpeed: 800,
+            nav: true,
+            navText: [
+                '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>',
+                '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>'],
+            responsive: {
+                0: {
+                    items: 3
+                },
+
+                600: {
+                    items: 6
+                },
+
+                1024: {
+                    items: 8
+                },
+
+                1366: {
+                    items: 10
+                }
+            }
+        });
+
         $('.owl-brands-slider').owlCarousel({
             loop: false,
             margin: 10,
