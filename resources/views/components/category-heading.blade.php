@@ -64,22 +64,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col d-flex flex-column justify-content-between">
-                    <div class="owl-slider">
-                        <div id="carousel" class="owl-carousel">
-                            @foreach(collect($brands)->chunk(2) as $i => $chunk)
-                            <div class="brandslideitem" wire:key="brand-slider-chunk-{{$i}}">
-                                @foreach($chunk as $brand)
-                                <img wire:key="brand-slider-group-{{$brand->id}}  src="{{ $brand->imageUrl() }}" data-id="{{$brand->id}}" class="brand-slider-item">
-                                @endforeach
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
