@@ -156,7 +156,7 @@
                                 <div class="applied-filters">
                                     <livewire:product-filters
                                         :$categories :brands="\App\Livewire\ProductFilters::normalizeBrands($brands)"
-                                        :selectedCategoryId="$category?->id" :selectedBrands="collect($brandFilters)"
+                                        :selectedCategoryId="$category?->id" :selectedBrands="$brandsArray"
                                     />
                                 </div>
                             </div>

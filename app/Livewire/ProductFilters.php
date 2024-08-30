@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
@@ -34,7 +35,7 @@ class ProductFilters extends Component
     {
         $filters = [
             "categoryId" => $this->selectedCategoryId,
-            "brandIds" => $this->selectedBrands->keys()->toArray(),
+            "brandIds" => $this->selectedBrands->toArray(),
             "propertyValues" => $this->propertyValues->toArray(),
             "priceMin" => $this->priceMin,
             "priceMax" => $this->priceMax,
@@ -106,12 +107,13 @@ class ProductFilters extends Component
         return collect($this->propertyValues->get($propertyId));
     }
 
-    public function toggleBrand($brandId, $brandName)
+    public function toggleBrand($brandId)
     {
-        if ($this->selectedBrands->has($brandId)) {
-            $this->selectedBrands->forget($brandId);
+        $index = $this->selectedBrands->search($brandId);
+        if ($index !== false) {
+            $this->selectedBrands->forget($index);
         } else {
-            $this->selectedBrands[$brandId] = $brandName;
+            $this->selectedBrands->push($brandId);
         }
         $this->updated();
     }
@@ -174,5 +176,16 @@ class ProductFilters extends Component
     {
         $category = $this->categories->firstWhere("id", $this->selectedCategoryId);
         return $category ? $category['name'] : Category::whereKey($this->selectedCategoryId)->value('name') ?? '?';
+    }
+
+    #[Computed]
+    public function selectedBrandNames()
+    {
+        return $this->selectedBrands->map(
+            fn($id) => $this->brands
+                ->firstWhere('id', $id)['name']
+                ?? Brand::whereKey($id)->value('name')
+                ?? '?'
+        );
     }
 }

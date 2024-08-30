@@ -67,7 +67,7 @@
 
     <x-wire-dropdown class="btn btn-secondary my-1 ml-3">
         <span>
-            {{ $selectedBrands->isEmpty() ? 'Markalar' : "Markalar: " . $selectedBrands->join(', ') }}
+            {{ $selectedBrands->isEmpty() ? 'Markalar' : "Markalar: " . $this->selectedBrandNames->join(', ') }}
         </span>
         @if($selectedBrands->isNotEmpty())
             <button class="btn btn-danger btn-outline" wire:click="resetSelectedBrands">X</button>
@@ -82,7 +82,7 @@
                                     <span class="input-check__body">
                                         <input class="input-check__input" type="checkbox"
                                                @if($selectedBrands->has($brand['id'])) checked wire:key="checked" @else wire:key="unchecked" @endif
-                                               wire:change="toggleBrand({{ $brand['id'] }}, @js($brand['name']))"
+                                               wire:change="toggleBrand({{ $brand['id'] }})"
                                         >
                                         <span class="input-check__box"></span>
                                         <span class="input-check__icon">
