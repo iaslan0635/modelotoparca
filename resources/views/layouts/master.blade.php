@@ -12,7 +12,7 @@
     {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">--}}
     {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">--}}
     <!-- css -->
-    @php $assetVersion = 18 @endphp
+    @php $assetVersion = 19 @endphp
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/assets/owl.carousel.min.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/photoswipe.css') }}">
@@ -26,6 +26,13 @@
     <link rel="stylesheet" href="{{ asset('css/style.mobile-header-variant-one.css') }}" media="(max-width: 1199px)">
     <!-- font - fontawesome -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
+    <style>
+        .carbon-fiber {
+            background-color: #2e3032;
+            opacity: 1;
+            background: repeating-linear-gradient( 45deg, #313538, #313538 2px, #2e3032 2px, #2e3032 10px );
+        }
+    </style>
     <style>
         .owl-theme .owl-nav {
             margin-top: 10px;

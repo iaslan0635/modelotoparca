@@ -11,6 +11,10 @@
     top: 10px;
 }
 
+.block-split__item-sidebar{
+    z-index: 20;
+}
+
 .wide-container {
     max-width: calc(100vw - 2rem) !important;
     margin: auto;
