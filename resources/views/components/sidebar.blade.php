@@ -18,3 +18,27 @@
     </div>
     <x-last-visited/>
 </div>
+
+<style>
+    /* Scrollbar genel stil */
+    .sidebar__content::-webkit-scrollbar {
+        width: 8px; /* Scrollbar genişliği */
+    }
+
+    /* Scrollbar arka planı */
+    .sidebar__content::-webkit-scrollbar-track {
+        background: #2d486c; /* Track'in arka plan rengi */
+        border-radius: 10px; /* Köşelerin yuvarlatılması */
+    }
+
+    /* Scrollbar thumb (kayan kısmı) */
+    .sidebar__content::-webkit-scrollbar-thumb {
+        background: #133654; /* Thumb'un rengi */
+        border-radius: 10px; /* Köşelerin yuvarlatılması */
+    }
+
+    /* Scrollbar thumb hover durumu */
+    .sidebar__content::-webkit-scrollbar-thumb:hover {
+        background: #133654; /* Hover durumunda thumb rengi */
+    }
+</style>
