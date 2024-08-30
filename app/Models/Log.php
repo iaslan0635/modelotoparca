@@ -10,7 +10,13 @@ class Log extends BaseModel
         'context' => 'array',
     ];
 
-    public static function log(int $productId, string $message, array $context = null, string $source = null)
+    public static function log(
+        int     $productId,
+        string  $message,
+        array   $context = null,
+        string  $source = null,
+        ?string $logContextId = null
+    )
     {
         return static::create([
             'product_id' => $productId,
@@ -18,6 +24,7 @@ class Log extends BaseModel
             'context' => $context,
             'source' => $source,
             'created_at' => now(), // use more accurate time (instead of insertion time)
+            'context_id' => $logContextId,
         ]);
     }
 

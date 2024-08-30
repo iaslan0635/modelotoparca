@@ -9,7 +9,7 @@ use App\Packages\Fuzz;
 
 class OnlineCarParts
 {
-    public const VERSION = 2; // Used for logging
+    public const VERSION = 3; // Used for logging
 
     private readonly OnlineCarParts\DataProvider $data;
 
@@ -22,6 +22,8 @@ class OnlineCarParts
         public readonly ?string $brand_filter = null,
         public readonly bool $regexed = false,
         public readonly bool $ajax = false,
+
+        private readonly ?string $logContextId = null,
     ) {
         $this->data = app(OnlineCarParts\DataProvider::class);
         $this->isOem = $this->field === 'oem_codes';
@@ -155,7 +157,13 @@ class OnlineCarParts
             $logContext = array_merge($logContext, $context);
         }
 
-        Log::log($this->product_id, $message, $logContext, 'bot-v'.self::VERSION);
+        Log::log(
+            $this->product_id,
+            $message,
+            $logContext,
+            'bot-v' . self::VERSION,
+            $this->logContextId
+        );
     }
 
     public function getProductLinksForPage(Ocp\SearchPage $searchPage, int $pageNumber)

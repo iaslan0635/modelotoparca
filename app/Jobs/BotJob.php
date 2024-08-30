@@ -15,19 +15,23 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Symfony\Component\Uid\Ulid;
 
 class BotJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    const VERSION = 1;
+    const VERSION = 3; // Used for logging
 
     private static $botMock = null;
+    private string $logContextId;
 
     public function __construct(
         public readonly TigerProduct $product
-    ) {
+    )
+    {
         $this->onQueue('bot');
+        $this->logContextId = Ulid::generate();
     }
 
     public function handle(): void
@@ -122,12 +126,13 @@ class BotJob implements ShouldQueue
 
     private function smashBot(
         string $keyword,
-        int $product_id,
+        int    $product_id,
         string $field,
         string $brand_filter = null,
-        bool $regexed = false,
-        bool $ajax = false,
-    ) {
+        bool   $regexed = false,
+        bool   $ajax = false,
+    )
+    {
         if (self::$botMock) {
             return self::$botMock->smash($product_id);
         }
@@ -139,6 +144,7 @@ class BotJob implements ShouldQueue
             brand_filter: $brand_filter,
             regexed: $regexed,
             ajax: $ajax,
+            logContextId: $this->logContextId,
         ))->smash();
     }
 
@@ -182,7 +188,7 @@ class BotJob implements ShouldQueue
     private function getBrand(TigerProduct $product): ?string
     {
         $brand = Brand::find($product->markref, ['name', 'botname']);
-        if (! $brand) {
+        if (!$brand) {
             return null;
         }
 
@@ -193,7 +199,13 @@ class BotJob implements ShouldQueue
     {
         $productId = $productOrId instanceof Model ? $productOrId->getKey() : $productOrId;
 
-        return Log::log($productId, $message, $context, 'bot-manager-v'.self::VERSION);
+        return Log::log(
+            $productId,
+            $message,
+            $context,
+            'bot-manager-v' . self::VERSION,
+            $this->logContextId
+        );
     }
 
     public static function mockBot($mockInstance)
