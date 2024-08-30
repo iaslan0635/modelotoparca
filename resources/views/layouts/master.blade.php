@@ -27,6 +27,13 @@
     <!-- font - fontawesome -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
     <style>
+        .carbon-fiber {
+            background-color: #2e3032;
+            opacity: 1;
+            background: repeating-linear-gradient( 45deg, #313538, #313538 2px, #2e3032 2px, #2e3032 10px );
+        }
+    </style>
+    <style>
         .owl-theme .owl-nav {
             margin-top: 10px;
             text-align: center;

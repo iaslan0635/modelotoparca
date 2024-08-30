@@ -1,11 +1,5 @@
 <div class="sidebar__content" style="max-height: 98vh; overflow-y: scroll">
-    <div class="widget widget-filters widget-filters--offcanvas--mobile"
-         style="
- background-color: #2e3032;
-opacity: 1;
-background: repeating-linear-gradient( 45deg, #313538, #313538 2px, #2e3032 2px, #2e3032 10px );
-         "
-    >
+    <div class="widget widget-filters widget-filters--offcanvas--mobile carbon-fiber">
         <div class="widget__header widget-filters__header">
             <h4 style="color: #ffdf40">Kategoriler</h4>
         </div>
