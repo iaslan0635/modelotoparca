@@ -1,31 +1,39 @@
 <div {{ $attributes->class(['products-view__options view-options view-options--offcanvas--mobile']) }}>
     <div class="card">
         <div class="card-body card-body--padding--2">
-            <div class="row">
-                <div class="col-auto">
-                    <img src="{{ $category->imageUrl() }}" style="max-height: 15rem;margin-bottom: 1.65rem;">
-                </div>
-                <div class="col d-flex flex-column justify-content-between">
-                    <div>
-                        <h2>{{$category->name}}</h2>
-                        <h5>Markalar</h5>
-                    </div>
-                    <div wire:ignore>
-                        <div class="owl-carousel owl-brands-slider">
-                            @foreach(collect($brands)->chunk(2) as $i => $chunk)
-                                <div class="item" wire:key="brand-slider-chunk-{{$i}}">
-                                    <div class="brand-slider-group">
-                                        @foreach($chunk as $brand)
-                                            <img wire:key="brand-slider-group-{{$brand->id}}" src="{{ $brand->imageUrl() }}" data-id="{{$brand->id}}" class="brand-slider-item">
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endforeach
+            <div class="subcatrow">
+                    <div class="product-subcat">
+                        <div class="subcat__list">
+            <span class="subcaticon">
+                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
+                <a href="">cat 1</a>
+            </span>
+                            <span class="subcaticon">
+                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
+                <a href="">cat 1</a>
+            </span>
+                            <span class="subcaticon">
+                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
+                <a href="">cat 1</a>
+            </span>
+                            <span class="subcaticon">
+                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
+                <a href="">cat 1</a>
+            </span>
+                            <span class="subcaticon">
+                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
+                <a href="">cat 1</a>
+            </span>
+                            <span class="subcaticon">
+                <img class="subcaticon" src="/images/brands/brand-14.png" alt="">
+                <a href="">cat 1</a>
+            </span>
                         </div>
-                    </div>
-                </div>
-            </div>
 
+                </div>
+
+
+            </div>
             <div class="row">
                 <div class="col d-flex flex-column justify-content-between">
                     <div class="owl-slider">
@@ -64,11 +72,89 @@
                     </div>
                 </div>
             </div>
+<br>
+
+            <div class="row">
+                <div class="col-auto">
+                    <img src="{{ $category->imageUrl() }}" style="max-height: 15rem;margin-bottom: 1.65rem;">
+                </div>
+                <div class="col d-flex flex-column justify-content-between">
+                    <div>
+                        <h2>{{$category->name}}</h2>
+                        <h5>Markalar</h5>
+                    </div>
+                    <div wire:ignore>
+                        <div class="owl-carousel owl-brands-slider">
+                            @foreach(collect($brands)->chunk(2) as $i => $chunk)
+                                <div class="item" wire:key="brand-slider-chunk-{{$i}}">
+                                    <div class="brand-slider-group">
+                                        @foreach($chunk as $brand)
+                                            <img wire:key="brand-slider-group-{{$brand->id}}" src="{{ $brand->imageUrl() }}" data-id="{{$brand->id}}" class="brand-slider-item">
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
 <style>
+    .subcatrow {
+        display: flex;
+        justify-content: center;
+    }
+
+    .product-subcat {
+        padding: 20px;
+        background-color: #f9f9f9; /* Arka plan rengi */
+        border-radius: 8px; /* Köşeleri yuvarlama */
+    }
+
+    .subcat__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px; /* Etiketler arasındaki boşluk */
+    }
+
+    .subcaticon {
+        display: flex;
+        flex-direction: column; /* İçeriği dikey olarak hizalama */
+        align-items: center; /* Merkezi hizalama */
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+        transition: transform 0.3s, box-shadow 0.3s; /* Hover efekti için geçiş */
+        text-align: center; /* Yazıyı merkezde hizalama */
+    }
+
+    .subcaticon img {
+        width: 60px;
+        height:60px;
+        margin-bottom: 5px; /* Resim ve yazı arasındaki boşluk */
+    }
+
+    .subcaticon a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        margin-top: 5px;
+    }
+
+    .subcaticon:hover {
+        transform: translateY(-5px); /* Hover edildiğinde yukarı kaldır */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hover gölgesini artır */
+    }
+
+    .subcaticon a:hover {
+        color: #ff9900; /* Bağlantı üzerine gelindiğinde renk değişimi */
+    }
 
     .owl-nav button {
         position: absolute;
