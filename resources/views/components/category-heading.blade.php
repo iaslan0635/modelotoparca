@@ -20,36 +20,11 @@
                 <div class="col d-flex flex-column justify-content-between">
                     <div class="owl-slider">
                         <div id="carousel" class="owl-carousel">
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="1000X1000">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2021/03/13/10/23/hut-6091451_1280.jpg" alt="">
-                            </div>
-                            <div class="brandslideitem">
-                                <img style="max-height: 60px" src="https://cdn.pixabay.com/photo/2020/02/04/06/16/watercolour-4817390_960_720.jpg" alt="">
-                            </div>
+                            @foreach($brands as $brand)
+                                <a class="brandslideitem" href="{{ route('brand.show', $brand) }}">
+                                    <img style="max-height: 60px" src="{{ $brand->imageUrl() }}">
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
