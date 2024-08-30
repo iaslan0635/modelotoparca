@@ -28,9 +28,9 @@
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
     <style>
         .carbon-fiber {
-            background-color: #2e3032;
+            background-color: #343d44;
             opacity: 1;
-            background: repeating-linear-gradient( 45deg, #313538, #313538 2px, #2e3032 2px, #2e3032 10px );
+            background: repeating-linear-gradient( 45deg, #3b454c, #3b454c 2px, #343d44 2px, #343d44 10px );
         }
     </style>
     <style>
