@@ -1,4 +1,4 @@
-<div class="sidebar__content" style="max-height: 98vh; overflow-y: scroll; z-index: 20">
+<div class="sidebar__content" style="max-height: 98vh; overflow-y: scroll;">
     <div class="widget widget-filters widget-filters--offcanvas--mobile carbon-fiber">
         <div class="widget__header widget-filters__header">
             <h4 style="color: #ffdf40">Kategoriler</h4>
