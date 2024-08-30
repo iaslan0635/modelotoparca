@@ -7,7 +7,7 @@
             @foreach($categories as $category)
                 <div class="widget-filters__item">
                     <div class="widget-filters__item-title">
-                        <a href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
+                        <a style="color: white" href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
                     </div>
                 </div>
             @endforeach
