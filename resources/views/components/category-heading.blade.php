@@ -11,10 +11,7 @@
                             </span>
                         @endforeach
                     </div>
-
                 </div>
-
-
             </div>
             <div class="row">
                 <div class="col d-flex flex-column justify-content-between">
@@ -29,8 +26,8 @@
                     </div>
                 </div>
             </div>
+            {{--
             <br>
-
             <div class="row">
                 <div class="col-auto">
                     <img src="{{ $category->imageUrl() }}" style="max-height: 15rem;margin-bottom: 1.65rem;">
@@ -54,8 +51,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </div>--}}
         </div>
     </div>
 </div>
