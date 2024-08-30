@@ -1,6 +1,12 @@
 <div {{ $attributes->class(['products-view__options view-options view-options--offcanvas--mobile']) }}>
     <div class="card">
         <div class="card-body card-body--padding--2">
+            @if($category->parent)
+                <a class="btn btn-secondary" href="{{ route('category.show', $category->parent) }}">
+                    <i class="fa fa-arrow-left ms-1"></i>
+                    Geri
+                </a>
+            @endif
             <div class="subcatrow">
                 <div class="product-subcat">
                     <div class="subcat__list">
