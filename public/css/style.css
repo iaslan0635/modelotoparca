@@ -10917,7 +10917,8 @@ select.form-control::-ms-expand {
 
 @media (min-width: 992px) {
     .widget-filters--offcanvas--mobile {
-        background-color: #fff;
+        /*background-color: #fff;*/
+        background-color: #5c6774;
         -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
     }
