@@ -19,7 +19,7 @@
         <div class="container wide-container">
             <div class="block-split__row row no-gutters fixed-sidebar">
                 <div class="block-split__item block-split__item-sidebar col-auto">
-                    <div class="sidebar sidebar--offcanvas--mobile">
+                    <div class="sidebar sidebar--offcanvas--mobile" style="position: fixed; top:0; left:0; max-width: 280px;">
                         <div class="sidebar__backdrop"></div>
                         <div class="sidebar__body">
                             <div class="sidebar__header">
@@ -145,7 +145,7 @@
 </div>
 
 
-@script
+@push('scripts')
     <script>
         // Persist layout selection
         const updateSelection = () => {
@@ -162,4 +162,4 @@
         updateSelection()
         $(".layout-switcher__button").click(e => localStorage.setItem("selected-layout", e.currentTarget.dataset.layoutId))
     </script>
-@endscript
+@endpush
