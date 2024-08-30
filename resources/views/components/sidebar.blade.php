@@ -27,7 +27,7 @@
 
     /* Scrollbar arka planı */
     .sidebar__content::-webkit-scrollbar-track {
-        background: rgb(52, 67, 86); /* Track'in arka plan rengi */
+        background: rgb(106, 118, 141); /* Track'in arka plan rengi */
         border-radius: 10px; /* Köşelerin yuvarlatılması */
     }
 
