@@ -18,10 +18,20 @@ class CalculateTool extends BaseModel
         return $this->belongsTo(User::class);
     }
 
-    public static function forUser()
+    public function scopeForUser($query)
     {
         return auth()->check()
-            ? self::where("user_id", auth()->id())
-            : self::where("session_id", session()->getId());
+            ? $query->where("user_id", auth()->id())
+            : $query->where("session_id", session()->getId());
+    }
+
+    public function scopeList($query, $listName)
+    {
+        return $query->where("list_name", $listName);
+    }
+
+    public static function getListNames()
+    {
+        return self::forUser()->groupBy("list_name")->pluck("list_name");
     }
 }

@@ -18,7 +18,7 @@
     <div class="block-split block-split--has-sidebar">
         <div class="container wide-container">
             <div class="block-split__row row no-gutters fixed-sidebar">
-                <div class="block-split__item block-split__item-sidebar col-auto">
+                {{--<div class="block-split__item block-split__item-sidebar col-auto">
                     <div class="sidebar sidebar--offcanvas--mobile" style="position: fixed; top:0; left:0; max-width: 280px;">
                         <div class="sidebar__backdrop"></div>
                         <div class="sidebar__body">
@@ -35,7 +35,7 @@
                             <x-sidebar />
                         </div>
                     </div>
-                </div>
+                </div>--}}
                 <div class="block-split__item block-split__item-content col-auto">
                     <div class="block">
                         <div class="products-view">

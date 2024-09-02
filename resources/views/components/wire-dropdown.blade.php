@@ -1,6 +1,6 @@
-@props(['menu'])
+@props(['menu', 'parentClass' => ''])
 
-<div class="dropdown" wire:ignore.self>
+<div class="dropdown {{ $parentClass }}" wire:ignore.self>
     <button wire:key="toggle" wire:ignore.self {{ $attributes->class("dropdown-toggle")  }} type="button" data-toggle="dropdown" aria-expanded="false">
         {{ $slot }}
     </button>

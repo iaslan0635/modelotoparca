@@ -30,7 +30,7 @@
         .carbon-fiber {
             background-color: #344356;
             opacity: 1;
-            background: repeating-linear-gradient( 45deg, #35465c, #35465c 2px, #344356 2px, #344356 10px );
+            background: repeating-linear-gradient(45deg, #35465c, #35465c 2px, #344356 2px, #344356 10px);
         }
 
         .header {
@@ -95,6 +95,13 @@
         .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
             background: #869791;
         }
+
+        .sidebar_container {
+            display: flex;
+            align-items: stretch;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
     </style>
     @stack('styles')
     <livewire:styles/>
@@ -102,22 +109,23 @@
 
 <body>
 <!-- site -->
-<div class="site">
-    <!-- site__mobile-header -->
-    @include('layouts.header-mobile')
-    <!-- site__mobile-header / end -->
-    <!-- site__header -->
-    @include('layouts.header')
-    <!-- site__header / end -->
-    <!-- site__body -->
-    <div class="site__body">
-        @yield('content')
+<div style="display: flex" class="sidebar_container">
+    <x-sidebar />
+    <div class="site">
+        <!-- site__mobile-header -->
+        @include('layouts.header-mobile')
+        <!-- site__mobile-header / end -->
+        <!-- site__header -->
+        @include('layouts.header')
+        <!-- site__header / end -->
+        <!-- site__body -->
+        <div class="site__body">
+            @yield('content')
+        </div>
+        <!-- site__body / end -->
     </div>
-    <!-- site__body / end -->
-    <!-- site__footer -->
-    @include('layouts.footer')
-    <!-- site__footer / end -->
 </div>
+@include('layouts.footer')
 <!-- site / end -->
 <!-- mobile-menu -->
 @include('layouts.mobile-menu')
@@ -402,6 +410,16 @@
                 });
         };
     })(jQuery);
+
+    // Dropdown close on outside click. Bootstraps default behavior is broken.
+    $('.dropdown').on('hide.bs.dropdown', function (event) {
+        if (!event || !event.clickEvent) return;
+        const dropdown = $(event.target);
+
+        // check if the dropdown is being closed because of a click outside
+        const clickedOutside = !dropdown.find(event.clickEvent.target).length
+        if (!clickedOutside) event.preventDefault()
+    })
 </script>
 @stack('scripts')
 </body>

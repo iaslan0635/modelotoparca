@@ -1,5 +1,6 @@
 .site {
     overflow: clip;
+    flex: 1
 }
 
 .fixed-sidebar {

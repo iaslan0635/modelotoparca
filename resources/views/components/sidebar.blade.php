@@ -1,4 +1,4 @@
-<div class="sidebar__content" style="max-height: 98vh; overflow-y: scroll;">
+<div class="sidebar__content">
     <div class="widget widget-filters widget-filters--offcanvas--mobile carbon-fiber">
         <div class="widget__header widget-filters__header">
             <h4 style="color: #ffdf40">Kategoriler</h4>
@@ -20,6 +20,10 @@
 </div>
 
 <style>
+    .sidebar__content {
+        width: 19rem;
+    }
+
     /* Scrollbar genel stil */
     .sidebar__content::-webkit-scrollbar {
         width: 8px; /* Scrollbar genişliği */

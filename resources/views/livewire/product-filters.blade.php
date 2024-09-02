@@ -172,16 +172,6 @@
 @script
 <script>
     $(() => {
-        // Dropdown close on outside click
-        $($wire.$el).find('.dropdown').on('hide.bs.dropdown', function (event) {
-            if (!event || !event.clickEvent) return;
-            const dropdown = $(event.target);
-
-            // check if the dropdown is being closed because of a click outside
-            const clickedOutside = !dropdown.find(event.clickEvent.target).length
-            if (!clickedOutside) event.preventDefault()
-        })
-
         // Slider reactivity
         const sliderEl = $wire.$el.querySelector('.filter-price__slider');
         const minEl = $wire.$el.querySelector('.filter-price__min-value');
