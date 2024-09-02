@@ -311,7 +311,7 @@
                                                             <div class="d-flex align-items-center">
                                                                 <!--begin::Title-->
                                                                 <div class="ms-5">
-                                                                    <a href="admin/apps/ecommerce/catalog/edit-product"
+                                                                    <a href=""
                                                                        class="fw-bold text-gray-600 text-hover-primary">{{ $item['productName'] }}</a>
                                                                     <div class="fs-7 text-muted">
                                                                         Teslimat Tarihi: {{ $item['shippingDate'] }}

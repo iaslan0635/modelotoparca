@@ -437,7 +437,7 @@
                                                                 <!--begin::Title-->
                                                                 <div class="ms-5">
                                                                     <a href="{{ route("admin.products.show", $item->product) }}"
-                                                                       class="fw-bold text-gray-600 text-hover-primary">{{ $item->product->title }}</a>
+                                                                       class="fw-bold text-gray-600 text-hover-primary">{{ $item->product->full_title }}</a>
                                                                 </div>
                                                                 <!--end::Title-->
                                                             </div>
