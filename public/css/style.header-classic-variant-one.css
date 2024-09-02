@@ -950,14 +950,12 @@
 */
 .header {
   display: grid;
-  grid-template-columns: calc(100% / 2 - 1350px / 2) -webkit-min-content auto -webkit-max-content calc(100% / 2 - 1350px / 2);
-  grid-template-columns: calc(100% / 2 - 1350px / 2) min-content auto max-content calc(100% / 2 - 1350px / 2);
+  grid-template-columns: auto min-content max-content max-content auto;
   grid-template-rows: 34px auto auto;
 }
 
 @media (min-width: 1200px) and (max-width: 1399.98px) {
   .header {
-    grid-template-columns: calc(100% / 2 - 1110px / 2) -webkit-min-content auto -webkit-max-content calc(100% / 2 - 1110px / 2);
     grid-template-columns: calc(100% / 2 - 1110px / 2) min-content auto max-content calc(100% / 2 - 1110px / 2);
   }
 }

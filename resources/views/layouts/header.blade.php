@@ -4,19 +4,26 @@
         <div class="header__topbar-classic-bg"></div>
         <div class="header__topbar-classic">
             <div class="topbar topbar--classic">
-                <div class="topbar__item-text"><a class="topbar__link" href="about-us.html">Hakkımızda</a></div>
-                <div class="topbar__item-text"><a class="topbar__link" href="contact-us-v1.html">İletişim</a></div>
-                <div class="topbar__item-text"><a class="topbar__link" href="track-order.html">Sipariş Takibi</a></div>
+                <div class="topbar__item-text">
+                    <a class="topbar__link" href="about-us.html">Hakkımızda</a>
+                </div>
+                <div class="topbar__item-text">
+                    <a class="topbar__link" href="contact-us-v1.html">İletişim</a>
+                </div>
+                <div class="topbar__item-text">
+                    <a class="topbar__link" href="track-order.html">Sipariş Takibi</a>
+                </div>
                 <div class="topbar__item-spring"></div>
                 <div class="topbar__item-button topbar__menu">
                     <button class="topbar__button topbar__button--has-arrow topbar__menu-button" type="button">
-                        <span class="topbar__button-label">Para Birimi: </span>
+                        <span class="topbar__button-label">Para Birimi:</span>
                         <span class="topbar__button-title">TRY</span>
-                        <span class="topbar__button-arrow"><svg width="7px" height="5px">
-                                        <path
-                                            d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z"/>
-                                    </svg>
-                                </span>
+                        <span class="topbar__button-arrow">
+                            <svg width="7px" height="5px">
+                                <path
+                                    d="M0.280,0.282 C0.645,-0.084 1.238,-0.077 1.596,0.297 L3.504,2.310 L5.413,0.297 C5.770,-0.077 6.363,-0.084 6.728,0.282 C7.080,0.634 7.088,1.203 6.746,1.565 L3.504,5.007 L0.262,1.565 C-0.080,1.203 -0.072,0.634 0.280,0.282 Z"/>
+                            </svg>
+                        </span>
                     </button>
                     <div class="topbar__menu-body">
                         <a class="topbar__menu-item" href="#">₺ Türk Lirası</a>
@@ -30,17 +37,19 @@
             <div class="header__navbar-departments">
                 <div class="departments">
                     <button class="departments__button" type="button">
-                                <span class="departments__button-icon"><svg width="16px" height="12px">
-                                        <path
-                                            d="M0,7L0,5L16,5L16,7L0,7ZM0,0L16,0L16,2L0,2L0,0ZM12,12L0,12L0,10L12,10L12,12Z"/>
-                                    </svg>
-                                </span>
+                        <span class="departments__button-icon">
+                            <svg width="16px" height="12px">
+                                <path
+                                    d="M0,7L0,5L16,5L16,7L0,7ZM0,0L16,0L16,2L0,2L0,0ZM12,12L0,12L0,10L12,10L12,12Z"/>
+                            </svg>
+                        </span>
                         <span class="departments__button-title">Ürün Kategorileri</span>
-                        <span class="departments__button-arrow"><svg width="9px" height="6px">
-                                        <path
-                                            d="M0.2,0.4c0.4-0.4,1-0.5,1.4-0.1l2.9,3l2.9-3c0.4-0.4,1.1-0.4,1.4,0.1c0.3,0.4,0.3,0.9-0.1,1.3L4.5,6L0.3,1.6C-0.1,1.3-0.1,0.7,0.2,0.4z"/>
-                                    </svg>
-                                </span>
+                        <span class="departments__button-arrow">
+                            <svg width="9px" height="6px">
+                                <path
+                                    d="M0.2,0.4c0.4-0.4,1-0.5,1.4-0.1l2.9,3l2.9-3c0.4-0.4,1.1-0.4,1.4,0.1c0.3,0.4,0.3,0.9-0.1,1.3L4.5,6L0.3,1.6C-0.1,1.3-0.1,0.7,0.2,0.4z"/>
+                            </svg>
+                        </span>
                     </button>
                     <div class="departments__menu">
                         <div class="departments__arrow"></div>
@@ -52,8 +61,12 @@
                                         <a href="{{ route('category.show', $root) }}" class="departments__item-link">
                                             <img src="{{ $root->imageUrl() }}" class="category-icon-image">
                                             {{ $root->name }}
-                                            <span class="departments__item-arrow"><svg width="7" height="11"><path
-                                                        d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"/></svg></span>
+                                            <span class="departments__item-arrow">
+                                                <svg width="7" height="11">
+                                                    <path
+                                                        d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"/>
+                                                </svg>
+                                            </span>
                                         </a>
                                         <div class="departments__item-menu">
                                             <div class="megamenu departments__megamenu departments__megamenu--size--xl">
@@ -95,8 +108,12 @@
                                         <path
                                             d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"></path>
                                         Tüm Kategoriler
-                                        <span class="departments__item-arrow"><svg width="7" height="11"><path
-                                                    d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"/></svg></span>
+                                        <span class="departments__item-arrow">
+                                            <svg width="7" height="11">
+                                                <path
+                                                    d="M0.3,10.7L0.3,10.7c0.4,0.4,0.9,0.4,1.3,0L7,5.5L1.6,0.3C1.2-0.1,0.7,0,0.3,0.3l0,0c-0.4,0.4-0.4,1,0,1.3l4,3.9l-4,3.9 C-0.1,9.8-0.1,10.4,0.3,10.7z"/>
+                                            </svg>
+                                        </span>
                                     </a>
                                 </li>
                                 <li class="departments__list-padding" role="presentation"></li>
@@ -172,12 +189,12 @@
             @auth()
                 <div class="indicator indicator--trigger--click">
                     <a href="{{ route('dashboard') }}" class="indicator__button">
-                            <span class="indicator__icon">
-                                <svg width="32" height="32">
-                                    <path d="M16,18C9.4,18,4,23.4,4,30H2c0-6.2,4-11.5,9.6-13.3C9.4,15.3,8,12.8,8,10c0-4.4,3.6-8,8-8s8,3.6,8,8c0,2.8-1.5,5.3-3.6,6.7
-	C26,18.5,30,23.8,30,30h-2C28,23.4,22.6,18,16,18z M22,10c0-3.3-2.7-6-6-6s-6,2.7-6,6s2.7,6,6,6S22,13.3,22,10z" />
-                                </svg>
-                            </span>
+                        <span class="indicator__icon">
+                            <svg width="32" height="32">
+                                <path d="M16,18C9.4,18,4,23.4,4,30H2c0-6.2,4-11.5,9.6-13.3C9.4,15.3,8,12.8,8,10c0-4.4,3.6-8,8-8s8,3.6,8,8c0,2.8-1.5,5.3-3.6,6.7
+	C26,18.5,30,23.8,30,30h-2C28,23.4,22.6,18,16,18z M22,10c0-3.3-2.7-6-6-6s-6,2.7-6,6s2.7,6,6,6S22,13.3,22,10z"/>
+                            </svg>
+                        </span>
                         <span class="indicator__title">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</span>
                         <span class="indicator__value">Hesabım</span>
                     </a>
@@ -195,15 +212,27 @@
                             </a>
                             <div class="account-menu__divider"></div>
                             <ul class="account-menu__links">
-                                <li><a href="{{ route('dashboard') }}">Hesabım</a></li>
-                                <li><a href="{{ route('garage') }}">Garajım</a></li>
-                                <li><a href="{{ route('order-history') }}">Siparişlerim</a></li>
-                                <li><a href="{{ route('adreslerim') }}">Adreslerim</a></li>
-                                <li><a href="{{ route('takip-listem') }}">Takip Listem</a></li>
+                                <li>
+                                    <a href="{{ route('dashboard') }}">Hesabım</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('garage') }}">Garajım</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('order-history') }}">Siparişlerim</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('adreslerim') }}">Adreslerim</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('takip-listem') }}">Takip Listem</a>
+                                </li>
                             </ul>
                             <div class="account-menu__divider"></div>
                             <ul class="account-menu__links">
-                                <li><a href="{{route('logout')}}">Çıkış Yap</a></li>
+                                <li>
+                                    <a href="{{route('logout')}}">Çıkış Yap</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -211,24 +240,24 @@
 
                 <div class="indicator">
                     <a href="{{ route('takip-listem') }}" class="indicator__button">
-                            <span class="indicator__icon">
-                                <svg width="32" height="32">
-                                    <path d="M23,4c3.9,0,7,3.1,7,7c0,6.3-11.4,15.9-14,16.9C13.4,26.9,2,17.3,2,11c0-3.9,3.1-7,7-7c2.1,0,4.1,1,5.4,2.6l1.6,2l1.6-2
+                        <span class="indicator__icon">
+                            <svg width="32" height="32">
+                                <path d="M23,4c3.9,0,7,3.1,7,7c0,6.3-11.4,15.9-14,16.9C13.4,26.9,2,17.3,2,11c0-3.9,3.1-7,7-7c2.1,0,4.1,1,5.4,2.6l1.6,2l1.6-2
 	C18.9,5,20.9,4,23,4 M23,2c-2.8,0-5.4,1.3-7,3.4C14.4,3.3,11.8,2,9,2c-5,0-9,4-9,9c0,8,14,19,16,19s16-11,16-19C32,6,28,2,23,2L23,2
 	z"/>
-                                </svg>
-                            </span>
+                            </svg>
+                        </span>
                     </a>
                 </div>
             @else
                 <div class="indicator indicator--trigger--click">
                     <a href="{{ route('login-view') }}" class="indicator__button">
-                            <span class="indicator__icon">
-                                <svg width="32" height="32">
-                                    <path d="M16,18C9.4,18,4,23.4,4,30H2c0-6.2,4-11.5,9.6-13.3C9.4,15.3,8,12.8,8,10c0-4.4,3.6-8,8-8s8,3.6,8,8c0,2.8-1.5,5.3-3.6,6.7
+                        <span class="indicator__icon">
+                            <svg width="32" height="32">
+                                <path d="M16,18C9.4,18,4,23.4,4,30H2c0-6.2,4-11.5,9.6-13.3C9.4,15.3,8,12.8,8,10c0-4.4,3.6-8,8-8s8,3.6,8,8c0,2.8-1.5,5.3-3.6,6.7
 	C26,18.5,30,23.8,30,30h-2C28,23.4,22.6,18,16,18z M22,10c0-3.3-2.7-6-6-6s-6,2.7-6,6s2.7,6,6,6S22,13.3,22,10z"/>
-                                </svg>
-                            </span>
+                            </svg>
+                        </span>
                         <span class="indicator__title">Giriş Yap</span>
                     </a>
                     <div class="indicator__content">
@@ -264,6 +293,16 @@
                 </div>
             @endauth
             <livewire:header.cart/>
+            <a href="{{ route('hesaplama-araci') }}" class="indicator__button">
+                <span class="indicator__icon">
+                    <svg width="32" height="32">
+                        <circle cx="10.5" cy="27.5" r="2.5"/>
+                        <circle cx="23.5" cy="27.5" r="2.5"/>
+                        <path d="M26.4,21H11.2C10,21,9,20.2,8.8,19.1L5.4,4.8C5.3,4.3,4.9,4,4.4,4H1C0.4,4,0,3.6,0,3s0.4-1,1-1h3.4C5.8,2,7,3,7.3,4.3 l3.4,14.3c0.1,0.2,0.3,0.4,0.5,0.4h15.2c0.2,0,0.4-0.1,0.5-0.4l3.1-10c0.1-0.2,0-0.4-0.1-0.4C29.8,8.1,29.7,8,29.5,8H14 c-0.6,0-1-0.4-1-1s0.4-1,1-1h15.5c0.8,0,1.5,0.4,2,1c0.5,0.6,0.6,1.5,0.4,2.2l-3.1,10C28.5,20.3,27.5,21,26.4,21z"/>
+                    </svg>
+                </span>
+                <span class="indicator__title">Listelerim</span>
+            </a>
         </div>
     </div>
 </header>

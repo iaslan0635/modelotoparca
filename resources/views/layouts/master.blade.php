@@ -102,6 +102,10 @@
             flex-direction: row;
             flex-wrap: nowrap;
         }
+
+        .site {
+            flex: 1;
+        }
     </style>
     @stack('styles')
     <livewire:styles/>
