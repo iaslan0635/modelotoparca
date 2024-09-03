@@ -22,7 +22,9 @@ class CalculateTool extends Component
     #[Computed]
     public function lists()
     {
-        return CalculateToolModel::forUser()->distinct()->pluck("list_name");
+        $lists = CalculateToolModel::forUser()->distinct()->pluck("list_name");
+        if (!$lists->contains(null)) $lists->prepend(null);
+        return $lists;
     }
 
     #[Computed]

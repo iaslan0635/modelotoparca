@@ -94,7 +94,12 @@
                             </td>
                         </tr>
                     @empty
-                        <h5>Henüz ürün eklenmedi.</h5>
+                        <tr>
+                            <td class="cart-table__column"></td>
+                            <td colspan="5" class="cart-table__column">
+                                Henüz ürün eklenmedi.
+                            </td>
+                        </tr>
                     @endforelse
                     <tr>
                         <td colspan="3" class="cart-table__column"></td>
