@@ -1,6 +1,6 @@
 <x-wire-dropdown class="product-card__addtocart-full" wire:loading.attr="disabled" parent-class="dropleft" style="min-width: 11rem">
     <span wire:loading.delay.remove>
-        {{$this->exists() ? "Listeden Kaldır" : "Listeye Ekle"}}
+        {{$this->exists() ? "Listeye Ekli" : "Listeye Ekle"}}
     </span>
     <span wire:loading.delay>
         <i class="fas fa-spinner fa-spin"></i>
@@ -10,7 +10,7 @@
             <div>
                 <label wire:key="{{$list}}">
                     <input type="checkbox" @if($exists = $this->existsInList($list)) checked @endif wire:change="toggleList(@js($list), @js(!$exists))">
-                    {{ $list ?? 'Varsayılan listem' }}
+                    {{ $list ?? 'Varsayılan Liste' }}
                 </label>
             </div>
         @endforeach

@@ -138,10 +138,7 @@
             <div class="block-space block-space--layout--before-footer"></div>
         </div>
     </div>
-    <div style="position: fixed; bottom: 3rem; right: 3rem; width: 3rem; height: 3rem;"
-         class="align-items-center bg-dark justify-content-center rounded-circle" wire:loading.flex>
-        <div class="spinner-border text-white" role="status"></div>
-    </div>
+    <x-wire-loading/>
 </div>
 
 

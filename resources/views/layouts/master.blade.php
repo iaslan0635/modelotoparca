@@ -101,6 +101,10 @@
             min-height: 100vh;
             margin-bottom: 8rem;
         }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
     </style>
     @stack('styles')
     <livewire:styles/>

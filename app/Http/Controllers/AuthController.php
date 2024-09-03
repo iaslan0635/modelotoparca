@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Session;
+use function auth;
 
 class AuthController extends Controller
 {
@@ -18,7 +20,11 @@ class AuthController extends Controller
         $data['password'] = Hash::make($registerRequest->input('password'));
         $user = User::create($data);
 
+        $sessionId = Session::getId();
+
         \Auth::login($user);
+        CalculateTool::where('session_id', $sessionId)->update(['user_id' => auth()->id()]);
+
         UserRegisteredEvent::dispatch($user);
 
         return redirect()->route('welcome');
@@ -33,10 +39,9 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
+        $sessionId = Session::getId();
         if (\Auth::attempt($credentials, true)) {
-            CalculateTool::where('session_id', \Session::getId())->update([
-                'user_id' => \auth()->id()
-            ]);
+            CalculateTool::where('session_id', $sessionId)->update(['user_id' => auth()->id()]);
             return redirect()->intended('/');
         } else {
             // Giriş başarısız olduğunda yapılacak işlemler

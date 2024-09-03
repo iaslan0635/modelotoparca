@@ -3,14 +3,32 @@
 namespace App\Livewire;
 
 use App\Models\CalculateTool as CalculateToolModel;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class CalculateTool extends Component
 {
+    public string $currentList = "";
+
     public function render()
     {
-        $lists = CalculateToolModel::forUser()->with('product.price')->get()->groupBy("list_name");
-        return view('livewire.calculate-tool', compact("lists"));
+        if (!$this->lists->contains($this->currentList)) {
+            $this->currentList = "";
+        }
+
+        return view('livewire.calculate-tool');
+    }
+
+    #[Computed]
+    public function lists()
+    {
+        return CalculateToolModel::forUser()->distinct()->pluck("list_name");
+    }
+
+    #[Computed]
+    public function products()
+    {
+        return CalculateToolModel::forUser()->list($this->currentList ?: null)->with('product.price')->get();
     }
 
     public function removeItem($id)
@@ -27,8 +45,8 @@ class CalculateTool extends Component
 
     public function total()
     {
-        $value = CalculateToolModel::forUser()->with("product.price")->get()
-            ->map(fn (CalculateToolModel $model) => $model->quantity * $model->product->price->sellingPrice()->asFloat())
+        $value = $this->products
+            ->map(fn(CalculateToolModel $model) => $model->quantity * $model->product->price->sellingPrice()->asFloat())
             ->sum();
 
         return format_money($value);
