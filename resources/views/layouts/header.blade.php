@@ -278,7 +278,7 @@
                                         <input id="header-signin-password" name="password" type="password"
                                                class="form-control form-control-sm" placeholder="Password">
                                         <a href="" class="account-menu__form-forgot-link">Forgot?</a>
-                                    </div>
+                                   </div>
                                 </div>
                                 <div class="form-group account-menu__form-button">
                                     <button type="submit" class="btn btn-primary btn-sm">Giriş Yap</button>
@@ -295,10 +295,11 @@
             <livewire:header.cart/>
             <a href="{{ route('hesaplama-araci') }}" class="indicator__button">
                 <span class="indicator__icon">
-                    <svg width="32" height="32">
-                        <circle cx="10.5" cy="27.5" r="2.5"/>
-                        <circle cx="23.5" cy="27.5" r="2.5"/>
-                        <path d="M26.4,21H11.2C10,21,9,20.2,8.8,19.1L5.4,4.8C5.3,4.3,4.9,4,4.4,4H1C0.4,4,0,3.6,0,3s0.4-1,1-1h3.4C5.8,2,7,3,7.3,4.3 l3.4,14.3c0.1,0.2,0.3,0.4,0.5,0.4h15.2c0.2,0,0.4-0.1,0.5-0.4l3.1-10c0.1-0.2,0-0.4-0.1-0.4C29.8,8.1,29.7,8,29.5,8H14 c-0.6,0-1-0.4-1-1s0.4-1,1-1h15.5c0.8,0,1.5,0.4,2,1c0.5,0.6,0.6,1.5,0.4,2.2l-3.1,10C28.5,20.3,27.5,21,26.4,21z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                        <path d="M6.5,1.5l1.6,3L8.4,5H9h2.4l-2,1.6L8.9,7L9,7.6l0.7,3L7,9.1L6.5,8.9L6,9.1l-2.8,1.5l0.7-3L4.1,7L3.6,6.6L1.6,5
+	H4h0.6l0.3-0.5L6.5,1.5 M6.5,0C6.3,0,6.1,0.1,6,0.3L4,4H0.5C0,4.1-0.2,4.8,0.2,5.1L3,7.4l-1,4C1.9,11.7,2.2,12,2.5,12
+	c0.1,0,0.2,0,0.3-0.1L6.5,10l3.7,1.9c0.1,0,0.2,0.1,0.3,0.1c0.3,0,0.6-0.3,0.5-0.6l-1-4l2.8-2.3c0.3-0.3,0.1-1-0.3-1.1H9L7,0.3
+	C6.9,0.1,6.7,0,6.5,0L6.5,0z"/>
                     </svg>
                 </span>
                 <span class="indicator__title">Listelerim</span>

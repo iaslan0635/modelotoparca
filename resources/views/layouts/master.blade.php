@@ -96,15 +96,8 @@
             background: #869791;
         }
 
-        .sidebar_container {
-            display: flex;
-            align-items: stretch;
-            flex-direction: row;
-            flex-wrap: nowrap;
-        }
-
         .site {
-            flex: 1;
+            margin-left: 19rem;
         }
     </style>
     @stack('styles')
@@ -113,7 +106,7 @@
 
 <body>
 <!-- site -->
-<div style="display: flex" class="sidebar_container">
+<div class="sidebar_container">
     <x-sidebar />
     <div class="site">
         <!-- site__mobile-header -->

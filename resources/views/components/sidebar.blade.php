@@ -22,6 +22,10 @@
 <style>
     .sidebar__content {
         width: 19rem;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        overflow-y: scroll;
     }
 
     /* Scrollbar genel stil */
