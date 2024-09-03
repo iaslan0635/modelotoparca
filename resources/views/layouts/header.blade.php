@@ -278,7 +278,7 @@
                                         <input id="header-signin-password" name="password" type="password"
                                                class="form-control form-control-sm" placeholder="Password">
                                         <a href="" class="account-menu__form-forgot-link">Forgot?</a>
-                                   </div>
+                                    </div>
                                 </div>
                                 <div class="form-group account-menu__form-button">
                                     <button type="submit" class="btn btn-primary btn-sm">Giriş Yap</button>
@@ -293,14 +293,17 @@
                 </div>
             @endauth
             <livewire:header.cart/>
-            <a href="{{ route('hesaplama-araci') }}" class="indicator__button">
-                <span class="indicator__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12">
-                        <path d="m6.5 1.5 1.6 3 .3.5h3l-2 1.6-.5.4.1.6.7 3L7 9.1l-.5-.2-.5.2-2.8 1.5.7-3 .2-.6-.5-.4-2-1.6h3l.3-.5 1.6-3m0-1.5c-.2 0-.4.1-.5.3L4 4H.5c-.5.1-.7.8-.3 1.1L3 7.4l-1 4c-.1.3.2.6.5.6.1 0 .2 0 .3-.1L6.5 10l3.7 1.9c.1 0 .2.1.3.1.3 0 .6-.3.5-.6l-1-4 2.8-2.3c.3-.3.1-1-.3-1.1H9L7 .3C6.9.1 6.7 0 6.5 0z"/>
-                    </svg>
-                </span>
-                <span class="indicator__title">Listelerim</span>
-            </a>
+            <div class="indicator">
+                <a href="{{ route('hesaplama-araci') }}" class="indicator__button">
+                    <span class="indicator__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12">
+                            <path
+                                d="m6.5 1.5 1.6 3 .3.5h3l-2 1.6-.5.4.1.6.7 3L7 9.1l-.5-.2-.5.2-2.8 1.5.7-3 .2-.6-.5-.4-2-1.6h3l.3-.5 1.6-3m0-1.5c-.2 0-.4.1-.5.3L4 4H.5c-.5.1-.7.8-.3 1.1L3 7.4l-1 4c-.1.3.2.6.5.6.1 0 .2 0 .3-.1L6.5 10l3.7 1.9c.1 0 .2.1.3.1.3 0 .6-.3.5-.6l-1-4 2.8-2.3c.3-.3.1-1-.3-1.1H9L7 .3C6.9.1 6.7 0 6.5 0z"/>
+                        </svg>
+                    </span>
+                    <span class="indicator__title">Listelerim</span>
+                </a>
+            </div>
         </div>
     </div>
 </header>
