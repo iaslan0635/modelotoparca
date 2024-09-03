@@ -50,19 +50,4 @@
             </tbody>
         </table>
     </div>
-    <div class="cart__totals">
-        <div class="card">
-            <div class="card-body card-body--padding--2">
-                <h3 class="card-title">Sipariş özeti</h3>
-                <table class="cart__totals-table">
-                    <thead>
-                    <tr>
-                        <th>Toplam</th>
-                        <td>{{ $this->total() }}</td>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </div>
 </div>

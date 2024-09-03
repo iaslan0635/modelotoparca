@@ -10,7 +10,7 @@
             <div>
                 <label wire:key="{{$list}}">
                     <input type="checkbox" @if($exists = $this->existsInList($list)) checked @endif wire:change="toggleList(@js($list), @js(!$exists))">
-                    {{ $list ?? 'Varsayılan liste' }}
+                    {{ $list ?? 'Varsayılan listem' }}
                 </label>
             </div>
         @endforeach

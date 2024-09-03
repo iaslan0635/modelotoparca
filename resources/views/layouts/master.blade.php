@@ -98,6 +98,7 @@
 
         .site {
             margin-left: 19rem;
+            min-height: 100vh;
         }
     </style>
     @stack('styles')
