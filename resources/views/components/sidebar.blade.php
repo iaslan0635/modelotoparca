@@ -26,6 +26,7 @@
         top: 0;
         bottom: 0;
         overflow-y: scroll;
+        z-index: 10;
     }
 
     /* Scrollbar genel stil */

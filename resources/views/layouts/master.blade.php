@@ -99,6 +99,7 @@
         .site {
             margin-left: 19rem;
             min-height: 100vh;
+            margin-bottom: 8rem;
         }
     </style>
     @stack('styles')
@@ -107,21 +108,19 @@
 
 <body>
 <!-- site -->
-<div class="sidebar_container">
-    <x-sidebar />
-    <div class="site">
-        <!-- site__mobile-header -->
-        @include('layouts.header-mobile')
-        <!-- site__mobile-header / end -->
-        <!-- site__header -->
-        @include('layouts.header')
-        <!-- site__header / end -->
-        <!-- site__body -->
-        <div class="site__body">
-            @yield('content')
-        </div>
-        <!-- site__body / end -->
+<x-sidebar/>
+<div class="site">
+    <!-- site__mobile-header -->
+    @include('layouts.header-mobile')
+    <!-- site__mobile-header / end -->
+    <!-- site__header -->
+    @include('layouts.header')
+    <!-- site__header / end -->
+    <!-- site__body -->
+    <div class="site__body">
+        @yield('content')
     </div>
+    <!-- site__body / end -->
 </div>
 @include('layouts.footer')
 <!-- site / end -->

@@ -9,8 +9,8 @@ class CalculateTool extends Component
 {
     public function render()
     {
-        $products = CalculateToolModel::forUser()->with('product.price')->get();
-        return view('livewire.calculate-tool', compact("products"));
+        $lists = CalculateToolModel::forUser()->with('product.price')->get()->groupBy("list_name");
+        return view('livewire.calculate-tool', compact("lists"));
     }
 
     public function removeItem($id)
