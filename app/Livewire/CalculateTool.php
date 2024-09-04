@@ -75,16 +75,19 @@ class CalculateTool extends Component
         $sheet->setCellValue('F1', 'Fiyat');
 
         $row = 2;
-        foreach ($products as $product) {
-            $sellingPrice = $product->product->price->sellingPrice();
-            $unitPrice = $sellingPrice->asFloat();
-            $price = $sellingPrice->multiply($product->quantity)->asFloat();
+        foreach ($products as $model) {
+            $product = $model->product;
 
-            $quantity = $product->quantity;
+            $priceBuilder = $product->price->builder()?->convertToTRY()->applyDiscount();
+            if ($priceBuilder) continue;
 
-            $sheet->setCellValue('A' . $row, $product->product->title);
-            $sheet->setCellValue('B' . $row, $product->product->sku);
-            $sheet->setCellValue('C' . $row, $product->product->producercode);
+            $quantity = $model->quantity;
+            $unitPrice = $priceBuilder->asFloat();
+            $price = $priceBuilder->multiply($quantity)->asFloat();
+
+            $sheet->setCellValue('A' . $row, $product->title);
+            $sheet->setCellValue('B' . $row, $product->sku);
+            $sheet->setCellValue('C' . $row, $product->producercode);
             $sheet->setCellValue('D' . $row, $unitPrice);
             $sheet->setCellValue('E' . $row, $quantity);
             $sheet->setCellValue('F' . $row, $price);
