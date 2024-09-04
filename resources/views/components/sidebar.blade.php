@@ -9,7 +9,7 @@
                     $id = "c-collapse-$category->id";
                     $hasChildren = $category->children->isNotEmpty();
                 @endphp
-                <div class="widget-filters__item py-0 border-0">
+                <div class="widget-filters__item py-0 pr-0 border-0">
                     <div class="widget-filters__item-title">
                         <a
                             style="color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block"
