@@ -35,6 +35,7 @@
                                         </g>
                                     </svg>
                                     <span class="aiz-side-nav-text ml-3">{{ $list ?: "Varsayılan Liste" }}</span>
+                                    <span class="badge badge-success">{{ $this->listCount($list) }}</span>
                                 </a>
                             </li>
                         @endforeach
@@ -44,7 +45,16 @@
         </div>
     </div>
     <div class="col-12 col-lg-9 mt-4 mt-lg-0">
-        <h3 class="mb-4">{{ $currentList ?: 'Varsayılan Liste' }}</h3>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>{{ $currentList ?: 'Varsayılan Liste' }}</h3>
+            <button class="btn btn-success" wire:click="export">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" style="height: 2em">
+                    <path
+                        d="M28.875 0c-.019531.0078125-.042969.0195313-.0625.03125l-28 5.3125c-.476562.089844-.8203125.511719-.8125 1v37.3125c-.0078125.488281.335938.910156.8125 1l28 5.3125c.289063.054688.589844-.019531.820313-.207031.226562-.1875.363281-.464844.367187-.761719v-5h17c1.09375 0 2-.90625 2-2V8c0-1.09375-.90625-2-2-2H30V1c.003906-.289062-.121094-.5625-.335937-.753906C29.449219.0546875 29.160156-.0351563 28.875 0ZM28 2.1875v4.34375c-.132812.277344-.132812.597656 0 .875V42.8125c-.027344.132813-.027344.273438 0 .40625v4.59375L2 42.84375V7.15625ZM30 8h17v34H30v-5h4v-2h-4v-6h4v-2h-4v-5h4v-2h-4v-5h4v-2h-4Zm6 5v2h8v-2ZM6.6875 15.6875l5.46875 9.34375L6.1875 34.375h5l3.25-6.03125c.226563-.582031.375-1.027344.4375-1.3125h.03125c.128906.609375.253906 1.023438.375 1.25l3.25 6.09375H23.5l-5.75-9.4375 5.59375-9.25h-4.6875l-2.96875 5.53125c-.285156.722656-.488281 1.292969-.59375 1.65625h-.03125c-.164062-.609375-.351562-1.152344-.5625-1.59375l-2.6875-5.59375ZM36 20v2h8v-2Zm0 7v2h8v-2Zm0 8v2h8v-2Z"/>
+                </svg>
+                <span class="ml-2">Dışa aktar</span>
+            </button>
+        </div>
         <div class="cart">
             <div class="cart__table cart-table">
                 <table class="cart-table__table">
@@ -69,7 +79,14 @@
                                 </div>
                             </td>
                             <td class="cart-table__column cart-table__column--product">
-                                <a href="" class="cart-table__product-name">{{ $item->product->full_title }}</a>
+                                <a href="" class="cart-table__product-name">
+                                    {{ $item->product->full_title }}
+                                    @if ($item->product->quantity)
+                                        <span class="badge badge-success">Stokta {{ $item->product->quantity }} tane kaldı</span>
+                                    @else
+                                        <span class="badge badge-danger">Stokta yok</span>
+                                    @endif
+                                </a>
                             </td>
                             <td class="cart-table__column cart-table__column--price" data-title="Price">{{ $item->product->price->sellingPrice() }}</td>
                             <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">

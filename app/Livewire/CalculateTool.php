@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\CalculateTool as CalculateToolModel;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class CalculateTool extends Component
 {
@@ -33,6 +35,11 @@ class CalculateTool extends Component
         return CalculateToolModel::forUser()->list($this->currentList ?: null)->with('product.price')->get();
     }
 
+    public function listCount($list)
+    {
+        return CalculateToolModel::forUser()->list($list ?: null)->count();
+    }
+
     public function removeItem($id)
     {
         CalculateToolModel::forUser()
@@ -45,12 +52,60 @@ class CalculateTool extends Component
         CalculateToolModel::forUser()->where("product_id", $productId)->update(["quantity" => $quantity]);
     }
 
+
     public function total()
     {
-        $value = $this->products
+        $value = $this->rawTotal();
+        return format_money($value);
+    }
+
+    public function export()
+    {
+        $products = $this->products;
+
+        // use phpoffice/phpspreadsheet to export the products to an excel file
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('A1', 'Ürün Adı');
+        $sheet->setCellValue('B1', 'Stok Kodu');
+        $sheet->setCellValue('C1', 'Üretici Kodu');
+        $sheet->setCellValue('D1', 'Adet Fiyatı');
+        $sheet->setCellValue('E1', 'Adet');
+        $sheet->setCellValue('F1', 'Fiyat');
+
+        $row = 2;
+        foreach ($products as $product) {
+            $sellingPrice = $product->product->price->sellingPrice();
+            $unitPrice = $sellingPrice->asFloat();
+            $price = $sellingPrice->multiply($product->quantity)->asFloat();
+
+            $quantity = $product->quantity;
+
+            $sheet->setCellValue('A' . $row, $product->product->title);
+            $sheet->setCellValue('B' . $row, $product->product->sku);
+            $sheet->setCellValue('C' . $row, $product->product->producercode);
+            $sheet->setCellValue('D' . $row, $unitPrice);
+            $sheet->setCellValue('E' . $row, $quantity);
+            $sheet->setCellValue('F' . $row, $price);
+
+            $row++;
+        }
+
+        $sheet->setCellValue('E' . $row, 'Toplam');
+        $sheet->setCellValue('F' . $row, $this->rawTotal());
+
+        $writer = new Xlsx($spreadsheet);
+        return response()->streamDownload(
+            fn() => $writer->save('php://output'),
+            'export.xlsx'
+        );
+    }
+
+    private function rawTotal()
+    {
+        return $this->products
             ->map(fn(CalculateToolModel $model) => $model->quantity * $model->product->price->sellingPrice()->asFloat())
             ->sum();
-
-        return format_money($value);
     }
 }
