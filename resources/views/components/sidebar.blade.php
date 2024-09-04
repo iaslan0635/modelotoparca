@@ -28,13 +28,13 @@
                 </div>
                 @if ($hasChildren)
                     <div class="collapse" id="{{$id}}">
-                        @foreach($category->children as $child)
+                        @foreach($category->children->prepend($category) as $child)
                             <div class="widget-filters__item py-0 border-0 ml-4">
                                 <div class="widget-filters__item-title">
                                     <a style="color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block"
                                        href="{{ route('category.show', $child->slug) }}">
                                         <img src="{{ $child->imageUrl() }}" style="max-height: 2.8em; margin-right: .5rem; max-width: 2.8em;">
-                                        {{ $child->name }}
+                                        {{ $child->name }} @if($loop->first) (Ana kategori) @endif
                                     </a>
                                 </div>
                             </div>

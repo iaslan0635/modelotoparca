@@ -63,7 +63,6 @@ class CalculateTool extends Component
     {
         $products = $this->products;
 
-        // use phpoffice/phpspreadsheet to export the products to an excel file
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
