@@ -8,7 +8,7 @@
     @endisset
     <div class="block-split">
         <div class="container">
-            <div class="block-split__row row no-gutters">
+            <div class="block-split__row justify-content-center row no-gutters">
                 <div class="block-split__item block-split__item-content col-auto">
                     <div class="product product--layout--full">
                         <div class="product__body">

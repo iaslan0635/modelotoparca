@@ -17,7 +17,7 @@
     {{ $breadcrumb ?? '' }}
     <div class="block-split block-split--has-sidebar">
         <div class="container wide-container">
-            <div class="block-split__row row no-gutters fixed-sidebar">
+            <div class="block-split__row justify-content-center row no-gutters fixed-sidebar">
                 {{--<div class="block-split__item block-split__item-sidebar col-auto">
                     <div class="sidebar sidebar--offcanvas--mobile" style="position: fixed; top:0; left:0; max-width: 280px;">
                         <div class="sidebar__backdrop"></div>
