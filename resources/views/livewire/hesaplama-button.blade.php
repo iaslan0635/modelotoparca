@@ -14,9 +14,13 @@
                 </label>
             </div>
         @endforeach
-        <div class="d-flex" style="gap: .5rem">
-            <input wire:keydown.enter="addToNewList" class="form-control form-control-sm flex-grow-1" type="text" wire:model="newListName" placeholder="Yeni liste">
-            <button wire:click="addToNewList" wire:en class="btn btn-primary btn-sm d-inline">Ekle</button>
-        </div>
+        @if ($addMode)
+            <div class="d-flex" style="gap: .5rem">
+                <input wire:keydown.enter="addToNewList" class="form-control form-control-sm flex-grow-1" type="text" wire:model="newListName" placeholder="Yeni liste">
+                <button wire:click="addToNewList" wire:en class="btn btn-primary btn-sm d-inline">Ekle</button>
+            </div>
+        @else
+            <button wire:click="$set('addMode', true)" class="btn btn-primary btn-sm">Yeni liste oluştur</button>
+        @endif
     </x-slot:menu>
 </x-wire-dropdown>

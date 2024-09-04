@@ -13,6 +13,8 @@ class HesaplamaButton extends Component
     public Product $product;
     public $newListName;
 
+    public bool $addMode = false;
+
     public function render()
     {
         return view('livewire.hesaplama-button');
@@ -53,6 +55,8 @@ class HesaplamaButton extends Component
         if ($isNew) {
             $this->dispatch("listAdded", list: $listName);
         }
+
+        $this->addMode = false;
     }
 
     #[On('listAdded')]

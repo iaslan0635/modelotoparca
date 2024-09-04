@@ -13,7 +13,7 @@
                         @foreach($category->children as $child)
                             <span class="subcaticon">
                                 <img class="subcaticon" src="{{ $child->imageUrl() }}" style="height: 100px; width: unset">
-                                <a href="{{ route('category.show', $child) }}">{{ $child->name }}</a>
+                                <span >{{ $child->name }}</span>
                             </span>
                         @endforeach
                     </div>
