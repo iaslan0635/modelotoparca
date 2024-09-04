@@ -11,10 +11,10 @@
                 <div class="product-subcat">
                     <div class="subcat__list">
                         @foreach($category->children as $child)
-                            <span class="subcaticon">
+                            <a class="subcaticon" href="{{ route('category.show', $child) }}">
                                 <img class="subcaticon" src="{{ $child->imageUrl() }}" style="height: 100px; width: unset">
-                                <span >{{ $child->name }}</span>
-                            </span>
+                                <span>{{ $child->name }}</span>
+                            </a>
                         @endforeach
                     </div>
                 </div>
