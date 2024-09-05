@@ -26,7 +26,7 @@ abstract class ImportJob implements ShouldQueue
     {
         try {
             $this->getImporter(Storage::path($this->filePath))->import();
-            // Storage::delete($this->filePath);
+            Storage::delete($this->filePath);
         } catch (BulkOperationException $exception) {
             throw new \Exception('Elasticsearch bulk import failed. Raw Result: '.json_encode($exception->rawResult()));
         }
