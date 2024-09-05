@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <title>Model Oto Parca | modelotoparca</title>
+    <title>@yield('title', 'Model Oto Parca | modelotoparca')</title>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <!-- fonts -->
     <link rel="stylesheet" href="https://site.modelotoparca.com/fonts/levenim-mt-2.ttf">

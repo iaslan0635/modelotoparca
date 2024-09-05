@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\MerchantProductController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\EmployeeController;
@@ -79,6 +80,8 @@ Route::get('brands', [BrandController::class, 'index'])->name('brands.index')->m
 Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit')->middleware(permissionMiddleware('Stok Yönetimi.Markalar.Düzenle.*'));
 Route::put('brands/{brand}', [BrandController::class, 'update'])->name('brands.update')->middleware(permissionMiddleware('Stok Yönetimi.Markalar.Düzenle.*'));
 // endregion
+
+Route::resource('pages', PageController::class)->except(['show']);
 
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list')->middleware('permission:Eticaret Yönetimi.Siparişler.Tüm Siparişler');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show')->middleware('permission:Eticaret Yönetimi.Siparişler.Sipariş Sorgula');

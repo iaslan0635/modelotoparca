@@ -6,6 +6,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OemController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
@@ -97,3 +98,6 @@ Route::get('/runbot', function () {
 
     return 'done';
 });
+
+
+Route::get('{page:slug}', [PageController::class, 'show'])->name('page.show');
