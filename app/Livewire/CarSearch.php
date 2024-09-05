@@ -86,11 +86,12 @@ class CarSearch extends Component
 
     public function model($get = ['*'])
     {
+        $columns = array_map(fn($x) => "cars.$x", $get);
+        $columns[] = DB::raw('product_cars.logicalref is not null as has_products');
+
         $builder = Car::query()->distinct()
             ->leftJoin('product_cars', 'cars.id', '=', 'product_cars.car_id')
-            ->groupBy('cars.id')
-            ->addSelect('cars.*')
-            ->addSelect(DB::raw('product_cars.logicalref is not null as has_products'));
+            ->groupBy('cars.id');
 
         if ($this->year !== null) {
             $builder->whereNested(fn($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
@@ -112,17 +113,18 @@ class CarSearch extends Component
             $builder->whereRaw("FIND_IN_SET(id ,REPLACE(REPLACE((select supported_cars from categories where id = ?), ']', ''), '[', ''))", [$this->cat_id]);
         }
 
-        return $builder->get($get)->flatten()->unique();
+        return $builder->get($columns)->flatten()->unique();
     }
 
     public function maker($get = ['*'])
     {
+        $columns = array_map(fn($x) => "makers.$x", $get);
+        $columns[] = DB::raw('product_cars.logicalref is not null as has_products');
+
         $builder = Maker::query()
             ->leftJoin('cars', 'makers.id', '=', 'cars.maker_id')
             ->leftJoin('product_cars', 'cars.id', '=', 'product_cars.car_id')
-            ->groupBy("makers.id")
-            ->addSelect('makers.*')
-            ->addSelect(DB::raw('product_cars.logicalref is not null as has_products'));
+            ->groupBy("makers.id");
 
         if ($this->year !== null) {
             $builder->whereRaw('? BETWEEN from_year AND to_year', [$this->year]);
@@ -138,7 +140,7 @@ class CarSearch extends Component
                     $builder->whereIn("id", $ids->flatten()->unique());
                 }
         */
-        return $builder->orderBy('makers.name')->get($get);
+        return $builder->orderBy('makers.name')->get($columns);
     }
 
     public function add()
