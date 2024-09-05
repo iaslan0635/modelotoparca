@@ -19,7 +19,7 @@ class FilterImporter extends Importer
         $transformers = collect($this->getTransformers());
 
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
-            $this->status($i);
+            $this->reportStatus($i);
             $getCell = $this->makeCellGetter($i);
             $id = $getCell('H');
 

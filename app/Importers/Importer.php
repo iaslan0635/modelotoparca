@@ -80,22 +80,11 @@ abstract class Importer
     }
 
     /**
-     * Create a no-operation function.
-     *
-     * @return callable A function that does nothing.
-     */
-    protected function noop()
-    {
-        return function () {
-        };
-    }
-
-    /**
      * Report the current status using the status hook.
      *
-     * @param int $i The current status value.
+     * @param int $i The processed row number.
      */
-    protected function status(int $i)
+    protected function reportStatus(int $i)
     {
         if ($this->statusHook) {
             ($this->statusHook)($i);

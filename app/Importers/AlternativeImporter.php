@@ -33,7 +33,7 @@ class AlternativeImporter extends Importer
             $i = 1;
             foreach ($refMap as $mainRef => $subs) {
                 $i += count($subs);
-                $this->status($i);
+                $this->reportStatus($i);
 
                 foreach ($subs as $sub) {
                     DB::table('alternatives')->insertOrIgnore([

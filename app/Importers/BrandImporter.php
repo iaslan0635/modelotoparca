@@ -21,7 +21,7 @@ class BrandImporter extends Importer
     public function import()
     {
         for ($i = 2; $i <= $this->getRowCount(); $i++) {
-            $this->status($i);
+            $this->reportStatus($i);
             $getCell = $this->makeCellGetter($i);
             $id = $getCell('A');
             $code = $getCell('B');
