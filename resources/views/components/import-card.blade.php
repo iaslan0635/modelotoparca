@@ -1,4 +1,4 @@
-@props(['filename'])
+@props(['filename', 'note'])
 
 <div {{ $attributes->class(['card card-flush py-4']) }}>
     <!--begin::Card header-->
@@ -6,6 +6,9 @@
         <div class="card-title">
             <h2>{{ $filename }}.xlsx</h2>
         </div>
+        @if(isset($note) && $note)
+            <em>{{ $note }}</em>
+        @endif
     </div>
     <!--end::Card header-->
     <!--begin::Card body-->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Jobs\Import\ImportAlternativeJob;
 use App\Jobs\Import\ImportBrandsJob;
+use App\Jobs\Import\ImportCategoryJob;
 use App\Jobs\Import\ImportFilterJob;
 use App\Jobs\Import\OuterExcelImportJob;
 use App\Jobs\RerunBotForMissingProductsJob;
@@ -13,7 +14,12 @@ class ImportController extends Controller
 {
     public function index()
     {
-        return view('admin.import.index', ['routes' => ['ITEMS_WEB', 'ITEMS_WEB_EK', 'ITEMSUBS', 'ITMCLSAS', 'FILTER_OIL', 'MARKALAR']]);
+        return view('admin.import.index', [
+            'routes' => ['ITEMS_WEB', 'ITEMS_WEB_EK', 'ITEMSUBS', 'KATEGORILER', 'FILTER_OIL', 'MARKALAR'],
+            'notes' => [
+                'KATEGORILER' => "Şimdilik sadece LOGICALREF (A), NAME (E) ve DOMINANTREFS5 (H) sütunları içe aktarılıyor.",
+            ]
+        ]);
     }
 
     protected function storeFile(): string
@@ -26,12 +32,12 @@ class ImportController extends Controller
 
     public function ITEMS_WEB()
     {
-        dispatch(new OuterExcelImportJob($this->storeFile(), false));
+        OuterExcelImportJob::dispatch($this->storeFile(), false);
     }
 
     public function ITEMS_WEB_EK()
     {
-        dispatch(new OuterExcelImportJob($this->storeFile(), true));
+        OuterExcelImportJob::dispatch($this->storeFile(), true);
     }
 
     public function ITEMSUBS()
@@ -49,9 +55,9 @@ class ImportController extends Controller
         ImportFilterJob::dispatch($this->storeFile());
     }
 
-    public function ITMCLSAS()
+    public function KATEGORILER()
     {
-        abort(500, 'Not imlemented');
+        ImportCategoryJob::dispatch($this->storeFile());
     }
 
     public function rerunMissingProducts()

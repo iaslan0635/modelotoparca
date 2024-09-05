@@ -40,7 +40,7 @@
                         </div>
                         @foreach($routes as $route)
                             <!--begin::Card-->
-                            <x-import-card :filename="$route"/>
+                            <x-import-card :filename="$route" :note="Arr::get($notes, $route)"/>
                             <!--end::Card-->
                         @endforeach
                     </form>

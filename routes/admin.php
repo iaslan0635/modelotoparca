@@ -56,7 +56,7 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::post('ITEMS_WEB', 'ITEMS_WEB')->name('ITEMS_WEB')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS WEB');
     Route::post('ITEMS_WEB_EK', 'ITEMS_WEB_EK')->name('ITEMS_WEB_EK')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS WEB EK');
     Route::post('ITEMSUBS', 'ITEMSUBS')->name('ITEMSUBS')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMS SUBS');
-    Route::post('ITMCLSAS', 'ITMCLSAS')->name('ITMCLSAS')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMCLSAS');
+    Route::post('KATEGORILER', 'KATEGORILER')->name('KATEGORILER')->middleware('permission:Aktarma İşlemleri.İçe Aktar.ITEMCLSAS');
     Route::post('FILTER_OIL', 'FILTER_OIL')->name('FILTER_OIL')->middleware('permission:Aktarma İşlemleri.İçe Aktar.FILTER_OIL');
     Route::post('MARKALAR', 'MARKALAR')->name('MARKALAR')->middleware('permission:Aktarma İşlemleri.İçe Aktar.MARKALAR');
     Route::get('sparetobot_bot', 'sparetobot_bot')->name('sparetobot_bot');
