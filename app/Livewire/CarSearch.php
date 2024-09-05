@@ -55,30 +55,31 @@ class CarSearch extends Component
             ->filter(fn($m) => $m->name)->sort(fn($m) => $m->name)->values()->groupBy("has_products")->toArray();
 
         if ($this->maker !== null) {
-            $this->cars ??= $this->model(['short_name'])->pluck('short_name')
-                ->filter()->sort()->values()->groupBy("has_products")->toArray();
+            $this->cars ??= $this->model(['short_name'])->groupBy("has_products")
+                ->map(fn($group) => $group->pluck('short_name')->filter()->sort()->values())
+                ->toArray();
         }
 
         if ($this->car !== null) {
-            $this->years ??= $this->model(['from_year', 'to_year'])
-                ->map(fn($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
-                ->flatten()->unique()->filter()->sort()
-                ->values()->groupBy("has_products")->toArray();
+            $this->years ??= $this->model(['from_year', 'to_year'])->groupBy("has_products")
+                ->map(fn($group) => $group
+                    ->flatMap(fn($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
+                    ->unique()->filter()->sort()->values()
+                )->toArray();
         }
 
         if ($this->year !== null) {
-            $this->spesificCars ??= $this->model('name')->pluck('name')->filter()->sort()
-                ->values()->groupBy("has_products")->toArray();
+            $this->spesificCars ??= $this->model(['name'])->groupBy("has_products")
+                ->map(fn($group) => $group->pluck('name')->filter()->sort()->values())
+                ->toArray();
         }
 
         if ($this->spesificCar !== null) {
-            $this->engines ??= $this->model(['id', 'engine'])
-                ->sortBy('engine')->values()
-                ->map(fn(Car $x) => [
-                    'id' => $x->id,
-                    'name' => $x->engine,
-                ])
-                ->groupBy("has_products")->toArray();
+            $this->engines ??= $this->model(['id', 'engine'])->groupBy("has_products")
+                ->map(fn($group) => $group
+                    ->sortBy('engine')->values()
+                    ->map(fn(Car $x) => ['id' => $x->id, 'name' => $x->engine])
+                )->toArray();
         }
 
         return view("livewire.car-search.$this->variant-variant");
@@ -113,7 +114,7 @@ class CarSearch extends Component
             $builder->whereRaw("FIND_IN_SET(id ,REPLACE(REPLACE((select supported_cars from categories where id = ?), ']', ''), '[', ''))", [$this->cat_id]);
         }
 
-        return $builder->get($columns)->flatten()->unique();
+        return $builder->get($columns);
     }
 
     public function maker(array $get = ['*'])
