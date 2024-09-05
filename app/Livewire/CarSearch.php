@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Facades\Garage as GarageFacade;
 use App\Models\Car;
 use App\Models\Maker;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class CarSearch extends Component
@@ -44,36 +45,40 @@ class CarSearch extends Component
 
         $len = count(self::HIERARCHY);
         for ($i = $index + 1; $i < $len; $i++) {
-            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i].'s'} = null;
+            $this->{self::HIERARCHY[$i]} = $this->{self::HIERARCHY[$i] . 's'} = null;
         }
     }
 
     public function render()
     {
         $this->makers ??= $this->maker(['id', 'name'])
-            ->filter(fn ($m) => $m->name)->sort(fn ($m) => $m->name)->values()->toArray();
+            ->filter(fn($m) => $m->name)->sort(fn($m) => $m->name)->values()->groupBy("has_products")->toArray();
 
         if ($this->maker !== null) {
-            $this->cars ??= $this->model('short_name')->pluck('short_name')->filter()->sort()->values()->toArray();
+            $this->cars ??= $this->model('short_name')->pluck('short_name')
+                ->filter()->sort()->values()->groupBy("has_products")->toArray();
         }
 
         if ($this->car !== null) {
             $this->years ??= $this->model(['from_year', 'to_year'])
-                ->map(fn ($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
-                ->flatten()->unique()->filter()->sort()->values()->toArray();
+                ->map(fn($m) => range($m->from_year ?? 2023, $m->to_year ?? 2023))
+                ->flatten()->unique()->filter()->sort()
+                ->values()->groupBy("has_products")->toArray();
         }
 
         if ($this->year !== null) {
-            $this->spesificCars ??= $this->model('name')->pluck('name')->filter()->sort()->values()->toArray();
+            $this->spesificCars ??= $this->model('name')->pluck('name')->filter()->sort()
+                ->values()->groupBy("has_products")->toArray();
         }
 
         if ($this->spesificCar !== null) {
             $this->engines ??= $this->model(['id', 'engine'])
                 ->sortBy('engine')->values()
-                ->map(fn (Car $x) => [
+                ->map(fn(Car $x) => [
                     'id' => $x->id,
                     'name' => $x->engine,
-                ])->toArray();
+                ])
+                ->groupBy("has_products")->toArray();
         }
 
         return view("livewire.car-search.$this->variant-variant");
@@ -81,10 +86,14 @@ class CarSearch extends Component
 
     public function model($get = ['*'])
     {
-        $builder = Car::query()->distinct();
+        $builder = Car::query()->distinct()
+            ->leftJoin('product_cars', 'cars.id', '=', 'product_cars.car_id')
+            ->groupBy('cars.id')
+            ->addSelect('cars.*')
+            ->addSelect(DB::raw('product_cars.logicalref is not null as has_products'));
 
         if ($this->year !== null) {
-            $builder->whereNested(fn ($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
+            $builder->whereNested(fn($q) => $q->whereRaw('? BETWEEN from_year AND COALESCE(to_year, year(current_date))', $this->year));
         }
 
         if ($this->car !== null) {
@@ -108,7 +117,13 @@ class CarSearch extends Component
 
     public function maker($get = ['*'])
     {
-        $builder = Maker::query();
+        $builder = Maker::query()
+            ->leftJoin('cars', 'makers.id', '=', 'cars.maker_id')
+            ->leftJoin('product_cars', 'cars.id', '=', 'product_cars.car_id')
+            ->groupBy("makers.id")
+            ->addSelect('makers.*')
+            ->addSelect(DB::raw('product_cars.logicalref is not null as has_products'));
+
         if ($this->year !== null) {
             $builder->whereRaw('? BETWEEN from_year AND to_year', [$this->year]);
         }
@@ -123,7 +138,7 @@ class CarSearch extends Component
                     $builder->whereIn("id", $ids->flatten()->unique());
                 }
         */
-        return $builder->orderBy('name')->get($get);
+        return $builder->orderBy('makers.name')->get($get);
     }
 
     public function add()

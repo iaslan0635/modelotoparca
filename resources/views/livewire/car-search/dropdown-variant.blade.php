@@ -4,40 +4,67 @@
             <div class="vehicle-form__item vehicle-form__item--select">
                 <select class="form-control" wire:change="resetTo('maker')" wire:model.live="maker" name="maker" aria-label="Aracın Markası" @if(blank($makers)) disabled @endif >
                     <option value="none">Aracın Markası</option>
-                    @foreach($makers ?? [] as $maker_)
-                        <option value="{{ $maker_["id"] }}">{{ $maker_["name"] }}</option>
+                    @foreach([1, 0] as $group)
+                        @foreach($makers[$group] ?? [] as $maker_)
+                            <option value="{{ $maker_["id"] }}">{{ $maker_["name"] }}</option>
+                        @endforeach
+                        @if ($loop->first)
+                            <option disabled>──────────</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
             <div class="vehicle-form__item vehicle-form__item--select">
                 <select class="form-control" wire:change="resetTo('car')" wire:model.live="car" name="car" aria-label="Aracın Modeli" @if(blank($cars)) disabled @endif >
                     <option value="none">Aracın Modeli</option>
-                    @foreach($cars ?? [] as $car_)
-                        <option value="{{ $car_ }}">{{ $car_ }}</option>
+                    @foreach([1, 0] as $group)
+                        @foreach($cars[$group] ?? [] as $car_)
+                            <option>{{ $car_ }}</option>
+                        @endforeach
+                        @if ($loop->first)
+                            <option disabled>──────────</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
             <div class="vehicle-form__item vehicle-form__item--select">
                 <select class="form-control" wire:change="resetTo('year')" wire:model.live="year" name="year" aria-label="Aracın Yılı" @if(blank($years)) disabled @endif >
                     <option value="none">Aracın Yılı</option>
-                    @foreach($years ?? [] as $year_)
-                        <option>{{ $year_ }}</option>
+                    @foreach([1, 0] as $group)
+                        @foreach($years[$group] ?? [] as $year_)
+                            <option>{{ $year_ }}</option>
+                        @endforeach
+                        @if ($loop->first)
+                            <option disabled>──────────</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
             <div class="vehicle-form__item vehicle-form__item--select">
-                <select class="form-control" wire:change="resetTo('spesificCar')" wire:model.live="spesificCar" name="spesificCar" aria-label="Araç Seçiniz" @if(blank($spesificCars)) disabled @endif >
+                <select class="form-control" wire:change="resetTo('spesificCar')" wire:model.live="spesificCar" name="spesificCar" aria-label="Araç Seçiniz"
+                        @if(blank($spesificCars)) disabled @endif >
                     <option value="none">Araç Seçiniz</option>
-                    @foreach($spesificCars ?? [] as $spesificCar_)
-                        <option value="{{ $spesificCar_ }}">{{ $spesificCar_ }}</option>
+                    @foreach([1, 0] as $group)
+                        @foreach($spesificCars[$group] ?? [] as $spesificCar_)
+                            <option>{{ $spesificCar_ }}</option>
+                        @endforeach
+                        @if ($loop->first)
+                            <option disabled>──────────</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
             <div class="vehicle-form__item vehicle-form__item--select">
-                <select class="form-control" wire:change="resetTo('engine')" wire:model.live="engine" name="engine" aria-label="Aracın Motoru" @if(blank($engines)) disabled @endif >
+                <select class="form-control" wire:change="resetTo('engine')" wire:model.live="engine" name="engine" aria-label="Aracın Motoru"
+                        @if(blank($engines)) disabled @endif >
                     <option value="none">Aracın Motoru</option>
-                    @foreach($engines ?? [] as $engine_)
-                        <option value="{{ $engine_["id"] }}">{{ $engine_["name"] }}</option>
+                    @foreach([1, 0] as $group)
+                        @foreach($engines[$group] ?? [] as $engine_)
+                            <option value="{{ $engine_["id"] }}">{{ $engine_["name"] }}</option>
+                        @endforeach
+                        @if ($loop->first)
+                            <option disabled>──────────</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
