@@ -55,7 +55,7 @@ class CarSearch extends Component
             ->filter(fn($m) => $m->name)->sort(fn($m) => $m->name)->values()->groupBy("has_products")->toArray();
 
         if ($this->maker !== null) {
-            $this->cars ??= $this->model('short_name')->pluck('short_name')
+            $this->cars ??= $this->model(['short_name'])->pluck('short_name')
                 ->filter()->sort()->values()->groupBy("has_products")->toArray();
         }
 
@@ -84,7 +84,7 @@ class CarSearch extends Component
         return view("livewire.car-search.$this->variant-variant");
     }
 
-    public function model($get = ['*'])
+    public function model(array $get = ['*'])
     {
         $columns = array_map(fn($x) => "cars.$x", $get);
         $columns[] = DB::raw('product_cars.logicalref is not null as has_products');
@@ -116,7 +116,7 @@ class CarSearch extends Component
         return $builder->get($columns)->flatten()->unique();
     }
 
-    public function maker($get = ['*'])
+    public function maker(array $get = ['*'])
     {
         $columns = array_map(fn($x) => "makers.$x", $get);
         $columns[] = DB::raw('product_cars.logicalref is not null as has_products');
