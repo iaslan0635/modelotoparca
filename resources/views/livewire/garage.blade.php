@@ -1,6 +1,6 @@
 <div class="vehicles-list__body">
     @foreach($cars as $car)
-        <label class="vehicles-list__item" wire:click="$dispatch('chooseCar', {{ $car["id"] }})">
+        <label class="vehicles-list__item" wire:click="$dispatch('chooseCar', {id: {{ $car["id"] }}})">
                                                     <span class="vehicles-list__item-radio input-radio">
                                                         <span class="input-radio__body">
                                                             <input @if($car["id"] === $chosen) checked @endif

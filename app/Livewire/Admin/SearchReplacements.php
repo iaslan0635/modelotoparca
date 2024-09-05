@@ -33,7 +33,7 @@ class SearchReplacements extends Component
             ]);
             SearchReplacement::clearCache();
         } catch (QueryException) {
-            $this->dispatch('toast', 'Önceden bu kayıt oluşturulmuş', 'error');
+            $this->dispatch('toast', message: 'Önceden bu kayıt oluşturulmuş', severity: 'error');
         }
     }
 

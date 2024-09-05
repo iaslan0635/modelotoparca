@@ -1,9 +1,9 @@
 <tr wire:model.live="value" x-data x-init="
 $($refs.select).select2().on('select2:select', () => {
-$dispatch('input', $refs.select.value)
+    $dispatch('input', $refs.select.value)
 })
 ">
-    <td>{{ $name }}</td>
+    <td>evtbu{{ $name }}</td>
     <td>
         @if($isMandatory)
             <b>Evet</b>

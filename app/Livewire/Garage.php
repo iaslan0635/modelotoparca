@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Facades\Garage as GarageFacade;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Traits\ForwardsCalls;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Garage extends Component
@@ -26,17 +27,14 @@ class Garage extends Component
         return view('livewire.garage');
     }
 
-    public function forwardCallToGarage(string $method, array $parameters)
-    {
-        return $this->forwardCallTo($this, $method, $parameters);
-    }
-
+    #[On('garage.reloadData')]
     public function reloadData()
     {
         $this->cars = $this->onlyChosen ? Arr::wrap(GarageFacade::findChosen()) : GarageFacade::items();
         $this->chosen = GarageFacade::chosen();
     }
 
+    #[On('garage.chooseCar')]
     public function chooseCar(int $id)
     {
         GarageFacade::choose($id);
@@ -44,13 +42,16 @@ class Garage extends Component
         $this->dispatch('reload');
     }
 
+    #[On('garage.remove')]
     public function remove(int $id)
     {
         GarageFacade::remove($id);
     }
 
+    #[On('garage.deselect')]
     public function deselect()
     {
         GarageFacade::deselect();
+        $this->dispatch('reload');
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Header;
 
-use App\Facades\Garage;
 use App\Packages;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -50,22 +49,21 @@ class Search extends Component
 
     public function deselect()
     {
-        Garage::deselect();
-        $this->dispatch('reload');
+        return $this->dispatch('garage.reloadData');
     }
 
     public function reloadData()
     {
-        return $this->dispatch('forwardCallToGarage', 'reloadData', func_get_args());
+        return $this->dispatch('garage.chooseCar');
     }
 
-    public function chooseCar()
+    public function chooseCar(int $id)
     {
-        return $this->dispatch('forwardCallToGarage', 'chooseCar', func_get_args());
+        return $this->dispatch('garage.remove', id: $id);
     }
 
-    public function remove()
+    public function remove(int $id)
     {
-        return $this->dispatch('forwardCallToGarage', 'remove', func_get_args());
+        return $this->dispatch('garage.deselect', id: $id);
     }
 }

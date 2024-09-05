@@ -1977,8 +1977,8 @@
 		<!--begin::Global Javascript Bundle(used by all pages)-->
         @livewireScripts
         <script>
-            Livewire.on('toast', (message, method = "success") => {
-                toastr[method](message);
+            Livewire.on('toast', ({message, severity}) => {
+                toastr[severity](message || "success");
             })
         </script>
 		<script src="assets/plugins/global/plugins.bundle.js"></script>

@@ -24,7 +24,7 @@ class CarPanel extends Component
     public function alert(array $ids)
     {
         if (empty($ids)) {
-            return $this->dispatch('toast', 'Araç seçiniz', 'error');
+            return $this->dispatch('toast', message: 'Araç seçiniz', severity: 'error');
         }
 
         foreach ($ids as $id) {
