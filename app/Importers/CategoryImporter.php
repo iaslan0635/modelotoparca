@@ -25,6 +25,10 @@ class CategoryImporter extends Importer
             $parentId = $getCell('H');
             $slug = Str::slug($name) . "-" . $id;
 
+            if ($parentId == 0) {
+                $parentId = null;
+            }
+
             Category::updateOrCreate(
                 ['id' => $id],
                 [
