@@ -20,7 +20,7 @@ class ImportController extends Controller
                 'ITEMS_WEB' => "Excelde bulunmayan ürünleri deaktif eder.",
                 'ITEMS_WEB_EK' => "Excelde bulunmayan ürünleri deaktif etmez.",
                 'ITEMSUBS' => "Ürün alternatiflerini içe aktarır.",
-                'KATEGORILER' => "Şimdilik sadece LOGICALREF (A), NAME (E) ve DOMINANTREFS5 (H) sütunları içe aktarılıyor.",
+                'KATEGORILER' => "Şimdilik sadece LOGICALREF (A), NAME (E) ve DOMINANTREFS5 (H) sütunlarını içe aktarır.",
                 'FILTER_OIL' => "Yağ kategorisinin filtrelerini içe aktarır.",
                 'MARKALAR' => "Markaları içe aktarır."
             ]
