@@ -66,11 +66,11 @@
     .subcatrow {
         display: flex;
         justify-content: center;
+        margin-bottom: 2rem;
     }
 
     .product-subcat {
         padding: 20px;
-        background-color: #f9f9f9; /* Arka plan rengi */
         border-radius: 8px; /* Köşeleri yuvarlama */
     }
 
