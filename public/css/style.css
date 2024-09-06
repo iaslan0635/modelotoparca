@@ -9810,7 +9810,8 @@ select.form-control::-ms-expand {
         width: 270px;
     }
     .block-split--has-sidebar .block-split__item-content {
-        width: calc(100% - 310px);
+        width: calc(100% - 60px);
+        /*width: calc(100% - 310px);*/
     }
     [dir=ltr] .block-split--has-sidebar .block-split__item + .block-split__item {
         margin-left: 10px;
