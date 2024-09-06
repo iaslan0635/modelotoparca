@@ -100,4 +100,4 @@ Route::get('/runbot', function () {
 });
 
 
-Route::get('{page:slug}', [PageController::class, 'show'])->name('page.show');
+Route::get('{page:slug}', [PageController::class, 'show'])->name('page.show')->fallback();
