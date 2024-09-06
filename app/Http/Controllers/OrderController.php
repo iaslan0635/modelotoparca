@@ -26,8 +26,7 @@ class OrderController extends Controller
             'payment_method' => $request->input('checkout_payment_method'),
             'shipment_address_id' => $address->id,
             'invoice_address_id' => $address->id,
-            'payment_status' => OrderStatuses::PENDING,
-            'shipment_status' => OrderStatuses::PENDING,
+            'status' => OrderStatuses::PENDING,
             'original_data' => [
                 'shipment_address' => $address,
                 'invoice_address' => $address,

@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\PaymentStatusChangedEvent;
+use App\Events\OrderStatusChangedEvent;
 
 class PaymentStatusChangedListener
 {
@@ -17,7 +17,7 @@ class PaymentStatusChangedListener
     /**
      * Handle the event.
      */
-    public function handle(PaymentStatusChangedEvent $event): void
+    public function handle(OrderStatusChangedEvent $event): void
     {
         //
     }

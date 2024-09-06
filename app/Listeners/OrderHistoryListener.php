@@ -30,7 +30,7 @@ class OrderHistoryListener
             $event instanceof Events\ShipmentStatusChangedEvent => 'Sipariş durumu değişti',
             $event instanceof Events\ShipmentAddressChangedEvent => 'Kargo adresi değişti',
             $event instanceof Events\InvoiceAddressChangedEvent => 'Fatura adresi değişti',
-            $event instanceof Events\PaymentStatusChangedEvent => 'Ödeme durumu değişti',
+            $event instanceof Events\OrderStatusChangedEvent => 'Ödeme durumu değişti',
             default => $event::class,
         };
     }

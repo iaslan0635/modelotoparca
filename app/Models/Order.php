@@ -55,8 +55,8 @@ class Order extends BaseModel
             if ($order->wasChanged('invoice_address_id')) {
                 dispatch(new Events\InvoiceAddressChangedEvent($order));
             }
-            if ($order->wasChanged('payment_status')) {
-                dispatch(new Events\PaymentStatusChangedEvent($order));
+            if ($order->wasChanged('status')) {
+                dispatch(new Events\OrderStatusChangedEvent($order));
             }
         });
     }

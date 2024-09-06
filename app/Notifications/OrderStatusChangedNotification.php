@@ -2,18 +2,18 @@
 
 namespace App\Notifications;
 
-use App\Events\PaymentStatusChangedEvent;
+use App\Events\OrderStatusChangedEvent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class PaymentStatusChangedNotification extends Notification
+class OrderStatusChangedNotification extends Notification
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(public PaymentStatusChangedEvent $event)
+    public function __construct(public OrderStatusChangedEvent $event)
     {
         //
     }

@@ -69,7 +69,7 @@ class User extends Authenticatable
 
     public function pendingOrders(): HasMany
     {
-        return $this->hasMany(Order::class)->where('payment_status', '=', OrderStatuses::PENDING);
+        return $this->hasMany(Order::class)->where('status', '=', OrderStatuses::PENDING);
     }
 
     public function whislist(): BelongsToMany

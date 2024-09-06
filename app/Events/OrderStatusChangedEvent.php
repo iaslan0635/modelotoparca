@@ -3,13 +3,13 @@
 namespace App\Events;
 
 use App\Models\Order;
-use App\Notifications\PaymentStatusChangedNotification;
+use App\Notifications\OrderStatusChangedNotification;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
 
-class PaymentStatusChangedEvent implements Notifable
+class OrderStatusChangedEvent implements Notifable
 {
     use Dispatchable, SerializesModels;
 
@@ -24,7 +24,7 @@ class PaymentStatusChangedEvent implements Notifable
 
     public function getNotification(): Notification
     {
-        return new PaymentStatusChangedNotification($this);
+        return new OrderStatusChangedNotification($this);
     }
 
     public function getNotificationAudience(): Collection|array

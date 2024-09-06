@@ -13,7 +13,7 @@ class OrderController extends Controller
         $orders = Order::query()->with(['user', 'items']);
 
         if ($request->has('type')) {
-            $orders->where('payment_status', '=', $request->input('type'));
+            $orders->where('status', '=', $request->input('type'));
         }
 
         $orders = $orders->orderByDesc('id')->paginate(10);
@@ -38,7 +38,7 @@ class OrderController extends Controller
     public function update(Order $order, Request $request)
     {
         $order->update([
-            'payment_status' => $request->input('payment_status'),
+            'status' => $request->input('status'),
         ]);
 
         return back();

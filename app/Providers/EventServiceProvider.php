@@ -11,7 +11,7 @@ use App\Events\InvoiceRefundChangedEvent;
 use App\Events\InvoiceStatusChangedEvent;
 use App\Events\MerchantOrderCreatedEvent;
 use App\Events\OrderCreatedEvent;
-use App\Events\PaymentStatusChangedEvent;
+use App\Events\OrderStatusChangedEvent;
 use App\Events\PriceChangedEvent;
 use App\Events\ProductCategoryChangedEvent;
 use App\Events\ProductChangedEvent;
@@ -61,7 +61,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        PaymentStatusChangedEvent::class => [
+        OrderStatusChangedEvent::class => [
             SendNotification::class,
             PaymentStatusChangedListener::class,
             OrderHistoryListener::class,
