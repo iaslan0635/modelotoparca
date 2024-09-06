@@ -125,8 +125,9 @@
         @yield('content')
     </div>
     <!-- site__body / end -->
+    @include('layouts.footer')
 </div>
-@include('layouts.footer')
+
 <!-- site / end -->
 <!-- mobile-menu -->
 @include('layouts.mobile-menu')
