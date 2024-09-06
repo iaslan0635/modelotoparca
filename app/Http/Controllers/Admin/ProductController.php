@@ -87,6 +87,12 @@ class ProductController extends Controller
         return $query;
     }
 
+    public static function searchProducts(string $search, $query = null)
+    {
+        $query ??= Product::query();
+        return static::searchWithCode($query, static::FIELDS_TO_SEARCH, ['title', 'description'], $search);
+    }
+
     public static function tableResponse(Builder $productQuery = null)
     {
         $request = \request();

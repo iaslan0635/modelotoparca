@@ -18,21 +18,21 @@ class OrderController extends Controller
 
         $orders = $orders->orderByDesc('id')->paginate(10);
 
-        return view('admin.apps.ecommerce.sales.listing', compact('orders'));
+        return view('admin.order.index', compact('orders'));
     }
 
     public function show(Order $order)
     {
         $order->load(['user.addresses', 'invoiceAddress', 'shipmentAddress', 'items.product']);
 
-        return view('admin.apps.ecommerce.sales.details', compact('order'));
+        return view('admin.order.details', compact('order'));
     }
 
     public function edit(Order $order)
     {
         $order->load(['user.addresses', 'invoiceAddress', 'shipmentAddress', 'items.product']);
 
-        return view('admin.apps.ecommerce.sales.edit-order', compact('order'));
+        return view('admin.order.edit', compact('order'));
     }
 
     public function update(Order $order, Request $request)

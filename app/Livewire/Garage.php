@@ -10,8 +10,6 @@ use Livewire\Component;
 
 class Garage extends Component
 {
-    use ForwardsCalls;
-
     public ?array $cars;
 
     public ?int $chosen;
