@@ -22,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', DashboardController::class)->name('dashboard');
 
-Route::get('/h', function () {
-    return view('admin.horizental.layout');
-});
+Route::view('/h', 'admin.horizental.layout');
 
 Route::prefix('products/{product}/edit')->name('products.edit.')->controller(ProductController::class)->group(function () {
     Route::get('oem', 'push_oem')->name('oem');
@@ -35,20 +33,16 @@ Route::prefix('products/{product}/edit')->name('products.edit.')->controller(Pro
 
 Route::get('products/export', [ProductController::class, 'exportToExcel'])->name('products.export');
 
-// region product
 Route::get('products', [ProductController::class, 'index'])->name('products.index')->middleware('permission:Stok Yönetimi.Ürünler.Listele');
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show')->middleware('permission:Stok Yönetimi.Ürünler.Listele');
-// endregion
 
 Route::prefix('categories/{category}/edit')->name('categories.edit.')->controller(CategoryController::class)->group(function () {
     Route::post('image', 'push_image')->name('image');
     Route::post('delete_image', 'delete_image')->name('delete_image');
 });
 
-// region category
 Route::get('categories', [CategoryController::class, 'index'])->name('categories.index')->middleware('permission:Stok Yönetimi.Kategoriler.Listele');
 Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show')->middleware('permission:Stok Yönetimi.Kategoriler.Listele');
-// endregion
 
 Route::post('delete_image', [ImageController::class, 'delete'])->name('delete-image');
 
@@ -75,11 +69,9 @@ Route::controller(CarController::class)->prefix('cars')->name('cars.')->group(fu
     Route::post('toggleIndexing', 'toggleIndexing')->name('toggleIndexing')->middleware('permission:Analizler.Araçlar.Düzenle');
 });
 
-// region brand
 Route::get('brands', [BrandController::class, 'index'])->name('brands.index')->middleware('permission:Stok Yönetimi.Markalar.Ara');
 Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('brands.edit')->middleware(permissionMiddleware('Stok Yönetimi.Markalar.Düzenle.*'));
 Route::put('brands/{brand}', [BrandController::class, 'update'])->name('brands.update')->middleware(permissionMiddleware('Stok Yönetimi.Markalar.Düzenle.*'));
-// endregion
 
 Route::resource('pages', PageController::class)->except(['show']);
 
@@ -101,24 +93,20 @@ Route::get('brand-sync', [BrandController::class, 'brandSync'])->name('brand-syn
 Route::put('brand-sync', [BrandController::class, 'updateBrandConnection'])->name('brand-sync.update')->middleware('permission:Pazaryerleri.Marka Eşitleme');
 Route::get('brand-sync/search', [BrandController::class, 'searchTrendyolBrands'])->name('brand-sync.search');
 
-Route::get('role/{role}/delete', [RoleController::class, 'delete'])->name('role.delete')->middleware('permission:Kullanıcı İşlemleri.Roller.Sil');
+Route::controller(RoleController::class)->name("role.")->prefix("role")->group(function () {
+    Route::get('{role}/delete', 'delete')->name('delete')->middleware('permission:Kullanıcı İşlemleri.Roller.Sil');
+    Route::get('', 'index')->name('index')->middleware('permission:Kullanıcı İşlemleri.Roller.Listele');
+    Route::get('create', 'create')->name('create')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
+    Route::post('', 'store')->name('store')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
+    Route::get('{role}', 'show')->name('show')->middleware('permission:Kullanıcı İşlemleri.Roller.Listele');
+    Route::get('{role}/edit', 'edit')->name('edit')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
+    Route::put('{role}', 'update')->name('update')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
+    Route::get('unassign/{role}/{user}', 'unassign')->name('unassign')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
+});
 
-// region role
-Route::get('role', [RoleController::class, 'index'])->name('role.index')->middleware('permission:Kullanıcı İşlemleri.Roller.Listele');
-Route::get('role/create', [RoleController::class, 'create'])->name('role.create')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
-Route::post('role', [RoleController::class, 'store'])->name('role.store')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
-Route::get('role/{role}', [RoleController::class, 'show'])->name('role.show')->middleware('permission:Kullanıcı İşlemleri.Roller.Listele');
-Route::get('role/{role}/edit', [RoleController::class, 'edit'])->name('role.edit')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
-Route::put('role/{role}', [RoleController::class, 'update'])->name('role.update')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
-// endregion
-
-Route::get('role/unassign/{role}/{user}', [RoleController::class, 'unassign'])->name('role.unassign')->middleware('permission:Kullanıcı İşlemleri.Roller.İzinleri Düzenle');
 Route::get('merchant/failed', [MerchantTrackingController::class, 'failed'])->name('merchant.failed')->middleware('permission:Pazaryerleri.Ürünler.Hatalı Ürünler');
-
-// region merchant-setting
 Route::get('merchant-setting', [MerchantSettingController::class, 'index'])->name('merchant-setting.index')->middleware('permission:Pazaryerleri.Entegrasyon Ayarları');
 Route::post('merchant-setting', [MerchantSettingController::class, 'store'])->name('merchant-setting.store')->middleware('permission:Pazaryerleri.Entegrasyon Ayarları');
-// endregion
 
 if (app()->hasDebugModeEnabled()) {
     Route::fallback(function () {
@@ -130,30 +118,28 @@ if (app()->hasDebugModeEnabled()) {
     });
 }
 
-Route::controller(AuthController::class)
-    ->name('auth.')
-    ->group(function () {
-        Route::get('login', 'login')->name('login')->withoutMiddleware(['auth:admin']);
-        Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['auth:admin']);
-        Route::get('logout', 'logout')->name('logout');
-    });
+Route::controller(AuthController::class)->name('auth.')->group(function () {
+    Route::get('login', 'login')->name('login')->withoutMiddleware(['auth:admin']);
+    Route::post('login', 'authenticate')->name('authenticate')->withoutMiddleware(['auth:admin']);
+    Route::get('logout', 'logout')->name('logout');
+});
 
-// region user
-Route::get('user', [UserController::class, 'index'])->name('user.index')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Listele');
-Route::get('user/create', [UserController::class, 'create'])->name('user.create')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Ekle');
-Route::post('user', [UserController::class, 'store'])->name('user.store')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Ekle');
-Route::get('user/{user}', [UserController::class, 'show'])->name('user.show')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Listele');
-Route::get('user/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
-Route::put('user/{user}', [UserController::class, 'update'])->name('user.update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
-Route::delete('user/{user}', [UserController::class, 'destroy'])->name('user.destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
-// endregion
+Route::controller(UserController::class)->name("user.")->prefix("user")->group(function () {
+    Route::get('', 'index')->name('index')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Listele');
+    Route::get('create', 'create')->name('create')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Ekle');
+    Route::post('', 'store')->name('store')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Ekle');
+    Route::get('{user}', 'show')->name('show')->middleware('permission:Kullanıcı İşlemleri.Yöneticiler.Listele');
+    Route::get('{user}/edit', 'edit')->name('edit')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
+    Route::put('{user}', 'update')->name('update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
+    Route::delete('{user}', 'destroy')->name('destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Yöneticiler.Düzenle.*'));
+});
 
-// region  employee
-Route::get('employee', [EmployeeController::class, 'index'])->name('employee.index')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Listele');
-Route::get('employee/create', [EmployeeController::class, 'create'])->name('employee.create')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Ekle');
-Route::post('employee', [EmployeeController::class, 'store'])->name('employee.store')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Ekle');
-Route::get('employee/{employee}', [EmployeeController::class, 'show'])->name('employee.show')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Listele');
-Route::get('employee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee.edit')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
-Route::put('employee/{employee}', [EmployeeController::class, 'update'])->name('employee.update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
-Route::delete('employee/{employee}', [EmployeeController::class, 'destroy'])->name('employee.destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
-// endregion
+Route::controller(EmployeeController::class)->name("employee.")->prefix("employee")->group(function () {
+    Route::get('', 'index')->name('index')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Listele');
+    Route::get('create', 'create')->name('create')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Ekle');
+    Route::post('', 'store')->name('store')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Ekle');
+    Route::get('{employee}', 'show')->name('show')->middleware('permission:Kullanıcı İşlemleri.Kullanıcılar.Listele');
+    Route::get('{employee}/edit', 'edit')->name('edit')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
+    Route::put('{employee}', 'update')->name('update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
+    Route::delete('{employee}', 'destroy')->name('destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
+});
