@@ -16,7 +16,7 @@ class CategoryImporter extends Importer
 
     public function getRowCount(): int
     {
-        return $this->sheet->getHighestRow("A");
+        return $this->sheet->getHighestDataRow("A");
     }
 
     public function import()
@@ -29,6 +29,8 @@ class CategoryImporter extends Importer
             if (!$id) break;
 
             $name = $getCell('E');
+            if (!$name || $name == 0) continue;
+
             $parentId = $getCell('H');
             $slug = Str::slug($name) . "-" . $id;
 
