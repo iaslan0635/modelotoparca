@@ -465,7 +465,7 @@
                                                                         <li>
                                                                             <a class="dropdown-item"
                                                                                href="{{ route('admin.order.declineOrder', [$order, $item->id, $rejectReason->value]) }}">
-                                                                                {{__('OrderRejectReasonType.'.$rejectReason->value)}}
+                                                                                {{__('order_reject_reason_type.'.$rejectReason->value)}}
                                                                             </a>
                                                                         </li>
                                                                     @endforeach
