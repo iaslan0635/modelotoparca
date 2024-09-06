@@ -21,7 +21,7 @@ class Breadcrumb extends Component
         return [
             [
                 'name' => 'Anasayfa',
-                'link' => route('welcome'),
+                'link' => route('home'),
             ],
             ...$this->parts,
         ];

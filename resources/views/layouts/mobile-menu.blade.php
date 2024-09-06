@@ -213,7 +213,7 @@
                 <div class="mobile-menu__divider"></div>
                 <ul class="mobile-menu__links">
                     <li data-mobile-menu-item>
-                        <a href="{{route('welcome')}}" class="" data-mobile-menu-trigger>
+                        <a href="{{route('home')}}" class="" data-mobile-menu-trigger>
                             Anasayfa
                         </a>
                     </li>
