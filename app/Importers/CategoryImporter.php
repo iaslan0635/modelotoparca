@@ -21,6 +21,8 @@ class CategoryImporter extends Importer
             $getCell = $this->makeCellGetter($i);
 
             $id = $getCell('A');
+            if (!$id) break;
+
             $name = $getCell('E');
             $parentId = $getCell('H');
             $slug = Str::slug($name) . "-" . $id;
