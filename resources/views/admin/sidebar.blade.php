@@ -147,7 +147,7 @@
         <x-sidebar.section title="Yönetim"/>
 
         @canany(permissions("Site Yönetimi.Sayfalar.*"))
-            <x-sidebar.item :href="route('admin.user.index')">Sayfalar</x-sidebar.item>
+            <x-sidebar.item :href="route('admin.pages.index')">Sayfalar</x-sidebar.item>
         @endcanany
         @canany(permissions("Site Yönetimi.Yorumlar.*"))
             <x-sidebar.item href="">Yorumlar</x-sidebar.item>
