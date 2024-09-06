@@ -15,60 +15,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="sidebar__content">
-                            <form action="{{ route('search') }}" method="GET">
-                                <input type="hidden" name="query" value="{{ request()->query('query') }}">
-                                <div class="widget widget-filters widget-filters--offcanvas--mobile"
-                                     data-collapse
-                                     data-collapse-opened-class="filter--opened">
-                                    <div class="widget__header widget-filters__header">
-                                        <h4>Filtrele</h4>
-                                    </div>
-                                    <div class="widget-filters__list">
-                                        <div class="widget-filters__item">
-                                            <div class="filter filter--opened" data-collapse-item>
-                                                <button type="button" class="filter__title"
-                                                        data-collapse-trigger>
-                                                    Fiyat
-                                                    <span class="filter__arrow">
-                                                        <svg width="12px" height="7px">
-                                                            <path
-                                                                d="M0.286,0.273 L0.286,0.273 C-0.070,0.629 -0.075,1.204 0.276,1.565 L5.516,6.993 L10.757,1.565 C11.108,1.204 11.103,0.629 10.747,0.273 L10.747,0.273 C10.385,-0.089 9.796,-0.086 9.437,0.279 L5.516,4.296 L1.596,0.279 C1.237,-0.086 0.648,-0.089 0.286,0.273 Z"/>
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                                <div class="filter__body" data-collapse-content>
-                                                    <div class="filter__container">
-                                                        <div class="row">
-                                                            <div class="col-md-5">
-                                                                <input type="number" class="form-control"
-                                                                       name="min_price"
-                                                                       value="{{ number_format(request()->query('min_price', 0), thousands_separator: "") }}"
-                                                                       id="min-value" placeholder="Min. Fiyat">
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <span>-</span>
-                                                            </div>
-                                                            <div class="col-md-5">
-                                                                <input type="number" class="form-control"
-                                                                       name="max_price"
-                                                                       value="{{ number_format(request()->query('max_price', 99999), thousands_separator: "") }}"
-                                                                       id="max-value" placeholder="Max. Fiyat">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-filters__actions d-flex">
-                                        <button type="submit" class="btn btn-primary btn-sm">Filter</button>
-                                        <button class="btn btn-secondary btn-sm">Reset</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <x-last-visited/>
-                        </div>
+
                     </div>
                 </div>
             </div>
