@@ -14,6 +14,11 @@ class CategoryImporter extends Importer
         return ['categories'];
     }
 
+    public function getRowCount(): int
+    {
+        return $this->sheet->getHighestRow("A");
+    }
+
     public function import()
     {
         for ($i = 2; $i <= $this->getRowCount(); $i++) {

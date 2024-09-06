@@ -188,9 +188,6 @@
                                 </select>
                                 <!--end::Select2-->
                             </div>
-                            <!--begin::Add product-->
-                            <a href="admin/apps/ecommerce/catalog/add-product" class="btn btn-primary">Add Product</a>
-                            <!--end::Add product-->
                         </div>
                         <!--end::Card toolbar-->
                     </div>
