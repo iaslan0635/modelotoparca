@@ -16,7 +16,7 @@ use App\Livewire\CategoryPage;
 use App\Livewire\FullPageCarSelector;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class)->name('welcome');
+Route::get('/', HomeController::class)->name('home');
 
 Route::view('search', 'search')->name('search');
 Route::prefix('p/{product:slug}')->group(function () {
