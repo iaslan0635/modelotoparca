@@ -46,24 +46,4 @@ class Search extends Component
 
         return view($this->mobile ? 'livewire.header.mobile-search' : 'livewire.header.search', $data);
     }
-
-    public function deselect()
-    {
-        return $this->dispatch('garage.reloadData');
-    }
-
-    public function reloadData()
-    {
-        return $this->dispatch('garage.chooseCar');
-    }
-
-    public function chooseCar(int $id)
-    {
-        return $this->dispatch('garage.remove', id: $id);
-    }
-
-    public function remove(int $id)
-    {
-        return $this->dispatch('garage.deselect', id: $id);
-    }
 }
