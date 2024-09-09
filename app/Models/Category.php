@@ -21,6 +21,10 @@ class Category extends BaseModel
 
     protected $searchableAs = 'categories_index';
 
+    protected $casts = [
+        'hide_in_sidebar' => 'boolean',
+    ];
+
     public function searchableAs()
     {
         return $this->searchableAs;

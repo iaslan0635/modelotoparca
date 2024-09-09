@@ -25,6 +25,13 @@ class CategoryController extends Controller
         return view('admin.apps.ecommerce.catalog.edit-category', compact('category'));
     }
 
+    public function update(Category $category, Request $request)
+    {
+        $category->hide_in_sidebar = $request->input("hide_in_sidebar", "off") === "on";
+        $category->save();
+        return redirect()->route('admin.categories.index');
+    }
+
     public function categorySync()
     {
         return view('admin.apps.ecommerce.catalog.sync-categories');
