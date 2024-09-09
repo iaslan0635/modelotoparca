@@ -12,6 +12,7 @@
                 <div class="widget-filters__item py-0 pr-0 border-0">
                     <div class="widget-filters__item-title">
                         <a
+                            title="{{ $category->name }}"
                             style="color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block"
                             @if($hasChildren)
                                 data-toggle="collapse" href="#{{$id}}"
@@ -32,9 +33,13 @@
                             <div class="widget-filters__item py-0 border-0 ml-4">
                                 <div class="widget-filters__item-title">
                                     <a style="color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block"
-                                       href="{{ route('category.show', $child->slug) }}">
+                                       href="{{ route('category.show', $child->slug) }}" title="{{ $category->name }}">
                                         <img src="{{ $child->imageUrl() }}" style="max-height: 2.8em; margin-right: .5rem; max-width: 2.8em;">
-                                        @if($loop->first) Tümü @else {{ $child->name }}  @endif
+                                        @if($loop->first)
+                                            Tümü
+                                        @else
+                                            {{ $child->name }}
+                                        @endif
                                     </a>
                                 </div>
                             </div>
