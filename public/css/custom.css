@@ -27,7 +27,7 @@
     margin-left: 19rem
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     .site {
         margin-left: 0
     }
