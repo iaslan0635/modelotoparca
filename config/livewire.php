@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'layout' => 'layouts.livewire-fullpage',
+    'layout' => 'layouts.wire',
 
     /*
     |---------------------------------------------------------------------------

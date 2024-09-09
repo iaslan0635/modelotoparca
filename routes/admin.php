@@ -42,8 +42,9 @@ Route::prefix('categories/{category}/edit')->name('categories.edit.')->controlle
 });
 
 Route::get('categories', [CategoryController::class, 'index'])->name('categories.index')->middleware('permission:Stok Yönetimi.Kategoriler.Listele');
+Route::get('categories/reorder', App\Livewire\Admin\Category\Reorder::class)->name('categories.reorder')->middleware('permission:Stok Yönetimi.Kategoriler.Listele');
 Route::get('categories/{category}', [CategoryController::class, 'show'])->name('categories.show')->middleware('permission:Stok Yönetimi.Kategoriler.Listele');
-Route::post('categories/{category}', [CategoryController::class, 'update'])->name('categories.update')->middleware('permission:Stok Yönetimi.Kategoriler.Listele');
+Route::post('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 
 Route::post('delete_image', [ImageController::class, 'delete'])->name('delete-image');
 
