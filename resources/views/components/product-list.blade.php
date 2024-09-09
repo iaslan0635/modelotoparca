@@ -1,16 +1,16 @@
 @props([
     'products',
-    'car',
-    'breadcrumb',
-    'sidebar',
+    'car' => null,
+    'breadcrumb' => null,
     'extraFilters',
-    'brands',
-    'properties',
-    'min_price',
+    'brands' => collect(),
+    'properties' => collect(),
+    'min_price' => 0,
     'max_price',
     'filteredProperties',
-    'category',
-    'filterCategories'
+    'category' => null,
+    'filterCategories',
+    'brandsArray' => collect(),
 ])
 
 <div class="site__body">
@@ -40,7 +40,7 @@
                     <div class="block">
                         <div class="products-view">
                             <x-car-selection/>
-                            @if(isset($category) && $category)
+                            @if($category)
                                 <x-category-heading :category="$category" :brandIds="$brands->keys()"/>
                             @endif
                             <div class="products-view__options view-options view-options--offcanvas--mobile">
@@ -123,9 +123,11 @@
                                     <div class="view-options__label">Active Filters</div>
                                     <div class="applied-filters">
                                         <livewire:product-filters
-                                            :brands="\App\Livewire\ProductFilters::normalizeBrands($brands)"
-                                            :categories="$filterCategories" :$properties :$min_price :$max_price
-                                            :selected-category-id="$category?->id" :selected-brands="collect($brandsArray)"
+                                                :brands="\App\Livewire\ProductFilters::normalizeBrands($brands)"
+                                                :categories="$filterCategories" :$properties
+                                                :price-min="$min_price ?? null"
+                                                :price-max="$max_price ?? null"
+                                                :selected-category-id="$category?->id" :selected-brands="collect($brandsArray)"
                                         />
                                     </div>
                                 </div>

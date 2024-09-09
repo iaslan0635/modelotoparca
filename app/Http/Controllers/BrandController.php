@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Livewire\ProductFilters;
 use App\Models\Brand;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -18,6 +19,7 @@ class BrandController extends Controller
         }
 
         $filterCategories = $query->clone()->with('categories:id,name,slug')->get("id")->pluck('categories')->flatten()->unique('name');
+        $filterCategories = ProductFilters::normalizeCategories($filterCategories);
 
         return view('products-page', compact('query', 'filterCategories'));
     }
