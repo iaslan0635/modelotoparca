@@ -16,15 +16,16 @@ class OnlineCarParts
     private readonly bool $isOem;
 
     public function __construct(
-        public readonly string $keyword,
-        public readonly int $product_id,
-        public readonly string $field,
-        public readonly ?string $brand_filter = null,
-        public readonly bool $regexed = false,
-        public readonly bool $ajax = false,
+        public readonly string   $keyword,
+        public readonly int      $product_id,
+        public readonly string   $field,
+        public readonly ?string  $brand_filter = null,
+        public readonly bool     $regexed = false,
+        public readonly bool     $ajax = false,
 
         private readonly ?string $logContextId = null,
-    ) {
+    )
+    {
         $this->data = app(OnlineCarParts\DataProvider::class);
         $this->isOem = $this->field === 'oem_codes';
     }
@@ -74,10 +75,10 @@ class OnlineCarParts
 
             $this->data
                 ->getProductPage($link)
-                ->saveToDatabase($this->product_id);
+                ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
 
             $successfulProductCount++;
-            if (! $connection->exists) {
+            if (!$connection->exists) {
                 $connection->save();
             }
         }
@@ -91,7 +92,7 @@ class OnlineCarParts
     {
         if ($this->brand_filter) {
             $brandId = Ocp\Brand::getIdFromNameWithFetchFallback($this->brand_filter, $this->keyword, $this->isOem);
-            if (! $brandId) {
+            if (!$brandId) {
                 $this->log("Marka ($this->brand_filter) bigdata'da bulunamadı.");
 
                 return false;
@@ -124,16 +125,16 @@ class OnlineCarParts
 
                 $this->data
                     ->getProductPage($link)
-                    ->saveToDatabase($this->product_id);
+                    ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
 
                 $successfulProductCount++;
-                if (! $connection->exists) {
+                if (!$connection->exists) {
                     $connection->save();
                 }
             }
 
             $count = count($links);
-            if (! $this->isOem && $count !== 0) {
+            if (!$this->isOem && $count !== 0) {
                 $this->log("$count adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
                 break;
             }
@@ -172,7 +173,7 @@ class OnlineCarParts
         $articleNo = $this->getArticleNo();
         $productLinks = $this->data->getSearchPageProductLinks($searchPage, $pageNumber, $articleNo);
 
-        $this->log("$pageNumber. Sayfadan ".count($productLinks).' adet ürün bulundu.');
+        $this->log("$pageNumber. Sayfadan " . count($productLinks) . ' adet ürün bulundu.');
 
         return $productLinks;
     }
@@ -204,5 +205,10 @@ class OnlineCarParts
         $version = str_replace('bot-v', '', $logSource);
 
         return $version != self::VERSION;
+    }
+
+    private function shouldSaveTecdoc()
+    {
+        return $this->field === 'producercode' || $this->field === 'producercode2';
     }
 }
