@@ -17,17 +17,10 @@ class SearchPage extends Component
         'part_number',
         'producercode',
         'producercode_unbranded',
-        'producercode_unbranded_regex',
         'cross_code',
         'producercode2',
-        'part_number_regex',
-        'producercode_regex',
-        'cross_code_regex',
-        'producercode2_regex',
-        'oems.oem',
-        'oems.oem_regex',
-        'similars.code',
-        'similars.code_regex',
+        'similars',
+        'tecdoc',
     ];
 
     #[Url]
