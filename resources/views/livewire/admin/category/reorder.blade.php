@@ -46,7 +46,7 @@
 <script>
     const container = $wire.$el.querySelector('#container');
 
-    window.sortabl = Sortable.create(container, {
+    Sortable.create(container, {
         animation: 150,
         ghostClass: 'bg-light-primary',
         onSort(e) {
