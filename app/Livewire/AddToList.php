@@ -8,17 +8,20 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class HesaplamaButton extends Component
+class AddToList extends Component
 {
     public Product $product;
     public $newListName;
     public ?string $class = null;
 
+    /** @var "default" | "icon" */
+    public string $variant = "default";
+
     public bool $addMode = false;
 
     public function render()
     {
-        return view('livewire.hesaplama-button');
+        return view('livewire.add-to-list');
     }
 
     public function toggleList($list, $toggle)

@@ -188,7 +188,7 @@
             autoplay: true,
             rewind: false, /* use rewind if you don't want loop */
             margin: 20,
-            loop: true,
+            loop: false,
             /*
            animateOut: 'fadeOut',
            animateIn: 'fadeIn',

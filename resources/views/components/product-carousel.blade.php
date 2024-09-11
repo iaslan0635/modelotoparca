@@ -54,6 +54,9 @@
                         <div class="product-card__prices">
                             <div class="product-card__price product-card__price--current">{{ $product->price?->sellingPrice() }}</div>
                         </div>
+
+                        <livewire:add-to-list :product="$product" variant="icon"/>
+
                         <button class="product-card__addtocart-icon" type="button" aria-label="Add to cart">
                             <svg width="20" height="20">
                                 <circle cx="7" cy="17" r="2"/>
