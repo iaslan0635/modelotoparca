@@ -25,6 +25,7 @@ class Brand extends BaseModel
     protected $casts = [
         'type' => BrandType::class,
         'data' => 'array',
+        'is_popular' => 'boolean',
     ];
 
     protected $searchableAs = 'brands_index';

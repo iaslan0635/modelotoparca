@@ -7,18 +7,23 @@
         ]"/>
         <div class="block block-brands">
             <div class="container">
-                <ul class="block-brands__list" style="justify-content: center; border: none">
-                    @foreach($brands as $brand)
-                        <li class="block-brands__item">
-                            <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link brand-item">
-                                <div class="brand-item-inner">
-                                    <img src="{{ $brand->imageUrl() }}">
-                                </div>
-                                <span class="block-brands__item-name">{{$brand->name}}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+                @foreach([$featuredBrands, $brands] as $group)
+                    <ul class="block-brands__list" style="justify-content: center; border: none">
+                        @foreach($group as $brand)
+                            <li class="block-brands__item">
+                                <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link brand-item">
+                                    <div class="brand-item-inner">
+                                        <img src="{{ $brand->imageUrl() }}">
+                                    </div>
+                                    <span class="block-brands__item-name">{{$brand->name}}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                    @if($loop->first)
+                        <hr>
+                    @endif
+                @endforeach
             </div>
         </div>
         <div class="block-space block-space--layout--divider-nl"></div>

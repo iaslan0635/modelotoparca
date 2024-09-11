@@ -95,13 +95,12 @@
     /* Scrollbar arka planı */
     .sidebar__content::-webkit-scrollbar-track {
         background: rgb(41, 62, 100); /* Track'in arka plan rengi */
-        border-radius: 10px; /* Köşelerin yuvarlatılması */
     }
 
     /* Scrollbar thumb (kayan kısmı) */
     .sidebar__content::-webkit-scrollbar-thumb {
         background: #344356; /* Thumb'un rengi */
-        border-radius: 1px; /* Köşelerin yuvarlatılması */
+        border-radius: 10px; /* Köşelerin yuvarlatılması */
     }
 
     /* Scrollbar thumb hover durumu */

@@ -26,6 +26,10 @@ class BrandController extends Controller
 
     public function index()
     {
-        return view('brands', ['brands' => Brand::has('products')->orderBy('name')->whereNot('name', 'like', '-%')->get()]);
+        $query = Brand::has('products')->orderBy('name')->whereNot('name', 'like', '-%');
+        return view('brands', [
+            'brands' => $query->clone()->get(),
+            'featuredBrands' => $query->clone()->where('is_featured', true)->get(),
+        ]);
     }
 }

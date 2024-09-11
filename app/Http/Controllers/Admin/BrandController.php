@@ -52,7 +52,10 @@ class BrandController extends Controller
             'name' => 'nullable',
             'slug' => 'nullable',
             'botname' => 'nullable',
+            'is_featured' => 'nullable',
         ]);
+
+        $data['is_featured'] = $data['is_featured'] === 'on';
 
         if (\request()->hasFile('image')) {
             $imagePath = \request()->file('image')->store('images/brands', 'public');

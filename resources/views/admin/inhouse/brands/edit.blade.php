@@ -20,19 +20,19 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">İsim</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name') ?? $brand->name }}">
+                        <input type="text" name="name" class="form-control" value="{{ old('name', $brand->name) }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="slug">URL</label>
-                        <input type="text" name="slug" class="form-control" value="{{ old('slug') ?? $brand->slug }}">
+                        <input type="text" name="slug" class="form-control" value="{{ old('slug', $brand->slug) }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="botname">Bottaki İsmi</label>
-                        <input type="text" name="botname" class="form-control" value="{{ old('botname') ?? $brand->botname }}">
+                        <input type="text" name="botname" class="form-control" value="{{ old('botname', $brand->botname) }}">
                     </div>
                 </div>
             @endcan
@@ -44,10 +44,17 @@
                     </div>
                 </div>
             @endcan
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="is_featured" @checked(old('is_featured', (bool)$brand->is_featured))>
+                        Popüler mi?
+                    </label>
+                </div>
+            </div>
             <div class="col-md-12">
                 <button class="btn btn-primary">Kaydet</button>
             </div>
         </div>
-
     </form>
 @endsection

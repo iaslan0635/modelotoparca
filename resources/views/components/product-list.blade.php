@@ -125,8 +125,8 @@
                                         <livewire:product-filters
                                                 :brands="\App\Livewire\ProductFilters::normalizeBrands($brands)"
                                                 :categories="$filterCategories" :$properties
-                                                :price-min="$min_price ?? null"
-                                                :price-max="$max_price ?? null"
+                                                :price-min="isset($min_price) ? (int)$min_price : null"
+                                                :price-max="isset($max_price) ? (int)$max_price : null"
                                                 :selected-category-id="$category?->id" :selected-brands="collect($brandsArray)"
                                         />
                                     </div>
