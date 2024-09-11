@@ -12,6 +12,7 @@ class HesaplamaButton extends Component
 {
     public Product $product;
     public $newListName;
+    public ?string $class = null;
 
     public bool $addMode = false;
 

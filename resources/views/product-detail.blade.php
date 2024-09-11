@@ -50,7 +50,7 @@
                                 <div class="product__excerpt">
                                     <details>
                                         <summary>Üretici detayları</summary>
-                                        <pre class="m-0">{{ $product->description }}</pre>
+                                        <span class="m-0">{{ $product->description }}</span>
                                         @if($product->fitting_position)
                                             <pre class="m-0">Montaj Konumu: {{ $product->fitting_position }}</pre>
                                         @endif
@@ -153,7 +153,7 @@
                                     <div class="product__actions">
                                         @if ($product->quantity <= 0)
                                             <a href="https://wa.me/905528880668/?text=https://site.modelotoparca.com/p/{{ $product->slug }} Ürün İle İlgili Bilgi Almak İstiyorum"
-                                               target="_blank" class="btn btn-success"
+                                               target="_blank" class="btn btn-success mb-2"
                                                style="border-radius: 20px; width: 50%">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
                                                     <path
@@ -161,9 +161,9 @@
                                                 </svg>
                                                 Bilgi Al
                                             </a>
-                                        @else
-                                            <livewire:add-to-cart :product="$product"/>
                                         @endif
+                                        <livewire:add-to-cart :product="$product"/>
+                                        <livewire:hesaplama-button :product="$product" class="btn btn-primary btn-lg mt-2" />
                                         <div class="product__actions-divider"></div>
                                         <livewire:product.whislist :product="$product"/>
                                     </div>

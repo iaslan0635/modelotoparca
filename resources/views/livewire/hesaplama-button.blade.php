@@ -1,4 +1,4 @@
-<x-wire-dropdown class="product-card__addtocart-full" wire:loading.attr="disabled" parent-class="dropleft" style="min-width: 11rem">
+<x-wire-dropdown :class="$class ?? 'product-card__addtocart-full'" wire:loading.attr="disabled" parent-class="dropleft" style="min-width: 11rem">
     <span wire:loading.delay.remove>
         {{$this->exists() ? "Listeye Ekli" : "Listeye Ekle"}}
     </span>
