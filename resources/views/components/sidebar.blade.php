@@ -49,7 +49,6 @@
             @endforeach
         </div>
     </div>
-    <x-last-visited/>
 </div>
 
 <style>

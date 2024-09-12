@@ -15,7 +15,7 @@
 
 <div class="site__body">
     {{ $breadcrumb ?? '' }}
-    <div class="block-split block-split--has-sidebar">
+    <div class="block-split">
         <div class="container wide-container">
             <div class="block-split__row justify-content-center row no-gutters fixed-sidebar">
                 <div class="block-split__item block-split__item-content col-auto">
@@ -105,11 +105,11 @@
                                     <div class="view-options__label">Active Filters</div>
                                     <div class="applied-filters">
                                         <livewire:product-filters
-                                                :brands="\App\Livewire\ProductFilters::normalizeBrands($brands)"
-                                                :categories="$filterCategories" :$properties
-                                                :price-min="isset($min_price) ? (int)$min_price : null"
-                                                :price-max="isset($max_price) ? (int)$max_price : null"
-                                                :selected-category-id="$category?->id" :selected-brands="collect($brandsArray)"
+                                            :brands="\App\Livewire\ProductFilters::normalizeBrands($brands)"
+                                            :categories="$filterCategories" :$properties
+                                            :price-min="isset($min_price) ? (int)$min_price : null"
+                                            :price-max="isset($max_price) ? (int)$max_price : null"
+                                            :selected-category-id="$category?->id" :selected-brands="collect($brandsArray)"
                                         />
                                     </div>
                                 </div>
@@ -119,6 +119,7 @@
                     </div>
                 </div>
             </div>
+            <x-decorated-product-carousel title="Son ziyaret edilenler" :products="\App\Packages\LatestProducts::items()" class="px-4 mt-4"/>
             <div class="block-space block-space--layout--before-footer"></div>
         </div>
     </div>

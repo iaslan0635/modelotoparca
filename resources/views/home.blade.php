@@ -144,6 +144,7 @@
                             <x-product-carousel :products="$featured_products"/>
                         </div>
                     </div>
+                    <x-decorated-product-carousel title="Son ziyaret edilenler" :products="\App\Packages\LatestProducts::items()" class="mt-5"/>
                 </div>
             </div>
         </div>

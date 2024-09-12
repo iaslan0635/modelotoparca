@@ -1,4 +1,4 @@
-<div class="block-split block-split--has-sidebar">
+<div class="block-split">
     <div class="container wide-container">
         <div class="block-split__row justify-content-center row no-gutters fixed-sidebar">
             <div class="block-split__item block-split__item-content col-auto">
