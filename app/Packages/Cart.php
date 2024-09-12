@@ -2,6 +2,8 @@
 
 namespace App\Packages;
 
+use App\Enums\OrderStatuses;
+use App\Models\Discount;
 use Illuminate\Support\Facades\Session;
 
 class Cart
@@ -113,6 +115,82 @@ class Cart
         return $subTotal;
     }
 
+    public static function getDiscounts()
+    {
+        if (Session::has('cart.coupon')){
+            $discount = Discount::query()->where('coupon', '=', Session::get('cart.coupon'))->first();
+
+            return [
+                'amount' => $discount->amount,
+                'type' => $discount->type
+            ];
+        }
+
+        return [
+            'amount' => 0,
+            'type' => "amount"
+        ];
+    }
+
+    public static function addCoupon(string $coupon)
+    {
+        $discount = Discount::query()->where('coupon', '=', $coupon)->first();
+
+        if (!$discount){
+            return false;
+        }
+
+        Session::put('cart.coupon', $coupon);
+
+        return true;
+    }
+
+    public static function newOrder($payment_method, $shipment_address_id, $invoice_address_id, $shipment_address, $invoice_address)
+    {
+        \DB::beginTransaction();
+
+        try {
+            $data = [
+                'payment_method' => $payment_method,
+                'shipment_address_id' => $shipment_address_id,
+                'invoice_address_id' => $invoice_address_id,
+                'status' => OrderStatuses::PENDING,
+                'total_amount' => self::getTotal(),
+                'original_data' => [
+                    'shipment_address' => $shipment_address,
+                    'invoice_address' => $invoice_address,
+                    'user' => auth()->user(),
+                ],
+            ];
+
+            if (Session::has('cart.coupon')){
+                $discount = Discount::query()->where('coupon', '=', Session::get('cart.coupon'))->first();
+                $data['discount_id'] = $discount->id;
+                $data['original_data']['discount'] = $discount;
+            }
+            $order = auth()->user()->orders()->create($data);
+
+            foreach (self::getItems() as $item) {
+                $order->items()->create([
+                    'product_id' => $item->model->id,
+                    'tax_id' => $item->model->price->tax?->id,
+                    'price' => $item->price,
+                    'quantity' => $item->quantity,
+                    'product_data' => $item->model,
+                    'tax_data' => $item->model->price->tax,
+                    'price_data' => $item->model->price,
+                ]);
+            }
+
+            self::clear();
+            \DB::commit();
+            return $order;
+        }catch (\Exception $exception){
+            \DB::rollBack();
+            return false;
+        }
+    }
+
     public static function getTotal(): float|int
     {
         $total = self::subTotal();
@@ -120,6 +198,14 @@ class Cart
         $total += (new Cart)->getTotalWithTax();
 
         $total += (new Cart)->getTotalWithShipping();
+
+        $discount = self::getDiscounts();
+
+        if ($discount['type'] === "amount"){
+            $total = bcsub($total, $discount['amount'], 2);
+        }else{
+            $total = bcmul($total, $discount['amount'], 2);
+        }
 
         if (count(self::getItems()) === 0) {
             return 0;

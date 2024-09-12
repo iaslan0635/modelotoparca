@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\MerchantProductController;
@@ -76,6 +77,7 @@ Route::get('brands/{brand}/edit', [BrandController::class, 'edit'])->name('brand
 Route::put('brands/{brand}', [BrandController::class, 'update'])->name('brands.update')->middleware(permissionMiddleware('Stok Yönetimi.Markalar.Düzenle.*'));
 
 Route::resource('pages', PageController::class)->except(['show']);
+Route::resource('discounts', DiscountController::class)->except(['show']);
 
 Route::get('/sales-list', [OrderController::class, 'list'])->name('order.list')->middleware('permission:Eticaret Yönetimi.Siparişler.Tüm Siparişler');
 Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show')->middleware('permission:Eticaret Yönetimi.Siparişler.Sipariş Sorgula');

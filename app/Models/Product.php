@@ -187,6 +187,11 @@ class Product extends BaseModel implements CanVisit
         return $this->hasMany(ProductOem::class, 'logicalref');
     }
 
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'product_id', 'id');
+    }
+
     public function crosses(): HasMany
     {
         return $this

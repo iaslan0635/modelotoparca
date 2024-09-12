@@ -7,6 +7,7 @@ use App\Events\UserActiveStateChangedEvent;
 use App\Events\UserBanStateChangedEvent;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -54,7 +55,7 @@ class User extends Authenticatable
 
     public function fullName(): Attribute
     {
-        return Attribute::get(fn () => "$this->first_name $this->last_name");
+        return Attribute::get(fn() => "$this->first_name $this->last_name");
     }
 
     public function addresses(): HasMany
@@ -75,6 +76,11 @@ class User extends Authenticatable
     public function whislist(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function groups(): BelongsToMany
+    {
+        return $this->belongsToMany(CustomerGroup::class, 'customer_group_user', 'user_id', 'group_id');
     }
 
     protected static function booted(): void

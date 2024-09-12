@@ -14,15 +14,18 @@
                         <div class="product__body">
                             <div class="product__card product__card--one"></div>
                             <div class="product__card product__card--two"></div>
-                            <div class="product-gallery product-gallery--layout--product-full product__gallery" data-layout="product-full">
+                            <div class="product-gallery product-gallery--layout--product-full product__gallery"
+                                 data-layout="product-full">
                                 <div class="product-gallery__featured">
                                     <div class="owl-carousel">
                                         @foreach($product->imageUrls() as $image)
-                                            <a class="image image--type--product" href="{{ $image }}" target="_blank" data-width="700" data-height="700">
+                                            <a class="image image--type--product" href="{{ $image }}" target="_blank"
+                                               data-width="700" data-height="700">
                                                 <div class="image__body">
                                                     <div class="product-card__badges" style="text-align: -webkit-right">
                                                         <div style=" right:5px;">
-                                                            <img style="max-width: 150px; max-height: 60px;" src="{{ $product->brand?->imageUrl() }}" alt="">
+                                                            <img style="max-width: 150px; max-height: 60px;"
+                                                                 src="{{ $product->brand?->imageUrl() }}" alt="">
                                                         </div>
                                                     </div>
                                                     <img class="image__tag" src="{{ $image }}" alt="">
@@ -100,16 +103,20 @@
                                             <div class="product__prices-stock">
                                                 <div class="product__prices">
                                                     @if($price->discount)
-                                                        <div class="product__price product__price--old">{{ $price->listingPrice() }}</div>
-                                                        <div class="product__price product__price--new">{{ $price->sellingPrice() }}</div>
+                                                        <div
+                                                            class="product__price product__price--old">{{ $price->listingPrice() }}</div>
+                                                        <div
+                                                            class="product__price product__price--new">{{ $price->sellingPrice() }}</div>
                                                     @else
-                                                        <div class="product__price product__price--current">{{ $price->sellingPrice() }}</div>
+                                                        <div
+                                                            class="product__price product__price--current">{{ $price->sellingPrice() }}</div>
                                                     @endif
                                                 </div>
                                                 <div
                                                     class="status-badge status-badge--style--success product__stock status-badge--has-text">
                                                     <div class="status-badge__body">
-                                                        <span class="badge badge-danger">{{ $product->quantity > 0 ? "Stokta Var" : "Stokta Yok" }}</span>
+                                                        <span
+                                                            class="badge badge-danger">{{ $product->quantity > 0 ? "Stokta Var" : "Stokta Yok" }}</span>
                                                         <div class="status-badge__tooltip" tabindex="0"
                                                              data-toggle="tooltip"
                                                              title="{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}"></div>
@@ -155,7 +162,8 @@
                                             <a href="https://wa.me/905528880668/?text=https://site.modelotoparca.com/p/{{ $product->slug }} Ürün İle İlgili Bilgi Almak İstiyorum"
                                                target="_blank" class="btn btn-success mb-2"
                                                style="border-radius: 20px; width: 50%">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                     fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
                                                     <path
                                                         d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
                                                 </svg>
@@ -225,6 +233,9 @@
                                     </li>
                                     <li class="product-tabs__item">
                                         <a href="#tecdoc-equivalents">TecDoc</a>
+                                    </li>
+                                    <li class="product-tabs__item">
+                                        <a href="#reviews">Yorumlar</a>
                                     </li>
                                 </ul>
                                 <div class="product-tabs__content">
@@ -600,7 +611,8 @@
                                                                         </div>
                                                                         <a href="{{ route('product.show', $cross) }}">
                                                                             {{ $cross->fullTitle }}
-                                                                            <x-product-meta-stock :tiger="$cross->tiger"/>
+                                                                            <x-product-meta-stock
+                                                                                :tiger="$cross->tiger"/>
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -721,7 +733,8 @@
                                                                         </div>
                                                                         <a href="{{ route('product.show', $cross) }}">
                                                                             {{ $cross->fullTitle }}
-                                                                            <x-product-meta-stock :tiger="$cross->tiger"/>
+                                                                            <x-product-meta-stock
+                                                                                :tiger="$cross->tiger"/>
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -737,7 +750,8 @@
                                                             </div>
                                                             <div class="product-card__footer">
                                                                 <div class="product-card__prices">
-                                                                    <div class="product-card__price product-card__price--current">{{ $cross->price?->sellingPrice() }}</div>
+                                                                    <div
+                                                                        class="product-card__price product-card__price--current">{{ $cross->price?->sellingPrice() }}</div>
                                                                 </div>
                                                                 <button class="product-card__addtocart-icon"
                                                                         type="button" aria-label="Add to cart">
@@ -794,6 +808,40 @@
                                             Tecdoc eşdeğeri yok
                                         @endif
                                         <div class="block-space block-space--layout--divider-nl"></div>
+                                    </div>
+                                    <div class="product-tabs__pane product-tabs__pane--active" id="reviews">
+                                        <div class="reviews-view">
+                                            <div class="reviews-view__list">
+                                                <div class="reviews-list">
+                                                    <ol class="reviews-list__content">
+                                                        @foreach($product->reviews as $review)
+                                                            <li class="reviews-list__item">
+                                                                <div class="review">
+                                                                    <div class="review__body">
+                                                                        <div class="review__meta">
+                                                                            <div class="review__author">{{ $review->user->full_name }}</div>
+                                                                            <div class="review__date">{{ $review->created_at->format("d M Y" }}</div>
+                                                                        </div>
+                                                                        <div class="review__rating">
+                                                                            <div class="rating">
+                                                                                <div class="rating__body">
+                                                                                    @for ($i = 1; $i <= 5; $i++)
+                                                                                        <div class="rating__star {{ $i <= $review->rating ? 'rating__star--active' : '' }}"></div>
+                                                                                    @endfor
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="review__content typography">
+                                                                            {{ $review->content }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        @endforeach
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

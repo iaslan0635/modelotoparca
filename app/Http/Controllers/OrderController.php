@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Enums\OrderStatuses;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\Review;
 use App\Packages\Cart;
 use Illuminate\Http\Request;
 use Psr\Container\ContainerExceptionInterface;
@@ -22,31 +24,13 @@ class OrderController extends Controller
         }
 
         $address = auth()->user()->addresses[0];
-        $order = auth()->user()->orders()->create([
-            'payment_method' => $request->input('checkout_payment_method'),
-            'shipment_address_id' => $address->id,
-            'invoice_address_id' => $address->id,
-            'status' => OrderStatuses::PENDING,
-            'original_data' => [
-                'shipment_address' => $address,
-                'invoice_address' => $address,
-                'user' => auth()->user(),
-            ],
-        ]);
-
-        foreach (Cart::getItems() as $item) {
-            $order->items()->create([
-                'product_id' => $item->model->id,
-                'tax_id' => $item->model->price->tax?->id,
-                'price' => $item->price,
-                'quantity' => $item->quantity,
-                'product_data' => $item->model,
-                'tax_data' => $item->model->price->tax,
-                'price_data' => $item->model->price,
-            ]);
-        }
-
-        Cart::clear();
+        $order = Cart::newOrder(
+            $request->input('checkout_payment_method'),
+            $address->id,
+            $address->id,
+            $address,
+            $address
+        );
 
         return redirect()->route('order-success')->with('order_number', $order->id);
     }
@@ -81,5 +65,41 @@ class OrderController extends Controller
         $order = Order::findOrFail(request()->input('order_id'));
         $order->payment_status = OrderStatuses::CANCELLED;
         $order->save();
+    }
+
+    public function review(Request $request, $order)
+    {
+        $data = $request->validate([
+            'product_id' => ['required'],
+            'rating' => ['required'],
+            'content' => ['required']
+        ]);
+        $data['user_id'] = auth()->id();
+
+        $order = Order::where('id', '=', $order)
+            ->where('user_id', '=', auth()->id())
+            ->firstOrFail();
+
+        $product_exists = $order->items->contains('product_id', '=', $request->input('product_id'));
+
+        if (!$product_exists){
+            return back()->with('error', 'error')
+                ->with('message', 'Satın almadığınız ürüne yorum yapamazsınız!');
+        }
+
+        $exists = Review::query()
+            ->where('product_id', '=', $request->input('product_id'))
+            ->where('user_id', '=', auth()->id())
+            ->exists();
+
+        if ($exists) {
+            return back()->with('error', 'error')
+                ->with('message', 'Aynı ürüne 2 kez yorum yapamazsınız!');
+        }
+
+        $product = Product::findOrFail($request->input('product_id'));
+        $product->reviews()->create($data);
+
+        return back();
     }
 }

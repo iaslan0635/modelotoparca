@@ -13,11 +13,16 @@
                         <div class="card">
                             <div class="order-header">
                                 <div class="order-header__actions">
-                                    <a href="{{ route('order-history') }}" class="btn btn-xs btn-secondary">Back to list</a>
+                                    <a href="{{ route('order-history') }}" class="btn btn-xs btn-secondary">Back to
+                                        list</a>
                                 </div>
                                 <h5 class="order-header__title">Order #{{ $order->id }}</h5>
                                 <div class="order-header__subtitle">
-                                    Was placed on <mark>{{ $order->created_at->format("d M Y") }}</mark> and is currently <mark>{{ __("status.". $order->payment_status) }}</mark>.
+                                    Was placed on
+                                    <mark>{{ $order->created_at->format("d M Y") }}</mark>
+                                    and is currently
+                                    <mark>{{ __("status.". $order->payment_status) }}</mark>
+                                    .
                                 </div>
                             </div>
                             <div class="card-divider"></div>
@@ -67,11 +72,13 @@
                                         </div>
                                         <div class="address-card__row">
                                             <div class="address-card__row-title">Telefon Numarası</div>
-                                            <div class="address-card__row-content">{{ $order->shipmentAddress->phone }}</div>
+                                            <div
+                                                class="address-card__row-content">{{ $order->shipmentAddress->phone }}</div>
                                         </div>
                                         <div class="address-card__row">
                                             <div class="address-card__row-title">İl / İlçe</div>
-                                            <div class="address-card__row-content">{{ $order->shipmentAddress->city }} / {{ $order->shipmentAddress->district }}</div>
+                                            <div class="address-card__row-content">{{ $order->shipmentAddress->city }}
+                                                / {{ $order->shipmentAddress->district }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -88,11 +95,13 @@
                                         </div>
                                         <div class="address-card__row">
                                             <div class="address-card__row-title">Telefon Numarası</div>
-                                            <div class="address-card__row-content">{{ $order->invoiceAddress->phone }}</div>
+                                            <div
+                                                class="address-card__row-content">{{ $order->invoiceAddress->phone }}</div>
                                         </div>
                                         <div class="address-card__row">
                                             <div class="address-card__row-title">İl / İlçe</div>
-                                            <div class="address-card__row-content">{{ $order->invoiceAddress->city }} / {{ $order->invoiceAddress->district }}</div>
+                                            <div class="address-card__row-content">{{ $order->invoiceAddress->city }}
+                                                / {{ $order->invoiceAddress->district }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,6 +109,46 @@
                         </div>
                     </div>
                 </div>
+                @if($order->status === \App\Enums\OrderStatuses::COMPLETED)
+                    <form action="{{ route('review', $order->id) }}" method="POST">
+                        @csrf
+                        <h3 class="reviews-view__header">Write A Review</h3>
+                        <div class="row">
+                            <div class="col-xxl-8 col-xl-10 col-lg-9 col-12">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="review-stars">Ürün</label>
+                                        <select name="product_id" id="review-stars" class="form-control">
+                                            @foreach($order->items as $item)
+                                                <option value="{{ $item->product_id }}">
+                                                    {{ $item->product->full_title }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="review-stars">Rating</label>
+                                        <select name="rating" id="review-stars" class="form-control">
+                                            <option value="5">5 Stars Rating</option>
+                                            <option value="4">4 Stars Rating</option>
+                                            <option value="3">3 Stars Rating</option>
+                                            <option value="2">2 Stars Rating</option>
+                                            <option value="1">1 Stars Rating</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="review-text">Yorumunuz</label>
+                                    <textarea name="content"
+                                              class="form-control" id="review-text" rows="6"></textarea>
+                                </div>
+                                <div class="form-group mb-0 mt-4">
+                                    <button type="submit" class="btn btn-primary">Gönder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                @endif
             </div>
         </div>
         <div class="block-space block-space--layout--before-footer"></div>

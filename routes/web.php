@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::view('/takip-listem', 'account.whislist')->name('takip-listem');
     Route::view('adres-ekle', 'account.add-adress')->name('add-adress');
 
+    Route::post('review/{order}', [OrderController::class, 'review'])->name('review');
+
     Route::put('update-profile', [ProfileController::class, 'update'])->name('update-profile');
     Route::get('/order-history', [OrderController::class, 'history'])->name('order-history');
     Route::get('/order-details/{order}', [OrderController::class, 'detail'])->name('order-details');

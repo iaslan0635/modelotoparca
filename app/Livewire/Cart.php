@@ -2,10 +2,12 @@
 
 namespace App\Livewire;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Cart extends Component
 {
+    use LivewireAlert;
     public string $total = '0 ₺';
 
     public string $subTotal = '0 ₺';
@@ -13,6 +15,7 @@ class Cart extends Component
     public string $shipping = '0 ₺';
 
     public string $tax = '0 ₺';
+    public string $coupon = '';
 
     public array $items = [];
 
@@ -51,6 +54,17 @@ class Cart extends Component
     public function removeItem($id)
     {
         \App\Packages\Cart::removeItem($id);
+
+        $this->updateContent();
+    }
+
+    public function addCoupon()
+    {
+        $add = \App\Packages\Cart::addCoupon($this->coupon);
+
+        if (!$add){
+            $this->alert('success', 'Kupon kodu bulunamadı');
+        }
 
         $this->updateContent();
     }

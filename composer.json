@@ -24,6 +24,7 @@
     "epigra/trgeozones": "^4.2",
     "guzzlehttp/guzzle": "^7.2",
     "ismail0234/n11-php-api": "^1.1",
+    "jantinnerezo/livewire-alert": "^3.0",
     "laravel/framework": "^10.0",
     "laravel/octane": "^1.5",
     "laravel/sanctum": "^3.2",

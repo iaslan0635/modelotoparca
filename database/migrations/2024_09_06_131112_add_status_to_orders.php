@@ -19,8 +19,8 @@ return new class extends Migration {
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->dropColumn('status');
-            $table->string('payment_status')->default('pendıng');
-            $table->string('shipment_status')->default('pendıng');
+            $table->string('payment_status')->default('pending');
+            $table->string('shipment_status')->default('pending');
         });
     }
 };

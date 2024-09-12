@@ -4,6 +4,7 @@ namespace App\Packages;
 
 use App\Facades\ExchangeRate;
 use App\Facades\TaxFacade;
+use App\Models\Discount;
 use App\Models\Price;
 use Exception;
 use Stringable;
@@ -56,7 +57,7 @@ final class PriceBuilder implements Stringable
             throw new Exception('Discount has already been applied to this price.');
         }
 
-        if (! $this->price->discount) {
+        if (!$this->price->discount) {
             return $this;
         }
 
@@ -66,6 +67,44 @@ final class PriceBuilder implements Stringable
             default => throw new Exception("PriceBuilder: The discount type ({$this->price->discount_type}) of the price record with id {$this->price->id} is incorrect."),
         };
 
+        $discounts = Discount::query()
+            ->where('active', '=', 1)
+            ->where('rule', '=', 'catalog')
+            ->when(function ($query) {
+                return $query->whereNotNull('starts_at');
+            }, function ($query) {
+                return $query->whereDate('starts_at', '>=', now());
+            })
+            ->when(function ($query) {
+                return $query->whereNotNull('ends_at');
+            }, function ($query) {
+                return $query->whereDate('ends_at', '<=', now());
+            })
+            ->get();
+
+        foreach ($discounts as $discount) {
+            $isValidGroup = !$discount->customer_group_id
+                || auth()->user()->groups->contains('group_id', $discount->customer_group_id);
+
+            $isValidBrand = isset($discount->data['brand_id'])
+                && $discount->data->brand_id === $this->price->product->brand_id;
+
+            $isValidProduct = isset($discount->data['product_id'])
+                && $discount->data['product_id'] === $this->price->product->id;
+
+            $isValidCategory = isset($discount->data['categories'])
+                && is_array($discount->data['categories'])
+                && $this->price->product->categories->contains($discount->data['categories']);
+
+            if ($isValidGroup || $isValidBrand || $isValidProduct || $isValidCategory) {
+                $discountAmount = match ($discount->type) {
+                    'percentile', 'percentage' => bcmul($this->value, $discount->amount, self::SCALE),
+                    'amount' => $discount->amount,
+                    default => throw new Exception("PriceBuilder: The discount type ({$discount->type}) of the price record with id {$this->price->id} is incorrect."),
+                };
+            }
+        }
+
         $this->value = bcsub($this->value, $discountAmount, self::SCALE);
         $this->discountApplied = true;
 
@@ -74,7 +113,7 @@ final class PriceBuilder implements Stringable
 
     public function addComission(string|int|float $comission): self
     {
-        if (! is_numeric($comission)) {
+        if (!is_numeric($comission)) {
             throw new Exception('Comission must be numeric.');
         }
         if ($comission < 0) {

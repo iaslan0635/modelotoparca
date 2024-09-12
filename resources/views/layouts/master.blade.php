@@ -393,6 +393,9 @@
 <script src="{{ asset('js/number.js') }}"></script>
 <script src="{{ asset('js/main.js') }}?v={{ $assetVersion }}" defer></script>
 <livewire:scripts/>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<x-livewire-alert::scripts />
 <script>
     Livewire.on('reload', () => window.location.reload())
 </script>
