@@ -12,7 +12,10 @@
     <x-slot:breadcrumb>
         <x-breadcrumb :parts="[
             ['name' => 'Kategoriler', 'link' => route('category.index')],
-            ['name' => $category->name],
+            ...$category->allParents()
+                ->map(fn($category) => ['name' => $category->name, 'link' => route('category.show', $category)])
+                ->all(),
+            ['name' => $category->name]
         ]"/>
     </x-slot:breadcrumb>
 </x-product-list>
