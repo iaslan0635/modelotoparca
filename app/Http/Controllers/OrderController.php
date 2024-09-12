@@ -80,6 +80,11 @@ class OrderController extends Controller
             ->where('user_id', '=', auth()->id())
             ->firstOrFail();
 
+        if ($order->status !== OrderStatuses::COMPLETED){
+            return back()->with('error', 'error')
+                ->with('message', 'Siparişiniz tamamlanmadan yorum yapamazsınız!');
+        }
+
         $product_exists = $order->items->contains('product_id', '=', $request->input('product_id'));
 
         if (!$product_exists){
