@@ -441,42 +441,5 @@
         });
     });
 </script>
-<script type="text/javascript">
-    jQuery("document").ready(function($){
-        var nav = $('.nav-bar');
-
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 36) {
-                nav.addClass("fixed");
-            } else {
-                nav.removeClass("fixed");
-            }
-        });
-
-    });
-    jQuery("document").ready(function($){
-        var nav = $('.bar-menu');
-
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 36) {
-                nav.addClass("fixed-bar");
-            } else {
-                nav.removeClass("fixed-bar");
-            }
-        });
-    });
-    jQuery("document").ready(function($){
-
-        var nav = $('.fixed-bar');
-
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 36) {
-                nav.removeClass("bar-menu");
-            } else {
-                nav.addClass("_");
-            }
-        });
-    });
-</script>
 </body>
 </html>
