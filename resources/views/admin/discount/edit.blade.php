@@ -30,7 +30,7 @@
                     <div class="card-header">
                         <div class="card-title">
                             <div class="card-body pt-0">
-                                <form id="kt_modal_add_role_form" class="form" action="{{ route('admin.pages.update', $page) }}" method="post">
+                                <form id="kt_modal_add_role_form" class="form" action="{{ route('admin.discounts.update', $discount) }}" method="post">
                                     @csrf
                                     @method('PUT')
                                     <!--begin::Scroll-->
@@ -41,31 +41,31 @@
                                             <label class="fs-5 fw-bold form-label mb-2">
                                                 <span class="required">Başlık</span>
                                             </label>
-                                            <input class="form-control form-control-solid" name="title" value="{{ $page->title }}" required/>
+                                            <input class="form-control form-control-solid" name="title" value="{{ $discount->title }}" required/>
                                         </div>
                                         <div class="fv-row mb-10">
                                             <label class="fs-5 fw-bold form-label mb-2">
                                                 <span class="required">URL</span>
                                             </label>
-                                            <input class="form-control form-control-solid" name="slug" value="{{ $page->slug }}" required/>
+                                            <input class="form-control form-control-solid" name="slug" value="{{ $discount->slug }}" required/>
                                         </div>
                                         <div class="fv-row mb-10">
                                             <label class="fs-5 fw-bold form-label mb-2">
                                                 <span class="required">Keywords (,) ile ayırınız.</span>
                                             </label>
-                                            <input class="form-control form-control-solid" name="keywords" value="{{ $page->keywords }}" required/>
+                                            <input class="form-control form-control-solid" name="keywords" value="{{ $discount->keywords }}" required/>
                                         </div>
                                         <div class="fv-row mb-10">
                                             <label class="fs-5 fw-bold form-label mb-2">
                                                 <span class="required">Açıklama</span>
                                             </label>
-                                            <input class="form-control form-control-solid" name="description" value="{{ $page->description }}" required/>
+                                            <input class="form-control form-control-solid" name="description" value="{{ $discount->description }}" required/>
                                         </div>
                                         <div class="fv-row mb-10">
                                             <label class="fs-5 fw-bold form-label mb-2">
                                                 <span class="required">İçeriği</span>
                                             </label>
-                                            <textarea id="editor" class="form-control form-control-solid" name="content">{{ $page->content }}</textarea>
+                                            <textarea id="editor" class="form-control form-control-solid" name="content">{{ $discount->content }}</textarea>
                                         </div>
                                     </div>
                                     <div class="text-center pt-15">
