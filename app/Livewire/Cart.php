@@ -68,4 +68,10 @@ class Cart extends Component
 
         $this->updateContent();
     }
+
+    public function couponDelete()
+    {
+        \App\Packages\Cart::forgetCoupon();
+        $this->updateContent();
+    }
 }

@@ -16,13 +16,13 @@
             <tr class="cart-table__row">
                 <td class="cart-table__column cart-table__column--image">
                     <div class="image image--type--product">
-                        <a href="{{ route("product.show", $item->model) }}" class="image__body">
+                        <a target="_blank" href="{{ route("product.show", $item->model) }}" class="image__body">
                             <img class="image__tag" src="{{ $item->model->imageUrl() }}" alt="">
                         </a>
                     </div>
                 </td>
                 <td class="cart-table__column cart-table__column--product">
-                    <a href="" class="cart-table__product-name">{{ $item->name }}</a>
+                    <a target="_blank" href="{{ route("product.show", $item->model) }}" class="cart-table__product-name">{{ $item->name }}</a>
                     <ul class="cart-table__options">
                         @foreach($item->attributes as $attribute)
                             <li>{{ $attribute["name"] }}: {{ $attribute["value"] }}</li>
@@ -113,7 +113,13 @@
                         <td>{{ $tax }}</td>
                     </tr>
                     <tr>
-                        <th>İndirim</th>
+                        <th>
+                            İndirim
+
+                            @if(Session::has('cart.coupon'))
+                                <a class="text-danger" href="#" wire:click="couponDelete">Temizle</a>
+                            @endif
+                        </th>
                         <td>{{ \App\Packages\Cart::formattedDiscount() }}</td>
                     </tr>
                     </tbody>

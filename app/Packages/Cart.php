@@ -123,7 +123,8 @@ class Cart
 
             return [
                 'amount' => $discount->amount,
-                'type' => $discount->type
+                'type' => $discount->type,
+                'data' => $discount->data
             ];
         }
 
@@ -142,6 +143,13 @@ class Cart
         }
 
         Session::put('cart.coupon', $coupon);
+
+        return true;
+    }
+
+    public static function forgetCoupon()
+    {
+        Session::forget('cart.coupon');
 
         return true;
     }
@@ -279,7 +287,11 @@ class Cart
 
     public static function formattedDiscount(): string
     {
-        return "- " . number_format(self::getDiscounts()['amount'], 2) . ' ₺';
+        if (self::getDiscounts()['amount'] > 0){
+            return "- " . number_format(self::getDiscounts()['amount'], 2) . ' ₺';
+        }else{
+            return number_format(self::getDiscounts()['amount'], 2) . ' ₺';
+        }
     }
 
     public static function formattedSubTotal(): string
