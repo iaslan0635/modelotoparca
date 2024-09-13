@@ -15,11 +15,10 @@ class OrderHistoryListener
     {
         /** @var Order $order */
         $order = $event->order;
-
         $message = $this->getMessage($event);
         $order->history()->create([
             'message' => $message,
-            'status' => $order->shipment_status,
+            'status' => $order->status->value,
         ]);
     }
 
