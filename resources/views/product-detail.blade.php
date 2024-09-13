@@ -820,7 +820,7 @@
                                                                     <div class="review__body">
                                                                         <div class="review__meta">
                                                                             <div class="review__author">{{ $review->user->full_name }}</div>
-                                                                            <div class="review__date">{{ $review->created_at->format("d M Y" }}</div>
+                                                                            <div class="review__date">{{ $review->created_at->format("d M Y") }}</div>
                                                                         </div>
                                                                         <div class="review__rating">
                                                                             <div class="rating">
