@@ -5,40 +5,52 @@ namespace App\Livewire\Admin;
 use App\Packages\Search\SynonymsManager;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Throwable;
 
 class SearchReplacements extends Component
 {
     use LivewireAlert;
 
     public array $draftSynonyms = [];
+    public ?string $editId = null;
 
     public function render(SynonymsManager $synonymsManager)
     {
-        dd($synonymsManager->getSynonyms());
-        return view('livewire.admin.search-replacements');
+        /** @var array{id: string, synonyms:string} $synonyms */
+        $synonyms = $synonymsManager->getSynonyms();
+        return view('livewire.admin.search-replacements', compact('synonyms'));
     }
 
-    public function create(SynonymsManager $synonymsManager)
+    public function upsert(SynonymsManager $synonymsManager)
     {
-        try {
+        if (empty($this->draftSynonyms)) {
+            $this->alert('error', 'Kelimeleri giriniz');
+            return;
+        }
+
+        if ($this->editId) {
+            $synonymsManager->updateSynonym($this->editId, $this->draftSynonyms);
+            $this->editId = null;
+            $this->alert('success', 'Başarıyla güncellendi');
+        } else {
             $synonymsManager->createSynonym($this->draftSynonyms);
-            $this->draftSynonyms = [];
             $this->alert('success', 'Başarıyla eklendi');
-        } catch (Throwable $e) {
-            report($e);
-            $this->alert('error', 'Bir hata oluştu');
         }
+
+        $this->draftSynonyms = [];
     }
 
-    public function delete(int $id, SynonymsManager $synonymsManager)
+    public function delete(string $id, SynonymsManager $synonymsManager)
     {
-        try {
-            $synonymsManager->deleteSynonym($id);
-            $this->alert('success', 'Başarıyla silindi');
-        } catch (Throwable $e) {
-            report($e);
-            $this->alert('error', 'Bir hata oluştu');
-        }
+        $synonymsManager->deleteSynonym($id);
+        $this->alert('success', 'Başarıyla silindi');
+    }
+
+    public function edit(string $id, SynonymsManager $synonymsManager)
+    {
+        $this->editId = $id;
+        $synonym = $synonymsManager->getSynonym($id);
+        $this->draftSynonyms = collect(explode(',', $synonym))
+            ->map(fn($s) => trim(str_replace('\\\\', '\\', $s)))
+            ->all();
     }
 }

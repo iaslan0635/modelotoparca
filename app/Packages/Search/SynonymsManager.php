@@ -20,39 +20,52 @@ class SynonymsManager
         return collect($words)->map(fn($s) => str_replace(',', '\\\\', $s))->implode(', ');
     }
 
+    private function putRequest($body): void
+    {
+        $this->synonyms->putSynonym([
+            "id" => self::SET_NAME,
+            "body" => ["synonyms_set" => array_values($body)],
+        ]);
+    }
+
     public function getSynonyms()
     {
         return $this->synonyms->getSynonym([
             "id" => self::SET_NAME,
-        ]);
+        ])->asArray()["synonyms_set"];
+    }
+
+    public function getSynonym(string $id)
+    {
+        return collect($this->getSynonyms())->first(fn($s) => $s["id"] === $id)["synonyms"];
     }
 
     public function createSynonym(array $synonyms): void
     {
-        $body = collect($synonyms)->map(fn($synonym) => ["synonyms" => $this->mergeWords($synonym)]);
-
-        $this->synonyms->putSynonym([
-            "id" => self::SET_NAME,
-            "body" => $body->toArray(),
+        $this->putRequest([
+            ...$this->getSynonyms(),
+            [
+                "synonyms" => $this->mergeWords($synonyms)
+            ]
         ]);
     }
 
-    public function deleteSynonym(int $id): void
+    public function deleteSynonym(string $id): void
     {
-        $this->synonyms->putSynonym([
-            "id" => self::SET_NAME,
-            "body" => [["id" => $id]],
-        ]);
+        $synonyms = $this->getSynonyms();
+        $synonyms = array_filter($synonyms, fn($s) => $s["id"] !== $id);
+
+        $this->putRequest($synonyms);
     }
 
-    public function updateSynonym(int $id, array $synonyms): void
+    public function updateSynonym(string $id, array $synonyms): void
     {
-        $this->synonyms->putSynonym([
-            "id" => self::SET_NAME,
-            "body" => [[
-                "id" => $id,
-                "synonyms" => $this->mergeWords($synonyms),
-            ]],
-        ]);
+        $updateIfMatches = fn($s) => $s["id"] == $id
+            ? ["id" => $id, "synonyms" => $this->mergeWords($synonyms)]
+            : $s;
+
+        $updated = array_map($updateIfMatches, $this->getSynonyms());
+
+        $this->putRequest($updated);
     }
 }

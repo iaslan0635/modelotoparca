@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Elastic\Adapter\Indices\Mapping;
 use Elastic\Adapter\Indices\Settings;
+use Elastic\Elasticsearch\Endpoints\Synonyms;
 use Elastic\Migrations\Facades\Index;
 use Elastic\Migrations\MigrationInterface;
 
@@ -14,6 +15,8 @@ final class RecreateProductIndex implements MigrationInterface
      */
     public function up(): void
     {
+        app(Synonyms::class)->putSynonym(["id" => "modelotoparca_synonyms", "body" => ["synonyms_set" => [["synonyms"=>"kelime 1,kelime 2"]]],]);
+
         Index::dropIfExists('products_index');
         Index::create('products_index', function (Mapping $mapping, Settings $settings) {
             $settings->analysis([
@@ -21,10 +24,16 @@ final class RecreateProductIndex implements MigrationInterface
                     'default' => [
                         'type' => 'custom',
                         'tokenizer' => 'symbol_tokenizer',
-                        'filter' => ['asciifolding', 'lowercase'],
+                        'filter' => ['asciifolding', 'lowercase', 'synonyms_filter'],
                     ],
                 ],
-                'filter' => [],
+                'filter' => [
+                    'synonyms_filter' => [
+                        'type' => 'synonym',
+                        'synonyms_set' => 'modelotoparca_synonyms',
+                        'updateable' => true,
+                    ],
+                ],
                 'tokenizer' => [
                     'symbol_tokenizer' => [
                         'type' => 'char_group',
