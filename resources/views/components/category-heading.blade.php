@@ -15,7 +15,7 @@
                                 <img class="subcaticon" src="{{ $child->imageUrl() }}" style="
                                 height: 150px;
                                 max-width: 150px;">
-                                <span style="color: #20548e">{{ $child->name }}</span>
+                                <span style="color: #20548e; font-weight: 800;">{{ $child->name }}</span>
                             </a>
                         @endforeach
                     </div>
