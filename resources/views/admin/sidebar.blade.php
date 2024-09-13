@@ -142,6 +142,8 @@
         </x-sidebar.menu>
     @endcanany
 
+    <x-sidebar.item :href="route('admin.discounts.index')">İndirimler</x-sidebar.item>
+
 
     @canany(permissions("Site Yönetimi.*"))
         <x-sidebar.section title="Yönetim"/>
