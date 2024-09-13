@@ -12,7 +12,9 @@
                     <div class="subcat__list">
                         @foreach($category->children as $child)
                             <a class="subcaticon" href="{{ route('category.show', $child) }}">
-                                <img class="subcaticon" src="{{ $child->imageUrl() }}" style="height: 100px; width: unset">
+                                <img class="subcaticon" src="{{ $child->imageUrl() }}" style="
+                                height: 150px;
+                                max-width: 150px;">
                                 <span>{{ $child->name }}</span>
                             </a>
                         @endforeach
@@ -91,6 +93,7 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
         transition: transform 0.3s, box-shadow 0.3s; /* Hover efekti için geçiş */
         text-align: center; /* Yazıyı merkezde hizalama */
+        width:210px !important;
     }
 
     .subcaticon img {
