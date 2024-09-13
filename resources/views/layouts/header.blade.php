@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--megamenu main-menu__item--has-submenu">
-                            <a href="{{ route('category.show', "motor-yagi-78132") }}" class="main-menu__link">
+                            <a href="{{ route('category.show', "yaglar-ve-sivilar-79295") }}" class="main-menu__link">
                                 Madeni Yağlar
                             </a>
                         </li>
