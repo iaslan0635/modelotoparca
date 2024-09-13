@@ -9414,7 +9414,8 @@ select.form-control::-ms-expand {
 .block-slideshow__item {
     border-radius: 2.5px;
     overflow: hidden;
-    height: 500px;
+    height: 380px;
+    max-height: 380px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
