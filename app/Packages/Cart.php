@@ -64,6 +64,9 @@ class Cart
 
         foreach ($items as $index => $item) {
             if ($item['id'] === $itemId) {
+                if (isset(self::getDiscounts()['data']) && $item->model->id === self::getDiscounts()['data']['product_id']){
+                    Session::forget('cart.coupon');
+                }
                 unset($items[$index]);
                 break;
             }
@@ -123,7 +126,8 @@ class Cart
 
             return [
                 'amount' => $discount->amount,
-                'type' => $discount->type
+                'type' => $discount->type,
+                'data' => $discount->data
             ];
         }
 
