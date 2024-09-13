@@ -37,7 +37,6 @@
         @include('product-detail.tabs.reviews')
         @include('product-detail.tabs.oems')
         @include('product-detail.tabs.tecdoc')
-        @include('product-detail.tabs.reviews')
 
         @includeWhen($sameProductsTab, 'product-detail.tabs.same-products')
         @includeWhen($alternativesTab, 'product-detail.tabs.alternatives')
