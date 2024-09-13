@@ -395,7 +395,28 @@
 <livewire:scripts/>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<x-livewire-alert::scripts />
+<x-livewire-alert::scripts/>
+
+@if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Başarılı!',
+            text: '{{ session('success') }}',
+        })
+    </script>
+@endif
+
+@if(session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Hata!',
+            text: '{{ session('error') }}',
+        })
+    </script>
+@endif
+
 <script>
     Livewire.on('reload', () => window.location.reload())
 </script>

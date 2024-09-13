@@ -81,15 +81,13 @@ class OrderController extends Controller
             ->firstOrFail();
 
         if ($order->status !== OrderStatuses::COMPLETED){
-            return back()->with('error', 'error')
-                ->with('message', 'Siparişiniz tamamlanmadan yorum yapamazsınız!');
+            return back()->with('error', 'Siparişiniz tamamlanmadan yorum yapamazsınız!');
         }
 
         $product_exists = $order->items->contains('product_id', '=', $request->input('product_id'));
 
         if (!$product_exists){
-            return back()->with('error', 'error')
-                ->with('message', 'Satın almadığınız ürüne yorum yapamazsınız!');
+            return back()->with('error', 'Satın almadığınız ürüne yorum yapamazsınız!');
         }
 
         $exists = Review::query()
@@ -98,13 +96,12 @@ class OrderController extends Controller
             ->exists();
 
         if ($exists) {
-            return back()->with('error', 'error')
-                ->with('message', 'Aynı ürüne 2 kez yorum yapamazsınız!');
+            return back()->with('error', 'Aynı ürüne 2 kez yorum yapamazsınız!');
         }
 
         $product = Product::findOrFail($request->input('product_id'));
         $product->reviews()->create($data);
 
-        return back();
+        return back()->with('success', 'Yorumunuz başarıyla eklendi!');
     }
 }
