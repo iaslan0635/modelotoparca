@@ -3,42 +3,58 @@
     <livewire:car-search variant="homepage"/>
     <div class="block block-slideshow">
         <div class="container">
-            <div class="block-slideshow__carousel">
-                <div class="owl-carousel">
-                    <a class="block-slideshow__item" href="">
+
+            <div class="row">
+                <!-- %70'lik bölüm -->
+                <div class="col-md-7 col-12 block-slideshow__carousel">
+                    <div class="owl-carousel">
+                        <a class="block-slideshow__item" href="">
                         <span class="block-slideshow__item-image block-slideshow__item-image--desktop"
-                              style="background-image: url('images/slides/continental-1.png')"></span>
-                        <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
-                              style="background-image: url('images/slides/slide-3-mobile.jpg')"></span>
-                    </a>
-                    <a class="block-slideshow__item" href="">
+                              style="background-image: url('images/slides/continental-1.png')">
+                        </span>
+                            <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
+                                  style="background-image: url('images/slides/slide-3-mobile.jpg')">
+                            </span>
+                        </a>
+                        <a class="block-slideshow__item" href="">
                         <span class="block-slideshow__item-image block-slideshow__item-image--desktop"
                               style="background-image: url('images/slides/petronas-1.png')"></span>
-                        <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
-                              style="background-image: url('images/slides/slide-2-mobile.jpg')"></span>
-                    </a>
-                    <a class="block-slideshow__item" href="">
+                            <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
+                                  style="background-image: url('images/slides/slide-2-mobile.jpg')"></span>
+                        </a>
+                        <a class="block-slideshow__item" href="">
                         <span class="block-slideshow__item-image block-slideshow__item-image--desktop"
                               style="background-image: url('images/slides/slide-1.jpg')"></span>
-                        <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
-                              style="background-image: url('images/slides/slide-1-mobile.jpg')"></span>
-                        <span class="block-slideshow__item-offer">
+                            <span class="block-slideshow__item-image block-slideshow__item-image--mobile"
+                                  style="background-image: url('images/slides/slide-1-mobile.jpg')"></span>
+                            <span class="block-slideshow__item-offer">
                             30% OFF
                         </span>
-                        <span class="block-slideshow__item-title">
+                            <span class="block-slideshow__item-title">
                             Big Choice Of
                             <br>
                             Wheel Tires
                         </span>
-                        <span class="block-slideshow__item-details">
+                            <span class="block-slideshow__item-details">
                             Any size and diameter, with or without spikes,
                             <br>
                             summer or winter, rain or snow.
                         </span>
-                        <span class="block-slideshow__item-button">
+                            <span class="block-slideshow__item-button">
                             Shop Now
                         </span>
-                    </a>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- %30'luk bölüm -->
+                <div class="col-md-5 col-12 banner-section d-flex flex-column">
+                    <div class="banner mb-2 mt-1 block-banners">
+                        <img src="images/banners/banner1.png" class="img-fluid" alt="Banner 1">
+                    </div>
+                    <div class="banner mb-2 mt-1 block-banners">
+                        <img src="images/banners/banner2.png" class="img-fluid" alt="Banner 2">
+                    </div>
                 </div>
             </div>
         </div>
