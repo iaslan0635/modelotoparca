@@ -814,7 +814,7 @@
                                             <div class="reviews-view__list">
                                                 <div class="reviews-list">
                                                     <ol class="reviews-list__content">
-                                                        @foreach($product->reviews as $review)
+                                                        @forelse($product->reviews as $review)
                                                             <li class="reviews-list__item">
                                                                 <div class="review">
                                                                     <div class="review__body">
@@ -837,7 +837,15 @@
                                                                     </div>
                                                                 </div>
                                                             </li>
-                                                        @endforeach
+                                                        @empty
+                                                            <li class="reviews-list__item">
+                                                                <div class="review">
+                                                                    <div class="review__body">
+                                                                        Henüz yorum yapılmadı
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        @endforelse
                                                     </ol>
                                                 </div>
                                             </div>
