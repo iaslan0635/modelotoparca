@@ -20,7 +20,7 @@
                                 href="{{ route('category.show', $category->slug) }}"
                             @endif
                         >
-                            <img src="{{ $category->imageUrl() }}" style="max-height: 2.8em; margin-right: .5rem; max-width: 2.8em;">
+                            <img loading="lazy" src="{{ $category->imageUrl() }}" style="max-height: 2.8em; margin-right: .5rem; max-width: 2.8em;">
                             <span @if($hasChildren) class="arrow-thingy" @endif>
                                 {{ $category->name }}
                             </span>
@@ -34,7 +34,7 @@
                                 <div class="widget-filters__item-title">
                                     <a style="color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block"
                                        href="{{ route('category.show', $child->slug) }}" title="{{ $category->name }}">
-                                        <img src="{{ $child->imageUrl() }}" style="max-height: 2.8em; margin-right: .5rem; max-width: 2.8em;">
+                                        <img loading="lazy" src="{{ $child->imageUrl() }}" style="max-height: 2.8em; margin-right: .5rem; max-width: 2.8em;">
                                         @if($loop->first)
                                             Tümü
                                         @else

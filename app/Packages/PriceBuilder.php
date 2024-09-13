@@ -83,11 +83,14 @@ final class PriceBuilder implements Stringable
             ->get();
 
         foreach ($discounts as $discount) {
-            $isValidGroup = !$discount->customer_group_id
-                || auth()->user()->groups->contains('group_id', $discount->customer_group_id);
+            $isValidGroup = (
+                auth()->check() &&
+                $discount->customer_group_id &&
+                auth()->user()->groups->contains('group_id', $discount->customer_group_id)
+            );
 
             $isValidBrand = isset($discount->data['brand_id'])
-                && $discount->data->brand_id === $this->price->product->brand_id;
+                && $discount->data['brand_id'] === $this->price->product->brand_id;
 
             $isValidProduct = isset($discount->data['product_id'])
                 && $discount->data['product_id'] === $this->price->product->id;
@@ -100,7 +103,7 @@ final class PriceBuilder implements Stringable
                 $discountAmount = match ($discount->type) {
                     'percentile', 'percentage' => bcmul($this->value, $discount->amount, self::SCALE),
                     'amount' => $discount->amount,
-                    default => throw new Exception("PriceBuilder: The discount type ({$discount->type}) of the price record with id {$this->price->id} is incorrect."),
+                    default => throw new Exception("PriceBuilder: The discount type ($discount->type) of the price record with id {$this->price->id} is incorrect."),
                 };
             }
         }
