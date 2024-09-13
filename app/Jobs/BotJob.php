@@ -69,7 +69,13 @@ class BotJob implements ShouldQueue
             foreach ([true, false] as $ajax) {
                 $this->log($product, 'Bot başlatılıyor', ['Kolon' => $field, 'Ajax' => $ajax]);
 
-                $found = $this->runBotForField($product, $field, $value, $ajax);
+                try {
+                    $found = $this->runBotForField($product, $field, $value, $ajax);
+                } catch (\Throwable $throwable) {
+                    $this->log($product, 'Bot hata ile karşılaştı. Lütfen geliştiricileri bilgilendirin.', ['Kolon' => $field]);
+                    throw $throwable;
+                }
+
                 if ($found) {
                     $this->log(
                         $product, 'Ürün bulundu, bot sonlandırılıyor.',
