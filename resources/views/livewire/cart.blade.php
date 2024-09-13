@@ -112,6 +112,10 @@
                         <th>Vergi</th>
                         <td>{{ $tax }}</td>
                     </tr>
+                    <tr>
+                        <th>İndirim</th>
+                        <td>{{ \App\Packages\Cart::formattedDiscount() }}</td>
+                    </tr>
                     </tbody>
                     <tfoot>
                     <tr>

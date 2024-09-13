@@ -71,3 +71,5 @@ Route::get('/garage/deselect', function () {
 });
 
 Route::get('{page:slug}', [PageController::class, 'show'])->name('page.show')->fallback();
+Route::get('/iletisim', function () { return view('pages.contact');
+});
