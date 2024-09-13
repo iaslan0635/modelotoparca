@@ -5,47 +5,7 @@
         </div>
         <div class="widget-filters__list">
             @foreach($categories as $category)
-                @php
-                    $id = "c-collapse-$category->id";
-                    $hasChildren = $category->children->isNotEmpty();
-                @endphp
-                <div class="widget-filters__item py-0 pr-0 border-0">
-                    <div class="widget-filters__item-title">
-                        <a
-                            title="{{ $category->name }}"
-                            style="color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block"
-                            @if($hasChildren)
-                                data-toggle="collapse" href="#{{$id}}"
-                            @else
-                                href="{{ route('category.show', $category->slug) }}"
-                            @endif
-                        >
-                            <img loading="lazy" src="{{ $category->imageUrl() }}" style="max-height: 2.8em; margin-right: .5rem; max-width: 2.8em;">
-                            <span @if($hasChildren) class="arrow-thingy" @endif>
-                                {{ $category->name }}
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                @if ($hasChildren)
-                    <div class="collapse" id="{{$id}}">
-                        @foreach($category->children->prepend($category) as $child)
-                            <div class="widget-filters__item py-0 border-0 ml-4">
-                                <div class="widget-filters__item-title">
-                                    <a style="color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block"
-                                       href="{{ route('category.show', $child->slug) }}" title="{{ $category->name }}">
-                                        <img loading="lazy" src="{{ $child->imageUrl() }}" style="max-height: 2.8em; margin-right: .5rem; max-width: 2.8em;">
-                                        @if($loop->first)
-                                            Tümü
-                                        @else
-                                            {{ $child->name }}
-                                        @endif
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
+                <x-sidebar.collapse :category="$category"/>
             @endforeach
         </div>
     </div>
@@ -55,6 +15,9 @@
     .arrow-thingy {
         position: relative;
         padding-right: 24px;
+        margin-right: 20px;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     .arrow-thingy:before {

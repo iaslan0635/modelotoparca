@@ -3,6 +3,7 @@
 namespace App\Importers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class CategoryImporter extends Importer
@@ -47,5 +48,7 @@ class CategoryImporter extends Importer
                 ]
             );
         }
+
+        Cache::forget("category-sidebar-view");
     }
 }
