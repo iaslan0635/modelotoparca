@@ -84,7 +84,7 @@ final class PriceBuilder implements Stringable
             $isValidGroup = (
                 auth()->check() &&
                 $discount->customer_group_id &&
-                auth()->user()->groups->contains('group_id', $discount->customer_group_id)
+                auth()->user()->groups?->contains('group_id', $discount->customer_group_id)
             );
 
             $isValidBrand = isset($discount->data['brand_id'])

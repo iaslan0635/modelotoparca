@@ -15,7 +15,7 @@ final class RecreateProductIndex implements MigrationInterface
      */
     public function up(): void
     {
-        app(Synonyms::class)->putSynonym(["id" => "modelotoparca_synonyms", "body" => ["synonyms_set" => [["synonyms"=>"kelime 1,kelime 2"]]],]);
+        app(Synonyms::class)->putSynonym(["id" => "modelotoparca_synonyms", "body" => ["synonyms_set" => [["synonyms"=>"kelime 1,kelime 2"]]]]);
 
         Index::dropIfExists('products_index');
         Index::create('products_index', function (Mapping $mapping, Settings $settings) {
