@@ -39,6 +39,6 @@ class Price extends BaseModel
     /** Build price with discount */
     public function sellingPrice(): ?PriceBuilder
     {
-        return $this->builder()?->convertToTRY()->applyDiscount()->applyTax();
+        return $this->builder()?->convertToTRY()->applyTax()->applyDiscount();
     }
 }
