@@ -50,6 +50,8 @@ class OuterExcelImportJob implements ShouldQueue
         $worksheet = $spreadsheet->getActiveSheet();
 
         $highestRow = $worksheet->getHighestRow();
+        if ($highestRow < 1000) throw new \Exception('Fail fast when too many products are deactivated');
+
         $productIds = [];
         for ($row = 2; $row <= $highestRow; $row++) {
             $productIds[] = $worksheet->getCell("B$row")->getValue();
