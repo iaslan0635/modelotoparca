@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <div class="header__logo bi-sticky">
+        <div class="header__logo">
             <a href="/" class="logo">
                 <div class="logo__slogan">
                     Modelotoparca
