@@ -113,7 +113,11 @@
                         <td>{{ $tax }}</td>
                     </tr>
                     <tr>
-                        <th>İndirim</th>
+                        <th>
+                            İndirim
+
+                            <button wire:click="couponDelete">X</button>
+                        </th>
                         <td>{{ \App\Packages\Cart::formattedDiscount() }}</td>
                     </tr>
                     </tbody>
