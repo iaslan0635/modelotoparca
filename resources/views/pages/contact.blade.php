@@ -9,7 +9,7 @@
                         <ol class="breadcrumb__list">
                             <li class="breadcrumb__spaceship-safe-area" role="presentation"></li>
                             <li class="breadcrumb__item breadcrumb__item--parent breadcrumb__item--first">
-                                <a href="index.html" class="breadcrumb__item-link">Anasayfa</a>
+                                <a href="/" class="breadcrumb__item-link">Anasayfa</a>
                             </li>
                             <li class="breadcrumb__item breadcrumb__item--current breadcrumb__item--last" aria-current="page">
                                 <span class="breadcrumb__item-link">İletişim</span>
