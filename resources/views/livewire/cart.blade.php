@@ -22,7 +22,7 @@
                     </div>
                 </td>
                 <td class="cart-table__column cart-table__column--product">
-                    <a href="" class="cart-table__product-name">{{ $item->name }}</a>
+                    <a target="_blank" href="{{ route("product.show", $item->model) }}" class="cart-table__product-name">{{ $item->name }}</a>
                     <ul class="cart-table__options">
                         @foreach($item->attributes as $attribute)
                             <li>{{ $attribute["name"] }}: {{ $attribute["value"] }}</li>
