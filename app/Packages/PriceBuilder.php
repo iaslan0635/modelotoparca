@@ -70,16 +70,14 @@ final class PriceBuilder implements Stringable
         $discounts = Discount::query()
             ->where('active', '=', 1)
             ->where('rule', '=', 'catalog')
-            ->when(function ($query) {
-                return $query->whereNotNull('starts_at');
-            }, function ($query) {
-                return $query->whereDate('starts_at', '>=', now());
-            })
-            ->when(function ($query) {
-                return $query->whereNotNull('ends_at');
-            }, function ($query) {
-                return $query->whereDate('ends_at', '<=', now());
-            })
+            ->when(
+                fn($query) => $query->clone()->whereNotNull('starts_at')->exists(),
+                fn($query) => $query->whereDate('starts_at', '>=', now())
+            )
+            ->when(
+                fn($query) => $query->clone()->whereNotNull('ends_at')->exists(),
+                fn($query) => $query->whereDate('ends_at', '<=', now())
+            )
             ->get();
 
         foreach ($discounts as $discount) {
