@@ -82,7 +82,8 @@
                 </a>
             </div>
         </div>
-        <div class="header__logo">
+
+        <div class="header__logo bi-sticky">
             <a href="/" class="logo">
                 <div class="logo__slogan">
                     Modelotoparca
@@ -218,3 +219,13 @@
         </div>
     </div>
 </header>
+
+<style>
+    .header__logo, .header__indicators {
+        position: sticky;
+        top: 0; /* Sayfanın üstünden 0px uzaklıkta sabit kalır */
+        z-index: 1000; /* Üstte kalmasını sağlamak için z-index kullanabilirsiniz */
+        background-color: white; /* Arka plan rengi, sayfa aşağı kayarken okunaklı olması için */
+        padding: 10px 0;
+    }
+</style>
