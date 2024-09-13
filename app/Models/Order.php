@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatuses;
 use App\Events;
 use App\Events\OrderCreatedEvent;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,6 +13,7 @@ class Order extends BaseModel
     protected $casts = [
         'client_data' => 'array',
         'original_data' => 'array',
+        'status' => OrderStatuses::class
     ];
 
     protected $dispatchesEvents = [

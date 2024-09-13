@@ -163,7 +163,7 @@ class Cart
             ];
 
             if (Session::has('cart.coupon')) {
-                $discount = Discount::query()->where('coupon', '=', Session::get('cart.coupon'))->first();
+                $discount = Discount::query()->where("rule", "cart")->where('coupon', '=', Session::get('cart.coupon'))->first();
                 $data['discount_id'] = $discount->id;
                 $data['original_data']['discount'] = $discount;
             }

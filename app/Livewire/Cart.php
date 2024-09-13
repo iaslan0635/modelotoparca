@@ -63,7 +63,7 @@ class Cart extends Component
         $add = \App\Packages\Cart::addCoupon($this->coupon);
 
         if (!$add){
-            $this->alert('success', 'Kupon kodu bulunamadı');
+            $this->alert('error', 'Kupon kodu bulunamadı');
         }
 
         $this->updateContent();

@@ -44,7 +44,7 @@
                         </a>
                     </div>
                     <div class="mobile-indicator">
-                        <a href="cart.html" class="mobile-indicator__button">
+                        <a href="/cart" class="mobile-indicator__button">
                                     <span class="mobile-indicator__icon">
                                         <svg width="20" height="20">
                                             <circle cx="7" cy="17" r="2" />

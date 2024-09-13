@@ -1,5 +1,5 @@
 <div class="indicator indicator--trigger--click">
-    <a href="cart.html" class="indicator__button">
+    <a href="/cart" class="indicator__button">
                             <span class="indicator__icon">
                                 <svg width="32" height="32">
                                     <circle cx="10.5" cy="27.5" r="2.5"/>
