@@ -118,6 +118,10 @@
                         <th>Toplam Tutar</th>
                         <td>{{ $total }}</td>
                     </tr>
+                    <tr>
+                        <th>İndirim</th>
+                        <td>{{ \App\Packages\Cart::getDiscounts()['amount'] }}</td>
+                    </tr>
                     </tfoot>
                 </table>
                 <a class="btn btn-primary btn-xl btn-block" href="{{route('checkout')}}">
