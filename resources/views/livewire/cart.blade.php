@@ -112,15 +112,15 @@
                         <th>Vergi</th>
                         <td>{{ $tax }}</td>
                     </tr>
+                    <tr>
+                        <th>İndirim</th>
+                        <td>{{ \App\Packages\Cart::getDiscounts()['amount'] }}</td>
+                    </tr>
                     </tbody>
                     <tfoot>
                     <tr>
                         <th>Toplam Tutar</th>
                         <td>{{ $total }}</td>
-                    </tr>
-                    <tr>
-                        <th>İndirim</th>
-                        <td>{{ \App\Packages\Cart::getDiscounts()['amount'] }}</td>
                     </tr>
                     </tfoot>
                 </table>
