@@ -16,7 +16,7 @@
             <tr class="cart-table__row">
                 <td class="cart-table__column cart-table__column--image">
                     <div class="image image--type--product">
-                        <a href="{{ route("product.show", $item->model) }}" class="image__body">
+                        <a target="_blank" href="{{ route("product.show", $item->model) }}" class="image__body">
                             <img class="image__tag" src="{{ $item->model->imageUrl() }}" alt="">
                         </a>
                     </div>
