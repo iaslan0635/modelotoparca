@@ -114,7 +114,7 @@
                     </tr>
                     <tr>
                         <th>İndirim</th>
-                        <td>{{ \App\Packages\Cart::getDiscounts()['amount'] }}</td>
+                        <td>{{ \App\Packages\Cart::formattedDiscount() }}</td>
                     </tr>
                     </tbody>
                     <tfoot>

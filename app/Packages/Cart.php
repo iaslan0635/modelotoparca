@@ -277,6 +277,11 @@ class Cart
         return number_format(self::getTotal(), 2) . ' ₺';
     }
 
+    public static function formattedDiscount(): string
+    {
+        return "- " . number_format(self::getDiscounts()['amount'], 2) . ' ₺';
+    }
+
     public static function formattedSubTotal(): string
     {
         return number_format(self::subTotal(), 2) . ' ₺';
