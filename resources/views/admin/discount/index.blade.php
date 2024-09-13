@@ -714,7 +714,7 @@
                                     <td>{{ $discount->coupon ? $discount->coupon : "Kupon Kodu Bulunmuyor" }}</td>
                                     <td>{{ $discount->starts_at?->format('d M Y H:i:s') }}</td>
                                     <td>{{ $discount->ends_at?->format('d M Y H:i:s') }}</td>
-                                    <td>{{ $discount->status ? "Aktif":"Pasif" }}</td>
+                                    <td>{{ $discount->active ? "Aktif":"Pasif" }}</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
