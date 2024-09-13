@@ -116,7 +116,9 @@
                         <th>
                             İndirim
 
-                            <button wire:click="couponDelete">X</button>
+                            @if(Session::has('cart.coupon'))
+                                <a class="text-danger" href="#" wire:click="couponDelete">Temizle</a>
+                            @endif
                         </th>
                         <td>{{ \App\Packages\Cart::formattedDiscount() }}</td>
                     </tr>
