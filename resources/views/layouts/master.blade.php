@@ -12,7 +12,7 @@
     {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">--}}
     {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">--}}
     <!-- css -->
-    @php $assetVersion = 25 @endphp
+    @php $assetVersion = 26 @endphp
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/assets/owl.carousel.min.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/photoswipe.css') }}">

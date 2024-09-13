@@ -16673,6 +16673,7 @@ select.form-control::-ms-expand {
 
 .products-list[data-layout="list"] .products-list__content {
     /*margin: -10px;*/
+    margin: 15px;
 }
 
 .products-list[data-layout="list"] .products-list__item {
