@@ -9,7 +9,7 @@
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
                     <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                        Sayfa Ekle
+                        Sayfa Düzenle
                     </h1>
                     <!--end::Title-->
                 </div>
@@ -30,7 +30,7 @@
                     <div class="card-header">
                         <div class="card-title">
                             <div class="card-body pt-0">
-                                <form id="kt_modal_add_role_form" class="form" action="{{ route('admin.pages.store') }}" method="post">
+                                <form class="form" action="{{ route('admin.discounts.store') }}" method="post">
                                     @csrf
                                     <!--begin::Scroll-->
                                     <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_role_scroll" data-kt-scroll="true"
@@ -40,25 +40,74 @@
                                             <label class="fs-5 fw-bold form-label mb-2">
                                                 <span class="required">Başlık</span>
                                             </label>
-                                            <input class="form-control form-control-solid" name="title" required/>
+                                            <input class="form-control form-control-solid" name="title" value="" required/>
                                         </div>
                                         <div class="fv-row mb-10">
                                             <label class="fs-5 fw-bold form-label mb-2">
-                                                <span class="required">Keywords (,) ile ayırınız.</span>
+                                                <span class="required">Kural</span>
                                             </label>
-                                            <input class="form-control form-control-solid" name="keywords" required/>
+                                            <select>
+                                                <option value="1">Katalog</option>
+                                                <option value="2">Sepet</option>
+                                            </select>
                                         </div>
                                         <div class="fv-row mb-10">
                                             <label class="fs-5 fw-bold form-label mb-2">
-                                                <span class="required">Açıklama</span>
+                                                <span class="required">Tip</span>
                                             </label>
-                                            <input class="form-control form-control-solid" name="description" required/>
+                                            <select>
+                                                <option value="1">Yüzde</option>
+                                                <option value="2">Tutar</option>
+                                            </select>
                                         </div>
                                         <div class="fv-row mb-10">
                                             <label class="fs-5 fw-bold form-label mb-2">
-                                                <span class="required">İçeriği</span>
+                                                <span class="required">Ürün id (ürüne uygulanmıyacaksa boş bırakın)</span>
                                             </label>
-                                            <textarea id="editor" class="form-control form-control-solid" name="content"></textarea>
+                                            <select>
+                                                <option value="0">Hiçbiri</option>
+                                                <option value="1">Ürün 1</option>
+                                                <option value="2">Ürün 2</option>
+                                            </select>
+                                        </div>
+                                        <div class="fv-row mb-10">
+                                            <label class="fs-5 fw-bold form-label mb-2">
+                                                <span class="required">Kategoriler</span>
+                                            </label>
+                                            <select multiple>
+                                                <option value="0">Hiçbiri</option>
+                                                <option value="1">Kategori 1</option>
+                                                <option value="2">Kategori 2</option>
+                                                <option value="3">Kategori 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="fv-row mb-10">
+                                            <label class="fs-5 fw-bold form-label mb-2">
+                                                <span class="required">Marka</span>
+                                            </label>
+                                            <select>
+                                                <option value="0">Hiçbiri</option>
+                                                <option value="1">Kategori 1</option>
+                                                <option value="2">Kategori 2</option>
+                                                <option value="3">Kategori 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="fv-row mb-10">
+                                            <label class="fs-5 fw-bold form-label mb-2">
+                                                <span class="required">Müşteri grubu</span>
+                                            </label>
+                                            <select >
+                                                <option value="0">Hiçbiri</option>
+                                                <option value="1">Grup 1</option>
+                                                <option value="2">Grup 2</option>
+                                                <option value="3">Grup 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="fv-row mb-10">
+                                            <label class="fs-5 fw-bold form-label mb-2">
+                                                <span class="required">Kupon kodu (sadece sepette)</span>
+                                            </label>
+                                            <input class="form-control form-control-solid" name="title" value="" required/>
                                         </div>
                                     </div>
                                     <div class="text-center pt-15">

@@ -146,7 +146,7 @@
                             </span>
                             <span class="mobile-menu__indicator-title">Account</span>
                         </a>
-                        <a class="mobile-menu__indicator" href="cart.html">
+                        <a class="mobile-menu__indicator" href="/cart">
                             <span class="mobile-menu__indicator-icon">
                                 <svg width="20" height="20">
                                     <circle cx="7" cy="17" r="2" />
@@ -182,7 +182,7 @@
                             </span>
                             <span class="mobile-menu__indicator-title">Giriş Yap</span>
                         </a>
-                        <a class="mobile-menu__indicator" href="cart.html">
+                        <a class="mobile-menu__indicator" href="/cart">
                             <span class="mobile-menu__indicator-icon">
                                 <svg width="20" height="20">
                                     <circle cx="7" cy="17" r="2" />

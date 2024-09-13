@@ -70,24 +70,25 @@ final class PriceBuilder implements Stringable
         $discounts = Discount::query()
             ->where('active', '=', 1)
             ->where('rule', '=', 'catalog')
-            ->when(function ($query) {
-                return $query->whereNotNull('starts_at');
-            }, function ($query) {
-                return $query->whereDate('starts_at', '>=', now());
-            })
-            ->when(function ($query) {
-                return $query->whereNotNull('ends_at');
-            }, function ($query) {
-                return $query->whereDate('ends_at', '<=', now());
-            })
+            ->when(
+                fn($query) => $query->clone()->whereNotNull('starts_at')->exists(),
+                fn($query) => $query->whereDate('starts_at', '>=', now())
+            )
+            ->when(
+                fn($query) => $query->clone()->whereNotNull('ends_at')->exists(),
+                fn($query) => $query->whereDate('ends_at', '<=', now())
+            )
             ->get();
 
         foreach ($discounts as $discount) {
-            $isValidGroup = !$discount->customer_group_id
-                || auth()->user()->groups->contains('group_id', $discount->customer_group_id);
+            $isValidGroup = (
+                auth()->check() &&
+                $discount->customer_group_id &&
+                auth()->user()->groups->contains('group_id', $discount->customer_group_id)
+            );
 
             $isValidBrand = isset($discount->data['brand_id'])
-                && $discount->data->brand_id === $this->price->product->brand_id;
+                && $discount->data['brand_id'] === $this->price->product->brand_id;
 
             $isValidProduct = isset($discount->data['product_id'])
                 && $discount->data['product_id'] === $this->price->product->id;
@@ -100,7 +101,7 @@ final class PriceBuilder implements Stringable
                 $discountAmount = match ($discount->type) {
                     'percentile', 'percentage' => bcmul($this->value, $discount->amount, self::SCALE),
                     'amount' => $discount->amount,
-                    default => throw new Exception("PriceBuilder: The discount type ({$discount->type}) of the price record with id {$this->price->id} is incorrect."),
+                    default => throw new Exception("PriceBuilder: The discount type ($discount->type) of the price record with id {$this->price->id} is incorrect."),
                 };
             }
         }

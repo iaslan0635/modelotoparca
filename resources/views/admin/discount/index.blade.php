@@ -686,7 +686,7 @@
                     <!--begin::Card body-->
                     <div class="card-body py-4">
                         <!--begin::Table-->
-                        <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+                        <table class="table align-middle table-row-dashed fs-6 gy-5">
                             <!--begin::Table head-->
                             <thead>
                             <!--begin::Table row-->
@@ -712,9 +712,9 @@
                                     <td>{{ $discount->name }}</td>
                                     <td>{{ $discount->type === "catalog" ? "Katalog":"Sepet" }}</td>
                                     <td>{{ $discount->coupon ? $discount->coupon : "Kupon Kodu Bulunmuyor" }}</td>
-                                    <td>{{ $discount->starts_at->format('d M Y H:i:s') }}</td>
-                                    <td>{{ $discount->ends_at->format('d M Y H:i:s') }}</td>
-                                    <td>{{ $discount->status ? "Aktif":"Pasif" }}</td>
+                                    <td>{{ $discount->starts_at?->format('d M Y H:i:s') }}</td>
+                                    <td>{{ $discount->ends_at?->format('d M Y H:i:s') }}</td>
+                                    <td>{{ $discount->active ? "Aktif":"Pasif" }}</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions

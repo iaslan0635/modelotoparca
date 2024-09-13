@@ -2081,6 +2081,7 @@
 [dir=ltr] .search__input {
   padding-left: 13px;
   padding-right: 37px;
+    width: 400px;
 }
 
 [dir=rtl] .search__input {

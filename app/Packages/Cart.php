@@ -4,6 +4,7 @@ namespace App\Packages;
 
 use App\Enums\OrderStatuses;
 use App\Models\Discount;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class Cart
@@ -117,7 +118,7 @@ class Cart
 
     public static function getDiscounts()
     {
-        if (Session::has('cart.coupon')){
+        if (Session::has('cart.coupon')) {
             $discount = Discount::query()->where('coupon', '=', Session::get('cart.coupon'))->first();
 
             return [
@@ -136,7 +137,7 @@ class Cart
     {
         $discount = Discount::query()->where('coupon', '=', $coupon)->first();
 
-        if (!$discount){
+        if (!$discount) {
             return false;
         }
 
@@ -147,9 +148,7 @@ class Cart
 
     public static function newOrder($payment_method, $shipment_address_id, $invoice_address_id, $shipment_address, $invoice_address)
     {
-        \DB::beginTransaction();
-
-        try {
+        $result = DB::transaction(function () use ($invoice_address, $shipment_address, $invoice_address_id, $shipment_address_id, $payment_method) {
             $data = [
                 'payment_method' => $payment_method,
                 'shipment_address_id' => $shipment_address_id,
@@ -163,8 +162,8 @@ class Cart
                 ],
             ];
 
-            if (Session::has('cart.coupon')){
-                $discount = Discount::query()->where('coupon', '=', Session::get('cart.coupon'))->first();
+            if (Session::has('cart.coupon')) {
+                $discount = Discount::query()->where("rule", "cart")->where('coupon', '=', Session::get('cart.coupon'))->first();
                 $data['discount_id'] = $discount->id;
                 $data['original_data']['discount'] = $discount;
             }
@@ -182,13 +181,11 @@ class Cart
                 ]);
             }
 
-            self::clear();
-            \DB::commit();
             return $order;
-        }catch (\Exception $exception){
-            \DB::rollBack();
-            return false;
-        }
+        });
+
+        self::clear();
+        return $result ?? false;
     }
 
     public static function getTotal(): float|int
@@ -201,9 +198,9 @@ class Cart
 
         $discount = self::getDiscounts();
 
-        if ($discount['type'] === "amount"){
+        if ($discount['type'] === "amount") {
             $total = bcsub($total, $discount['amount'], 2);
-        }else{
+        } else {
             $total = bcmul($total, $discount['amount'], 2);
         }
 
@@ -250,7 +247,7 @@ class Cart
         $total = self::subTotal();
 
         $taxRate = session('cart.taxRate');
-        if (! is_null($taxRate)) {
+        if (!is_null($taxRate)) {
             return $total * $taxRate / 100;
         }
 
@@ -263,7 +260,7 @@ class Cart
         if (count(self::getItems()) === 0) {
             return 0;
         }
-        if (! is_null($shippingCost)) {
+        if (!is_null($shippingCost)) {
             return $shippingCost;
         }
 
@@ -277,21 +274,21 @@ class Cart
 
     public static function formattedTotal(): string
     {
-        return number_format(self::getTotal(), 2).' ₺';
+        return number_format(self::getTotal(), 2) . ' ₺';
     }
 
     public static function formattedSubTotal(): string
     {
-        return number_format(self::subTotal(), 2).' ₺';
+        return number_format(self::subTotal(), 2) . ' ₺';
     }
 
     public static function formattedShipping(): string
     {
-        return number_format(self::getTotalWithShipping(), 2).' ₺';
+        return number_format(self::getTotalWithShipping(), 2) . ' ₺';
     }
 
     public static function formattedTax(): string
     {
-        return number_format(self::getTotalWithTax(), 2).' ₺';
+        return number_format(self::getTotalWithTax(), 2) . ' ₺';
     }
 }

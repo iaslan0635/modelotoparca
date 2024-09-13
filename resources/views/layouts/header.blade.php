@@ -5,13 +5,13 @@
         <div class="header__topbar-classic">
             <div class="topbar topbar--classic">
                 <div class="topbar__item-text">
-                    <a class="topbar__link" href="about-us.html">Hakkımızda</a>
+                    <a class="topbar__link" href="#">Hakkımızda</a>
                 </div>
                 <div class="topbar__item-text">
-                    <a class="topbar__link" href="contact-us-v1.html">İletişim</a>
+                    <a class="topbar__link" href="/iletisim">İletişim</a>
                 </div>
                 <div class="topbar__item-text">
-                    <a class="topbar__link" href="track-order.html">Sipariş Takibi</a>
+                    <a class="topbar__link" href="#">Sipariş Takibi</a>
                 </div>
                 <div class="topbar__item-spring"></div>
                 <div class="topbar__item-button topbar__menu">
@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="main-menu__item main-menu__item--submenu--megamenu main-menu__item--has-submenu">
-                            <a href="{{ route('category.show', "motor-yagi-78132") }}" class="main-menu__link">
+                            <a href="{{ route('category.show', "yaglar-ve-sivilar-79295") }}" class="main-menu__link">
                                 Madeni Yağlar
                             </a>
                         </li>
@@ -82,6 +82,7 @@
                 </a>
             </div>
         </div>
+
         <div class="header__logo">
             <a href="/" class="logo">
                 <div class="logo__slogan">
@@ -218,3 +219,4 @@
         </div>
     </div>
 </header>
+

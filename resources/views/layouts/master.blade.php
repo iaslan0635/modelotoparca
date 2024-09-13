@@ -12,7 +12,7 @@
     {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic">--}}
     {{--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">--}}
     <!-- css -->
-    @php $assetVersion = 20 @endphp
+    @php $assetVersion = 26 @endphp
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/assets/owl.carousel.min.css') }}?v={{ $assetVersion }}">
     <link rel="stylesheet" href="{{ asset('vendor/photoswipe/photoswipe.css') }}">
@@ -395,7 +395,28 @@
 <livewire:scripts/>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<x-livewire-alert::scripts />
+<x-livewire-alert::scripts/>
+
+@if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Başarılı!',
+            text: '{{ session('success') }}',
+        })
+    </script>
+@endif
+
+@if(session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Hata!',
+            text: '{{ session('error') }}',
+        })
+    </script>
+@endif
+
 <script>
     Livewire.on('reload', () => window.location.reload())
 </script>
