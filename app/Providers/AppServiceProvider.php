@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Facades\N11Client\N11Client;
 use App\Packages\CartItemSynthesizer;
 use Carbon\Carbon;
+use Elastic\Client\ClientBuilder;
+use Elastic\Elasticsearch\ClientInterface as ElasticClientInterface;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
@@ -18,7 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(N11Client::class, fn () => new N11Client(config('merchants.n11.apiKey'), config('merchants.n11.apiPassword')));
+        $this->app->singleton(N11Client::class, fn() => new N11Client(config('merchants.n11.apiKey'), config('merchants.n11.apiPassword')));
+        $this->app->bind(ElasticClientInterface::class, fn() => app(ClientBuilder::class)->default());
     }
 
     /**

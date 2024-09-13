@@ -1976,6 +1976,9 @@
 		<script>var hostUrl = "assets/";</script>
 		<!--begin::Global Javascript Bundle(used by all pages)-->
         @livewireScripts
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <x-livewire-alert::scripts/>
         <script>
             Livewire.on('toast', ({message, severity}) => {
                 toastr[severity](message || "success");

@@ -2,46 +2,43 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\SearchReplacement;
-use Illuminate\Database\QueryException;
+use App\Packages\Search\SynonymsManager;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Throwable;
 
 class SearchReplacements extends Component
 {
-    public string $original = '';
+    use LivewireAlert;
 
-    public string $replacement = '';
+    public array $draftSynonyms = [];
 
-    public array $searchReplacements = [];
-
-    public function mount()
+    public function render(SynonymsManager $synonymsManager)
     {
-        $this->searchReplacements = SearchReplacement::all()->toArray();
-    }
-
-    public function render()
-    {
+        dd($synonymsManager->getSynonyms());
         return view('livewire.admin.search-replacements');
     }
 
-    public function add()
+    public function create(SynonymsManager $synonymsManager)
     {
         try {
-            $this->searchReplacements[] = SearchReplacement::create([
-                'original' => $this->original,
-                'replacement' => $this->replacement,
-            ]);
-            SearchReplacement::clearCache();
-        } catch (QueryException) {
-            $this->dispatch('toast', message: 'Önceden bu kayıt oluşturulmuş', severity: 'error');
+            $synonymsManager->createSynonym($this->draftSynonyms);
+            $this->draftSynonyms = [];
+            $this->alert('success', 'Başarıyla eklendi');
+        } catch (Throwable $e) {
+            report($e);
+            $this->alert('error', 'Bir hata oluştu');
         }
     }
 
-    public function delete(int $index)
+    public function delete(int $id, SynonymsManager $synonymsManager)
     {
-        ['id' => $id] = $this->searchReplacements[$index];
-        SearchReplacement::whereId($id)->delete();
-        SearchReplacement::clearCache();
-        unset($this->searchReplacements[$index]);
+        try {
+            $synonymsManager->deleteSynonym($id);
+            $this->alert('success', 'Başarıyla silindi');
+        } catch (Throwable $e) {
+            report($e);
+            $this->alert('error', 'Bir hata oluştu');
+        }
     }
 }

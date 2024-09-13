@@ -5,29 +5,29 @@
         <div class="card-header">
             <!--begin::Card title-->
             <div class="card-title">
-                <h2>Yeni düzeltme ekle</h2>
+                <h2>Yeni düzeltme seti ekle</h2>
             </div>
             <!--end::Card title-->
+            <div class="card-toolbar">
+                <button class="btn btn-primary" wire:click="create">
+                    <span
+                        class="spinner-border spinner-border-sm" role="status"
+                        wire:loading wire:target="create"
+                    ></span>
+                    Ekle
+                </button>
+            </div>
         </div>
         <!--end::Card header-->
         <!--begin::Card body-->
-        <div class="card-body pt-0">
-            <div class="row">
-                <div class="col-5"><input type="text" class="form-control" placeholder="reno" wire:model="original"/></div>
-                <div class="col-auto" style="display: flex; align-items: center;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="currentColor"/>
-                        <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="col-5"><input type="text" class="form-control" placeholder="renault" wire:model="replacement"/></div>
-                <div class="col">
-                    <button class="btn btn-primary" wire:click="add(0)">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading wire:target="add(0)"></span>
-                        Ekle
-                    </button>
-                </div>
-            </div>
+        <div
+            class="card-body pt-0 d-flex flex-wrap" style="gap: 2rem"
+            x-data="{ drafts: $wire.entangle('draftSynonyms') }"
+            x-effect="drafts = drafts.filter(draft => draft?.trim())"
+        >
+            <template x-for="i in (drafts.length + 1)" :key="i">
+                <input x-model="drafts[i-1]" type="text" class="form-control" style="width: 10em" placeholder="Yeni kelime ekle"/>
+            </template>
         </div>
         <!--end::Card body-->
     </div>
@@ -51,7 +51,7 @@
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody class="fw-semibold text-gray-600">
-                @foreach(array_reverse($searchReplacements, true) as $key => $replacement)
+                {{--@foreach(array_reverse($searchReplacements, true) as $key => $replacement)
                     <!--begin::Table row-->
                     <tr>
                         <td>
@@ -68,7 +68,7 @@
                         </td>
                     </tr>
                     <!--end::Table row-->
-                @endforeach
+                @endforeach--}}
                 </tbody>
                 <!--end::Table body-->
             </table>
