@@ -15,7 +15,7 @@
                                 <img class="subcaticon" src="{{ $child->imageUrl() }}" style="
                                 height: 150px;
                                 max-width: 150px;">
-                                <span>{{ $child->name }}</span>
+                                <span style="color: #20548e">{{ $child->name }}</span>
                             </a>
                         @endforeach
                     </div>
@@ -27,7 +27,7 @@
                         <div id="carousel" class="owl-carousel">
                             @foreach($brands as $brand)
                                 <a class="brandslideitem" href="{{ route('brand.show', $brand) }}">
-                                    <img style="height: 60px" src="{{ $brand->imageUrl() }}">
+                                    <img style="max-height: 50px" src="{{ $brand->imageUrl() }}">
                                 </a>
                             @endforeach
                         </div>
