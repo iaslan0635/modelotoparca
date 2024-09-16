@@ -17,7 +17,7 @@ class SynonymsManager
 
     private function mergeWords(array $words): string
     {
-        return collect($words)->map(fn($s) => str_replace(',', '\\\\', $s))->implode(', ');
+        return collect($words)->map(fn($s) => str_replace(',', '\\\\', $s))->implode(',');
     }
 
     private function putRequest($body): void
