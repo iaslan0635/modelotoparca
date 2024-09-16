@@ -33,7 +33,7 @@ final class RecreateProductIndex implements MigrationInterface
                     'default_search' => [
                         'type' => 'custom',
                         'tokenizer' => 'symbol_tokenizer',
-                        'filter' => ['synonyms_filter', 'asciifolding', 'lowercase'],
+                        'filter' => ['asciifolding', 'lowercase', 'synonyms_filter'],
                     ],
                 ],
                 'filter' => [
