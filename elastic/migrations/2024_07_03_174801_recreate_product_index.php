@@ -19,12 +19,21 @@ final class RecreateProductIndex implements MigrationInterface
 
         Index::dropIfExists('products_index');
         Index::create('products_index', function (Mapping $mapping, Settings $settings) {
+            $settings->index([
+                'mapping.nested_objects.limit' => '9000000000000000000',
+            ]);
+
             $settings->analysis([
                 'analyzer' => [
                     'default' => [
                         'type' => 'custom',
                         'tokenizer' => 'symbol_tokenizer',
-                        'filter' => ['asciifolding', 'lowercase', 'synonyms_filter'],
+                        'filter' => ['asciifolding', 'lowercase'],
+                    ],
+                    'default_search' => [
+                        'type' => 'custom',
+                        'tokenizer' => 'symbol_tokenizer',
+                        'filter' => ['synonyms_filter', 'asciifolding', 'lowercase'],
                     ],
                 ],
                 'filter' => [
@@ -56,6 +65,7 @@ final class RecreateProductIndex implements MigrationInterface
             $mapping->text('hidden_searchable');
             $mapping->double('price');
             $mapping->text('tecdoc');
+            $mapping->boolean('status');
 
             $mapping->object('brand', [
                 'properties' => [
