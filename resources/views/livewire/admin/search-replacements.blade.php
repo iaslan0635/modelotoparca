@@ -15,6 +15,16 @@
             </div>
             <!--end::Card title-->
             <div class="card-toolbar">
+                @if($editId)
+                    <button class="btn btn-secondary" wire:click="cancelEdit">
+                        <span
+                            class="spinner-border spinner-border-sm" role="status"
+                            wire:loading wire:target="cancelEdit"
+                        ></span>
+                        İptal
+                    </button>
+                @endif
+
                 <button class="btn btn-primary" wire:click="upsert">
                     <span
                         class="spinner-border spinner-border-sm" role="status"
@@ -64,18 +74,22 @@
                 <!--begin::Table body-->
                 <tbody class="fw-semibold text-gray-600">
                 @foreach($synonyms as ["id" => $id, "synonyms" => $ss])
-                    <!--begin::Table row-->
+                    @php $isEditingThis = $editId === $id; @endphp
+                        <!--begin::Table row-->
                     <tr wire:key="{{$id}}">
                         <td>
                             <span class="fw-bold">{{ $ss }}</span>
                         </td>
                         <td class="text-end">
-                            <button class="btn btn-sm btn-primary" wire:click="edit('{{$id}}')">
+                            <button
+                                class="btn btn-sm btn-primary @if($isEditingThis) bg-light-primary @endif"
+                                wire:click="edit('{{$id}}')"
+                            >
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                                       wire:loading wire:target="edit('{{$id}}')"></span>
                                 Düzenle
                             </button>
-                            <button class="btn btn-sm btn-danger" wire:click="delete('{{$id}}')">
+                            <button class="btn btn-sm btn-danger" wire:click="delete('{{$id}}')" @disabled($isEditingThis)>
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                                       wire:loading wire:target="delete('{{$id}}')"></span>
                                 Sil

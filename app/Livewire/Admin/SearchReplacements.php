@@ -53,4 +53,10 @@ class SearchReplacements extends Component
             ->map(fn($s) => trim(str_replace('\\\\', '\\', $s)))
             ->all();
     }
+
+    public function cancelEdit()
+    {
+        $this->editId = null;
+        $this->draftSynonyms = [];
+    }
 }
