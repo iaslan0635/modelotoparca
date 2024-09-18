@@ -21,7 +21,7 @@
             <x-sidebar.item :href="route('admin.user.index')">Kullanıcılar</x-sidebar.item>
         @endcan
         @can("Kullanıcı İşlemleri.Yöneticiler.Listele")
-            <x-sidebar.item :href="route('admin.employee.index')">Yöneticiler</x-sidebar.item>
+            <x-sidebar.item :href="route('admin.employee.index')">Çalışanlar</x-sidebar.item>
         @endcan
         @can("Kullanıcı İşlemleri.Roller.Listele")
             <x-sidebar.item :href="route('admin.role.index')">Roller</x-sidebar.item>
