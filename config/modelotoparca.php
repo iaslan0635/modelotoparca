@@ -3,7 +3,7 @@
 return [
     'proxy' => [
         'protocol' => 'socks5',
-        'origin' => '206.168.89.19:50101',
+        'origin' => '139.177.149.243:50101',
         'auth' => 'enproyazilim:7YhzvaWDyc',
     ],
 ];
