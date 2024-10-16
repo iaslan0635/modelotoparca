@@ -33,4 +33,11 @@ class OcpClient
             }
         }
     }
+
+    public static function getJson(string $url)
+    {
+        $response = self::request($url);
+        $stripped = strip_tags($response);
+        return json_decode($stripped, true);
+    }
 }
