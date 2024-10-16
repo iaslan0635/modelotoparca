@@ -10,9 +10,10 @@ class OcpClient
 {
     public static function requestWithoutRetry(string $url): string
     {
-        return Http::get("http://141.11.109.246:5184/api/Home/Get", [
-            'url' => $url,
-        ])->body();
+        $url = urlencode($url);
+        return Http::throw()->post(
+            "http://141.11.109.246:5184/api/Home/Get?url=$url"
+        )->body();
     }
 
     public static function request(string $url)
