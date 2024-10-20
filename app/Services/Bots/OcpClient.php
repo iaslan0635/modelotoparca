@@ -10,10 +10,60 @@ class OcpClient
 {
     public static function requestWithoutRetry(string $url): string
     {
-        $url = urlencode($url);
-        return Http::throw()->post(
-            "http://141.11.109.246:5184/api/Home/Get?url=$url"
-        )->body();
+        function sendRequest($url) {
+            $proxy = "socks5://enproyazilim:7YhzvaWDyc@140.228.25.183:50101";
+            $headers = [
+                'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0',
+                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                'Accept-Encoding: gzip, deflate, br',
+                'Accept-Language: tr,en;q=0.9,en-GB;q=0.8,en-US;q=0.7',
+                'Cache-Control: no-cache',
+                'Referer: https://www.onlinecarparts.co.uk/spare-parts/bmw/brake-pads/5-f10-f18.html',
+                'Sec-CH-UA: "Chromium";v="130", "Microsoft Edge";v="130", "Not?A_Brand";v="99"',
+                'Sec-CH-UA-Mobile: ?0',
+                'Sec-CH-UA-Platform: "Windows"',
+                'Sec-Fetch-Dest: document',
+                'Sec-Fetch-Mode: navigate',
+                'Sec-Fetch-Site: same-origin',
+                'Sec-Fetch-User: ?1',
+                'Upgrade-Insecure-Requests: 1',
+        //        'Cookie: kmtx_sync=406545511569790842; INGRESSCOOKIE=1729434249.246.27276.540264|f89e2d2acc6cd8c158ba7aaea6f7fb53',
+                'Accept-Charset: UTF-8'  // Ensure UTF-8 encoding is accepted
+            ];
+        
+            $ch = curl_init();
+        
+            // Set cURL options
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_PROXY, $proxy);
+            curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
+            curl_setopt($ch, CURLOPT_ENCODING, ''); // Automatically handle gzip/deflate
+        
+            // Execute the request
+            $response = curl_exec($ch);
+
+            // Check for errors
+            if (curl_errno($ch)) {
+                throw new \Error('Error during HTTP request: ' . curl_error($ch));
+            } else {
+                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                if ($httpCode == 200) {
+                    // Ensure proper UTF-8 encoding of the response
+                    $response = mb_convert_encoding($response, 'UTF-8', 'auto');
+                    // Save the response data to a file or print it
+                    return $response;
+                } else {
+                    throw new \Error("Request failed with status code: $httpCode");
+                }
+            }
+        
+            curl_close($ch);
+        }
+        
+        return sendRequest($url);
     }
 
     public static function request(string $url)
