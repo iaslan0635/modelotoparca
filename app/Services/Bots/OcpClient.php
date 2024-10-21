@@ -10,7 +10,6 @@ class OcpClient
 {
     public static function requestWithoutRetry(string $url): string
     {
-        function sendRequest($url) {
             $proxy = "socks5://enproyazilim:7YhzvaWDyc@140.228.25.183:50101";
             $headers = [
                 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0',
@@ -47,6 +46,7 @@ class OcpClient
 
             // Check for errors
             if (curl_errno($ch)) {
+                curl_close($ch);
                 throw new \Error('Error during HTTP request: ' . curl_error($ch));
             } else {
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -54,16 +54,14 @@ class OcpClient
                     // Ensure proper UTF-8 encoding of the response
                     $response = mb_convert_encoding($response, 'UTF-8', 'auto');
                     // Save the response data to a file or print it
+                    curl_close($ch);
                     return $response;
                 } else {
+                    curl_close($ch);
                     throw new \Error("Request failed with status code: $httpCode");
                 }
             }
         
-            curl_close($ch);
-        }
-        
-        return sendRequest($url);
     }
 
     public static function request(string $url)
