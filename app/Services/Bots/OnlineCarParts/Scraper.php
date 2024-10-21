@@ -52,7 +52,7 @@ class Scraper
     public function getSearchAjaxProducts(SearchAjax $searchAjax): Collection
     {
         $url = $searchAjax->url;
-        $json = OcpClient::getJson($url);
+        $json = OcpClient::getJson($url, true);
         $results = $json['results'];
 
         $productResults = array_filter($results, fn ($result) => $result['meta']['type'] === 'product');
