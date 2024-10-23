@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Reactive;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class ProductFilters extends Component
@@ -22,6 +23,10 @@ class ProductFilters extends Component
     public ?int $selectedCategoryId = null;
     public Collection $selectedBrands;
     public Collection $propertyValues;
+
+    #[Url]
+    public $category;
+
     public ?int $priceMin = null;
     public ?int $priceMax = null;
 
@@ -40,6 +45,8 @@ class ProductFilters extends Component
             "priceMin" => $this->priceMin,
             "priceMax" => $this->priceMax,
         ];
+
+        $this->category = $this->selectedCategoryId;
 
         $this->dispatch('filtered', filters: $filters);
     }
