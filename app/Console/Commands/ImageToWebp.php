@@ -31,7 +31,7 @@ class ImageToWebp extends Command
         //$directory = storage_path('app/public');
         //$this->convertImagesToWebP($directory);
         // imageable_type'i App\Models\Category olan tüm kayıtları al
-        $images = Image::where('imageable_type', 'App\Models\Category')->get();
+        $images = Image::where('imageable_type', 'App\Models\Brand')->get();
 
         foreach ($images as $image) {
             // Mevcut path değerini kontrol et
