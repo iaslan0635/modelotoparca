@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Image;
 use Illuminate\Console\Command;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -27,8 +28,21 @@ class ImageToWebp extends Command
      */
     public function handle()
     {
-        $directory = storage_path('app/public');
-        $this->convertImagesToWebP($directory);
+        //$directory = storage_path('app/public');
+        //$this->convertImagesToWebP($directory);
+        // imageable_type'i App\Models\Category olan tüm kayıtları al
+        $images = Image::where('imageable_type', 'App\Models\Category')->get();
+
+        foreach ($images as $image) {
+            // Mevcut path değerini kontrol et
+            if (str_contains($image->path, '.png')) {
+                $newPath = str_replace('.png', '.webp', $image->path);
+                $image->path = $newPath;
+                $image->save();
+            }
+        }
+
+        //return 'PNG dosyaları WEBP formatına dönüştürüldü.';
     }
 
     public function convertImagesToWebP($directory): void
