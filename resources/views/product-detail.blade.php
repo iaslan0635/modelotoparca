@@ -24,11 +24,11 @@
                                                 <div class="image__body">
                                                     <div class="product-card__badges" style="text-align: -webkit-right">
                                                         <div style=" right:5px;">
-                                                            <img style="max-width: 150px; max-height: 60px;"
+                                                            <img style="max-width: 150px; max-height: 60px;" loading="lazy"
                                                                  src="{{ $product->brand?->imageUrl() }}" alt="">
                                                         </div>
                                                     </div>
-                                                    <img class="image__tag" src="{{ $image }}" alt="">
+                                                    <img class="image__tag" src="{{ $image }}" alt="" loading="lazy">
                                                 </div>
                                             </a>
                                         @endforeach
@@ -39,7 +39,7 @@
                                         @foreach($product->imageUrls() as $image)
                                             <div class="product-gallery__thumbnails-item image image--type--product">
                                                 <div class="image__body">
-                                                    <img class="image__tag" src="{{ $image }}" alt="">
+                                                    <img class="image__tag" src="{{ $image }}" alt="" loading="lazy">
                                                 </div>
                                             </div>
                                         @endforeach

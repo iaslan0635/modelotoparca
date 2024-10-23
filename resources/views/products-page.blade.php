@@ -15,7 +15,7 @@
                                     @foreach($query->clone()->with('categories')->get("id")->pluck('categories')->flatten()->unique('name') as $child)
                                         <li class="filter-categories__item filter-categories__item--child"
                                             wire:key="cat-{{$child->id}}">
-                                            <img src="{{ $child->imageUrl() }}" class="category-icon-image">
+                                            <img src="{{ $child->imageUrl() }}" class="category-icon-image" loading="lazy">
                                             <a href="?category={{$child->slug}}">
                                                 {{ $child->name }}
                                             </a>
