@@ -23,6 +23,7 @@ class Sidebar extends Component
                             )
                     )
             )
+            ->whereHas('products', fn($query) => $query->havingRaw('COUNT(*) > ?', [0]))
             ->where("hide_in_sidebar", false)->get();
 
         return view('components.sidebar', ['categories' => $categories]);

@@ -116,7 +116,8 @@ class CategoryPage extends Component
                     $q->whereIn('id', $productIds);
                 })->withCount(['products' => function ($query) use ($productIds) {
                     $query->whereIn('id', $productIds);
-                }]);
+                }])
+                ->having('products_count', '>', 0);
             },
         ]);
         $category->loadCount('products');
