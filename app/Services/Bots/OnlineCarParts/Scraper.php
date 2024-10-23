@@ -52,7 +52,7 @@ class Scraper
     public function getSearchAjaxProducts(SearchAjax $searchAjax): Collection
     {
         $url = $searchAjax->url;
-        $json = json_decode(OcpClient::request($url), true);
+        $json = OcpClient::getJson($url, true);
         $results = $json['results'];
 
         $productResults = array_filter($results, fn ($result) => $result['meta']['type'] === 'product');
@@ -149,7 +149,7 @@ class Scraper
             $modelIds = $crawler->filter('[data-model-id]')->each(fn (Crawler $el) => $el->attr('data-model-id'));
             foreach ($modelIds as $modelId) {
                 $modelUrl = "https://www.onlinecarparts.co.uk/ajax/product/related/vehicles?articleId=$ocpProductId&makerId=$makerId&modelId=$modelId";
-                $vehicles = json_decode(OcpClient::request($modelUrl))->vehicles;
+                $vehicles = OcpClient::getJson($modelUrl)->vehicles;
                 $ids = Arr::pluck($vehicles, 'id');
                 array_push($vehicleIds, ...$ids);
             }
