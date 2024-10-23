@@ -1,4 +1,4 @@
-<div class="product-tabs__pane product-tabs__pane--active" id="reviews">
+<div class="product-tabs__pane" id="reviews">
     <div class="reviews-view">
         <div class="reviews-view__list">
             <div class="reviews-list">
