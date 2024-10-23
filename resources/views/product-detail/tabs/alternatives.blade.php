@@ -1,4 +1,4 @@
-<div class="product-tabs__pane" id="product-alternative-products">
+<div class="product-tabs__pane @if(!$sameProductsTab) product-tabs__pane--active @endif" id="product-alternative-products">
     <div class="products-view__list products-list products-list--grid--4"
          data-layout="table" data-with-features="false">
         <div class="products-list__head">

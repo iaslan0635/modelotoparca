@@ -1,4 +1,4 @@
-<div class="product-tabs__pane product-tabs__pane--active" id="product-tab-cars">
+<div class="product-tabs__pane @if(!$sameProductsTab && !$alternativesTab) product-tabs__pane--active @endif" id="product-tab-cars">
 
     <div class="compatible-cars row mt-2">
         @foreach($car_brands as $brand => $cars_by_names)
