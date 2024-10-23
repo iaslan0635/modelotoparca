@@ -13,7 +13,7 @@ class OcpClient
             $proxy = "socks5://enproyazilim:7YhzvaWDyc@140.228.25.183:50101";
             $headers = [
                 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0',
-                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/jpeg,image/png,image/apng,*/*;q=0.8',
                 'Accept-Encoding: gzip, deflate, br',
                 'Accept-Language: tr,en;q=0.9,en-GB;q=0.8,en-US;q=0.7',
                 'Cache-Control: no-cache',
@@ -29,9 +29,9 @@ class OcpClient
         //        'Cookie: kmtx_sync=406545511569790842; INGRESSCOOKIE=1729434249.246.27276.540264|f89e2d2acc6cd8c158ba7aaea6f7fb53',
                 'Accept-Charset: UTF-8'  // Ensure UTF-8 encoding is accepted
             ];
-        
+
             $ch = curl_init();
-        
+
             // Set cURL options
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -40,7 +40,7 @@ class OcpClient
             curl_setopt($ch, CURLOPT_PROXY, $proxy);
             curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
             curl_setopt($ch, CURLOPT_ENCODING, ''); // Automatically handle gzip/deflate
-        
+
             // Execute the request
             $response = curl_exec($ch);
 
@@ -52,7 +52,13 @@ class OcpClient
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 if ($httpCode == 200) {
                     // Ensure proper UTF-8 encoding of the response
-                    $response = mb_convert_encoding($response, 'UTF-8', 'auto');
+                    $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+
+                    // If it's not an image, handle encoding
+                    if (!str_contains($contentType, 'image/')) {
+                        // Ensure proper UTF-8 encoding of the response
+                        $response = mb_convert_encoding($response, 'UTF-8', 'auto');
+                    }
                     // Save the response data to a file or print it
                     curl_close($ch);
                     return $response;
@@ -61,7 +67,7 @@ class OcpClient
                     throw new \Error("Request failed with status code: $httpCode");
                 }
             }
-        
+
     }
 
     public static function request(string $url)
