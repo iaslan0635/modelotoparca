@@ -10,6 +10,7 @@ class Sidebar extends Component
 {
     public function render()
     {
+        $productCountThreshold = 0;
         $categories = Category::root()
             ->with(
                 'children',
@@ -20,11 +21,15 @@ class Sidebar extends Component
                             ->with(
                                 'children',
                                 fn($query) => $query->where("hide_in_sidebar", false)
+                                    ->whereHas('products', fn($q) => $q->havingRaw('COUNT(*) > ?', [$productCountThreshold]))
                             )
+                            ->whereHas('products', fn($q) => $q->havingRaw('COUNT(*) > ?', [$productCountThreshold]))
                     )
+                    ->whereHas('products', fn($q) => $q->havingRaw('COUNT(*) > ?', [$productCountThreshold]))
             )
-            ->whereHas('products', fn($query) => $query->havingRaw('COUNT(*) > ?', [0]))
-            ->where("hide_in_sidebar", false)->get();
+            ->where("hide_in_sidebar", false)
+            ->whereHas('products', fn($query) => $query->havingRaw('COUNT(*) > ?', [$productCountThreshold]))
+            ->get();
 
         return view('components.sidebar', ['categories' => $categories]);
         Cache::forget("category-sidebar-view");
