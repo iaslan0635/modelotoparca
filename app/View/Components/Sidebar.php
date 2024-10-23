@@ -29,12 +29,10 @@ class Sidebar extends Component
                     )
             )
             ->where("hide_in_sidebar", false)
-            ->withCount('products') // root kategori için sayıyı al
             ->get();
 
         $categories = $categories->filter(function ($category) use ($productCountThreshold) {
-            return $category->products_count > $productCountThreshold
-                && $category->children->filter(fn($child) => $child->products_count > $productCountThreshold)->isNotEmpty();
+            return $category->children->filter(fn($child) => $child->products_count > $productCountThreshold)->isNotEmpty();
         });
 
         foreach ($categories as $category) {
