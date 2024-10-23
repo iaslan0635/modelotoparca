@@ -1,6 +1,6 @@
 @props(['tiger' ])
 
-@if (Auth::guard("admin")->check())
+{{--@if (Auth::guard("admin")->check())--}}
     <span {{ $attributes }}>
         <h6 {{ $attributes }}>
             <span class="badge badge-light">{{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}</span>
@@ -15,4 +15,4 @@
             </span>
         </h6>
     </span>
-@endif
+{{--@endif--}}

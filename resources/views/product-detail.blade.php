@@ -142,7 +142,7 @@
                                                     <th>Cross code</th>
                                                     <td>{{ $product->cross_code }}</td>
                                                 </tr>
-                                                @if(Auth::guard("admin")->check())
+                                                {{--@if(Auth::guard("admin")->check())--}}
                                                     <tr>
                                                         <th>Ek bilgi</th>
                                                         <td>{{ $tiger->raf_no ?? "##[BİLİNMİYOR]" }}</td>
@@ -153,7 +153,7 @@
                                                             <x-product-meta-stock :tiger="$tiger"/>
                                                         </td>
                                                     </tr>
-                                                @endif
+                                                {{--@endif--}}
                                             </table>
                                         </div>
                                     </div>
