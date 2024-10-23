@@ -27,7 +27,7 @@ class ImageToWebp extends Command
      */
     public function handle()
     {
-        $directory = storage_path('app/public/efe');
+        $directory = storage_path('app/public');
         $this->convertImagesToWebP($directory);
     }
 
