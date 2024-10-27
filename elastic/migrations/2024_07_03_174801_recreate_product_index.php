@@ -10,9 +10,6 @@ use Elastic\Migrations\MigrationInterface;
 
 final class RecreateProductIndex implements MigrationInterface
 {
-    /**
-     * Run the migration.
-     */
     public function up(): void
     {
         app(Synonyms::class)->putSynonym(["id" => "modelotoparca_synonyms", "body" => ["synonyms_set" => [["synonyms"=>"kelime 1,kelime 2"]]]]);
@@ -28,12 +25,12 @@ final class RecreateProductIndex implements MigrationInterface
                     'default' => [
                         'type' => 'custom',
                         'tokenizer' => 'symbol_tokenizer',
-                        'filter' => ['asciifolding', 'lowercase'],
+                        'filter' => ['asciifolding', 'lowercase', 'remove_symbols'],
                     ],
                     'default_search' => [
                         'type' => 'custom',
                         'tokenizer' => 'symbol_tokenizer',
-                        'filter' => ['asciifolding', 'lowercase', 'synonyms_filter'],
+                        'filter' => ['asciifolding', 'lowercase', 'remove_symbols', 'synonyms_filter'],
                     ],
                 ],
                 'filter' => [
@@ -42,6 +39,11 @@ final class RecreateProductIndex implements MigrationInterface
                         'synonyms_set' => 'modelotoparca_synonyms',
                         'updateable' => true,
                     ],
+                    "remove_symbols" => [
+                        "type" => "pattern_replace",
+                        "pattern" => "[^a-zA-Z0-9\\s]",
+                        "replacement" => ""
+                    ]
                 ],
                 'tokenizer' => [
                     'symbol_tokenizer' => [
