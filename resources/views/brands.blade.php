@@ -13,7 +13,7 @@
                             <li class="block-brands__item">
                                 <a href="{{ route('brand.show', $brand) }}" class="block-brands__item-link brand-item">
                                     <div class="brand-item-inner">
-                                        <img src="{{ $brand->imageUrl() }}">
+                                        <img src="{{ $brand->imageUrl() }}" loading="lazy">
                                     </div>
                                     <span class="block-brands__item-name">{{$brand->name}}</span>
                                 </a>

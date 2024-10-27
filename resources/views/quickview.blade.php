@@ -21,7 +21,7 @@
                         @foreach($product->imageUrls() as $image)
                         <a class="image image--type--product" href="{{ $image->path }}" target="_blank" data-width="700" data-height="700">
                             <div class="image__body">
-                                <img class="image__tag" src="{{ $image }}" alt="">
+                                <img class="image__tag" src="{{ $image }}" alt="" loading="lazy">
                             </div>
                         </a>
                         @endforeach
@@ -32,7 +32,7 @@
                         @foreach($product->imageUrls() as $image)
                         <div class="product-gallery__thumbnails-item image image--type--product">
                             <div class="image__body">
-                                <img class="image__tag" src="{{ $image }}" alt="">
+                                <img class="image__tag" src="{{ $image }}" alt="" loading="lazy">
                             </div>
                         </div>
                         @endforeach

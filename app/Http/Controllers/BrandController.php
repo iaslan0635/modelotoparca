@@ -14,7 +14,7 @@ class BrandController extends Controller
 
         if (request('category')) {
             $query->whereHas('categories', function (Builder $query) {
-                $query->where('slug', request('category'));
+                $query->where('id', request('category'));
             });
         }
 

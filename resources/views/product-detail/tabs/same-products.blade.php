@@ -1,4 +1,4 @@
-<div class="product-tabs__pane" id="product-same-products">
+<div class="product-tabs__pane product-tabs__pane--active" id="product-same-products">
     <div class="products-view__list products-list products-list--grid--4"
          data-layout="table" data-with-features="false">
         <div class="products-list__head">
