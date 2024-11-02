@@ -495,7 +495,7 @@
                                                 <!--begin::Grand total-->
                                                 <tr>
                                                     <td colspan="4" class="fs-3 text-dark text-end">Toplam</td>
-                                                    <td class="text-dark fs-3 fw-bolder text-end">{{ format_money($order->items()->sum('price')) }}</td>
+                                                    <td class="text-dark fs-3 fw-bolder text-end">{{ format_money($order->total_amount) }}</td>
                                                 </tr>
                                                 <!--end::Grand total-->
                                                 </tbody>

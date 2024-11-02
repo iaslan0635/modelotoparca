@@ -52,7 +52,7 @@
                                         <tfoot>
                                         <tr>
                                             <th>Toplam</th>
-                                            <td>{{ format_money($order->items()->sum('price')) }}</td>
+                                            <td>{{ format_money($order->total_amount) }}</td>
                                         </tr>
                                         </tfoot>
                                     </table>

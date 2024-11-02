@@ -24,13 +24,15 @@ final class RecreateProductIndex implements MigrationInterface
                 'analyzer' => [
                     'default' => [
                         'type' => 'custom',
-                        'tokenizer' => 'symbol_tokenizer',
-                        'filter' => ['asciifolding', 'lowercase', 'remove_symbols'],
+                        'tokenizer' => 'whitespace',
+                        'char_filter' => ['remove_symbols'],
+                        'filter' => ['asciifolding', 'lowercase'],
                     ],
                     'default_search' => [
                         'type' => 'custom',
-                        'tokenizer' => 'symbol_tokenizer',
-                        'filter' => ['asciifolding', 'lowercase', 'remove_symbols', 'synonyms_filter'],
+                        'tokenizer' => 'whitespace',
+                        'char_filter' => ['remove_symbols'],
+                        'filter' => ['asciifolding', 'lowercase', 'synonyms_filter'],
                     ],
                 ],
                 'filter' => [
@@ -39,16 +41,12 @@ final class RecreateProductIndex implements MigrationInterface
                         'synonyms_set' => 'modelotoparca_synonyms',
                         'updateable' => true,
                     ],
-                    "remove_symbols" => [
-                        "type" => "pattern_replace",
-                        "pattern" => "[^a-zA-Z0-9\\s]",
-                        "replacement" => ""
-                    ]
                 ],
-                'tokenizer' => [
-                    'symbol_tokenizer' => [
-                        'type' => 'char_group',
-                        'tokenize_on_chars' => ['whitespace', 'symbol', 'punctuation'],
+                'char_filter' => [
+                    'remove_symbols' => [
+                        'type' => 'pattern_replace',
+                        'pattern' => '[^a-zA-Z0-9\\s]',
+                        'replacement' => ''
                     ],
                 ],
             ]);
