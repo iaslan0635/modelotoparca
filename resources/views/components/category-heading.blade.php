@@ -250,23 +250,29 @@
                     }
                 }
             })
-
-            function selectBrand(id) {
-                console.log("selected brand " + id)
-                const qs = new URLSearchParams(window.location.search)
-
-                const keysToBeRemoved = Array.from(qs.keys()).filter(k => k.startsWith("brands"))
-                keysToBeRemoved.forEach(k => qs.delete(k))
-
-                qs.set("brands[]", id)
-                window.location.search = qs.toString()
-            }
-
-            $('.brand-slider-item').trueclick(function () {
-                selectBrand($(this).data('id'))
-            })
         }
+        Livewire.hook('morph.added', ({ el, component }) => {
+            runSlider()
+        })
+        Livewire.hook('morph.removed', ({ el, component }) => {
+            runSlider()
+        })
         runSlider()
+
+        function selectBrand(id) {
+            console.log("selected brand " + id)
+            const qs = new URLSearchParams(window.location.search)
+
+            const keysToBeRemoved = Array.from(qs.keys()).filter(k => k.startsWith("brands"))
+            keysToBeRemoved.forEach(k => qs.delete(k))
+
+            qs.set("brands[]", id)
+            window.location.search = qs.toString()
+        }
+
+        $('.brand-slider-item').trueclick(function () {
+            selectBrand($(this).data('id'))
+        })
 
     </script>
 @endpush
