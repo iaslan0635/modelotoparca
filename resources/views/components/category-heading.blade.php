@@ -251,12 +251,12 @@
                 }
             })
         }
-        Livewire.hook('morph.added', ({ el, component }) => {
+        /*Livewire.hook('morph.added', ({ el, component }) => {
             runSlider()
         })
         Livewire.hook('morph.removed', ({ el, component }) => {
             runSlider()
-        })
+        })*/
         runSlider()
 
         function selectBrand(id) {
