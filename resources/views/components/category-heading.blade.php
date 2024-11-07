@@ -193,8 +193,11 @@
 </style>
 @push("scripts")
     <script defer>
-        Livewire.hook('morph.updated', ({ el, component }) => {
+        const runSlider = () => {
             console.log("livewire initialized")
+            jQuery("#carousel").trigger('destroy.owl.carousel');
+            $('.owl-brands-slider').trigger('destroy.owl.carousel');
+
             jQuery("#carousel").owlCarousel({
                 autoplay: true,
                 rewind: false, /* use rewind if you don't want loop */
@@ -262,7 +265,11 @@
             $('.brand-slider-item').trueclick(function () {
                 selectBrand($(this).data('id'))
             })
+        }
+        Livewire.hook('morph.updated', ({ el, component }) => {
+            runSlider()
         })
+        runSlider()
 
     </script>
 @endpush
