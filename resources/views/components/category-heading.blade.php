@@ -269,6 +269,9 @@
         Livewire.hook('morph.added', ({ el, component }) => {
             runSlider()
         })
+        Livewire.hook('morph.removed', ({ el, component }) => {
+            runSlider()
+        })
         runSlider()
 
     </script>
