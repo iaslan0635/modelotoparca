@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Car;
+use App\Models\Image;
 use App\Models\Maker;
 use Livewire\Component;
 
@@ -55,7 +56,7 @@ class FullPageCarSelector extends Component
                 ->get(['id', 'type'])
                 ->map(fn (Car $car) => [
                     'name' => $car->type,
-                    'image' => $car->image,
+                    'image' => Image::where('imageable_type', Car::class)->where('imageable_id', $car->id)->first()?->path ?? '',
                     'action' => "\$set('carId', $car->id)",
                 ]);
         }
