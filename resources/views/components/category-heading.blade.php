@@ -266,7 +266,7 @@
                 selectBrand($(this).data('id'))
             })
         }
-        Livewire.hook('morph.updated', ({ el, component }) => {
+        Livewire.hook('morph.updating', ({ el, component }) => {
             runSlider()
         })
         runSlider()
