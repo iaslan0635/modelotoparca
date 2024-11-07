@@ -55,7 +55,7 @@ class FullPageCarSelector extends Component
                 ->get(['id', 'type'])
                 ->map(fn (Car $car) => [
                     'name' => $car->type,
-                    'image' => $car->image->path,
+                    'image' => $car->image,
                     'action' => "\$set('carId', $car->id)",
                 ]);
         }
