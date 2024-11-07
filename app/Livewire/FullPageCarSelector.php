@@ -85,6 +85,7 @@ class FullPageCarSelector extends Component
         } else {
             $items = $this->getItems($expandCols);
         }
+        dd($items);
 
         return view('livewire.full-page-car-selector', compact('items', 'expandCols'));
     }
