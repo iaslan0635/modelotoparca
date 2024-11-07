@@ -54,11 +54,13 @@
                 })
             })
             Livewire.hook('morph.added', ({ el, component }) => {
+                console.log("morph.added")
                 $('.product-gallery').each(function (i, gallery) {
                     initProductGallery(gallery, "quickview", true);
                 })
             })
             Livewire.hook('morph.removed', ({ el, component }) => {
+                console.log("morph.removed")
                 $('.product-gallery').each(function (i, gallery) {
                     initProductGallery(gallery, "quickview", true);
                 })
