@@ -194,6 +194,7 @@
 @push("scripts")
     <script defer>
         document.addEventListener('livewire:initialized', () => {
+            console.log("livewire initialized")
             jQuery("#carousel").owlCarousel({
                 autoplay: true,
                 rewind: false, /* use rewind if you don't want loop */
