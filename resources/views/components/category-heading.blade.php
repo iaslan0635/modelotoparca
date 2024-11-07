@@ -193,74 +193,76 @@
 </style>
 @push("scripts")
     <script defer>
+        document.addEventListener('livewire:initialized', () => {
+            jQuery("#carousel").owlCarousel({
+                autoplay: true,
+                rewind: false, /* use rewind if you don't want loop */
+                margin: 20,
+                loop: false,
+                /*
+               animateOut: 'fadeOut',
+               animateIn: 'fadeIn',
+               */
+                responsiveClass: true,
+                autoHeight: true,
+                autoplayTimeout: 7000,
+                smartSpeed: 800,
+                nav: true,
+                navText: [
+                    '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>',
+                    '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>'],
+                responsive: {
+                    0: {
+                        items: 3
+                    },
 
-        jQuery("#carousel").owlCarousel({
-            autoplay: true,
-            rewind: false, /* use rewind if you don't want loop */
-            margin: 20,
-            loop: false,
-            /*
-           animateOut: 'fadeOut',
-           animateIn: 'fadeIn',
-           */
-            responsiveClass: true,
-            autoHeight: true,
-            autoplayTimeout: 7000,
-            smartSpeed: 800,
-            nav: true,
-            navText: [
-                '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>',
-                '<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>'],
-            responsive: {
-                0: {
-                    items: 3
-                },
+                    600: {
+                        items: 6
+                    },
 
-                600: {
-                    items: 6
-                },
+                    1024: {
+                        items: 8
+                    },
 
-                1024: {
-                    items: 8
-                },
-
-                1366: {
-                    items: 10
+                    1366: {
+                        items: 10
+                    }
                 }
-            }
-        });
+            });
 
-        $('.owl-brands-slider').owlCarousel({
-            loop: false,
-            margin: 10,
-            dots: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
+            $('.owl-brands-slider').owlCarousel({
+                loop: false,
+                margin: 10,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
                 }
+            })
+
+            function selectBrand(id) {
+                console.log("selected brand " + id)
+                const qs = new URLSearchParams(window.location.search)
+
+                const keysToBeRemoved = Array.from(qs.keys()).filter(k => k.startsWith("brands"))
+                keysToBeRemoved.forEach(k => qs.delete(k))
+
+                qs.set("brands[]", id)
+                window.location.search = qs.toString()
             }
+
+            $('.brand-slider-item').trueclick(function () {
+                selectBrand($(this).data('id'))
+            })
         })
 
-        function selectBrand(id) {
-            console.log("selected brand " + id)
-            const qs = new URLSearchParams(window.location.search)
-
-            const keysToBeRemoved = Array.from(qs.keys()).filter(k => k.startsWith("brands"))
-            keysToBeRemoved.forEach(k => qs.delete(k))
-
-            qs.set("brands[]", id)
-            window.location.search = qs.toString()
-        }
-
-        $('.brand-slider-item').trueclick(function () {
-            selectBrand($(this).data('id'))
-        })
     </script>
 @endpush
 @push("styles")
