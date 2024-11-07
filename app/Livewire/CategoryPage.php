@@ -152,7 +152,5 @@ class CategoryPage extends Component
             $category = $categoryId === null ? $this->defaultCategory : Category::find($categoryId);
             $this->loadCategory($category);
         }
-
-        dd("efe");
     }
 }
