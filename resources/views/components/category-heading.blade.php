@@ -193,7 +193,7 @@
 </style>
 @push("scripts")
     <script defer>
-        document.addEventListener('livewire:initialized', () => {
+        Livewire.hook('morph.updated', ({ el, component }) => {
             console.log("livewire initialized")
             jQuery("#carousel").owlCarousel({
                 autoplay: true,
