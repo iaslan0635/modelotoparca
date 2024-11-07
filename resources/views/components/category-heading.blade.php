@@ -26,7 +26,10 @@
                     <div class="owl-slider">
                         <div id="carousel" class="owl-carousel">
                             @foreach($brands as $brand)
-                                <a class="brandslideitem" href="{{ route('brand.show', $brand) }}">
+                                <a class="brandslideitem" href="{{ route('category.show', [
+                                    'category' => $category,
+                                    'brands[0]' => $brand->id
+                                ]) }}">
                                     <img style="max-height: 50px" src="{{ $brand->imageUrl() }}">
                                 </a>
                             @endforeach
