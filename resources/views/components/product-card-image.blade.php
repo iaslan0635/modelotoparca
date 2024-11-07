@@ -53,6 +53,16 @@
                     initProductGallery(gallery, "quickview", true);
                 })
             })
+            Livewire.hook('morph.added', ({ el, component }) => {
+                $('.product-gallery').each(function (i, gallery) {
+                    initProductGallery(gallery, "quickview", true);
+                })
+            })
+            Livewire.hook('morph.removed', ({ el, component }) => {
+                $('.product-gallery').each(function (i, gallery) {
+                    initProductGallery(gallery, "quickview", true);
+                })
+            })
         </script>
     @endpush
 @endonce
