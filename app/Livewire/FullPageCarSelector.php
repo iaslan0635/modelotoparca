@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Car;
-use App\Models\Image;
 use App\Models\Maker;
 use Livewire\Component;
 
@@ -32,7 +31,7 @@ class FullPageCarSelector extends Component
             return Car::where('maker_id', $this->makerId)->groupBy('short_name')->get(['id', 'name', 'short_name'])
                 ->map(fn (Car $car) => [
                     'name' => $car->short_name,
-                    'image' => Image::where('imageable_type', Car::class)->where('imageable_id', $car->id)->first()?->path ?? '',
+                    'image' => $car->imageUrl(),
                     'action' => "\$set('shortName', '$car->short_name')",
                 ]);
         }
@@ -41,7 +40,7 @@ class FullPageCarSelector extends Component
             return Car::where('maker_id', $this->makerId)->where('short_name', $this->shortName)->get(['id', 'from_year'])
                 ->map(fn (Car $car) => [
                     'name' => $car->from_year,
-                    'image' => Image::where('imageable_type', Car::class)->where('imageable_id', $car->id)->first()?->path ?? '',
+                    'image' => $car->imageUrl(),
                     'action' => "\$set('year', $car->from_year)",
                 ]);
         }
@@ -56,7 +55,7 @@ class FullPageCarSelector extends Component
                 ->get(['id', 'type'])
                 ->map(fn (Car $car) => [
                     'name' => $car->type,
-                    'image' => Image::where('imageable_type', Car::class)->where('imageable_id', $car->id)->first()?->path ?? '',
+                    'image' => $car->image,
                     'action' => "\$set('carId', $car->id)",
                 ]);
         }
@@ -86,7 +85,6 @@ class FullPageCarSelector extends Component
         } else {
             $items = $this->getItems($expandCols);
         }
-        dd($items);
 
         return view('livewire.full-page-car-selector', compact('items', 'expandCols'));
     }
