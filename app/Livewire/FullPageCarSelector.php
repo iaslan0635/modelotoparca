@@ -32,7 +32,7 @@ class FullPageCarSelector extends Component
             return Car::where('maker_id', $this->makerId)->groupBy('short_name')->get(['id', 'name', 'short_name'])
                 ->map(fn (Car $car) => [
                     'name' => $car->short_name,
-                    'image' => $car->imageUrl(),
+                    'image' => Image::where('imageable_type', Car::class)->where('imageable_id', $car->id)->first()?->path ?? '',
                     'action' => "\$set('shortName', '$car->short_name')",
                 ]);
         }
@@ -41,7 +41,7 @@ class FullPageCarSelector extends Component
             return Car::where('maker_id', $this->makerId)->where('short_name', $this->shortName)->get(['id', 'from_year'])
                 ->map(fn (Car $car) => [
                     'name' => $car->from_year,
-                    'image' => $car->imageUrl(),
+                    'image' => Image::where('imageable_type', Car::class)->where('imageable_id', $car->id)->first()?->path ?? '',
                     'action' => "\$set('year', $car->from_year)",
                 ]);
         }
@@ -56,7 +56,7 @@ class FullPageCarSelector extends Component
                 ->get(['id', 'type'])
                 ->map(fn (Car $car) => [
                     'name' => $car->type,
-                    'image' => Image::where('imageable_type', "=", "App\Models\Car")->where('imageable_id', $car->id)->first(),
+                    'image' => Image::where('imageable_type', Car::class)->where('imageable_id', $car->id)->first()?->path ?? '',
                     'action' => "\$set('carId', $car->id)",
                 ]);
         }
