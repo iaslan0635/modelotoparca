@@ -26,7 +26,7 @@
         </div>
     @else
         @if($product->quantity > 1)
-            <button class="product-card__addtocart-full" wire:click="addToCart()" wire:loading.attr="disabled">
+            <button class="product-card__addtocart-full bg-success" wire:click="addToCart()" wire:loading.attr="disabled">
                 <span wire:loading.remove>Sepete Ekle</span>
                 <span wire:loading>
                     <i class="fas fa-spinner fa-spin"></i>
