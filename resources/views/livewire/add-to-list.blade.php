@@ -1,5 +1,5 @@
 <x-wire-dropdown
-        :class="$class ?? ($variant == 'icon' ? 'product-card__addtocart-icon mr-2' : 'product-card__addtocart-full bg-success')"
+        :class="$class ?? ($variant == 'icon' ? 'product-card__addtocart-icon mr-2' : 'product-card__addtocart-full')"
         wire:loading.attr="disabled" parent-class="dropleft"
         :style="$variant == 'default' ? 'min-width: 11rem' : ''"
 >

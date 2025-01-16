@@ -12,7 +12,7 @@
         @endif
         <div class="product__actions-item product__actions-item--addtocart" data-slug="{{ $product->slug }}">
             @if($product->quantity > 1)
-                <button class="btn btn-primary btn-lg" wire:click="addToCart()" wire:loading.attr="disabled">
+                <button class="btn btn-primary bg-success" wire:click="addToCart()" wire:loading.attr="disabled">
                     <span wire:loading.remove>Sepete Ekle</span>
                     <span wire:loading>
                         <i class="fas fa-spinner fa-spin"></i>
