@@ -101,6 +101,7 @@
                                 <div
                                         class="product-card__price product-card__price--current">{{ $cross->price?->sellingPrice() }}</div>
                             </div>
+                            <livewire:add-to-cart :product="$cross"/>
                             <livewire:add-to-list :product="$cross" class="btn btn-primary btn-lg mt-2"/>
                             <a href="{{ route('product.show', $cross) }}">
                                 <button class="product-card__addtocart-icon"
