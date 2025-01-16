@@ -116,10 +116,10 @@
                                                     class="status-badge status-badge--style--success product__stock status-badge--has-text">
                                                     <div class="status-badge__body">
                                                         <span
-                                                            class="badge badge-danger">{{ $product->quantity > 0 ? "Stokta Var" : "Stokta Yok" }}</span>
+                                                            class="badge badge-danger">{{ $product->quantity > 0 ? "Stokta" : "Stokta Yok" }}</span>
                                                         <div class="status-badge__tooltip" tabindex="0"
                                                              data-toggle="tooltip"
-                                                             title="{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}"></div>
+                                                             title="{{ $product->quantity > 0 ? "Stokta":"Stokta Yok" }}"></div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -86,7 +86,7 @@
                     </div>
                     <div class="status-badge status-badge--style--success quickview__product-stock status-badge--has-text">
                         <div class="status-badge__body">
-                            <div class="status-badge__text">{{ $product->quantity > 0 ? "Stokta Var":"Stokta Yok" }}</div>
+                            <div class="status-badge__text">{{ $product->quantity > 0 ? "Stokta":"Stokta Yok" }}</div>
                         </div>
                     </div>
                 </div>
