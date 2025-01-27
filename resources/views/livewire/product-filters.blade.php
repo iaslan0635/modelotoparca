@@ -5,11 +5,11 @@
     </div>
 
     <x-wire-dropdown class="btn-filter my-1 ml-3">
-        <span>
+        <span title="{{ 'Fiyat' . $this->priceRepr }}">
             <span>Fiyat{{ $this->priceRepr }}</span>
         </span>
         @if($priceMin || $priceMax)
-        <button class="btn btn-danger btn-outline" wire:click="resetPriceFilters">X</button>
+        <button class="btn-close" wire:click="resetPriceFilters">×</button>
         @endif
         <x-slot:menu class="filter-dropdown" style="width: 30rem">
             <div class="filter__container">
@@ -34,11 +34,11 @@
     </x-wire-dropdown>
 
     <x-wire-dropdown class="btn-filter my-1 ml-3">
-        <span>
-            {{ !$selectedCategoryId ? 'Kategoriler' : "Kategori: " . ($this->selectedCategoryName) }}
+        <span title="{{ !$selectedCategoryId ? 'Kategoriler' : 'Kategori: ' . ($this->selectedCategoryName) }}">
+            {{ !$selectedCategoryId ? 'Kategoriler' : Str::limit($this->selectedCategoryName, 15) }}
         </span>
         @if($selectedCategoryId)
-        <button class="btn btn-danger btn-outline" wire:click="$set('selectedCategoryId', null)">X</button>
+        <button class="btn-close" wire:click="$set('selectedCategoryId', null)">×</button>
         @endif
         <x-slot:menu class="filter-dropdown">
             <div class="categories">
@@ -68,11 +68,12 @@
     </x-wire-dropdown>
 
     <x-wire-dropdown class="btn-filter my-1 ml-3">
-        <span>
-            {{ $selectedBrands->isEmpty() ? 'Markalar' : "Markalar: " . $this->selectedBrandNames->join(', ') }}
+        <span
+            title="{{ $selectedBrands->isEmpty() ? 'Markalar' : 'Markalar: ' . $this->selectedBrandNames->join(', ') }}">
+            {{ $selectedBrands->isEmpty() ? 'Markalar' : Str::limit($this->selectedBrandNames->join(', '), 15) }}
         </span>
         @if($selectedBrands->isNotEmpty())
-        <button class="btn btn-danger btn-outline" wire:click="resetSelectedBrands">X</button>
+        <button class="btn-close" wire:click="resetSelectedBrands">×</button>
         @endif
         <x-slot:menu class="filter-dropdown">
             <div class="filter__container">
@@ -114,10 +115,15 @@
     @endif
 
     <x-wire-dropdown class="btn-filter my-1 ml-3" wire:key="{{ $property->id }}">
-        @php $selectedValues = $this->getSelectedPropertyValues($property->id) @endphp
-        <span>{{ $property->name }}{{ $selectedValues->isEmpty() ? '' : ": " . $selectedValues->join(", ") }}</span>
+        @php
+        $selectedValues = $this->getSelectedPropertyValues($property->id);
+        $displayText = $property->name . ($selectedValues->isEmpty() ? '' : ': ' . $selectedValues->join(', '));
+        @endphp
+        <span title="{{ $displayText }}">
+            {{ Str::limit($displayText, 15) }}
+        </span>
         @if($selectedValues->isNotEmpty())
-        <button class="btn btn-danger btn-outline" wire:click="resetPropertyValues({{ $property->id }})">X</button>
+        <button class="btn-close" wire:click="resetPropertyValues({{ $property->id }})">×</button>
         @endif
         <x-slot:menu class="filter-dropdown">
             <div class="filter__container">
@@ -234,13 +240,40 @@
         transition: all 0.2s ease;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         width: auto;
-        min-width: 120px;
+        max-width: 200px;
         justify-content: space-between;
+    }
+
+    .btn-filter span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100% - 30px);
     }
 
     .btn-filter:hover {
         background: #f7fafc;
         border-color: #cbd5e0;
+    }
+
+    .btn-filter .btn-close {
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #ef4444;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        border: none;
+        margin-left: 8px;
+        flex-shrink: 0;
+    }
+
+    .btn-filter .btn-close:hover {
+        background: #dc2626;
     }
 
     .filter__container {
