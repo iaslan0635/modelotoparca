@@ -12,7 +12,7 @@
         </svg>
     @else
         <span wire:loading.delay.remove>
-            {{$this->exists() ? "Listeye Ekli" : "Listeye Ekle"}}
+            {{$this->exists() ? "Listede" : "Listeye Ekle"}}
         </span>
         <span wire:loading.delay>
             <i class="fas fa-spinner fa-spin"></i>
