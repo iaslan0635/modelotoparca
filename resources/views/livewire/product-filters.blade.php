@@ -128,12 +128,10 @@
                         <label class="filter-list__item" wire:key="{{$value->id}}">
                             <span class="input-check filter-list__input">
                                 <span class="input-check__body">
-                                    <input class="input-check__input" type="checkbox" @if
-                                        ($this->isPropertyValueSelected($property->id, $value->value)) checked
-                                    wire:key="checked" @else wire:key="unchecked"
-                                    @endif
-                                    wire:change="togglePropertyValue({{ $property->id }}, @js($value->value))"
-                                    >
+                                    <input class="input-check__input" type="checkbox"
+                                        {{ ($this->isPropertyValueSelected($property->id, $value->value)) ? 'checked' : '' }}
+                                        wire:key="{{ ($this->isPropertyValueSelected($property->id, $value->value)) ? 'checked' : 'unchecked' }}"
+                                        wire:change="togglePropertyValue({{ $property->id }}, @js($value->value))">
                                     <span class="input-check__box"></span>
                                     <span class="input-check__icon">
                                         <svg width="9px" height="7px">
@@ -148,12 +146,10 @@
                         <label class="filter-list__item" wire:key="{{$value->id}}">
                             <span class="input-check filter-list__input">
                                 <span class="input-check__body">
-                                    <input class="input-check__input" type="checkbox" @if
-                                        ($this->isPropertyValueSelected($property->id, $value->value)) checked
-                                    wire:key="checked" @else wire:key="unchecked"
-                                    @endif
-                                    wire:change="toggleSolePropertyValue({{ $property->id }}, @js($value->value))"
-                                    >
+                                    <input class="input-check__input" type="checkbox"
+                                        {{ ($this->isPropertyValueSelected($property->id, $value->value)) ? 'checked' : '' }}
+                                        wire:key="{{ ($this->isPropertyValueSelected($property->id, $value->value)) ? 'checked' : 'unchecked' }}"
+                                        wire:change="toggleSolePropertyValue({{ $property->id }}, @js($value->value))">
                                     <span class="input-check__box"></span>
                                     <span class="input-check__icon">
                                         <svg width="9px" height="7px">
