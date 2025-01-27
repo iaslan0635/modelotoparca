@@ -8,12 +8,18 @@ class Image extends BaseModel
 {
     protected function url(): Attribute
     {
-        return Attribute::get(fn () => asset("storage/$this->path"));
+        $path = "/storage/$this->path";
+
+        if (env('APP_ENV') !== 'production') {
+            $domain = "https://site.modelotoparca.com";
+            $path = "$domain/storage/$this->path";
+        }
+        return Attribute::get(fn() => asset($path));
     }
 
     protected function absolutePath(): Attribute
     {
-        return Attribute::get(fn () => storage_path(app()->joinPaths('app/public', $this->path)));
+        return Attribute::get(fn() => storage_path(app()->joinPaths('app/public', $this->path)));
     }
 
     public function deleteFile()

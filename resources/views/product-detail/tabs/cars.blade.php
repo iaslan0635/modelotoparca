@@ -6,7 +6,7 @@
                  data-id="{{ $loop->index }}">
                 <div class="uyumluSelectButtons">
                     <img class="lazy loaded"
-                         src="https://websitem.modelotoparca.com/public/maker/{{ $brand }}.png"
+                         src="https://site.modelotoparca.com/public/maker/{{ $brand }}.png"
 
                          alt=""
                          data-ll-status="loaded">
