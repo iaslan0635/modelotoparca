@@ -9,7 +9,7 @@
             <span>Fiyat{{ $this->priceRepr }}</span>
         </span>
         @if($priceMin || $priceMax)
-        <button class="btn-close" wire:click="resetPriceFilters">×</button>
+        <button class="filter-remove-btn" wire:click="resetPriceFilters">×</button>
         @endif
         <x-slot:menu class="filter-dropdown" style="width: 30rem">
             <div class="filter__container">
@@ -38,7 +38,7 @@
             {{ !$selectedCategoryId ? 'Kategoriler' : Str::limit($this->selectedCategoryName, 15) }}
         </span>
         @if($selectedCategoryId)
-        <button class="btn-close" wire:click="$set('selectedCategoryId', null)">×</button>
+        <button class="filter-remove-btn" wire:click="$set('selectedCategoryId', null)">×</button>
         @endif
         <x-slot:menu class="filter-dropdown">
             <div class="categories">
@@ -73,7 +73,7 @@
             {{ $selectedBrands->isEmpty() ? 'Markalar' : Str::limit($this->selectedBrandNames->join(', '), 15) }}
         </span>
         @if($selectedBrands->isNotEmpty())
-        <button class="btn-close" wire:click="resetSelectedBrands">×</button>
+        <button class="filter-remove-btn" wire:click="resetSelectedBrands">×</button>
         @endif
         <x-slot:menu class="filter-dropdown">
             <div class="filter__container">
@@ -123,7 +123,7 @@
             {{ Str::limit($displayText, 15) }}
         </span>
         @if($selectedValues->isNotEmpty())
-        <button class="btn-close" wire:click="resetPropertyValues({{ $property->id }})">×</button>
+        <button class="filter-remove-btn" wire:click="resetPropertyValues({{ $property->id }})">×</button>
         @endif
         <x-slot:menu class="filter-dropdown">
             <div class="filter__container">
@@ -256,28 +256,27 @@
         border-color: #cbd5e0;
     }
 
-    .btn-filter .btn-close {
-        padding: 0;
-        width: 16px;
-        height: 16px;
-        min-width: 16px;
-        border-radius: 4px;
-        background: #e5e7eb;
-        color: #4b5563;
+    .filter-remove-btn {
+        width: 18px;
+        height: 18px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 14px;
         border: none;
-        margin-left: 8px;
-        flex-shrink: 0;
+        background: #f3f4f6;
+        color: #6b7280;
+        border-radius: 3px;
+        font-size: 16px;
         line-height: 1;
-        font-weight: 500;
+        padding: 0;
+        margin-left: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
     }
 
-    .btn-filter .btn-close:hover {
-        background: #d1d5db;
-        color: #1f2937;
+    .filter-remove-btn:hover {
+        background: #e5e7eb;
+        color: #374151;
     }
 
     .filter__container {
