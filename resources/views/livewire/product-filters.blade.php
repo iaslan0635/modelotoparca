@@ -215,7 +215,7 @@
 <style>
     .filter-dropdown {
         width: max-content;
-        max-width: 90vw;
+        max-width: 300px !important;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -248,7 +248,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: calc(100% - 30px);
+        max-width: calc(100% - 24px);
     }
 
     .btn-filter:hover {
@@ -258,22 +258,26 @@
 
     .btn-filter .btn-close {
         padding: 0;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #ef4444;
-        color: white;
-        display: flex;
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        border-radius: 4px;
+        background: #e5e7eb;
+        color: #4b5563;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 12px;
+        font-size: 14px;
         border: none;
         margin-left: 8px;
         flex-shrink: 0;
+        line-height: 1;
+        font-weight: 500;
     }
 
     .btn-filter .btn-close:hover {
-        background: #dc2626;
+        background: #d1d5db;
+        color: #1f2937;
     }
 
     .filter__container {
@@ -282,6 +286,8 @@
         border-radius: 8px;
         max-height: 80vh;
         overflow-y: auto;
+        width: 100%;
+        max-width: 300px;
     }
 
     .filter-list__item {
@@ -293,6 +299,7 @@
         gap: 0.75rem;
         cursor: pointer;
         flex-wrap: wrap;
+        max-width: 100%;
     }
 
     .filter-list__item:hover {
@@ -339,26 +346,23 @@
 
     .filter-list__title {
         flex: 1;
-        min-width: 100px;
+        min-width: 0;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        max-width: calc(100% - 40px);
     }
 
     /* Responsive Tasarım */
     @media (max-width: 768px) {
-        .filter-dropdown {
-            max-width: 95vw;
+
+        .filter-dropdown,
+        .filter__container {
+            max-width: 280px !important;
         }
 
         .btn-filter {
-            width: 100%;
-            min-width: unset;
-            margin: 0.25rem 0;
-        }
-
-        .filter__container {
-            max-height: 70vh;
+            max-width: 150px;
         }
 
         .filter-list__item {
@@ -374,6 +378,12 @@
     }
 
     @media (max-width: 480px) {
+
+        .filter-dropdown,
+        .filter__container {
+            max-width: 250px !important;
+        }
+
         .filter-price__title {
             flex-direction: column;
             align-items: center;
