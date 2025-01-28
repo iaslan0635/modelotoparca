@@ -46,6 +46,14 @@
     @endif
 </div>
 
+@script
+<script>
+    $wire.on('filtered', () => {
+        console.log("ishak and efe")
+    });
+</script>
+@endscript
+
 @once
 @push("scripts")
 <script>
