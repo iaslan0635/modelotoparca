@@ -55,6 +55,7 @@
                 })
             })
     document.addEventListener('livewire:load', function () {
+        console.log("afterDomUpdate")
         window.livewire.hook('afterDomUpdate', () => {
             console.log("afterDomUpdate")
 
