@@ -54,8 +54,18 @@
                     initProductGallery(gallery, "quickview", true);
                 })
             })
+    document.addEventListener('livewire:load', function () {
+        window.livewire.hook('afterDomUpdate', () => {
+            console.log("afterDomUpdate")
+
+            onMainJsResolved(() => {
+                $('.product-gallery').each(function (i, gallery) {
+                    initProductGallery(gallery, "quickview", true);
+                })
+            })
+        });
+    });
     Livewire.hook('morph.updated', ({ el, component }) => {
-        console.log("morph.updated")
         onMainJsResolved(() => {
             $('.product-gallery').each(function (i, gallery) {
                 initProductGallery(gallery, "quickview", true);
