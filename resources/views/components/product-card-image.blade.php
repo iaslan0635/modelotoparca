@@ -49,7 +49,11 @@
 @script
 <script>
     $wire.on('filtered', () => {
-        console.log("ishak and efe")
+        onMainJsResolved(() => {
+            $('.product-gallery').each(function (i, gallery) {
+                initProductGallery(gallery, "quickview", true);
+            })
+        })
     });
 </script>
 @endscript
@@ -62,18 +66,6 @@
                     initProductGallery(gallery, "quickview", true);
                 })
             })
-    document.addEventListener('livewire:load', function () {
-        console.log("afterDomUpdate")
-        window.livewire.hook('afterDomUpdate', () => {
-            console.log("afterDomUpdate")
-
-            onMainJsResolved(() => {
-                $('.product-gallery').each(function (i, gallery) {
-                    initProductGallery(gallery, "quickview", true);
-                })
-            })
-        });
-    });
     Livewire.hook('morph.updated', ({ el, component }) => {
         onMainJsResolved(() => {
             $('.product-gallery').each(function (i, gallery) {
