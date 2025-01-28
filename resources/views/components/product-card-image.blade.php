@@ -49,10 +49,9 @@
 @script
 <script>
     $wire.on('filtered', () => {
-        onMainJsResolved(() => {
-            $('.product-gallery').each(function (i, gallery) {
-                initProductGallery(gallery, "quickview", true);
-            })
+        console.log("filtered")
+        $('.product-gallery').each(function (i, gallery) {
+            initProductGallery(gallery, "quickview", true);
         })
     });
 </script>
