@@ -127,7 +127,7 @@
     }
 
     .filter-list__item {
-        padding: 0.75rem 1rem;
+        /*padding: 0.75rem 1rem;*/
         display: flex;
         align-items: center;
         gap: 0.75rem;
