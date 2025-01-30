@@ -4983,7 +4983,7 @@ select.form-control::-ms-expand {
 }
 
 .filter__container {
-    padding: 10px 1.5rem 16px;
+    padding: 10px 0.80rem 16px;
 }
 
 .filter--opened .filter__body {
@@ -5170,7 +5170,7 @@ select.form-control::-ms-expand {
 }
 
 [dir=ltr] .filter-list__counter {
-    margin-left: 12px;
+    margin-left: 2px;
 }
 
 [dir=rtl] .filter-list__counter {
