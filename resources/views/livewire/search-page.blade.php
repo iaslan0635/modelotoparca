@@ -196,6 +196,14 @@
     <script>
         $(".pagination").click(() => window.scrollTo(0, 0))
     </script>
+        <script>
+            Livewire.on('filtered', () => {
+                console.log("filtered");
+                $('.product-gallery').each(function (i, gallery) {
+                    initProductGallery(gallery, "quickview", true);
+                });
+            });
+        </script>
 @endpush
 @push('styles')
     <style>

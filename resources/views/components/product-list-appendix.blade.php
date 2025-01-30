@@ -67,3 +67,13 @@
         </div>
     </div>
 @endif
+@push('scripts')
+    <script>
+        Livewire.on('filtered', () => {
+            console.log("filtered");
+            $('.product-gallery').each(function (i, gallery) {
+                initProductGallery(gallery, "quickview", true);
+            });
+        });
+    </script>
+@endpush

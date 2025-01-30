@@ -46,15 +46,6 @@
     @endif
 </div>
 
-@script
-<script>
-    Livewire.on('filtered', () => {
-        console.log("filtered");
-
-    });
-</script>
-@endscript
-
 @once
 @push("scripts")
 <script>

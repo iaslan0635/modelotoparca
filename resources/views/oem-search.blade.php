@@ -3,11 +3,11 @@
     <div class="site__body">
         <x-breadcrumb :parts="[
             ['name' => 'Oem Kodu']
-        ]" />
+        ]"/>
         <div class="block-split">
             <div class="container wide-container">
                 <div class="block-split__row justify-content-center row no-gutters fixed-sidebar">
-{{--                    <div class="block-split__item block-split__item-content col-auto">--}}
+                    {{--                    <div class="block-split__item block-split__item-content col-auto">--}}
                     <div class="block-split__item block-split__item-content col-12">
                         <div class="block">
                             <div class="products-view">
@@ -96,7 +96,8 @@
                                                             <a href="#"
                                                                class="applied-filters__button applied-filters__button--filter">
                                                                 En düşük fiyat: {{ request()->input('min_price') }}
-                                                                <svg width="9" height="9" onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
+                                                                <svg width="9" height="9"
+                                                                     onclick="$(`#min-price`).remove() && $('#querySearch').submit()">
                                                                     <path
                                                                         d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                                 </svg>
@@ -110,7 +111,8 @@
                                                             <a href="#"
                                                                class="applied-filters__button applied-filters__button--filter">
                                                                 En yüksek fiyat: {{ request()->input('max_price') }}
-                                                                <svg width="9" height="9" onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
+                                                                <svg width="9" height="9"
+                                                                     onclick="$(`#max-price`).remove() && $('#querySearch').submit()">
                                                                     <path
                                                                         d="M9,8.5L8.5,9l-4-4l-4,4L0,8.5l4-4l-4-4L0.5,0l4,4l4-4L9,0.5l-4,4L9,8.5z"/>
                                                                 </svg>
@@ -119,7 +121,8 @@
                                                     @endif
                                                     @foreach(request()->input('brands', []) as $brand)
                                                         <li class="applied-filters__item">
-                                                            <input type="hidden" name="brands[]" id="brand-{{ $brands[$brand][0]->brand->id }}"
+                                                            <input type="hidden" name="brands[]"
+                                                                   id="brand-{{ $brands[$brand][0]->brand->id }}"
                                                                    value="{{ $brands[$brand][0]->brand->id }}">
                                                             <a href="#"
                                                                class="applied-filters__button applied-filters__button--filter">
@@ -197,7 +200,7 @@
                                                         </div>
                                                         <x-product-meta :tiger="$product->tiger"/>
                                                     </div>
-                                                    <x-product-card-right :product="$product" />
+                                                    <x-product-card-right :product="$product"/>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -250,6 +253,14 @@
         })
     </script>
 
+    <script>
+        Livewire.on('filtered', () => {
+            console.log("filtered");
+            $('.product-gallery').each(function (i, gallery) {
+                initProductGallery(gallery, "quickview", true);
+            });
+        });
+    </script>
     <script>
         // Persist layout selection
         const updateSelection = () => {
