@@ -45,33 +45,3 @@
         </div>--}}
     @endif
 </div>
-
-@script
-<script>
-    $wire.on('filtered', () => {
-        console.log("filtered")
-        $('.product-gallery').each(function (i, gallery) {
-            initProductGallery(gallery, "quickview", true);
-        })
-    });
-</script>
-@endscript
-
-@once
-@push("scripts")
-<script>
-    onMainJsResolved(() => {
-                $('.product-gallery').each(function (i, gallery) {
-                    initProductGallery(gallery, "quickview", true);
-                })
-            })
-    Livewire.hook('morph.updated', ({ el, component }) => {
-        onMainJsResolved(() => {
-            $('.product-gallery').each(function (i, gallery) {
-                initProductGallery(gallery, "quickview", true);
-            })
-        })
-    })
-</script>
-@endpush
-@endonce
