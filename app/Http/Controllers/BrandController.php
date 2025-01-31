@@ -18,11 +18,33 @@ class BrandController extends Controller
             });
         }
 
-        $filterCategories = $query->clone()->with([
-            'categories:id,name,slug',
-            'categories.children:id,name,slug,parent_id'
-        ])->get("id")->pluck('categories')->flatten()->unique('name');
+        $baseCategories = $query->clone()
+            ->with('categories:id,name,slug,parent_id')
+            ->get("id")
+            ->pluck('categories')
+            ->flatten()
+            ->unique('id');
+
+        $filterCategories = $query->clone()
+            ->with(['categories' => function ($query) use ($baseCategories) {
+                $query->select('categories.id', 'name', 'slug', 'parent_id')
+                    ->with(['children' => function ($query) use ($baseCategories) {
+                        $query->whereIn('id', $baseCategories->pluck('id'));
+                    }]);
+            }])
+            ->get("id")
+            ->pluck('categories')
+            ->flatten()
+            ->unique('id')
+            ->groupBy('parent_id')
+            ->map(function ($categories) {
+                return $categories->first()->setAttribute('children', $categories);
+            })
+            ->values();
+
         $filterCategories = ProductFilters::normalizeCategories($filterCategories);
+
+        return $filterCategories;
 
         return view('products-page', compact('query', 'filterCategories'));
     }
