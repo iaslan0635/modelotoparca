@@ -20,12 +20,7 @@ class BrandController extends Controller
 
         // İlk önce markanın tüm kategorilerini çek
         $initialCategories = $query->clone()
-            ->with(['categories' => function ($query) {
-                $query->select('categories.id', 'name', 'slug', 'parent_id')
-                    ->with(['parent' => function ($query) {
-                        $query->select('id', 'name', 'slug', 'parent_id');
-                    }]);
-            }])
+            ->with('categories:id,name,slug,parent_id')
             ->get('id')
             ->pluck('categories')
             ->flatten()
@@ -42,16 +37,14 @@ class BrandController extends Controller
 
         // Her üst kategoriye ait alt kategorileri ekle
         $filterCategories = $parentCategories->map(function ($parentCategory) use ($initialCategories) {
-            return $parentCategory->setAttribute(
-                'children',
-                $initialCategories->filter(function ($category) use ($parentCategory) {
-                    return $category->parent_id === $parentCategory->id;
-                })->values()
-            );
+            $parentCategory->children = $initialCategories->filter(function ($category) use ($parentCategory) {
+                return $category->parent_id === $parentCategory->id;
+            })->values();
+
+            return $parentCategory;
         });
 
         $filterCategories = ProductFilters::normalizeCategories($filterCategories);
-
         return $filterCategories;
 
         return view('products-page', compact('query', 'filterCategories'));
