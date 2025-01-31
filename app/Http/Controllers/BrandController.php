@@ -43,6 +43,7 @@ class BrandController extends Controller
 
             return $parentCategory;
         });
+
         return $filterCategories;
 
         $filterCategories = ProductFilters::normalizeCategories($filterCategories);
