@@ -6,7 +6,7 @@
         <div class="col-6 col-md-4 col-lg-2">
             <div class="card border-0 h-100 position-relative category-card">
                 <div class="card-body text-center">
-                    <img src="{{ $category->imageUrl }}" alt="{{ $category->name }}" class="img-fluid mb-3"
+                    <img src="{{ $category->imageUrl() }}" alt="{{ $category->name }}" class="img-fluid mb-3"
                         style="height: 96px; object-fit: contain; filter: grayscale(100%);">
                     <h5 class="card-title text-primary fw-normal">{{ $category->name }}</h5>
                 </div>
