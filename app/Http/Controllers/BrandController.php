@@ -18,7 +18,10 @@ class BrandController extends Controller
             });
         }
 
-        $filterCategories = $query->clone()->with('categories:id,name,slug')->get("id")->pluck('categories')->flatten()->unique('name');
+        $filterCategories = $query->clone()->with([
+            'categories:id,name,slug',
+            'categories.children:id,name,slug,parent_id'
+        ])->get("id")->pluck('categories')->flatten()->unique('name');
         $filterCategories = ProductFilters::normalizeCategories($filterCategories);
         return $filterCategories;
 
