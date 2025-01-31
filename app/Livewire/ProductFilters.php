@@ -101,12 +101,12 @@ class ProductFilters extends Component
     public function isPropertyValueSelected($propertyId, $value)
     {
         return $this->propertyValues->has($propertyId) && (
-                $this->propertyValues[$propertyId] === $value ||
-                (
-                    $this->propertyValues[$propertyId] instanceof Collection &&
-                    $this->propertyValues[$propertyId]->contains($value)
-                )
-            );
+            $this->propertyValues[$propertyId] === $value ||
+            (
+                $this->propertyValues[$propertyId] instanceof Collection &&
+                $this->propertyValues[$propertyId]->contains($value)
+            )
+        );
     }
 
     public function getSelectedPropertyValues($propertyId)
@@ -164,6 +164,11 @@ class ProductFilters extends Component
                     'imageUrl' => $category->imageUrl(),
                     'name' => $category->name,
                     'count' => $count,
+                    'subcategories' => $category->children->map(fn($child) => [
+                        'id' => $child->id,
+                        'name' => $child->name,
+                        'imageUrl' => $child->imageUrl(),
+                    ]),
                 ];
             });
     }
