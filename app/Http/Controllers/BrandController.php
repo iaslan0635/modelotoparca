@@ -45,12 +45,12 @@ class BrandController extends Controller
             );
         });
 
+        $filterCategories = ProductFilters::normalizeCategories($filterCategories);
+
         return [
             'filterCategories' => $filterCategories,
             'initialCategories' => $initialCategories,
         ];
-
-        $filterCategories = ProductFilters::normalizeCategories($filterCategories);
 
         return view('products-page', compact('query', 'filterCategories'));
     }
