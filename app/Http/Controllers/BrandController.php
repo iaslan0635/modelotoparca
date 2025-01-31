@@ -21,6 +21,8 @@ class BrandController extends Controller
         $filterCategories = $query->clone()->with('categories:id,name,slug')->get("id")->pluck('categories')->flatten()->unique('name');
         $filterCategories = ProductFilters::normalizeCategories($filterCategories);
 
+        return $filterCategories;
+
         return view('products-page', compact('query', 'filterCategories'));
     }
 
