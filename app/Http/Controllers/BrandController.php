@@ -43,9 +43,9 @@ class BrandController extends Controller
 
             return $parentCategory;
         });
+        return $filterCategories;
 
         $filterCategories = ProductFilters::normalizeCategories($filterCategories);
-        return $filterCategories;
 
         return view('products-page', compact('query', 'filterCategories'));
     }
