@@ -14,8 +14,12 @@
                     <div class="subcategories bg-white border shadow py-3 px-4">
                         <div class="row row-cols-2 g-3">
                             @foreach($category['subcategories'] as $subcategory)
-                            <div class="col"><a href="#"
-                                    class="text-decoration-none text-secondary">{{ $subcategory['name'] }}</a>
+                            <div class="col"><a href="#" class="text-decoration-none text-secondary">
+                                    <img src="{{ $subcategory['imageUrl'] }}" alt="{{ $subcategory['name'] }}"
+                                        class="img-fluid mb-3"
+                                        style="height: 32px; width: 32px; object-fit: contain; filter: grayscale(100%);">
+                                    {{ $subcategory['name'] }}
+                                </a>
                             </div>
                             @endforeach
                         </div>
