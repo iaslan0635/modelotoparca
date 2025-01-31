@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Livewire\ProductFilters;
 use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 
 class BrandController extends Controller
@@ -18,39 +19,23 @@ class BrandController extends Controller
             });
         }
 
-        // İlk önce markanın tüm kategorilerini çek
-        $initialCategories = $query->clone()
+        $filterCategories = $query->clone()
             ->with('categories:id,name,slug,parent_id')
-            ->get('id')
-            ->pluck('categories')
-            ->flatten()
-            ->unique('id');
+            ->get("id")->pluck('categories')->flatten()->unique('name');
 
-        // Üst kategorileri topla
-        $parentCategories = $initialCategories
-            ->map(function ($category) {
-                return $category->parent;
-            })
-            ->filter()
-            ->unique('id')
-            ->values();
+        // Parent kategorileri al
+        $parentCategoryIds = $filterCategories->whereNotNull('parent_id')->pluck('parent_id')->unique();
 
-        // Her üst kategoriye ait alt kategorileri ekle
-        $filterCategories = $parentCategories->map(function ($parentCategory) use ($initialCategories) {
-            return $parentCategory->setAttribute(
-                'children',
-                $initialCategories->when($parentCategory, function ($collection, $parent) {
-                    return $collection->where('parent_id', $parent->id);
-                })->values()
-            );
-        });
+        // Parent kategorilerin tüm alt kategorilerini al
+        $categories = Category::whereIn('id', $parentCategoryIds)
+            ->with(['children' => function ($query) use ($filterCategories) {
+                $query->whereIn('id', $filterCategories->pluck('id'));
+            }])
+            ->get();
 
-        $filterCategories = ProductFilters::normalizeCategories($filterCategories);
+        $filterCategories = ProductFilters::normalizeCategories($categories);
 
-        return [
-            'filterCategories' => $filterCategories,
-            'initialCategories' => $initialCategories,
-        ];
+        return $filterCategories;
 
         return view('products-page', compact('query', 'filterCategories'));
     }
