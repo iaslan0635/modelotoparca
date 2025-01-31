@@ -103,6 +103,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                @if($filterShow)
                                 <div class="view-options__body view-options__body--filters">
                                     <div class="view-options__label">Active Filters</div>
                                     <div class="applied-filters">
@@ -115,6 +116,7 @@
                                             :selected-brands="collect($brandsArray)" />
                                     </div>
                                 </div>
+                                @endif
                             </div>
                             @include('pure-product-list', ["products" => $products])
                         </div>
