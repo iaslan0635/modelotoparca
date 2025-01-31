@@ -34,7 +34,7 @@ class BrandController extends Controller
 
         $filterCategories = ProductFilters::normalizeCategories($categories);
 
-        return view('products-page', compact('query', 'filterCategories'));
+        return view('products-page', compact('query', 'filterCategories', 'brand'));
     }
 
     public function index()
