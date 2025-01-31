@@ -33,7 +33,7 @@ class BrandController extends Controller
             }])
             ->get();
 
-        return $categories;
+        dd($categories);
 
         $filterCategories = ProductFilters::normalizeCategories($categories);
 
