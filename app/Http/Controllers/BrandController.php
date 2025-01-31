@@ -23,7 +23,6 @@ class BrandController extends Controller
             'categories.children:id,name,slug,parent_id'
         ])->get("id")->pluck('categories')->flatten()->unique('name');
         $filterCategories = ProductFilters::normalizeCategories($filterCategories);
-        return $filterCategories;
 
         return view('products-page', compact('query', 'filterCategories'));
     }
