@@ -25,16 +25,15 @@ class BrandController extends Controller
 
         $parentCategoryIds = $filterCategories->whereNotNull('parent_id')->pluck('parent_id')->unique();
 
-
-        dd($parentCategoryIds);
         $categories = Category::whereIn('id', $parentCategoryIds)
             ->with(['children' => function ($query) use ($filterCategories) {
                 $query->whereIn('id', $filterCategories->pluck('id'));
             }])
             ->get();
-        return $categories;
 
-        $filterCategories = ProductFilters::normalizeCategories($filterCategories);
+
+        $filterCategories = ProductFilters::normalizeCategories($categories);
+        return $filterCategories;
 
         return view('products-page', compact('query', 'filterCategories'));
     }
