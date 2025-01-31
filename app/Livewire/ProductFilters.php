@@ -164,11 +164,6 @@ class ProductFilters extends Component
                     'imageUrl' => $category->imageUrl(),
                     'name' => $category->name,
                     'count' => $count,
-                    'subcategories' => $category->children->map(fn($child) => [
-                        'id' => $child->id,
-                        'name' => $child->name,
-                        'imageUrl' => $child->imageUrl(),
-                    ]),
                 ];
             });
     }
