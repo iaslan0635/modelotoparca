@@ -37,11 +37,12 @@ class BrandController extends Controller
 
         // Her üst kategoriye ait alt kategorileri ekle
         $filterCategories = $parentCategories->map(function ($parentCategory) use ($initialCategories) {
-            $parentCategory->children = $initialCategories->filter(function ($category) use ($parentCategory) {
-                return $category->parent_id === $parentCategory->id;
-            })->values();
-
-            return $parentCategory;
+            return $parentCategory->setAttribute(
+                'children',
+                $initialCategories->when($parentCategory, function ($collection, $parent) {
+                    return $collection->where('parent_id', $parent->id);
+                })->values()
+            );
         });
 
         dd($filterCategories);
