@@ -3,7 +3,6 @@
 <div class="container">
     <div class="row g-4">
         @foreach($categories as $category)
-        @dd($category)
         <div class="col-6 col-md-4 col-lg-2">
             <div class="card border-0 h-100 position-relative category-card">
                 <div class="card-body text-center">

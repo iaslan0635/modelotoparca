@@ -1,6 +1,5 @@
 @extends("layouts.master")
 @section("content")
-<h2 class="text-center mb-4">Yedek Parça Kategorileri</h2>
 <x-category-grid :categories="$filterCategories" />
 
 <div class="mt-5">
