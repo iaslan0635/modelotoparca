@@ -14,7 +14,6 @@ use Illuminate\Support\Arr;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Component;
-use App\Models\Brand;
 
 class CategoryPage extends Component
 {
@@ -35,9 +34,6 @@ class CategoryPage extends Component
 
     #[Url(except: '')]
     public $max_price;
-
-    #[Url]
-    public $selectedFittingPositions = [];
 
     #[Url]
     public $sortBy;
@@ -130,21 +126,10 @@ class CategoryPage extends Component
 
         $propertyValues = PropertyValue::whereHas('product', fn(Builder $q) => $q->whereIn('id', $productIds))->with('property')->get();
         $allProperties = $propertyValues->map(fn(PropertyValue $pv) => $pv->property)->unique('id')->map(fn(Property $p) => [$p, $propertyValues->where('property.id', $p->id)]);
-        $filterCategories = ProductFilters::normalizeCategories($category->children->unique('name')->sortBy('name'));
-        $filterFittingPositions = ProductFilters::normalizeFittingPositions($products->groupBy('fitting_position'));
 
-        return view('livewire.category-page', [
-            'products' => $query->paginate($this->pageSize),
-            'allProperties' => $allProperties,
-            'brands' => Brand::whereIn('id', $this->brandsArray)->get(),
-            'brandsArray' => $this->brandsArray,
-            'property' => $this->property,
-            'min_price' => $minPrice,
-            'max_price' => $maxPrice,
-            'filterCategories' => $filterCategories,
-            'filterFittingPositions' => $filterFittingPositions,
-            'selectedFittingPositions' => $this->selectedFittingPositions,
-        ]);
+        $filterCategories = ProductFilters::normalizeCategories($category->children->unique('name')->sortBy('name'));
+
+        return view('livewire.category-page', compact('category', 'products', 'brands', 'allProperties', 'filterCategories'));
     }
 
     public function deselectProperty($id)
@@ -161,80 +146,11 @@ class CategoryPage extends Component
             "propertyValues" => $this->property,
             "priceMin" => $this->min_price,
             "priceMax" => $this->max_price,
-            "fittingPositions" => $this->selectedFittingPositions,
         ] = $filters;
 
         if ($categoryId !== $this->category->id) {
             $category = $categoryId === null ? $this->defaultCategory : Category::find($categoryId);
             $this->loadCategory($category);
         }
-    }
-
-    protected function getAggregations()
-    {
-        $query = Product::search('*')
-            ->when($this->filters['categoryId'], function ($query, $categoryId) {
-                $query->where('category_id', $categoryId);
-            })
-            ->when($this->filters['brandIds'], function ($query, $brandIds) {
-                $query->whereIn('brand_id', $brandIds);
-            })
-            ->when($this->filters['priceMin'], function ($query, $priceMin) {
-                $query->where('price', '>=', $priceMin);
-            })
-            ->when($this->filters['priceMax'], function ($query, $priceMax) {
-                $query->where('price', '<=', $priceMax);
-            })
-            ->when($this->filters['fittingPositions'], function ($query, $positions) {
-                $query->whereIn('fitting_position', $positions);
-            });
-
-        $aggregations = $query->raw(function ($elasticsearch) {
-            return [
-                'aggs' => [
-                    'categories' => [
-                        'terms' => ['field' => 'category_id'],
-                    ],
-                    'brands' => [
-                        'terms' => ['field' => 'brand_id'],
-                    ],
-                    'fitting_positions' => [
-                        'terms' => ['field' => 'fitting_position'],
-                    ],
-                ],
-            ];
-        });
-
-        $categories = collect($aggregations['aggregations']['categories']['buckets'])
-            ->map(function ($bucket) {
-                $category = Category::find($bucket['key']);
-                return [
-                    'category' => $category,
-                    'count' => $bucket['doc_count'],
-                ];
-            });
-
-        $brands = collect($aggregations['aggregations']['brands']['buckets'])
-            ->map(function ($bucket) {
-                $brand = Brand::find($bucket['key']);
-                return [
-                    'brand' => $brand,
-                    'count' => $bucket['doc_count'],
-                ];
-            });
-
-        $fittingPositions = collect($aggregations['aggregations']['fitting_positions']['buckets'])
-            ->map(function ($bucket) {
-                return [
-                    'position' => $bucket['key'],
-                    'count' => $bucket['doc_count'],
-                ];
-            });
-
-        return [
-            'categories' => ProductFilters::normalizeCategories($categories),
-            'brands' => ProductFilters::normalizeBrands($brands),
-            'fittingPositions' => ProductFilters::normalizeFittingPositions($fittingPositions),
-        ];
     }
 }

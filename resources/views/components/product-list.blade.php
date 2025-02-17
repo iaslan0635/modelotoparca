@@ -12,8 +12,6 @@
 'filterCategories',
 'brandsArray' => collect(),
 'filterShow' => true,
-'selectedFittingPositions' => collect(),
-'fittingPositions' => collect(),
 ])
 
 <div class="site__body">
@@ -115,8 +113,7 @@
                                             :price-min="isset($min_price) ? (int)$min_price : null"
                                             :price-max="isset($max_price) ? (int)$max_price : null"
                                             :selected-category-id="$category?->id"
-                                            :selected-brands="collect($brandsArray)"
-                                            :selected-fitting-positions="collect($selectedFittingPositions)" />
+                                            :selected-brands="collect($brandsArray)" />
                                     </div>
                                 </div>
                                 @endif
