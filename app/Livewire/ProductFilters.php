@@ -16,6 +16,7 @@ class ProductFilters extends Component
     #[Reactive] public Collection $categories;
     #[Reactive] public Collection $brands;
     #[Reactive] public ?Collection $properties;
+    #[Reactive] public Collection $fittingPositions;
     public int $priceRangeMin = 0;
     public int $priceRangeMax = 10000;
 
@@ -23,6 +24,7 @@ class ProductFilters extends Component
     public ?int $selectedCategoryId = null;
     public Collection $selectedBrands;
     public Collection $propertyValues;
+    public Collection $selectedFittingPositions;
 
     #[Url]
     public $category;
@@ -34,6 +36,7 @@ class ProductFilters extends Component
     {
         $this->selectedBrands = collect();
         $this->propertyValues = collect();
+        $this->selectedFittingPositions = collect();
     }
 
     public function updated()
@@ -44,6 +47,7 @@ class ProductFilters extends Component
             "propertyValues" => $this->propertyValues->toArray(),
             "priceMin" => $this->priceMin,
             "priceMax" => $this->priceMax,
+            "fittingPositions" => $this->selectedFittingPositions->toArray(),
         ];
 
         $this->category = $this->selectedCategoryId;
@@ -201,5 +205,36 @@ class ProductFilters extends Component
                 ?? Brand::whereKey($id)->value('name')
                 ?? '?'
         );
+    }
+
+    public function toggleFittingPosition($position)
+    {
+        $index = $this->selectedFittingPositions->search($position);
+        if ($index !== false) {
+            $this->selectedFittingPositions->forget($index);
+        } else {
+            $this->selectedFittingPositions->push($position);
+        }
+        $this->updated();
+    }
+
+    public function resetFittingPositions()
+    {
+        $this->selectedFittingPositions = collect();
+        $this->updated();
+    }
+
+    public static function normalizeFittingPositions($positions): Collection
+    {
+        return collect($positions)->map(fn($item) => [
+            "position" => $item["position"],
+            "count" => $item["count"],
+        ]);
+    }
+
+    #[Computed]
+    public function selectedFittingPositionNames()
+    {
+        return $this->selectedFittingPositions;
     }
 }

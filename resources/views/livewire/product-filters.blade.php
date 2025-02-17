@@ -499,4 +499,32 @@
         </x-wire-dropdown>
         @endforeach
     </div>
+
+    {{-- Fitting Position Filters --}}
+    <div class="space-y-4">
+        <div class="flex items-center justify-between">
+            <h3 class="text-sm font-medium text-gray-900">Montaj Pozisyonu</h3>
+            @if($selectedFittingPositions->isNotEmpty())
+            <button wire:click="resetFittingPositions" class="text-sm font-medium text-blue-600 hover:text-blue-500">
+                Temizle
+            </button>
+            @endif
+        </div>
+
+        <div class="space-y-4">
+            @foreach($fittingPositions as $position)
+            <div class="flex items-center">
+                <input id="fitting-position-{{ $position['position'] }}"
+                    wire:click="toggleFittingPosition('{{ $position['position'] }}')" type="checkbox"
+                    @checked($selectedFittingPositions->contains($position['position']))
+                class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                >
+                <label for="fitting-position-{{ $position['position'] }}" class="ml-3 text-sm text-gray-600">
+                    {{ $position['position'] }}
+                    <span class="text-gray-400">({{ $position['count'] }})</span>
+                </label>
+            </div>
+            @endforeach
+        </div>
+    </div>
 </div>
