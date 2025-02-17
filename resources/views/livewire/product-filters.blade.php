@@ -511,8 +511,7 @@
         </div>
 
         <div class="space-y-4">
-            @if (is_array($fittingPositions))
-            @foreach($fittingPositions as $position)
+            @foreach($selectedFittingPositions as $position)
             <div class="flex items-center">
                 <input id="fitting-position-{{ $position['position'] }}"
                     wire:click="toggleFittingPosition('{{ $position['position'] }}')" type="checkbox"
@@ -525,7 +524,6 @@
                 </label>
             </div>
             @endforeach
-            @endif
         </div>
     </div>
 </div>
