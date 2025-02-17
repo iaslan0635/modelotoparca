@@ -226,9 +226,9 @@ class ProductFilters extends Component
 
     public static function normalizeFittingPositions($positions): Collection
     {
-        return collect($positions)->map(fn($item) => [
-            "position" => $item["position"],
-            "count" => $item["count"],
+        return collect($positions)->map(fn($item, $key) => [
+            "position" => $key,
+            "count" => $item->count(),
         ]);
     }
 
