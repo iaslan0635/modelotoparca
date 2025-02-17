@@ -229,7 +229,7 @@ class ProductFilters extends Component
         return collect($positions)->map(fn($item, $key) => [
             "position" => $key,
             "count" => $item->count(),
-        ]);
+        ])->values();
     }
 
     #[Computed]
