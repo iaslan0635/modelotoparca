@@ -503,7 +503,6 @@
     {{-- Fitting Position Filters --}}
     <div class="space-y-4">
         <div class="flex items-center justify-between">
-            <h3 class="text-sm font-medium text-gray-900">Montaj Pozisyonu</h3>
             @if($selectedFittingPositions->isNotEmpty())
             <button wire:click="resetFittingPositions" class="text-sm font-medium text-blue-600 hover:text-blue-500">
                 Temizle
@@ -512,6 +511,7 @@
         </div>
 
         <div class="space-y-4">
+            @if (is_array($fittingPositions))
             @foreach($fittingPositions as $position)
             <div class="flex items-center">
                 <input id="fitting-position-{{ $position['position'] }}"
@@ -525,6 +525,7 @@
                 </label>
             </div>
             @endforeach
+            @endif
         </div>
     </div>
 </div>

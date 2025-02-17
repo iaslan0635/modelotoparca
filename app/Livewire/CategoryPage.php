@@ -133,7 +133,18 @@ class CategoryPage extends Component
         $filterCategories = ProductFilters::normalizeCategories($category->children->unique('name')->sortBy('name'));
         $filterFittingPositions = ProductFilters::normalizeFittingPositions($products->groupBy('fitting_position'));
 
-        return view('livewire.category-page', compact('category', 'products', 'brands', 'allProperties', 'filterCategories', 'filterFittingPositions'));
+        return view('livewire.category-page', [
+            'products' => $query->paginate($this->pageSize),
+            'allProperties' => $allProperties,
+            'brands' => Brand::whereIn('id', $this->brandsArray)->get(),
+            'brandsArray' => $this->brandsArray,
+            'property' => $this->property,
+            'min_price' => $minPrice,
+            'max_price' => $maxPrice,
+            'filterCategories' => $filterCategories,
+            'filterFittingPositions' => $filterFittingPositions,
+            'selectedFittingPositions' => $this->selectedFittingPositions,
+        ]);
     }
 
     public function deselectProperty($id)
