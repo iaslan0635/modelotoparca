@@ -60,6 +60,9 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::get('sparetobot_bot', 'sparetobot_bot')->name('sparetobot_bot');
     Route::get('sparetobot_connect', 'sparetobot_connect')->name('sparetobot_connect');
     Route::get('rerunMissingProducts', 'rerunMissingProducts')->name('rerunMissingProducts');
+
+    Route::get('', 'index')->name('log');
+    Route::get('', 'index')->name('botlog');
 });
 
 Route::controller(AnalysisController::class)->prefix('analysis')->name('analysis.')->group(function () {
