@@ -170,6 +170,12 @@ return [
                     ['name' => 'MARKALAR'],
                 ],
             ],
+            [
+                'name' => 'Log Kayıtları',
+            ],
+            [
+                'name' => 'Bot Log Kayıtları',
+            ],
         ],
     ],
     [
