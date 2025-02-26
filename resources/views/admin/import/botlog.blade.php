@@ -32,33 +32,37 @@
                     <!--end::Table head-->
                     <!--begin::Table body-->
                     <tbody>
-                    <tr>
+                    @foreach($logs as $log)
+                        <tr>
+                            <td>
+                                <span class="text-dark fw-bold text-hover-primary">{{ $log->id }}</span>
+                            </td>
+                            <td>
+                                <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $log->product_id }}</span>
+                            </td>
+                            <td>
+                                <span class="badge badge-light-success">{{ $log->message }}</span>
+                            </td>
+                            <td>
+                                <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $log->context }}</span>
+                            </td>
+                            <td>
+                                <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $log->source }}</span>
+                            </td>
+                            <td class="text-dark fw-bold text-hover-primary fs-6">{{ $log->created_at }}</td>
 
-                        <td>
-                            <span class="text-dark fw-bold text-hover-primary">1</span>
-                        </td>
-                        <td>
-                            <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">test</span>
-                        </td>
-                        <td>
-                            <span class="badge badge-light-success">productImport</span>
-                        </td>
-                        <td>
-                            <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">test</span>
-                        </td>
-                        <td>
-                            <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">test</span>
-                        </td>
-                        <td class="text-dark fw-bold text-hover-primary fs-6">test</td>
-
-                        <td class="text-dark fw-bold text-hover-primary fs-6">05/28/2020</td>
-                    </tr>
+                            <td class="text-dark fw-bold text-hover-primary fs-6">{{ $log->updated_at }}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                     <!--end::Table body-->
                 </table>
                 <!--end::Table-->
             </div>
             <!--end::Table container-->
+        </div>
+        <div class="card-footer">
+            {{ $logs->links() }}
         </div>
         <!--begin::Body-->
     </div>

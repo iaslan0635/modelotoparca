@@ -61,8 +61,14 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::get('sparetobot_connect', 'sparetobot_connect')->name('sparetobot_connect');
     Route::get('rerunMissingProducts', 'rerunMissingProducts')->name('rerunMissingProducts');
 
-    Route::get('/log', function () {return view('admin.import.log');})->name('log');
-    Route::get('/botlog', function () {return view('admin.import.botlog');})->name('botlog');
+    Route::get('/log', function () {
+        $fails = DB::table("failed_jobs")->orderByDesc('failed_at')->paginate(10);
+        return view('admin.import.log', compact('fails'));
+    })->name('log');
+    Route::get('/botlog', function () {
+        $logs = \App\Models\Log::orderByDesc('id')->paginate(50);
+        return view('admin.import.botlog', compact('logs'));
+    })->name('botlog');
 
 });
 

@@ -26,39 +26,41 @@
                     <th class="min-w-120px">Payload</th>
                     <th class="min-w-120px">Exception</th>
                     <th class="min-w-120px">Date</th>
-
                 </tr>
                 </thead>
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody>
-                <tr>
-
-                    <td>
-                        <span class="text-dark fw-bold text-hover-primary">1</span>
-                    </td>
-                    <td>
-                            <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">test</span>
-                    </td>
-                    <td>
-                        <span class="badge badge-light-success">productImport</span>
-                    </td>
-                    <td>
-                         <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">test</span>
-                    </td>
-                    <td>
-                         <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">test</span>
-                    </td>
-                    <td class="text-dark fw-bold text-hover-primary fs-6">test</td>
-
-                    <td class="text-dark fw-bold text-hover-primary fs-6">05/28/2020</td>
-                </tr>
+                @foreach($fails as $fail)
+                    <tr>
+                        <td>
+                            <span class="text-dark fw-bold text-hover-primary">{{ $fail->id }}</span>
+                        </td>
+                        <td>
+                            <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $fail->uuid }}</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-light-success">{{ $fail->connection }}</span>
+                        </td>
+                        <td>
+                            <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $fail->queue }}</span>
+                        </td>
+                        <td>
+                            <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $fail->payload }}</span>
+                        </td>
+                        <td class="text-dark fw-bold text-hover-primary fs-6">{{ $fail->exception }}</td>
+                        <td class="text-dark fw-bold text-hover-primary fs-6">{{ $fail->failed_at }}</td>
+                    </tr>
+                @endforeach
                 </tbody>
                 <!--end::Table body-->
             </table>
             <!--end::Table-->
         </div>
         <!--end::Table container-->
+    </div>
+    <div class="card-footer">
+        {{ $fails->links() }}
     </div>
     <!--begin::Body-->
 </div>
