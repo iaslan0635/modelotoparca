@@ -36,7 +36,7 @@
             <x-sidebar.item :href="route('admin.import.index')">İçe aktar</x-sidebar.item>
         @endcanany
 {{--        @canany(permissions("Aktarma İşlemleri.Bot Log Kayıtları.*"))--}}
-            <x-sidebar.item :href="route('/')">Bot Log Kayıtları</x-sidebar.item>
+            <x-sidebar.item :href="route('admin.import.botlog')">Bot Log Kayıtları</x-sidebar.item>
 {{--        @endcanany--}}
 {{--        @canany(permissions("Aktarma İşlemleri.Log Kayıtları.*"))--}}
             <x-sidebar.item :href="route('admin.import.log')">Log Kayıtları</x-sidebar.item>
