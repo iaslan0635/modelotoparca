@@ -62,7 +62,7 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::get('rerunMissingProducts', 'rerunMissingProducts')->name('rerunMissingProducts');
 
     Route::get('/log', function () {return view('log');})->name('log');
-    Route::get('/log', function () {return view('log');})->name('botlog');
+    Route::get('/botlog', function () {return view('log');})->name('botlog');
 
 });
 
