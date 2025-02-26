@@ -33,7 +33,7 @@
     "livewire/livewire": "^3.0",
     "maatwebsite/excel": "^3.1",
     "phpoffice/phpspreadsheet": "^1.28",
-    "predis/predis": "^2.1",
+    "predis/predis": "^2.3",
     "spatie/laravel-permission": "^6.0",
     "spatie/url": "^2.4",
     "symfony/css-selector": "^6.2",

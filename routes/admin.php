@@ -61,8 +61,9 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::get('sparetobot_connect', 'sparetobot_connect')->name('sparetobot_connect');
     Route::get('rerunMissingProducts', 'rerunMissingProducts')->name('rerunMissingProducts');
 
-    Route::get('', 'index')->name('log');
-    Route::get('', 'index')->name('botlog');
+    Route::get('/log', function () {return view('log');})->name('log');
+    Route::get('/log', function () {return view('log');})->name('botlog');
+
 });
 
 Route::controller(AnalysisController::class)->prefix('analysis')->name('analysis.')->group(function () {
