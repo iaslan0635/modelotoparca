@@ -44,7 +44,7 @@
                                 <span class="badge badge-light-success">{{ $log->message }}</span>
                             </td>
                             <td>
-                                <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ json_validate($log->context) ? json_decode($log->context):$log->context }}</span>
+                                <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ json_encode($log->context) }}</span>
                             </td>
                             <td>
                                 <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $log->source }}</span>
