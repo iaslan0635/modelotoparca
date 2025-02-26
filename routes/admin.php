@@ -61,7 +61,7 @@ Route::controller(ImportController::class)->prefix('import')->name('import.')->g
     Route::get('sparetobot_connect', 'sparetobot_connect')->name('sparetobot_connect');
     Route::get('rerunMissingProducts', 'rerunMissingProducts')->name('rerunMissingProducts');
 
-    Route::get('/log', function () {return view('log');})->name('log');
+    Route::get('/admin.import.log', function () {return view('log');})->name('log');
     Route::get('/botlog', function () {return view('log');})->name('botlog');
 
 });
