@@ -38,7 +38,7 @@
                                 <span class="text-dark fw-bold text-hover-primary">{{ $log->id }}</span>
                             </td>
                             <td>
-                                <span class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $log->product_id }}</span>
+                                <a href="https://site.modelotoparca.com/admin/products/{{ $log->product_id }}" class="text-dark fw-bold text-hover-primary d-block mb-1 fs-6">{{ $log->product_id }}</a>
                             </td>
                             <td>
                                 <span class="badge badge-light-success">{{ $log->message }}</span>
