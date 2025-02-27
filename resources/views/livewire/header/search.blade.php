@@ -2,19 +2,20 @@
     <div class="search">
         <form action="{{ route("search") }}" class="search__body">
             <div class="search__shadow"></div>
-            <input name="query" class="search__input" wire:model.live="query" type="text"
-                   placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
+            <input name="query" class="search__input" wire:model.live="query" type="text" autocomplete="off"
+                placeholder="Ürün Adı, Ürün Kodu, Oem Kodu veya Marka yazın">
             <button class="search__button search__button--start" type="button" style="position: relative;">
                 <span class="search__button-icon">
                     <svg width="20" height="20">
                         <path
-                            d="M6.6,2c2,0,4.8,0,6.8,0c1,0,2.9,0.8,3.6,2.2C17.7,5.7,17.9,7,18.4,7C20,7,20,8,20,8v1h-1v7.5c0,0.8-0.7,1.5-1.5,1.5h-1 c-0.8,0-1.5-0.7-1.5-1.5V16H5v0.5C5,17.3,4.3,18,3.5,18h-1C1.7,18,1,17.3,1,16.5V16V9H0V8c0,0,0.1-1,1.6-1C2.1,7,2.3,5.7,3,4.2 C3.7,2.8,5.6,2,6.6,2z M13.3,4H6.7c-0.8,0-1.4,0-2,0.7c-0.5,0.6-0.8,1.5-1,2C3.6,7.1,3.5,7.9,3.7,8C4.5,8.4,6.1,9,10,9 c4,0,5.4-0.6,6.3-1c0.2-0.1,0.2-0.8,0-1.2c-0.2-0.4-0.5-1.5-1-2C14.7,4,14.1,4,13.3,4z M4,10c-0.4-0.3-1.5-0.5-2,0 c-0.4,0.4-0.4,1.6,0,2c0.5,0.5,4,0.4,4,0C6,11.2,4.5,10.3,4,10z M14,12c0,0.4,3.5,0.5,4,0c0.4-0.4,0.4-1.6,0-2c-0.5-0.5-1.3-0.3-2,0 C15.5,10.2,14,11.3,14,12z"/>
+                            d="M6.6,2c2,0,4.8,0,6.8,0c1,0,2.9,0.8,3.6,2.2C17.7,5.7,17.9,7,18.4,7C20,7,20,8,20,8v1h-1v7.5c0,0.8-0.7,1.5-1.5,1.5h-1 c-0.8,0-1.5-0.7-1.5-1.5V16H5v0.5C5,17.3,4.3,18,3.5,18h-1C1.7,18,1,17.3,1,16.5V16V9H0V8c0,0,0.1-1,1.6-1C2.1,7,2.3,5.7,3,4.2 C3.7,2.8,5.6,2,6.6,2z M13.3,4H6.7c-0.8,0-1.4,0-2,0.7c-0.5,0.6-0.8,1.5-1,2C3.6,7.1,3.5,7.9,3.7,8C4.5,8.4,6.1,9,10,9 c4,0,5.4-0.6,6.3-1c0.2-0.1,0.2-0.8,0-1.2c-0.2-0.4-0.5-1.5-1-2C14.7,4,14.1,4,13.3,4z M4,10c-0.4-0.3-1.5-0.5-2,0 c-0.4,0.4-0.4,1.6,0,2c0.5,0.5,4,0.4,4,0C6,11.2,4.5,10.3,4,10z M14,12c0,0.4,3.5,0.5,4,0c0.4-0.4,0.4-1.6,0-2c-0.5-0.5-1.3-0.3-2,0 C15.5,10.2,14,11.3,14,12z" />
                     </svg>
                 </span>
                 <span class="search__button-title">Araç Seç</span>
                 @if(\App\Facades\Garage::hasChosen())
-                    <div
-                        style="content: ' ';border-radius: 100%;background-color: var(--red);position: absolute;top: -.25rem;right: -.25rem;z-index: 1;height: .75rem;aspect-ratio: 1;"></div>
+                <div
+                    style="content: ' ';border-radius: 100%;background-color: var(--red);position: absolute;top: -.25rem;right: -.25rem;z-index: 1;height: .75rem;aspect-ratio: 1;">
+                </div>
                 @endif
             </button>
             <livewire:garage />
@@ -23,7 +24,7 @@
                     <svg width="20" height="20">
                         <path d="M19.2,17.8c0,0-0.2,0.5-0.5,0.8c-0.4,0.4-0.9,0.6-0.9,0.6s-0.9,0.7-2.8-1.6c-1.1-1.4-2.2-2.8-3.1-3.9C10.9,14.5,9.5,15,8,15
 	c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7c0,1.5-0.5,2.9-1.3,4c1.1,0.8,2.5,2,4,3.1C20,16.8,19.2,17.8,19.2,17.8z M8,3C5.2,3,3,5.2,3,8
-	c0,2.8,2.2,5,5,5c2.8,0,5-2.2,5-5C13,5.2,10.8,3,8,3z"/>
+	c0,2.8,2.2,5,5,5c2.8,0,5-2.2,5-5C13,5.2,10.8,3,8,3z" />
                     </svg>
                 </span>
             </button>
@@ -32,13 +33,8 @@
                 <div class="search__decor-start"></div>
                 <div class="search__decor-end"></div>
             </div>
-            <x-search-suggestions
-                :results="$results"
-                :categories="$categories"
-                :highlights="$highlights"
-                :query="$query"
-                :suggestions="$suggestions"
-            />
+            <x-search-suggestions :results="$results" :categories="$categories" :highlights="$highlights"
+                :query="$query" :suggestions="$suggestions" />
         </form>
     </div>
 </div>
