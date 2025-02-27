@@ -38,8 +38,8 @@ class ExchangeRate
             $data = json_decode($xmlStirng, true);
 
             return [
-                'usd' => $data['USD']['Selling'],
-                'eur' => $data['EUR']['Selling'],
+                'usd' => (float)$data['USD']['Selling'],
+                'eur' => (float)$data['EUR']['Selling'],
             ];
         });
     }
