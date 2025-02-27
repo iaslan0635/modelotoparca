@@ -33,15 +33,13 @@ class ExchangeRate
     public static function getAllRates()
     {
         return Cache::remember('exchange_rates', TTL::DAY, function () {
-            $xmlStirng = Http::withoutVerifying()->throw()->get('https://kur.doviz.day')->body();
+            $xmlStirng = Http::withoutVerifying()->throw()->get('https://finans.truncgil.com/v3/today.json')->body();
 
-            $xml = new \SimpleXMLElement($xmlStirng);
-            $usd = (string) $xml->xpath('Currency[@CurrencyCode="USD"]/ForexSelling')[0];
-            $eur = (string) $xml->xpath('Currency[@CurrencyCode="EUR"]/ForexSelling')[0];
+            $data = json_decode($xmlStirng, true);
 
             return [
-                'usd' => $usd,
-                'eur' => $eur,
+                'usd' => $data['USD']['Selling'],
+                'eur' => $data['EUR']['Selling'],
             ];
         });
     }
