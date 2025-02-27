@@ -49,8 +49,7 @@ class Search
         private readonly ?array $loadRelations = null,
         private readonly ?int $minPrice = null,
         private readonly ?int $maxPrice = null,
-    ) {
-    }
+    ) {}
 
     public function paginateProducts(int $perPage = 12)
     {
@@ -84,14 +83,14 @@ class Search
     {
         $productsWithBrand = $this->getSearchQuery(ignoreBrandFilter: true)
             ->aggregate('unique_brands', ['terms' => ['field' => 'brand.id']])
-            ->refineModels(fn (Builder $q) => $q->select(['id', 'brand_id']))
+            ->refineModels(fn(Builder $q) => $q->select(['id', 'brand_id']))
             ->load(['brand'])->size(100)->execute()->models();
 
         return $productsWithBrand
-            ->map(fn (Product $product) => $product->brand)
-            ->filter(fn (?Brand $brand) => $brand !== null)
+            ->map(fn(Product $product) => $product->brand)
+            ->filter(fn(?Brand $brand) => $brand !== null)
             ->groupBy('id')
-            ->map(fn (Collection $brandCollection) => [
+            ->map(fn(Collection $brandCollection) => [
                 'brand' => $brandCollection[0],
                 'count' => $brandCollection->count(),
             ]);
@@ -101,13 +100,13 @@ class Search
     {
         $productsWithCategories = $this->getSearchQuery()
             ->aggregate('unique_categories', ['terms' => ['field' => 'categories.id']])
-            ->refineModels(fn (Builder $q) => $q->select(['id']))
+            ->refineModels(fn(Builder $q) => $q->select(['id']))
             ->load(['categories'])->size(100)->execute()->models();
 
         return $productsWithCategories
-            ->map(fn (Product $product) => $product->categories)->flatten()
+            ->map(fn(Product $product) => $product->categories)->flatten()
             ->groupBy('name')
-            ->map(fn (Collection $cats) => [
+            ->map(fn(Collection $cats) => [
                 'category' => $cats[0],
                 'count' => $cats->count(),
             ]);
@@ -142,13 +141,16 @@ class Search
     private function getBaseQuery()
     {
         $fieldsWithBoosts = collect(self::SEARCH_FIELDS)->reverse()->values()
-            ->map(fn (string $field, int $index) => "$field^".($index + 1))
+            ->map(fn(string $field, int $index) => "$field^" . ($index + 1))
             ->all();
 
         return Query::multiMatch()
             ->fields($fieldsWithBoosts)
-            ->type('cross_fields')
-            ->operator('and')
+            ->type('phrase_prefix')
+            ->operator('or')
+            ->fuzziness('AUTO')
+            ->prefixLength(1)
+            ->maxExpansions(50)
             ->query($this->term);
     }
 
@@ -202,8 +204,8 @@ class Search
     public static function parseHighlights(LengthAwarePaginator $productPaginator)
     {
         return $productPaginator->getCollection()
-            ->filter(fn (Hit $hit) => $hit->highlight() !== null)
-            ->mapWithKeys(fn (Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
+            ->filter(fn(Hit $hit) => $hit->highlight() !== null)
+            ->mapWithKeys(fn(Hit $hit) => [$hit->document()->id() => $hit->highlight()->raw()]);
     }
 
     public function saveSearch()
