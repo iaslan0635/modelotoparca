@@ -144,14 +144,31 @@ class Search
             ->map(fn(string $field, int $index) => "$field^" . ($index + 1))
             ->all();
 
-        return Query::multiMatch()
-            ->fields($fieldsWithBoosts)
-            ->type('phrase_prefix')
-            ->operator('or')
-            ->fuzziness('AUTO')
-            ->prefixLength(1)
-            ->maxExpansions(50)
-            ->query($this->term);
+        $query = Query::bool();
+
+        // Prefix match için
+        $query->should(
+            Query::multiMatch()
+                ->fields($fieldsWithBoosts)
+                ->type('phrase_prefix')
+                ->operator('or')
+                ->query($this->term)
+        );
+
+        // Fuzzy match için
+        $query->should(
+            Query::multiMatch()
+                ->fields($fieldsWithBoosts)
+                ->type('best_fields')
+                ->operator('or')
+                ->fuzziness('AUTO')
+                ->query($this->term)
+        );
+
+        // En az bir should eşleşmesi olmalı
+        $query->minimumShouldMatch(1);
+
+        return $query;
     }
 
     private function enabledFilter()
