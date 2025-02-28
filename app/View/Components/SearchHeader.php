@@ -13,10 +13,7 @@ class SearchHeader extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $brandIds, public $categoryIds)
-    {
-        dd($this->brandIds, $this->categoryIds);
-    }
+    public function __construct(public $brandIds, public $categoryIds) {}
 
     /**
      * Get the view / contents that represent the component.
