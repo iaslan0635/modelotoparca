@@ -40,6 +40,17 @@ class Search
         'similars',
     ];
 
+    /**
+     * Türkçe karakterleri Latin karakterlere dönüştürür
+     */
+    private function convertTurkishToLatin($text)
+    {
+        $turkishChars = ['ı', 'ğ', 'ü', 'ş', 'ö', 'ç', 'İ', 'Ğ', 'Ü', 'Ş', 'Ö', 'Ç'];
+        $latinChars = ['i', 'g', 'u', 's', 'o', 'c', 'I', 'G', 'U', 'S', 'O', 'C'];
+
+        return str_replace($turkishChars, $latinChars, $text);
+    }
+
     public function __construct(
         private readonly string $term,
         private readonly ?string $sortBy = null,
@@ -163,6 +174,9 @@ class Search
 
         // Her kelime için ayrı bir sorgu oluştur
         foreach ($validTerms as $term) {
+            // Türkçe karakterleri Latin karakterlere dönüştür
+            $latinTerm = $this->convertTurkishToLatin($term);
+
             // Bu kelime için tüm alanlarda arama yapacak bir sorgu
             $termQuery = Query::bool();
 
@@ -177,12 +191,30 @@ class Search
                             ->value($term)
                     );
 
+                    // Latin karakterli versiyonu da ara
+                    if ($term !== $latinTerm) {
+                        $termQuery->should(
+                            Query::term()
+                                ->field($field)
+                                ->value($latinTerm)
+                        );
+                    }
+
                     // Prefix sorgusu (başından itibaren eşleşme)
                     $termQuery->should(
                         Query::prefix()
                             ->field($field)
                             ->value($term)
                     );
+
+                    // Latin karakterli versiyonu da ara
+                    if ($term !== $latinTerm) {
+                        $termQuery->should(
+                            Query::prefix()
+                                ->field($field)
+                                ->value($latinTerm)
+                        );
+                    }
                 }
                 // cars.name için özel işlem
                 elseif ($field === 'cars.name') {
@@ -193,12 +225,30 @@ class Search
                             ->query($term)
                     );
 
+                    // Latin karakterli versiyonu da ara
+                    if ($term !== $latinTerm) {
+                        $termQuery->should(
+                            Query::match()
+                                ->field($field)
+                                ->query($latinTerm)
+                        );
+                    }
+
                     // Wildcard sorgusu da ekle
                     $termQuery->should(
                         Query::wildcard()
                             ->field($field)
                             ->value('*' . strtolower($term) . '*')
                     );
+
+                    // Latin karakterli versiyonu da ara
+                    if ($term !== $latinTerm) {
+                        $termQuery->should(
+                            Query::wildcard()
+                                ->field($field)
+                                ->value('*' . strtolower($latinTerm) . '*')
+                        );
+                    }
                 }
                 // Metin alanları için işlem
                 else {
@@ -209,12 +259,30 @@ class Search
                             ->query($term)
                     );
 
+                    // Latin karakterli versiyonu da ara
+                    if ($term !== $latinTerm) {
+                        $termQuery->should(
+                            Query::match()
+                                ->field($field)
+                                ->query($latinTerm)
+                        );
+                    }
+
                     // Wildcard sorgusu da ekle
                     $termQuery->should(
                         Query::wildcard()
                             ->field($field)
                             ->value('*' . strtolower($term) . '*')
                     );
+
+                    // Latin karakterli versiyonu da ara
+                    if ($term !== $latinTerm) {
+                        $termQuery->should(
+                            Query::wildcard()
+                                ->field($field)
+                                ->value('*' . strtolower($latinTerm) . '*')
+                        );
+                    }
                 }
             }
 
@@ -233,6 +301,9 @@ class Search
      */
     private function buildSingleTermQuery($term)
     {
+        // Türkçe karakterleri Latin karakterlere dönüştür
+        $latinTerm = $this->convertTurkishToLatin($term);
+
         $query = Query::bool();
 
         // Tüm alanlarda ara
@@ -245,12 +316,30 @@ class Search
                         ->query($term)
                 );
 
+                // Latin karakterli versiyonu da ara
+                if ($term !== $latinTerm) {
+                    $query->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($latinTerm)
+                    );
+                }
+
                 // Wildcard sorgusu da ekle
                 $query->should(
                     Query::wildcard()
                         ->field($field)
                         ->value('*' . strtolower($term) . '*')
                 );
+
+                // Latin karakterli versiyonu da ara
+                if ($term !== $latinTerm) {
+                    $query->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($latinTerm) . '*')
+                    );
+                }
             } elseif ($field === 'cars.name') {
                 // cars.name için özel sorgu
                 $query->should(
@@ -259,12 +348,30 @@ class Search
                         ->query($term)
                 );
 
+                // Latin karakterli versiyonu da ara
+                if ($term !== $latinTerm) {
+                    $query->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($latinTerm)
+                    );
+                }
+
                 // Wildcard sorgusu da ekle
                 $query->should(
                     Query::wildcard()
                         ->field($field)
                         ->value('*' . strtolower($term) . '*')
                 );
+
+                // Latin karakterli versiyonu da ara
+                if ($term !== $latinTerm) {
+                    $query->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($latinTerm) . '*')
+                    );
+                }
             } elseif (in_array($field, ['producercode', 'producercode_unbranded', 'part_number', 'cross_code', 'producercode2', 'hidden_searchable', 'tecdoc', 'oems', 'similars'])) {
                 // Kod alanları için term (tam eşleşme)
                 $query->should(
@@ -273,12 +380,30 @@ class Search
                         ->value($term)
                 );
 
+                // Latin karakterli versiyonu da ara
+                if ($term !== $latinTerm) {
+                    $query->should(
+                        Query::term()
+                            ->field($field)
+                            ->value($latinTerm)
+                    );
+                }
+
                 // Prefix sorgusu (başından itibaren eşleşme)
                 $query->should(
                     Query::prefix()
                         ->field($field)
                         ->value($term)
                 );
+
+                // Latin karakterli versiyonu da ara
+                if ($term !== $latinTerm) {
+                    $query->should(
+                        Query::prefix()
+                            ->field($field)
+                            ->value($latinTerm)
+                    );
+                }
             } else {
                 // Diğer alanlar için (brand.name, categories.name)
                 $query->should(
@@ -287,12 +412,30 @@ class Search
                         ->query($term)
                 );
 
+                // Latin karakterli versiyonu da ara
+                if ($term !== $latinTerm) {
+                    $query->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($latinTerm)
+                    );
+                }
+
                 // Wildcard sorgusu da ekle
                 $query->should(
                     Query::wildcard()
                         ->field($field)
                         ->value('*' . strtolower($term) . '*')
                 );
+
+                // Latin karakterli versiyonu da ara
+                if ($term !== $latinTerm) {
+                    $query->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($latinTerm) . '*')
+                    );
+                }
             }
         }
 
