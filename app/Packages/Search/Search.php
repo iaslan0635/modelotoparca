@@ -156,26 +156,41 @@ class Search
         if (count($terms) === 1) {
             $this->addSingleTermQueries($query, $textFields, $codeFields, $this->term);
         }
-        // Birden fazla kelime varsa, her kelime için ayrı sorgular oluştur
+        // Birden fazla kelime varsa
         else {
-            $multiTermQuery = Query::bool();
+            // Metin alanları için çoklu kelime araması
+            $textQuery = Query::bool();
 
-            // Her kelime için ayrı bir sorgu oluştur
-            foreach ($terms as $term) {
-                if (strlen($term) < 2) continue; // Çok kısa kelimeleri atla
+            // Her metin alanı için ayrı bir sorgu
+            foreach ($textFields as $field) {
+                // Her kelime için bir sorgu oluştur
+                foreach ($terms as $term) {
+                    if (strlen($term) < 2) continue; // Çok kısa kelimeleri atla
 
-                $termQuery = Query::bool();
-                $this->addSingleTermQueries($termQuery, $textFields, $codeFields, $term);
+                    // Tam eşleşme
+                    $textQuery->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($term)
+                    );
 
-                // Her kelime için en az bir eşleşme olmalı
-                $termQuery->minimumShouldMatch(1);
-                $multiTermQuery->must($termQuery);
+                    // Prefix eşleşme
+                    $textQuery->should(
+                        Query::prefix()
+                            ->field($field)
+                            ->value($term)
+                    );
+                }
             }
 
-            $query->should($multiTermQuery);
+            // Tüm kelimeler için en az bir eşleşme olmalı
+            $textQuery->minimumShouldMatch(count($terms));
+            $query->should($textQuery);
 
-            // Ayrıca tam cümle araması da ekle
-            $this->addSingleTermQueries($query, $textFields, $codeFields, $this->term);
+            // Kod alanları için normal arama
+            $codeQuery = Query::bool();
+            $this->addSingleTermQueries($codeQuery, [], $codeFields, $this->term);
+            $query->should($codeQuery);
         }
 
         // En az bir should eşleşmesi olmalı
