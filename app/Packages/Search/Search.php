@@ -158,43 +158,60 @@ class Search
         }
         // Birden fazla kelime varsa
         else {
-            // Metin alanları için çoklu kelime araması
-            $textQuery = Query::bool();
+            // Her kelime için bir sorgu oluştur
+            foreach ($terms as $term) {
+                if (strlen($term) < 2) continue; // Çok kısa kelimeleri atla
 
-            // Her metin alanı için ayrı bir sorgu
-            foreach ($textFields as $field) {
-                // Her kelime için bir sorgu oluştur
-                foreach ($terms as $term) {
-                    if (strlen($term) < 2) continue; // Çok kısa kelimeleri atla
+                // Her kelime için bir bool sorgusu
+                $termQuery = Query::bool();
 
+                // Her kelime için metin alanlarında arama
+                foreach ($textFields as $field) {
                     // Tam eşleşme
-                    $textQuery->should(
+                    $termQuery->should(
                         Query::match()
                             ->field($field)
                             ->query($term)
                     );
 
                     // Prefix eşleşme
-                    $textQuery->should(
+                    $termQuery->should(
                         Query::prefix()
                             ->field($field)
                             ->value($term)
                     );
                 }
+
+                // Her kelime için kod alanlarında arama
+                foreach ($codeFields as $field) {
+                    // Tam eşleşme
+                    $termQuery->should(
+                        Query::term()
+                            ->field($field)
+                            ->value($term)
+                    );
+
+                    // Prefix eşleşme
+                    $termQuery->should(
+                        Query::prefix()
+                            ->field($field)
+                            ->value($term)
+                    );
+                }
+
+                // Her kelime için en az bir eşleşme olmalı
+                $termQuery->minimumShouldMatch(1);
+
+                // Ana sorguya ekle (must ile her kelime için eşleşme olmalı)
+                $query->must($termQuery);
             }
 
-            // Tüm kelimeler için en az bir eşleşme olmalı
-            $textQuery->minimumShouldMatch(count($terms));
-            $query->should($textQuery);
-
-            // Kod alanları için normal arama
-            $codeQuery = Query::bool();
-            $this->addSingleTermQueries($codeQuery, [], $codeFields, $this->term);
-            $query->should($codeQuery);
+            // Ayrıca tam cümle araması da ekle (should ile)
+            $fullTermQuery = Query::bool();
+            $this->addSingleTermQueries($fullTermQuery, $textFields, $codeFields, $this->term);
+            $fullTermQuery->minimumShouldMatch(1);
+            $query->should($fullTermQuery);
         }
-
-        // En az bir should eşleşmesi olmalı
-        $query->minimumShouldMatch(1);
 
         return $query;
     }
