@@ -149,21 +149,61 @@ class Search
         // Kod alanları
         $codeFields = array_diff(self::SEARCH_FIELDS, $textFields);
 
+        // Arama terimini kelimelere ayır
+        $terms = preg_split('/\s+/', trim($this->term));
+
+        // Eğer tek kelime varsa normal arama yap
+        if (count($terms) === 1) {
+            $this->addSingleTermQueries($query, $textFields, $codeFields, $this->term);
+        }
+        // Birden fazla kelime varsa, her kelime için ayrı sorgular oluştur
+        else {
+            $multiTermQuery = Query::bool();
+
+            // Her kelime için ayrı bir sorgu oluştur
+            foreach ($terms as $term) {
+                if (strlen($term) < 2) continue; // Çok kısa kelimeleri atla
+
+                $termQuery = Query::bool();
+                $this->addSingleTermQueries($termQuery, $textFields, $codeFields, $term);
+
+                // Her kelime için en az bir eşleşme olmalı
+                $termQuery->minimumShouldMatch(1);
+                $multiTermQuery->must($termQuery);
+            }
+
+            $query->should($multiTermQuery);
+
+            // Ayrıca tam cümle araması da ekle
+            $this->addSingleTermQueries($query, $textFields, $codeFields, $this->term);
+        }
+
+        // En az bir should eşleşmesi olmalı
+        $query->minimumShouldMatch(1);
+
+        return $query;
+    }
+
+    /**
+     * Tek bir terim için sorguları ekler
+     */
+    private function addSingleTermQueries($query, $textFields, $codeFields, $term)
+    {
         // Metin alanları için match sorgusu
         foreach ($textFields as $field) {
             // Tam eşleşme
             $query->should(
                 Query::match()
                     ->field($field)
-                    ->query($this->term)
+                    ->query($term)
             );
 
             // Prefix eşleşme
-            if (strlen($this->term) >= 2) { // En az 2 karakter için prefix araması
+            if (strlen($term) >= 2) { // En az 2 karakter için prefix araması
                 $query->should(
                     Query::prefix()
                         ->field($field)
-                        ->value($this->term)
+                        ->value($term)
                 );
             }
         }
@@ -174,21 +214,16 @@ class Search
             $query->should(
                 Query::term()
                     ->field($field)
-                    ->value($this->term)
+                    ->value($term)
             );
 
             // Prefix eşleşme
             $query->should(
                 Query::prefix()
                     ->field($field)
-                    ->value($this->term)
+                    ->value($term)
             );
         }
-
-        // En az bir should eşleşmesi olmalı
-        $query->minimumShouldMatch(1);
-
-        return $query;
     }
 
     private function enabledFilter()
