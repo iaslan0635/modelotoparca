@@ -1,29 +1,37 @@
 <div {{ $attributes->class(['products-view__options view-options view-options--offcanvas--mobile']) }}>
+
+
+
     <div class="card">
         <div class="card-body card-body--padding--2">
-            <div class="row">
-                <div class="col d-flex flex-column justify-content-between">
-                    <div>
-                        <h5>Kategoriler</h5>
-                    </div>
-                    <div wire:ignore>
-                        <div class="owl-carousel owl-category-slider">
-                            @foreach(collect($categories)->chunk(6) as $i => $chunk)
-                            <div class="item" wire:key="brand-slider-chunk-{{$i}}">
-                                <div class="brand-slider-group">
-                                    @foreach($chunk as $category)
+    <div class="row">
+        <div class="col d-flex flex-column justify-content-between">
+            <div>
+                <h5>Kategoriler</h5>
+            </div>
+            <div wire:ignore>
+                <div class="owl-carousel owl-category-slider">
+                    @foreach(collect($categories)->chunk(2) as $i => $chunk)
+                        <div class="item" wire:key="brand-slider-chunk-{{$i}}">
+                            <div class="brand-slider-group">
+                                @foreach($chunk as $category)
                                     <img wire:key="brand-slider-group-{{$category->id}}"
-                                        src="{{ $category->imageUrl() }}" data-id="{{$category->id}}"
-                                        class="brand-slider-item category-select">
+                                         src="{{ $category->imageUrl() }}" data-id="{{$category->id}}"
+                                         class="brand-slider-item category-select">
                                     <span>{{ $category->name }} ({{ $category->products_count }})</span>
-                                    @endforeach
-                                </div>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body card-body--padding--2">
             <div class="row">
                 <div class="col d-flex flex-column justify-content-between">
                     <div>
