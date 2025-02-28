@@ -144,12 +144,47 @@ class Search
             ->map(fn(string $field, int $index) => "$field^" . ($index + 1))
             ->all();
 
-        // Sadece prefix match kullanılacak, fuzzy match kaldırıldı
-        return Query::multiMatch()
-            ->fields($fieldsWithBoosts)
-            ->type('phrase_prefix')
-            ->operator('or')
-            ->query($this->term);
+        // Özel alanlar için ayrı sorgu
+        $textFields = ['title', 'sub_title', 'description', 'cars.name'];
+        $textFieldsWithBoosts = collect($textFields)
+            ->intersect(self::SEARCH_FIELDS)
+            ->map(fn(string $field) => $field . '^' . (array_search($field, self::SEARCH_FIELDS) + 1))
+            ->all();
+
+        // Diğer alanlar için prefix match
+        $otherFields = collect(self::SEARCH_FIELDS)
+            ->diff($textFields)
+            ->map(fn(string $field, int $index) => "$field^" . ($index + 1))
+            ->all();
+
+        $query = Query::bool();
+
+        // Metin alanları için match sorgusu (kelimeler arasında başka kelimeler olabilir)
+        if (!empty($textFieldsWithBoosts)) {
+            $query->should(
+                Query::multiMatch()
+                    ->fields($textFieldsWithBoosts)
+                    ->type('best_fields')
+                    ->operator('or')
+                    ->query($this->term)
+            );
+        }
+
+        // Diğer alanlar için prefix match
+        if (!empty($otherFields)) {
+            $query->should(
+                Query::multiMatch()
+                    ->fields($otherFields)
+                    ->type('phrase_prefix')
+                    ->operator('or')
+                    ->query($this->term)
+            );
+        }
+
+        // En az bir should eşleşmesi olmalı
+        $query->minimumShouldMatch(1);
+
+        return $query;
     }
 
     private function enabledFilter()
