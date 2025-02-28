@@ -168,35 +168,8 @@ class Search
 
             // Tüm alanlarda ara
             foreach (self::SEARCH_FIELDS as $field) {
-                if (in_array($field, ['title', 'sub_title', 'description'])) {
-                    // Metin alanları için match
-                    $termQuery->should(
-                        Query::match()
-                            ->field($field)
-                            ->query($term)
-                    );
-
-                    // Wildcard sorgusu da ekle
-                    $termQuery->should(
-                        Query::wildcard()
-                            ->field($field)
-                            ->value('*' . strtolower($term) . '*')
-                    );
-                } elseif ($field === 'cars.name') {
-                    // cars.name için özel sorgu
-                    $termQuery->should(
-                        Query::match()
-                            ->field($field)
-                            ->query($term)
-                    );
-
-                    // Wildcard sorgusu da ekle
-                    $termQuery->should(
-                        Query::wildcard()
-                            ->field($field)
-                            ->value('*' . strtolower($term) . '*')
-                    );
-                } else {
+                // Kod alanları için özel işlem
+                if (in_array($field, ['producercode', 'producercode_unbranded', 'part_number', 'cross_code', 'producercode2', 'hidden_searchable', 'tecdoc', 'oems', 'similars'])) {
                     // Kod alanları için term
                     $termQuery->should(
                         Query::term()
@@ -209,6 +182,38 @@ class Search
                         Query::prefix()
                             ->field($field)
                             ->value($term)
+                    );
+                }
+                // cars.name için özel işlem
+                elseif ($field === 'cars.name') {
+                    // cars.name için match
+                    $termQuery->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($term)
+                    );
+
+                    // Wildcard sorgusu da ekle
+                    $termQuery->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($term) . '*')
+                    );
+                }
+                // Metin alanları için işlem
+                else {
+                    // Metin alanları için match
+                    $termQuery->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($term)
+                    );
+
+                    // Wildcard sorgusu da ekle
+                    $termQuery->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($term) . '*')
                     );
                 }
             }
