@@ -158,18 +158,14 @@ class Search
             return $this->buildSingleTermQuery($validTerms[0]);
         }
 
-        // Çoklu kelime için daha esnek bir yaklaşım
+        // Çoklu kelime için
         $query = Query::bool();
 
-        // Her kelime için ayrı bir sorgu oluştur ve should ile ekle
+        // Her kelime için ayrı bir sorgu oluştur ve must ile ekle
+        // Böylece tüm kelimeler eşleşmeli, ancak farklı alanlarda olabilir
         foreach ($validTerms as $term) {
-            $query->should($this->buildSingleTermQuery($term));
+            $query->must($this->buildSingleTermQuery($term));
         }
-
-        // Kelime sayısına göre minimum eşleşme sayısını belirle
-        // 2 kelime için 2, 3+ kelime için 2 eşleşme olsun
-        $minimumMatches = min(2, count($validTerms));
-        $query->minimumShouldMatch($minimumMatches);
 
         return $query;
     }
