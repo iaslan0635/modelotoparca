@@ -15,7 +15,7 @@ class SearchHeader extends Component
      */
     public function __construct(public $brandIds, public $categoryIds)
     {
-        //
+        dd($this->brandIds, $this->categoryIds);
     }
 
     /**
