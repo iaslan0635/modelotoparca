@@ -1,9 +1,9 @@
 <div class="block-split">
     <div class="container wide-container">
         <div class="block-split__row justify-content-center row no-gutters fixed-sidebar">
-{{--            <div class="block-split__item block-split__item-content col-auto">--}}
+            {{--            <div class="block-split__item block-split__item-content col-auto">--}}
             <div class="block-split__item block-split__item-content col-12">
-                <x-search-header :brandIds="$brands->keys()"/>
+                <x-search-header :brandIds="$brands->keys()" :$categories/>
                 <div class="block">
                     <div class="products-view" id="product-lists">
                         <div class="products-view__options view-options view-options--offcanvas--mobile">
@@ -149,7 +149,8 @@
                                             <x-product-card-image :product="$model"/>
                                             <div class="product-card__info">
                                                 <div class="product-card__meta">
-                                                    <span class="product-card__meta-title"> {{ $model->producercode }} </span>
+                                                    <span
+                                                        class="product-card__meta-title"> {{ $model->producercode }} </span>
                                                 </div>
                                                 <x-product-card-name :product="$model"/>
                                                 <div class="product-card__features">
@@ -196,14 +197,14 @@
     <script>
         $(".pagination").click(() => window.scrollTo(0, 0))
     </script>
-        <script>
-            Livewire.on('filtered', () => {
-                console.log("filtered");
-                $('.product-gallery').each(function (i, gallery) {
-                    initProductGallery(gallery, "quickview", true);
-                });
+    <script>
+        Livewire.on('filtered', () => {
+            console.log("filtered");
+            $('.product-gallery').each(function (i, gallery) {
+                initProductGallery(gallery, "quickview", true);
             });
-        </script>
+        });
+    </script>
 @endpush
 @push('styles')
     <style>
