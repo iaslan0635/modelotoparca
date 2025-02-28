@@ -3,7 +3,7 @@
         <div class="block-split__row justify-content-center row no-gutters fixed-sidebar">
             {{--            <div class="block-split__item block-split__item-content col-auto">--}}
             <div class="block-split__item block-split__item-content col-12">
-                <x-search-header :brandIds="$brands->keys()" :categoryIds="$categories" />
+                <x-search-header :brandIds="$brands->keys()" :categoryIds="$categories->pluck('id')->toArray()" />
                 <div class="block">
                     <div class="products-view" id="product-lists">
                         <div class="products-view__options view-options view-options--offcanvas--mobile">
