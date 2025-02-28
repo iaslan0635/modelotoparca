@@ -170,14 +170,14 @@ class Search
             foreach (self::SEARCH_FIELDS as $field) {
                 // Kod alanları için özel işlem
                 if (in_array($field, ['producercode', 'producercode_unbranded', 'part_number', 'cross_code', 'producercode2', 'hidden_searchable', 'tecdoc', 'oems', 'similars'])) {
-                    // Kod alanları için term
+                    // Kod alanları için term (tam eşleşme)
                     $termQuery->should(
                         Query::term()
                             ->field($field)
                             ->value($term)
                     );
 
-                    // Prefix sorgusu da ekle
+                    // Prefix sorgusu (başından itibaren eşleşme)
                     $termQuery->should(
                         Query::prefix()
                             ->field($field)
@@ -265,26 +265,33 @@ class Search
                         ->field($field)
                         ->value('*' . strtolower($term) . '*')
                 );
-
-                // Tam wildcard sorgusu da ekle
-                $query->should(
-                    Query::wildcard()
-                        ->field($field)
-                        ->value('*')
-                );
-            } else {
-                // Kod alanları için term
+            } elseif (in_array($field, ['producercode', 'producercode_unbranded', 'part_number', 'cross_code', 'producercode2', 'hidden_searchable', 'tecdoc', 'oems', 'similars'])) {
+                // Kod alanları için term (tam eşleşme)
                 $query->should(
                     Query::term()
                         ->field($field)
                         ->value($term)
                 );
 
-                // Prefix sorgusu da ekle
+                // Prefix sorgusu (başından itibaren eşleşme)
                 $query->should(
                     Query::prefix()
                         ->field($field)
                         ->value($term)
+                );
+            } else {
+                // Diğer alanlar için (brand.name, categories.name)
+                $query->should(
+                    Query::match()
+                        ->field($field)
+                        ->query($term)
+                );
+
+                // Wildcard sorgusu da ekle
+                $query->should(
+                    Query::wildcard()
+                        ->field($field)
+                        ->value('*' . strtolower($term) . '*')
                 );
             }
         }
