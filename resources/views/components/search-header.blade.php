@@ -2,11 +2,12 @@
     <div class="card">
         <div class="card-body card-body--padding--2">
             <div class="row">
+                <div class="col d-flex flex-column justify-content-between">
                 <div>
                     <h5>Kategoriler</h5>
                 </div>
 
-
+                </div>
             </div>
             <div class="row">
                 <div class="col d-flex flex-column justify-content-between">
