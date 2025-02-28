@@ -21,7 +21,7 @@ class SearchHeader extends Component
     public function render(): View|Closure|string
     {
         $brands = Brand::query()->whereIn('id', $this->brandIds)->get();
-        $categories = Category::query()->whereIn('id', $this->categoryIds)->get();
+        $categories = Category::query()->withCount('products')->whereIn('id', $this->categoryIds)->get();
         return view('components.search-header', compact('brands', 'categories'));
     }
 }

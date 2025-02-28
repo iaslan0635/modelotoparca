@@ -15,7 +15,7 @@
                                     <img wire:key="brand-slider-group-{{$category->id}}"
                                         src="{{ $category->imageUrl() }}" data-id="{{$category->id}}"
                                         class="brand-slider-item category-select">
-                                    <span>{{ $category->name }} ({{ $category->count }})</span>
+                                    <span>{{ $category->name }} ({{ $category->products_count }})</span>
                                     @endforeach
                                 </div>
                             </div>
