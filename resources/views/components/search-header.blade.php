@@ -13,12 +13,12 @@
                 <div class="owl-carousel owl-category-slider">
                     @foreach(collect($categories)->chunk(1) as $i => $chunk)
                         <div class="item" wire:key="brand-slider-chunk-{{$i}}">
-                            <div class="brand-slider-group">
+                            <div class="brand-slider-group" style="height: 220px;">
                                 @foreach($chunk as $category)
-                                    <img wire:key="brand-slider-group-{{$category->id}}"
+                                    <img wire:key="brand-slider-group-{{$category->id}}"  style="width: 170px; height: 170px;"
                                          src="{{ $category->imageUrl() }}" data-id="{{$category->id}}"
                                          class="brand-slider-item category-select">
-                                    <span>{{ $category->name }} ({{ $category->products_count }})</span>
+                                    <span style="text-align: center;">{{ $category->name }} ({{ $category->products_count }})</span>
                                 @endforeach
                             </div>
                         </div>
@@ -39,9 +39,9 @@
                     </div>
                     <div wire:ignore>
                         <div class="owl-carousel owl-brands-slider">
-                            @foreach(collect($brands)->chunk(2) as $i => $chunk)
+                            @foreach(collect($brands)->chunk(1) as $i => $chunk)
                             <div class="item" wire:key="brand-slider-chunk-{{$i}}">
-                                <div class="brand-slider-group">
+                                <div class="brand-slider-group" >
                                     @foreach($chunk as $brand)
                                     <img wire:key="brand-slider-group-{{$brand->id}}" src="{{ $brand->imageUrl() }}"
                                         data-id="{{$brand->id}}" class="brand-slider-item brand-select">
