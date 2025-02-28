@@ -153,18 +153,71 @@ class Search
             $validTerms = [$this->term];
         }
 
+        // Ana sorgu
+        $query = Query::bool();
+
         // Tek kelime için basit sorgu
         if (count($validTerms) === 1) {
             return $this->buildSingleTermQuery($validTerms[0]);
         }
 
-        // Çoklu kelime için
-        $query = Query::bool();
-
-        // Her kelime için ayrı bir sorgu oluştur ve must ile ekle
-        // Böylece tüm kelimeler eşleşmeli, ancak farklı alanlarda olabilir
+        // Her kelime için ayrı bir sorgu oluştur
         foreach ($validTerms as $term) {
-            $query->must($this->buildSingleTermQuery($term));
+            // Bu kelime için tüm alanlarda arama yapacak bir sorgu
+            $termQuery = Query::bool();
+
+            // Tüm alanlarda ara
+            foreach (self::SEARCH_FIELDS as $field) {
+                if (in_array($field, ['title', 'sub_title', 'description'])) {
+                    // Metin alanları için match
+                    $termQuery->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($term)
+                    );
+
+                    // Wildcard sorgusu da ekle
+                    $termQuery->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($term) . '*')
+                    );
+                } elseif ($field === 'cars.name') {
+                    // cars.name için özel sorgu
+                    $termQuery->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($term)
+                    );
+
+                    // Wildcard sorgusu da ekle
+                    $termQuery->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($term) . '*')
+                    );
+                } else {
+                    // Kod alanları için term
+                    $termQuery->should(
+                        Query::term()
+                            ->field($field)
+                            ->value($term)
+                    );
+
+                    // Prefix sorgusu da ekle
+                    $termQuery->should(
+                        Query::prefix()
+                            ->field($field)
+                            ->value($term)
+                    );
+                }
+            }
+
+            // Bu kelime için en az bir alanda eşleşme olmalı
+            $termQuery->minimumShouldMatch(1);
+
+            // Ana sorguya MUST olarak ekle - bu kelime mutlaka bir yerde geçmeli
+            $query->must($termQuery);
         }
 
         return $query;
@@ -206,6 +259,13 @@ class Search
                     Query::wildcard()
                         ->field($field)
                         ->value('*' . strtolower($term) . '*')
+                );
+
+                // Tam wildcard sorgusu da ekle
+                $query->should(
+                    Query::wildcard()
+                        ->field($field)
+                        ->value('*')
                 );
             } else {
                 // Kod alanları için term
