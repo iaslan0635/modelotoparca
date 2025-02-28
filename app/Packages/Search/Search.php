@@ -140,49 +140,49 @@ class Search
 
     private function getBaseQuery()
     {
+        // Basit ve temel bir sorgu yapısı
         $query = Query::bool();
 
-        // Tüm alanlar için prefix match (kelime başı eşleşmesi)
-        foreach (self::SEARCH_FIELDS as $index => $field) {
-            $boost = count(self::SEARCH_FIELDS) - $index; // Tersine boost değeri
+        // Metin alanları için
+        $textFields = ['title', 'sub_title', 'description', 'cars.name'];
 
-            // Metin alanları için daha esnek arama
-            if (in_array($field, ['title', 'sub_title', 'description', 'cars.name'])) {
-                // Tam eşleşme için yüksek boost
-                $query->should(
-                    Query::match()
-                        ->field($field . '^' . ($boost * 2)) // Tam eşleşmeye daha yüksek öncelik
-                        ->query($this->term)
-                );
+        // Kod alanları
+        $codeFields = array_diff(self::SEARCH_FIELDS, $textFields);
 
-                // Kelimeler arası eşleşme için
-                $query->should(
-                    Query::matchPhrase()
-                        ->field($field . '^' . ($boost * 1.5)) // Phrase eşleşmeye orta öncelik
-                        ->query($this->term)
-                );
+        // Metin alanları için match sorgusu
+        foreach ($textFields as $field) {
+            // Tam eşleşme
+            $query->should(
+                Query::match()
+                    ->field($field)
+                    ->query($this->term)
+            );
 
-                // Prefix eşleşme için
-                $query->should(
-                    Query::wildcard()
-                        ->field($field . '^' . $boost) // Prefix eşleşmeye normal öncelik
-                        ->value($this->term . '*')
-                );
-            } else {
-                // Kod alanları için prefix match
+            // Prefix eşleşme
+            if (strlen($this->term) >= 2) { // En az 2 karakter için prefix araması
                 $query->should(
                     Query::prefix()
-                        ->field($field . '^' . $boost)
-                        ->value($this->term)
-                );
-
-                // Tam eşleşme için
-                $query->should(
-                    Query::term()
-                        ->field($field . '^' . ($boost * 2)) // Tam eşleşmeye daha yüksek öncelik
+                        ->field($field)
                         ->value($this->term)
                 );
             }
+        }
+
+        // Kod alanları için
+        foreach ($codeFields as $field) {
+            // Tam eşleşme
+            $query->should(
+                Query::term()
+                    ->field($field)
+                    ->value($this->term)
+            );
+
+            // Prefix eşleşme
+            $query->should(
+                Query::prefix()
+                    ->field($field)
+                    ->value($this->term)
+            );
         }
 
         // En az bir should eşleşmesi olmalı
