@@ -164,7 +164,7 @@ class Search
 
                 // Prefix eşleşme için
                 $query->should(
-                    Query::wildcardString()
+                    Query::wildcard()
                         ->field($field . '^' . $boost) // Prefix eşleşmeye normal öncelik
                         ->value($this->term . '*')
                 );
