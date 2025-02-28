@@ -140,51 +140,49 @@ class Search
 
     private function getBaseQuery()
     {
-        // Özel alanlar için ayrı sorgu
-        $textFields = ['title', 'sub_title', 'description', 'cars.name'];
-
-        // Diğer alanlar
-        $otherFields = collect(self::SEARCH_FIELDS)
-            ->diff($textFields)
-            ->all();
-
         $query = Query::bool();
 
-        // Metin alanları için match sorgusu (kelimeler arasında başka kelimeler olabilir)
-        if (!empty($textFields)) {
-            $textQuery = Query::bool();
+        // Tüm alanlar için prefix match (kelime başı eşleşmesi)
+        foreach (self::SEARCH_FIELDS as $index => $field) {
+            $boost = count(self::SEARCH_FIELDS) - $index; // Tersine boost değeri
 
-            foreach ($textFields as $field) {
-                if (in_array($field, self::SEARCH_FIELDS)) {
-                    $boost = array_search($field, self::SEARCH_FIELDS) + 1;
-                    $fieldWithBoost = $field . '^' . $boost;
-                    $textQuery->should(
-                        Query::match()
-                            ->field($fieldWithBoost)
-                            ->operator('or')
-                            ->query($this->term)
-                    );
-                }
-            }
-
-            $query->should($textQuery);
-        }
-
-        // Diğer alanlar için prefix match
-        if (!empty($otherFields)) {
-            $otherQuery = Query::bool();
-
-            foreach ($otherFields as $field) {
-                $boost = array_search($field, self::SEARCH_FIELDS) + 1;
-                $fieldWithBoost = $field . '^' . $boost;
-                $otherQuery->should(
-                    Query::matchPhrasePrefix()
-                        ->field($fieldWithBoost)
+            // Metin alanları için daha esnek arama
+            if (in_array($field, ['title', 'sub_title', 'description', 'cars.name'])) {
+                // Tam eşleşme için yüksek boost
+                $query->should(
+                    Query::match()
+                        ->field($field . '^' . ($boost * 2)) // Tam eşleşmeye daha yüksek öncelik
                         ->query($this->term)
                 );
-            }
 
-            $query->should($otherQuery);
+                // Kelimeler arası eşleşme için
+                $query->should(
+                    Query::matchPhrase()
+                        ->field($field . '^' . ($boost * 1.5)) // Phrase eşleşmeye orta öncelik
+                        ->query($this->term)
+                );
+
+                // Prefix eşleşme için
+                $query->should(
+                    Query::wildcardString()
+                        ->field($field . '^' . $boost) // Prefix eşleşmeye normal öncelik
+                        ->value($this->term . '*')
+                );
+            } else {
+                // Kod alanları için prefix match
+                $query->should(
+                    Query::prefix()
+                        ->field($field . '^' . $boost)
+                        ->value($this->term)
+                );
+
+                // Tam eşleşme için
+                $query->should(
+                    Query::term()
+                        ->field($field . '^' . ($boost * 2)) // Tam eşleşmeye daha yüksek öncelik
+                        ->value($this->term)
+                );
+            }
         }
 
         // En az bir should eşleşmesi olmalı
