@@ -7,8 +7,8 @@
                         <h5>Kategoriler</h5>
                     </div>
                     <div wire:ignore>
-                        <div class="owl-carousel owl-brands-slider">
-                            @foreach(collect($categories)->chunk(2) as $i => $chunk)
+                        <div class="owl-carousel owl-category-slider">
+                            @foreach(collect($categories)->chunk(6) as $i => $chunk)
                             <div class="item" wire:key="brand-slider-chunk-{{$i}}">
                                 <div class="brand-slider-group">
                                     @foreach($chunk as $category)
@@ -97,6 +97,55 @@
         $('.category-select').trueclick(function () {
             selectCategory($(this).data('id'))
         })
+</script>
+
+<script defer>
+    $('.owl-category-slider').owlCarousel({
+        loop: false,
+        margin: 10,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 6
+            }
+        }
+    })
+
+    function selectBrand(id) {
+        console.log("selected brand " + id)
+        const qs = new URLSearchParams(window.location.search)
+
+        const keysToBeRemoved = Array.from(qs.keys()).filter(k => k.startsWith("brands"))
+        keysToBeRemoved.forEach(k => qs.delete(k))
+
+        qs.set("brands[]", id)
+        window.location.search = qs.toString()
+    }
+
+    $('.brand-select').trueclick(function () {
+        selectBrand($(this).data('id'))
+    })
+
+    function selectCategory(id) {
+        console.log("selected category " + id)
+        const qs = new URLSearchParams(window.location.search)
+
+        const keysToBeRemoved = Array.from(qs.keys()).filter(k => k.startsWith("category"))
+        keysToBeRemoved.forEach(k => qs.delete(k))
+
+        qs.set("category", id)
+        window.location.search = qs.toString()
+    }
+
+    $('.category-select').trueclick(function () {
+        selectCategory($(this).data('id'))
+    })
 </script>
 @endpush
 @push("styles")
