@@ -152,65 +152,58 @@ class Search
         // Arama terimini kelimelere ayır
         $terms = preg_split('/\s+/', trim($this->term));
 
-        // Eğer tek kelime varsa normal arama yap
-        if (count($terms) === 1) {
+        // Geçerli terimleri filtrele (en az 2 karakter)
+        $validTerms = array_filter($terms, function ($term) {
+            return strlen($term) >= 2;
+        });
+
+        // Eğer geçerli terim yoksa, orijinal terimi kullan
+        if (empty($validTerms)) {
             $this->addSingleTermQueries($query, $textFields, $codeFields, $this->term);
+            return $query;
         }
+
+        // Eğer tek kelime varsa normal arama yap
+        if (count($validTerms) === 1) {
+            $this->addSingleTermQueries($query, $textFields, $codeFields, $validTerms[0]);
+            return $query;
+        }
+
         // Birden fazla kelime varsa
-        else {
-            // Her kelime için bir sorgu oluştur
-            foreach ($terms as $term) {
-                if (strlen($term) < 2) continue; // Çok kısa kelimeleri atla
+        // Her kelime için bir sorgu oluştur
+        foreach ($validTerms as $term) {
+            $termQuery = Query::bool();
 
-                // Her kelime için bir bool sorgusu
-                $termQuery = Query::bool();
-
-                // Her kelime için metin alanlarında arama
-                foreach ($textFields as $field) {
-                    // Tam eşleşme
+            // Tüm alanlarda ara
+            foreach (array_merge($textFields, $codeFields) as $field) {
+                // Tam eşleşme
+                if (in_array($field, $textFields)) {
                     $termQuery->should(
                         Query::match()
                             ->field($field)
                             ->query($term)
                     );
-
-                    // Prefix eşleşme
-                    $termQuery->should(
-                        Query::prefix()
-                            ->field($field)
-                            ->value($term)
-                    );
-                }
-
-                // Her kelime için kod alanlarında arama
-                foreach ($codeFields as $field) {
-                    // Tam eşleşme
+                } else {
                     $termQuery->should(
                         Query::term()
                             ->field($field)
                             ->value($term)
                     );
-
-                    // Prefix eşleşme
-                    $termQuery->should(
-                        Query::prefix()
-                            ->field($field)
-                            ->value($term)
-                    );
                 }
 
-                // Her kelime için en az bir eşleşme olmalı
-                $termQuery->minimumShouldMatch(1);
-
-                // Ana sorguya ekle (must ile her kelime için eşleşme olmalı)
-                $query->must($termQuery);
+                // Prefix eşleşme
+                $termQuery->should(
+                    Query::prefix()
+                        ->field($field)
+                        ->value($term)
+                );
             }
 
-            // Ayrıca tam cümle araması da ekle (should ile)
-            $fullTermQuery = Query::bool();
-            $this->addSingleTermQueries($fullTermQuery, $textFields, $codeFields, $this->term);
-            $fullTermQuery->minimumShouldMatch(1);
-            $query->should($fullTermQuery);
+            // Her kelime için en az bir eşleşme olmalı
+            $termQuery->minimumShouldMatch(1);
+
+            // Ana sorguya ekle (must ile her kelime için eşleşme olmalı)
+            $query->must($termQuery);
         }
 
         return $query;
