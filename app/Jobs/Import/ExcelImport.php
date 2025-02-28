@@ -97,6 +97,7 @@ class ExcelImport implements ShouldQueue
                 'stock_on_51' => $this->data['stock_on_51'],
                 'stock_on_38' => $this->data['stock_on_38'],
                 'stock_on_01' => $this->data['stock_on_01'],
+                'PROJECTREF' => $this->data['PROJECTREF'],
             ]);
             $veriler = [
                 'abk',
@@ -164,6 +165,7 @@ class ExcelImport implements ShouldQueue
                 'onhand' => $this->data['onhand'],
                 'condition' => $this->data['condition'],
                 'abk' => $this->data['abk'],
+                'PROJECTREF' => $this->data['PROJECTREF'],
             ]);
 
             if ($product->cross_code) {
