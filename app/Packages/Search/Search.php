@@ -140,115 +140,122 @@ class Search
 
     private function getBaseQuery()
     {
-        // Basit ve temel bir sorgu yapısı
+        // En basit sorgu yapısı
         $query = Query::bool();
-
-        // Metin alanları için
-        $textFields = ['title', 'sub_title', 'description', 'cars.name'];
-
-        // Kod alanları
-        $codeFields = array_diff(self::SEARCH_FIELDS, $textFields);
 
         // Arama terimini kelimelere ayır
         $terms = preg_split('/\s+/', trim($this->term));
 
         // Geçerli terimleri filtrele (en az 2 karakter)
-        $validTerms = array_filter($terms, function ($term) {
+        $validTerms = array_values(array_filter($terms, function ($term) {
             return strlen($term) >= 2;
-        });
+        }));
 
         // Eğer geçerli terim yoksa, orijinal terimi kullan
         if (empty($validTerms)) {
-            $this->addSingleTermQueries($query, $textFields, $codeFields, $this->term);
-            return $query;
+            $validTerms = [$this->term];
         }
 
-        // Eğer tek kelime varsa normal arama yap
+        // Tek kelime için basit sorgu
         if (count($validTerms) === 1) {
-            $this->addSingleTermQueries($query, $textFields, $codeFields, $validTerms[0]);
-            return $query;
+            $simpleQuery = Query::bool();
+
+            // Tüm alanlarda ara
+            foreach (self::SEARCH_FIELDS as $field) {
+                if (in_array($field, ['title', 'sub_title', 'description'])) {
+                    // Metin alanları için match
+                    $simpleQuery->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($validTerms[0])
+                    );
+                } elseif ($field === 'cars.name') {
+                    // cars.name için özel sorgu
+                    $simpleQuery->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($validTerms[0])
+                    );
+
+                    // Wildcard sorgusu da ekle
+                    $simpleQuery->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($validTerms[0]) . '*')
+                    );
+                } else {
+                    // Kod alanları için term
+                    $simpleQuery->should(
+                        Query::term()
+                            ->field($field)
+                            ->value($validTerms[0])
+                    );
+
+                    // Prefix sorgusu da ekle
+                    $simpleQuery->should(
+                        Query::prefix()
+                            ->field($field)
+                            ->value($validTerms[0])
+                    );
+                }
+            }
+
+            $simpleQuery->minimumShouldMatch(1);
+            return $simpleQuery;
         }
 
-        // Birden fazla kelime varsa
-        // Her kelime için bir sorgu oluştur
+        // Çoklu kelime için
         foreach ($validTerms as $term) {
             $termQuery = Query::bool();
 
-            // Tüm alanlarda ara
-            foreach (array_merge($textFields, $codeFields) as $field) {
-                // Tam eşleşme
-                if (in_array($field, $textFields)) {
+            // Her alan için ayrı sorgu
+            foreach (self::SEARCH_FIELDS as $field) {
+                if (in_array($field, ['title', 'sub_title', 'description'])) {
+                    // Metin alanları için match
                     $termQuery->should(
                         Query::match()
                             ->field($field)
                             ->query($term)
                     );
+                } elseif ($field === 'cars.name') {
+                    // cars.name için özel sorgu
+                    $termQuery->should(
+                        Query::match()
+                            ->field($field)
+                            ->query($term)
+                    );
+
+                    // Wildcard sorgusu da ekle
+                    $termQuery->should(
+                        Query::wildcard()
+                            ->field($field)
+                            ->value('*' . strtolower($term) . '*')
+                    );
                 } else {
+                    // Kod alanları için term
                     $termQuery->should(
                         Query::term()
                             ->field($field)
                             ->value($term)
                     );
-                }
 
-                // Prefix eşleşme
-                $termQuery->should(
-                    Query::prefix()
-                        ->field($field)
-                        ->value($term)
-                );
+                    // Prefix sorgusu da ekle
+                    $termQuery->should(
+                        Query::prefix()
+                            ->field($field)
+                            ->value($term)
+                    );
+                }
             }
 
             // Her kelime için en az bir eşleşme olmalı
             $termQuery->minimumShouldMatch(1);
 
-            // Ana sorguya ekle (must ile her kelime için eşleşme olmalı)
+            // Ana sorguya ekle
             $query->must($termQuery);
         }
 
         return $query;
-    }
-
-    /**
-     * Tek bir terim için sorguları ekler
-     */
-    private function addSingleTermQueries($query, $textFields, $codeFields, $term)
-    {
-        // Metin alanları için match sorgusu
-        foreach ($textFields as $field) {
-            // Tam eşleşme
-            $query->should(
-                Query::match()
-                    ->field($field)
-                    ->query($term)
-            );
-
-            // Prefix eşleşme
-            if (strlen($term) >= 2) { // En az 2 karakter için prefix araması
-                $query->should(
-                    Query::prefix()
-                        ->field($field)
-                        ->value($term)
-                );
-            }
-        }
-
-        // Kod alanları için
-        foreach ($codeFields as $field) {
-            // Tam eşleşme
-            $query->should(
-                Query::term()
-                    ->field($field)
-                    ->value($term)
-            );
-
-            // Prefix eşleşme
-            $query->should(
-                Query::prefix()
-                    ->field($field)
-                    ->value($term)
-            );
-        }
     }
 
     private function enabledFilter()
