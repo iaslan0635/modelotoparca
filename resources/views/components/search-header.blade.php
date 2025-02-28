@@ -11,7 +11,7 @@
             </div>
             <div wire:ignore>
                 <div class="owl-carousel owl-category-slider">
-                    @foreach(collect($categories)->chunk(2) as $i => $chunk)
+                    @foreach(collect($categories)->chunk(1) as $i => $chunk)
                         <div class="item" wire:key="brand-slider-chunk-{{$i}}">
                             <div class="brand-slider-group">
                                 @foreach($chunk as $category)
