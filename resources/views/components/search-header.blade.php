@@ -2,6 +2,39 @@
     <div class="card">
         <div class="card-body card-body--padding--2">
             <div class="row">
+                @if($category)
+                    <x-category-heading :category="$category" :brandIds="$brands->keys()" />
+                @endif
+{{--                @foreach($categories as $category)--}}
+{{--                    <div class="col-6 col-md-4 col-lg-2">--}}
+{{--                        <div class="card border-0 h-100 position-relative category-card">--}}
+{{--                            <div class="card-body text-center">--}}
+{{--                                <img src="{{ $category['imageUrl'] }}" alt="{{ $category['name'] }}" class="img-fluid mb-3"--}}
+{{--                                     style="height: 96px; object-fit: contain; filter: grayscale(100%);">--}}
+{{--                                <h5 class="card-title text-primary fw-normal">{{ $category['name'] }}</h5>--}}
+{{--                            </div>--}}
+{{--                            <div class="subcategories-container">--}}
+{{--                                <div class="subcategories bg-white border shadow py-3 px-4">--}}
+{{--                                    <div class="row row-cols-2 g-3">--}}
+{{--                                        @foreach($category['subcategories'] as $subcategory)--}}
+{{--                                            <div class="col"><a--}}
+{{--                                                    href="{{ route('brand.show', ['brand' => $slug, 'category' => $subcategory['id']]) }}"--}}
+{{--                                                    class="text-decoration-none text-secondary">--}}
+{{--                                                    <img src="{{ $subcategory['imageUrl'] }}" alt="{{ $subcategory['name'] }}"--}}
+{{--                                                         class="img-fluid mb-3"--}}
+{{--                                                         style="height: 32px; width: 32px; object-fit: contain; filter: grayscale(100%);">--}}
+{{--                                                    {{ $subcategory['name'] }}--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                        @endforeach--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
+            </div>
+            <div class="row">
                 <div class="col d-flex flex-column justify-content-between">
                     <div>
                         <h5>Markalar</h5>
