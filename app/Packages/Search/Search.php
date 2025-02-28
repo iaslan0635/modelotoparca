@@ -140,45 +140,51 @@ class Search
 
     private function getBaseQuery()
     {
-        $fieldsWithBoosts = collect(self::SEARCH_FIELDS)->reverse()->values()
-            ->map(fn(string $field, int $index) => "$field^" . ($index + 1))
-            ->all();
-
         // Özel alanlar için ayrı sorgu
         $textFields = ['title', 'sub_title', 'description', 'cars.name'];
-        $textFieldsWithBoosts = collect($textFields)
-            ->intersect(self::SEARCH_FIELDS)
-            ->map(fn(string $field) => $field . '^' . (array_search($field, self::SEARCH_FIELDS) + 1))
-            ->all();
 
-        // Diğer alanlar için prefix match
+        // Diğer alanlar
         $otherFields = collect(self::SEARCH_FIELDS)
             ->diff($textFields)
-            ->map(fn(string $field, int $index) => "$field^" . ($index + 1))
             ->all();
 
         $query = Query::bool();
 
         // Metin alanları için match sorgusu (kelimeler arasında başka kelimeler olabilir)
-        if (!empty($textFieldsWithBoosts)) {
-            $query->should(
-                Query::multiMatch()
-                    ->fields($textFieldsWithBoosts)
-                    ->type('best_fields')
-                    ->operator('or')
-                    ->query($this->term)
-            );
+        if (!empty($textFields)) {
+            $textQuery = Query::bool();
+
+            foreach ($textFields as $field) {
+                if (in_array($field, self::SEARCH_FIELDS)) {
+                    $boost = array_search($field, self::SEARCH_FIELDS) + 1;
+                    $fieldWithBoost = $field . '^' . $boost;
+                    $textQuery->should(
+                        Query::match()
+                            ->field($fieldWithBoost)
+                            ->operator('or')
+                            ->query($this->term)
+                    );
+                }
+            }
+
+            $query->should($textQuery);
         }
 
         // Diğer alanlar için prefix match
         if (!empty($otherFields)) {
-            $query->should(
-                Query::multiMatch()
-                    ->fields($otherFields)
-                    ->type('phrase_prefix')
-                    ->operator('or')
-                    ->query($this->term)
-            );
+            $otherQuery = Query::bool();
+
+            foreach ($otherFields as $field) {
+                $boost = array_search($field, self::SEARCH_FIELDS) + 1;
+                $fieldWithBoost = $field . '^' . $boost;
+                $otherQuery->should(
+                    Query::matchPhrasePrefix()
+                        ->field($fieldWithBoost)
+                        ->query($this->term)
+                );
+            }
+
+            $query->should($otherQuery);
         }
 
         // En az bir should eşleşmesi olmalı
