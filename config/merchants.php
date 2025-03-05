@@ -14,7 +14,7 @@ return [
     'hepsiburada' => [
         'merchantId' => 'b81b18f7-851c-4b13-947f-2324d40a812f',
         'username' => 'modelotomotiv_dev',
-        'password' => 'sCEDbtBsjRHP!',
+        'password' => 'h9fXXUZM7DTq',
     ],
     'test_creds' => [
         'trendyol' => [
