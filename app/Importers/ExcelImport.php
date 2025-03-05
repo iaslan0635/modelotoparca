@@ -51,6 +51,7 @@ class ExcelImport implements ToModel, WithStartRow
         41 => 'stock_on_51',
         42 => 'stock_on_38',
         43 => 'stock_on_01',
+        44 => 'PROJECTREF',
     ];
 
     public function model(array $row)
