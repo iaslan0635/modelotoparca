@@ -1,29 +1,37 @@
 <div {{ $attributes->class(['products-view__options view-options view-options--offcanvas--mobile']) }}>
+
+
+
     <div class="card">
         <div class="card-body card-body--padding--2">
-            <div class="row">
-                <div class="col d-flex flex-column justify-content-between">
-                    <div>
-                        <h5>Kategoriler</h5>
-                    </div>
-                    <div wire:ignore>
-                        <div class="owl-carousel owl-brands-slider">
-                            @foreach(collect($categories)->chunk(2) as $i => $chunk)
-                            <div class="item" wire:key="brand-slider-chunk-{{$i}}">
-                                <div class="brand-slider-group">
-                                    @foreach($chunk as $category)
-                                    <img wire:key="brand-slider-group-{{$category->id}}"
-                                        src="{{ $category->imageUrl() }}" data-id="{{$category->id}}"
-                                        class="brand-slider-item category-select">
-                                    <span>{{ $category->name }} ({{ $category->products_count }})</span>
-                                    @endforeach
-                                </div>
+    <div class="row">
+        <div class="col d-flex flex-column justify-content-between">
+            <div>
+                <h5>Kategoriler</h5>
+            </div>
+            <div wire:ignore>
+                <div class="owl-carousel owl-category-slider">
+                    @foreach(collect($categories)->chunk(1) as $i => $chunk)
+                        <div class="item" wire:key="brand-slider-chunk-{{$i}}">
+                            <div class="brand-slider-group" style="height: 220px;">
+                                @foreach($chunk as $category)
+                                    <img wire:key="brand-slider-group-{{$category->id}}"  style="width: 170px; height: 170px;"
+                                         src="{{ $category->imageUrl() }}" data-id="{{$category->id}}"
+                                         class="brand-slider-item category-select">
+                                    <span style="text-align: center;">{{ $category->name }} ({{ $category->products_count }})</span>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body card-body--padding--2">
             <div class="row">
                 <div class="col d-flex flex-column justify-content-between">
                     <div>
@@ -31,9 +39,9 @@
                     </div>
                     <div wire:ignore>
                         <div class="owl-carousel owl-brands-slider">
-                            @foreach(collect($brands)->chunk(2) as $i => $chunk)
+                            @foreach(collect($brands)->chunk(1) as $i => $chunk)
                             <div class="item" wire:key="brand-slider-chunk-{{$i}}">
-                                <div class="brand-slider-group">
+                                <div class="brand-slider-group" >
                                     @foreach($chunk as $brand)
                                     <img wire:key="brand-slider-group-{{$brand->id}}" src="{{ $brand->imageUrl() }}"
                                         data-id="{{$brand->id}}" class="brand-slider-item brand-select">
@@ -97,6 +105,55 @@
         $('.category-select').trueclick(function () {
             selectCategory($(this).data('id'))
         })
+</script>
+
+<script defer>
+    $('.owl-category-slider').owlCarousel({
+        loop: false,
+        margin: 10,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 6
+            }
+        }
+    })
+
+    function selectBrand(id) {
+        console.log("selected brand " + id)
+        const qs = new URLSearchParams(window.location.search)
+
+        const keysToBeRemoved = Array.from(qs.keys()).filter(k => k.startsWith("brands"))
+        keysToBeRemoved.forEach(k => qs.delete(k))
+
+        qs.set("brands[]", id)
+        window.location.search = qs.toString()
+    }
+
+    $('.brand-select').trueclick(function () {
+        selectBrand($(this).data('id'))
+    })
+
+    function selectCategory(id) {
+        console.log("selected category " + id)
+        const qs = new URLSearchParams(window.location.search)
+
+        const keysToBeRemoved = Array.from(qs.keys()).filter(k => k.startsWith("category"))
+        keysToBeRemoved.forEach(k => qs.delete(k))
+
+        qs.set("category", id)
+        window.location.search = qs.toString()
+    }
+
+    $('.category-select').trueclick(function () {
+        selectCategory($(this).data('id'))
+    })
 </script>
 @endpush
 @push("styles")
