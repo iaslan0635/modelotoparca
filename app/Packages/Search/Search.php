@@ -51,6 +51,15 @@ class Search
         return str_replace($turkishChars, $latinChars, $text);
     }
 
+    /**
+     * Özel karakterleri metinden temizler
+     */
+    private function removeSpecialChars($text)
+    {
+        // -_/?=)(&%+^'! ve benzeri özel karakterleri kaldır
+        return preg_replace('/[-_\/?=\)(&%+^\'!]/', '', $text);
+    }
+
     public function __construct(
         private readonly string $term,
         private readonly ?string $sortBy = null,
@@ -180,16 +189,32 @@ class Search
             // Bu kelime için tüm alanlarda arama yapacak bir sorgu
             $termQuery = Query::bool();
 
+            $term = strtolower($term);
+            $latinTerm = strtolower($latinTerm);
+
             // Tüm alanlarda ara
             foreach (self::SEARCH_FIELDS as $field) {
                 // Kod alanları için özel işlem
                 if (in_array($field, ['producercode', 'producercode_unbranded', 'part_number', 'cross_code', 'producercode2', 'hidden_searchable', 'tecdoc', 'oems', 'similars'])) {
+                    // Özel karakterleri temizle
+                    $cleanTerm = $this->removeSpecialChars($term);
+                    $cleanLatinTerm = $this->removeSpecialChars($latinTerm);
+
                     // Kod alanları için term (tam eşleşme)
                     $termQuery->should(
                         Query::term()
                             ->field($field)
                             ->value($term)
                     );
+
+                    // Özel karakterleri temizlenmiş versiyonu da ara
+                    if ($term !== $cleanTerm) {
+                        $termQuery->should(
+                            Query::term()
+                                ->field($field)
+                                ->value($cleanTerm)
+                        );
+                    }
 
                     // Latin karakterli versiyonu da ara
                     if ($term !== $latinTerm) {
@@ -200,6 +225,15 @@ class Search
                         );
                     }
 
+                    // Latin karakterli ve özel karakterleri temizlenmiş versiyonu da ara
+                    if ($latinTerm !== $cleanLatinTerm && $term !== $cleanLatinTerm) {
+                        $termQuery->should(
+                            Query::term()
+                                ->field($field)
+                                ->value($cleanLatinTerm)
+                        );
+                    }
+
                     // Prefix sorgusu (başından itibaren eşleşme)
                     $termQuery->should(
                         Query::prefix()
@@ -207,12 +241,30 @@ class Search
                             ->value($term)
                     );
 
-                    // Latin karakterli versiyonu da ara
+                    // Özel karakterleri temizlenmiş versiyonu da ara (prefix)
+                    if ($term !== $cleanTerm) {
+                        $termQuery->should(
+                            Query::prefix()
+                                ->field($field)
+                                ->value($cleanTerm)
+                        );
+                    }
+
+                    // Latin karakterli versiyonu da ara (prefix)
                     if ($term !== $latinTerm) {
                         $termQuery->should(
                             Query::prefix()
                                 ->field($field)
                                 ->value($latinTerm)
+                        );
+                    }
+
+                    // Latin karakterli ve özel karakterleri temizlenmiş versiyonu da ara (prefix)
+                    if ($latinTerm !== $cleanLatinTerm && $term !== $cleanLatinTerm) {
+                        $termQuery->should(
+                            Query::prefix()
+                                ->field($field)
+                                ->value($cleanLatinTerm)
                         );
                     }
                 }
@@ -304,6 +356,9 @@ class Search
         // Türkçe karakterleri Latin karakterlere dönüştür
         $latinTerm = $this->convertTurkishToLatin($term);
 
+        $term = strtolower($term);
+        $latinTerm = strtolower($latinTerm);
+
         $query = Query::bool();
 
         // Tüm alanlarda ara
@@ -373,12 +428,25 @@ class Search
                     );
                 }
             } elseif (in_array($field, ['producercode', 'producercode_unbranded', 'part_number', 'cross_code', 'producercode2', 'hidden_searchable', 'tecdoc', 'oems', 'similars'])) {
+                // Özel karakterleri temizle
+                $cleanTerm = $this->removeSpecialChars($term);
+                $cleanLatinTerm = $this->removeSpecialChars($latinTerm);
+
                 // Kod alanları için term (tam eşleşme)
                 $query->should(
                     Query::term()
                         ->field($field)
                         ->value($term)
                 );
+
+                // Özel karakterleri temizlenmiş versiyonu da ara
+                if ($term !== $cleanTerm) {
+                    $query->should(
+                        Query::term()
+                            ->field($field)
+                            ->value($cleanTerm)
+                    );
+                }
 
                 // Latin karakterli versiyonu da ara
                 if ($term !== $latinTerm) {
@@ -389,6 +457,15 @@ class Search
                     );
                 }
 
+                // Latin karakterli ve özel karakterleri temizlenmiş versiyonu da ara
+                if ($latinTerm !== $cleanLatinTerm && $term !== $cleanLatinTerm) {
+                    $query->should(
+                        Query::term()
+                            ->field($field)
+                            ->value($cleanLatinTerm)
+                    );
+                }
+
                 // Prefix sorgusu (başından itibaren eşleşme)
                 $query->should(
                     Query::prefix()
@@ -396,12 +473,30 @@ class Search
                         ->value($term)
                 );
 
-                // Latin karakterli versiyonu da ara
+                // Özel karakterleri temizlenmiş versiyonu da ara (prefix)
+                if ($term !== $cleanTerm) {
+                    $query->should(
+                        Query::prefix()
+                            ->field($field)
+                            ->value($cleanTerm)
+                    );
+                }
+
+                // Latin karakterli versiyonu da ara (prefix)
                 if ($term !== $latinTerm) {
                     $query->should(
                         Query::prefix()
                             ->field($field)
                             ->value($latinTerm)
+                    );
+                }
+
+                // Latin karakterli ve özel karakterleri temizlenmiş versiyonu da ara (prefix)
+                if ($latinTerm !== $cleanLatinTerm && $term !== $cleanLatinTerm) {
+                    $query->should(
+                        Query::prefix()
+                            ->field($field)
+                            ->value($cleanLatinTerm)
                     );
                 }
             } else {
