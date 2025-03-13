@@ -57,7 +57,10 @@ class Search
     private function removeSpecialChars($text)
     {
         // -_/?=)(&%+^'! ve benzeri özel karakterleri kaldır
-        return preg_replace('/[-_\/?=\)(&%+^\'!.:;]/', '', $text);
+//        return preg_replace('/[-_\/?=\)(&%+^\'!.:;]/', '', $text);
+
+        // Tüm özel karakterleri ve boşlukları kaldır
+        return preg_replace('/[\s\-_\/?=\)(&%+^\'!.:;]+/', '', $text);
     }
 
     public function __construct(
