@@ -263,7 +263,7 @@
                                             <div class="ms-5">
                                                 <!--begin::Title-->
                                                 <a href="{{ route('admin.order.marketplace.show', $order) }}"
-                                                   class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ \App\Services\MarketPlace::parseOrder($order)['client']['full_name'] }}</a>
+                                                   class="text-gray-800 text-hover-primary fs-5 fw-bold">{{ \App\Services\MarketPlace::parseOrder($order)['client']['full_name'] ?? "" }}</a>
                                                 <!--end::Title-->
                                             </div>
                                         </div>
