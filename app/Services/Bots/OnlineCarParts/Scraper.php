@@ -99,13 +99,25 @@ class Scraper
 
         $vehicles = $this->getVehicleIds($ocpProductId, $makerIds);
 
+//        $tecdoc = Utils::fromEntries(
+//            $crawler->filter('.product-analogs__wrapper li')
+//                ->each(fn (Crawler $el) => [
+//                    $this->normalizeColumnName($el->filter('span')->innerText()),
+//                    $el->innerText(),
+//                ])
+//        );
+
+
         $tecdoc = Utils::fromEntries(
-            $crawler->filter('.product-analogs__wrapper li')
-                ->each(fn (Crawler $el) => [
-                    $this->normalizeColumnName($el->filter('span')->innerText()),
-                    $el->innerText(),
-                ])
+            $crawler->filter('.product-analogs__wrapper li')->each(function (Crawler $el) {
+                if (! $el->filter('span')->count()) return null;
+
+                $brand = trim(str_replace(':', '', $el->filter('span')->text()));
+                $code = trim(str_replace($el->filter('span')->text(), '', $el->text()));
+                return [$brand, $code];
+            })
         );
+
 
         $subtitle = $crawler->filter('.product__subtitle')->innerText();
 
