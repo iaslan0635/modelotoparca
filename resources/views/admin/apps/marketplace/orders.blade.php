@@ -255,7 +255,7 @@
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <a href="{{ route('admin.order.marketplace.show', $order) }}">
                                                     <div class="symbol-label fs-3 bg-light-danger text-danger">
-                                                        {{ substr(\App\Services\MarketPlace::parseOrder($order)['client']['full_name'], 0, 1) }}
+                                                        {{ substr(\App\Services\MarketPlace::parseOrder($order)['client']['full_name'] ?? "", 0, 1) }}
                                                     </div>
                                                 </a>
                                             </div>
