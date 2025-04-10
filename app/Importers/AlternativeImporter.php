@@ -21,6 +21,9 @@ class AlternativeImporter extends Importer
     {
         $H = $this->getRowCount();
         Product::withoutSyncingToSearch(function () use ($H) {
+            // Önce alternatives tablosundaki tüm verileri temizle
+            DB::table('alternatives')->truncate();
+
             $mainRefs = collect($this->sheet->rangeToArray("B2:B$H"))->pluck(0);
             $subRefs = collect($this->sheet->rangeToArray("C2:C$H"))->pluck(0);
 
@@ -36,15 +39,16 @@ class AlternativeImporter extends Importer
                 $this->reportStatus($i);
 
                 foreach ($subs as $sub) {
-                    DB::table('alternatives')->insertOrIgnore([
+                    DB::table('alternatives')->insert([
                         'product_id' => $mainRef,
                         'alternative_id' => $sub,
                     ]);
                 }
             }
 
-                        $allMainRefs = array_keys($refMap);
-                        DB::table("alternatives")->whereNotIn("product_id", $allMainRefs)->delete();
+            // Artık bu kod bloğuna gerek yok, çünkü tabloyu başlangıçta temizledik
+            // $allMainRefs = array_keys($refMap);
+            // DB::table("alternatives")->whereNotIn("product_id", $allMainRefs)->delete();
         });
     }
 }
