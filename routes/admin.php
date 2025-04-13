@@ -157,3 +157,25 @@ Route::controller(EmployeeController::class)->name("employee.")->prefix("employe
     Route::put('{employee}', 'update')->name('update')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
     Route::delete('{employee}', 'destroy')->name('destroy')->middleware(permissionMiddleware('Kullanıcı İşlemleri.Kullanıcılar.Düzenle.*'));
 });
+
+
+
+
+
+//Route::prefix('panel')->group(function () {
+//    Route::get('/dashboard3', function () {
+//        return view('panel.dashboard.index');
+//    })->name('dashboard3');
+//
+//    // Diğer sayfalar için route tanımlamaları
+//});
+
+
+Route::prefix('panel')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Panel\DashboardController::class, 'index'])->name('panel.dashboard');
+});
+
+
+//Route::middleware(['auth'])->prefix('panel')->group(function () {
+//    Route::get('/', [\App\Http\Controllers\Panel\DashboardController::class, 'index'])->name('panel.dashboard');
+//});

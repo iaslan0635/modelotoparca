@@ -73,13 +73,3 @@ Route::get('/garage/deselect', function () {
 Route::get('{page:slug}', [PageController::class, 'show'])->name('page.show')->fallback();
 Route::get('/iletisim', function () { return view('pages.contact');
 });
-
-
-
-Route::prefix('panel')->group(function () {
-    Route::get('/dashboard3', function () {
-        return view('panel.dashboard.index');
-    })->name('dashboard3');
-
-    // Diğer sayfalar için route tanımlamaları
-});
