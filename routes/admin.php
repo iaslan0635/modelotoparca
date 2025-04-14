@@ -170,9 +170,9 @@ Route::controller(EmployeeController::class)->name("employee.")->prefix("employe
 //    // Diğer sayfalar için route tanımlamaları
 //});
 
-
 Route::prefix('panel')->group(function () {
     Route::get('/', [\App\Http\Controllers\Panel\DashboardController::class, 'index'])->name('panel.dashboard');
+    Route::get('products/{product}', [ProductController::class, 'show'])->name('panel.product.show');
 });
 
 
