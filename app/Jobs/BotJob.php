@@ -42,7 +42,7 @@ class BotJob implements ShouldQueue
         $product->actualProduct?->searchable();
     }
 
-    private function runBotForProduct(TigerProduct $product): bool
+    public function runBotForProduct(TigerProduct $product): bool
     {
         $search_predence = [
             'abk',

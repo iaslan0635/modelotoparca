@@ -16,6 +16,15 @@ use App\Livewire\CategoryPage;
 use App\Livewire\FullPageCarSelector;
 use Illuminate\Support\Facades\Route;
 
+Route::get('test', function (){
+//    echo \App\Services\Bots\OcpClient::requestWithoutRetry("https://www.onlinecarparts.co.uk/ajax/search/autocomplete?keyword=tc3211", false);
+//    exit;
+    $product = \App\Models\TigerProduct::find(73874);
+    $bot = new \App\Jobs\BotJob($product);
+    $bot->runBotForProduct($product);
+
+});
+
 Route::get('/', HomeController::class)->name('home');
 
 Route::view('search', 'search')->name('search');
