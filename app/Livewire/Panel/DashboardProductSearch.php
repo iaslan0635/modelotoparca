@@ -7,55 +7,99 @@ use App\Models\Product;
 
 class DashboardProductSearch extends Component
 {
-//    public $search = '';
-//    public $products = [];
-
     public string $tab = 'general';
-    public string $search = '';
+
+    public string $searchGeneralInput = '';
+    public string $searchLogicalInput = '';
+
     public $products = [];
+    public ?Product $selectedProduct = null;
+    public bool $showModal = false;
+
+    public $latestProducts = [];
 
 
-    public function search()
+    protected array $columnLabels = [
+        'title' => 'Ürün Adı',
+        'sub_title' => 'Alt Başlık',
+        'description' => 'Açıklama',
+        'sku' => 'SKU',
+        'part_number' => 'Parça Numarası',
+        'producercode' => 'Üretici Kodu',
+        'cross_code' => 'Cross Kod',
+        'oem_codes' => 'OEM Kodları',
+        'producercode2' => 'Üretici Kodu 2',
+        'abk' => 'ABK',
+        'similar_product_codes' => 'Benzer Ürün Kodları',
+        'producercode_unbranded' => 'Markasız Üretici Kodu',
+        'cross_code_regexed' => 'Regex Cross Kod',
+        'producercode_regexed' => 'Regex Üretici Kodu',
+        'producercode2_regexed' => 'Regex Üretici Kodu 2',
+        'similar_product_codes_regexed' => 'Regex Benzer Kodlar',
+        'oem_codes_regexed' => 'Regex OEM Kodları',
+        'oem_codes_unspaced' => 'Boşluksuz OEM Kodları',
+        'hidden_searchable' => 'Gizli Arama',
+        'tecdoc' => 'TecDoc'
+    ];
+
+    public int $limit = 10;
+
+    public function searchGeneral()
     {
-        $query = trim($this->search);
+        $query = trim($this->searchGeneralInput);
+        $this->products = [];
 
-        if ($this->tab === 'logical') {
-            $this->products = Product::where('id', $query)->get();
-            return;
-        }
+        foreach ($this->columnLabels as $column => $label) {
+            $matched = Product::where($column, 'like', "%{$query}%")
+                ->limit($this->limit)
+                ->get()
+                ->map(function ($product) use ($label) {
+                    $product->match_column = $label;
+                    return $product;
+                });
 
-        if ($this->tab === 'general') {
-            $this->products = Product::where(function ($q) use ($query) {
-                $q->where('title', 'like', "%{$query}%")
-                    ->orWhere('sub_title', 'like', "%{$query}%")
-                    ->orWhere('description', 'like', "%{$query}%")
-                    ->orWhere('sku', 'like', "%{$query}%")
-                    ->orWhere('part_number', 'like', "%{$query}%")
-                    ->orWhere('producercode', 'like', "%{$query}%")
-                    ->orWhere('cross_code', 'like', "%{$query}%")
-                    ->orWhere('oem_codes', 'like', "%{$query}%")
-                    ->orWhere('producercode2', 'like', "%{$query}%")
-                    ->orWhere('abk', 'like', "%{$query}%")
-                    ->orWhere('similar_product_codes', 'like', "%{$query}%")
-                    ->orWhere('producer_unbranded', 'like', "%{$query}%")
-                    ->orWhere('cross_code_regexed', 'like', "%{$query}%")
-                    ->orWhere('producercode_regexed', 'like', "%{$query}%")
-                    ->orWhere('producercode2_regexed', 'like', "%{$query}%")
-                    ->orWhere('similar_product_codes_regexed', 'like', "%{$query}%")
-                    ->orWhere('oem_codes_regexed', 'like', "%{$query}%")
-                    ->orWhere('oem_codes_unspaced', 'like', "%{$query}%")
-                    ->orWhere('hidden_searchable', 'like', "%{$query}%")
-                    ->orWhere('tecdoc', 'like', "%{$query}%");
-            })->limit(30)->get();
+            if ($matched->isNotEmpty()) {
+                $this->products = $matched;
+                break;
+            }
         }
     }
 
+    public function searchLogical()
+    {
+        $query = trim($this->searchLogicalInput);
+        $product = Product::find($query);
+        if ($product) {
+            $product->match_column = 'ID';
+            $this->products = [$product];
+        } else {
+            $this->products = [];
+        }
+    }
 
+    public function openModal($productId)
+    {
+        $this->selectedProduct = Product::find($productId);
+        $this->dispatch('open-product-modal');
+    }
 
+    public function closeModal()
+    {
+        $this->reset('selectedProduct');
+        $this->dispatch('close-product-modal');
+    }
+
+    public function mount()
+    {
+        $this->latestProducts = Product::orderByDesc('updated_at')->take(5)->get();
+    }
 
     public function render()
     {
-        return view('livewire.panel.dashboard-product-search');
+        return view('livewire.panel.dashboard-product-search', [
+            'showModal' => $this->showModal,
+            'selectedProduct' => $this->selectedProduct,
+            'products' => $this->products
+        ]);
     }
-
 }

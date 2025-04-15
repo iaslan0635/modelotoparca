@@ -3,6 +3,7 @@
 
 <head>
     @include('panel.partials.head')
+    @livewireStyles
 </head>
 
 <body>
@@ -35,7 +36,7 @@
 
 </div>
 <!-- END layout-wrapper -->
-
+    @livewireScripts
 @include('panel.partials.scripts')
 
 @stack('scripts')
