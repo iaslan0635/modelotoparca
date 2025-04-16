@@ -59,5 +59,10 @@
             @endforeach
             </tbody>
         </table>
+
+        <!-- ✅ Sayfalama bağlantısı -->
+        <div class="mt-4">
+            {{ $logs->links('pagination::bootstrap-5') }}
+        </div>
     </div>
 </div>
