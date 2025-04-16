@@ -96,16 +96,24 @@ final class ProductPage
         });
     }
 
-    public function saveToDatabase(int $product_id, bool $includeTectoc)
+
+    public function saveToDatabase(int $product_id, bool $includeTectoc, bool $includeOems = true)
     {
-        DB::transaction(function () use ($includeTectoc, $product_id) {
-            ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['logicalref' => $product_id]), $this->oems));
+        DB::transaction(function () use ($includeTectoc, $includeOems, $product_id) {
+
+            if ($includeOems) {
+                ProductOem::insertOrIgnore(
+                    array_map(fn($oem) => array_merge($oem, ['logicalref' => $product_id]), $this->oems)
+                );
+            }
 
             $product = Product::findOrFail($product_id, ['id', 'tecdoc']);
             $product->specifications = $this->specs;
+
             if ($includeTectoc) {
                 $product->tecdoc = array_merge($product->tecdoc ?? [], $this->tecdoc);
             }
+
             $product->save();
 
             ProductCar::insertOrIgnore(
@@ -124,4 +132,35 @@ final class ProductPage
             );
         });
     }
+
+
+
+//    public function saveToDatabase(int $product_id, bool $includeTectoc)
+//    {
+//        DB::transaction(function () use ($includeTectoc, $product_id) {
+//            ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['logicalref' => $product_id]), $this->oems));
+//
+//            $product = Product::findOrFail($product_id, ['id', 'tecdoc']);
+//            $product->specifications = $this->specs;
+//            if ($includeTectoc) {
+//                $product->tecdoc = array_merge($product->tecdoc ?? [], $this->tecdoc);
+//            }
+//            $product->save();
+//
+//            ProductCar::insertOrIgnore(
+//                array_map(fn($vehicleId) => [
+//                    'logicalref' => $product_id,
+//                    'car_id' => $vehicleId,
+//                ], $this->vehicles)
+//            );
+//
+//            BotImage::insertOrIgnore(
+//                array_map(fn($image) => [
+//                    'product_id' => $product_id,
+//                    'url' => $image,
+//                    'bot_page_url' => $this->url,
+//                ], $this->images)
+//            );
+//        });
+//    }
 }
