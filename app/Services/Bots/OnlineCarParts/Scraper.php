@@ -92,7 +92,8 @@ class Scraper
         }
 
         $_artkl = $crawler->filter('.product__artkl')->innerText();
-        $articleId = Utils::regex('/Article №: ([^ ]+)/', $_artkl, 1);
+//        $articleId = Utils::regex('/Article №: ([^ ]+)/', $_artkl, 1);
+        $articleId = Utils::regex('/Article (?:№|number): ([^ ]+)/', $_artkl, 1);
         if ($articleId === null) {
             throw new Exception("Article ID not found in artkl: $_artkl");
         }
@@ -144,6 +145,8 @@ class Scraper
             mpn: $metadata->mpn,
             sku: $metadata->sku,
             gtin13: $metadata->gtin13,
+            analogProducts: $crawler->filter('.product-analogs__wrapper li')->each(fn (Crawler $el) => $el->text()),
+
         );
     }
 

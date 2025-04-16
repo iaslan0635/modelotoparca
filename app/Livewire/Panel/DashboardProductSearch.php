@@ -4,20 +4,21 @@ namespace App\Livewire\Panel;
 
 use Livewire\Component;
 use App\Models\Product;
+use Livewire\WithPagination;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class DashboardProductSearch extends Component
 {
-    public string $tab = 'general';
+    use WithPagination;
 
+    public string $tab = 'general';
     public string $searchGeneralInput = '';
     public string $searchLogicalInput = '';
 
     public $products = [];
     public ?Product $selectedProduct = null;
     public bool $showModal = false;
-
-    public $latestProducts = [];
-
 
     protected array $columnLabels = [
         'title' => 'Ürün Adı',
@@ -89,14 +90,28 @@ class DashboardProductSearch extends Component
         $this->dispatch('close-product-modal');
     }
 
-    public function mount()
+    public function getLatestProductsProperty()
     {
-        $this->latestProducts = Product::orderByDesc('updated_at')->take(5)->get();
+        $items = Product::latest('updated_at')->take(25)->get();
+
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = 5;
+
+        $currentItems = $items->slice(($currentPage - 1) * $perPage, $perPage)->values();
+
+        return new LengthAwarePaginator(
+            $currentItems,
+            $items->count(),
+            $perPage,
+            $currentPage,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
     }
 
     public function render()
     {
         return view('livewire.panel.dashboard-product-search', [
+            'latestProducts' => $this->latestProducts,
             'showModal' => $this->showModal,
             'selectedProduct' => $this->selectedProduct,
             'products' => $this->products

@@ -31,6 +31,7 @@ final class ProductPage
         public readonly string $mpn,
         public readonly string $sku,
         public readonly string $gtin13,
+        public readonly array $analogProducts = [],
     )
     {
     }
