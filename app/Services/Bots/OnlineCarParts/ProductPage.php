@@ -96,7 +96,7 @@ final class ProductPage
         });
     }
 
-    public function saveToDatabase(int $product_id, bool $includeTectoc )
+    public function saveToDatabase(int $product_id, bool $includeTectoc)
     {
         DB::transaction(function () use ($includeTectoc, $product_id) {
             ProductOem::insertOrIgnore(array_map(fn($oem) => array_merge($oem, ['logicalref' => $product_id]), $this->oems));
