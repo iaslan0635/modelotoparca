@@ -75,7 +75,8 @@ class OnlineCarParts
 
             $this->data
                 ->getProductPage($link)
-                ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+//                ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+                ->saveToDatabase($this->product_id, true); // 🟢 her zaman kaydetsin
 
             $successfulProductCount++;
             if (!$connection->exists) {
@@ -125,7 +126,8 @@ class OnlineCarParts
 
                 $this->data
                     ->getProductPage($link)
-                    ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+//                    ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+                    ->saveToDatabase($this->product_id, true); // 🟢 her zaman kaydetsin
 
                 $successfulProductCount++;
                 if (!$connection->exists) {
