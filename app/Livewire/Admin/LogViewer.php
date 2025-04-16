@@ -28,7 +28,7 @@ class LogViewer extends Component
     {
         $logs = Log::where('product_id', $this->productId)
             ->orderByDesc('created_at')
-            ->paginate(10);
+            ->paginate(30);
 
         return view('livewire.admin.log-viewer', compact('logs'));
 
