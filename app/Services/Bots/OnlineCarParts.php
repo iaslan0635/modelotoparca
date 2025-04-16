@@ -256,8 +256,8 @@ class OnlineCarParts
 
     private function shouldSaveOems()
     {
-        return in_array($this->field, ['producercode', 'producercode2', 'cross_code', 'oem_codes']);
-//        return $this->field !== 'abk';
+//        return in_array($this->field, ['producercode', 'producercode2', 'cross_code', 'oem_codes']);
+        return $this->field !== 'abk';
     }
 
 }
