@@ -9,7 +9,7 @@ use App\Packages\Fuzz;
 
 class OnlineCarParts
 {
-    public const VERSION = 3; // Used for logging
+    public const VERSION = 4; // Used for logging
 
     private readonly OnlineCarParts\DataProvider $data;
 

@@ -21,7 +21,7 @@ class BotJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    const VERSION = 3; // Used for logging
+    const VERSION = 4; // Used for logging
 
     private static $botMock = null;
     private string $logContextId;
