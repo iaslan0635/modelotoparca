@@ -30,26 +30,55 @@ class OnlineCarParts
         $this->isOem = $this->field === 'oem_codes';
     }
 
+//    public function smash(): bool
+//    {
+//        if ($this->scrape()) {
+//            return true;
+//        }
+//        if ($this->regexed) {
+//            return false;
+//        }
+//
+//        $regexedBot = new OnlineCarParts(
+//            keyword: Fuzz::regexify($this->keyword),
+//            product_id: $this->product_id,
+//            field: $this->field,
+//            brand_filter: $this->brand_filter,
+//            regexed: true,
+//            ajax: $this->ajax,
+//            logContextId: $this->logContextId,
+//        );
+//
+//        return $regexedBot->scrape();
+//    }
+
     public function smash(): bool
     {
-        if ($this->scrape()) {
-            return true;
-        }
-        if ($this->regexed) {
-            return false;
+        // Virgülle ayrılmış tüm kodları al
+        $keywords = explode(',', $this->keyword);
+
+        foreach ($keywords as $index => $keyword) {
+            $keyword = trim($keyword);
+            if (!$keyword) continue;
+
+            $bot = new self(
+                keyword: $keyword,
+                product_id: $this->product_id,
+                field: $this->field,
+                brand_filter: $this->brand_filter,
+                regexed: false,
+                ajax: $this->ajax,
+                logContextId: $this->logContextId,
+            );
+
+            // İlk başarılı sonuçta dur
+            if ($bot->scrape()) {
+                return true;
+            }
         }
 
-        $regexedBot = new OnlineCarParts(
-            keyword: Fuzz::regexify($this->keyword),
-            product_id: $this->product_id,
-            field: $this->field,
-            brand_filter: $this->brand_filter,
-            regexed: true,
-            ajax: $this->ajax,
-            logContextId: $this->logContextId,
-        );
-
-        return $regexedBot->scrape();
+        // Hiçbiri başarılı olmadıysa false dön
+        return false;
     }
 
     public function scrape(): bool
