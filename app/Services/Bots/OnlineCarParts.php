@@ -104,7 +104,12 @@ class OnlineCarParts
 
             $this->data
                 ->getProductPage($link)
-                ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+                ->saveToDatabase(
+                    $this->product_id,
+                    $this->shouldSaveTecdoc(),
+                    $this->shouldSaveOems()
+                );
+
 //                ->saveToDatabase($this->product_id, true); // 🟢 her zaman kaydetsin
 
             $successfulProductCount++;
@@ -243,4 +248,10 @@ class OnlineCarParts
 //        return $this->field === 'producercode' || $this->field === 'producercode2';
         return in_array($this->field, ['producercode', 'producercode2', 'cross_code', 'oem_codes']);
     }
+
+    private function shouldSaveOems()
+    {
+        return $this->field !== 'abk';
+    }
+
 }
