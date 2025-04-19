@@ -90,16 +90,20 @@
 
 @push('custom_scripts')
     <script>
-        document.addEventListener('livewire:init', () => {
-            Livewire.hook('message.processed', (message, component) => {
-                document.querySelectorAll('[data-submit-cars]').forEach(button => {
-                    button.addEventListener('click', () => {
-                        let formData = $("#car-select-form").serializeArray();
-                        let ids = formData.filter(o => o.value === "on").map(o => o.name);
-                        console.log(ids);
-                        window.Livewire.dispatch('submitCarIds', { ids });
-                    });
-                });
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.querySelector('[data-submit-cars]');
+            if (!button) return;
+
+            button.addEventListener('click', () => {
+                let formData = $("#car-select-form").serializeArray();
+                let ids = formData.filter(o => o.value === "on").map(o => o.name);
+                console.log("✔ Bağlanacak ID'ler:", ids);
+
+                if (window.Livewire?.dispatch) {
+                    window.Livewire.dispatch('submitCarIds', { ids });
+                } else {
+                    console.warn("⚠ Livewire.dispatch mevcut değil!");
+                }
             });
         });
     </script>
