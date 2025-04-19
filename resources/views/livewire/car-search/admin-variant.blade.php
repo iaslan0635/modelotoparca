@@ -68,7 +68,8 @@
                         @foreach($engines[$group] ?? [] as $engine_)
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="{{ $engine_["id"] }}">
+{{--                                    <input class="form-check-input" type="checkbox" name="{{ $engine_["id"] }}">--}}
+                                    <input class="form-check-input" type="checkbox" name="{{ $engine_["id"] }}" value="on">
                                     {{ $engine_["name"] }}
                                 </label>
                             </div>
@@ -92,17 +93,31 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const button = document.querySelector('[data-submit-cars]');
-            if (!button) return;
+            if (!button) {
+                console.warn("🚫 data-submit-cars butonu bulunamadı.");
+                return;
+            }
 
             button.addEventListener('click', () => {
-                let formData = $("#car-select-form").serializeArray();
-                let ids = formData.filter(o => o.value === "on").map(o => o.name);
-                console.log("✔ Bağlanacak ID'ler:", ids);
+                const form = document.querySelector('#car-select-form');
+                if (!form) {
+                    console.warn("🚫 #car-select-form bulunamadı.");
+                    return;
+                }
+
+                const formData = new FormData(form);
+                const ids = [];
+                for (const [name, value] of formData.entries()) {
+                    ids.push(name);
+                }
+
+                console.log("✅ Seçilen araç ID'leri:", ids);
 
                 if (window.Livewire?.dispatch) {
                     window.Livewire.dispatch('submitCarIds', { ids });
+                    console.log("📤 Livewire.dispatch gönderildi");
                 } else {
-                    console.warn("⚠ Livewire.dispatch mevcut değil!");
+                    console.warn("🚫 window.Livewire.dispatch tanımlı değil.");
                 }
             });
         });
