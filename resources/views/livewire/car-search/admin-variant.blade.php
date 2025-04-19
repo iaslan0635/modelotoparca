@@ -89,7 +89,7 @@
     </div>
 </div>
 
-@push('custom_scripts')
+@section('custom_scripts')
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const button = document.querySelector('[data-submit-cars]');
@@ -131,4 +131,4 @@
 {{--            Livewire.emit('submitCarIds', ids)--}}
 {{--        })--}}
 {{--    </script>--}}
-@endpush
+@endsection
