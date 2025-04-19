@@ -79,7 +79,10 @@
                     @endforeach
                 </form>
             @endif
-            <button type="submit" class="btn btn-primary mt-4" wire:loading.class="btn-loading" wire:click="$dispatch('submitCars')">Bağla</button>
+{{--            <button type="submit" class="btn btn-primary mt-4" wire:loading.class="btn-loading" wire:click="$dispatch('submitCars')">--}}
+            <button type="button" class="btn btn-primary mt-4" data-submit-cars>
+                Bağla
+            </button>
         </div>
         <!--end::Card body-->
     </div>
@@ -87,11 +90,26 @@
 
 @push('custom_scripts')
     <script>
-        Livewire.on('submitCars', () => {
-            let formData = $("#car-select-form").serializeArray()
-            let ids = formData.filter(o => o.value === "on").map(o => o.name)
-            console.log(ids)
-            Livewire.emit('submitCarIds', ids)
-        })
+        document.addEventListener('livewire:init', () => {
+            Livewire.hook('message.processed', (message, component) => {
+                document.querySelectorAll('[data-submit-cars]').forEach(button => {
+                    button.addEventListener('click', () => {
+                        let formData = $("#car-select-form").serializeArray();
+                        let ids = formData.filter(o => o.value === "on").map(o => o.name);
+                        console.log(ids);
+                        window.Livewire.dispatch('submitCarIds', { ids });
+                    });
+                });
+            });
+        });
     </script>
+
+{{--    <script>--}}
+{{--        Livewire.on('submitCars', () => {--}}
+{{--            let formData = $("#car-select-form").serializeArray()--}}
+{{--            let ids = formData.filter(o => o.value === "on").map(o => o.name)--}}
+{{--            console.log(ids)--}}
+{{--            Livewire.emit('submitCarIds', ids)--}}
+{{--        })--}}
+{{--    </script>--}}
 @endpush
