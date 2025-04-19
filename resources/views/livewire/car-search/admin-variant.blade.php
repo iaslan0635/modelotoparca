@@ -90,39 +90,38 @@
 </div>
 
 @section('custom_scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const button = document.querySelector('[data-submit-cars]');
-            if (!button) {
-                console.warn("🚫 data-submit-cars butonu bulunamadı.");
-                return;
-            }
+{{--    <script>--}}
+{{--        document.addEventListener('DOMContentLoaded', () => {--}}
+{{--            const button = document.querySelector('[data-submit-cars]');--}}
+{{--            if (!button) {--}}
+{{--                console.warn("🚫 data-submit-cars butonu bulunamadı.");--}}
+{{--                return;--}}
+{{--            }--}}
 
-            button.addEventListener('click', () => {
-                const form = document.querySelector('#car-select-form');
-                if (!form) {
-                    console.warn("🚫 #car-select-form bulunamadı.");
-                    return;
-                }
+{{--            button.addEventListener('click', () => {--}}
+{{--                const form = document.querySelector('#car-select-form');--}}
+{{--                if (!form) {--}}
+{{--                    console.warn("🚫 #car-select-form bulunamadı.");--}}
+{{--                    return;--}}
+{{--                }--}}
 
-                const formData = new FormData(form);
-                const ids = [];
-                for (const [name, value] of formData.entries()) {
-                    ids.push(name);
-                }
+{{--                const formData = new FormData(form);--}}
+{{--                const ids = [];--}}
+{{--                for (const [name, value] of formData.entries()) {--}}
+{{--                    ids.push(name);--}}
+{{--                }--}}
 
-                console.log("✅ Seçilen araç ID'leri:", ids);
+{{--                console.log("✅ Seçilen araç ID'leri:", ids);--}}
 
-                if (window.Livewire?.dispatch) {
-                    window.Livewire.dispatch('submitCarIds', { ids });
-                    console.log("📤 Livewire.dispatch gönderildi");
-                } else {
-                    console.warn("🚫 window.Livewire.dispatch tanımlı değil.");
-                }
-            });
-        });
-    </script>
-
+{{--                if (window.Livewire?.dispatch) {--}}
+{{--                    window.Livewire.dispatch('submitCarIds', { ids });--}}
+{{--                    console.log("📤 Livewire.dispatch gönderildi");--}}
+{{--                } else {--}}
+{{--                    console.warn("🚫 window.Livewire.dispatch tanımlı değil.");--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 {{--    <script>--}}
 {{--        Livewire.on('submitCars', () => {--}}
 {{--            let formData = $("#car-select-form").serializeArray()--}}

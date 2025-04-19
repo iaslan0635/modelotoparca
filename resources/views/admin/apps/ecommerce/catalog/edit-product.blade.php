@@ -435,6 +435,39 @@
     </div>
 @endsection
 @push('vendor_scripts')
+    <script defer>
+        window.addEventListener('load', () => {
+            const button = document.querySelector('[data-submit-cars]');
+            if (!button) {
+                console.warn("🚫 Bağla butonu bulunamadı.");
+                return;
+            }
+
+            button.addEventListener('click', () => {
+                const form = document.querySelector('#car-select-form');
+                if (!form) {
+                    console.warn("🚫 Form bulunamadı.");
+                    return;
+                }
+
+                const formData = new FormData(form);
+                const ids = [];
+                for (const [name, value] of formData.entries()) {
+                    ids.push(name);
+                }
+
+                console.log("✅ Seçilen araç ID'leri:", ids);
+
+                if (window.Livewire?.dispatch) {
+                    window.Livewire.dispatch('submitCarIds', { ids });
+                    console.log("📤 Livewire.dispatch gönderildi");
+                } else {
+                    console.warn("🚫 Livewire.dispatch mevcut değil.");
+                }
+            });
+        });
+    </script>
+
     <script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
 @endpush
 @push('custom_scripts')
