@@ -20,6 +20,7 @@ use App\Http\Controllers\MerchantSettingController;
 use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
+use App\Services\Marketplace\TrendyolService;
 
 Route::get('/', DashboardController::class)->name('dashboard');
 
@@ -179,3 +180,50 @@ Route::prefix('panel')->group(function () {
 //Route::middleware(['auth'])->prefix('panel')->group(function () {
 //    Route::get('/', [\App\Http\Controllers\Panel\DashboardController::class, 'index'])->name('panel.dashboard');
 //});
+
+Route::get('/test-trendyol', function () {
+    $trendyol = new TrendyolService(
+        'M0acfthEjfhQWQEIM0VY',
+        'Qc8MMF65wsCH4ZJ6FKtI',
+        '611788'
+    );
+
+    $orders = $trendyol->getOrders();
+
+    if (empty($orders['content'])) {
+        return "Hiç sipariş bulunamadı.";
+    }
+
+    return response()->json($orders);
+});
+
+
+Route::get('/test-trendyol-products', function () {
+    $trendyol = new TrendyolService(
+        'M0acfthEjfhQWQEIM0VY',
+        'Qc8MMF65wsCH4ZJ6FKtI',
+        '611788'
+    );
+
+    $products = $trendyol->getProducts();
+
+    if (empty($products['content'])) {
+        return "Hiç ürün bulunamadı.";
+    }
+
+    return response()->json($products);
+});
+
+
+
+
+    Route::get('/marketplace', function () {
+        return view('panel.marketplace.index');
+    })->name('panel.marketplace.index');
+
+
+
+
+    Route::get('/marketplace/product-mapping', function () {
+        return view('panel.marketplace.product-mapping');
+    })->name('panel.marketplace.product-mapping');
