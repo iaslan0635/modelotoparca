@@ -242,9 +242,9 @@ Route::get('/panel/marketplace/sync-trendyol-products', [TrendyolProductSyncCont
 
 Route::get('/trendyol-product-create', function () {
 
-    $apiKey = 'SENIN_API_KEY';
-    $apiSecret = 'SENIN_API_SECRET';
-    $supplierId = 'SENIN_SUPPLIER_ID';
+    $apiKey = 'M0acfthEjfhQWQEIM0VY';       // Buraya kendi bilgilerini yaz
+    $apiSecret = 'Qc8MMF65wsCH4ZJ6FKtI'; // Buraya kendi bilgilerini yaz
+    $supplierId = '611788'; // Buraya kendi bilgilerini yaz
 
     $trendyol = new TrendyolService($apiKey, $apiSecret, $supplierId);
 
