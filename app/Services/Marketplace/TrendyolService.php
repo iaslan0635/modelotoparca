@@ -77,5 +77,18 @@ class TrendyolService
     }
 
 
+    public function testConnection()
+    {
+        $url = "{$this->baseUrl}/suppliers/{$this->supplierId}/products";
+
+        $response = Http::withBasicAuth($this->apiKey, $this->apiSecret)
+            ->get($url, [
+                'page' => 0,
+                'size' => 1, // Sadece 1 ürün çağır
+            ]);
+
+        return $response->json();
+    }
+
 
 }

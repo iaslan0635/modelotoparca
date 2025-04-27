@@ -240,29 +240,43 @@ Route::get('/panel/marketplace/sync-trendyol-products', [TrendyolProductSyncCont
     ->name('panel.marketplace.sync-trendyol-products');
 
 
-Route::get('/trendyol-product-test', function () {
+Route::get('/trendyol-product-create', function () {
 
-    $apiKey = 'M0acfthEjfhQWQEIM0VY';       // Buraya kendi bilgilerini yaz
-    $apiSecret = 'Qc8MMF65wsCH4ZJ6FKtI'; // Buraya kendi bilgilerini yaz
-    $supplierId = '611788'; // Buraya kendi bilgilerini yaz
+    $apiKey = 'SENIN_API_KEY';
+    $apiSecret = 'SENIN_API_SECRET';
+    $supplierId = 'SENIN_SUPPLIER_ID';
 
     $trendyol = new TrendyolService($apiKey, $apiSecret, $supplierId);
 
     $productData = [
-        'barcode' => '1234567890123', // Deneme barkod
-        'title' => 'Test Ürün - Entegrasyonu',
-        'sku' => 'TESTSKU123',
-        'brand_id' => 12345, // Gerçek bir Trendyol marka ID gerekli
-        'category_id' => 56789, // Gerçek bir Trendyol kategori ID gerekli
+        'barcode' => '8691234567890',
+        'title' => 'Test Ürün - ChatGPT Entegrasyonu',
+        'sku' => 'TESTSKU-12345',
+        'brand_id' => 331148,
+        'category_id' => 4269,
         'quantity' => 5,
-        'list_price' => 200,
-        'sale_price' => 150,
+        'list_price' => 200.00,
+        'sale_price' => 150.00,
         'images' => [
-            'https://via.placeholder.com/600x600.png?text=Test+Image'
+            'https://via.placeholder.com/600x600.png?text=Test+Product'
         ],
     ];
 
     $response = $trendyol->createProduct($productData);
 
-    dd($response); // Gelen cevabı ekranda göster
+    dd($response);
+});
+
+
+Route::get('/trendyol-connection-test', function () {
+    $apiKey = 'M0acfthEjfhQWQEIM0VY';       // Buraya kendi bilgilerini yaz
+    $apiSecret = 'Qc8MMF65wsCH4ZJ6FKtI'; // Buraya kendi bilgilerini yaz
+    $supplierId = '611788'; // Buraya kendi bilgilerini yaz
+
+
+    $trendyol = new TrendyolService($apiKey, $apiSecret, $supplierId);
+
+    $response = $trendyol->testConnection();
+
+    dd($response);
 });
