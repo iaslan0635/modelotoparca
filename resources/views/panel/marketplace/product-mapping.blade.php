@@ -1,5 +1,5 @@
 @extends('layouts.panel-app')
 
 @section('content')
-    @livewire('panel.marketplace-product-mapping')
+    @livewire('panel.marketplace-product-mapping-component')
 @endsection

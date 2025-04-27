@@ -21,6 +21,8 @@ use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Services\Marketplace\TrendyolService;
+use App\Livewire\Panel\MarketplaceProductMapping;
+use App\Http\Controllers\Panel\Marketplace\TrendyolProductSyncController;
 
 Route::get('/', DashboardController::class)->name('dashboard');
 
@@ -224,6 +226,43 @@ Route::get('/test-trendyol-products', function () {
 
 
 
-    Route::get('/marketplace/product-mapping', function () {
-        return view('panel.marketplace.product-mapping');
-    })->name('panel.marketplace.product-mapping');
+Route::get('/marketplace/product-mapping', function () {
+    return view('panel.marketplace.product-mapping');
+})->name('panel.marketplace.product-mapping');
+
+
+Route::get('/panel/test-livewire', function () {
+    return view('panel.marketplace.test-livewire');
+})->name('panel.test-livewire');
+
+
+Route::get('/panel/marketplace/sync-trendyol-products', [TrendyolProductSyncController::class, 'sync'])
+    ->name('panel.marketplace.sync-trendyol-products');
+
+
+Route::get('/trendyol-product-test', function () {
+
+    $apiKey = 'M0acfthEjfhQWQEIM0VY';       // Buraya kendi bilgilerini yaz
+    $apiSecret = 'Qc8MMF65wsCH4ZJ6FKtI'; // Buraya kendi bilgilerini yaz
+    $supplierId = '611788'; // Buraya kendi bilgilerini yaz
+
+    $trendyol = new TrendyolService($apiKey, $apiSecret, $supplierId);
+
+    $productData = [
+        'barcode' => '1234567890123', // Deneme barkod
+        'title' => 'Test Ürün - Entegrasyonu',
+        'sku' => 'TESTSKU123',
+        'brand_id' => 12345, // Gerçek bir Trendyol marka ID gerekli
+        'category_id' => 56789, // Gerçek bir Trendyol kategori ID gerekli
+        'quantity' => 5,
+        'list_price' => 200,
+        'sale_price' => 150,
+        'images' => [
+            'https://via.placeholder.com/600x600.png?text=Test+Image'
+        ],
+    ];
+
+    $response = $trendyol->createProduct($productData);
+
+    dd($response); // Gelen cevabı ekranda göster
+});

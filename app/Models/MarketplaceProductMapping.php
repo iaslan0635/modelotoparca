@@ -14,6 +14,15 @@ class MarketplaceProductMapping extends Model
         'marketplace_account_id',
         'external_product_id',
         'status',
-        'sync_log',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function marketplaceProduct()
+    {
+        return $this->belongsTo(MarketplaceProduct::class, 'external_product_id');
+    }
 }

@@ -31,16 +31,51 @@ class TrendyolService
         return $response->json();
     }
 
-    public function getProducts()
+    public function getProducts($page = 0, $size = 100)
     {
         $url = "{$this->baseUrl}/suppliers/{$this->supplierId}/products";
 
         $response = Http::withBasicAuth($this->apiKey, $this->apiSecret)->get($url, [
-            'page' => 0,
-            'size' => 20,
+            'page' => $page,
+            'size' => $size,
         ]);
 
         return $response->json();
     }
+
+    public function createProduct(array $productData)
+    {
+        $url = "{$this->baseUrl}/v2/products";
+
+        $payload = [
+            'items' => [
+                [
+                    'barcode' => $productData['barcode'],
+                    'title' => $productData['title'],
+                    'productMainId' => $productData['sku'],
+                    'brandId' => $productData['brand_id'], // Trendyol'daki Marka ID
+                    'categoryId' => $productData['category_id'], // Trendyol'daki Kategori ID
+                    'quantity' => $productData['quantity'],
+                    'stockCode' => $productData['stock_code'] ?? $productData['sku'], // yoksa sku
+                    'dimensionalWeight' => $productData['dimensional_weight'] ?? 1, // default 1
+                    'currencyType' => 'TRY',
+                    'listPrice' => $productData['list_price'],
+                    'salePrice' => $productData['sale_price'],
+                    'vatRate' => $productData['vat_rate'] ?? 18,
+                    'images' => $productData['images'] ?? [],
+                ]
+            ]
+        ];
+
+        $response = Http::withBasicAuth($this->apiKey, $this->apiSecret)
+            ->withHeaders([
+                'Content-Type' => 'application/json'
+            ])
+            ->post($url, $payload);
+
+        return $response->json();
+    }
+
+
 
 }
