@@ -14,7 +14,7 @@
             <input type="text" wire:model.live="value">
         @else
             <div wire:ignore>
-                <select
+                <select wire:model="value_id"
                     class="product-attribute-selector form-select" x-ref="select" wire:ignore>
                     <option disabled>Seçiniz</option>
                     @foreach($getIterator() ?? [] as $value)
