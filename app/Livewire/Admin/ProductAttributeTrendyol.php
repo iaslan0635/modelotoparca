@@ -25,7 +25,7 @@ class ProductAttributeTrendyol extends Component
             ->first();
 
         if ($sync) {
-            if ($sync->merchant_value_id) {
+            if (!is_null($sync->merchant_value_id)) {
                 $this->value_id = $sync->merchant_value_id;
             } else {
                 $this->value = $sync->merchant_value;
