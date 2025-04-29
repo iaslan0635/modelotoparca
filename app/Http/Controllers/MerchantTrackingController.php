@@ -11,7 +11,7 @@ class MerchantTrackingController extends Controller
 {
     public function failed()
     {
-        return view('admin.inhouse.merchant.failed-trackings', self::getFailedProducts(5));
+        return view('admin.inhouse.merchant.failed-trackings', self::getFailedProducts(1));
     }
 
     public static function getFailedProducts($perPage = null)
