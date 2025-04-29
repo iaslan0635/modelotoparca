@@ -52,7 +52,7 @@ class ProductAttributeTrendyol extends Component
     {
         Product::find($this->product_id)->merchantAttributes()->updateOrCreate([
             'merchant' => 'trendyol',
-            'merchant_id' => $this->attribute['attribute']['id'],
+            'merchant_id' => $this->attribute->attribute->id,
             'product_id' => $this->product_id,
         ], [
             $this->attribute['allowCustom'] ? 'merchant_value' : 'merchant_value_id' => $this->attribute['allowCustom'] ? $this->value : $this->value_id,
