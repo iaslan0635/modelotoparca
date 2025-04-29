@@ -15,7 +15,7 @@
         @else
             <div wire:ignore>
                 <select wire:model="value_id"
-                    class="product-attribute-selector form-select" x-ref="select" wire:ignore>
+                    class="product-attribute-selector form-select" {{--x-ref="select"--}} wire:ignore>
                     <option disabled>Seçiniz</option>
                     @foreach($getIterator() ?? [] as $value)
                         <option value="{{ $getOptionValue($value) }}">
