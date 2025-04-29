@@ -11,7 +11,7 @@
     </td>
     <td>
         @if($isText)
-            <input type="text" wire:model.live="value">
+            <input type="text" class="form-control" wire:model.live="value">
         @else
             <div wire:ignore>
                 <select wire:model="value_id"
