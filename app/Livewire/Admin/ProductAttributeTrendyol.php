@@ -50,6 +50,7 @@ class ProductAttributeTrendyol extends Component
 
     public function save()
     {
+        dd($this->attribute);
         Product::find($this->product_id)->merchantAttributes()->updateOrCreate([
             'merchant' => 'trendyol',
             'merchant_id' => $this->attribute->attribute->id,
