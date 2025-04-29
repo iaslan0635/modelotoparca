@@ -90,10 +90,11 @@
                     </a>
                     <div class="collapse menu-dropdown" id="menuMarketplaces">
                         <ul class="nav nav-sm flex-column">
+                            <li><a href="{{ route('admin.panel.marketplace.index') }}" class="nav-link">Pazaryerleri</a></li>
                             <li><a href="#" class="nav-link">Trendyol</a></li>
                             <li><a href="#" class="nav-link">Hepsiburada</a></li>
                             <li><a href="#" class="nav-link">Amazon</a></li>
-                            <li><a href="#" class="nav-link">Ürün Eşleştirme</a></li>
+                            <li><a href="{{ route('admin.panel.marketplace.product-mapping') }}" class="nav-link">Ürün Eşleştirme</a></li>
                             <li><a href="#" class="nav-link">Sipariş Senkronizasyonu</a></li>
                         </ul>
                     </div>

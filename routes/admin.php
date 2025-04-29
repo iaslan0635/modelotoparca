@@ -20,6 +20,9 @@ use App\Http\Controllers\MerchantSettingController;
 use App\Http\Controllers\MerchantTrackingController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
+use App\Services\Marketplace\TrendyolService;
+use App\Livewire\Panel\MarketplaceProductMapping;
+use App\Http\Controllers\Panel\Marketplace\TrendyolProductSyncController;
 
 Route::get('/', DashboardController::class)->name('dashboard');
 
@@ -179,3 +182,101 @@ Route::prefix('panel')->group(function () {
 //Route::middleware(['auth'])->prefix('panel')->group(function () {
 //    Route::get('/', [\App\Http\Controllers\Panel\DashboardController::class, 'index'])->name('panel.dashboard');
 //});
+
+Route::get('/test-trendyol', function () {
+    $trendyol = new TrendyolService(
+        'M0acfthEjfhQWQEIM0VY',
+        'Qc8MMF65wsCH4ZJ6FKtI',
+        '611788'
+    );
+
+    $orders = $trendyol->getOrders();
+
+    if (empty($orders['content'])) {
+        return "Hiç sipariş bulunamadı.";
+    }
+
+    return response()->json($orders);
+});
+
+
+Route::get('/test-trendyol-products', function () {
+    $trendyol = new TrendyolService(
+        'M0acfthEjfhQWQEIM0VY',
+        'Qc8MMF65wsCH4ZJ6FKtI',
+        '611788'
+    );
+
+    $products = $trendyol->getProducts();
+
+    if (empty($products['content'])) {
+        return "Hiç ürün bulunamadı.";
+    }
+
+    return response()->json($products);
+});
+
+
+
+
+    Route::get('/marketplace', function () {
+        return view('panel.marketplace.index');
+    })->name('panel.marketplace.index');
+
+
+
+
+Route::get('/marketplace/product-mapping', function () {
+    return view('panel.marketplace.product-mapping');
+})->name('panel.marketplace.product-mapping');
+
+
+Route::get('/panel/test-livewire', function () {
+    return view('panel.marketplace.test-livewire');
+})->name('panel.test-livewire');
+
+
+Route::get('/panel/marketplace/sync-trendyol-products', [TrendyolProductSyncController::class, 'sync'])
+    ->name('panel.marketplace.sync-trendyol-products');
+
+
+Route::get('/trendyol-product-create', function () {
+
+    $apiKey = 'M0acfthEjfhQWQEIM0VY';       // Buraya kendi bilgilerini yaz
+    $apiSecret = 'Qc8MMF65wsCH4ZJ6FKtI'; // Buraya kendi bilgilerini yaz
+    $supplierId = '611788'; // Buraya kendi bilgilerini yaz
+
+    $trendyol = new TrendyolService($apiKey, $apiSecret, $supplierId);
+
+    $productData = [
+        'barcode' => '8691234567890',
+        'title' => 'Test Ürün - ChatGPT Entegrasyonu',
+        'sku' => 'TESTSKU-12345',
+        'brand_id' => 331148,
+        'category_id' => 4269,
+        'quantity' => 5,
+        'list_price' => 200.00,
+        'sale_price' => 150.00,
+        'images' => [
+            'https://via.placeholder.com/600x600.png?text=Test+Product'
+        ],
+    ];
+
+    $response = $trendyol->createProduct($productData);
+
+    dd($response);
+});
+
+
+Route::get('/trendyol-connection-test', function () {
+    $apiKey = 'M0acfthEjfhQWQEIM0VY';       // Buraya kendi bilgilerini yaz
+    $apiSecret = 'Qc8MMF65wsCH4ZJ6FKtI'; // Buraya kendi bilgilerini yaz
+    $supplierId = '611788'; // Buraya kendi bilgilerini yaz
+
+
+    $trendyol = new TrendyolService($apiKey, $apiSecret, $supplierId);
+
+    $response = $trendyol->testConnection();
+
+    dd($response);
+});

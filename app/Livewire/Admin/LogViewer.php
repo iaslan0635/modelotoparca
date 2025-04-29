@@ -5,14 +5,18 @@ namespace App\Livewire\Admin;
 use App\Models\Log;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class LogViewer extends Component
 {
+    use WithPagination;
+
     public int $productId;
 
-    public Collection $logs;
+//    public Collection $logs;
 
     public array $colors = [];
+
 
     public function mount(int $productId)
     {
@@ -22,12 +26,19 @@ class LogViewer extends Component
 
     public function render()
     {
-        return view('livewire.admin.log-viewer');
+        $logs = Log::where('product_id', $this->productId)
+            ->orderByDesc('created_at')
+            ->paginate(30);
+
+        return view('livewire.admin.log-viewer', compact('logs'));
+
+//        return view('livewire.admin.log-viewer');
     }
 
     public function refresh()
     {
-        $this->logs = Log::where('product_id', $this->productId)->orderByDesc('created_at')->get();
+//        $this->logs = Log::where('product_id', $this->productId)->orderByDesc('created_at')->get();
+        $this->resetPage();
     }
 
     public function getColor(?string $hash)

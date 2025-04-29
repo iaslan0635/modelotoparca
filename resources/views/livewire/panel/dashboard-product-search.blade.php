@@ -52,19 +52,54 @@
         </div>
 
         <div class="col-xl-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">🕒 Son Güncellenen Ürünler</h5>
+            <div class="card card-height-100">
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1">🕒 Son Güncellenen Ürünler</h4>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group list-group-flush mb-0">
-                        @foreach($latestProducts as $product)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $product->title }}
-                                <span class="badge bg-light text-muted">{{ $product->updated_at->format('d.m.Y H:i') }}</span>
-                            </li>
-                        @endforeach
-                    </ul>
+                    <div class="table-responsive table-card">
+                        <table class="table table-centered table-hover align-middle table-nowrap mb-0">
+                            <tbody>
+                            @foreach($latestProducts as $product)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-shrink-0 me-2">
+                                                <img src="{{ asset('panel-assets/images/no-image.png') }}" alt="{{ $product->title }}" class="avatar-sm p-1" />
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h5 class="fs-14 my-1 fw-medium">
+                                                    <a href="{{ $product->id}}" class="text-reset">{{ $product->title }}</a>
+                                                </h5>
+                                                <span class="text-muted">Güncellendi: {{ $product->updated_at->format('d.m.Y H:i') }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="text-muted">SKU: {{ $product->sku }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-muted">Kod: {{ $product->product_code }}</span>
+                                    </td>
+                                    <td class="text-end">
+                                        <div class="d-flex justify-content-end gap-2">
+                                            <button wire:click="openModal({{ $product->id }})" class="btn btn-sm btn-outline-secondary" title="Hızlı Önizleme">
+                                                <i class="ri-eye-line"></i>
+                                            </button>
+                                            <a href="{{ $product->id}}" class="btn btn-sm btn-outline-primary" title="Ürün Sayfası">
+                                                <i class="ri-external-link-line"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-3">
+                        {{$latestProducts->links()}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,7 +122,7 @@
                                         <small><strong>⛳ Eşleşen Kolon:</strong> {{ $product['match_column'] ?? '-' }}</small>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <a href="/{{$product['id'] }}" class="btn btn-sm btn-outline-primary" title="Detay">
+                                        <a href="{{  $product['id']}}" class="btn btn-sm btn-outline-primary" title="Detay">
                                             <i class="ri-external-link-line"></i>
                                         </a>
                                         <button wire:click="openModal({{ $product['id'] }})" class="btn btn-sm btn-outline-secondary" title="Hızlı Önizleme">

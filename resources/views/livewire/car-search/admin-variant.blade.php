@@ -68,7 +68,8 @@
                         @foreach($engines[$group] ?? [] as $engine_)
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="{{ $engine_["id"] }}">
+{{--                                    <input class="form-check-input" type="checkbox" name="{{ $engine_["id"] }}">--}}
+                                    <input class="form-check-input" type="checkbox" name="{{ $engine_["id"] }}" value="on">
                                     {{ $engine_["name"] }}
                                 </label>
                             </div>
@@ -79,13 +80,48 @@
                     @endforeach
                 </form>
             @endif
-            <button type="submit" class="btn btn-primary mt-4" wire:loading.class="btn-loading" wire:click="$dispatch('submitCars')">Bağla</button>
+            <button type="submit" class="btn btn-primary mt-4" wire:loading.class="btn-loading" wire:click="$dispatch('submitCars')">
+{{--            <button type="button" class="btn btn-primary mt-4" submitCars>--}}
+                Bağla
+            </button>
         </div>
         <!--end::Card body-->
     </div>
 </div>
 
-@push('custom_scripts')
+@section('custom_scripts')
+{{--    <script>--}}
+{{--        document.addEventListener('DOMContentLoaded', () => {--}}
+{{--            const button = document.querySelector('[submitCars]');--}}
+{{--            if (!button) {--}}
+{{--                console.warn("🚫 submitCars butonu bulunamadı.");--}}
+{{--                return;--}}
+{{--            }--}}
+
+{{--            button.addEventListener('click', () => {--}}
+{{--                const form = document.querySelector('#car-select-form');--}}
+{{--                if (!form) {--}}
+{{--                    console.warn("🚫 #car-select-form bulunamadı.");--}}
+{{--                    return;--}}
+{{--                }--}}
+
+{{--                const formData = new FormData(form);--}}
+{{--                const ids = [];--}}
+{{--                for (const [name, value] of formData.entries()) {--}}
+{{--                    ids.push(name);--}}
+{{--                }--}}
+
+{{--                console.log("✅ Seçilen araç ID'leri:", ids);--}}
+
+{{--                if (window.Livewire?.dispatch) {--}}
+{{--                    window.Livewire.dispatch('submitCarIds', { ids });--}}
+{{--                    console.log("📤 Livewire.dispatch gönderildi");--}}
+{{--                } else {--}}
+{{--                    console.warn("🚫 window.Livewire.dispatch tanımlı değil.");--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
     <script>
         Livewire.on('submitCars', () => {
             let formData = $("#car-select-form").serializeArray()
@@ -94,4 +130,4 @@
             Livewire.emit('submitCarIds', ids)
         })
     </script>
-@endpush
+@endsection

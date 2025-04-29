@@ -9,7 +9,7 @@ use App\Packages\Fuzz;
 
 class OnlineCarParts
 {
-    public const VERSION = 3; // Used for logging
+    public const VERSION = 4; // Used for logging
 
     private readonly OnlineCarParts\DataProvider $data;
 
@@ -30,26 +30,55 @@ class OnlineCarParts
         $this->isOem = $this->field === 'oem_codes';
     }
 
+//    public function smash(): bool
+//    {
+//        if ($this->scrape()) {
+//            return true;
+//        }
+//        if ($this->regexed) {
+//            return false;
+//        }
+//
+//        $regexedBot = new OnlineCarParts(
+//            keyword: Fuzz::regexify($this->keyword),
+//            product_id: $this->product_id,
+//            field: $this->field,
+//            brand_filter: $this->brand_filter,
+//            regexed: true,
+//            ajax: $this->ajax,
+//            logContextId: $this->logContextId,
+//        );
+//
+//        return $regexedBot->scrape();
+//    }
+
     public function smash(): bool
     {
-        if ($this->scrape()) {
-            return true;
-        }
-        if ($this->regexed) {
-            return false;
+        // Virgülle ayrılmış tüm kodları al
+        $keywords = explode(',', $this->keyword);
+
+        foreach ($keywords as $index => $keyword) {
+            $keyword = trim($keyword);
+            if (!$keyword) continue;
+
+            $bot = new self(
+                keyword: $keyword,
+                product_id: $this->product_id,
+                field: $this->field,
+                brand_filter: $this->brand_filter,
+                regexed: false,
+                ajax: $this->ajax,
+                logContextId: $this->logContextId,
+            );
+
+            // İlk başarılı sonuçta dur
+            if ($bot->scrape()) {
+                return true;
+            }
         }
 
-        $regexedBot = new OnlineCarParts(
-            keyword: Fuzz::regexify($this->keyword),
-            product_id: $this->product_id,
-            field: $this->field,
-            brand_filter: $this->brand_filter,
-            regexed: true,
-            ajax: $this->ajax,
-            logContextId: $this->logContextId,
-        );
-
-        return $regexedBot->scrape();
+        // Hiçbiri başarılı olmadıysa false dön
+        return false;
     }
 
     public function scrape(): bool
@@ -75,7 +104,13 @@ class OnlineCarParts
 
             $this->data
                 ->getProductPage($link)
-                ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+                ->saveToDatabase(
+                    $this->product_id,
+                    $this->shouldSaveTecdoc(),
+                    $this->shouldSaveOems()
+                );
+//                ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+//                ->saveToDatabase($this->product_id, true); // 🟢 her zaman kaydetsin
 
             $successfulProductCount++;
             if (!$connection->exists) {
@@ -125,7 +160,13 @@ class OnlineCarParts
 
                 $this->data
                     ->getProductPage($link)
-                    ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+                    ->saveToDatabase(
+                        $this->product_id,
+                        $this->shouldSaveTecdoc(),
+                        $this->shouldSaveOems()
+                    );
+//                    ->saveToDatabase($this->product_id, $this->shouldSaveTecdoc());
+//                    ->saveToDatabase($this->product_id, true); // 🟢 her zaman kaydetsin
 
                 $successfulProductCount++;
                 if (!$connection->exists) {
@@ -209,6 +250,13 @@ class OnlineCarParts
 
     private function shouldSaveTecdoc()
     {
-        return $this->field === 'producercode' || $this->field === 'producercode2';
+//        return $this->field === 'producercode' || $this->field === 'producercode2';
+        return in_array($this->field, ['producercode', 'producercode2', 'cross_code', 'oem_codes']);
     }
+
+    private function shouldSaveOems()
+    {
+        return $this->field !== 'abk';
+    }
+
 }

@@ -9,24 +9,23 @@
 <body>
 <!-- layout wrapper -->
 <div id="layout-wrapper">
+
     <!-- Begin page -->
-    <div id="layout-wrapper">
-        <header id="page-topbar">
-            <div class="layout-width">
-    @include('panel.partials.topbar')
-
-            </div>
+    <header id="page-topbar">
+        <div class="layout-width">
+            @include('panel.partials.topbar')
+        </div>
     </header>
-        <!-- removeNotificationModal -->
-        @include('panel.partials.thememodal')
 
-        @include('panel.partials.sidebar')
+    @include('panel.partials.thememodal')
+    @include('panel.partials.sidebar')
 
     <!-- main content -->
     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
                 @yield('content')
+{{--                {{ $slot }}--}}
             </div>
         </div>
 
@@ -34,11 +33,11 @@
     </div>
     <!-- end main content -->
 
-</div>
-<!-- END layout-wrapper -->
-    @livewireScripts
-@include('panel.partials.scripts')
+</div> <!-- END layout-wrapper -->
 
+@livewireScripts
+@include('panel.partials.scripts')
 @stack('scripts')
+
 </body>
 </html>
