@@ -133,7 +133,6 @@ class N11 implements Merchant
                         'id' => $order->id,
                     ],
                 ]);
-                dd($info);
                 if ($info->result->status === 'success') {
                     $price = 0;
 
@@ -154,11 +153,11 @@ class N11 implements Merchant
                         'price' => $price,
                         'date' => self::convertTime($info->orderDetail->createDate),
                         'status' => self::STATUS[$info->orderDetail->status],
-                        'lines' => array_map(fn ($line) => [
+                        'lines' => gettype($info->itemList) === "array" ? array_map(fn ($line) => [
                             'sku' => $line->productSellerCode,
                             'quantity' => $line->quantity,
                             'price' => $line->price,
-                        ], $info->itemList),
+                        ], $info->itemList):[],
                         'line_data' => [],
                     ]);
                 }
