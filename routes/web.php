@@ -18,9 +18,9 @@ use App\Services\MarketPlace;
 use Illuminate\Support\Facades\Route;
 
 Route::get('test', function (){
-    foreach (MarketPlace::merchants() as $merchant) {
-        MarketPlace::errorContext(fn () => $merchant->syncOrders());
-    }
+    (new \App\Services\Merchants\N11())->syncOrders();
+    (new \App\Services\Merchants\TrendyolMerchant())->syncOrders();
+    return 'OK';
 //    $product = \App\Models\TigerProduct::find(73874);
 //    $bot = new \App\Jobs\BotJob($product);
 //    $bot->runBotForProduct($product);
