@@ -26,6 +26,7 @@ class SyncMerchantOrders extends Command
      */
     public function handle()
     {
-        SyncOrdersJob::dispatch();
+        (new \App\Services\Merchants\N11())->syncOrders();
+        (new \App\Services\Merchants\TrendyolMerchant())->syncOrders();
     }
 }

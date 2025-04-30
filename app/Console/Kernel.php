@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('queue:prune-batches')->daily();
+        $schedule->command('app:sync-merchant-orders')->everyFiveMinutes();
         $schedule->job(SyncMerchantOrdersJob::class, 'merchant')->everyFiveMinutes();
         $schedule->job(SyncMerchantQuestionsJob::class, 'merchant')->everyFiveMinutes();
     }
