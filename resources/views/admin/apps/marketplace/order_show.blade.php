@@ -304,6 +304,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody class="fw-semibold text-gray-600">
+                                                @if(isset($data['items']) && count($data['items']) > 0)
                                                 @foreach($data['items'] as $item)
                                                     <tr>
                                                         <!--begin::Product-->
@@ -346,6 +347,7 @@
                                                         </td>
                                                     </tr>
                                                 @endforeach
+                                                @endif
                                                 <!--begin::Grand total-->
                                                 <tr>
                                                     <td colspan="4" class="fs-3 text-dark text-end">Toplam</td>
