@@ -123,7 +123,7 @@ class N11 implements Merchant
                 // Şuanki Sayfa
                 'currentPage' => 0,
                 // Gösterilecek nesne
-                'pageSize' => 20,
+                'pageSize' => 50,
             ],
         ]);
         if ($orders->result->status === 'success') {
