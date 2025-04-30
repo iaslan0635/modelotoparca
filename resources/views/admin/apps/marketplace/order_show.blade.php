@@ -256,9 +256,9 @@
                                         </div>
                                         <!--end::Card header-->
                                         <!--begin::Card body-->
-                                        <div class="card-body pt-0">{{ $data['invoiceAddress']['address'] }}
-                                            <br/>{{ $data['invoiceAddress']['city'] }},
-                                            <br/>{{ $data['invoiceAddress']['district'] }}.
+                                        <div class="card-body pt-0">{{ $data['invoiceAddress']['address'] ?? "" }}
+                                            <br/>{{ $data['invoiceAddress']['city'] ?? "" }},
+                                            <br/>{{ $data['invoiceAddress']['district'] ?? "" }}.
                                         </div>
                                         <!--end::Card body-->
                                     </div>

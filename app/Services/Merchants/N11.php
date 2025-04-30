@@ -483,7 +483,7 @@ class N11 implements Merchant
 
             return Helper::getN11EnumStatuses($status)->turkish;
         } catch (N11ClientException $exception) {
-            return 'N11 bağlanamadı!';
+            return 'N11 de ürün bulunamadı!';
         }
     }
 
