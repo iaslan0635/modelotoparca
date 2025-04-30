@@ -28,7 +28,7 @@ class MerchantOrder extends BaseModel
 
     protected static function booted(): void
     {
-        static::updated(function (MerchantOrder $order) {
+        /*static::updated(function (MerchantOrder $order) {
             if (! $order->wasChanged('data')) {
                 return;
             }
@@ -52,6 +52,6 @@ class MerchantOrder extends BaseModel
             if ($wasChanged('status')) {
                 dispatch(new Events\MerchantPaymentStatusChangedEvent($order));
             }
-        });
+        });*/
     }
 }
