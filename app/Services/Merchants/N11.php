@@ -153,11 +153,11 @@ class N11 implements Merchant
                         'price' => $price,
                         'date' => self::convertTime($info->orderDetail->createDate),
                         'status' => self::STATUS[$info->orderDetail->status],
-                        'lines' => gettype($info->itemList) === "array" ? array_map(fn ($line) => [
+                        'lines' => gettype($info->orderDetail->itemList) === "array" ? array_map(fn ($line) => [
                             'sku' => $line->productSellerCode,
                             'quantity' => $line->quantity,
                             'price' => $line->price,
-                        ], $info->itemList):[],
+                        ], $info->orderDetail->itemList):[],
                         'line_data' => [],
                     ]);
                 }
