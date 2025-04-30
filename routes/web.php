@@ -17,6 +17,7 @@ use App\Livewire\FullPageCarSelector;
 use Illuminate\Support\Facades\Route;
 
 Route::get('test', function (){
+    return (new \App\Services\Merchants\N11())->getOrders();
     echo \App\Services\Bots\OcpClient::requestWithoutRetry("https://www.onlinecarparts.co.uk/ajax/search/autocomplete?keyword=tc3211", false);
     exit;
 //    $product = \App\Models\TigerProduct::find(73874);
