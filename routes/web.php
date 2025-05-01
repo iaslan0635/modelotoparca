@@ -19,6 +19,7 @@ use App\Services\MarketPlace;
 use Illuminate\Support\Facades\Route;
 
 Route::get('test', function (){
+    return (new \App\Services\Merchants\Hepsiburada())->getCategories();
     //return (new \App\Services\Merchants\N11())->getOrders();
     (new \App\Services\Merchants\N11())->syncOrders();
     (new \App\Services\Merchants\TrendyolMerchant())->syncOrders();
