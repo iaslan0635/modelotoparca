@@ -83,6 +83,11 @@ class Hepsiburada implements TrackableMerchant
 
     public function sendProduct(Product $product)
     {
+        dd($this->client('listing-external')->get("listings/merchantid/$this->merchantId", [
+            'offset' => 0,
+            'limit' => 1,
+            'merchantSkuList' => $product->sku,
+        ])->object());
         $exists = rescue(
             fn () => $this->client('listing-external')->get("listings/merchantid/$this->merchantId", [
                 'offset' => 0,
