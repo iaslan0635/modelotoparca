@@ -112,6 +112,11 @@ class Product extends BaseModel implements CanVisit
         return asset("storage/imported_images/{$this->id}_$suffix.webp");
     }
 
+    public function getMerchantDescriptionAttribute(): string
+    {
+        return $this->description."\n".$this->producercode."\n".$this->cross_code."\n".$this->oem_codes."\n".$this->producercode2."\n".$this->similar_product_codes;
+    }
+
     public function imageUrl($default = null)
     {
         if ($this->image_appendix & ExcelImport::IMAGE_11) {

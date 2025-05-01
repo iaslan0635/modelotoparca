@@ -135,7 +135,7 @@ class TrendyolMerchant implements TrackableMerchant
                         ->where('merchant', '=', 'trendyol')->valueOrFail('merchant_id'),
                     'stockCode' => $product->sku,
                     'dimensionalWeight' => 0,
-                    'description' => $product->description,
+                    'description' => $product->merchant_description,
                     'vatRate' => 20,
                     'images' => $product->imageUrls()->map(fn ($image) => ['url' => $image]),
                     'cargoCompanyId' => 10,
