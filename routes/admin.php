@@ -37,7 +37,8 @@ Route::prefix('products/{product}/edit')->name('products.edit.')->controller(Pro
 
 Route::get('products/export', [ProductController::class, 'exportToExcel'])->name('products.export');
 
-Route::get('products', [ProductController::class, 'index'])->name('products.index')->middleware('permission:Stok Yönetimi.Ürünler.Listele');
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
+//Route::get('products', [ProductController::class, 'index'])->name('products.index')->middleware('permission:Stok Yönetimi.Ürünler.Listele');
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show')->middleware('permission:Stok Yönetimi.Ürünler.Listele');
 
 Route::prefix('categories/{category}/edit')->name('categories.edit.')->controller(CategoryController::class)->group(function () {
