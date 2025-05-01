@@ -37,7 +37,6 @@ Route::get('trendyol-query', function (){
             ->exists();
         if ($p_exists) {
             $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
-
             if (!$exists){
                 ProductMerchant::create([
                     'merchant' => 'trendyol',
