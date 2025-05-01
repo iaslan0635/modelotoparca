@@ -114,7 +114,18 @@ class Product extends BaseModel implements CanVisit
 
     public function getMerchantDescriptionAttribute(): string
     {
-        return $this->description."\n".$this->producercode."\n".$this->cross_code."\n".$this->oem_codes."\n".$this->producercode2."\n".$this->similar_product_codes;
+        $description = $this->description ?? '';
+        $description .= "<br>";
+        $description .= "Ürün kodu : " . $this->producercode ?? '';
+        $description .= "<br>";
+        $description .= "Ürün kodu 2 : " . $this->producercode2 ?? '';
+        $description .= "<br>";
+        $description .= "Cross Kod : " . $this->cross_code ?? '';
+        $description .= "<br>";
+        $description .= "OEM Kodları : " . $this->oem_codes . implode(',', $this->oems->pluck('oem')->map(fn($oem) => strtolower($oem))->toArray()) ?? '';
+        $description .= "<br>";
+        $description .= "Alternatif Ürün Kodları : " . $this->similar_product_codes ?? '';
+        return $description;
     }
 
     public function imageUrl($default = null)

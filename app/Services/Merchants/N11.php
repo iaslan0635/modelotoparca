@@ -246,7 +246,7 @@ class N11 implements Merchant
                 'productSellerCode' => $product->sku,
                 'title' => $product->title.' '.$product->sub_title,
                 'subtitle' => $product->sub_title,
-                'description' => $product->description,
+                'description' => $product->merchant_description,
                 'domestic' => 'false',
                 'category' => [
                     'id' => $product->categories[0]->merchants()
