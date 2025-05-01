@@ -34,11 +34,18 @@ Route::get('trendyol-query', function (){
     $products->each(function (\App\Models\Product $product) {
         $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
         if ($exists) {
-            ProductMerchant::create([
-                'merchant' => 'trendyol',
-                'merchant_id' => $product->sku,
-                'product_id' => $product->id,
-            ]);
+            $p_exists = ProductMerchant::where('merchant', '=', 'trendyol')
+                ->where('merchant_id', '=', $exists['id'])
+                ->where('product_id', '=', $product->id)
+                ->exists();
+
+            if (!$p_exists){
+                ProductMerchant::create([
+                    'merchant' => 'trendyol',
+                    'merchant_id' => $exists->id,
+                    'product_id' => $product->id,
+                ]);
+            }
             return;
         }
     });
