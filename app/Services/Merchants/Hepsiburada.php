@@ -35,10 +35,13 @@ class Hepsiburada implements TrackableMerchant
 
     private function client(string $service): PendingRequest
     {
-        return Http::withBasicAuth(
-            $this->creds['username'],
-            $this->creds['password'],
-        )->throw()->baseUrl($this->baseUrl($service));
+        $username = $this->creds['username'];
+        $password = $this->creds['password'];
+        $basicToken = base64_encode("{$username}:{$password}");
+
+        return Http::withHeaders([
+            'Authorization' => "Basic {$basicToken}",
+        ])->throw()->baseUrl($this->baseUrl($service));
     }
 
     private function getPrice(Product $product): ?string
