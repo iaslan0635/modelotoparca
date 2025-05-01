@@ -191,8 +191,6 @@ class Hepsiburada implements TrackableMerchant
             ->post('product/api/products/import?version=1')
             ->object();
 
-        dd($response);
-
         $trackingId = $response->data->trackingId;
         Tracking::create([
             'merchant' => 'hepsiburada',
