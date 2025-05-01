@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'test_mode' => env('MERCHANT_TEST_MODE', true),
+    'test_mode' => env('MERCHANT_TEST_MODE', false),
     'n11' => [
         'apiKey' => '604ab86f-4110-48d8-8d77-38ddaf80942b',
         'apiPassword' => 'Cr6hp64gF2Nb8STX',
@@ -13,8 +13,8 @@ return [
     ],
     'hepsiburada' => [
         'merchantId' => 'b81b18f7-851c-4b13-947f-2324d40a812f',
-        'username' => 'live_dev',
-        'password' => '18UBhE44XPJk',
+        'username' => 'modelotomotiv_dev',
+        'password' => 'h9fXXUZM7DTq',
     ],
     'test_creds' => [
         'trendyol' => [
