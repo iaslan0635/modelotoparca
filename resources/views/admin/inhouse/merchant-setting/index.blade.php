@@ -1,7 +1,7 @@
-@extends("admin.inhouse.layouts.kt")
+@extends('layouts.panel-app')
 
-@section("kt-title", "")
-@section("kt-content")
+{{--@section("kt-title", "")--}}
+@section("content")
 {{--    @if($errors->any()) @dd($errors) @endif--}}
     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 mb-4">
         <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Entegrasyon ayarları</h1>
