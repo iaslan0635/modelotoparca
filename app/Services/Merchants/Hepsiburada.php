@@ -136,8 +136,6 @@ class Hepsiburada implements TrackableMerchant
             ->attach('file', $json, 'integrator-ticket-upload.json')
             ->post('ticket-api/api/integrator/import')->object();
 
-        dd($response);
-
         return $response->data->trackingId;
     }
 
@@ -192,6 +190,8 @@ class Hepsiburada implements TrackableMerchant
             ->attach('file', $json, 'integrator.json')
             ->post('product/api/products/import?version=1')
             ->object();
+
+        dd($response);
 
         $trackingId = $response->data->trackingId;
         Tracking::create([
