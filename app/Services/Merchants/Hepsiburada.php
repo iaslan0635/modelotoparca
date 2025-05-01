@@ -42,7 +42,7 @@ class Hepsiburada implements TrackableMerchant
         return Http::withHeaders([
             'Authorization' => "Basic {$basicToken}",
             'Cookie' => "_abck=0B6E4A58DEF13D58A81BD627978C19FF~-1~YAAQhKDeUnuZ8CeRAQAAFRl9VQxf0ZDqS7TyFFYvQtnEuc+6+9v6BGqK/eqDEZx1It+SRfvlxRMUpW/7GohvTNiB/Nn8xCBSjKnPrJr3AXstYwu58no6SQ3bJVuovptGFnIpVZ4yh1lAe9WTvNUHV3Ez9B2BV61FsWVKndNEZRP+5avYBh1+gO1kAvAs9AMcyWzMcp2k+0RlcVxqBOs6nf4rr1Dti50likLsxr8WShxfFbOB0AV9jBfAvKEWMi537zWoaZLXCfZ5g8JtHxce5aqwjeStV4s3FuR963C2wErrrj6vxvPUz2Sgino/EoBiGt81AkA7bFxCEhuZ9EbLFB1X6llpFGmtiNZRMj5BgPVgo/Ue8cUlQLd34BS98/xnRG3l2hMYAe4fTz0k~-1~-1~-1; JSESSIONID=039023D8620ACD60070D1FDEAF789940",
-        ])->throw()->baseUrl($this->baseUrl($service));
+        ])->withUserAgent($this->creds['username'])->throw()->baseUrl($this->baseUrl($service));
 
         /*return Http::withBasicAuth(
             $this->creds['merchantId'],
