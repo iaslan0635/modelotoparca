@@ -16,7 +16,8 @@ class MerchantProductController extends Controller
 
     public function onSaleIndex()
     {
-        $query = Product::whereHas('merchants')->where('ecommerce', true);
+//        $query = Product::whereHas('merchants')->where('ecommerce', true);
+        $query = Product::where('ecommerce', true);
 
         return ProductController::tableResponse($query);
     }
