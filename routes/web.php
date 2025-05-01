@@ -32,14 +32,13 @@ Route::get('test', function (){
 Route::get('trendyol-query', function (){
     $products = \App\Models\Product::where('ecommerce', true)->get();
     $products->each(function (\App\Models\Product $product) {
-        $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
-        if ($exists) {
-            $p_exists = ProductMerchant::where('merchant', '=', 'trendyol')
-                ->where('merchant_id', '=', $exists->id)
-                ->where('product_id', '=', $product->id)
-                ->exists();
+        $p_exists = ProductMerchant::where('merchant', '=', 'trendyol')
+            ->where('product_id', '=', $product->id)
+            ->exists();
+        if ($p_exists) {
+            $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
 
-            if (!$p_exists){
+            if (!$exists){
                 ProductMerchant::create([
                     'merchant' => 'trendyol',
                     'merchant_id' => $exists->id,
