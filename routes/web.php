@@ -14,6 +14,7 @@ use App\Http\Controllers\User\AddressController;
 use App\Http\Controllers\User\ProfileController;
 use App\Livewire\CategoryPage;
 use App\Livewire\FullPageCarSelector;
+use App\Models\ProductMerchant;
 use App\Services\MarketPlace;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,21 @@ Route::get('test', function (){
 //    $bot = new \App\Jobs\BotJob($product);
 //    $bot->runBotForProduct($product);
 
+});
+
+Route::get('trendyol-query', function (){
+    $products = \App\Models\Product::where('ecommerce', true)->get();
+    $products->each(function (\App\Models\Product $product) {
+        $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
+        if ($exists) {
+            ProductMerchant::create([
+                'merchant' => 'trendyol',
+                'merchant_id' => $product->sku,
+                'product_id' => $product->id,
+            ]);
+            return;
+        }
+    });
 });
 
 Route::get('/', HomeController::class)->name('home');

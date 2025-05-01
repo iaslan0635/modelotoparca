@@ -548,6 +548,14 @@ class TrendyolMerchant implements TrackableMerchant
         return $status->content[0]->onsale;
     }
 
+    public function getProduct(Product $product)
+    {
+        $query = $this->supplierClient()->get('products', ['barcode' => $product->sku])
+            ->object();
+
+        return $query->content[0] ?? null;
+    }
+
     public function syncQuestions()
     {
         $questions = $this->getQuestions();
