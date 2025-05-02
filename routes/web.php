@@ -53,9 +53,9 @@ Route::get('test', function (){
 Route::get('trendyol-query', function () {
     $products = \App\Models\Product::where('ecommerce', true)->get();
 
-    $merchant = new TrendyolMerchant();
+    $merchant = new \App\Services\Merchants\TrendyolMerchant();
 
-    $products->each(function (Product $product) use ($merchant) {
+    $products->each(function (\App\Models\Product $product) use ($merchant) {
         // Eğer ürün daha önce eşleştirilmemişse kontrol et
         $alreadySynced = ProductMerchant::where('merchant', 'trendyol')
             ->where('product_id', $product->id)
