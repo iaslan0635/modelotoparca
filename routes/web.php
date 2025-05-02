@@ -60,13 +60,15 @@ Route::get('trendyol-query', function () {
         $trendyolProduct = $merchant->getProduct($product);
 
         if ($trendyolProduct && isset($trendyolProduct->id)) {
-            // Eşleşme yoksa ekle
-            ProductMerchant::firstOrCreate([
-                'merchant' => 'trendyol',
-                'product_id' => $product->id,
-            ], [
-                'merchant_id' => $trendyolProduct->id,
-            ]);
+            ProductMerchant::updateOrCreate(
+                [
+                    'merchant' => 'trendyol',
+                    'product_id' => $product->id,
+                ],
+                [
+                    'merchant_id' => $trendyolProduct->id,
+                ]
+            );
         } else {
             // Trendyol'da ürün yoksa varsa eşleşmeyi sil
             ProductMerchant::where('merchant', 'trendyol')
