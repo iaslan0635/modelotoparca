@@ -90,7 +90,7 @@ class TrendyolMerchant implements TrackableMerchant
     public function sendProduct(Product $product)
     {
 //        $exists = $this->supplierClient()->get('products', ['barcode' => $product->sku])
-        $exists = $this->supplierClient()->get('products', ['barcode' => $product->producercode])
+        $exists = $this->supplierClient()->get('products', ['barcode' => 'MDL' . $product->producercode])
             ->object()->totalElements > 0;
         $method = $exists ? 'PUT' : 'POST';
 
@@ -545,8 +545,9 @@ class TrendyolMerchant implements TrackableMerchant
     public function productExists(Product $product): bool
     {
 //        $status = $this->supplierClient()->get('products', ['barcode' => $product->sku])
-        $status = $this->supplierClient()->get('products', ['barcode' => $product->producercode])
-            ->object();
+        $status = $this->supplierClient()->get('products', [
+            'barcode' => 'MDL' . $product->producercode
+        ])->object();
 
         if ($status->totalElements === 0) {
             return false;
@@ -558,8 +559,9 @@ class TrendyolMerchant implements TrackableMerchant
     public function getProduct(Product $product)
     {
 //        $query = $this->supplierClient()->get('products', ['barcode' => $product->sku])
-        $query = $this->supplierClient()->get('products', ['barcode' => $product->producercode])
-            ->object();
+        $status = $this->supplierClient()->get('products', [
+            'barcode' => 'MDL' . $product->producercode
+        ])->object();
 
         return $query->content[0] ?? null;
     }
