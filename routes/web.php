@@ -51,7 +51,7 @@ Route::get('test', function (){
 //});
 
 Route::get('trendyol-query', function () {
-    $products = Product::where('ecommerce', true)->get();
+    $products = \App\Models\Product::where('ecommerce', true)->get();
 
     $merchant = new TrendyolMerchant();
 
