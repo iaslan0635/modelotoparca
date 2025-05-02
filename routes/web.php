@@ -52,31 +52,32 @@ Route::get('test', function (){
 
 Route::get('trendyol-query', function () {
     $products = \App\Models\Product::where('ecommerce', true)->get();
-
     $merchant = new \App\Services\Merchants\TrendyolMerchant();
 
     $products->each(function (\App\Models\Product $product) use ($merchant) {
-        // Eğer ürün daha önce eşleştirilmemişse kontrol et
-        $alreadySynced = ProductMerchant::where('merchant', 'trendyol')
-            ->where('product_id', $product->id)
-            ->exists();
+        $product->producercode = 'MDL' . $product->producercode;
 
-        if (! $alreadySynced) {
-            $trendyolProduct = $merchant->getProduct($product);
+        $trendyolProduct = $merchant->getProduct($product);
 
-            // Trendyol'da ürün gerçekten varsa eşleştirme kaydını oluştur
-            if ($trendyolProduct && isset($trendyolProduct->id)) {
-                ProductMerchant::create([
-                    'merchant' => 'trendyol',
-                    'merchant_id' => $trendyolProduct->id,
-                    'product_id' => $product->id,
-                ]);
-            }
+        if ($trendyolProduct && isset($trendyolProduct->id)) {
+            // Eşleşme yoksa ekle
+            ProductMerchant::firstOrCreate([
+                'merchant' => 'trendyol',
+                'product_id' => $product->id,
+            ], [
+                'merchant_id' => $trendyolProduct->id,
+            ]);
+        } else {
+            // Trendyol'da ürün yoksa varsa eşleşmeyi sil
+            ProductMerchant::where('merchant', 'trendyol')
+                ->where('product_id', $product->id)
+                ->delete();
         }
     });
 
-    return 'Eşleşme tamamlandı.';
+    return 'Eşleşme işlemi tamamlandı.';
 });
+
 
 Route::get('/', HomeController::class)->name('home');
 
