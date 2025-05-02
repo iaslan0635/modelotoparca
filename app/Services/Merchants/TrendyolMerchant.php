@@ -130,7 +130,8 @@ class TrendyolMerchant implements TrackableMerchant
                 [
 //                    'barcode' => $product->sku,
                     'barcode' => $product->producercode,
-                    'title' => $product->title,
+//                    'title' => $product->title,
+                    'title' => $product->title.' '.$product->oem_codes.' '.$product->similar_product_codes,
                     'productMainId' => $product->sku,
                     'brandId' => $product->brand->merchants()
                         ->where('merchant', '=', 'trendyol')->valueOrFail('merchant_id'),
