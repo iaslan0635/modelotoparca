@@ -55,7 +55,7 @@ Route::get('trendyol-query', function () {
     $merchant = new \App\Services\Merchants\TrendyolMerchant();
 
     $products->each(function (\App\Models\Product $product) use ($merchant) {
-        $product->producercode = 'MDL' . $product->producercode;
+        $product->producercode = 'MDL-' . $product->producercode;
 
         $trendyolProduct = $merchant->getProduct($product);
 
