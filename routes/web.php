@@ -52,7 +52,7 @@ Route::get('test', function (){
 
 Route::get('trendyol-query', function () {
     $products = \App\Models\Product::where('ecommerce', true)->get();
-    $merchant = new TrendyolMerchant();
+    $merchant = new \App\Services\Merchants\TrendyolMerchant();
 
     $products->each(function (\App\Models\Product $product) use ($merchant) {
         // Zaten eşleşmiş mi kontrol et
