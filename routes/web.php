@@ -34,13 +34,15 @@ Route::get('test', function (){
 
 Route::get('trendyol-query', function () {
     $products = \App\Models\Product::where('ecommerce', true)->get();
-
     $output = [];
 
     $products->each(function (\App\Models\Product $product) use (&$output) {
-        $barcode = 'MDL-' . $product->producer_code;
+        // Veritabanı alanı: producer_code veya producercode olabilir — ikisini de deniyoruz
+        $rawCode = $product->producer_code ?? $product->producercode ?? 'YOK';
+        $barcode = 'MDL-' . $rawCode;
 
-        $output[] = "Sorgulanan barkod: $barcode";
+        $output[] = "💡 Veritabanı değeri: $rawCode";
+        $output[] = "🔎 Sorgulanan barkod: $barcode";
 
         $trendyolProduct = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
 
@@ -50,14 +52,13 @@ Route::get('trendyol-query', function () {
                 'merchant_id' => $trendyolProduct->id,
                 'product_id' => $product->id,
             ]);
-
-            $output[] = "✅ Eşleşti ve kaydedildi: $barcode";
+            $output[] = "✅ Trendyol'da bulundu ve kaydedildi: $barcode";
         } else {
             $output[] = "❌ Trendyol'da bulunamadı: $barcode";
         }
     });
 
-    return implode("<br>", $output); // tarayıcıda satır satır çıktı verir
+    return implode("<br>", $output);
 });
 
 
