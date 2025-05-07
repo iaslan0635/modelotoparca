@@ -63,7 +63,7 @@ Route::get('trendyol-query', function () {
 
 
 Route::get('/test-barkod-sorgu', function () {
-    $products = Product::whereNotNull('producercode')->take(10)->get(); // örnek olarak ilk 10 ürün
+    $products = \App\Models\Product::whereNotNull('producercode')->take(10)->get(); // örnek olarak ilk 10 ürün
 
     foreach ($products as $product) {
         $code = trim($product->producercode);
