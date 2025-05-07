@@ -30,54 +30,54 @@ Route::get('test', function (){
 
 });
 
-//Route::get('trendyol-query', function (){
-//    $products = \App\Models\Product::where('ecommerce', true)->get();
-//    $products->each(function (\App\Models\Product $product) {
-//        $p_exists = ProductMerchant::where('merchant', '=', 'trendyol')
-//            ->where('product_id', '=', $product->id)
-//            ->exists();
-//        if ($p_exists) {
-//            $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
-//            if (!$exists){
-//                ProductMerchant::create([
-//                    'merchant' => 'trendyol',
-//                    'merchant_id' => $exists->id,
-//                    'product_id' => $product->id,
-//                ]);
-//            }
-//            return;
-//        }
-//    });
-//});
-
-Route::get('trendyol-query', function () {
+Route::get('trendyol-query', function (){
     $products = \App\Models\Product::where('ecommerce', true)->get();
-    $merchant = new \App\Services\Merchants\TrendyolMerchant();
-
-    $products->each(function (\App\Models\Product $product) use ($merchant) {
-        // Zaten eşleşmiş mi kontrol et
-        $alreadySynced = \App\Models\ProductMerchant::where('merchant', 'trendyol')
-            ->where('product_id', $product->id)
+    $products->each(function (\App\Models\Product $product) {
+        $p_exists = ProductMerchant::where('merchant', '=', 'trendyol')
+            ->where('product_id', '=', $product->id)
             ->exists();
-
-        if (! $alreadySynced) {
-            // Barcode prefix ile sorgulama yapılacak
-            $product->producercode = 'MDL-' . $product->producercode;
-
-            $trendyolProduct = $merchant->getProduct($product);
-
-            if ($trendyolProduct && isset($trendyolProduct->id)) {
-                \App\Models\ProductMerchant::create([
+        if ($p_exists) {
+            $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
+            if (!$exists){
+                ProductMerchant::create([
                     'merchant' => 'trendyol',
-                    'merchant_id' => $trendyolProduct->id,
+                    'merchant_id' => $exists->id,
                     'product_id' => $product->id,
                 ]);
             }
+            return;
         }
     });
-
-    return 'Eşleşme tamamlandı.';
 });
+
+//Route::get('trendyol-query', function () {
+//    $products = \App\Models\Product::where('ecommerce', true)->get();
+//    $merchant = new \App\Services\Merchants\TrendyolMerchant();
+//
+//    $products->each(function (\App\Models\Product $product) use ($merchant) {
+//        // Zaten eşleşmiş mi kontrol et
+//        $alreadySynced = \App\Models\ProductMerchant::where('merchant', 'trendyol')
+//            ->where('product_id', $product->id)
+//            ->exists();
+//
+//        if (! $alreadySynced) {
+//            // Barcode prefix ile sorgulama yapılacak
+//            $product->producercode = 'MDL-' . $product->producercode;
+//
+//            $trendyolProduct = $merchant->getProduct($product);
+//
+//            if ($trendyolProduct && isset($trendyolProduct->id)) {
+//                \App\Models\ProductMerchant::create([
+//                    'merchant' => 'trendyol',
+//                    'merchant_id' => $trendyolProduct->id,
+//                    'product_id' => $product->id,
+//                ]);
+//            }
+//        }
+//    });
+//
+//    return 'Eşleşme tamamlandı.';
+//});
 
 Route::get('/', HomeController::class)->name('home');
 
