@@ -37,14 +37,14 @@ Route::get('trendyol-query', function () {
     $output = [];
 
     foreach ($products as $product) {
-        $rawCode = $product->producercode;
+        $rawCode = $product->id;
 
         if (!$rawCode) {
             $output[] = "❗ Barkod alanı boş: Ürün ID {$product->id}";
             continue;
         }
 
-        $barcode = 'MDL-' . $rawCode;
+        $barcode = 'MDL--' . $rawCode;
 
         $output[] = "💡 Veritabanı değeri: $rawCode";
         $output[] = "🔎 Sorgulanan barkod: $barcode";
