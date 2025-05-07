@@ -17,6 +17,7 @@ use App\Livewire\FullPageCarSelector;
 use App\Models\ProductMerchant;
 use App\Services\MarketPlace;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 
 Route::get('test', function (){
     return (new \App\Services\Merchants\Hepsiburada())->getCategories();
@@ -32,6 +33,33 @@ Route::get('test', function (){
 
 
 Route::get('trendyol-query', function () {
+    $products = \App\Models\Product::where('ecommerce', true)->get();
+
+    $products->each(function (\App\Models\Product $product) {
+        $barcode = 'MDL-' . $product->producer_code; // DİKKAT: doğru alanı kullan
+
+        Log::info("Sorgulanan barkod: $barcode");
+
+        $trendyolProduct = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
+
+        if ($trendyolProduct) {
+            Log::info("Eşleşti: {$barcode}");
+
+            \App\Models\ProductMerchant::create([
+                'merchant' => 'trendyol',
+                'merchant_id' => $trendyolProduct->id,
+                'product_id' => $product->id,
+            ]);
+        } else {
+            Log::warning("Eşleşmedi: {$barcode}");
+        }
+    });
+
+    return 'Eşleştirme tamamlandı';
+});
+
+
+Route::get('trendyol-query3', function () {
     $products = \App\Models\Product::where('ecommerce', true)->get();
 
     $products->each(function (\App\Models\Product $product) {
