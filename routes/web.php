@@ -36,61 +36,39 @@ Route::get('trendyol-query', function () {
     $products = \App\Models\Product::where('ecommerce', true)->get();
     $output = [];
 
-    $products->each(function (\App\Models\Product $product) use (&$output) {
-        // Veritabanı alanı: producer_code veya producercode olabilir — ikisini de deniyoruz
-        $rawCode = $product->producer_code ?? $product->producercode ?? 'YOK';
+    foreach ($products as $product) {
+        $rawCode = $product->producercode;
+
+        if (!$rawCode) {
+            $output[] = "❗ Barkod alanı boş: Ürün ID {$product->id}";
+            continue;
+        }
+
         $barcode = 'MDL-' . $rawCode;
 
         $output[] = "💡 Veritabanı değeri: $rawCode";
         $output[] = "🔎 Sorgulanan barkod: $barcode";
 
-        $trendyolProduct = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
+        $trendyol = new \App\Services\Merchants\TrendyolMerchant();
+        $result = $trendyol->getProductByBarcode($barcode);
 
-        if ($trendyolProduct) {
-            \App\Models\ProductMerchant::create([
+        if ($result) {
+            \App\Models\ProductMerchant::updateOrCreate([
                 'merchant' => 'trendyol',
-                'merchant_id' => $trendyolProduct->id,
                 'product_id' => $product->id,
+            ], [
+                'merchant_id' => $result['id'],
             ]);
             $output[] = "✅ Trendyol'da bulundu ve kaydedildi: $barcode";
         } else {
             $output[] = "❌ Trendyol'da bulunamadı: $barcode";
         }
-    });
+    }
 
     return implode("<br>", $output);
 });
 
 
-Route::get('/test-barkod-sorgu', function () {
-    $products = \App\Models\Product::whereNotNull('producercode')->take(10)->get(); // örnek olarak ilk 10 ürün
-
-    foreach ($products as $product) {
-        $code = trim($product->producercode);
-
-        $barkod1 = 'MDL-' . $code;
-        $barkod2 = $code;
-
-        echo "<br>💡 Veritabanı değeri: {$code}";
-
-        // API sorgusu 1. deneme
-        $trendyol1 = (new \App\Services\Merchants\TrendyolMerchant())->getProductByBarcode($barkod1);
-        if ($trendyol1) {
-            echo "<br>✅ Trendyol'da bulundu (MDL- prefix): {$barkod1}<br>";
-            continue;
-        }
-
-        // API sorgusu 2. deneme
-        $trendyol2 = (new \App\Services\Merchants\TrendyolMerchant())->getProductByBarcode($barkod2);
-        if ($trendyol2) {
-            echo "<br>✅ Trendyol'da bulundu (prefix yok): {$barkod2}<br>";
-        } else {
-            echo "<br>❌ Trendyol'da bulunamadı: {$barkod1} / {$barkod2}<br>";
-        }
-
-        echo "<hr>";
-    }
-});
 
 
 Route::get('trendyol-query3', function () {

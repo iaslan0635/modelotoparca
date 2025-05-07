@@ -594,4 +594,23 @@ class TrendyolMerchant implements TrackableMerchant
             ]);
         }
     }
+
+
+    public function getProductByBarcode(string $barcode)
+    {
+        $url = "suppliers/{$this->supplierId}/products";
+
+        $response = $this->client()->get($url, [
+            'barcode' => $barcode,
+            'size' => 1
+        ]);
+
+        if ($response->failed()) {
+            return null;
+        }
+
+        $data = $response->json();
+        return $data['content'][0] ?? null;
+    }
+
 }
