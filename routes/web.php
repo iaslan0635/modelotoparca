@@ -32,22 +32,30 @@ Route::get('test', function (){
 
 Route::get('trendyol-query', function (){
     $products = \App\Models\Product::where('ecommerce', true)->get();
+
     $products->each(function (\App\Models\Product $product) {
         $p_exists = ProductMerchant::where('merchant', '=', 'trendyol')
-            ->where('product_id', '=', 'MDL-' . $product->producer_code)
+            ->where('product_id', '=', $product->id)
             ->exists();
-        if ($p_exists) {
-            $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
-            if (!$exists){
+
+        if (!$p_exists) {
+            // Trendyol'daki barkod formatıyla arıyoruz
+            $barcode = 'MDL-' . $product->producer_code;
+
+            $trendyolProduct = (new \App\Services\Merchants\TrendyolMerchant())
+                ->getProduct($barcode); // barkoda göre ürün çekiyoruz
+
+            if ($trendyolProduct) {
                 ProductMerchant::create([
                     'merchant' => 'trendyol',
-                    'merchant_id' => $exists->id,
+                    'merchant_id' => $trendyolProduct->id,
                     'product_id' => $product->id,
                 ]);
             }
-            return;
         }
     });
+
+    return 'Tamamlandı';
 });
 
 //Route::get('trendyol-query', function () {
