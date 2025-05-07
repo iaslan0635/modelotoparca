@@ -44,7 +44,7 @@ Route::get('trendyol-query', function () {
             continue;
         }
 
-        $barcode = 'MDL--' . $rawCode;
+        $barcode = 'MDL-' . $rawCode;
 
         $output[] = "💡 Veritabanı değeri: $rawCode";
         $output[] = "🔎 Sorgulanan barkod: $barcode";
@@ -61,7 +61,15 @@ Route::get('trendyol-query', function () {
             ]);
             $output[] = "✅ Trendyol'da bulundu ve kaydedildi: $barcode";
         } else {
-            $output[] = "❌ Trendyol'da bulunamadı: $barcode";
+            $deleted = \App\Models\ProductMerchant::where('merchant', 'trendyol')
+                ->where('product_id', $product->id)
+                ->delete();
+
+            if ($deleted) {
+                $output[] = "🗑️ Trendyol'da silinmiş, veritabanından kaldırıldı: $barcode";
+            } else {
+                $output[] = "❌ Trendyol'da bulunamadı: $barcode";
+            }
         }
     }
 
