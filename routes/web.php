@@ -35,27 +35,29 @@ Route::get('test', function (){
 Route::get('trendyol-query', function () {
     $products = \App\Models\Product::where('ecommerce', true)->get();
 
-    $products->each(function (\App\Models\Product $product) {
-        $barcode = 'MDL-' . $product->producer_code; // DİKKAT: doğru alanı kullan
+    $output = [];
 
-        Log::info("Sorgulanan barkod: $barcode");
+    $products->each(function (\App\Models\Product $product) use (&$output) {
+        $barcode = 'MDL-' . $product->producer_code;
+
+        $output[] = "Sorgulanan barkod: $barcode";
 
         $trendyolProduct = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
 
         if ($trendyolProduct) {
-            Log::info("Eşleşti: {$barcode}");
-
             \App\Models\ProductMerchant::create([
                 'merchant' => 'trendyol',
                 'merchant_id' => $trendyolProduct->id,
                 'product_id' => $product->id,
             ]);
+
+            $output[] = "✅ Eşleşti ve kaydedildi: $barcode";
         } else {
-            Log::warning("Eşleşmedi: {$barcode}");
+            $output[] = "❌ Trendyol'da bulunamadı: $barcode";
         }
     });
 
-    return 'Eşleştirme tamamlandı';
+    return implode("<br>", $output); // tarayıcıda satır satır çıktı verir
 });
 
 
