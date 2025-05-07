@@ -62,6 +62,37 @@ Route::get('trendyol-query', function () {
 });
 
 
+Route::get('/test-barkod-sorgu', function () {
+    $products = Product::whereNotNull('producercode')->take(10)->get(); // örnek olarak ilk 10 ürün
+
+    foreach ($products as $product) {
+        $code = trim($product->producercode);
+
+        $barkod1 = 'MDL-' . $code;
+        $barkod2 = $code;
+
+        echo "<br>💡 Veritabanı değeri: {$code}";
+
+        // API sorgusu 1. deneme
+        $trendyol1 = (new \App\Services\Merchants\TrendyolMerchant())->getProductByBarcode($barkod1);
+        if ($trendyol1) {
+            echo "<br>✅ Trendyol'da bulundu (MDL- prefix): {$barkod1}<br>";
+            continue;
+        }
+
+        // API sorgusu 2. deneme
+        $trendyol2 = (new \App\Services\Merchants\TrendyolMerchant())->getProductByBarcode($barkod2);
+        if ($trendyol2) {
+            echo "<br>✅ Trendyol'da bulundu (prefix yok): {$barkod2}<br>";
+        } else {
+            echo "<br>❌ Trendyol'da bulunamadı: {$barkod1} / {$barkod2}<br>";
+        }
+
+        echo "<hr>";
+    }
+});
+
+
 Route::get('trendyol-query3', function () {
     $products = \App\Models\Product::where('ecommerce', true)->get();
 
