@@ -30,7 +30,35 @@ Route::get('test', function (){
 
 });
 
-Route::get('trendyol-query', function (){
+
+Route::get('trendyol-query', function () {
+    $products = \App\Models\Product::where('ecommerce', true)->get();
+
+    $products->each(function (\App\Models\Product $product) {
+        // 1. Bu ürün daha önce eşleştirilmiş mi? (id ile kontrol ediyoruz!)
+        $alreadyExists = \App\Models\ProductMerchant::where('merchant', 'trendyol')
+            ->where('product_id', $product->id)
+            ->exists();
+
+        if (!$alreadyExists) {
+            // 2. Trendyol'daki barkodu "MDL-..." şeklinde oluşturuluyor
+            $trendyolProduct = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
+
+            // 3. Trendyol'da varsa eşleşmeyi ProductMerchant tablosuna kaydet
+            if ($trendyolProduct) {
+                \App\Models\ProductMerchant::create([
+                    'merchant' => 'trendyol',
+                    'merchant_id' => $trendyolProduct->id,
+                    'product_id' => $product->id,
+                ]);
+            }
+        }
+    });
+
+    return 'Eşleştirme tamamlandı';
+});
+
+Route::get('trendyol-query2', function (){
     $products = \App\Models\Product::where('ecommerce', true)->get();
     $products->each(function (\App\Models\Product $product) {
         $p_exists = ProductMerchant::where('merchant', '=', 'trendyol')
