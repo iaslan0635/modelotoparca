@@ -44,7 +44,7 @@ Route::get('trendyol-query', function () {
             continue;
         }
 
-        $barcode = 'MDL-' . $rawCode;
+        $barcode = 'MDL--' . $rawCode;
 
         $output[] = "💡 Veritabanı değeri: $rawCode";
         $output[] = "🔎 Sorgulanan barkod: $barcode";

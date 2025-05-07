@@ -69,7 +69,7 @@ class TrendyolMerchant implements TrackableMerchant
             'items' => [
                 [
 //                    'barcode' => $product->sku,
-                    'barcode' => 'MDL-' . $product->producercode,
+                    'barcode' => 'MDL--' . $product->id,
                     'quantity' => $stock,
                     //                    "price" => $line->totalPrice,
                 ],
@@ -90,7 +90,7 @@ class TrendyolMerchant implements TrackableMerchant
     public function sendProduct(Product $product)
     {
 //        $exists = $this->supplierClient()->get('products', ['barcode' => $product->sku])
-        $exists = $this->supplierClient()->get('products', ['barcode' => 'MDL-' . $product->producercode])
+        $exists = $this->supplierClient()->get('products', ['barcode' => 'MDL--' . $product->id])
             ->object()->totalElements > 0;
         $method = $exists ? 'PUT' : 'POST';
 
@@ -129,7 +129,7 @@ class TrendyolMerchant implements TrackableMerchant
             'items' => [
                 [
 //                    'barcode' => $product->sku,
-                    'barcode' => 'MDL-' . $product->producercode,
+                    'barcode' => 'MDL--' . $product->id,
 //                    'title' => $product->title,
                     'title' => $product->title.' '.$product->oem_codes.' '.$product->similar_product_codes,
                     'productMainId' => $product->sku,
@@ -409,7 +409,7 @@ class TrendyolMerchant implements TrackableMerchant
             'items' => [
                 [
 //                    'barcode' => $product->sku,
-                    'barcode' => 'MDL-' . $product->producercode,
+                    'barcode' => 'MDL--' . $product->id,
                 ],
             ],
         ])->object()->batchRequestId;
@@ -426,7 +426,7 @@ class TrendyolMerchant implements TrackableMerchant
             'items' => [
                 [
 //                    'barcode' => $product->sku,
-                    'barcode' => 'MDL-' . $product->producercode,
+                    'barcode' => 'MDL--' . $product->id,
                     'salePrice' => $price,
                     'listPrice' => $this->getDiscountedPrice($product),
                 ],
@@ -546,7 +546,7 @@ class TrendyolMerchant implements TrackableMerchant
     {
 //        $status = $this->supplierClient()->get('products', ['barcode' => $product->sku])
         $status = $this->supplierClient()->get('products', [
-            'barcode' => 'MDL-' . $product->producercode
+            'barcode' => 'MDL--' . $product->id
         ])->object();
 
         if ($status->totalElements === 0) {
@@ -560,7 +560,7 @@ class TrendyolMerchant implements TrackableMerchant
     {
 //        $query = $this->supplierClient()->get('products', ['barcode' => $product->sku])
         $status = $this->supplierClient()->get('products', [
-            'barcode' => 'MDL-' . $product->producercode
+            'barcode' => 'MDL--' . $product->id
         ])->object();
 
         return $query->content[0] ?? null;
