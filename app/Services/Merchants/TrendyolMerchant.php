@@ -68,7 +68,8 @@ class TrendyolMerchant implements TrackableMerchant
         return $this->supplierClient()->post('products/price-and-inventory', [
             'items' => [
                 [
-                    'barcode' => $product->sku,
+//                    'barcode' => $product->sku,
+                    'barcode' => 'MDL--' . $product->id,
                     'quantity' => $stock,
                     //                    "price" => $line->totalPrice,
                 ],
@@ -88,7 +89,8 @@ class TrendyolMerchant implements TrackableMerchant
 
     public function sendProduct(Product $product)
     {
-        $exists = $this->supplierClient()->get('products', ['barcode' => $product->sku])
+//        $exists = $this->supplierClient()->get('products', ['barcode' => $product->sku])
+        $exists = $this->supplierClient()->get('products', ['barcode' => 'MDL--' . $product->id])
             ->object()->totalElements > 0;
         $method = $exists ? 'PUT' : 'POST';
 
@@ -126,8 +128,10 @@ class TrendyolMerchant implements TrackableMerchant
         $response = $this->supplierClient()->send($method, 'v2/products', ['json' => [
             'items' => [
                 [
-                    'barcode' => $product->sku,
-                    'title' => $product->title,
+//                    'barcode' => $product->sku,
+                    'barcode' => 'MDL--' . $product->id,
+//                    'title' => $product->title,
+                    'title' => $product->title.' '.$product->oem_codes.' '.$product->similar_product_codes,
                     'productMainId' => $product->sku,
                     'brandId' => $product->brand->merchants()
                         ->where('merchant', '=', 'trendyol')->valueOrFail('merchant_id'),
@@ -404,7 +408,8 @@ class TrendyolMerchant implements TrackableMerchant
         return $this->supplierClient()->delete('v2/products', [
             'items' => [
                 [
-                    'barcode' => $product->sku,
+//                    'barcode' => $product->sku,
+                    'barcode' => 'MDL--' . $product->id,
                 ],
             ],
         ])->object()->batchRequestId;
@@ -420,7 +425,8 @@ class TrendyolMerchant implements TrackableMerchant
         return $this->supplierClient()->post('products/price-and-inventory', [
             'items' => [
                 [
-                    'barcode' => $product->sku,
+//                    'barcode' => $product->sku,
+                    'barcode' => 'MDL--' . $product->id,
                     'salePrice' => $price,
                     'listPrice' => $this->getDiscountedPrice($product),
                 ],
@@ -538,8 +544,10 @@ class TrendyolMerchant implements TrackableMerchant
 
     public function productExists(Product $product): bool
     {
-        $status = $this->supplierClient()->get('products', ['barcode' => $product->sku])
-            ->object();
+//        $status = $this->supplierClient()->get('products', ['barcode' => $product->sku])
+        $status = $this->supplierClient()->get('products', [
+            'barcode' => 'MDL--' . $product->id
+        ])->object();
 
         if ($status->totalElements === 0) {
             return false;
@@ -550,8 +558,10 @@ class TrendyolMerchant implements TrackableMerchant
 
     public function getProduct(Product $product)
     {
-        $query = $this->supplierClient()->get('products', ['barcode' => $product->sku])
-            ->object();
+//        $query = $this->supplierClient()->get('products', ['barcode' => $product->sku])
+        $status = $this->supplierClient()->get('products', [
+            'barcode' => 'MDL--' . $product->id
+        ])->object();
 
         return $query->content[0] ?? null;
     }
@@ -584,4 +594,23 @@ class TrendyolMerchant implements TrackableMerchant
             ]);
         }
     }
+
+
+    public function getProductByBarcode(string $barcode)
+    {
+        $url = "suppliers/{$this->supplierId}/products";
+
+        $response = $this->client()->get($url, [
+            'barcode' => $barcode,
+            'size' => 1
+        ]);
+
+        if ($response->failed()) {
+            return null;
+        }
+
+        $data = $response->json();
+        return $data['content'][0] ?? null;
+    }
+
 }

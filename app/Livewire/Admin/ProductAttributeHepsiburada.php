@@ -21,6 +21,7 @@ class ProductAttributeHepsiburada extends Component
 
     public function render()
     {
+        $this->loadData();
         $attribute = $this->attribute;
         $name = $attribute?->name ?? $attribute['name'];
         $isMandatory = $attribute['mandatory'];
@@ -41,8 +42,11 @@ class ProductAttributeHepsiburada extends Component
             ->first();
 
         if ($sync) {
-            $this->value = $sync->merchant_value;
-            $this->value_id = $sync->merchant_value;
+            if (!is_null($sync->merchant_value_id)) {
+                $this->value_id = $sync->merchant_value_id;
+            } else {
+                $this->value = $sync->merchant_value;
+            }
         }
     }
 
@@ -59,7 +63,7 @@ class ProductAttributeHepsiburada extends Component
             'merchant_id' => $this->attribute['id'],
             'product_id' => $this->product_id,
         ], [
-            'merchant_value' => $this->attribute['type'] === 'string' ? $this->value : $this->value_id,
+            $this->attribute['type'] === 'string' ? 'merchant_value' : 'merchant_value_id' => $this->attribute['type'] === 'string' ? $this->value : $this->value_id,
         ]);
     }
 }
