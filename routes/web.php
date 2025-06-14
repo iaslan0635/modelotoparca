@@ -17,10 +17,8 @@ use App\Livewire\FullPageCarSelector;
 use App\Models\ProductMerchant;
 use App\Services\MarketPlace;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Log;
 
-Route::get('test', function (){
-    return (new \App\Services\Merchants\Hepsiburada())->getCategories();
+Route::get('test', function () {
     //return (new \App\Services\Merchants\N11())->getOrders();
     (new \App\Services\Merchants\N11())->syncOrders();
     (new \App\Services\Merchants\TrendyolMerchant())->syncOrders();
@@ -31,129 +29,26 @@ Route::get('test', function (){
 
 });
 
-
 Route::get('trendyol-query', function () {
-    $products = \App\Models\Product::where('ecommerce', true)->get();
-    $output = [];
-
-    foreach ($products as $product) {
-        $rawCode = $product->id;
-
-        if (!$rawCode) {
-            $output[] = "❗ Barkod alanı boş: Ürün ID {$product->id}";
-            continue;
-        }
-
-        $barcode = 'MDL--' . $rawCode;
-
-        $output[] = "💡 Veritabanı değeri: $rawCode";
-        $output[] = "🔎 Sorgulanan barkod: $barcode";
-
-        $trendyol = new \App\Services\Merchants\TrendyolMerchant();
-        $result = $trendyol->getProductByBarcode($barcode);
-
-        if ($result) {
-            \App\Models\ProductMerchant::updateOrCreate([
-                'merchant' => 'trendyol',
-                'product_id' => $product->id,
-            ], [
-                'merchant_id' => $result['id'],
-            ]);
-            $output[] = "✅ Trendyol'da bulundu ve kaydedildi: $barcode";
-        } else {
-            $deleted = \App\Models\ProductMerchant::where('merchant', 'trendyol')
-                ->where('product_id', $product->id)
-                ->delete();
-
-            if ($deleted) {
-                $output[] = "🗑️ Trendyol'da silinmiş, veritabanından kaldırıldı: $barcode";
-            } else {
-                $output[] = "❌ Trendyol'da bulunamadı: $barcode";
-            }
-        }
-    }
-
-    return implode("<br>", $output);
-});
-
-
-
-
-Route::get('trendyol-query3', function () {
-    $products = \App\Models\Product::where('ecommerce', true)->get();
-
-    $products->each(function (\App\Models\Product $product) {
-        // 1. Bu ürün daha önce eşleştirilmiş mi? (id ile kontrol ediyoruz!)
-        $alreadyExists = \App\Models\ProductMerchant::where('merchant', 'trendyol')
-            ->where('product_id', $product->id)
-            ->exists();
-
-        if (!$alreadyExists) {
-            // 2. Trendyol'daki barkodu "MDL-..." şeklinde oluşturuluyor
-            $trendyolProduct = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
-
-            // 3. Trendyol'da varsa eşleşmeyi ProductMerchant tablosuna kaydet
-            if ($trendyolProduct) {
-                \App\Models\ProductMerchant::create([
-                    'merchant' => 'trendyol',
-                    'merchant_id' => $trendyolProduct->id,
-                    'product_id' => $product->id,
-                ]);
-            }
-        }
-    });
-
-    return 'Eşleştirme tamamlandı';
-});
-
-Route::get('trendyol-query2', function (){
     $products = \App\Models\Product::where('ecommerce', true)->get();
     $products->each(function (\App\Models\Product $product) {
         $p_exists = ProductMerchant::where('merchant', '=', 'trendyol')
-            ->where('product_id', '=', 'MDL-' . $product->producer_code)
+            ->where('product_id', '=', $product->id)
             ->exists();
         if ($p_exists) {
             $exists = (new \App\Services\Merchants\TrendyolMerchant())->getProduct($product);
-            if (!$exists){
+
+            if (!$exists) {
                 ProductMerchant::create([
                     'merchant' => 'trendyol',
                     'merchant_id' => $exists->id,
                     'product_id' => $product->id,
                 ]);
             }
-            return 'Eşleşme tamamlandı.';
+            return;
         }
     });
 });
-
-//Route::get('trendyol-query', function () {
-//    $products = \App\Models\Product::where('ecommerce', true)->get();
-//    $merchant = new \App\Services\Merchants\TrendyolMerchant();
-//
-//    $products->each(function (\App\Models\Product $product) use ($merchant) {
-//        // Zaten eşleşmiş mi kontrol et
-//        $alreadySynced = \App\Models\ProductMerchant::where('merchant', 'trendyol')
-//            ->where('product_id', $product->id)
-//            ->exists();
-//
-//        if (! $alreadySynced) {
-//            // Barcode prefix ile sorgulama yapılacak
-//            $product->producercode = 'MDL-' . $product->producercode;
-//
-//            $trendyolProduct = $merchant->getProduct($product);
-//
-//            if ($trendyolProduct && isset($trendyolProduct->id)) {
-//                \App\Models\ProductMerchant::create([
-//                    'merchant' => 'trendyol',
-//                    'merchant_id' => $trendyolProduct->id,
-//                    'product_id' => $product->id,
-//                ]);
-//            }
-//        }
-//    });
-//
-//    return 'Eşleşme tamamlandı.';
-//});
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -210,5 +105,6 @@ Route::get('/garage/deselect', function () {
 });
 
 Route::get('{page:slug}', [PageController::class, 'show'])->name('page.show')->fallback();
-Route::get('/iletisim', function () { return view('pages.contact');
+Route::get('/iletisim', function () {
+    return view('pages.contact');
 });
