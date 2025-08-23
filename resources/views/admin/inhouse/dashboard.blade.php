@@ -15,7 +15,7 @@
                         <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">{{ $productStats["total"] }}</span>
                         <!--end::Amount-->
                         <!--begin::Subtitle-->
-                        <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Mevcut Toplam Ürün</span>
+                        <span class="text-white opacity-75 pt-1 fw-semibold fs-6">Mevcut Toplam Ürünler</span>
                         <!--end::Subtitle-->
                     </div>
                     <!--end::Title-->
