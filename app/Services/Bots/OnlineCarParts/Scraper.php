@@ -71,12 +71,41 @@ class Scraper
     {
         $crawler = new Crawler(OcpClient::request($url));
 
-        $oems = array_merge(...$crawler->filter('.product-oem__link')->each(function (Crawler $el) {
-            $text = $el->innerText(); // "AUDI / SKODA / VW - OE-N 012 412 1" || "FORD - OE-1833857"
-            [$brandsStr, $code] = explode(' - OE-', $text);
-            $brands = explode(' / ', $brandsStr);
+//        $oems = array_merge(...$crawler->filter('.product-oem__link')->each(function (Crawler $el) {
+//            $text = $el->innerText(); // "AUDI / SKODA / VW - OE-N 012 412 1" || "FORD - OE-1833857"
+//            [$brandsStr, $code] = explode(' - OE-', $text);
+//            $brands = explode(' / ', $brandsStr);
+//
+//            return array_map(fn (string $brand) => ['brand' => $brand, 'oem' => $code], $brands);
+//        }));
 
-            return array_map(fn (string $brand) => ['brand' => $brand, 'oem' => $code], $brands);
+        // Hem linkli hem linksiz OEM satırlarını yakala
+        $oemItems = $crawler->filter('.product-oem__list li, .product-oem__link');
+
+        $oems = array_merge(...$oemItems->each(function (Crawler $el) {
+            $text = trim($el->innerText());
+
+            // Beklenen örnekler:
+            // "BOSCH — 9603"
+            // "LEXUS / SUBARU / TOYOTA — 90919 01210"
+            // "HONDA — 12290-RB0-J01"
+            // Em-dash (—) veya normal tire (-) sonrası KOD'u al
+            if (!preg_match('/\s[—\-]\s*(.+)$/u', $text, $m)) {
+                return []; // ayraç bulunamadı -> bu satırı pas geç
+            }
+
+            $code = trim($m[1]);
+
+            // Ayraçtan önceki kısım MARKA(LAR)
+            $brandsStr = trim(preg_replace('/\s[—\-]\s*.+$/u', '', $text));
+
+            // Birden çok marka "/" ile geliyor olabilir
+            $brands = array_map(fn($s) => trim($s), preg_split('/\s*\/\s*/u', $brandsStr));
+
+            // Boş marka isimlerini filtrele
+            $brands = array_values(array_filter($brands, fn($b) => $b !== ''));
+
+            return array_map(fn ($brand) => ['brand' => $brand, 'oem' => $code], $brands);
         }));
 
         $specs = Utils::fromEntries($crawler->filter('table.product__table tr')->each(function (Crawler $row) {
