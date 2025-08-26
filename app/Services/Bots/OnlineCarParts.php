@@ -90,11 +90,23 @@ class OnlineCarParts
         }
     }
 
-    public function scrapeFromSearchAjax(): bool
-    {
-        $searchAjax = $this->data->getSearchAjax($this->keyword);
-        $productLinks = $this->getProductLinksForAjax($searchAjax, $this->brand_filter);
+//    public function scrapeFromSearchAjax(): bool
+//    {
+//        $searchAjax = $this->data->getSearchAjax($this->keyword);
+//        $productLinks = $this->getProductLinksForAjax($searchAjax, $this->brand_filter);
 
+//ekle
+   public function scrapeFromSearchAjax(): bool
+   {
+      try {
+           $searchAjax = $this->data->getSearchAjax($this->keyword);
+           $productLinks = $this->getProductLinksForAjax($searchAjax, $this->brand_filter);
+       } catch (\Throwable $e) {
+               $this->log('Ajax aramada hata; yol atlanıyor.', ['Hata' => $e->getMessage()]);
+              return false;
+       }
+
+//eklendi
         $successfulProductCount = 0;
         foreach ($productLinks as $link) {
             $connection = $this->getConnection($link);
