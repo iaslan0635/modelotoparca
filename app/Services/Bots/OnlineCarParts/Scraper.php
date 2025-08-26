@@ -38,8 +38,23 @@ class Scraper
 
         $items = $productEls->each(function (Crawler $el) {
             $linkEl = $el->filter('.product-card__title-link');
-            $url = $linkEl->attr('href') ?? $linkEl->attr('data-link');
+//            $url = $linkEl->attr('href') ?? $linkEl->attr('data-link');
+//ekle
 
+                        $raw = $linkEl->attr('href') ?? $linkEl->attr('data-link');
+                       if ($raw) {
+                               $u = \Spatie\Url\Url::fromString($raw);
+                              if ($u->isRelative()) {
+                                       $base = \Spatie\Url\Url::fromString('https://www.onlinecarparts.co.uk');
+                                       $url = (string) $base->withPath($u->getPath());
+                                   } else {
+                                       $url = (string) $u;
+                              }
+            } else {
+                                $url = null;
+                            }
+
+//      eklendi
             $artklEl = $el->filter('.product-card__artkl span');
             $articleNo = $artklEl->count() > 0 ? $artklEl->innerText() : null;
 
@@ -151,12 +166,24 @@ class Scraper
 
         $subtitle = $crawler->filter('.product__subtitle')->innerText();
 
-        $metadata = json_decode(
-            $crawler
-                ->filter('script[type="application/ld+json"]')
-                ->reduce(fn (Crawler $el) => json_decode($el->text())->{'@type'} === 'Product')
-                ->text()
-        );
+//        $metadata = json_decode(
+//            $crawler
+//                ->filter('script[type="application/ld+json"]')
+//                ->reduce(fn (Crawler $el) => json_decode($el->text())->{'@type'} === 'Product')
+//                ->text()
+//        );
+
+//        ekle
+
+         $metadataNode = $crawler->filter('script[type="application/ld+json"]')
+                 ->reduce(function (Crawler $el) {
+                $json = @json_decode($el->text());
+               return is_object($json) && ($json->{'@type'} ?? null) === 'Product';
+    });
+ $metadata = $metadataNode->count() ? json_decode($metadataNode->text()) : (object)[
+        'name' => null, 'brand' => (object)['name' => null], 'image' => [], 'category' => null, 'mpn' => null, 'sku' => null, 'gtin13' => null
+         ];
+//        eklendi
 
         return new ProductPage(
             url: $url,

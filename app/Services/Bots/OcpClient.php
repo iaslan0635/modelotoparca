@@ -48,7 +48,11 @@ class OcpClient
             // Check for errors
             if (curl_errno($ch)) {
                 curl_close($ch);
-                throw new \Error('Error during HTTP request: ' . curl_error($ch));
+//                throw new \Error('Error during HTTP request: ' . curl_error($ch));
+
+//                ekle
+                throw new \RuntimeException('HTTP request error: ' . curl_error($ch));
+//                eklend
             } else {
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                 if ($httpCode == 200) {
@@ -77,7 +81,8 @@ class OcpClient
         while (true) {
             try {
                 return self::requestWithoutRetry($url);
-            } catch (Exception $e) {
+//            } catch (Exception $e) {
+              } catch (\Throwable $e) {
                 $isGatewayTimeout = $e instanceof ClientException && $e->getResponse()->getStatusCode() !== 524;
                 if ($isGatewayTimeout || $attempts >= 3) {
                     throw $e;

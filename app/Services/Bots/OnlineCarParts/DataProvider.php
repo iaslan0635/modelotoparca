@@ -40,16 +40,35 @@ class DataProvider
 
     public function getSearchPageProductLinks(SearchPage $searchPage, int $pageNumber, ?string $articleNo)
     {
-        $isAlreadyFetched = $searchPage->fetched_pages !== null && in_array($pageNumber, $searchPage->fetched_pages);
-        if ($isAlreadyFetched) {
-            // $this->logger->info("Using already fetched data for page $pageNumber in $searchPage->url");
-            $query = $searchPage->products()->where('page', $pageNumber);
-            if ($articleNo) {
-                $query->where('article_no', $articleNo);
-            }
+//        $isAlreadyFetched = $searchPage->fetched_pages !== null && in_array($pageNumber, $searchPage->fetched_pages);
+//        if ($isAlreadyFetched) {
+//            // $this->logger->info("Using already fetched data for page $pageNumber in $searchPage->url");
+//            $query = $searchPage->products()->where('page', $pageNumber);
+//            if ($articleNo) {
+//                $query->where('article_no', $articleNo);
+//            }
+//
+//            return $query->orderBy('index')->pluck('url');
+//        }
 
-            return $query->orderBy('index')->pluck('url');
-        }
+        if ($isAlreadyFetched) {
+                        $rows = $searchPage->products()
+                             ->where('page', $pageNumber)
+                          ->orderBy('index')
+                          ->get(['url', 'article_no']);
+
+           if ($articleNo) {
+                              $needle = \App\Packages\Fuzz::regexify($articleNo);
+                              $rows = $rows->filter(
+                                      fn ($row) => \App\Packages\Fuzz::regexifyNullable($row->article_no) === $needle
+                                  );
+          }
+         return $rows->pluck('url');
+     }
+//eklendi
+
+
+
 
         $items = $this->scraper->getSearchPageProducts($searchPage, $pageNumber);
 

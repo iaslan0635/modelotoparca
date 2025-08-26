@@ -149,7 +149,14 @@ class OnlineCarParts
         }
 
         $successfulProductCount = 0;
-        for ($pageNumber = 1; $pageNumber <= $searchPage->pageCount; $pageNumber++) {
+//        for ($pageNumber = 1; $pageNumber <= $searchPage->pageCount; $pageNumber++) {
+//ekle
+               for ($pageNumber = 1; $pageNumber <= $searchPage->pageCount; $pageNumber++) {
+                 $before = $successfulProductCount;
+
+//        eklendi
+
+
             $links = $this->getProductLinksForPage($searchPage, $pageNumber);
 
             foreach ($links as $link) {
@@ -174,11 +181,21 @@ class OnlineCarParts
                 }
             }
 
-            $count = count($links);
-            if (!$this->isOem && $count !== 0) {
-                $this->log("$count adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
-                break;
+//            $count = count($links);
+//            if (!$this->isOem && $count !== 0) {
+//                $this->log("$count adet ürün bulunduğu için arama $pageNumber. sayfada sonlandırıldı.");
+//                break;
+//            }
+
+
+//                   ekle
+                              $added = $successfulProductCount - $before;
+                               if (!$this->isOem && $added > 0) {
+                                       $this->log("$added ürün kaydedildiği için arama $pageNumber. sayfada sonlandırıldı.");
+                                      break;
             }
+
+//                   eklendi
         }
 
         $this->log("Arama sayfalarından $successfulProductCount adet ürün çekildi.");
